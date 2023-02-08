@@ -1,0 +1,67 @@
+\usepackage{mathdots}
+\usepackage{circuitikz}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+
+\usetikzlibrary{arrows,shapes.gates.logic.US,shapes.gates.logic.IEC,calc}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{patterns}
+\usetikzlibrary{fit}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{shapes}
+\usetikzlibrary{shapes.misc}
+\usetikzlibrary{positioning}
+
+\newif\ifpgfshaperectangleroundnortheast
+\newif\ifpgfshaperectangleroundnorthwest
+\newif\ifpgfshaperectangleroundsoutheast
+\newif\ifpgfshaperectangleroundsouthwest
+\pgfkeys{/pgf/.cd,
+  rectangle round north east/.is if=pgfshaperectangleroundnortheast,
+  rectangle round north west/.is if=pgfshaperectangleroundnorthwest,
+  rectangle round south east/.is if=pgfshaperectangleroundsoutheast,
+  rectangle round south west/.is if=pgfshaperectangleroundsouthwest,
+  rectangle round north east, rectangle round north west,
+  rectangle round south east, rectangle round south west,
+}
+\makeatletter
+\def\pgf@sh@bg@rectangle{%
+  \pgfkeysgetvalue{/pgf/outer xsep}{\outerxsep}%
+  \pgfkeysgetvalue{/pgf/outer ysep}{\outerysep}%
+  \pgfpathmoveto{\pgfpointadd{\southwest}{\pgfpoint{\outerxsep}{\outerysep}}}%
+  {\ifpgfshaperectangleroundnorthwest\else\pgfsetcornersarced{\pgfpointorigin}\fi%
+    \pgfpathlineto{\pgfpointadd{\southwest\pgf@xa=\pgf@x\northeast\pgf@x=\pgf@xa}{\pgfpoint{\outerxsep}{-\outerysep}}}}%  
+  {\ifpgfshaperectangleroundnortheast\else\pgfsetcornersarced{\pgfpointorigin}\fi%  
+    \pgfpathlineto{\pgfpointadd{\northeast}{\pgfpoint{-\outerxsep}{-\outerysep}}}}%
+  {\ifpgfshaperectangleroundsoutheast\else\pgfsetcornersarced{\pgfpointorigin}\fi%  
+    \pgfpathlineto{\pgfpointadd{\southwest\pgf@ya=\pgf@y\northeast\pgf@y=\pgf@ya}{\pgfpoint{-\outerxsep}{\outerysep}}}}%
+  {\ifpgfshaperectangleroundsouthwest\else\pgfsetcornersarced{\pgfpointorigin}\fi%  
+    \pgfpathclose}}
+
+
+
+\newcommand{\Zdot}{%
+\begin{tikzpicture}[scale=.5]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (0) at (0, 0) {};
+	\end{pgfonlayer}
+\end{tikzpicture}
+}
+
+\newcommand{\Xdot}{%
+\begin{tikzpicture}[scale=.5]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (0) at (0, 0) {};
+	\end{pgfonlayer}
+\end{tikzpicture}
+}
+
+\tikzstyle{strings}=[baseline={([yshift=-.5ex]current bounding box.center)}]
+\tikzset{every picture/.style={scale=.75}, transform shape,strings}

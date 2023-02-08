@@ -1,0 +1,368 @@
+
+\usepackage{hhline}
+\usepackage{bookmark}
+\usepackage[table]{xcolor}% http://ctan.org/pkg/xcolor
+\usepackage[all,cmtip]{xy} 
+\usepackage{float}
+
+\usepackage{tikzit}
+\input{thesis.tikzstyles}
+\input{thesis.tikzdefs}
+
+\usepackage{comment}
+
+
+\usepackage{mdframed}
+\usepackage{arydshln}
+\usepackage{multicol}
+\renewcommand{\tilde}{\widetilde}
+\usepackage{everypage}
+\usepackage{lipsum}
+\usepackage{amsthm}
+\usepackage[inline]{enumitem}   
+\usepackage{scalerel,stackengine}
+\stackMath
+\renewcommand\hat[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern-.6pt\bigwedge\kern-.6pt}%
+    {\rule[-\textheight/2]{1ex}{\textheight}}%WIDTH-LIMITED BIG WEDGE
+  }{\textheight}% 
+}{0.5ex}}%
+\stackon[1pt]{#1}{\tmpbox}%
+}
+\parskip 1ex
+
+
+
+\newcommand{\bcell}{\cellcolor{black!10}}
+
+\makeatletter
+% This command ignores the optional argument for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+\parindent=0pt
+ 
+
+%\usepackage{extpfeil}
+%\newextarrow{\xleftarrowtail}{500(40)}{\leftarrow\relbar<}
+%\newextarrow{\xrightarrowtail}{500(40)}{>\relbar\rightarrow}
+
+
+
+
+
+%\newcommand\xrightarrowtail[2][]{\ensurestackMath{\mathrel{%
+%  \stackengine{1pt}{%
+ %   \stackengine{0pt}{\rightarrowtail}{\scriptstyle#2}{O}{c}{F}{F}{S}%
+%  }{\scriptstyle#1}{U}{c}{F}{F}{S}%
+%}}}
+
+
+
+%\newcommand\xleftarrowtail[2][]{\ensurestackMath{\mathrel{%
+%  \stackengine{1pt}{%
+%    \stackengine{0pt}{\leftarrowtail}{\scriptstyle#2}{O}{c}{F}{F}{S}%
+%  }{\scriptstyle#1}{U}{c}{F}{F}{S}%
+%}}}
+
+
+%\newcommand{\xrightarrowtail}[1]{\!\!\stackrel{#1}{\xymatrix@C=0.78em{\ar@{>->}[r]&}}\!\!\!}
+%\newcommand{\xleftarrowtail}[1]{\!\!\!\stackrel{#1}{\xymatrix@C=0.78em{&\ar@{>->}[l]}}\!\!}
+
+
+
+\newcommand{\alr}{{\sf alr}}
+\newcommand{\lr}{{\sf lr}}
+\newcommand{\rel}{{\sf r}}
+\newcommand{\aih}{{\sf aih}}
+\newcommand{\ih}{{\sf ih}}
+
+
+\newcommand{\xrightarrowtail}[1]{\!\!{\xymatrix@C=1em{\ar@{>->}[r]^{#1}&}}\!\!\!}
+\newcommand{\xleftarrowtail}[1]{\!\!\!{\xymatrix@C=1em{&\ar@{>->}[l]_{#1}}}\!\!}
+
+
+\newcommand{\xrightarrowiso}[1]{\!\!{\xymatrix@C=1em{\ar@{->}[r]^{#1}_\cong&}}\!\!\!}
+\newcommand{\xleftarrowiso}[1]{\!\!\!{\xymatrix@C=1em{&\ar@{->}[l]_{#1}^\cong}}\!\!}
+
+
+
+
+%\theoremstyle{theorem} 
+  \newtheorem{theorem}{Theorem}[section]
+  \newtheorem{corollary}[theorem]{Corollary}
+  \newtheorem{lemma}[theorem]{Lemma}
+  \newtheorem{proposition}[theorem]{Proposition}
+  
+%\theoremstyle{definition}    conjecture
+  \newtheorem{definition}[theorem]{Definition}
+  \newtheorem{example}[theorem]{Example}
+  \newtheorem{conjecture}[theorem]{Conjecture}
+  \newtheorem{remark}[theorem]{Remark}
+  
+  
+\newcommand{\Mat}{\mathsf{Mat}}
+
+
+\newcommand{\dom}{{\sf dom}}
+\newcommand{\cod}{{\sf cod}}
+
+\newcommand{\cnot}{\mathsf{cnot}}
+\newcommand{\tof}{\mathsf{tof}}
+\newcommand{\Not}{\mathsf{not}}
+\newcommand{\zeroin}{|0\rangle}
+\newcommand{\zeroout}{\langle 0|}
+\newcommand{\CNOT}{\mathsf{CNOT}}
+\newcommand{\Sets}{\mathsf{Set}}
+\newcommand{\FSets}{\mathsf{FinOrd}}
+\newcommand{\FinOrd}{\mathsf{FinOrd}}
+\newcommand{\Fin}{\mathsf{Fd}}
+\newcommand{\TOF}{\mathsf{TOF}}
+\newcommand{\Span}{\mathsf{Span}}
+\newcommand{\dec}{\mathsf{dec}}
+\newcommand{\Rel}{\mathsf{Rel}}
+\newcommand{\op}{\mathsf{op}}
+\newcommand{\co}{\mathsf{co}}
+\newcommand{\Hilb}{\mathsf{Hilb}}
+\newcommand{\FdHilb}{\mathsf{FHilb}}
+\newcommand{\FHilb}{\mathsf{FHilb}}
+\newcommand{\CPM}{\mathsf{CPM}}
+\newcommand{\CP}{\mathsf{CP}}
+\newcommand{\FPinj}{\mathsf{FPinj}}
+\newcommand{\FPar}{\mathsf{FPar}}
+\newcommand{\FSpan}{\mathsf{FSpan}}
+\newcommand{\Pinj}{\mathsf{Pinj}}
+\newcommand{\Par}{\mathsf{Par}}
+\newcommand{\Aff}{\mathsf{Aff}}
+\newcommand{\ParIso}{\mathsf{ParIso}}
+
+\newcommand{\Total}{\mathsf{Total}}
+\newcommand{\CFrob}{\mathsf{CFrob}}
+\newcommand{\tr}{\mathsf{Tr}}
+\newcommand{\ox}{\otimes}
+\newcommand{\Csp}{{\sf Cospan}}
+\newcommand{\Corel}{{\sf Corel}}
+\newcommand{\Bool}{\mathbb{B}}
+\newcommand{\Iso}{{\sf Iso}}
+\renewcommand{\P}{{\sf p}}
+\newcommand{\pmul}{{\sf pmul}}
+
+\newcommand{\Prof}{{\sf Prof}}
+\newcommand{\Mod}{{\sf Mod}}
+
+\newcommand{\unit}{{\sf unit}}
+\newcommand{\comm}{{\sf comm}}
+\newcommand{\assoc}{{\sf assoc}}
+\newcommand{\inj}{{\sf Inj}}
+\newcommand{\surj}{{\sf Surj}}
+\newcommand{\PSurj}{{\sf PSurj}}
+
+\newcommand{\pre}{{\sf pre}}
+\newcommand{\poly}{{\sf poly}}
+\newcommand{\sub}{{\sf sub}}
+
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\m}{{\sf m}}
+\newcommand{\cm}{{\sf cm}}
+\newcommand{\cb}{{\sf cb}}
+\newcommand{\pcm}{{\sf pcm}}
+\renewcommand{\r}{{\sf r}}
+\newcommand{\scfrob}{{\sf scfrob}}
+
+\newcommand{\bi}{{\sf b1}}
+\newcommand{\bii}{{\sf b2}}
+\newcommand{\biii}{{\sf b3}}
+\newcommand{\biv}{{\sf b4}}
+
+\newcommand{\Kl}{{\sf Kl}}
+\newcommand{\Mon}{{\sf Mon}}
+
+\newcommand{\ev}{{\sf ev}}
+
+\renewcommand{\P}{{\sf p}}
+\newcommand{\f}{\mathsf{f}}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\Y}{\mathbb{Y}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\s}{\mathbb{S}}
+\newcommand{\U}{\mathbb{U}}
+
+\newcommand{\IH}{\mathbb{IH}}
+
+
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\E}{\mathcal{E}}
+
+
+
+\renewcommand{\sp}{\mathsf{sp}}
+\newcommand{\pr}{\mathsf{p}}
+\newcommand{\iso}{\mathsf{i}}
+
+
+
+
+
+
+
+\newcounter{eq}
+
+\makeatletter
+\newcommand{\ltxlabel}{\ltx@label}
+\makeatother
+
+\newcommand{\eqzxa}[1]{%
+\refstepcounter{eq}%
+\ltxlabel{#1}%
+\eqstack{#1}%
+}
+
+
+
+
+\newcommand{\eqstack}[1]{%
+\stackrel{\scalebox{.6}{(\ref{#1})}}{=}%
+}
+
+\newcommand{\eq}[1]{\stackrel{\scalebox{.6}{#1}}{=}}
+
+\newcommand{\defeq}[1]{\stackrel{\scalebox{.6}{#1}}{:=}}
+
+
+\newcommand{\eref}{\eqstack}
+
+\newcommand{\erefop}[1]{%
+\stackrel{\scalebox{.6}{(\ref{#1})${}^\op$}}{=}%
+}
+
+\newcommand{\ZXA}{\mathsf{ZX}\textit{\&}}
+
+
+\newcommand{\Vect}{\mathsf{Vect}}
+\newcommand{\Lag}{\mathsf{Lag}}
+\newcommand{\im}{\mathsf{im}}
+\newcommand{\ZX}{\mathsf{ZX}}
+\newcommand{\ZH}{\mathsf{ZH}}
+\DeclareMathSymbol{\bot}{\mathord}{symbols}{"3F}
+
+
+\newcommand{\pullbackcorner}[1][dl]{\save*!/#1-1pc/#1:(-1,1)@^{|-}\restore}
+
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\bar}[1]{\overline{#1}\hspace*{.01cm}}
+
+\newcommand{\Stab}{{\sf Stab}}
+\newcommand{\LinRel}{\sf LinRel}
+
+
+\newcommand{\Isot}{{\sf Isot}}
+\newcommand{\Co}{{\sf Co}}
+
+\newcommand{\STOCH}{\mathsf{STOCH}}
+
+%\renewcommand\floatpagefraction{.9}
+%\renewcommand\topfraction{.9}
+%\renewcommand\bottomfraction{.9}
+%\renewcommand\textfraction{.1}   
+%\Setcounter{totalnumber}{50}
+%\Setcounter{topnumber}{50}
+%\Setcounter{bottomnumber}{50}
+
+
+\usepackage{amsmath}
+\usepackage{pict2e}
+
+\newcommand{\lbparen}{\{
+}
+
+\newcommand{\rbparen}{ \}
+}
+
+
+
+
+
+
+
+
+
+
+\newdir{|>}{-<5pt,0pt>{
+\begin{tikzpicture}[scale=.7]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (0, 0) {};
+		\node [style=none] (1) at (1, 0) {};
+		\node [style=none] (2) at (-1, -0.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (2.center) to (0.center);
+		\draw (0.center) to (1.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+}}
+\newdir{|<}{-<5pt,0pt>{
+\begin{tikzpicture}[scale=.9]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (0, -0.25) {};
+		\node [style=none] (1) at (-1, -0.25) {};
+		\node [style=none] (2) at (1, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (2.center) to (0.center);
+		\draw (0.center) to (1.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+}}
+
+
+\newcommand{\skewpullbackcorner}[1][dl]{\save*!/#1-1.1pc/#1:(-.5,1)@^{|>}\restore}
+\newcommand{\skewpushoutcorner}[1][dl]{\save*!/#1-1pc/#1:(-1,1)@^{|<}\restore}
+
+
+\DeclareFontFamily{U}{mathx}{\hyphenchar\font45}
+\DeclareFontShape{U}{mathx}{m}{n}{
+      <5> <6> <7> <8> <9> <10>
+      <10.95> <12> <14.4> <17.28> <20.74> <24.88>
+      mathx10
+      }{}
+\DeclareSymbolFont{mathx}{U}{mathx}{m}{n}
+\DeclareFontSubstitution{U}{mathx}{m}{n}
+\DeclareMathAccent{\widecheck}{0}{mathx}{"71}
+\DeclareMathAccent{\wideparen}{0}{mathx}{"75}
+
+\def\cs#1{\texttt{\char`\\#1}}
+
+
+\usepackage{amsmath}
+
+
+\usepackage{hyperref}
+
+\newcommand\numeq[2]%
+  {\label{#2}\stackrel{\scriptscriptstyle(\mkern-1.5mu#1\mkern-1.5mu)}{=}}
+
+\newcommand{\cubetopbl}{A}
+\newcommand{\cubetopbr}{B}
+\newcommand{\cubetopfl}{C}
+\newcommand{\cubetopfr}{D}
+\newcommand{\cubebotbl}{E}
+\newcommand{\cubebotbr}{F}
+\newcommand{\cubebotfl}{G}
+\newcommand{\cubebotfr}{H}
+
+\xymatrixrowsep{.5cm}
+\xymatrixcolsep{.65cm}
