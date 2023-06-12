@@ -1,0 +1,59 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+\errorcontextlines=500
+
+\documentclass[12pt]{ociamthesis}  % default square logo 
+
+%\documentclass[a4paper,11pt,oneside]{bo222ok}
+%\usepackage[DIV=14,BCOR=2mm,headinclude=true,footinclude=false]{typearea}
+
+\input{preamble}
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+
+\title{Relational semantics for quantum protocols}
+\author{Cole Comfort}
+\college{New College}  %your college
+\degree{Doctor of Philosophy in Computer Science} 
+\degreedate{????? 2023}    
+
+%\renewcommand{\submittedtext}{change the default text here if needed}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\newcommand{\Set}{\Sets}
+\newcommand{\Mnd}{{\sf Mnd}}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+
+\chapter{Introduction}
+
+%\chapter{Background}
+%\input{background_chapter}
+%
+%\chapter{Boolean circuits as spans of finite sets}
+%\input{zxa_chapter}
+%
+%\chapter{Decomposing Boolean circuits via distributive law}
+%\input{decomposing_zx_chapter}
+%
+%\chapter{Stabilizer codes as affine cositropic relations}
+%\input{symplectic_chapter}
+
+\chapter{Protocols via the Grothendieck construction}
+\input{grothendieck_chapter}
+
+\chapter{Conclusion}
+
+
+\bibliography{bibliography} 
+\bibliographystyle{plain}
+\end{document}
