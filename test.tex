@@ -28,30 +28,44 @@
 \newcommand{\Set}{\Sets}
 \newcommand{\Mnd}{{\sf Mnd}}
 
+
 \begin{document}
 \maketitle
-
-\tableofcontents
-
-
-\chapter{Introduction}
-
-%\chapter{Background}
-%\input{background_chapter}
 %
-%\chapter{Boolean circuits as spans of finite sets}
-%\input{zxa_chapter}
+%\tableofcontents
 %
-%\chapter{Decomposing Boolean circuits via distributive law}
-%\input{decomposing_zx_chapter}
 %
-%\chapter{Stabilizer codes as affine cositropic relations}
-%\input{symplectic_chapter}
+%\chapter{Introduction}
+%
+%%\chapter{Background}
+%%\input{background_chapter}
+%%
+%%\chapter{Boolean circuits as spans of finite sets}
+%%\input{zxa_chapter}
+%%
+%%\chapter{Decomposing Boolean circuits via distributive law}
+%%\input{decomposing_zx_chapter}
+%%
+%%\chapter{Stabilizer codes as affine cositropic relations}
+%%\input{symplectic_chapter}
+%
+%\chapter{Protocols via the Grothendieck construction}
+%\input{grothendieck_chapter}
+%
+%\chapter{Conclusion}
 
-\chapter{Protocols via the Grothendieck construction}
-\input{grothendieck_chapter}
-
-\chapter{Conclusion}
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=unit] (2) at (1, 4.25) {};
+		\node [style=none] (3) at (1, 3.5) {};
+		\node [style=none] (6) at (1, 3.25) {$I$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (3.center) to (2);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
 
 
 \bibliography{bibliography} 
