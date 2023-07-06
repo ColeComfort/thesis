@@ -3565,9 +3565,10 @@ $$
 Call the first component of the phase group the {\bf affine phase} and the second component the {\bf linear phase}.  The white spider corresponds to the $Z$ basis and the grey spider corresponds to the $X$ basis.
 
 
-As stabilizer circuits, the black spider is interpreted as follows (the white spiders are the same, but in the Fourier basis):
 
-$$
+In Hilbert spaces, the spiders are interpreted as follows:
+
+\begin{align*}
 \left\llbracket\
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3589,9 +3590,41 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}\
 \right\rrbracket
-\propto
-\sum_{j=0}^{p-1}  e^{ \pi \cdot i \cdot j \cdot m\cdot (m+p)/ p} | j+n,\ldots,j+n \rangle\langle j, \ldots, j|
-$$
+\propto &
+\sum_{a=0}^{p-1}  e^{\pi\cdot i /p (n\cdot a+m\cdot a^2)} |a, \ldots, a \rangle \langle a, \ldots, a|\\
+\left\llbracket\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (21, 5) {};
+		\node [style=none] (1) at (22, 5) {};
+		\node [style=none] (2) at (21, 2.5) {};
+		\node [style=none] (3) at (22, 2.5) {};
+		\node [style=X] (4) at (21.5, 3.75) {$\hspace*{.05cm}n,m\hspace*{.05cm}$};
+		\node [style=none] (5) at (21.5, 4.5) {$\cdots$};
+		\node [style=none] (6) at (21.5, 3) {$\cdots$};
+		\node [style=none] (7) at (21.5, 4.75) {};
+		\node [style=none] (8) at (21.5, 2.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=150, out=-90, looseness=0.75] (0.center) to (4);
+		\draw [in=90, out=-150, looseness=0.75] (4) to (2.center);
+		\draw [in=-30, out=90, looseness=0.75] (3.center) to (4);
+		\draw [in=-90, out=30, looseness=0.75] (4) to (1.center);
+	\end{pgfonlayer}
+\end{tikzpicture}\
+\right\rrbracket
+\propto &
+\sum_{a,b,c,d,e=0}^{p-1} 
+e^{- \pi\cdot i/ p \cdot d} |e, \ldots,e \rangle \langle d, \ldots, d|\\
+&\hspace*{.25cm} \cdot e^{\pi\cdot i /p (n\cdot c-m\cdot c^2)} |c, \ldots, c \rangle \langle c, \ldots, c|\\
+&\hspace*{.25cm}  e^{\pi\cdot i/ p \cdot b} |b, \ldots, b \rangle \langle a, \ldots, a| \\
+=&
+\sum_{a,e=0}^{p-1} 
+e^{\pi\cdot i/ p \cdot (-b+n\cdot b-m\cdot b^2+b)} |e, \ldots,e \rangle \langle a, \ldots, a| \\
+=&
+\sum_{a,e=0}^{p-1} 
+e^{\pi\cdot i/ p \cdot (n\cdot b-m\cdot b^2)} |e, \ldots,e \rangle \langle a, \ldots, a| \\
+\end{align*}
 
 Notice that this implies that the phase groups of the frobenius algebras in odd prime dimensional stabilizer generating spiders are now the torus $(\Z/p\Z)^2$; this is in contrast to the qubit case where the phase groups are $\Z/4\Z$.
 
@@ -4387,40 +4420,7 @@ For a prime number $p$, $\Isot\Rel_{\F_p}\cong\Co\Isot\Rel_{\F_p}\cong \CPM(\CPM
 \end{corollary}
 The astounding symmetry involved here begs the question if iterating the $\CPM$ construction more times yields anything physically interesting. Perhaps the work of \cite{CPMho} can shed some light on this question. 
 
-
-To add classical types to the symplectic picture we need the following machinery:
-
-\begin{definition}{\cite{idempotent}}
-Fix  a $\dag$-compact closed category $\X$.
-A {\bf projector} in $\X$ (also known as a $\dag$-idempotent) is an endomorphism $e$ such that $e;e=e$ and $e^\dag=e$.
-
-
-Consider a class of projectors $\mathcal I$ in $\X$.  Then the {\bf $\dag$-Karoubi envelope} at $\mathcal I$, ${\sf Split}_{\mathcal I}^{\dag}(\X)$, is a $\dag$-compact closed category with:
-\begin{description}
-\item[\ \ Objects:] Pairs $(X,e)$ where $X$ is an object of $\X$ and $e$ is a projector on $X$.
-\item[\ \ Maps:] A map $(e,f,m):(X,e)\to (Y,m)$ is a map $f:X\to Y$ in $\X$ such that $e;f;m=f$.
-\item[\ \ Composition:] $(e,f,m);(m,g,\ell) = (e,f;g,\ell)$.
-\item[\ \ Identities:] $1_{(X,e)}=(1_X,e,1_X)$.
-\item[\ \ Dagger compact structure:] Pointwise.
-\end{description}
-
-
-
-Given any class of projectors $\mathcal I$, there is a $\dag$-compact closed embedding 
-$\X\to{\sf Split}_{\mathcal I}^{\dag}(\X)$.
-
-Let ${\sf Split}^{\dag}(\X):={\sf Split}_{\mathcal I}^{\dag}(\X)$ where $I$ is the class of all projectors in $\X$.
-\end{definition}
-
-Given  any projector $e:X\to X$, then the map $(e,1_X, 1_x) :(X,e)\to (X,1_X)$ is an isometry with adjoint $(1_X,1_X, e) :(X,1_X)\to (X,e)$ .
-Because the projectors now factor through the identity, they are said to be {\bf split}. Moreover, 
-${\sf Split}_{{\mathcal I }\cup \{ 1_X | X \in \X\}}^{\dag}(\X)$ is said to be the category obtained by {\bf splitting the projectors in $\mathcal I$}.
-
-
-In \cite{idempotent}, they show that splitting projectors in $\CPM(\FHilb)$ yields a category where the the split projectors can be interpreted as classical types: the isometry  $(e,1_X, 1_x) :(X,e)\to (X,1_X)$ is regarded as the state preparation map and its adjoint $(1_X,1_X, e) :(X,1_X)\to (X,e)$  as measurement.
-
-
-In order to add measurement and state preparation in the symplectic setting, we do the same:
+In order to add measurement and state preparation in the symplectic setting, we split the projectors for the $Z$ and $X$ observables.
 
 \begin{definition}
 The $X$ and $Z$ projectors are defined as follows in $\Aff\Co\Isot\Rel_{\F_p}$:
@@ -4605,7 +4605,7 @@ $$
 		\draw (6.center) to (4);
 		\draw [style=red] (7.center) to (5.center);
 	\end{pgfonlayer}
-\end{tikzpicture}\,\hspace*{1cm}
+\end{tikzpicture}\ ,\hspace*{1cm}
 \left\llbracket \
 \begin{circuitikz}
 \node[meter] (meter) at (0,0) {};
@@ -4780,7 +4780,7 @@ $$
 		\draw [in=-60, out=90, looseness=0.75] (186.center) to (184);
 	\end{pgfonlayer}
 \end{tikzpicture},
-\hspace*{.5cm}
+\hspace*{.15cm}
 \left\llbracket \
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -4808,7 +4808,7 @@ $$
 		\draw [in=-60, out=90, looseness=0.75] (186.center) to (184);
 	\end{pgfonlayer}
 \end{tikzpicture},
-\hspace*{.5cm}
+\hspace*{.15cm}
 \left\llbracket \
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -4837,7 +4837,7 @@ $$
 		\draw (192) to (189);
 	\end{pgfonlayer}
 \end{tikzpicture},
-\hspace*{.5cm}
+\hspace*{.15cm}
 \left\llbracket \
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -5001,73 +5001,73 @@ Given any prime $p$, the following string diagram in $\Aff\Co\Isot\Rel_{\F_p}^M$
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (223) at (62.5, 1.75) {};
-		\node [style=none] (224) at (63, 3.25) {};
-		\node [style=none] (225) at (62, 3.25) {};
-		\node [style=none] (226) at (61.5, 1.75) {};
-		\node [style=Z] (227) at (63, 4.75) {};
-		\node [style=Z] (228) at (61.5, 4.75) {};
-		\node [style=none] (229) at (66.75, 3.25) {};
-		\node [style=none] (230) at (67.25, 3.25) {};
-		\node [style=none] (231) at (66.75, 9) {};
-		\node [style=none] (232) at (67.25, 9) {};
-		\node [style=Z] (233) at (61.5, 3.25) {};
-		\node [style=X] (234) at (62, 3.75) {};
-		\node [style=Z] (235) at (63, 3.75) {};
-		\node [style=X] (236) at (62.5, 3.25) {};
-		\node [style=none] (237) at (62, 4.75) {};
-		\node [style=none] (238) at (62.5, 4.75) {};
-		\node [style=X] (239) at (64, 2.25) {};
-		\node [style=Z] (240) at (65.5, 2.25) {};
-		\node [style=Z] (241) at (66.75, 7.75) {};
-		\node [style=X] (242) at (67.25, 7.75) {};
-		\node [style=X] (243) at (66.75, 8.5) {};
-		\node [style=Z] (244) at (67.25, 8.5) {};
-		\node [style=Z] (245) at (65.5, 6.75) {};
-		\node [style=Z] (246) at (66, 6.75) {};
-		\node [style=none] (247) at (66.5, 6.75) {};
-		\node [style=none] (248) at (65, 6.75) {};
-		\node [style=none] (249) at (64.5, 9) {};
-		\node [style=none] (250) at (64.5, 1.75) {};
-		\node [style=none] (251) at (63.5, 9) {Alice};
-		\node [style=none] (252) at (65.5, 9) {Bob};
-		\node [style=none] (254) at (61, 4.75) {};
-		\node [style=none] (255) at (67.75, 4.75) {};
-		\node [style=none] (256) at (61, 6.75) {};
-		\node [style=none] (257) at (67.75, 6.75) {};
-		\node [style=none] (258) at (59, 6.75) {Phase correction};
-		\node [style=none] (259) at (59, 4.75) {Measurement};
+		\node [style=none] (569) at (366.75, 1.75) {};
+		\node [style=none] (570) at (367.25, 3.25) {};
+		\node [style=none] (571) at (366.25, 3.25) {};
+		\node [style=none] (572) at (365.75, 1.75) {};
+		\node [style=Z] (573) at (367.25, 4.75) {};
+		\node [style=Z] (574) at (365.75, 4.75) {};
+		\node [style=none] (575) at (369.5, 3.75) {};
+		\node [style=none] (576) at (370.25, 3.75) {};
+		\node [style=none] (577) at (369.5, 9) {};
+		\node [style=none] (578) at (370.25, 9) {};
+		\node [style=Z] (579) at (365.75, 3.25) {};
+		\node [style=X] (580) at (366.25, 3.75) {};
+		\node [style=Z] (581) at (367.25, 3.75) {};
+		\node [style=X] (582) at (366.75, 3.25) {};
+		\node [style=none] (583) at (366.25, 4.75) {};
+		\node [style=none] (584) at (366.75, 4.75) {};
+		\node [style=X] (585) at (367.5, 2.25) {};
+		\node [style=Z] (586) at (369.25, 2.25) {};
+		\node [style=Z] (587) at (369.5, 7.75) {};
+		\node [style=X] (588) at (370.25, 7.75) {};
+		\node [style=X] (589) at (369.5, 8.5) {};
+		\node [style=Z] (590) at (370.25, 8.5) {};
+		\node [style=Z] (591) at (368.25, 6.75) {};
+		\node [style=Z] (592) at (368.75, 6.75) {};
+		\node [style=none] (593) at (369.25, 6.75) {};
+		\node [style=none] (594) at (367.75, 6.75) {};
+		\node [style=none] (595) at (366.75, 9) {};
+		\node [style=none] (596) at (368.5, 1.75) {};
+		\node [style=none] (597) at (365.75, 9) {Alice};
+		\node [style=none] (598) at (367.5, 9) {Bob};
+		\node [style=none] (599) at (365.25, 4.75) {};
+		\node [style=none] (600) at (370.75, 4.75) {};
+		\node [style=none] (601) at (365.25, 6.75) {};
+		\node [style=none] (602) at (370.75, 6.75) {};
+		\node [style=none] (603) at (363.25, 6.75) {Phase correction};
+		\node [style=none] (604) at (363.25, 4.75) {Measurement};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (234) to (233);
-		\draw (236) to (235);
-		\draw (224.center) to (235);
-		\draw (235) to (227);
-		\draw (226.center) to (233);
-		\draw (233) to (228);
-		\draw (225.center) to (234);
-		\draw (223.center) to (236);
-		\draw (236) to (238.center);
-		\draw (234) to (237.center);
-		\draw [in=15, out=-90, looseness=0.75] (229.center) to (239);
-		\draw [in=-90, out=165, looseness=0.50] (239) to (225.center);
-		\draw [in=165, out=-90, looseness=0.50] (224.center) to (240);
-		\draw [in=-90, out=15, looseness=0.75] (240) to (230.center);
-		\draw (244) to (242);
-		\draw (243) to (241);
-		\draw (229.center) to (241);
-		\draw (243) to (231.center);
-		\draw (232.center) to (244);
-		\draw (242) to (230.center);
-		\draw [in=-150, out=90, looseness=0.75] (245) to (244);
-		\draw [in=-150, out=90] (246) to (241);
-		\draw [color=red, in=-90, out=90, looseness=0.50] (238.center) to (247.center);
-		\draw [color=red, in=-90, out=90] (237.center) to (248.center);
-		\draw [in=210, out=90, looseness=0.75] (248.center) to (243);
-		\draw [in=-150, out=90] (247.center) to (242);
-		\draw [style=dotted] (250.center) to (249.center);
-		\draw [style=dotted] (255.center) to (254.center);
-		\draw [style=dotted] (257.center) to (256.center);
+		\draw (580) to (579);
+		\draw (582) to (581);
+		\draw (570.center) to (581);
+		\draw (581) to (573);
+		\draw (572.center) to (579);
+		\draw (579) to (574);
+		\draw (571.center) to (580);
+		\draw (569.center) to (582);
+		\draw (582) to (584.center);
+		\draw (580) to (583.center);
+		\draw [in=0, out=-90, looseness=0.75] (575.center) to (585);
+		\draw [in=-90, out=165, looseness=0.50] (585) to (571.center);
+		\draw [in=165, out=-90, looseness=0.50] (570.center) to (586);
+		\draw [in=-90, out=30] (586) to (576.center);
+		\draw (590) to (588);
+		\draw (589) to (587);
+		\draw (575.center) to (587);
+		\draw (589) to (577.center);
+		\draw (578.center) to (590);
+		\draw (588) to (576.center);
+		\draw [in=-150, out=90, looseness=0.75] (591) to (590);
+		\draw [in=-150, out=90] (592) to (587);
+		\draw [color=red, in=-90, out=90, looseness=0.50] (584.center) to (593.center);
+		\draw [color=red, in=-90, out=90] (583.center) to (594.center);
+		\draw [in=210, out=90, looseness=0.75] (594.center) to (589);
+		\draw [in=-150, out=90] (593.center) to (588);
+		\draw [style=dotted, in=270, out=90] (596.center) to (595.center);
+		\draw [style=dotted] (600.center) to (599.center);
+		\draw [style=dotted] (602.center) to (601.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
@@ -5259,15 +5259,13 @@ Quantum channels are inherently noisy, and it is an active area of study to prot
 
 \subsection{Stabilizer codes}
 
-
-In this section, we show how to implement quantum error correction protocols for stabilizer codes using the string diagrams we developed in the previous section.   This generalizes the $\F_2$-linear subspace semantics of CSS codes in \cite{grok} to odd prime qudit dimensional stabilizer codes (as well as for qubit CSS codes).
+In this section, we show how to implement quantum error correction protocols for stabilizer codes (see \cite{gottesman}) using the string diagrams we developed in the previous section.   This generalizes the graphical $\F_2$-linear subspace semantics of qubit CSS codes in \cite{grok} to odd prime qudit dimensional stabilizer codes as well as qubit CSS codes.
 
 
 Fix an odd prime $p$.
 Consider an affine coisotropic subspace $S=L+a \subseteq \F_p^{2n}$ where $L$ has dimension $n+k$.  Then the associated projector on $n$-qudits is called a $[n,k]$-stabilizer code, as it encodes $k$ logical qudits into $n$ physical qudits. 
 The relationship between logical and physical qubits can be understood in terms of pictures.
 Fix a unitary purification $U$ of $S$:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -5311,8 +5309,6 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
 The Lagrangian dilation of $S$, the {\bf encoder}, embeds $k$ logical qudits into $n$ physical qudits:
 $$
 \begin{tikzpicture}
@@ -5341,9 +5337,6 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
-
 Splitting this projector fixes a basis $\{b_1,\ldots, b_{n-k}\}$ for $L^\omega$, where the elements of the basis are pairwise orthogonal with respect to the symplectic form.  That is to say, they commute, which fixes the possible measurement outcomes:
 $$
 \begin{tikzpicture}
@@ -5376,260 +5369,53 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-Suppose that Alice encodes a state and sends it to Bob on a noisy quantum channel with Pauli error $W(e)$.  To detect the error apply the non-destructive measurement with respect to our chosen basis on the last $n-k$ wires in the $Z$ basis conjugated by U:
-
-$$
+Suppose that Alice encodes a state and sends it to Bob on a noisy quantum channel with Pauli error $W(e)$.  To detect the error apply the non-destructive measurement with respect to our chosen basis on the last $n-k$ wires in the $Z$ basis conjugated by $U$:
+\begin{align*}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=map] (206) at (95, 2.75) {$U$};
-		\node [style=none] (207) at (94, 1.25) {};
-		\node [style=none] (208) at (95.25, 1.25) {};
-		\node [style=X] (209) at (95.75, 1.5) {};
-		\node [style=Z] (210) at (94.5, 1.5) {};
-		\node [style=none] (211) at (96.75, 6) {};
-		\node [style=none] (212) at (97.25, 6) {};
-		\node [style=none] (213) at (98.75, 6) {};
-		\node [style=none] (214) at (99.25, 6) {};
-		\node [style=Z] (215) at (97.75, 6.25) {};
-		\node [style=X] (216) at (97.25, 6) {};
-		\node [style=Z] (217) at (97.75, 5.5) {};
-		\node [style=none] (218) at (98, 8) {};
-		\node [style=none] (219) at (98, 8) {};
-		\node [style=Z] (220) at (99.25, 6) {};
-		\node [style=X] (221) at (99.75, 6.25) {};
-		\node [style=X] (222) at (99.75, 5.5) {};
-		\node [style=none] (223) at (98, 8) {};
-		\node [style=none] (224) at (98, 8) {};
-		\node [style=Z] (225) at (97.75, 7) {};
-		\node [style=none] (226) at (99.75, 9) {};
-		\node [style=none] (227) at (99.75, 7) {};
-		\node [style=map] (228) at (96.25, 3.75) {$W(e)$};
-		\node [style=map] (229) at (98, 4.75) {$U^\dag$};
-		\node [style=map] (230) at (98, 8) {$U$};
-		\node [style=none] (231) at (97, 9) {};
-		\node [style=none] (232) at (97.5, 9) {};
-		\node [style=none] (233) at (98.5, 9) {};
-		\node [style=none] (234) at (99, 9) {};
-		\node [style=none] (235) at (96.25, 9) {};
-		\node [style=none] (236) at (96.25, 1.25) {};
-		\node [style=none] (237) at (100.25, 7) {};
-		\node [style=none] (238) at (93.25, 7) {};
-		\node [style=none] (239) at (100.25, 1.5) {};
-		\node [style=none] (240) at (93.5, 1.5) {};
-		\node [style=none] (241) at (92, 7.25) {Syndrome};
-		\node [style=none] (242) at (92.25, 1.5) {Encoding};
-		\node [style=none] (243) at (92.75, 2.75) {Alice};
-		\node [style=none] (244) at (98.5, 2.75) {Bob};
-		\node [style=none] (245) at (100.25, 3.75) {};
-		\node [style=none] (246) at (93.25, 3.75) {};
-		\node [style=none] (247) at (92.5, 3.75) {Error};
-		\node [style=none] (248) at (92, 6.75) {Measurement};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [in=-60, out=90, looseness=0.75] (208.center) to (206);
-		\draw [in=90, out=-165] (206) to (207.center);
-		\draw [in=-30, out=90] (209) to (206);
-		\draw [in=90, out=-135] (206) to (210);
-		\draw (215) to (216);
-		\draw (217) to (215);
-		\draw [in=-150, out=90] (211.center) to (219.center);
-		\draw [in=-120, out=90, looseness=1.25] (216) to (218.center);
-		\draw [in=-60, out=90, looseness=0.75] (213.center) to (224.center);
-		\draw [in=90, out=-30, looseness=0.75] (223.center) to (220);
-		\draw (220) to (221);
-		\draw (221) to (222);
-		\draw [style=red] (227.center) to (226.center);
-		\draw (215) to (225);
-		\draw (221) to (227.center);
-		\draw [in=270, out=75, looseness=0.75] (206) to (228);
-		\draw [in=-105, out=90, looseness=0.50] (228) to (229);
-		\draw [in=-90, out=150] (229) to (211.center);
-		\draw [in=135, out=-90] (212.center) to (229);
-		\draw [in=-90, out=60] (229) to (213.center);
-		\draw [in=30, out=-90, looseness=0.75] (214.center) to (229);
-		\draw [in=-90, out=135] (230) to (231.center);
-		\draw [in=-90, out=105] (230) to (232.center);
-		\draw [in=-90, out=75] (230) to (233.center);
-		\draw [in=-90, out=45] (230) to (234.center);
-		\draw [style=dotted] (236.center) to (235.center);
-		\draw [style=dotted] (238.center) to (237.center);
-		\draw [style=dotted] (240.center) to (239.center);
-		\draw [style=dotted] (246.center) to (245.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (68) at (53.25, 4) {};
-		\node [style=none] (69) at (54.75, 4) {};
-		\node [style=X] (70) at (55.25, 4.25) {};
-		\node [style=Z] (71) at (53.75, 4.25) {};
-		\node [style=none] (72) at (54.25, 7) {};
-		\node [style=none] (73) at (54.25, 7) {};
-		\node [style=none] (74) at (54.25, 7) {};
-		\node [style=Z] (75) at (55, 6.25) {};
-		\node [style=none] (76) at (54.25, 7) {};
-		\node [style=none] (77) at (54.25, 7) {};
-		\node [style=none] (78) at (56, 8) {};
-		\node [style=none] (79) at (55, 6.25) {};
-		\node [style=map] (80) at (54.25, 5.5) {$U;W(e);U^\dag$};
-		\node [style=map] (81) at (54.25, 7) {$U$};
-		\node [style=none] (82) at (53.25, 8) {};
-		\node [style=none] (83) at (53.75, 8) {};
-		\node [style=none] (84) at (54.75, 8) {};
-		\node [style=none] (85) at (55.25, 8) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=-30, looseness=0.75] (76.center) to (75);
-		\draw [style=red, in=-90, out=45] (79.center) to (78.center);
-		\draw [in=-90, out=135] (81) to (82.center);
-		\draw [in=-90, out=105] (81) to (83.center);
-		\draw [in=-90, out=75] (81) to (84.center);
-		\draw [in=-90, out=45] (81) to (85.center);
-		\draw [in=-90, out=45, looseness=0.75] (80) to (79.center);
-		\draw [bend left=60, looseness=1.25] (80) to (81);
-		\draw [in=90, out=-30] (80) to (70);
-		\draw [bend left] (80) to (81);
-		\draw [bend left] (81) to (80);
-		\draw [in=-60, out=90] (69.center) to (80);
-		\draw [in=-120, out=90] (71) to (80);
-		\draw [in=-150, out=90] (68.center) to (80);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (86) at (57, 4.25) {};
-		\node [style=none] (87) at (58.5, 4.25) {};
-		\node [style=X] (88) at (59, 4.5) {};
-		\node [style=Z] (89) at (57.5, 4.5) {};
-		\node [style=none] (90) at (58, 7) {};
-		\node [style=none] (91) at (58, 7) {};
-		\node [style=none] (92) at (58, 7) {};
-		\node [style=none] (94) at (58, 7) {};
-		\node [style=none] (95) at (58, 7) {};
-		\node [style=none] (96) at (59.75, 8) {};
-		\node [style=none] (97) at (59.75, 6.25) {};
-		\node [style=map] (98) at (58, 5.75) {$U;W(e);U^\dag$};
-		\node [style=map] (99) at (58, 7) {$U$};
-		\node [style=none] (100) at (57, 8) {};
-		\node [style=none] (101) at (57.5, 8) {};
-		\node [style=none] (102) at (58.5, 8) {};
-		\node [style=none] (103) at (59, 8) {};
-		\node [style=X] (104) at (59.75, 6.25) {$t$};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [style=red] (97.center) to (96.center);
-		\draw [in=-90, out=135] (99) to (100.center);
-		\draw [in=-90, out=105] (99) to (101.center);
-		\draw [in=-90, out=75] (99) to (102.center);
-		\draw [in=-90, out=45] (99) to (103.center);
-		\draw [bend left=60] (98) to (99);
-		\draw [in=90, out=-30] (98) to (88);
-		\draw [bend left] (98) to (99);
-		\draw [bend left] (99) to (98);
-		\draw [in=-60, out=90] (87.center) to (98);
-		\draw [in=-120, out=90] (89) to (98);
-		\draw [in=-150, out=90] (86.center) to (98);
-		\draw [bend right=60] (98) to (99);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (105) at (61.25, 4.25) {};
-		\node [style=none] (106) at (62.75, 4.25) {};
-		\node [style=X] (107) at (63.25, 4.5) {};
-		\node [style=Z] (108) at (61.75, 4.5) {};
-		\node [style=none] (114) at (64, 8) {};
-		\node [style=none] (115) at (64, 6.25) {};
-		\node [style=map] (116) at (62.25, 5.75) {$U$};
-		\node [style=X] (122) at (64, 6.25) {$t$};
-		\node [style=map] (123) at (62.25, 6.5) {$W(e)$};
-		\node [style=none] (124) at (61.25, 8) {};
-		\node [style=none] (125) at (61.75, 8) {};
-		\node [style=none] (126) at (62.75, 8) {};
-		\node [style=none] (127) at (63.25, 8) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [style=red] (115.center) to (114.center);
-		\draw [in=90, out=-30] (116) to (107);
-		\draw [in=-60, out=90] (106.center) to (116);
-		\draw [in=-120, out=90] (108) to (116);
-		\draw [in=-150, out=90] (105.center) to (116);
-		\draw (116) to (123);
-		\draw [in=-90, out=135] (123) to (124.center);
-		\draw [in=-90, out=45] (123) to (127.center);
-		\draw [in=60, out=-90] (126.center) to (123);
-		\draw [in=-90, out=120] (123) to (125.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-$$
-
-The tuple $t \in \F_p^{n-k}$ is called the {\bf syndrome}. The syndrome measures the displacement of the basis elements $b_i$ by errors.
-An error $W(e)$ is {\bf undetectable} if and only if the syndrome is the zero vector; this is because $e$ commutes with everything in $L+a$ meaning that $e \in L^\omega+a$.  In particular, the trivial error is undetectable; so undetectable errors are indistinguishable from having no errors at all.
-
-
-To correct errors, we construct am operation classically controlled from the syndrome register.
-Given any syndrome measurement $t\in \F_p^{n-k}$, pick an error $W(e)$ which one wishes to correct, where additionally, the trivial syndrome corrects nothing.  This determines a function $f:\F_p^{n-k}\to\F_p^{2n}$ sending $t\mapsto e$.
-
-
-If $f$ is an affine transformation, then we can construct the classically controlled error correction operation $c_f$ so that given a syndrome $t$, it applies the operation $W(-f(t))$ to $n$ qudits.  This restriction requiring the function to affine comes from the fact that within the model we have constructed, only affine classical processing is allowed.  The final error correction protocol is as follows:
-
-$$
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=map] (0) at (145.75, 2.75) {$U$};
-		\node [style=none] (1) at (144.75, 1.25) {};
-		\node [style=none] (2) at (146, 1.25) {};
-		\node [style=X] (3) at (146.5, 1.5) {};
-		\node [style=Z] (4) at (145.25, 1.5) {};
-		\node [style=none] (5) at (147.5, 6) {};
-		\node [style=none] (6) at (148, 6) {};
-		\node [style=none] (7) at (149.5, 6) {};
-		\node [style=none] (8) at (150, 6) {};
-		\node [style=Z] (9) at (148.5, 6.25) {};
-		\node [style=X] (10) at (148, 6) {};
-		\node [style=Z] (11) at (148.5, 5.5) {};
-		\node [style=none] (12) at (148.75, 8) {};
-		\node [style=none] (13) at (148.75, 8) {};
-		\node [style=Z] (14) at (150, 6) {};
-		\node [style=X] (15) at (150.5, 6.25) {};
-		\node [style=X] (16) at (150.5, 5.5) {};
-		\node [style=none] (17) at (148.75, 8) {};
-		\node [style=none] (18) at (148.75, 8) {};
-		\node [style=Z] (19) at (148.5, 7) {};
-		\node [style=none] (20) at (150.25, 8.5) {};
-		\node [style=none] (21) at (150.5, 7) {};
-		\node [style=map] (22) at (147, 3.75) {$W(e)$};
-		\node [style=map] (23) at (148.75, 4.75) {$U^\dag$};
-		\node [style=map] (24) at (148.75, 8) {$U$};
-		\node [style=none] (25) at (147, 11) {};
-		\node [style=none] (26) at (147, 1.25) {};
-		\node [style=none] (27) at (151, 7) {};
-		\node [style=none] (28) at (144, 7) {};
-		\node [style=none] (29) at (151, 1.5) {};
-		\node [style=none] (30) at (144.25, 1.5) {};
-		\node [style=none] (31) at (142.75, 7.25) {Syndrome};
-		\node [style=none] (32) at (143, 1.5) {Encoding};
-		\node [style=none] (33) at (143.5, 2.75) {Alice};
-		\node [style=none] (34) at (149.25, 2.75) {Bob};
-		\node [style=none] (35) at (151, 3.75) {};
-		\node [style=none] (36) at (144, 3.75) {};
-		\node [style=none] (37) at (143.25, 3.75) {Error};
-		\node [style=none] (38) at (142.75, 6.75) {Measurement};
-		\node [style=Z] (39) at (149.75, 8.5) {};
-		\node [style=map] (40) at (148.75, 10) {$c_f$};
-		\node [style=none] (41) at (147.75, 11) {};
-		\node [style=none] (42) at (148.25, 11) {};
-		\node [style=none] (43) at (149.25, 11) {};
-		\node [style=none] (44) at (149.75, 11) {};
-		\node [style=none] (45) at (151, 10) {};
-		\node [style=none] (46) at (144, 10) {};
-		\node [style=none] (47) at (142.5, 10) {Error correction};
-		\node [style=Z] (48) at (150.5, 7.75) {};
-		\node [style=none] (49) at (150.75, 11) {};
+		\node [style=map] (0) at (95.75, 2.75) {$U$};
+		\node [style=none] (1) at (94.75, 1.25) {};
+		\node [style=none] (2) at (96, 1.25) {};
+		\node [style=X] (3) at (96.5, 1.5) {};
+		\node [style=Z] (4) at (95.25, 1.5) {};
+		\node [style=none] (5) at (95.5, 6) {};
+		\node [style=none] (6) at (96, 6) {};
+		\node [style=none] (7) at (97.5, 6) {};
+		\node [style=none] (8) at (98, 6) {};
+		\node [style=Z] (9) at (96.5, 6.25) {};
+		\node [style=X] (10) at (96, 6) {};
+		\node [style=Z] (11) at (96.5, 5.5) {};
+		\node [style=none] (12) at (96.75, 8) {};
+		\node [style=none] (13) at (96.75, 8) {};
+		\node [style=Z] (14) at (98, 6) {};
+		\node [style=X] (15) at (98.5, 6.25) {};
+		\node [style=X] (16) at (98.5, 5.5) {};
+		\node [style=none] (17) at (96.75, 8) {};
+		\node [style=none] (18) at (96.75, 8) {};
+		\node [style=Z] (19) at (96.5, 7) {};
+		\node [style=none] (20) at (98.5, 9) {};
+		\node [style=none] (21) at (98.5, 7) {};
+		\node [style=map] (22) at (96.25, 3.75) {$W(e)$};
+		\node [style=map] (23) at (96.75, 4.75) {$U^\dag$};
+		\node [style=map] (24) at (96.75, 8) {$U$};
+		\node [style=none] (25) at (95.75, 9) {};
+		\node [style=none] (26) at (96.25, 9) {};
+		\node [style=none] (27) at (97.25, 9) {};
+		\node [style=none] (28) at (97.75, 9) {};
+		\node [style=none] (29) at (94.25, 9) {};
+		\node [style=none] (30) at (97, 1) {};
+		\node [style=none] (31) at (98.75, 7) {};
+		\node [style=none] (32) at (94.25, 7) {};
+		\node [style=none] (33) at (98.75, 1.5) {};
+		\node [style=none] (34) at (94.5, 1.5) {};
+		\node [style=none] (35) at (93, 7.25) {Syndrome};
+		\node [style=none] (36) at (93.25, 1.5) {Encoding};
+		\node [style=none] (37) at (93.75, 2.75) {Alice};
+		\node [style=none] (38) at (97.25, 2.75) {Bob};
+		\node [style=none] (39) at (98.75, 3.75) {};
+		\node [style=none] (40) at (94.25, 3.75) {};
+		\node [style=none] (41) at (93.5, 3.75) {Error};
+		\node [style=none] (42) at (93, 6.75) {measurement};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [in=-60, out=90, looseness=0.75] (2.center) to (0);
@@ -5644,6 +5430,7 @@ $$
 		\draw [in=90, out=-30, looseness=0.75] (17.center) to (14);
 		\draw (14) to (15);
 		\draw (15) to (16);
+		\draw [style=red] (21.center) to (20.center);
 		\draw (9) to (19);
 		\draw (15) to (21.center);
 		\draw [in=270, out=75, looseness=0.75] (0) to (22);
@@ -5652,141 +5439,1868 @@ $$
 		\draw [in=135, out=-90] (6.center) to (23);
 		\draw [in=-90, out=60] (23) to (7.center);
 		\draw [in=30, out=-90, looseness=0.75] (8.center) to (23);
-		\draw [style=dotted] (26.center) to (25.center);
-		\draw [style=dotted] (28.center) to (27.center);
-		\draw [style=dotted] (30.center) to (29.center);
-		\draw [style=dotted] (36.center) to (35.center);
-		\draw [in=-90, out=120, looseness=0.75] (40) to (42.center);
-		\draw [in=135, out=-90] (41.center) to (40);
-		\draw [in=-90, out=60, looseness=0.75] (40) to (43.center);
-		\draw [in=-90, out=45, looseness=0.75] (40) to (44.center);
-		\draw [in=-165, out=150] (24) to (40);
-		\draw [in=30, out=-30, looseness=1.25] (40) to (24);
-		\draw [bend right=45] (24) to (40);
-		\draw [bend right=45, looseness=0.75] (40) to (24);
-		\draw [in=-15, out=90, looseness=0.75] (20.center) to (40);
-		\draw [in=-105, out=90, looseness=0.75] (39) to (40);
-		\draw [style=dotted] (46.center) to (45.center);
-		\draw [style=red, in=-90, out=120] (48) to (20.center);
-		\draw [style=red] (21.center) to (48);
-		\draw [style=red, in=-90, out=60, looseness=0.50] (48) to (49.center);
+		\draw [in=-90, out=135] (24) to (25.center);
+		\draw [in=-90, out=105] (24) to (26.center);
+		\draw [in=-90, out=75] (24) to (27.center);
+		\draw [in=-90, out=45] (24) to (28.center);
+		\draw [style=dotted, in=270, out=90] (30.center) to (29.center);
+		\draw [style=dotted] (32.center) to (31.center);
+		\draw [style=dotted] (34.center) to (33.center);
+		\draw [style=dotted] (40.center) to (39.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+&=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (43) at (100.25, -39.25) {};
+		\node [style=none] (44) at (101.25, -39.25) {};
+		\node [style=X] (45) at (101.75, -39) {};
+		\node [style=Z] (46) at (100.75, -39) {};
+		\node [style=none] (47) at (100, -36) {};
+		\node [style=none] (48) at (100.5, -36) {};
+		\node [style=none] (49) at (101.5, -36) {};
+		\node [style=none] (50) at (102, -36) {};
+		\node [style=Z] (51) at (101, -35.75) {};
+		\node [style=X] (52) at (100.5, -36) {};
+		\node [style=Z] (53) at (101, -36.5) {};
+		\node [style=none] (54) at (101, -34) {};
+		\node [style=none] (55) at (101, -34) {};
+		\node [style=Z] (56) at (102, -36) {};
+		\node [style=X] (57) at (102.5, -35.75) {};
+		\node [style=X] (58) at (102.5, -36.5) {};
+		\node [style=none] (59) at (101, -34) {};
+		\node [style=none] (60) at (101, -34) {};
+		\node [style=Z] (61) at (101, -35) {};
+		\node [style=none] (62) at (102.5, -33) {};
+		\node [style=none] (63) at (102.5, -35) {};
+		\node [style=map] (64) at (101, -37.75) {$U;W(e);U^\dag$};
+		\node [style=map] (65) at (101, -34) {$U$};
+		\node [style=none] (66) at (100.25, -33) {};
+		\node [style=none] (67) at (100.75, -33) {};
+		\node [style=none] (68) at (101.25, -33) {};
+		\node [style=none] (69) at (101.75, -33) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (51) to (52);
+		\draw (53) to (51);
+		\draw [in=-150, out=90] (47.center) to (55.center);
+		\draw [in=-120, out=90, looseness=1.25] (52) to (54.center);
+		\draw [in=-60, out=90, looseness=0.75] (49.center) to (60.center);
+		\draw [in=90, out=-30, looseness=0.75] (59.center) to (56);
+		\draw (56) to (57);
+		\draw (57) to (58);
+		\draw [style=red] (63.center) to (62.center);
+		\draw (51) to (61);
+		\draw (57) to (63.center);
+		\draw [in=-90, out=135] (65) to (66.center);
+		\draw [in=-90, out=105] (65) to (67.center);
+		\draw [in=-90, out=75] (65) to (68.center);
+		\draw [in=-90, out=45] (65) to (69.center);
+		\draw [in=-135, out=90] (43.center) to (64);
+		\draw [in=90, out=-105] (64) to (46);
+		\draw [in=-75, out=90] (44.center) to (64);
+		\draw [in=-45, out=90] (45) to (64);
+		\draw [in=135, out=-90] (47.center) to (64);
+		\draw [in=-90, out=105] (64) to (52);
+		\draw [in=75, out=-90] (49.center) to (64);
+		\draw [in=-90, out=45] (64) to (56);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (491) at (163.25, 6) {};
-		\node [style=none] (492) at (164.75, 6) {};
-		\node [style=X] (493) at (165.25, 6.25) {};
-		\node [style=Z] (494) at (163.75, 6.25) {};
-		\node [style=map] (495) at (164.25, 7.5) {$U$};
-		\node [style=X] (496) at (165.25, 9) {$t$};
-		\node [style=map] (497) at (164.25, 8.25) {$W(e)$};
-		\node [style=none] (498) at (164.25, 10) {};
-		\node [style=none] (499) at (164.25, 10) {};
-		\node [style=none] (500) at (164.25, 10) {};
-		\node [style=none] (501) at (164.25, 10) {};
-		\node [style=none] (502) at (165.25, 9) {};
-		\node [style=Z] (503) at (164, 9) {};
-		\node [style=map] (504) at (164.25, 10) {$c_f$};
-		\node [style=none] (505) at (163.25, 11) {};
-		\node [style=none] (506) at (163.75, 11) {};
-		\node [style=none] (507) at (164.75, 11) {};
-		\node [style=none] (508) at (165.25, 11) {};
-		\node [style=X] (509) at (166, 9) {$t$};
-		\node [style=none] (510) at (166, 11) {};
+		\node [style=none] (70) at (103.5, -37.75) {};
+		\node [style=none] (71) at (105, -37.75) {};
+		\node [style=X] (72) at (105.5, -37.5) {};
+		\node [style=Z] (73) at (104, -37.5) {};
+		\node [style=none] (74) at (103.5, -36) {};
+		\node [style=none] (75) at (104, -36) {};
+		\node [style=none] (76) at (105, -36) {};
+		\node [style=none] (77) at (105.5, -36) {};
+		\node [style=Z] (78) at (104.5, -35.75) {};
+		\node [style=X] (79) at (104, -36) {};
+		\node [style=Z] (80) at (104.5, -36.5) {};
+		\node [style=none] (81) at (104.5, -34) {};
+		\node [style=none] (82) at (104.5, -34) {};
+		\node [style=Z] (83) at (105.5, -36) {};
+		\node [style=X] (84) at (106, -35.75) {};
+		\node [style=X] (85) at (106, -36.5) {};
+		\node [style=none] (86) at (104.5, -34) {};
+		\node [style=none] (87) at (104.5, -34) {};
+		\node [style=Z] (88) at (104.5, -35) {};
+		\node [style=none] (89) at (106, -33) {};
+		\node [style=none] (90) at (106, -35) {};
+		\node [style=map] (91) at (104.5, -34) {$U$};
+		\node [style=none] (92) at (103.75, -33) {};
+		\node [style=none] (93) at (104.25, -33) {};
+		\node [style=none] (94) at (104.75, -33) {};
+		\node [style=none] (95) at (105.25, -33) {};
+		\node [style=X] (96) at (103.5, -36.75) {$a$};
+		\node [style=X] (97) at (104, -36.75) {$b$};
+		\node [style=X] (98) at (105, -36.75) {$c$};
+		\node [style=X] (99) at (105.5, -36.75) {$d$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=-30] (495) to (493);
-		\draw [in=-60, out=90] (492.center) to (495);
-		\draw [in=-120, out=90] (494) to (495);
-		\draw [in=-150, out=90] (491.center) to (495);
-		\draw (495) to (497);
-		\draw [in=-165, out=165, looseness=1.50] (497) to (498.center);
-		\draw [in=-15, out=30] (497) to (501.center);
-		\draw [in=60, out=-30] (500.center) to (497);
-		\draw [in=-150, out=150, looseness=1.25] (497) to (499.center);
-		\draw [in=-90, out=120, looseness=0.75] (504) to (506.center);
-		\draw [in=135, out=-90] (505.center) to (504);
-		\draw [in=-90, out=60, looseness=0.75] (504) to (507.center);
-		\draw [in=-90, out=45, looseness=0.75] (504) to (508.center);
-		\draw [in=0, out=90] (502.center) to (504);
-		\draw [in=-120, out=90, looseness=1.25] (503) to (504);
-		\draw [style=red] (509) to (510.center);
+		\draw (78) to (79);
+		\draw (80) to (78);
+		\draw [in=-150, out=90] (74.center) to (82.center);
+		\draw [in=-120, out=90, looseness=1.25] (79) to (81.center);
+		\draw [in=-60, out=90, looseness=0.75] (76.center) to (87.center);
+		\draw [in=90, out=-30, looseness=0.75] (86.center) to (83);
+		\draw (83) to (84);
+		\draw (84) to (85);
+		\draw [style=red] (90.center) to (89.center);
+		\draw (78) to (88);
+		\draw (84) to (90.center);
+		\draw [in=-90, out=135] (91) to (92.center);
+		\draw [in=-90, out=105] (91) to (93.center);
+		\draw [in=-90, out=75] (91) to (94.center);
+		\draw [in=-90, out=45] (91) to (95.center);
+		\draw (70.center) to (96);
+		\draw (96) to (74.center);
+		\draw (79) to (97);
+		\draw (97) to (73);
+		\draw (71.center) to (98);
+		\draw (98) to (76.center);
+		\draw (83) to (99);
+		\draw (99) to (72);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (466) at (155.75, 6) {};
-		\node [style=none] (467) at (157.25, 6) {};
-		\node [style=X] (468) at (157.75, 6.25) {};
-		\node [style=Z] (469) at (156.25, 6.25) {};
-		\node [style=map] (470) at (156.75, 7.5) {$U$};
-		\node [style=map] (471) at (156.75, 8.25) {$W(e)$};
-		\node [style=none] (472) at (155.75, 10.25) {};
-		\node [style=none] (473) at (157.25, 10.25) {};
-		\node [style=none] (474) at (156.25, 10.25) {};
-		\node [style=none] (475) at (157.75, 10.25) {};
-		\node [style=map] (476) at (156.75, 9) {$W(-f(t))$};
-		\node [style=X] (477) at (158.5, 9) {$t$};
-		\node [style=none] (478) at (158.5, 10.25) {};
+		\node [style=none] (100) at (107, -37.75) {};
+		\node [style=none] (101) at (108.5, -37.75) {};
+		\node [style=X] (102) at (109, -37.5) {};
+		\node [style=Z] (103) at (107.5, -37.5) {};
+		\node [style=none] (104) at (107, -36.5) {};
+		\node [style=none] (105) at (107.5, -36.5) {};
+		\node [style=none] (106) at (108.5, -36.5) {};
+		\node [style=none] (107) at (109, -36.5) {};
+		\node [style=Z] (108) at (108, -36.25) {};
+		\node [style=X] (109) at (107.5, -36.5) {};
+		\node [style=Z] (110) at (108, -37) {};
+		\node [style=none] (111) at (108, -34) {};
+		\node [style=none] (112) at (108, -34) {};
+		\node [style=Z] (113) at (109, -36.5) {};
+		\node [style=X] (114) at (109.5, -36.25) {};
+		\node [style=X] (115) at (109.5, -37) {};
+		\node [style=none] (116) at (108, -34) {};
+		\node [style=none] (117) at (108, -34) {};
+		\node [style=Z] (118) at (108, -35.5) {};
+		\node [style=none] (119) at (109.5, -33) {};
+		\node [style=none] (120) at (109.5, -35) {};
+		\node [style=map] (121) at (108, -34) {$U$};
+		\node [style=none] (122) at (107.25, -33) {};
+		\node [style=none] (123) at (107.75, -33) {};
+		\node [style=none] (124) at (108.25, -33) {};
+		\node [style=none] (125) at (108.75, -33) {};
+		\node [style=X] (126) at (107, -35.5) {$a$};
+		\node [style=X] (127) at (107.5, -35.5) {$b$};
+		\node [style=X] (128) at (108.5, -35.5) {$c$};
+		\node [style=X] (129) at (109, -35.5) {$d$};
+		\node [style=X] (130) at (109.5, -35.5) {$d$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=-30] (470) to (468);
-		\draw [in=-60, out=90] (467.center) to (470);
-		\draw [in=-120, out=90] (469) to (470);
-		\draw [in=-150, out=90] (466.center) to (470);
-		\draw (470) to (471);
-		\draw (471) to (476);
-		\draw [in=-90, out=60] (476) to (473.center);
-		\draw [in=-90, out=30, looseness=0.75] (476) to (475.center);
-		\draw [in=-90, out=120] (476) to (474.center);
-		\draw [in=-90, out=150, looseness=0.75] (476) to (472.center);
-		\draw [style=red] (477) to (478.center);
+		\draw (108) to (109);
+		\draw (110) to (108);
+		\draw (113) to (114);
+		\draw (114) to (115);
+		\draw [style=red] (120.center) to (119.center);
+		\draw (108) to (118);
+		\draw (114) to (120.center);
+		\draw [in=-90, out=135] (121) to (122.center);
+		\draw [in=-90, out=105] (121) to (123.center);
+		\draw [in=-90, out=75] (121) to (124.center);
+		\draw [in=-90, out=45] (121) to (125.center);
+		\draw (100.center) to (104.center);
+		\draw (104.center) to (126);
+		\draw [in=225, out=90] (126) to (121);
+		\draw [in=90, out=-120] (121) to (127);
+		\draw (127) to (109);
+		\draw (109) to (103);
+		\draw (101.center) to (106.center);
+		\draw (102) to (113);
+		\draw (113) to (129);
+		\draw [in=90, out=-45] (121) to (129);
+		\draw [in=300, out=90] (128) to (121);
+		\draw (106.center) to (128);
+	\end{pgfonlayer}
+\end{tikzpicture}\\
+&=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (131) at (298, -36.5) {};
+		\node [style=Z] (132) at (297, -36.5) {};
+		\node [style=none] (133) at (296.5, -36.75) {};
+		\node [style=none] (134) at (297.5, -36.75) {};
+		\node [style=none] (135) at (297.25, -34) {};
+		\node [style=none] (136) at (297.25, -34) {};
+		\node [style=none] (137) at (297.25, -34) {};
+		\node [style=none] (138) at (297.25, -34) {};
+		\node [style=none] (139) at (298.5, -33) {};
+		\node [style=none] (140) at (298.5, -35) {};
+		\node [style=map] (141) at (297.25, -34) {$U$};
+		\node [style=none] (142) at (296.5, -33) {};
+		\node [style=none] (143) at (297, -33) {};
+		\node [style=none] (144) at (297.5, -33) {};
+		\node [style=none] (145) at (298, -33) {};
+		\node [style=X] (146) at (296.5, -35.5) {$a$};
+		\node [style=X] (147) at (297, -35.5) {$b$};
+		\node [style=X] (148) at (297.5, -35.5) {$c$};
+		\node [style=X] (149) at (298, -35.5) {$d$};
+		\node [style=X] (150) at (298.5, -34.75) {$d$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=red] (140.center) to (139.center);
+		\draw [in=-90, out=135] (141) to (142.center);
+		\draw [in=-90, out=105] (141) to (143.center);
+		\draw [in=-90, out=75] (141) to (144.center);
+		\draw [in=-90, out=45] (141) to (145.center);
+		\draw (133.center) to (146);
+		\draw [in=225, out=90] (146) to (141);
+		\draw [in=90, out=-120] (141) to (147);
+		\draw [in=90, out=-45] (141) to (149);
+		\draw [in=300, out=90] (148) to (141);
+		\draw (134.center) to (148);
+		\draw (132) to (147);
+		\draw (149) to (131);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (479) at (159.5, 6.25) {};
-		\node [style=none] (480) at (161, 6.25) {};
-		\node [style=X] (481) at (161.5, 6.5) {};
-		\node [style=Z] (482) at (160, 6.5) {};
-		\node [style=map] (483) at (160.5, 7.75) {$U$};
-		\node [style=none] (484) at (159.5, 10) {};
-		\node [style=none] (485) at (161, 10) {};
-		\node [style=none] (486) at (160, 10) {};
-		\node [style=none] (487) at (161.5, 10) {};
-		\node [style=map] (488) at (160.5, 8.75) {$W(e-f(t))$};
-		\node [style=X] (489) at (162.25, 8.75) {$t$};
-		\node [style=none] (490) at (162.25, 10) {};
+		\node [style=X] (456) at (347, -36.5) {};
+		\node [style=Z] (457) at (346, -36.5) {};
+		\node [style=none] (458) at (345.5, -36.5) {};
+		\node [style=none] (459) at (346.5, -36.5) {};
+		\node [style=none] (460) at (346.25, -34) {};
+		\node [style=none] (461) at (346.25, -34) {};
+		\node [style=none] (462) at (346.25, -34) {};
+		\node [style=none] (463) at (346.25, -34) {};
+		\node [style=none] (464) at (347.5, -33) {};
+		\node [style=none] (465) at (347.5, -34.25) {};
+		\node [style=map] (466) at (346.25, -34) {$U$};
+		\node [style=none] (467) at (345.5, -33) {};
+		\node [style=none] (468) at (346, -33) {};
+		\node [style=none] (469) at (346.5, -33) {};
+		\node [style=none] (470) at (347, -33) {};
+		\node [style=X] (471) at (347.5, -34.25) {$d$};
+		\node [style=map] (472) at (346.25, -35) {$U;W(e);U^\dag$};
+		\node [style=none] (473) at (345.5, -37) {};
+		\node [style=none] (474) at (346.5, -37) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=-30] (483) to (481);
-		\draw [in=-60, out=90] (480.center) to (483);
-		\draw [in=-120, out=90] (482) to (483);
-		\draw [in=-150, out=90] (479.center) to (483);
-		\draw [in=-90, out=60] (488) to (485.center);
-		\draw [in=-90, out=30, looseness=0.75] (488) to (487.center);
-		\draw [in=-90, out=120] (488) to (486.center);
-		\draw [in=-90, out=150, looseness=0.75] (488) to (484.center);
-		\draw (483) to (488);
-		\draw [style=red] (489) to (490.center);
+		\draw [style=red] (465.center) to (464.center);
+		\draw [in=-90, out=135] (466) to (467.center);
+		\draw [in=-90, out=105] (466) to (468.center);
+		\draw [in=-90, out=75] (466) to (469.center);
+		\draw [in=-90, out=45] (466) to (470.center);
+		\draw [in=-75, out=90] (459.center) to (472);
+		\draw [in=90, out=-135] (472) to (458.center);
+		\draw [in=-105, out=90] (457) to (472);
+		\draw [in=90, out=-45] (472) to (456);
+		\draw (472) to (466);
+		\draw (473.center) to (458.center);
+		\draw (474.center) to (459.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (170) at (304.75, -36.75) {};
+		\node [style=none] (171) at (305.75, -36.75) {};
+		\node [style=X] (172) at (306.25, -36.5) {};
+		\node [style=Z] (173) at (305.25, -36.5) {};
+		\node [style=none] (174) at (304.75, -36.5) {};
+		\node [style=none] (175) at (305.75, -36.5) {};
+		\node [style=none] (176) at (305.5, -34) {};
+		\node [style=none] (177) at (305.5, -34) {};
+		\node [style=none] (178) at (305.5, -34) {};
+		\node [style=none] (179) at (305.5, -34) {};
+		\node [style=none] (180) at (306.75, -33) {};
+		\node [style=none] (181) at (306.75, -34.5) {};
+		\node [style=map] (182) at (305.5, -34) {$W(e)$};
+		\node [style=none] (183) at (304.75, -33) {};
+		\node [style=none] (184) at (305.25, -33) {};
+		\node [style=none] (185) at (305.75, -33) {};
+		\node [style=none] (186) at (306.25, -33) {};
+		\node [style=X] (187) at (306.75, -34.5) {$d$};
+		\node [style=map] (188) at (305.5, -35) {$U$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=red] (181.center) to (180.center);
+		\draw [in=-90, out=135] (182) to (183.center);
+		\draw [in=-90, out=105] (182) to (184.center);
+		\draw [in=-90, out=75] (182) to (185.center);
+		\draw [in=-90, out=45] (182) to (186.center);
+		\draw (170.center) to (174.center);
+		\draw (171.center) to (175.center);
+		\draw [in=-75, out=90] (175.center) to (188);
+		\draw [in=90, out=-135] (188) to (174.center);
+		\draw [in=-105, out=90] (173) to (188);
+		\draw [in=90, out=-45] (188) to (172);
+		\draw (188) to (182);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\end{align*}
+Where $W((a,b),(c,d)) = U;W(e);U^\dag$.
+
+The tuple $d \in \F_p^{n-k}$ is called the {\bf syndrome}. The syndrome measures the displacement of the basis elements $b_i$ by errors.
+An error $W(e)$ is {\bf undetectable} if and only if the syndrome is the zero vector; this is because $e$ commutes with everything in $L+a$ meaning that $e \in L^\omega+a$.  In particular, the trivial error is undetectable; so undetectable errors are indistinguishable from having no errors at all.
+
+To correct errors, we construct am operation classically controlled from the syndrome register.
+Given any syndrome measurement $d\in \F_p^{n-k}$, pick an error $W(e)$ which one wishes to correct, where additionally, the trivial syndrome corrects nothing.  This determines a function $f:\F_p^{n-k}\to\F_p^{2n}$ sending $d\mapsto e$.
+
+
+If $f$ is an affine transformation, then we can construct the classically controlled error correction operation $c_f$ so that given a syndrome $d$, it applies the operation $W(-f(d))$ to $n$ qudits.  This restriction requiring the function to affine comes from the fact that within the model we have constructed, only affine classical processing is allowed. Finally, we perform $U^\dag$ and then discard the ancillary qudits. The final error correction protocol is as follows:
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (475) at (351.75, 3) {$U$};
+		\node [style=none] (476) at (350.75, 1.5) {};
+		\node [style=none] (477) at (352, 1.5) {};
+		\node [style=X] (478) at (352.5, 1.75) {};
+		\node [style=Z] (479) at (351.25, 1.75) {};
+		\node [style=none] (481) at (353, 6.25) {};
+		\node [style=none] (483) at (354.25, 6.25) {};
+		\node [style=Z] (484) at (353.5, 6.5) {};
+		\node [style=X] (485) at (353, 6.25) {};
+		\node [style=Z] (486) at (353.5, 5.75) {};
+		\node [style=none] (487) at (353.5, 8.25) {};
+		\node [style=none] (488) at (353.5, 8.25) {};
+		\node [style=Z] (489) at (354.25, 6.25) {};
+		\node [style=X] (490) at (354.75, 6.5) {};
+		\node [style=X] (491) at (354.75, 5.75) {};
+		\node [style=none] (492) at (353.5, 8.25) {};
+		\node [style=none] (493) at (353.5, 8.25) {};
+		\node [style=Z] (494) at (353.5, 7.25) {};
+		\node [style=none] (495) at (354.5, 9) {};
+		\node [style=none] (496) at (354.75, 7.25) {};
+		\node [style=map] (497) at (352.75, 4) {$W(e)$};
+		\node [style=map] (498) at (353.5, 5) {$U^\dag$};
+		\node [style=map] (499) at (353.5, 8.25) {$U$};
+		\node [style=none] (500) at (350.25, 13.25) {};
+		\node [style=none] (501) at (353, 1.5) {};
+		\node [style=none] (502) at (355.25, 7.25) {};
+		\node [style=none] (503) at (350, 7.25) {};
+		\node [style=none] (504) at (355.25, 1.75) {};
+		\node [style=none] (505) at (350, 1.75) {};
+		\node [style=none] (506) at (348.75, 7.5) {Syndrome};
+		\node [style=none] (507) at (349, 1.75) {Encoding};
+		\node [style=none] (508) at (349.5, 3) {Alice};
+		\node [style=none] (509) at (353.75, 3) {Bob};
+		\node [style=none] (510) at (355.25, 4) {};
+		\node [style=none] (511) at (350, 4) {};
+		\node [style=none] (512) at (349.25, 4) {Error};
+		\node [style=none] (513) at (348.75, 7) {measurement};
+		\node [style=Z] (514) at (353.5, 9) {};
+		\node [style=map] (515) at (353.5, 10.25) {$c_f$};
+		\node [style=none] (516) at (355.25, 10.25) {};
+		\node [style=none] (517) at (350, 10.25) {};
+		\node [style=none] (518) at (348.5, 10.25) {Error correction};
+		\node [style=Z] (519) at (354.75, 8) {};
+		\node [style=none] (520) at (355, 13.25) {};
+		\node [style=map] (521) at (353.5, 11.75) {$U^\dag$};
+		\node [style=none] (522) at (355.25, 11.75) {};
+		\node [style=none] (523) at (350, 11.75) {};
+		\node [style=none] (524) at (348.75, 11.75) {Decoding};
+		\node [style=Z] (525) at (354.25, 12.75) {};
+		\node [style=Z] (526) at (353.25, 12.75) {};
+		\node [style=none] (527) at (353.75, 12.75) {};
+		\node [style=none] (528) at (352.75, 12.75) {};
+		\node [style=none] (529) at (352.75, 13.25) {};
+		\node [style=none] (530) at (353.75, 13.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-60, out=90, looseness=0.75] (477.center) to (475);
+		\draw [in=90, out=-165] (475) to (476.center);
+		\draw [in=-30, out=90] (478) to (475);
+		\draw [in=90, out=-135] (475) to (479);
+		\draw (484) to (485);
+		\draw (486) to (484);
+		\draw [in=-120, out=90, looseness=1.25] (485) to (487.center);
+		\draw [in=90, out=-30, looseness=0.75] (492.center) to (489);
+		\draw (489) to (490);
+		\draw (490) to (491);
+		\draw (484) to (494);
+		\draw (490) to (496.center);
+		\draw [in=-90, out=90] (475) to (497);
+		\draw [in=-90, out=90] (497) to (498);
+		\draw [in=135, out=-90] (481.center) to (498);
+		\draw [in=30, out=-90, looseness=0.75] (483.center) to (498);
+		\draw [style=dotted, in=270, out=90] (501.center) to (500.center);
+		\draw [style=dotted] (503.center) to (502.center);
+		\draw [style=dotted] (505.center) to (504.center);
+		\draw [style=dotted] (511.center) to (510.center);
+		\draw [in=-165, out=150] (499) to (515);
+		\draw [in=30, out=-30, looseness=1.25] (515) to (499);
+		\draw [bend right=45] (499) to (515);
+		\draw [bend right=45, looseness=0.75] (515) to (499);
+		\draw [in=-15, out=90, looseness=0.75] (495.center) to (515);
+		\draw [in=-105, out=90, looseness=0.75] (514) to (515);
+		\draw [style=dotted] (517.center) to (516.center);
+		\draw [style=red, in=-90, out=120] (519) to (495.center);
+		\draw [style=red, in=-90, out=60, looseness=0.25] (519) to (520.center);
+		\draw [style=dotted] (523.center) to (522.center);
+		\draw [in=-90, out=60] (521) to (527.center);
+		\draw [in=-90, out=45] (521) to (525);
+		\draw [in=-90, out=120] (521) to (526);
+		\draw [in=-90, out=135, looseness=0.75] (521) to (528.center);
+		\draw (528.center) to (529.center);
+		\draw (527.center) to (530.center);
+		\draw [bend right=60, looseness=1.50] (515) to (521);
+		\draw [bend right=60, looseness=1.50] (521) to (515);
+		\draw [bend left, looseness=1.25] (515) to (521);
+		\draw [bend left, looseness=1.25] (521) to (515);
+		\draw [style=red] (496.center) to (519);
+		\draw [bend right, looseness=0.75] (498) to (499);
+		\draw [bend right=60] (499) to (498);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (605) at (371.75, 6.25) {};
+		\node [style=none] (606) at (372.75, 6.25) {};
+		\node [style=X] (607) at (373.25, 6.5) {};
+		\node [style=Z] (608) at (372.25, 6.5) {};
+		\node [style=map] (609) at (372.5, 7.75) {$U$};
+		\node [style=X] (610) at (373.75, 9.25) {$d$};
+		\node [style=map] (611) at (372.5, 8.5) {$W(e)$};
+		\node [style=none] (612) at (372.5, 10.25) {};
+		\node [style=none] (613) at (372.5, 10.25) {};
+		\node [style=none] (614) at (372.5, 10.25) {};
+		\node [style=none] (615) at (372.5, 10.25) {};
+		\node [style=none] (616) at (373.75, 9.25) {};
+		\node [style=Z] (617) at (372.5, 9.25) {};
+		\node [style=map] (618) at (372.5, 10.25) {$c_f$};
+		\node [style=X] (619) at (373.75, 11.25) {$d$};
+		\node [style=none] (620) at (373.75, 13.75) {};
+		\node [style=map] (621) at (372.5, 12.25) {$U^\dag$};
+		\node [style=Z] (622) at (373.25, 13.25) {};
+		\node [style=Z] (623) at (372.25, 13.25) {};
+		\node [style=none] (624) at (372.75, 13.25) {};
+		\node [style=none] (625) at (371.75, 13.25) {};
+		\node [style=none] (626) at (371.75, 13.75) {};
+		\node [style=none] (627) at (372.75, 13.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=90, out=-30] (609) to (607);
+		\draw [in=-60, out=90] (606.center) to (609);
+		\draw [in=-120, out=90] (608) to (609);
+		\draw [in=-150, out=90] (605.center) to (609);
+		\draw (609) to (611);
+		\draw [bend left=60, looseness=1.50] (611) to (612.center);
+		\draw [in=-30, out=30, looseness=1.50] (611) to (615.center);
+		\draw [in=60, out=-60, looseness=1.25] (614.center) to (611);
+		\draw [in=-120, out=120, looseness=1.25] (611) to (613.center);
+		\draw [in=-15, out=90] (616.center) to (618);
+		\draw (617) to (618);
+		\draw [style=red] (619) to (620.center);
+		\draw [in=-90, out=60] (621) to (624.center);
+		\draw [in=-90, out=45] (621) to (622);
+		\draw [in=-90, out=120] (621) to (623);
+		\draw [in=-90, out=135, looseness=0.75] (621) to (625.center);
+		\draw (625.center) to (626.center);
+		\draw (624.center) to (627.center);
+		\draw [bend right] (621) to (618);
+		\draw [bend right] (618) to (621);
+		\draw [bend right=60, looseness=1.25] (621) to (618);
+		\draw [bend right=60, looseness=1.25] (618) to (621);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (425) at (339.5, 6) {};
+		\node [style=none] (426) at (340.5, 6) {};
+		\node [style=X] (427) at (341, 6.25) {};
+		\node [style=Z] (428) at (340, 6.25) {};
+		\node [style=map] (429) at (340.25, 7.5) {$U$};
+		\node [style=map] (430) at (340.25, 8.25) {$W(e)$};
+		\node [style=map] (431) at (340.25, 9) {$W(-f(d))$};
+		\node [style=X] (432) at (341.5, 9.5) {$d$};
+		\node [style=none] (433) at (341.5, 11.25) {};
+		\node [style=map] (434) at (340.25, 9.75) {$U^\dag$};
+		\node [style=Z] (435) at (341, 10.75) {};
+		\node [style=Z] (436) at (340, 10.75) {};
+		\node [style=none] (437) at (340.5, 10.75) {};
+		\node [style=none] (438) at (339.5, 10.75) {};
+		\node [style=none] (439) at (339.5, 11.25) {};
+		\node [style=none] (440) at (340.5, 11.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=90, out=-30] (429) to (427);
+		\draw [in=-60, out=90] (426.center) to (429);
+		\draw [in=-120, out=90] (428) to (429);
+		\draw [in=-150, out=90] (425.center) to (429);
+		\draw (429) to (430);
+		\draw (430) to (431);
+		\draw [style=red] (432) to (433.center);
+		\draw [in=-90, out=60] (434) to (437.center);
+		\draw [in=-90, out=45] (434) to (435);
+		\draw [in=-90, out=120] (434) to (436);
+		\draw [in=-90, out=135, looseness=0.75] (434) to (438.center);
+		\draw (438.center) to (439.center);
+		\draw (437.center) to (440.center);
+		\draw (431) to (434);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (554) at (359.25, 6.5) {};
+		\node [style=none] (555) at (360.25, 6.5) {};
+		\node [style=X] (556) at (360.75, 6.75) {};
+		\node [style=Z] (557) at (359.75, 6.75) {};
+		\node [style=map] (558) at (360, 8) {$U$};
+		\node [style=map] (559) at (360, 8.75) {$W(e-f(d))$};
+		\node [style=X] (560) at (361.25, 9.5) {$d$};
+		\node [style=none] (561) at (361.25, 11) {};
+		\node [style=map] (562) at (360, 9.5) {$U^\dag$};
+		\node [style=Z] (563) at (360.75, 10.5) {};
+		\node [style=Z] (564) at (359.75, 10.5) {};
+		\node [style=none] (565) at (360.25, 10.5) {};
+		\node [style=none] (566) at (359.25, 10.5) {};
+		\node [style=none] (567) at (359.25, 11) {};
+		\node [style=none] (568) at (360.25, 11) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=90, out=-30] (558) to (556);
+		\draw [in=-60, out=90] (555.center) to (558);
+		\draw [in=-120, out=90] (557) to (558);
+		\draw [in=-150, out=90] (554.center) to (558);
+		\draw (558) to (559);
+		\draw [style=red] (560) to (561.center);
+		\draw [in=-90, out=60] (562) to (565.center);
+		\draw [in=-90, out=45] (562) to (563);
+		\draw [in=-90, out=120] (562) to (564);
+		\draw [in=-90, out=135, looseness=0.75] (562) to (566.center);
+		\draw (566.center) to (567.center);
+		\draw (565.center) to (568.center);
+		\draw (559) to (562);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
 
 
-Note that this all works for $p=2$ when the stabilizer code has trivial phases: ie, it is a CSS code.
+So that if $e=f(d)$ then this reduces to the identity channel:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (1079) at (162.5, 6.5) {};
+		\node [style=none] (1080) at (164, 6.5) {};
+		\node [style=X] (1081) at (164.5, 6.75) {};
+		\node [style=Z] (1082) at (163, 6.75) {};
+		\node [style=map] (1083) at (163.5, 8) {$U$};
+		\node [style=map] (1088) at (163.5, 8.75) {$W(e-f(d))$};
+		\node [style=X] (1089) at (165.25, 8.75) {$d$};
+		\node [style=none] (1090) at (165.25, 11) {};
+		\node [style=map] (1103) at (163.5, 9.5) {$U^\dag$};
+		\node [style=Z] (1104) at (164.5, 10.5) {};
+		\node [style=Z] (1105) at (163, 10.5) {};
+		\node [style=none] (1106) at (164, 10.5) {};
+		\node [style=none] (1107) at (162.5, 10.5) {};
+		\node [style=none] (1108) at (162.5, 11) {};
+		\node [style=none] (1109) at (164, 11) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=90, out=-30] (1083) to (1081);
+		\draw [in=-60, out=90] (1080.center) to (1083);
+		\draw [in=-120, out=90] (1082) to (1083);
+		\draw [in=-150, out=90] (1079.center) to (1083);
+		\draw (1083) to (1088);
+		\draw [style=red] (1089) to (1090.center);
+		\draw [in=-90, out=60] (1103) to (1106.center);
+		\draw [in=-90, out=45] (1103) to (1104);
+		\draw [in=-90, out=120] (1103) to (1105);
+		\draw [in=-90, out=135, looseness=0.75] (1103) to (1107.center);
+		\draw (1107.center) to (1108.center);
+		\draw (1106.center) to (1109.center);
+		\draw (1088) to (1103);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (1110) at (166.25, 6.5) {};
+		\node [style=none] (1111) at (167.75, 6.5) {};
+		\node [style=X] (1112) at (168.25, 6.75) {};
+		\node [style=Z] (1113) at (166.75, 6.75) {};
+		\node [style=map] (1114) at (167.25, 8) {$U$};
+		\node [style=X] (1116) at (169, 8.75) {$d$};
+		\node [style=none] (1117) at (169, 10.25) {};
+		\node [style=map] (1118) at (167.25, 8.75) {$U^\dag$};
+		\node [style=Z] (1119) at (168.25, 9.75) {};
+		\node [style=Z] (1120) at (166.75, 9.75) {};
+		\node [style=none] (1121) at (167.75, 9.75) {};
+		\node [style=none] (1122) at (166.25, 9.75) {};
+		\node [style=none] (1123) at (166.25, 10.25) {};
+		\node [style=none] (1124) at (167.75, 10.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=90, out=-30] (1114) to (1112);
+		\draw [in=-60, out=90] (1111.center) to (1114);
+		\draw [in=-120, out=90] (1113) to (1114);
+		\draw [in=-150, out=90] (1110.center) to (1114);
+		\draw [style=red] (1116) to (1117.center);
+		\draw [in=-90, out=60] (1118) to (1121.center);
+		\draw [in=-90, out=45] (1118) to (1119);
+		\draw [in=-90, out=120] (1118) to (1120);
+		\draw [in=-90, out=135, looseness=0.75] (1118) to (1122.center);
+		\draw (1122.center) to (1123.center);
+		\draw (1121.center) to (1124.center);
+		\draw (1114) to (1118);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (1124) at (170, 6.5) {};
+		\node [style=none] (1125) at (171.5, 6.5) {};
+		\node [style=X] (1126) at (172, 6.75) {};
+		\node [style=Z] (1127) at (170.5, 6.75) {};
+		\node [style=X] (1129) at (172.75, 8.75) {$d$};
+		\node [style=none] (1130) at (172.75, 10.25) {};
+		\node [style=Z] (1132) at (172, 9.75) {};
+		\node [style=Z] (1133) at (170.5, 9.75) {};
+		\node [style=none] (1134) at (171.5, 10.25) {};
+		\node [style=none] (1135) at (170, 10.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=red] (1129) to (1130.center);
+		\draw (1126) to (1132);
+		\draw (1125.center) to (1134.center);
+		\draw (1124.center) to (1135.center);
+		\draw (1127) to (1133);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (1136) at (174.5, 6.5) {};
+		\node [style=none] (1137) at (175.25, 6.5) {};
+		\node [style=X] (1140) at (176, 8.75) {$d$};
+		\node [style=none] (1141) at (176, 10.25) {};
+		\node [style=none] (1144) at (175.25, 10.25) {};
+		\node [style=none] (1145) at (174.5, 10.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=red] (1140) to (1141.center);
+		\draw (1137.center) to (1144.center);
+		\draw (1136.center) to (1145.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+%Because the encoder is an affine symplectomorphism,  it an affine transformation ${\sf enc}: \F_p^{2k}\to \F_p^{2n}$.  Given a logical Weyl operator $W(z,x)$ on $k$ qudits the corresponding physical operator is $W({\sf enc}(z,x))$ on $n$ qudits.  One may wish to apply logical operations to the physically encoded state before the decoding proceedure.
 
 
+All of the things we have discussed in the section also works for qubits when the stabilizer code has trivial phases: ie, it is a CSS code.  Indeed qubit CSS codes are very common in the literature.  We use the threefold qubit repetition code (see \cite[\S 10.1.1]{nielsen}) as an example:
 \begin{example}
-TODO stabilizer code with affine correction
+\label{ex:rep}
+Consider the Linear subspace:
+$$
+S = \{ ((z_1,z_2,z_3),(x_1,x_2,x_3)) : x_1=x_2=x_3 \} \subseteq \F_2^{6}
+$$
+Which can be written in the form of a circuit:
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (853) at (88.75, 2) {};
+		\node [style=none] (854) at (89.25, 2) {};
+		\node [style=none] (855) at (89.75, 2) {};
+		\node [style=none] (856) at (86.75, 2) {};
+		\node [style=none] (857) at (87.25, 2) {};
+		\node [style=none] (858) at (87.75, 2) {};
+		\node [style=map] (859) at (88.25, 0.75) {$S$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=105] (859) to (858.center);
+		\draw [in=135, out=-90, looseness=0.75] (857.center) to (859);
+		\draw [in=-90, out=150, looseness=0.75] (859) to (856.center);
+		\draw [in=75, out=-90] (853.center) to (859);
+		\draw [in=-90, out=45, looseness=0.75] (859) to (854.center);
+		\draw [in=30, out=-90, looseness=0.75] (855.center) to (859);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (1149) at (180.25, 1) {};
+		\node [style=none] (1156) at (177.75, 1) {};
+		\node [style=none] (1157) at (178.25, 1) {};
+		\node [style=none] (1158) at (178.75, 1) {};
+		\node [style=none] (1163) at (179.75, 2) {};
+		\node [style=none] (1164) at (180.25, 2) {};
+		\node [style=none] (1165) at (180.75, 2) {};
+		\node [style=none] (1166) at (177.75, 2) {};
+		\node [style=none] (1167) at (178.25, 2) {};
+		\node [style=none] (1168) at (178.75, 2) {};
+		\node [style=Z] (1169) at (177.75, 1) {};
+		\node [style=Z] (1170) at (178.25, 1) {};
+		\node [style=Z] (1171) at (178.75, 1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=30] (1149) to (1165.center);
+		\draw (1164.center) to (1149);
+		\draw [in=-90, out=150] (1149) to (1163.center);
+		\draw (1171) to (1168.center);
+		\draw (1170) to (1167.center);
+		\draw (1169) to (1166.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (3, 0) {};
+		\node [style=none] (1) at (3.5, 0) {};
+		\node [style=none] (2) at (4, 0) {};
+		\node [style=Z] (3) at (3, 0.5) {};
+		\node [style=Z] (4) at (3, 1) {};
+		\node [style=X] (5) at (3.5, 0.75) {};
+		\node [style=X] (6) at (4, 1.5) {};
+		\node [style=X] (7) at (4, 0) {};
+		\node [style=X] (8) at (3.5, 0) {};
+		\node [style=Z] (9) at (3, 0) {};
+		\node [style=none] (10) at (1, 0) {};
+		\node [style=none] (11) at (1.5, 0) {};
+		\node [style=none] (12) at (2, 0) {};
+		\node [style=Z] (17) at (1.5, 0.75) {};
+		\node [style=X] (18) at (1, 0.5) {};
+		\node [style=X] (19) at (1, 1) {};
+		\node [style=Z] (20) at (2, 1.5) {};
+		\node [style=none] (21) at (3, 2) {};
+		\node [style=none] (22) at (3.5, 2) {};
+		\node [style=none] (23) at (4, 2) {};
+		\node [style=none] (24) at (1, 2) {};
+		\node [style=none] (25) at (1.5, 2) {};
+		\node [style=none] (26) at (2, 2) {};
+		\node [style=Z] (27) at (1, 0) {};
+		\node [style=Z] (28) at (1.5, 0) {};
+		\node [style=Z] (29) at (2, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (0.center) to (3);
+		\draw (1.center) to (5);
+		\draw (2.center) to (6);
+		\draw (3) to (5);
+		\draw (6) to (4);
+		\draw (3) to (4);
+		\draw (19) to (20);
+		\draw (18) to (17);
+		\draw (17) to (11.center);
+		\draw (10.center) to (18);
+		\draw (18) to (19);
+		\draw (12.center) to (20);
+		\draw (6) to (23.center);
+		\draw (22.center) to (5);
+		\draw (4) to (21.center);
+		\draw (20) to (26.center);
+		\draw (25.center) to (17);
+		\draw (19) to (24.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+$S$ is coisotropic because:
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (853) at (88.75, 2) {};
+		\node [style=none] (854) at (89.25, 2) {};
+		\node [style=none] (855) at (89.75, 2) {};
+		\node [style=none] (856) at (86.75, 2) {};
+		\node [style=none] (857) at (87.25, 2) {};
+		\node [style=none] (858) at (87.75, 2) {};
+		\node [style=map] (859) at (88.25, 0.75) {$S$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=105] (859) to (858.center);
+		\draw [in=135, out=-90, looseness=0.75] (857.center) to (859);
+		\draw [in=-90, out=150, looseness=0.75] (859) to (856.center);
+		\draw [in=75, out=-90] (853.center) to (859);
+		\draw [in=-90, out=45, looseness=0.75] (859) to (854.center);
+		\draw [in=30, out=-90, looseness=0.75] (855.center) to (859);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (3, 0) {};
+		\node [style=none] (1) at (3.5, 0) {};
+		\node [style=none] (2) at (4, 0) {};
+		\node [style=Z] (3) at (3, 0.5) {};
+		\node [style=Z] (4) at (3, 1) {};
+		\node [style=X] (5) at (3.5, 0.75) {};
+		\node [style=X] (6) at (4, 1.5) {};
+		\node [style=X] (7) at (4, 0) {};
+		\node [style=X] (8) at (3.5, 0) {};
+		\node [style=Z] (9) at (3, 0) {};
+		\node [style=none] (10) at (1, 0) {};
+		\node [style=none] (11) at (1.5, 0) {};
+		\node [style=none] (12) at (2, 0) {};
+		\node [style=Z] (17) at (1.5, 0.75) {};
+		\node [style=X] (18) at (1, 0.5) {};
+		\node [style=X] (19) at (1, 1) {};
+		\node [style=Z] (20) at (2, 1.5) {};
+		\node [style=none] (21) at (3, 2) {};
+		\node [style=none] (22) at (3.5, 2) {};
+		\node [style=none] (23) at (4, 2) {};
+		\node [style=none] (24) at (1, 2) {};
+		\node [style=none] (25) at (1.5, 2) {};
+		\node [style=none] (26) at (2, 2) {};
+		\node [style=Z] (27) at (1, 0) {};
+		\node [style=Z] (28) at (1.5, 0) {};
+		\node [style=Z] (29) at (2, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (0.center) to (3);
+		\draw (1.center) to (5);
+		\draw (2.center) to (6);
+		\draw (3) to (5);
+		\draw (6) to (4);
+		\draw (3) to (4);
+		\draw (19) to (20);
+		\draw (18) to (17);
+		\draw (17) to (11.center);
+		\draw (10.center) to (18);
+		\draw (18) to (19);
+		\draw (12.center) to (20);
+		\draw (6) to (23.center);
+		\draw (22.center) to (5);
+		\draw (4) to (21.center);
+		\draw (20) to (26.center);
+		\draw (25.center) to (17);
+		\draw (19) to (24.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\supseteq
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (934) at (102, 0) {};
+		\node [style=none] (935) at (102.5, 0) {};
+		\node [style=none] (936) at (103, 0) {};
+		\node [style=Z] (937) at (102, 0.5) {};
+		\node [style=Z] (938) at (102, 1) {};
+		\node [style=X] (939) at (102.5, 0.75) {};
+		\node [style=X] (940) at (103, 1.5) {};
+		\node [style=X] (941) at (103, 0) {};
+		\node [style=X] (942) at (102.5, 0) {};
+		\node [style=none] (943) at (100.25, 0) {};
+		\node [style=none] (944) at (100.75, 0) {};
+		\node [style=none] (945) at (101.25, 0) {};
+		\node [style=Z] (946) at (100.75, 0.75) {};
+		\node [style=X] (947) at (100.25, 0.5) {};
+		\node [style=X] (948) at (100.25, 1) {};
+		\node [style=Z] (949) at (101.25, 1.5) {};
+		\node [style=none] (950) at (102, 2) {};
+		\node [style=none] (951) at (102.5, 2) {};
+		\node [style=none] (952) at (103, 2) {};
+		\node [style=none] (953) at (100.25, 2) {};
+		\node [style=none] (954) at (100.75, 2) {};
+		\node [style=none] (955) at (101.25, 2) {};
+		\node [style=Z] (956) at (100.75, 0) {};
+		\node [style=Z] (957) at (101.25, 0) {};
+		\node [style=X] (958) at (100.25, 0) {};
+		\node [style=X] (959) at (102, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (934.center) to (937);
+		\draw (935.center) to (939);
+		\draw (936.center) to (940);
+		\draw (937) to (939);
+		\draw (940) to (938);
+		\draw (937) to (938);
+		\draw (948) to (949);
+		\draw (947) to (946);
+		\draw (946) to (944.center);
+		\draw (943.center) to (947);
+		\draw (947) to (948);
+		\draw (945.center) to (949);
+		\draw (940) to (952.center);
+		\draw (951.center) to (939);
+		\draw (938) to (950.center);
+		\draw (949) to (955.center);
+		\draw (954.center) to (946);
+		\draw (948) to (953.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (862) at (92, 0) {};
+		\node [style=none] (863) at (92.5, 0) {};
+		\node [style=none] (864) at (93, 0) {};
+		\node [style=Z] (865) at (92, 0.5) {};
+		\node [style=Z] (866) at (92, 1) {};
+		\node [style=X] (867) at (92.5, 0.75) {};
+		\node [style=X] (868) at (93, 1.5) {};
+		\node [style=X] (869) at (93, 0) {};
+		\node [style=X] (870) at (92.5, 0) {};
+		\node [style=none] (872) at (93.75, 0) {};
+		\node [style=none] (873) at (94.25, 0) {};
+		\node [style=none] (874) at (94.75, 0) {};
+		\node [style=Z] (875) at (94.25, 0.75) {};
+		\node [style=X] (876) at (93.75, 0.5) {};
+		\node [style=X] (877) at (93.75, 1) {};
+		\node [style=Z] (878) at (94.75, 1.5) {};
+		\node [style=none] (879) at (92, 2) {};
+		\node [style=none] (880) at (92.5, 2) {};
+		\node [style=none] (881) at (93, 2) {};
+		\node [style=none] (882) at (93.75, 2) {};
+		\node [style=none] (883) at (94.25, 2) {};
+		\node [style=none] (884) at (94.75, 2) {};
+		\node [style=Z] (886) at (94.25, 0) {};
+		\node [style=Z] (887) at (94.75, 0) {};
+		\node [style=X] (888) at (93.75, 0) {};
+		\node [style=X] (889) at (92, 0) {};
+		\node [style=s] (890) at (92, 2) {};
+		\node [style=s] (891) at (92.5, 2) {};
+		\node [style=s] (892) at (93, 2) {};
+		\node [style=none] (893) at (93.75, 3.75) {};
+		\node [style=none] (894) at (94.25, 3.75) {};
+		\node [style=none] (895) at (94.75, 3.75) {};
+		\node [style=none] (896) at (92, 3.75) {};
+		\node [style=none] (897) at (92.5, 3.75) {};
+		\node [style=none] (898) at (93, 3.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (862.center) to (865);
+		\draw (863.center) to (867);
+		\draw (864.center) to (868);
+		\draw (865) to (867);
+		\draw (868) to (866);
+		\draw (865) to (866);
+		\draw (877) to (878);
+		\draw (876) to (875);
+		\draw (875) to (873.center);
+		\draw (872.center) to (876);
+		\draw (876) to (877);
+		\draw (874.center) to (878);
+		\draw (868) to (881.center);
+		\draw (880.center) to (867);
+		\draw (866) to (879.center);
+		\draw (878) to (884.center);
+		\draw (883.center) to (875);
+		\draw (877) to (882.center);
+		\draw [in=270, out=90] (892) to (895.center);
+		\draw [in=270, out=90] (891) to (894.center);
+		\draw [in=270, out=90] (890) to (893.center);
+		\draw [in=270, out=90] (882.center) to (896.center);
+		\draw [in=90, out=-90] (897.center) to (883.center);
+		\draw [in=270, out=90] (884.center) to (898.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (853) at (88.75, 2) {};
+		\node [style=none] (854) at (89.25, 2) {};
+		\node [style=none] (855) at (89.75, 2) {};
+		\node [style=none] (856) at (86.75, 2) {};
+		\node [style=none] (857) at (87.25, 2) {};
+		\node [style=none] (858) at (87.75, 2) {};
+		\node [style=map] (859) at (88.25, 0.75) {$S^\omega$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=105] (859) to (858.center);
+		\draw [in=135, out=-90, looseness=0.75] (857.center) to (859);
+		\draw [in=-90, out=150, looseness=0.75] (859) to (856.center);
+		\draw [in=75, out=-90] (853.center) to (859);
+		\draw [in=-90, out=45, looseness=0.75] (859) to (854.center);
+		\draw [in=30, out=-90, looseness=0.75] (855.center) to (859);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+Chopping off the maximally mixed state gives us an encoding map:
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (2085) at (279.75, -3.25) {};
+		\node [style=none] (2086) at (280.25, -3) {};
+		\node [style=none] (2087) at (280.75, -3) {};
+		\node [style=Z] (2088) at (279.75, -2.5) {};
+		\node [style=Z] (2089) at (279.75, -2) {};
+		\node [style=X] (2090) at (280.25, -2.25) {};
+		\node [style=X] (2091) at (280.75, -1.5) {};
+		\node [style=X] (2092) at (280.75, -3) {};
+		\node [style=X] (2093) at (280.25, -3) {};
+		\node [style=none] (2094) at (277.75, -3.25) {};
+		\node [style=none] (2095) at (278.25, -3) {};
+		\node [style=none] (2096) at (278.75, -3) {};
+		\node [style=Z] (2097) at (278.25, -2.25) {};
+		\node [style=X] (2098) at (277.75, -2.5) {};
+		\node [style=X] (2099) at (277.75, -2) {};
+		\node [style=Z] (2100) at (278.75, -1.5) {};
+		\node [style=none] (2101) at (279.75, -1) {};
+		\node [style=none] (2102) at (280.25, -1) {};
+		\node [style=none] (2103) at (280.75, -1) {};
+		\node [style=none] (2104) at (277.75, -1) {};
+		\node [style=none] (2105) at (278.25, -1) {};
+		\node [style=none] (2106) at (278.75, -1) {};
+		\node [style=Z] (2107) at (278.25, -3) {};
+		\node [style=Z] (2108) at (278.75, -3) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (2085.center) to (2088);
+		\draw (2086.center) to (2090);
+		\draw (2087.center) to (2091);
+		\draw (2088) to (2090);
+		\draw (2091) to (2089);
+		\draw (2088) to (2089);
+		\draw (2099) to (2100);
+		\draw (2098) to (2097);
+		\draw (2097) to (2095.center);
+		\draw (2094.center) to (2098);
+		\draw (2098) to (2099);
+		\draw (2096.center) to (2100);
+		\draw (2091) to (2103.center);
+		\draw (2102.center) to (2090);
+		\draw (2089) to (2101.center);
+		\draw (2100) to (2106.center);
+		\draw (2105.center) to (2097);
+		\draw (2099) to (2104.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+Also, we will chose to measure in the $Z$ basis:
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (2109) at (283.75, -6.25) {};
+		\node [style=none] (2110) at (284.25, -6.5) {};
+		\node [style=none] (2111) at (284.75, -6.5) {};
+		\node [style=Z] (2112) at (283.75, -5.75) {};
+		\node [style=Z] (2113) at (283.75, -5.25) {};
+		\node [style=X] (2114) at (284.25, -5.5) {};
+		\node [style=X] (2115) at (284.75, -4.75) {};
+		\node [style=none] (2116) at (281.75, -6.25) {};
+		\node [style=none] (2117) at (282.25, -6.25) {};
+		\node [style=none] (2118) at (282.75, -6.25) {};
+		\node [style=Z] (2119) at (282.25, -5.5) {};
+		\node [style=X] (2120) at (281.75, -5.75) {};
+		\node [style=X] (2121) at (281.75, -5.25) {};
+		\node [style=Z] (2122) at (282.75, -4.75) {};
+		\node [style=none] (2123) at (283.75, -4.25) {};
+		\node [style=none] (2124) at (284.25, -4.25) {};
+		\node [style=none] (2125) at (284.75, -4.25) {};
+		\node [style=none] (2126) at (281.75, -4.25) {};
+		\node [style=none] (2127) at (282.25, -4.25) {};
+		\node [style=none] (2128) at (282.75, -4.25) {};
+		\node [style=Z] (2129) at (282.25, -6.25) {};
+		\node [style=Z] (2130) at (282.75, -6.25) {};
+		\node [style=Z] (2131) at (283.75, -6.25) {};
+		\node [style=Z] (2132) at (281.75, -6.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (2109.center) to (2112);
+		\draw (2110.center) to (2114);
+		\draw (2111.center) to (2115);
+		\draw (2112) to (2114);
+		\draw (2115) to (2113);
+		\draw (2112) to (2113);
+		\draw (2121) to (2122);
+		\draw (2120) to (2119);
+		\draw (2119) to (2117.center);
+		\draw (2116.center) to (2120);
+		\draw (2120) to (2121);
+		\draw (2118.center) to (2122);
+		\draw (2115) to (2125.center);
+		\draw (2124.center) to (2114);
+		\draw (2113) to (2123.center);
+		\draw (2122) to (2128.center);
+		\draw (2127.center) to (2119);
+		\draw (2121) to (2126.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+Suppose there is a Pauli error $W((a,b,c),(d,e,f))$, then we have the following error detection circuit:
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (1843) at (254.5, -25.5) {};
+		\node [style=none] (1844) at (255, -25.25) {};
+		\node [style=none] (1845) at (255.5, -25.25) {};
+		\node [style=Z] (1846) at (254.5, -24.75) {};
+		\node [style=Z] (1847) at (254.5, -24.25) {};
+		\node [style=X] (1848) at (255, -24.5) {};
+		\node [style=X] (1849) at (255.5, -23.75) {};
+		\node [style=X] (1850) at (255.5, -25.25) {};
+		\node [style=X] (1851) at (255, -25.25) {};
+		\node [style=none] (1852) at (252.75, -25.5) {};
+		\node [style=none] (1853) at (253.25, -25.25) {};
+		\node [style=none] (1854) at (253.75, -25.25) {};
+		\node [style=Z] (1855) at (253.25, -24.5) {};
+		\node [style=X] (1856) at (252.75, -24.75) {};
+		\node [style=X] (1857) at (252.75, -24.25) {};
+		\node [style=Z] (1858) at (253.75, -23.75) {};
+		\node [style=none] (1859) at (254.5, -23.75) {};
+		\node [style=none] (1860) at (255, -23.75) {};
+		\node [style=none] (1861) at (255.5, -23.75) {};
+		\node [style=none] (1862) at (252.75, -23.75) {};
+		\node [style=none] (1863) at (253.25, -23.75) {};
+		\node [style=none] (1864) at (253.75, -23.75) {};
+		\node [style=Z] (1865) at (253.25, -25.25) {};
+		\node [style=Z] (1866) at (253.75, -25.25) {};
+		\node [style=none] (1867) at (258, -20.75) {};
+		\node [style=none] (1868) at (258.5, -20.75) {};
+		\node [style=none] (1869) at (259, -20.75) {};
+		\node [style=none] (1870) at (255.5, -20.75) {};
+		\node [style=none] (1871) at (256, -20.75) {};
+		\node [style=none] (1872) at (256.5, -20.75) {};
+		\node [style=X] (1873) at (254.5, -22) {$a$};
+		\node [style=X] (1874) at (255, -22) {$b$};
+		\node [style=X] (1875) at (255.5, -22) {$c$};
+		\node [style=X] (1876) at (256.5, -22) {$d$};
+		\node [style=X] (1877) at (257, -22) {$e$};
+		\node [style=X] (1878) at (257.5, -22) {$f$};
+		\node [style=none] (1879) at (258, -20.75) {};
+		\node [style=none] (1880) at (258.5, -20.75) {};
+		\node [style=none] (1881) at (259, -20.75) {};
+		\node [style=none] (1882) at (255.5, -20.75) {};
+		\node [style=none] (1883) at (256, -20.75) {};
+		\node [style=none] (1884) at (256.5, -20.75) {};
+		\node [style=Z] (1885) at (258, -18.5) {};
+		\node [style=Z] (1886) at (258, -18) {};
+		\node [style=X] (1887) at (258.5, -18.25) {};
+		\node [style=X] (1888) at (259, -17.5) {};
+		\node [style=Z] (1889) at (256, -18.25) {};
+		\node [style=X] (1890) at (255.5, -18.5) {};
+		\node [style=X] (1891) at (255.5, -18) {};
+		\node [style=Z] (1892) at (256.5, -17.5) {};
+		\node [style=none] (1893) at (258, -16.25) {};
+		\node [style=none] (1894) at (258.5, -16.25) {};
+		\node [style=none] (1895) at (259, -16.25) {};
+		\node [style=none] (1896) at (255.5, -16.25) {};
+		\node [style=none] (1897) at (256, -16.25) {};
+		\node [style=none] (1898) at (256.5, -16.25) {};
+		\node [style=Z] (1899) at (258, -19.75) {};
+		\node [style=Z] (1900) at (258, -20.25) {};
+		\node [style=X] (1901) at (258.5, -20) {};
+		\node [style=X] (1902) at (259, -20.75) {};
+		\node [style=Z] (1903) at (256, -20) {};
+		\node [style=X] (1904) at (255.5, -19.75) {};
+		\node [style=X] (1905) at (255.5, -20.25) {};
+		\node [style=Z] (1906) at (256.5, -20.75) {};
+		\node [style=none] (1907) at (258, -20.75) {};
+		\node [style=none] (1908) at (258.5, -20.75) {};
+		\node [style=none] (1909) at (259, -20.75) {};
+		\node [style=none] (1910) at (255.5, -20.75) {};
+		\node [style=none] (1911) at (256, -20.75) {};
+		\node [style=none] (1912) at (256.5, -20.75) {};
+		\node [style=X] (1913) at (259.5, -18.5) {};
+		\node [style=X] (1914) at (260, -18.75) {};
+		\node [style=Z] (1915) at (257, -18.25) {};
+		\node [style=Z] (1916) at (257.5, -18.5) {};
+		\node [style=Z] (1917) at (257, -19.75) {};
+		\node [style=Z] (1918) at (257.5, -19.75) {};
+		\node [style=X] (1919) at (259.5, -19.75) {};
+		\node [style=X] (1920) at (260, -19.75) {};
+		\node [style=Z] (1921) at (257, -17.25) {};
+		\node [style=Z] (1922) at (257.5, -17.25) {};
+		\node [style=none] (1923) at (259.5, -17.25) {};
+		\node [style=none] (1924) at (260, -17.25) {};
+		\node [style=Z] (1925) at (258.5, -19) {};
+		\node [style=Z] (1926) at (259, -19.25) {};
+		\node [style=X] (1927) at (256, -18.75) {};
+		\node [style=X] (1928) at (256.5, -19) {};
+		\node [style=none] (1929) at (260, -16.25) {};
+		\node [style=none] (1930) at (260.5, -16.25) {};
+		\node [style=none] (1931) at (254, -16.25) {};
+		\node [style=none] (1932) at (256.75, -25.5) {};
+		\node [style=none] (1933) at (253.5, -20.75) {Alice};
+		\node [style=none] (1934) at (257.75, -23.25) {Bob};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1843.center) to (1846);
+		\draw (1844.center) to (1848);
+		\draw (1845.center) to (1849);
+		\draw (1846) to (1848);
+		\draw (1849) to (1847);
+		\draw (1846) to (1847);
+		\draw (1857) to (1858);
+		\draw (1856) to (1855);
+		\draw (1855) to (1853.center);
+		\draw (1852.center) to (1856);
+		\draw (1856) to (1857);
+		\draw (1854.center) to (1858);
+		\draw (1860.center) to (1848);
+		\draw (1847) to (1859.center);
+		\draw (1863.center) to (1855);
+		\draw (1857) to (1862.center);
+		\draw [in=-135, out=90, looseness=1.25] (1862.center) to (1873);
+		\draw [in=45, out=-90] (1870.center) to (1873);
+		\draw [in=-135, out=90, looseness=1.25] (1863.center) to (1874);
+		\draw [in=270, out=45] (1874) to (1871.center);
+		\draw [in=45, out=-90] (1872.center) to (1875);
+		\draw [in=90, out=-135, looseness=1.25] (1875) to (1864.center);
+		\draw [in=45, out=-90] (1867.center) to (1876);
+		\draw [in=90, out=-135, looseness=1.25] (1876) to (1859.center);
+		\draw [in=-135, out=90, looseness=1.25] (1860.center) to (1877);
+		\draw [in=270, out=45] (1877) to (1868.center);
+		\draw [in=45, out=-90] (1869.center) to (1878);
+		\draw [in=90, out=-135, looseness=1.25] (1878) to (1861.center);
+		\draw (1885) to (1887);
+		\draw (1888) to (1886);
+		\draw (1885) to (1886);
+		\draw (1891) to (1892);
+		\draw (1890) to (1889);
+		\draw (1890) to (1891);
+		\draw (1888) to (1895.center);
+		\draw (1894.center) to (1887);
+		\draw (1886) to (1893.center);
+		\draw (1892) to (1898.center);
+		\draw (1897.center) to (1889);
+		\draw (1891) to (1896.center);
+		\draw (1899) to (1901);
+		\draw (1902) to (1900);
+		\draw (1899) to (1900);
+		\draw (1905) to (1906);
+		\draw (1904) to (1903);
+		\draw (1904) to (1905);
+		\draw (1908.center) to (1901);
+		\draw (1900) to (1907.center);
+		\draw (1911.center) to (1903);
+		\draw (1905) to (1910.center);
+		\draw (1899) to (1885);
+		\draw (1918) to (1916);
+		\draw (1916) to (1922);
+		\draw (1921) to (1915);
+		\draw (1915) to (1917);
+		\draw (1919) to (1913);
+		\draw (1914) to (1920);
+		\draw (1913) to (1923.center);
+		\draw (1914) to (1924.center);
+		\draw (1906) to (1928);
+		\draw (1928) to (1892);
+		\draw (1927) to (1889);
+		\draw (1903) to (1927);
+		\draw (1904) to (1890);
+		\draw (1925) to (1901);
+		\draw (1888) to (1926);
+		\draw (1926) to (1902);
+		\draw (1925) to (1887);
+		\draw (1928) to (1916);
+		\draw (1927) to (1915);
+		\draw (1925) to (1913);
+		\draw (1926) to (1914);
+		\draw [style=red, in=270, out=90] (1923.center) to (1929.center);
+		\draw [style=red, in=270, out=90] (1924.center) to (1930.center);
+		\draw [style=dotted, in=90, out=-90, looseness=1.25] (1931.center) to (1932.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (1265) at (192.5, -21.25) {};
+		\node [style=none] (1266) at (193, -21) {};
+		\node [style=none] (1267) at (193.5, -21) {};
+		\node [style=Z] (1268) at (192.5, -20.5) {};
+		\node [style=Z] (1269) at (192.5, -20) {};
+		\node [style=X] (1270) at (193, -20.25) {};
+		\node [style=X] (1271) at (193.5, -19.5) {};
+		\node [style=X] (1272) at (193.5, -21) {};
+		\node [style=X] (1273) at (193, -21) {};
+		\node [style=none] (1274) at (190.5, -21.25) {};
+		\node [style=none] (1275) at (191, -21) {};
+		\node [style=none] (1276) at (191.5, -21) {};
+		\node [style=Z] (1277) at (191, -20.25) {};
+		\node [style=X] (1278) at (190.5, -20.5) {};
+		\node [style=X] (1279) at (190.5, -20) {};
+		\node [style=Z] (1280) at (191.5, -19.5) {};
+		\node [style=Z] (1281) at (191, -21) {};
+		\node [style=Z] (1282) at (191.5, -21) {};
+		\node [style=none] (1283) at (192.5, -18) {};
+		\node [style=none] (1284) at (193, -18) {};
+		\node [style=none] (1285) at (193.5, -18) {};
+		\node [style=none] (1286) at (190.5, -18) {};
+		\node [style=none] (1287) at (191, -18) {};
+		\node [style=none] (1288) at (191.5, -18) {};
+		\node [style=X] (1289) at (193, -18.75) {$e$};
+		\node [style=X] (1290) at (193.5, -18.75) {$f$};
+		\node [style=X] (1291) at (192.5, -18.75) {$d$};
+		\node [style=X] (1294) at (194.5, -18.75) {$e+d$};
+		\node [style=X] (1295) at (195.5, -18.75) {$f+d$};
+		\node [style=X] (1296) at (190.5, -18.75) {$a$};
+		\node [style=X] (1297) at (191, -18.75) {$b$};
+		\node [style=X] (1298) at (191.5, -18.75) {$c$};
+		\node [style=none] (1299) at (194.5, -18) {};
+		\node [style=none] (1300) at (195.5, -18) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1265.center) to (1268);
+		\draw (1266.center) to (1270);
+		\draw (1267.center) to (1271);
+		\draw (1268) to (1270);
+		\draw (1271) to (1269);
+		\draw (1268) to (1269);
+		\draw (1279) to (1280);
+		\draw (1278) to (1277);
+		\draw (1277) to (1275.center);
+		\draw (1274.center) to (1278);
+		\draw (1278) to (1279);
+		\draw (1276.center) to (1280);
+		\draw (1277) to (1287.center);
+		\draw (1280) to (1288.center);
+		\draw (1269) to (1291);
+		\draw (1291) to (1283.center);
+		\draw (1284.center) to (1289);
+		\draw (1289) to (1270);
+		\draw (1271) to (1290);
+		\draw (1290) to (1285.center);
+		\draw (1279) to (1296);
+		\draw (1296) to (1286.center);
+		\draw [style=red] (1294) to (1299.center);
+		\draw [style=red] (1295) to (1300.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+Suppose we want to correct for single pauli $X$ errors, then we find that:
+\begin{itemize}
+\item Pauli $X$ error $(d,e,f) = (1,0,0)$ yields syndrome $(e+d,f+d) = (1,1)$
+\item Pauli $X$ error $(d,e,f) = (0,1,0)$ yields syndrome $(e+d,f+d) = (1,0)$
+\item Pauli $X$ error$(d,e,f) = (0,0,1)$ yields syndrome $(e+d,f+d) = (0,1)$
+\item Pauli $X$ error $(d,e,f) = (0,0,0)$ yields syndrome $(e+d,f+d) = (0,0)$
+\end{itemize}
+Therefore, we want to apply the correction $(s,t) \mapsto (s t, s (t+1),(s+1) t)$. The error correction protocol then has the following form:
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (2375) at (319, -25.5) {};
+		\node [style=none] (2376) at (319.5, -25.25) {};
+		\node [style=none] (2377) at (320, -25.25) {};
+		\node [style=Z] (2378) at (319, -24.75) {};
+		\node [style=Z] (2379) at (319, -24.25) {};
+		\node [style=X] (2380) at (319.5, -24.5) {};
+		\node [style=X] (2381) at (320, -23.75) {};
+		\node [style=X] (2382) at (320, -25.25) {};
+		\node [style=X] (2383) at (319.5, -25.25) {};
+		\node [style=none] (2384) at (316.5, -25.5) {};
+		\node [style=none] (2385) at (317, -25.25) {};
+		\node [style=none] (2386) at (317.5, -25.25) {};
+		\node [style=Z] (2387) at (317, -24.5) {};
+		\node [style=X] (2388) at (316.5, -24.75) {};
+		\node [style=X] (2389) at (316.5, -24.25) {};
+		\node [style=Z] (2390) at (317.5, -23.75) {};
+		\node [style=none] (2391) at (319, -23.75) {};
+		\node [style=none] (2392) at (319.5, -23.75) {};
+		\node [style=none] (2393) at (320, -23.75) {};
+		\node [style=none] (2394) at (316.5, -23.75) {};
+		\node [style=none] (2395) at (317, -23.75) {};
+		\node [style=none] (2396) at (317.5, -23.75) {};
+		\node [style=Z] (2397) at (317, -25.25) {};
+		\node [style=Z] (2398) at (317.5, -25.25) {};
+		\node [style=none] (2399) at (321.75, -20.75) {};
+		\node [style=none] (2400) at (322.25, -20.75) {};
+		\node [style=none] (2401) at (322.75, -20.75) {};
+		\node [style=none] (2402) at (319.25, -20.75) {};
+		\node [style=none] (2403) at (319.75, -20.75) {};
+		\node [style=none] (2404) at (320.25, -20.75) {};
+		\node [style=X] (2405) at (318, -22) {$a$};
+		\node [style=X] (2406) at (318.5, -22) {$b$};
+		\node [style=X] (2407) at (319, -22) {$c$};
+		\node [style=X] (2408) at (320.5, -22) {$d$};
+		\node [style=X] (2409) at (321.25, -22) {$e$};
+		\node [style=X] (2410) at (321.75, -22) {$f$};
+		\node [style=none] (2411) at (321.75, -20.75) {};
+		\node [style=none] (2412) at (322.25, -20.75) {};
+		\node [style=none] (2413) at (322.75, -20.75) {};
+		\node [style=none] (2414) at (319.25, -20.75) {};
+		\node [style=none] (2415) at (319.75, -20.75) {};
+		\node [style=none] (2416) at (320.25, -20.75) {};
+		\node [style=Z] (2417) at (321.75, -18.5) {};
+		\node [style=Z] (2418) at (321.75, -18) {};
+		\node [style=X] (2419) at (322.25, -18.25) {};
+		\node [style=X] (2420) at (322.75, -17.5) {};
+		\node [style=Z] (2421) at (319.75, -18.25) {};
+		\node [style=X] (2422) at (319.25, -18.5) {};
+		\node [style=X] (2423) at (319.25, -18) {};
+		\node [style=Z] (2424) at (320.25, -17.5) {};
+		\node [style=none] (2425) at (321.75, -11.5) {};
+		\node [style=none] (2426) at (322.25, -11.75) {};
+		\node [style=none] (2427) at (322.75, -11.75) {};
+		\node [style=none] (2428) at (319.25, -11.5) {};
+		\node [style=none] (2429) at (319.75, -11.75) {};
+		\node [style=none] (2430) at (320.25, -11.75) {};
+		\node [style=Z] (2431) at (321.75, -19.75) {};
+		\node [style=Z] (2432) at (321.75, -20.25) {};
+		\node [style=X] (2433) at (322.25, -20) {};
+		\node [style=X] (2434) at (322.75, -20.75) {};
+		\node [style=Z] (2435) at (319.75, -20) {};
+		\node [style=X] (2436) at (319.25, -19.75) {};
+		\node [style=X] (2437) at (319.25, -20.25) {};
+		\node [style=Z] (2438) at (320.25, -20.75) {};
+		\node [style=none] (2439) at (321.75, -20.75) {};
+		\node [style=none] (2440) at (322.25, -20.75) {};
+		\node [style=none] (2441) at (322.75, -20.75) {};
+		\node [style=none] (2442) at (319.25, -20.75) {};
+		\node [style=none] (2443) at (319.75, -20.75) {};
+		\node [style=none] (2444) at (320.25, -20.75) {};
+		\node [style=X] (2445) at (324.25, -17.75) {};
+		\node [style=X] (2446) at (324.75, -18) {};
+		\node [style=Z] (2447) at (320.75, -18.25) {};
+		\node [style=Z] (2448) at (321.25, -18.5) {};
+		\node [style=Z] (2449) at (320.75, -19.25) {};
+		\node [style=Z] (2450) at (321.25, -19.25) {};
+		\node [style=X] (2451) at (324.25, -19.25) {};
+		\node [style=X] (2452) at (324.75, -19.25) {};
+		\node [style=Z] (2453) at (320.75, -17.25) {};
+		\node [style=Z] (2454) at (321.25, -17.25) {};
+		\node [style=none] (2455) at (324.25, -17.25) {};
+		\node [style=none] (2456) at (324.75, -17.25) {};
+		\node [style=Z] (2457) at (322.25, -18.75) {};
+		\node [style=Z] (2458) at (322.75, -19) {};
+		\node [style=X] (2459) at (319.75, -18.75) {};
+		\node [style=X] (2460) at (320.25, -19) {};
+		\node [style=none] (2461) at (324.75, -16.75) {};
+		\node [style=none] (2462) at (317.75, -16.75) {};
+		\node [style=none] (2463) at (320.75, -25.5) {};
+		\node [style=none] (2464) at (317.5, -20.75) {Alice};
+		\node [style=none] (2465) at (324, -21) {Bob};
+		\node [style=Z] (2466) at (324.25, -16.75) {};
+		\node [style=Z] (2467) at (324.75, -16.75) {};
+		\node [style=X] (2468) at (322.75, -13.75) {};
+		\node [style=X] (2469) at (322.25, -14) {};
+		\node [style=X] (2470) at (321.75, -14.25) {};
+		\node [style=none] (2471) at (323.25, -15) {};
+		\node [style=none] (2472) at (325.75, -11.5) {};
+		\node [style=none] (2473) at (326.25, -11.5) {};
+		\node [style=none] (2474) at (317.75, -11.5) {};
+		\node [style=andin] (2475) at (325, -14.75) {};
+		\node [style=Z] (2476) at (321.75, -12.25) {};
+		\node [style=Z] (2477) at (321.75, -12.75) {};
+		\node [style=X] (2478) at (322.25, -12.5) {};
+		\node [style=X] (2479) at (322.75, -13.25) {};
+		\node [style=Z] (2480) at (319.75, -12.5) {};
+		\node [style=X] (2481) at (319.25, -12.25) {};
+		\node [style=X] (2482) at (319.25, -12.75) {};
+		\node [style=Z] (2483) at (320.25, -13.25) {};
+		\node [style=Z] (2484) at (319.75, -11.75) {};
+		\node [style=Z] (2485) at (322.25, -11.75) {};
+		\node [style=Z] (2486) at (322.75, -11.75) {};
+		\node [style=Z] (2487) at (320.25, -11.75) {};
+		\node [style=none] (2488) at (324, -14.75) {};
+		\node [style=andin] (2489) at (323.25, -15) {};
+		\node [style=none] (2490) at (325, -14.75) {};
+		\node [style=andin] (2491) at (324, -14.75) {};
+		\node [style=X] (2492) at (324.25, -15.5) {$1$};
+		\node [style=X] (2493) at (324.75, -15.5) {$1$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (2375.center) to (2378);
+		\draw (2376.center) to (2380);
+		\draw (2377.center) to (2381);
+		\draw (2378) to (2380);
+		\draw (2381) to (2379);
+		\draw (2378) to (2379);
+		\draw (2389) to (2390);
+		\draw (2388) to (2387);
+		\draw (2387) to (2385.center);
+		\draw (2384.center) to (2388);
+		\draw (2388) to (2389);
+		\draw (2386.center) to (2390);
+		\draw (2392.center) to (2380);
+		\draw (2379) to (2391.center);
+		\draw (2395.center) to (2387);
+		\draw (2389) to (2394.center);
+		\draw [in=-135, out=90, looseness=1.25] (2394.center) to (2405);
+		\draw [in=45, out=-90] (2402.center) to (2405);
+		\draw [in=-135, out=90, looseness=1.25] (2395.center) to (2406);
+		\draw [in=270, out=45] (2406) to (2403.center);
+		\draw [in=45, out=-90] (2404.center) to (2407);
+		\draw [in=90, out=-135, looseness=1.25] (2407) to (2396.center);
+		\draw [in=45, out=-90] (2399.center) to (2408);
+		\draw [in=90, out=-135, looseness=1.25] (2408) to (2391.center);
+		\draw [in=-135, out=90, looseness=1.25] (2392.center) to (2409);
+		\draw [in=270, out=45] (2409) to (2400.center);
+		\draw [in=45, out=-90] (2401.center) to (2410);
+		\draw [in=90, out=-135, looseness=1.25] (2410) to (2393.center);
+		\draw (2417) to (2419);
+		\draw (2420) to (2418);
+		\draw (2417) to (2418);
+		\draw (2423) to (2424);
+		\draw (2422) to (2421);
+		\draw (2422) to (2423);
+		\draw (2420) to (2427.center);
+		\draw (2426.center) to (2419);
+		\draw (2418) to (2425.center);
+		\draw (2424) to (2430.center);
+		\draw (2429.center) to (2421);
+		\draw (2423) to (2428.center);
+		\draw (2431) to (2433);
+		\draw (2434) to (2432);
+		\draw (2431) to (2432);
+		\draw (2437) to (2438);
+		\draw (2436) to (2435);
+		\draw (2436) to (2437);
+		\draw (2440.center) to (2433);
+		\draw (2432) to (2439.center);
+		\draw (2443.center) to (2435);
+		\draw (2437) to (2442.center);
+		\draw (2431) to (2417);
+		\draw (2450) to (2448);
+		\draw (2448) to (2454);
+		\draw (2453) to (2447);
+		\draw (2447) to (2449);
+		\draw (2451) to (2445);
+		\draw (2446) to (2452);
+		\draw (2445) to (2455.center);
+		\draw (2446) to (2456.center);
+		\draw (2438) to (2460);
+		\draw (2460) to (2424);
+		\draw (2459) to (2421);
+		\draw (2435) to (2459);
+		\draw (2436) to (2422);
+		\draw (2457) to (2433);
+		\draw (2420) to (2458);
+		\draw (2458) to (2434);
+		\draw (2457) to (2419);
+		\draw (2460) to (2448);
+		\draw (2459) to (2447);
+		\draw (2457) to (2445);
+		\draw (2458) to (2446);
+		\draw [style=red] (2456.center) to (2461.center);
+		\draw [style=dotted, in=90, out=-90, looseness=1.25] (2462.center) to (2463.center);
+		\draw (2425.center) to (2470);
+		\draw [style=red, in=-60, out=135] (2467) to (2471.center);
+		\draw [style=red, in=-105, out=165] (2466) to (2471.center);
+		\draw [style=red, in=90, out=-45] (2470) to (2471.center);
+		\draw [style=red, in=-90, out=45] (2466) to (2472.center);
+		\draw [style=red, in=270, out=15, looseness=0.75] (2467) to (2473.center);
+		\draw (2476) to (2478);
+		\draw (2479) to (2477);
+		\draw (2482) to (2483);
+		\draw (2481) to (2480);
+		\draw [style=red] (2455.center) to (2466);
+		\draw [style=dotted] (2462.center) to (2474.center);
+		\draw [style=red, in=-135, out=135] (2466) to (2488.center);
+		\draw [style=red, in=-90, out=90] (2467) to (2492);
+		\draw [style=red, in=-45, out=90] (2492) to (2488.center);
+		\draw [style=red, in=-105, out=90] (2466) to (2493);
+		\draw [style=red, in=-135, out=90] (2493) to (2490.center);
+		\draw [style=red, in=45, out=-30] (2490.center) to (2467);
+		\draw [style=red, in=-30, out=90] (2490.center) to (2468);
+		\draw [style=red, in=-30, out=90] (2488.center) to (2469);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (1741) at (242.5, -21.25) {};
+		\node [style=none] (1742) at (243, -21) {};
+		\node [style=none] (1743) at (243.5, -21) {};
+		\node [style=Z] (1744) at (242.5, -20.5) {};
+		\node [style=Z] (1745) at (242.5, -20) {};
+		\node [style=X] (1746) at (243, -20.25) {};
+		\node [style=X] (1747) at (243.5, -19.5) {};
+		\node [style=X] (1748) at (243.5, -21) {};
+		\node [style=X] (1749) at (243, -21) {};
+		\node [style=none] (1750) at (240.5, -21.25) {};
+		\node [style=none] (1751) at (241, -21) {};
+		\node [style=none] (1752) at (241.5, -21) {};
+		\node [style=Z] (1753) at (241, -20.25) {};
+		\node [style=X] (1754) at (240.5, -20.5) {};
+		\node [style=X] (1755) at (240.5, -20) {};
+		\node [style=Z] (1756) at (241.5, -19.5) {};
+		\node [style=Z] (1757) at (241, -21) {};
+		\node [style=Z] (1758) at (241.5, -21) {};
+		\node [style=none] (1759) at (242.5, -18) {};
+		\node [style=none] (1760) at (243, -18) {};
+		\node [style=none] (1761) at (243.5, -18) {};
+		\node [style=none] (1762) at (240.5, -18) {};
+		\node [style=none] (1763) at (241, -18) {};
+		\node [style=none] (1764) at (241.5, -18) {};
+		\node [style=X] (1765) at (243, -18.75) {$g$};
+		\node [style=X] (1766) at (243.5, -18.75) {$g$};
+		\node [style=X] (1767) at (242.5, -18.75) {$g$};
+		\node [style=X] (1768) at (244.5, -17.5) {$e+d$};
+		\node [style=X] (1769) at (245.5, -17.5) {$f+d$};
+		\node [style=X] (1770) at (240.5, -18.75) {$a$};
+		\node [style=X] (1771) at (241, -18.75) {$b$};
+		\node [style=X] (1772) at (241.5, -18.75) {$c$};
+		\node [style=none] (1773) at (244.5, -16.25) {};
+		\node [style=none] (1774) at (245.5, -16.25) {};
+		\node [style=Z] (1775) at (242.5, -17) {};
+		\node [style=Z] (1776) at (242.5, -17.5) {};
+		\node [style=X] (1777) at (243, -17.25) {};
+		\node [style=X] (1778) at (243.5, -18) {};
+		\node [style=Z] (1779) at (241, -17.25) {};
+		\node [style=X] (1780) at (240.5, -17) {};
+		\node [style=X] (1781) at (240.5, -17.5) {};
+		\node [style=Z] (1782) at (241.5, -18) {};
+		\node [style=Z] (1789) at (241, -16.5) {};
+		\node [style=Z] (1790) at (241.5, -16.5) {};
+		\node [style=Z] (1791) at (243, -16.5) {};
+		\node [style=Z] (1792) at (243.5, -16.5) {};
+		\node [style=none] (1793) at (242.5, -16.25) {};
+		\node [style=none] (1794) at (240.5, -16.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1741.center) to (1744);
+		\draw (1742.center) to (1746);
+		\draw (1743.center) to (1747);
+		\draw (1744) to (1746);
+		\draw (1747) to (1745);
+		\draw (1744) to (1745);
+		\draw (1755) to (1756);
+		\draw (1754) to (1753);
+		\draw (1753) to (1751.center);
+		\draw (1750.center) to (1754);
+		\draw (1754) to (1755);
+		\draw (1752.center) to (1756);
+		\draw (1753) to (1763.center);
+		\draw (1756) to (1764.center);
+		\draw (1745) to (1767);
+		\draw (1767) to (1759.center);
+		\draw (1760.center) to (1765);
+		\draw (1765) to (1746);
+		\draw (1747) to (1766);
+		\draw (1766) to (1761.center);
+		\draw (1755) to (1770);
+		\draw (1770) to (1762.center);
+		\draw [style=red] (1768) to (1773.center);
+		\draw [style=red] (1769) to (1774.center);
+		\draw (1775) to (1777);
+		\draw (1778) to (1776);
+		\draw (1775) to (1776);
+		\draw (1781) to (1782);
+		\draw (1780) to (1779);
+		\draw (1780) to (1781);
+		\draw (1780) to (1794.center);
+		\draw (1763.center) to (1789);
+		\draw (1790) to (1782);
+		\draw (1775) to (1793.center);
+		\draw (1791) to (1777);
+		\draw (1778) to (1792);
+		\draw (1777) to (1760.center);
+		\draw (1759.center) to (1776);
+		\draw (1781) to (1762.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+Where 
+$$
+g:=d+(e+d)(f+d) = e+(e+d)(f+d+1) =f+(e+d+1)(f+d) = de+ef+fd
+\mod 2$$
+If no more than one of $d,e,f$ is $1$ then $g=0$.  If furthermore $a=b=c=0$, then:
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (1741) at (242.5, -21.25) {};
+		\node [style=none] (1742) at (243, -21) {};
+		\node [style=none] (1743) at (243.5, -21) {};
+		\node [style=Z] (1744) at (242.5, -20.5) {};
+		\node [style=Z] (1745) at (242.5, -20) {};
+		\node [style=X] (1746) at (243, -20.25) {};
+		\node [style=X] (1747) at (243.5, -19.5) {};
+		\node [style=X] (1748) at (243.5, -21) {};
+		\node [style=X] (1749) at (243, -21) {};
+		\node [style=none] (1750) at (240.5, -21.25) {};
+		\node [style=none] (1751) at (241, -21) {};
+		\node [style=none] (1752) at (241.5, -21) {};
+		\node [style=Z] (1753) at (241, -20.25) {};
+		\node [style=X] (1754) at (240.5, -20.5) {};
+		\node [style=X] (1755) at (240.5, -20) {};
+		\node [style=Z] (1756) at (241.5, -19.5) {};
+		\node [style=Z] (1757) at (241, -21) {};
+		\node [style=Z] (1758) at (241.5, -21) {};
+		\node [style=none] (1759) at (242.5, -18) {};
+		\node [style=none] (1760) at (243, -18) {};
+		\node [style=none] (1761) at (243.5, -18) {};
+		\node [style=none] (1762) at (240.5, -18) {};
+		\node [style=none] (1763) at (241, -18) {};
+		\node [style=none] (1764) at (241.5, -18) {};
+		\node [style=X] (1765) at (243, -18.75) {$g$};
+		\node [style=X] (1766) at (243.5, -18.75) {$g$};
+		\node [style=X] (1767) at (242.5, -18.75) {$g$};
+		\node [style=X] (1768) at (244.5, -17.5) {$e+d$};
+		\node [style=X] (1769) at (245.5, -17.5) {$f+d$};
+		\node [style=X] (1770) at (240.5, -18.75) {$a$};
+		\node [style=X] (1771) at (241, -18.75) {$b$};
+		\node [style=X] (1772) at (241.5, -18.75) {$c$};
+		\node [style=none] (1773) at (244.5, -16.25) {};
+		\node [style=none] (1774) at (245.5, -16.25) {};
+		\node [style=Z] (1775) at (242.5, -17) {};
+		\node [style=Z] (1776) at (242.5, -17.5) {};
+		\node [style=X] (1777) at (243, -17.25) {};
+		\node [style=X] (1778) at (243.5, -18) {};
+		\node [style=Z] (1779) at (241, -17.25) {};
+		\node [style=X] (1780) at (240.5, -17) {};
+		\node [style=X] (1781) at (240.5, -17.5) {};
+		\node [style=Z] (1782) at (241.5, -18) {};
+		\node [style=Z] (1789) at (241, -16.5) {};
+		\node [style=Z] (1790) at (241.5, -16.5) {};
+		\node [style=Z] (1791) at (243, -16.5) {};
+		\node [style=Z] (1792) at (243.5, -16.5) {};
+		\node [style=none] (1793) at (242.5, -16.25) {};
+		\node [style=none] (1794) at (240.5, -16.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1741.center) to (1744);
+		\draw (1742.center) to (1746);
+		\draw (1743.center) to (1747);
+		\draw (1744) to (1746);
+		\draw (1747) to (1745);
+		\draw (1744) to (1745);
+		\draw (1755) to (1756);
+		\draw (1754) to (1753);
+		\draw (1753) to (1751.center);
+		\draw (1750.center) to (1754);
+		\draw (1754) to (1755);
+		\draw (1752.center) to (1756);
+		\draw (1753) to (1763.center);
+		\draw (1756) to (1764.center);
+		\draw (1745) to (1767);
+		\draw (1767) to (1759.center);
+		\draw (1760.center) to (1765);
+		\draw (1765) to (1746);
+		\draw (1747) to (1766);
+		\draw (1766) to (1761.center);
+		\draw (1755) to (1770);
+		\draw (1770) to (1762.center);
+		\draw [style=red] (1768) to (1773.center);
+		\draw [style=red] (1769) to (1774.center);
+		\draw (1775) to (1777);
+		\draw (1778) to (1776);
+		\draw (1775) to (1776);
+		\draw (1781) to (1782);
+		\draw (1780) to (1779);
+		\draw (1780) to (1781);
+		\draw (1780) to (1794.center);
+		\draw (1763.center) to (1789);
+		\draw (1790) to (1782);
+		\draw (1775) to (1793.center);
+		\draw (1791) to (1777);
+		\draw (1778) to (1792);
+		\draw (1777) to (1760.center);
+		\draw (1759.center) to (1776);
+		\draw (1781) to (1762.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (1795) at (248.5, -21.25) {};
+		\node [style=none] (1796) at (249, -21) {};
+		\node [style=none] (1797) at (249.5, -21) {};
+		\node [style=Z] (1798) at (248.5, -20.5) {};
+		\node [style=Z] (1799) at (248.5, -20) {};
+		\node [style=X] (1800) at (249, -20.25) {};
+		\node [style=X] (1801) at (249.5, -19.5) {};
+		\node [style=X] (1802) at (249.5, -21) {};
+		\node [style=X] (1803) at (249, -21) {};
+		\node [style=none] (1804) at (246.5, -21.25) {};
+		\node [style=none] (1805) at (247, -21) {};
+		\node [style=none] (1806) at (247.5, -21) {};
+		\node [style=Z] (1807) at (247, -20.25) {};
+		\node [style=X] (1808) at (246.5, -20.5) {};
+		\node [style=X] (1809) at (246.5, -20) {};
+		\node [style=Z] (1810) at (247.5, -19.5) {};
+		\node [style=Z] (1811) at (247, -21) {};
+		\node [style=Z] (1812) at (247.5, -21) {};
+		\node [style=none] (1813) at (248.5, -18) {};
+		\node [style=none] (1814) at (249, -18) {};
+		\node [style=none] (1815) at (249.5, -18) {};
+		\node [style=none] (1816) at (246.5, -18) {};
+		\node [style=none] (1817) at (247, -18) {};
+		\node [style=none] (1818) at (247.5, -18) {};
+		\node [style=X] (1822) at (250.5, -17.5) {$e+d$};
+		\node [style=X] (1823) at (251.5, -17.5) {$f+d$};
+		\node [style=none] (1827) at (250.5, -16.25) {};
+		\node [style=none] (1828) at (251.5, -16.25) {};
+		\node [style=Z] (1829) at (248.5, -17) {};
+		\node [style=Z] (1830) at (248.5, -17.5) {};
+		\node [style=X] (1831) at (249, -17.25) {};
+		\node [style=X] (1832) at (249.5, -18) {};
+		\node [style=Z] (1833) at (247, -17.25) {};
+		\node [style=X] (1834) at (246.5, -17) {};
+		\node [style=X] (1835) at (246.5, -17.5) {};
+		\node [style=Z] (1836) at (247.5, -18) {};
+		\node [style=Z] (1837) at (247, -16.5) {};
+		\node [style=Z] (1838) at (247.5, -16.5) {};
+		\node [style=Z] (1839) at (249, -16.5) {};
+		\node [style=Z] (1840) at (249.5, -16.5) {};
+		\node [style=none] (1841) at (248.5, -16.25) {};
+		\node [style=none] (1842) at (246.5, -16.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1795.center) to (1798);
+		\draw (1796.center) to (1800);
+		\draw (1797.center) to (1801);
+		\draw (1798) to (1800);
+		\draw (1801) to (1799);
+		\draw (1798) to (1799);
+		\draw (1809) to (1810);
+		\draw (1808) to (1807);
+		\draw (1807) to (1805.center);
+		\draw (1804.center) to (1808);
+		\draw (1808) to (1809);
+		\draw (1806.center) to (1810);
+		\draw (1807) to (1817.center);
+		\draw (1810) to (1818.center);
+		\draw [style=red] (1822) to (1827.center);
+		\draw [style=red] (1823) to (1828.center);
+		\draw (1829) to (1831);
+		\draw (1832) to (1830);
+		\draw (1829) to (1830);
+		\draw (1835) to (1836);
+		\draw (1834) to (1833);
+		\draw (1834) to (1835);
+		\draw (1834) to (1842.center);
+		\draw (1817.center) to (1837);
+		\draw (1838) to (1836);
+		\draw (1829) to (1841.center);
+		\draw (1839) to (1831);
+		\draw (1832) to (1840);
+		\draw (1831) to (1814.center);
+		\draw (1813.center) to (1830);
+		\draw (1835) to (1816.center);
+		\draw (1809) to (1816.center);
+		\draw (1800) to (1814.center);
+		\draw (1799) to (1813.center);
+		\draw (1801) to (1832);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (1795) at (248.5, -21.25) {};
+		\node [style=none] (1804) at (248, -21.25) {};
+		\node [style=X] (1822) at (249.5, -17.5) {$e+d$};
+		\node [style=X] (1823) at (250.5, -17.5) {$f+d$};
+		\node [style=none] (1827) at (249.5, -16.25) {};
+		\node [style=none] (1828) at (250.5, -16.25) {};
+		\node [style=none] (1841) at (248.5, -16.25) {};
+		\node [style=none] (1842) at (248, -16.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=red] (1822) to (1827.center);
+		\draw [style=red] (1823) to (1828.center);
+		\draw (1804.center) to (1842.center);
+		\draw (1841.center) to (1795.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
 \end{example}
 
+It is important to note that the controlled operation we applied for the error correction step requires nonlinear classical processing power, and therefore the diagram we drew doesn't ``live'' within the calculus we have constructed throughout this paper. 
 
-\begin{example}
-TODO stabilizer code with nonaffine correction
-\end{example}
+A graphical calculus for Boolean relations exists in the literature \cite{zxa} which combined with the calculus for stabilizer codes in this paper yields a syntax for qubit CSS codes and full nondeterministic classical processing.
+
+To find a graphical syntax for qudit stabilizer codes with classical error correction, and an insightful characterization of the semantics we leave for future work.  
+
+\section{Undoubled completeness for affine coisotropic relations}
+
+In this section we give a proper completeness theorem for affine coisotropic relations in terms of adding generators and relations to the presentation of affine relations.
+
+BIAFFINE RELATIONS
+$\Aff\Rel_{k} \leftarrowtail \LinRel_k^{+1} \xrightarrow[\cong]{\perp} \LinRel_k^{+1} \AffRel_k$
+
+Graphically, this is presented by:
+
+GIVE GENERATORS AND EQUATIONS IN TERMS OF SPIDERS
+
+
 

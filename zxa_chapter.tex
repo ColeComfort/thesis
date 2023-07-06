@@ -1258,14 +1258,14 @@ Therefore, in $\tilde \X$, since the Frobenius structure is counital:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=map] (0) at (0, 3.25) {$f^\circ$};
-		\node [style=Z] (1) at (-0.5, 2.25) {};
-		\node [style=map] (2) at (0, 1.25) {$f$};
-		\node [style=none] (3) at (0, 4.25) {};
-		\node [style=none] (4) at (-1, 0.5) {};
-		\node [style=none] (5) at (0, 0.5) {};
-		\node [style=none] (6) at (0, 3.75) {};
-		\node [style=none] (7) at (0.5, 4.25) {};
+		\node [style=map] (0) at (1.5, 3.25) {$f^\circ$};
+		\node [style=Z] (1) at (1, 2.25) {};
+		\node [style=map] (2) at (1.5, 1.25) {$f$};
+		\node [style=none] (3) at (1.5, 4.25) {};
+		\node [style=none] (4) at (0.5, 0.5) {};
+		\node [style=none] (5) at (1.5, 0.5) {};
+		\node [style=none] (7) at (2.25, 4.25) {};
+		\node [style=unit] (8) at (2.25, 3.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=simple] (0) to (3.center);
@@ -1274,7 +1274,7 @@ $$
 		\draw [style=simple] (5.center) to (2);
 		\draw [style=simple, in=60, out=-60, looseness=0.75] (0) to (2);
 		\draw [in=-117, out=90] (1) to (0);
-		\draw [style=dashed, in=30, out=-90] (7.center) to (6.center);
+		\draw (8.center) to (7.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 \sim
@@ -1330,14 +1330,14 @@ $$
 \sim
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=map] (0) at (0, 3.25) {$g^\circ$};
-		\node [style=Z] (1) at (-0.5, 2.25) {};
-		\node [style=map] (2) at (0, 1.25) {$g$};
-		\node [style=none] (3) at (0, 4.25) {};
-		\node [style=none] (4) at (-1, 0.5) {};
-		\node [style=none] (5) at (0, 0.5) {};
-		\node [style=none] (6) at (0, 3.75) {};
-		\node [style=none] (7) at (0.5, 4.25) {};
+		\node [style=map] (0) at (1.5, 3.25) {$g^\circ$};
+		\node [style=Z] (1) at (1, 2.25) {};
+		\node [style=map] (2) at (1.5, 1.25) {$g$};
+		\node [style=none] (3) at (1.5, 4.25) {};
+		\node [style=none] (4) at (0.5, 0.5) {};
+		\node [style=none] (5) at (1.5, 0.5) {};
+		\node [style=none] (7) at (2.25, 4.25) {};
+		\node [style=unit] (8) at (2.25, 3.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=simple] (0) to (3.center);
@@ -1346,7 +1346,7 @@ $$
 		\draw [style=simple] (5.center) to (2);
 		\draw [style=simple, in=60, out=-60, looseness=0.75] (0) to (2);
 		\draw [in=-117, out=90] (1) to (0);
-		\draw [style=dashed, in=30, out=-90] (7.center) to (6.center);
+		\draw (8.center) to (7.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
@@ -3127,9 +3127,27 @@ The Toffoli gate and the 1-ancillary bits allow $\cnot$, $\Not$, $\zeroin$, $\ze
 
 
 \begin{theorem}\cite{tof}
-$\TOF$ is isomorphic to the category of partial isomorphisms between ordinals $2^n$, $n\in \N$.
+$\TOF$ is \dag-symmetric monodally isomorphic to the category $\FPinj_2$ of partial isomorphisms between ordinals $2^n$, $n\in \N$.
 \end{theorem}
 
+\begin{corollary}
+$\TOF$ embeds in $\FHilb$ via the $\ell^2$ functor so that:
+$$\TOF \cong \FPinj \xrightarrowtail{\ell^2} \FHilb$$
+
+The object $n$ is sent to
+
+$$\{\phi:\{0,1\}^n\to \C | \sum_{(b_1,\ldots,b_n )\in \{0,1\}^n } |\phi (b_1,\ldots, b_n)|^2 < \infty \}$$
+
+The $2^n$ dirac deltas yield an orthonormal basis
+$$
+\delta_{a_1,\ldots, a_n} (b_1,\ldots, b_n) := 
+\begin{cases}
+ 1 & \text{if $\forall i\in[n], a_i=b_i$ }\\
+0 & \text{otherwise}
+\end{cases}
+$$
+
+\end{corollary}
 
 
 One can moreover construct generalized controlled not gates with arbitrarily many control wires in the obvious way.  Let $[x,X]$ denote a generalized Toffoli gate acting on the $x$th wire, controlled on the wires indexed by a set $X$. Then we can partially commute generalized controlled-not gates:
@@ -3239,7 +3257,7 @@ $$
 \end{lemma}
 
 
-\subsubsection{Adding a unit and counit to  \texorpdfstring{$\TOF$}{TOF}}
+\subsubsection{Adding a unit and counit to  TOF}
 
 
 By adding a unit and counit, we obtain a full subcategory of spans of sets and finite ordinals:
@@ -3299,7 +3317,7 @@ F&\left(
 So $F$ is full.
 
 
-For faithfulness suppose we have any two isomorphic spans in $F(\X)$:
+For faithfulness suppose we have  two isomorphic spans in $F(\X)$:
 
 $$
 \xymatrix{
@@ -5183,7 +5201,8 @@ $$
 		\draw [style=simple] (3.center) to (2);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\hspace*{.5cm}
+$$
+$$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (0) at (0, 2) {};
@@ -5203,8 +5222,7 @@ $$
 		\draw [style=simple] (1.center) to (0);
 	\end{pgfonlayer}
 \end{tikzpicture}
-$$
-$$
+\hspace*{.5cm}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=X] (0) at (0, 1.5) {$\pi$};
@@ -5905,6 +5923,7 @@ This is immediate.
 
 
 \item[\ref{ZXA.5}:]
+
 \begin{align*}
 \left\llbracket
 \begin{tikzpicture}
@@ -6079,8 +6098,8 @@ This is immediate.
 		\draw (8) to (11);
 		\draw (11) to (1.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
-=
+\end{tikzpicture}\\
+&=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (-0.75, 0.5) {};
@@ -7786,7 +7805,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 \right\rrbracket_{\ZXA}
-=
+&=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=dot] (42) at (0, 7) {};
@@ -7894,8 +7913,8 @@ $$
 		\draw (49) to (46);
 		\draw (45) to (51);
 	\end{pgfonlayer}
-\end{tikzpicture}
-\eq{Rem. \ref{cor:copy}}
+\end{tikzpicture}\\
+&\eq{Rem. \ref{cor:copy}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (46) at (0, 7) {};
@@ -10432,6 +10451,7 @@ $$
 
 \item[\ref{TOF.11}:]
 \begin{align*}
+&
 \left\llbracket
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -10470,7 +10490,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 \right\rrbracket_{\hat{\TOF}}
-&=
+=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (12) at (-0.75, 4.25) {};
@@ -10589,8 +10609,8 @@ $$
 		\draw (15) to (19);
 		\draw (15) to (18);
 	\end{pgfonlayer}
-\end{tikzpicture}
-\eq{\ref{ZXA.5}}
+\end{tikzpicture}\\
+&\eq{\ref{ZXA.5}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (15) at (-0.75, 8.75) {};
@@ -10624,8 +10644,8 @@ $$
 		\draw (28) to (16.center);
 		\draw (23.center) to (27);
 	\end{pgfonlayer}
-\end{tikzpicture}\\
-&\eq{\ref{ZXA.17}}
+\end{tikzpicture}
+\eq{\ref{ZXA.17}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (-1.25, 10.75) {};
@@ -11499,7 +11519,7 @@ $$
 \begingroup
 \allowdisplaybreaks
 \begin{align*}
-\left\llbracket
+&\left\llbracket 
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=nothing] (21) at (0, 0.5) {};
@@ -11540,7 +11560,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 \right\rrbracket_{\hat{\TOF}}
-&=
+=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (22) at (-2, 7) {};
@@ -11615,8 +11635,8 @@ $$
 		\draw (42.center) to (41);
 		\draw (39) to (42.center);
 	\end{pgfonlayer}
-\end{tikzpicture}\\
-&\eq{\ref{ZXA.3}}
+\end{tikzpicture}
+\eq{\ref{ZXA.3}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (24) at (-3, 9.5) {};
@@ -11655,8 +11675,8 @@ $$
 		\draw (29) to (39);
 		\draw (29) to (42.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
-=
+\end{tikzpicture}\\
+&=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (25) at (-3.5, 9.5) {};
@@ -11701,8 +11721,8 @@ $$
 		\draw (46.center) to (45.center);
 		\draw [in=-90, out=-90, looseness=1.50] (45.center) to (30.center);
 	\end{pgfonlayer}
-\end{tikzpicture}\\
-&\eq{\ref{ZXA.12}}
+\end{tikzpicture}
+\eq{\ref{ZXA.12}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (26) at (-3.5, 9.5) {};
@@ -11859,8 +11879,8 @@ $$
 		\draw [in=-90, out=-90] (42.center) to (29.center);
 		\draw [in=90, out=-90] (35.center) to (45.center);
 	\end{pgfonlayer}
-\end{tikzpicture}\\
-&\eq{\ref{ZXA.1}}
+\end{tikzpicture}
+\eq{\ref{ZXA.1}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (30) at (-1.5, 10.75) {};
@@ -12241,7 +12261,7 @@ $$
 \begingroup
 \allowdisplaybreaks
 \begin{align*}
-\left\llbracket
+&\left\llbracket
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=nothing] (44) at (0, 9.5) {};
@@ -12288,7 +12308,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 \right\rrbracket_{\hat{\TOF}}
-&=
+=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (44) at (-2, 10) {};
@@ -12385,8 +12405,8 @@ $$
 		\draw (69.center) to (53);
 		\draw (53) to (67.center);
 	\end{pgfonlayer}
-\end{tikzpicture}\\
-&\eq{\ref{ZXA.3}}
+\end{tikzpicture}
+\eq{\ref{ZXA.3}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (46) at (-2.5, 11.5) {};
@@ -12438,8 +12458,8 @@ $$
 		\draw (71) to (47);
 		\draw (46) to (72);
 	\end{pgfonlayer}
-\end{tikzpicture}
-=
+\end{tikzpicture}\\
+&=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (47) at (-0.75, 11.5) {};
@@ -12493,8 +12513,8 @@ $$
 		\draw [bend right=90, looseness=1.50] (73.center) to (68.center);
 		\draw [in=90, out=180] (58) to (71);
 	\end{pgfonlayer}
-\end{tikzpicture}\\
-&\eq{\ref{ZXA.12}}
+\end{tikzpicture}
+\eq{\ref{ZXA.12}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (48) at (-2.75, 9.75) {};
@@ -12570,8 +12590,8 @@ $$
 		\draw (63.center) to (56);
 		\draw [in=-90, out=-120, looseness=2.00] (58.center) to (63.center);
 	\end{pgfonlayer}
-\end{tikzpicture}\\
-&=
+\end{tikzpicture}
+=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (50) at (0.25, 9.5) {};
@@ -12602,7 +12622,8 @@ $$
 		\draw (62.center) to (56);
 		\draw (60) to (62.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}\\
+&
 \eq{\ref{ZXA.11}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -12638,8 +12659,8 @@ $$
 		\draw (65.center) to (53);
 		\draw [in=90, out=-129] (65.center) to (63.center);
 	\end{pgfonlayer}
-\end{tikzpicture}\\
-&\eq{\ref{ZXA.9}}
+\end{tikzpicture}
+\eq{\ref{ZXA.9}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (52) at (-0.25, 9.5) {};
@@ -12712,8 +12733,8 @@ $$
 		\draw [in=149, out=-90] (70.center) to (55);
 		\draw [in=56, out=-90] (71.center) to (63);
 	\end{pgfonlayer}
-\end{tikzpicture}\\
-&\eq{\ref{ZXA.9}}
+\end{tikzpicture}
+\eq{\ref{ZXA.9}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (54) at (0, 9.5) {};
@@ -12750,8 +12771,8 @@ $$
 		\draw [in=90, out=-72] (71.center) to (69.center);
 		\draw [in=90, out=-108] (71.center) to (68.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
-\eq{\ref{ZXA.11}}
+\end{tikzpicture}\\
+&\eq{\ref{ZXA.11}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (55) at (0, 10.5) {};
@@ -12792,8 +12813,8 @@ $$
 		\draw [in=90, out=-90] (74.center) to (70.center);
 		\draw [in=90, out=-90] (75.center) to (69.center);
 	\end{pgfonlayer}
-\end{tikzpicture}\\
-&=
+\end{tikzpicture}
+=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (56) at (-0.75, 13.75) {};
@@ -12891,8 +12912,8 @@ $$
 		\draw [in=-90, out=90] (85.center) to (73.center);
 		\draw (75.center) to (58);
 	\end{pgfonlayer}
-\end{tikzpicture}\\
-&=
+\end{tikzpicture}
+=
 \left\llbracket
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
