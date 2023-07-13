@@ -2168,7 +2168,8 @@ $$
 		\draw (35.center) to (34.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\hspace{,3cm}
+$$
+$$
 \left\llbracket
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2256,28 +2257,28 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (84) at (18.75, 1.25) {};
-		\node [style=none] (85) at (19.5, 1.25) {};
-		\node [style=none] (86) at (19.5, -1.5) {};
-		\node [style=none] (87) at (18.75, -1.5) {};
-		\node [style=Z] (88) at (18.75, 0.25) {};
-		\node [style=Z] (89) at (18.75, -0.5) {};
-		\node [style=X] (90) at (19.5, 0.25) {$1$};
-		\node [style=X] (91) at (19.5, -0.5) {$1$};
-		\node [style=scalarop] (92) at (19.5, -1) {$-a$};
-		\node [style=scalar] (93) at (18.75, -1) {$-a$};
-		\node [style=scalar] (94) at (19.5, 0.75) {$a$};
-		\node [style=scalarop] (95) at (18.75, 0.75) {$a$};
+		\node [style=none] (16) at (19.25, 1.25) {};
+		\node [style=none] (17) at (20.25, 1.25) {};
+		\node [style=none] (18) at (20.25, -1.5) {};
+		\node [style=none] (19) at (19.25, -1.5) {};
+		\node [style=Z] (20) at (19.25, 0.25) {};
+		\node [style=Z] (21) at (19.25, -0.5) {};
+		\node [style=X] (22) at (20.25, 0.25) {$1$};
+		\node [style=X] (23) at (20.25, -0.5) {$1$};
+		\node [style=scalarop] (24) at (20.25, -1) {$-a$};
+		\node [style=scalar] (25) at (19.25, -1) {$-a$};
+		\node [style=scalar] (26) at (20.25, 0.75) {$a$};
+		\node [style=scalarop] (27) at (19.25, 0.75) {$a$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (86.center) to (92);
-		\draw (92) to (91);
-		\draw (89) to (93);
-		\draw (87.center) to (93);
-		\draw (88) to (95);
-		\draw (95) to (84.center);
-		\draw (90) to (94);
-		\draw (94) to (85.center);
+		\draw (18.center) to (24);
+		\draw (24) to (23);
+		\draw (21) to (25);
+		\draw (19.center) to (25);
+		\draw (20) to (27);
+		\draw (27) to (16.center);
+		\draw (22) to (26);
+		\draw (26) to (17.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
@@ -7296,7 +7297,7 @@ To find a graphical syntax for qudit stabilizer codes with classical error corre
 In this section we give a proper completeness theorem for affine coisotropic relations in terms of adding generators and relations to the presentation of affine relations.
 
 BIAFFINE RELATIONS
-$\Aff\Rel_{k} \leftarrowtail \LinRel_k^{+1} \xrightarrow[\cong]{\perp} \LinRel_k^{+1} \AffRel_k$
+%$\Aff\Rel_{k} \leftarrowtail \LinRel_k^{+1} \xrightarrow[\cong]{\perp} \LinRel_k^{+1} \Af\fRel_k$
 
 Graphically, this is presented by:
 
