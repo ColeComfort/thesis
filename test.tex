@@ -54,155 +54,38 @@
 %\input{grothendieck_chapter}
 %
 
+In quantum mechanics, measurement on a system $\mathcal H$ is performed with respect to an orthonormal basis.  Fix an orthonormal basis $B=\{ |b_0\rangle,\ldots, |b_{n-1}\rangle \} of $\mathcal H$.  
+%Suppose one is measuring a quantum state $|\psi\rangle$, then probability of measuring basis vector $| b_j\rangle $ is given by $| \langle b_j | \psi \rangle |^2$.  This probabilistic interpretation of quantum measurement is called the {\bf Born rule}.
+
+
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=X] (0) at (20, 0) {};
-		\node [style=Z] (1) at (22.5, 0) {};
-		\node [style=none] (2) at (19.75, 1) {};
-		\node [style=none] (3) at (20.25, 1) {};
-		\node [style=none] (4) at (22.25, 1) {};
-		\node [style=none] (5) at (22.75, 1) {};
-		\node [style=X] (7) at (21, 0) {};
-		\node [style=none] (8) at (20.75, 1) {};
-		\node [style=none] (9) at (21.25, 1) {};
-		\node [style=Z] (10) at (23.5, 0) {};
-		\node [style=none] (11) at (23.25, 1) {};
-		\node [style=none] (12) at (23.75, 1) {};
-		\node [style=Z] (13) at (21.25, 1) {};
-		\node [style=Z] (14) at (20.25, 1) {};
-		\node [style=none] (15) at (23.75, 1.75) {};
-		\node [style=X] (16) at (23.25, 2.5) {};
-		\node [style=none] (17) at (23.25, 3) {};
-		\node [style=none] (18) at (22.25, 3) {};
-		\node [style=none] (19) at (20.75, 3) {};
-		\node [style=none] (20) at (19.75, 3) {};
-		\node [style=Z] (22) at (28, 0) {};
-		\node [style=none] (23) at (25.5, 0) {};
-		\node [style=none] (25) at (27.75, 1) {};
-		\node [style=none] (26) at (28.25, 1) {};
-		\node [style=none] (28) at (26.5, 0) {};
-		\node [style=Z] (30) at (29, 0) {};
-		\node [style=none] (31) at (28.75, 1) {};
-		\node [style=none] (32) at (29.25, 1) {};
-		\node [style=Z] (33) at (26.5, 0) {};
-		\node [style=Z] (34) at (25.5, 0) {};
-		\node [style=none] (35) at (29.25, 1.75) {};
-		\node [style=X] (36) at (28.75, 2.5) {};
-		\node [style=none] (37) at (28.75, 3) {};
-		\node [style=none] (38) at (27.75, 3) {};
-		\node [style=none] (39) at (26.5, 3) {};
-		\node [style=none] (40) at (25.5, 3) {};
-		\node [style=map] (41) at (23.75, 1.75) {$\times$};
-		\node [style=map] (42) at (29.25, 1.75) {$\times$};
-		\node [style=none] (43) at (24.75, 1.5) {$=$};
-		\node [style=Z] (44) at (22.25, -5) {};
-		\node [style=none] (45) at (19.75, -5) {};
-		\node [style=none] (46) at (22, -4) {};
-		\node [style=none] (47) at (22.5, -4) {};
-		\node [style=none] (48) at (20.75, -5) {};
-		\node [style=Z] (49) at (23.25, -5) {};
-		\node [style=none] (50) at (23, -4) {};
-		\node [style=none] (51) at (23.5, -4) {};
-		\node [style=Z] (52) at (20.75, -5) {};
-		\node [style=Z] (53) at (19.75, -5) {};
-		\node [style=none] (54) at (23.5, -3.25) {};
-		\node [style=X] (55) at (23, -2.5) {};
-		\node [style=none] (56) at (23, -1.25) {};
-		\node [style=none] (57) at (22, -1.25) {};
-		\node [style=none] (58) at (20.75, -1.25) {};
-		\node [style=none] (59) at (19.75, -1.25) {};
-		\node [style=map] (60) at (23.5, -3.25) {$\times$};
-		\node [style=X] (61) at (19.75, -1.75) {$z_1$};
-		\node [style=X] (62) at (20.75, -1.75) {$z_2$};
-		\node [style=X] (63) at (22, -1.75) {$x_1$};
-		\node [style=X] (64) at (23, -1.75) {$x_3$};
-		\node [style=Z] (65) at (28, -5) {};
-		\node [style=none] (66) at (25.5, -5) {};
-		\node [style=none] (67) at (27.75, -4) {};
-		\node [style=none] (68) at (28.25, -4) {};
-		\node [style=none] (69) at (26.5, -5) {};
-		\node [style=Z] (70) at (29, -5) {};
-		\node [style=none] (71) at (28.75, -4) {};
-		\node [style=none] (72) at (29.25, -4) {};
-		\node [style=Z] (73) at (26.5, -5) {};
-		\node [style=Z] (74) at (25.5, -5) {};
-		\node [style=none] (75) at (29.25, -3.25) {};
-		\node [style=X] (76) at (28.75, -2.5) {};
-		\node [style=none] (77) at (28.75, -1.25) {};
-		\node [style=none] (78) at (27.75, -1.25) {};
-		\node [style=none] (79) at (26.5, -1.25) {};
-		\node [style=none] (80) at (25.5, -1.25) {};
-		\node [style=map] (81) at (29.25, -3.25) {$\times$};
-		\node [style=none] (86) at (24.75, -3) {$=$};
-		\node [style=none] (87) at (24.75, -0.75) {Then ${\mathcal W}((z_1,z_2),(x_1,x_2)$ is a stabilizer when:};
-		\node [style=none] (90) at (24.75, -5.5) {Which holds when there exists some $a$ such that $x_1\cdot a = a+x_2$};
+		\node [style=none] (6) at (3.25, 0) {};
+		\node [style=none] (7) at (4.5, 0.75) {};
+		\node [style=X] (8) at (3.25, 0.75) {};
+		\node [style=X] (9) at (4.5, 0.75) {};
+		\node [style=none] (10) at (2.75, 2) {};
+		\node [style=none] (11) at (4.5, 0.75) {};
+		\node [style=none] (12) at (4.5, 0.75) {};
+		\node [style=none] (18) at (5, 0.25) {};
+		\node [style=none] (19) at (5, 1) {};
+		\node [style=none] (20) at (4, 0.75) {};
+		\node [style=none] (21) at (5.25, 2) {};
+		\node [style=none] (23) at (4, 0) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=45, out=-90] (3.center) to (0);
-		\draw [in=-90, out=135] (0) to (2.center);
-		\draw [in=-90, out=135] (1) to (4.center);
-		\draw [in=-90, out=45] (1) to (5.center);
-		\draw [in=45, out=-90] (9.center) to (7);
-		\draw [in=-90, out=135] (7) to (8.center);
-		\draw [in=-90, out=135] (10) to (11.center);
-		\draw [in=-90, out=45] (10) to (12.center);
-		\draw [style=red] (12.center) to (15.center);
-		\draw [style=red, in=-165, out=90, looseness=0.75] (5.center) to (15.center);
-		\draw [style=red, in=-30, out=90, looseness=1.25] (15.center) to (16);
-		\draw (11.center) to (16);
-		\draw (16) to (17.center);
-		\draw (4.center) to (18.center);
-		\draw (8.center) to (19.center);
-		\draw (2.center) to (20.center);
-		\draw [in=-90, out=135] (22) to (25.center);
-		\draw [in=-90, out=45] (22) to (26.center);
-		\draw [in=-90, out=135] (30) to (31.center);
-		\draw [in=-90, out=45] (30) to (32.center);
-		\draw [style=red] (32.center) to (35.center);
-		\draw [style=red, in=-165, out=90, looseness=0.75] (26.center) to (35.center);
-		\draw [style=red, in=-30, out=90, looseness=1.25] (35.center) to (36);
-		\draw (31.center) to (36);
-		\draw (36) to (37.center);
-		\draw (25.center) to (38.center);
-		\draw (28.center) to (39.center);
-		\draw (23.center) to (40.center);
-		\draw [in=-90, out=135] (44) to (46.center);
-		\draw [in=-90, out=45] (44) to (47.center);
-		\draw [in=-90, out=135] (49) to (50.center);
-		\draw [in=-90, out=45] (49) to (51.center);
-		\draw [style=red] (51.center) to (54.center);
-		\draw [style=red, in=-165, out=90, looseness=0.75] (47.center) to (54.center);
-		\draw [style=red, in=-30, out=90, looseness=1.25] (54.center) to (55);
-		\draw (50.center) to (55);
-		\draw (55) to (56.center);
-		\draw (46.center) to (57.center);
-		\draw (48.center) to (58.center);
-		\draw (45.center) to (59.center);
-		\draw [in=-90, out=135] (65) to (67.center);
-		\draw [in=-90, out=45] (65) to (68.center);
-		\draw [in=-90, out=135] (70) to (71.center);
-		\draw [in=-90, out=45] (70) to (72.center);
-		\draw [style=red] (72.center) to (75.center);
-		\draw [style=red, in=-165, out=90, looseness=0.75] (68.center) to (75.center);
-		\draw [style=red, in=-30, out=90, looseness=1.25] (75.center) to (76);
-		\draw (71.center) to (76);
-		\draw (76) to (77.center);
-		\draw (67.center) to (78.center);
-		\draw (69.center) to (79.center);
-		\draw (66.center) to (80.center);
+		\draw (6.center) to (8);
+		\draw [in=-90, out=150, looseness=0.75] (8) to (10.center);
+		\draw [in=-165, out=-135, looseness=1.50] (7.center) to (18.center);
+		\draw [in=-90, out=-60, looseness=1.75] (12.center) to (19.center);
+		\draw [bend left=270, looseness=2.25] (11.center) to (20.center);
+		\draw [in=0, out=-90, looseness=0.50] (21.center) to (18.center);
+		\draw (20.center) to (23.center);
+		\draw [in=75, out=90] (19.center) to (8);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=130mm]{pictures/proof_net.png}
-\caption{3D representation of proof nets \cite[Fig. 1]{dunn} }
-\end{figure}
-
 \bibliography{bibliography} 
 \bibliographystyle{plain}
 \end{document}

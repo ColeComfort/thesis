@@ -3151,13 +3151,13 @@ $$
 \end{corollary}
 
 
-One can moreover construct generalized controlled not gates with arbitrarily many control wires in the obvious way.  Let $[x,X]$ denote a generalized Toffoli gate acting on the $x$th wire, controlled on the wires indexed by a set $X$. Then we can partially commute generalized controlled-not gates:
+One can moreover construct generalized controlled not gates with arbitrarily many control wires in the obvious way.  Let $\lbparen x,X \rbparen$ denote a generalized Toffoli gate acting on the $x$th wire, controlled on the wires indexed by a set $X$. Then we can partially commute generalized controlled-not gates:
 
 \begin{lemma} \cite[Lem. 7.2.6]{cole}
 \label{lemma:Iwama}
-Let $[x,X]$ and $[y,Y]$ be generalized controlled not gates in $\TOF$ where $x\notin Y$.  We can perform the identities of Iwama et al. \cite{iwama}, to commute them past each other with a trailing generalized controlled not gate as a side effect:
+Let $\lbparen x,X \rbparen$ and $\lbparen y,Y \rbparen$ be generalized controlled not gates in $\TOF$ where $x\notin Y$.  We can perform the identities of Iwama et al. \cite{iwama}, to commute them past each other with a trailing generalized controlled not gate as a side effect:
 $$
- [y,{X\cup Y}] [y,{Y\sqcup\{x\}}] [x,X]
+ \lbparen y,{X\cup Y}\rbparen ; \lbparen y,{Y\sqcup\{x\}}\rbparen ;\lbparen x,X \rbparen
 $$
 \end{lemma}
 
@@ -3274,7 +3274,7 @@ $$c(\TOF)^\op \leftarrow \TOF \rightarrow c(\TOF)$$
 
 
 \begin{proof}
-Recall that $\TOF$ is presented by the subcategory $\FPinj_2$ of $(\Span^\sim (\FinOrd),\times)$ with morphisms of the form $ 2^n \xleftarrowtail{e} k \xrightarrowtail{e'} 2^m$ for arbitrary natural numbers $n,m,k$ and monics $e$ and $e'$.
+Recall that $\TOF$ is presented by the subcategory $\FPinj_2$ of $(\Span^\sim (\FinOrd),\times)$ with morphisms of the form $ 2^n \xleftarrowtail{e}\ k\ \xrightarrowtail{e'} 2^m$ for arbitrary natural numbers $n,m,k$ and monics $e$ and $e'$.
 
 
 
@@ -3288,7 +3288,7 @@ $$\FPar_2^\op \xleftarrowtail{}  \ \FPinj_2 \ \xrightarrowtail{} \FPar_2$$
 Consider the functor $F:\X\to\FSpan_2$ induced by the universal property of the pushout.  We show that this functor is an isomorphism.
 This functor is clearly the identity on objects.
 
-For fullness consider some span $2^n \xleftarrow{f} k \xrightarrow{g} 2^m$. We can construct a function $f':2^{\lceil \log_2 k \rceil} \rightarrow 2^n$ and monic $e_f: k \xrightarrowtail{} 2^{\lceil \log_2 k \rceil}$ so that $f=ef'$.  Similarly, we can construct some  $g':2^{\lceil \log_2 k \rceil} \rightarrow 2^n$ and monic $e_g: k \xrightarrowtail{} 2^{\lceil \log_2 k \rceil}$ so that $g=e_gg'$.  Therefore:
+For fullness consider some span $2^n \xleftarrow{f} k \xrightarrow{g} 2^m$. We can construct a function $f':2^{\lceil \log_2 k \rceil} \rightarrow 2^n$ and monic $e_f: k \ \xrightarrowtail{} 2^{\lceil \log_2 k \rceil}$ so that $f=e;f'$.  Similarly, we can construct some  $g':2^{\lceil \log_2 k \rceil} \rightarrow 2^n$ and monic $e_g: k\ \xrightarrowtail{} 2^{\lceil \log_2 k \rceil}$ so that $g=e_g;g'$.  Therefore:
 
 
 \begin{align*}
