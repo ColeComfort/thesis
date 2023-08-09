@@ -1,324 +1,793 @@
 \newcommand{\Cat}{{\sf Cat}}
 \newcommand{\D}{\mathcal{D}}
 %
-%
-%The Grothendieck construction establishes an equivalence of categories between pseudofunctors from categories $\X$ into $\Cat$ and fibrations over $\X$.  There is a two-sided variation of this construction:
-%
-%
-%\begin{theorem}{Benabou-Grothendieck}
-%Take a lax normal functor $F:\mathcal{I}\to\Prof$ from a 1-category $\mathcal{I}$.
-%
-%Then the following pullback exists:
-%$$
-%\xymatrix{
-%\int F \ar[d]_{} \ar[r]^{} & \Prof^*  \ar[d]\\
-%\mathcal{I}^{\op} \ar[r] ^F          & \Prof
-%}
-%$$
-%
-%Where $\int F$ is a 1-category and $\int F \to \X$ is a functor.
-%This extends to an isomorphism of categories:
-%$$\int:\Cat_{l,n}(\X, \Prof)\cong \Cat/\X:\delta$$
-%\end{theorem}
-%
-%$\Cat_{l,n}(\X, \Prof)$ is the category of lax normal functors from $\X$ to $\Prof$ and lax natural transformations. $\Cat/\X$ is the slice category over $\X$.
-%
-%
-%Explicitly:
-%\begin{lemma}
-%$\int F$ has:
-%\begin{description}
-%\item[Objects:] Pairs $(Y \in \X_0, Y^\sharp \in F(Y))$
-%\item[Morphisms:] 
-%
-%
-%
-%\item[Composition]
-%\end{description}
-%The functor $\int F\to \mathcal{I}^\op$ is the first projection from the pullback.
-%
-%\end{lemma}
-%and conversely
-%\begin{lemma}
-%Given a functor $\delta: \mathcal{J}\to\mathcal{I}^\op$ $\delta \pi$ is the lax functor such that
-%\begin{description}
-%\item
-%\item
-%\itemend{description}
-%\end{lemma}
-%
-%
-%
-%The Grothendieck construction has been extended to the monoidal case: establishing an equivalence between monoidal fibrations and monoidal pseudofunctors \cite[].  Similarly \cite[] prove the polycategorical Benabou-Grothendieck equivalence.  We adapt the work of both authors, by establishing a monoidal Grothendieck-Benabou equivalence:
+%%
+%%%The Grothendieck construction establishes an equivalence of categories between pseudofunctors from categories $\X$ into $\Cat$ and fibrations over $\X$.  There is a two-sided variation of this construction:
+%%%
+%%%
+%%%\begin{theorem}{Benabou-Grothendieck}
+%%%Take a lax normal functor $F:\mathcal{I}\to\Prof$ from a 1-category $\mathcal{I}$.
+%%%
+%%%Then the following pullback exists:
+%%%$$
+%%%\xymatrix{
+%%%\int F \ar[d]_{} \ar[r]^{} & \Prof^*  \ar[d]\\
+%%%\mathcal{I}^{\op} \ar[r] ^F          & \Prof
+%%%}
+%%%$$
+%%%
+%%%Where $\int F$ is a 1-category and $\int F \to \X$ is a functor.
+%%%This extends to an isomorphism of categories:
+%%%$$\int:\Cat_{l,n}(\X, \Prof)\cong \Cat/\X:\delta$$
+%%%\end{theorem}
+%%%
+%%%$\Cat_{l,n}(\X, \Prof)$ is the category of lax normal functors from $\X$ to $\Prof$ and lax natural transformations. $\Cat/\X$ is the slice category over $\X$.
+%%%
+%%%
+%%%Explicitly:
+%%%\begin{lemma}
+%%%$\int F$ has:
+%%%\begin{description}
+%%%\item[Objects:] Pairs $(Y \in \X_0, Y^\sharp \in F(Y))$
+%%%\item[Morphisms:] 
+%%%
+%%%
+%%%
+%%%\item[Composition]
+%%%\end{description}
+%%%The functor $\int F\to \mathcal{I}^\op$ is the first projection from the pullback.
+%%%
+%%%\end{lemma}
+%%%and conversely
+%%%\begin{lemma}
+%%%Given a functor $\delta: \mathcal{J}\to\mathcal{I}^\op$ $\delta \pi$ is the lax functor such that
+%%%\begin{description}
+%%%\item
+%%%\item
+%%%\itemend{description}
+%%%\end{lemma}
+%%%
+%%%
+%%%
+%%%The Grothendieck construction has been extended to the monoidal case: establishing an equivalence between monoidal fibrations and monoidal pseudofunctors \cite[].  Similarly \cite[] prove the polycategorical Benabou-Grothendieck equivalence.  We adapt the work of both authors, by establishing a monoidal Grothendieck-Benabou equivalence:
+%%%%
+%%%%
+%%%%
+%%%%\begin{theorem}[Monoidal Grothendieck-Benabou construction.]
+%%%%There is an equivalence of categories between the lax monoidal, lax normal functor category:
+%%%%
+%%%%\begin{description}
+%%%%\item[Objects:]
+%%%%\item[Maps:]
+%%%%\item[Identity:]
+%%%%\item[Composition:]
+%%%%\end{description}
+%%%%
+%%%%and  the monoidal slice cateogry:
+%%%%
+%%%%\begin{description}
+%%%%\item[Objects:]
+%%%%\item[Maps:]
+%%%%\item[Identity:]
+%%%%\item[Composition:]
+%%%%\end{description}
+%%%%
+%%%%\end{theorem}
+%%%%\begin{proof}
+%%%%Proof strategy: Start with a monoidal functor $\Y\to \X$ between strict monoidal categories.  Build a lax normal lax monoidal functor $\X\to \Prof$
+%%%%
+%%%%
+%%%%Let $\X$ be a monoidal category, regarded as a monoidal bicategory with one object, and take a lax monoidal lax functor $F:\X\to\Prof$.  Then the following pullback exists in the category of monoidal bicategories, lax monoidal lax functors and lax natural transformations:
+%%%%$$
+%%%%\xymatrix{
+%%%%\int F \ar[d]_{} \ar[r]^{} & \Prof^*  \ar[d]\\
+%%%%\X \ar[r] ^F          & \Prof
+%%%%}
+%%%%$$
+%%%%
+%%%%$\int F$ has the same categorical structure as in the non-monoidal 
+%%%%
+%%%%
+%%%%\end{proof}
+%%%
+%%%
+%%%
+%%%If $F$ is a normal frobenius monoidal lax normal functor
+%%%with laxator $\ell$ monoidal laxator $\mu$ oplaxator $\nu$
+%%%, then $\int F$ has an induced monoidal structure with:
+%%%
+%%% $F(X\otimes Y)\to F(X)\otimes F(Y) \to F(X')\otimes F(Y') \to F(X'\otimes Y')$
+%%%
+%%%\begin{description}
+%%%\item[Tensor product:] On Objects:
+%%%$$
+%%%(Y,Y^\sharp) \otimes (Z,Z^\sharp)
+%%%:=
+%%%(Y\otimes Z, \nu(\mu(Y^\sharp, Z^\sharp)))
+%%%$$
+%%%
+%%%On morphisms:
+%%%$$
+%%%(f,f^\sharp) \otimes (g,g^\sharp)
+%%%:=
+%%%(f\otimes g, \nu(\mu(f^\sharp, g^\sharp)) )
+%%%$$
+%%%
+%%%\item[Tensor unit:]
+%%%$$
+%%%(I,* \in F(I))=\mathbb{1})
+%%%$$
+%%%\item[Unitors:]
+%%%$$
+%%%u_{(X,X^\sharp)}^R: (X,X^\sharp)\otimes (I,*)=(X\otimes I, \mu^{\otimes}(X^\sharp, *))  \to (X,X^\sharp)
+%%%$$
+%%%is given by
+%%%$$
+%%%(u_X^{R}:X\otimes I\to X,  f\in F(u_X^{R})(X^\sharp, \mu^{\otimes}(X^\sharp, *) )   )
+%%%$$
+%%%
+%%%Where $f$ is the identity on $X$ along the isomorphism $ \mu^{\otimes}(X^\sharp, *) = $
+%%%
+%%%$
+%%%(u_X^{R})(X^\sharp, X^\sharp)
+%%%\cong
+%%%(u_X^{R})(X^\sharp, \mu^{\otimes}(X^\sharp, *))
+%%%$
+%%%
+%%%
+%%%\item[Associator:]
+%%%
+%%%$$
+%%%(\alpha_{X,Y,Z},  g):((X\otimes Y)\otimes Z, \mu^\otimes(\mu^{\otimes}(X^\sharp, Y^\sharp),Z^\sharp) \to 
+%%%(X\otimes (Y\otimes Z),\mu^\otimes(X^\sharp, \mu^\otimes(Y^\sharp,Z^\sharp)))
+%%%$$
+%%%
+%%%\end{description}
+%%%
+%%%
+%%%Where the projection map $p:\int F\to\mathcal I$ moreover is strong monoidal:
+%%%
+%%%$$
+%%%p ((X,X^\sharp )\times (Y,Y^\sharp )) = 
+%%%$$
+%%%
+%%%
+%%% Since we are regarding $\Prof$ as a quasistrict monoidal bicategory, if $\mathcal  I$ is strict monoidal, then so is $\int F$ so that the projection $\int F\to \mathcal I $ is strict monoidal.
+%%%
+%%%
+%%%Conversely, suppose there is a strong monoidal functor $\pi:\mathcal{J}\to\mathcal{I}^\op$ between monoidal categories.
+%%%Then $\delta \pi:\mathcal{I}^\op \to \Prof$ is a Frobenius monoidal, lax normal functor.  The monoidal laxators are given by:
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%Given a monoidal category $p:\X\to \mathbb{1}$, the Frobenius monoidal lax structure of $\delta p : \mathbb{1}\to \Prof$ regarded as a lax monoidal functor is precisely the data of a representable lax special \dag-Frobenius algebra in $\Prof$:
+%%%
+%%%GIVE AXIOMS
+%%%
+%%%
+%%%This is essentially the two-sided version of the coherence data of a monoidal category. 
+%%%
+%%%2-categorical spider theorem
+%%%
+%%%Since $\mathbb{1}$ is strict monoidal, $\int \delta p$ is as well.
+%%%Therefore we can deduce that this is the strictification of $\X$.
+%%%
+%%%Slice category definition of grothendieck construction
+%%%
+%%%Recalling the string diagrams for pointed profunctors, we have that the strictification of $\X$ is generated by.
+%%%
+%%%
+%%%The monoidal Benabou-Grothendieck construction is a very general construction for creating string diagrams for the strictification of monoidal functors.  Given some algebraic structure $F$ in  $\Prof$, the lax normal, lax monoidal structure can be regarded as the data for a normal form.  Then each object in $\int F$ contains the information need
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%Monoidal categories $\X$ are in bijection with pseudomonoids in Cat.
+%%%These are in bijection with extraspecial representable dagger frobenius algebras in Prof
+%%%which are in bijection with lax seperable normal dagger frobenius monoidal lax functors $F_\X:\mathbb{1}\to\Prof$.
+%%%
+%%%Since $\mathbb 1$ is strict monoidal so is $\int F_\X$.
+%%%Moreover, there is a $\dag$-Frobenius monoidal pseudo functor $\iota:\X\to \Prof^*$ making the diagram commute:
+%%%
+%%%$$
+%%%\xymatrix{
+%%%\X  \ar[drr]^\iota \ar[ddr]  & &\\
+%%%       &  \int F_\X \ar[d]_{} \ar[r]^{} & \Prof^*  \ar[d]\\
+%%%       &  \mathbb{1} \ar[r] ^F          & \Prof
+%%%}
+%%%$$
+%%%
+%%%Therefore, the universal map $G:\X\to F_\X$ is a Frobenius monoidal pseudofunctor.  It can also be shown to be strong monoidal, and moreover an equivalence of categories.  Therefore $\int F_\X$ is the monoidal strictification of $\X$.
+%%%
+%%%
+%%%This extends to an equivalence of categories:
+%%%
+%%%Monoidal functors $\X\to \Y$ are in bijection with pseudomonoid homomorphisms in Cat.  These are in bijection with monoidal natural transformations 
+%%%$F_\X\Rightarrow F_\Y$.
+%%%These are in bijection with strict monoidal functors $\int F_\X\to \int F_\Y$. These are in 
+%%%
+%%%Surely intertwiners between pseudomonoid homorphisms correspond to strict monoidal natural transformations.
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%First show
+%%%
+%%%\begin{description}
+%%%\item[0-cells:] Frobenius monoidal functors \mathcal{I}\to\Prof$
+%%%\item[1-cells:] Frobenius monoidal lax natural transformations.
+%%%\item[2-cells:] Intertwiners
+%%%\end{description}
+%%%
+%%%is 2-equivalent
+%%%
+%%%\begin{description}
+%%%\item[0-cells:] \int F
+%%%\item[1-cells:] strong monoidal functors $\int F \to \int G$ making the triangle commute.
+%%%\item[2-cells:] monoidal natural transformations
+%%%\end{description}
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%Consider the 2-category of:
+%%%
+%%%\begin{description}
+%%%\item[0-cells:] Monoidal categories
+%%%\item[1-cells:] Monoidal functors.
+%%%\item[2-cells:] Monoidal natural transformations
+%%%\end{description}
+%%%
+%%%is 2-isomorphic 
+%%%
+%%%\begin{description}
+%%%\item[0-cells:] Pseudomonoids in Cat
+%%%\item[1-cells:] Pseudomonoid homomorphisms.
+%%%\item[2-cells:] Intertwiners
+%%%\end{description}
+%%%
+%%%is 2-isomorphic 
+%%%
+%%%\begin{description}
+%%%\item[0-cells:] XXX Frobenius pseudomonoid 
+%%%\item[1-cells:] Pseudomonoid homomorphisms.
+%%%Composition by conjugation
+%%%\item[2-cells:] Intertwiners
+%%%\end{description}
+%%%
+%%%is 2-isomorphic 
+%%%
+%%%\begin{description}
+%%%\item[0-cells:] Frobenius monoidal functors $\mathbb{1}\to\Prof$
+%%%\item[1-cells:] Frobenius monoidal lax natural transformations.
+%%%\item[2-cells:] Intertwiners
+%%%\end{description}
+%%%
+%%%is 2-equivalent
+%%%
+%%%\begin{description}
+%%%\item[0-cells:] \int F
+%%%\item[1-cells:] \alpha:\int F\to \int G
+%%%\item[2-cells:] Intertwiners
+%%%\end{description}
+%%%
+%%%is 2-isomorphic 
+%%%
+%%%\begin{description}
+%%%\item[0-cells:] Strict monoidal categories
+%%%\item[1-cells:] monoidal 
+%%%\item[2-cells:] Intertwiners
+%%%\end{description}
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%Scalable ZX-calculus.
+%%%
+%%%hierarchical string diagrams
+%%%
+%%%
+%%%
+%%%
+%%%
+%%%Take the lax Frobenius monoidal $F:\N \to\Prof$
+%%%sending $n=\prod_i p_i^{a_i }\mapsto \prod \Span(\Mat_{\F_{p_i}})$  for where the tensor in $\N$ is multiplication.
+%%%
+%%%
+%%%There is a faithful functor $\int F\to\FHilb$ picking out phase free ZX diagrams with arbitrary finite dimension. This is because for the full subcategory off prime prower dimension $\int F |_p \hookrightarrow \int F$, $\int F |_p\cong \Span(\Mat_{\F_{p_i}})$. Moreover, the maps given by the laxators are change of basis vectors.
+%%%
+%%%
+%%%
+%%%If instead we do the same trick but sending $p$ to odd prime dimensional qudit complete-ZX diagrams, then we regain the qufinite presentation of the ZX-calculus of \cite{wang???}.
+%%%
+%%%
+%%%
+%%%For stabilizers, we can do the same modulo scalars, but with $F:\N/\{2\} \to\Prof$ picking out odd prime dimensional stabilizer diagrams.
+%%%
+%%%
 %%
 %%
 %%
-%%\begin{theorem}[Monoidal Grothendieck-Benabou construction.]
-%%There is an equivalence of categories between the lax monoidal, lax normal functor category:
 %%
-%%\begin{description}
-%%\item[Objects:]
-%%\item[Maps:]
-%%\item[Identity:]
-%%\item[Composition:]
-%%\end{description}
 %%
-%%and  the monoidal slice cateogry:
 %%
-%%\begin{description}
-%%\item[Objects:]
-%%\item[Maps:]
-%%\item[Identity:]
-%%\item[Composition:]
-%%\end{description}
 %%
+%%
+%%
+%%
+%%
+%%\begin{definition}
+%%Given bicategories $\X$ and $\Y$, a lax normal functor $\X\to\Y$ is:
+%%
+%%TODO
+%%\end{definition}
+%%
+%%
+%%\begin{definition}
+%%Given monoidal bicategories $\X$ and $\Y$, a  Frobenius monoidal lax normal functor is a lax normal functor $\X\to\Y$, equipped with 2-cells $\mu$ and $\nu$ called the monoidal laxator and oplaxators, and coherences called the left and right frobeniusators interacting with the compositors todo 
+%%
+%%TODO
+%%\end{definition}
+%%
+%%
+%%
+%%\begin{definition}
+%%A morphism between Frobenius monoidal lax normal functors $F,G\X\to\Y$ is.  Given two monoidal bicategories, this notion induces the Frobenius monoidal lax normal functor category, denoted $[\X,\Y]_{fln}$
+%%\end{definition}
+%%
+%%\begin{lemma}
+%%$[\X,\Y]_{fln}$ is a monoidal category with
+%%\end{lemma}
+%%
+%%
+%%
+%%\begin{definition}
+%%A monoidal displayed category is a monoidal category $\D$ equipped with a  Frobenius monoidal lax functor $\mathcal{D}\to\Prof$.
+%%\end{definition}
+%%
+%%\begin{theorem}{Monoidal Grothendieck-Benabou construction}
+%%Given a monoidal category $\X$, there is a monoidal equivalence between the Frobenius monoidal lax normal functor category $[\X,\Prof]_{fln}$ and the strict monoidal coslice category over $\X$.
 %%\end{theorem}
+%%
+%%
+%%
+%%
+%%
+%%
+%%
 %%\begin{proof}
-%%Proof strategy: Start with a monoidal functor $\Y\to \X$ between strict monoidal categories.  Build a lax normal lax monoidal functor $\X\to \Prof$
+%%Fix a monoidal category $\X$.
+%%
+%%Take a strict monoidal functor $p:\Y\to\X$.
 %%
 %%
-%%Let $\X$ be a monoidal category, regarded as a monoidal bicategory with one object, and take a lax monoidal lax functor $F:\X\to\Prof$.  Then the following pullback exists in the category of monoidal bicategories, lax monoidal lax functors and lax natural transformations:
+%%Given an object $X$ of $\X$, the indexed category of $p$ over $X$, $p^{-1}(X)$ has:
+%%
+%%Objects in $Y \in \Y$ such that $p^{-1}(Y)=X$.
+%%
+%%Morphisms $f:Y\to Y'$ such that $p^{-1}(f)=1_X$.
+%%
+%%Composition and identities in $\Y$.
+%%
+%%
+%%Given a morphism $f:X\to X'$ to in $\X$, the reindexing profunctor $p^{-1}(f):p^{-1}(X)^\op  \times p^{-1}(X')\to \Set$ sends:
+%%
+%%objects: $p^{-1}(f)(Y,Y')= \{ g:Y\to Y' | p(g)=f \}$
+%%maps: $p^{-1}(f)(h:Y\to Y', k:Z \to Z')=\lambda x \in p^{-1}(f)(Y,Y'). h;x;k$.
+%%
+%%
+%%This has the structure of a lax normal functor $P^{-1}:\X\to\Prof$.
+%%
+%%
+%%For objects $X,X',X'' \in \X$ the compositors at $X,X',X''$ at components $f:X\to X'$ and $g:X'\to X''$ are functions $\int^Z p^{-1}(f)(X,Z) \times p^{-1}(g)(Z,X'') \to  p^{-1}(f;g)(X,X'')$,
+%%sending elements $(h,k)$ of the equivalence class to their composite $h;k$.  This is a function because $p(h;k) = p(h);p(k)=f;g$.
+%%
+%%
+%%For each $X \in \X$, $p^{-1}(f)=1_X$ is the identity profunctor on $p^{-1}(X)$, so this functor is normal.
+%%The desired commutative diagrams hold making this into a lax normal functor.
+%%
+%%Furthermore, we now show that this lax normal functor preserves the monoidal structure lax-Frobeniusly.
+%%
+%% 
+%%
+%%%1_{p^{-1}(X)} \to 
+%%
+%%%
+%%%The components of the monoidal laxtator at $(f,g)$
+%%%
+%%%$$
+%%%p^{-1}(f) \times p^{-1}(g) \Rightarrow p^{-1}(f \otimes g)
+%%%$$
+%%%
+%%%are given by functions
+%%%$$
+%%%p^{-1}(f)\times p^{-1}(g) = \int^{Y} p^{-1}(f) (X,Y) \times p^{-1}(g) (W,Z)
+%%%\Rightarrow 
+%%%p^{-1}(f) (X,Y)\times p^{-1}(g) (W,Z)
+%%%= \{h:X\to Y | p(h)=f \}\times  \{k: W\to Z | p(k)=g \}
+%%%\Rightarrow
+%%%\{\ell :X\otimes W \to Z \otimes Y | p(\ell)= f\otimes g  \}
+%%%$$
+%%%
+%%%taking $(h,k) \mapsto h\otimes k$
+%%%
+%%%and oplaxator:
+%%%
+%%%$$
+%%% p^{-1}(f \otimes g) \Rightarrow p^{-1}(f) \times p^{-1}(g)
+%%%$$
+%%%
+%%%by functions:
+%%%
+%%%$$
+%%% p^{-1}(f \otimes g)
+%%%=
+%%% \{h:X\to Y | p(h)=f\otimes g \}
+%%%$$
+%%%
+%%
+%%
+%%
+%%
+%%The components of the monoidal laxtator at $(f:X\to X',g:X''\to X''')$
+%%
 %%$$
-%%\xymatrix{
-%%\int F \ar[d]_{} \ar[r]^{} & \Prof^*  \ar[d]\\
-%%\X \ar[r] ^F          & \Prof
-%%}
+%%p^{-1}(f) \times p^{-1}(g) \Rightarrow p^{-1}(f \otimes g)
 %%$$
 %%
-%%$\int F$ has the same categorical structure as in the non-monoidal 
+%%are given by functions 
+%%sending elements $(h,k)\in p^{-1}(f)\times p^{-1}(g)$ to $h\otimes k \in p^{-1}(f \otimes g)$.  This is a function because $p(h\otimes k) = p(h)\otimes p(k)= h\otimes k$.
 %%
 %%
+%%Unitor
+%%
+%%
+%%
+%%For the oplaxator at $(f:X\to X',g:X''\to X''')$
+%%
+%%
+%%$$
+%%p^{-1}(f \otimes g) \Rightarrow p^{-1}(f) \times p^{-1}(g)  
+%%$$
+%%are given by functions 
+%%sending elements $h \in p^{-1}(f\otimes g)$
+%%
+%%
+%%% $h;k$.  This is a function because $p(h;k) = p(h);p(k)=f;g$.
 %%\end{proof}
 %
 %
 %
-%If $F$ is a normal frobenius monoidal lax normal functor
-%with laxator $\ell$ monoidal laxator $\mu$ oplaxator $\nu$
-%, then $\int F$ has an induced monoidal structure with:
+%\newcommand{\Cat}{{\sf Cat}}
 %
-% $F(X\otimes Y)\to F(X)\otimes F(Y) \to F(X')\otimes F(Y') \to F(X'\otimes Y')$
+%In this Section, we will propose how to categorify categorical quantum mechanics by regarding monoidal categories themselves as a certain kind of special-commutative \dag-Frobenius algebra.  This will give a categorical account of proof nets for monoidal categories which we reviewed in the first Chapter.  This chapter is much more exploratory than the others, and indeed there is much more work that should be worked out in the future.
+%
+%
+%We first need the following definition to motivate where we are going:
+%
+%\begin{definition}
+%The symmetric monoidal 2-category of {\bf pointed Categories} is the coslice category $\Cat^*:=1/\Cat$.  Explicitly, this has:
 %
 %\begin{description}
-%\item[Tensor product:] On Objects:
-%$$
-%(Y,Y^\sharp) \otimes (Z,Z^\sharp)
-%:=
-%(Y\otimes Z, \nu(\mu(Y^\sharp, Z^\sharp)))
-%$$
+%\item[0-cells:] A pointed category is a pair consisting of a category along with a chosen object of that category: 
 %
-%On morphisms:
-%$$
-%(f,f^\sharp) \otimes (g,g^\sharp)
-%:=
-%(f\otimes g, \nu(\mu(f^\sharp, g^\sharp)) )
-%$$
+%$$(\X, X\in\X_0)$$
 %
-%\item[Tensor unit:]
-%$$
-%(I,* \in F(I))=\mathbb{1})
-%$$
-%\item[Unitors:]
-%$$
-%u_{(X,X^\sharp)}^R: (X,X^\sharp)\otimes (I,*)=(X\otimes I, \mu^{\otimes}(X^\sharp, *))  \to (X,X^\sharp)
-%$$
-%is given by
-%$$
-%(u_X^{R}:X\otimes I\to X,  f\in F(u_X^{R})(X^\sharp, \mu^{\otimes}(X^\sharp, *) )   )
-%$$
+%\item[1-cells:] A pointed functor between pointed categories is a pair consisting of a functor between the underlying categories and a morphism that preserves the points, as follows:
 %
-%Where $f$ is the identity on $X$ along the isomorphism $ \mu^{\otimes}(X^\sharp, *) = $
+%$$(F:\X\to\Y, f\in \Y(F(X),Y) ):(\X, X\in\X_0)\to (\Y, Y\in\Y_0)$$
 %
-%$
-%(u_X^{R})(X^\sharp, X^\sharp)
-%\cong
-%(u_X^{R})(X^\sharp, \mu^{\otimes}(X^\sharp, *))
-%$
-%
-%
-%\item[Associator:]
+%\item[2-cells:] Given two parallel pointed functors, 
 %
 %$$
-%(\alpha_{X,Y,Z},  g):((X\otimes Y)\otimes Z, \mu^\otimes(\mu^{\otimes}(X^\sharp, Y^\sharp),Z^\sharp) \to 
-%(X\otimes (Y\otimes Z),\mu^\otimes(X^\sharp, \mu^\otimes(Y^\sharp,Z^\sharp)))
+% (F:\X\to\Y, f\in \Y(F(X),Y) ),  (G:\X\to\Y, g\in \Y(G(X),Y) ):(\X, X\in\X_0)\to $(\Y, Y\in\Y_0)$
 %$$
 %
+%a pointed natural transformation is natural transformation  $\phi:F\to G$ that preserves the distinguished map, so that $\phi_X:g=f$.
 %\end{description}
 %
 %
-%Where the projection map $p:\int F\to\mathcal I$ moreover is strong monoidal:
+%Composition of the 1-cells and 2-cells is given pointwise; and the monoidal structure is given by the Cartesian product.
 %
-%$$
-%p ((X,X^\sharp )\times (Y,Y^\sharp )) = 
-%$$
+%\end{definition}
 %
+%There is a graphical calculus for pointed categories.  If $\X$ is a monoidal category, then for every map $f:X\otimes Y\to Z$, there is a pointed functor:
 %
-% Since we are regarding $\Prof$ as a quasistrict monoidal bicategory, if $\mathcal  I$ is strict monoidal, then so is $\int F$ so that the projection $\int F\to \mathcal I $ is strict monoidal.
 %
+%$$(\_\otimes \_ :\X^2\to\X, f\in \Y(F(X),Y) ):(\X^2, (X,Y)\in\X^2_0)\to (\X, Z\in\X_0)$$
 %
-%Conversely, suppose there is a strong monoidal functor $\pi:\mathcal{J}\to\mathcal{I}^\op$ between monoidal categories.
-%Then $\delta \pi:\mathcal{I}^\op \to \Prof$ is a Frobenius monoidal, lax normal functor.  The monoidal laxators are given by:
+%Drawn as follows:
 %
+%TODO DRAW
 %
 %
+%Moreover, for every state $f:I\to X$, there is a pointed functor
 %
 %
+%$$(I:1\to\X, f\in \Y(I,X) ):(1,* \in 1)\to (\X, I\in\X_0)$$
 %
-%Given a monoidal category $p:\X\to \mathbb{1}$, the Frobenius monoidal lax structure of $\delta p : \mathbb{1}\to \Prof$ regarded as a lax monoidal functor is precisely the data of a representable lax special \dag-Frobenius algebra in $\Prof$:
 %
-%GIVE AXIOMS
 %
+%Drawn as follows:
 %
-%This is essentially the two-sided version of the coherence data of a monoidal category. 
+%DRAW
 %
-%2-categorical spider theorem
 %
-%Since $\mathbb{1}$ is strict monoidal, $\int \delta p$ is as well.
-%Therefore we can deduce that this is the strictification of $\X$.
 %
-%Slice category definition of grothendieck construction
+%Where $1$ is the strict monoidal category with one object and one morphism and $I:1\to \X$ is the functor which picks out the tensor unit and its identity in $\X$.
 %
-%Recalling the string diagrams for pointed profunctors, we have that the strictification of $\X$ is generated by.
 %
+%Now, the pentagon equation means that the following diagram commutes:
 %
-%The monoidal Benabou-Grothendieck construction is a very general construction for creating string diagrams for the strictification of monoidal functors.  Given some algebraic structure $F$ in  $\Prof$, the lax normal, lax monoidal structure can be regarded as the data for a normal form.  Then each object in $\int F$ contains the information need
+%DRAW ASSOCIATOR WITH TREES AND ELEMENTS
 %
+%And the left and right unit equations mean that the following diagrams commute:
 %
+%DRAW LEFT AND RIGHT UNITORS WITH ELEMENTS 
 %
 %
+%Instead of defining a monoidal category as we did in the first chapter, we could have instead defined a monoidal category as a pseudomonoid in $\Cat$.  Then the tensor product would become the multiplication and the tensor unit would become the unit:
 %
+%\begin{definition}
+%Draw pseudomonoid coherences
 %
 %
 %
 %
 %
+%\end{definition}
 %
+%However, this does not generalize to other algenraic structures in $\Cat$.  For this we will need the following definition:
 %
 %
+%\begin{definition}
 %
+%A {\bf pseudofunctor }
+%A {\bf lax monoidal pseudofunctor}
 %
 %
+%\end{definition}
 %
+%With this in mind, we have a concise definition of a monoidal category:
 %
 %
+%\begin{lemma}
+%A monoidal category is the data of a  lax monoidal pseudofunctor $:1\to \Cat$, where $1$ is the terminal monoidal category with one object and one morphism.
+%\end{lemma}
 %
 %
 %
+%This definition may seem terse, as it moves around the coherence data into a different place; however, this is much more amenable to generalization.
+%Indeed,  a {\bf monoidal indexed category} is a monoidal category $\X$ equipped with a lax monoidal functor $F:\X\to \Cat$.  
 %
 %
+%\begin{definition}
+%To every monoidal indexed category $F:\X\to \Cat$, the {\bf monoidal Grothendieck category} $\int F$ is a monoidal category with:
 %
-%
-%
-%
-%Monoidal categories $\X$ are in bijection with pseudomonoids in Cat.
-%These are in bijection with extraspecial representable dagger frobenius algebras in Prof
-%which are in bijection with lax seperable normal dagger frobenius monoidal lax functors $F_\X:\mathbb{1}\to\Prof$.
-%
-%Since $\mathbb 1$ is strict monoidal so is $\int F_\X$.
-%Moreover, there is a $\dag$-Frobenius monoidal pseudo functor $\iota:\X\to \Prof^*$ making the diagram commute:
-%
-%$$
-%\xymatrix{
-%\X  \ar[drr]^\iota \ar[ddr]  & &\\
-%       &  \int F_\X \ar[d]_{} \ar[r]^{} & \Prof^*  \ar[d]\\
-%       &  \mathbb{1} \ar[r] ^F          & \Prof
-%}
-%$$
-%
-%Therefore, the universal map $G:\X\to F_\X$ is a Frobenius monoidal pseudofunctor.  It can also be shown to be strong monoidal, and moreover an equivalence of categories.  Therefore $\int F_\X$ is the monoidal strictification of $\X$.
-%
-%
-%This extends to an equivalence of categories:
-%
-%Monoidal functors $\X\to \Y$ are in bijection with pseudomonoid homomorphisms in Cat.  These are in bijection with monoidal natural transformations 
-%$F_\X\Rightarrow F_\Y$.
-%These are in bijection with strict monoidal functors $\int F_\X\to \int F_\Y$. These are in 
-%
-%Surely intertwiners between pseudomonoid homorphisms correspond to strict monoidal natural transformations.
-%
-%
-%
-%
-%
-%
-%
-%
-%
-%
-%
-%First show
 %
 %\begin{description}
-%\item[0-cells:] Frobenius monoidal functors \mathcal{I}\to\Prof$
-%\item[1-cells:] Frobenius monoidal lax natural transformations.
-%\item[2-cells:] Intertwiners
+%
+%\item[Objects: ]
+%
+%\item[Maps: ]
+%
+%Where the composition is:
+%
+%And the identity is:
+%
+%
+%\item[Monoidal structure:]
+%
 %\end{description}
 %
-%is 2-equivalent
+%\end{definition}
+%
+%
+%Note the the projection  $\int F\to \X$ is strict monoidal.
+%
+%
+%This projection is actually more than just a strict monoidal functor, it is a fibration!  In \cite{???}, they show that given a fixed monoidal category $\X$, the slice category of strict monoidal fibrations is equivalent to the lax monoidal pseudofunctor category from $\X\to \Cat$.  We wont discuss this further, because it is not immediately useful for our purposes.
+%
+%
+%If we return to our working example $F_\X:1\to \Cat$ picking out a monoidal category, we find that there is a strict monoidal isomorhism between $\int F_\X$ and $\X$:
+%
+%TODO Draw composition and tensor product in terms of tubes.
+%
+%
+%
+%However, we could also take a different monoidal pseudofunctor into $\Cat$.
+%
+%\begin{definition}
+%
+%Given a monoidal category $\X$, define a strong monoidal pseudofunctor: $\Delta_\X:\Delta\to \Cat$
+%
+%sending $n\mapsto \X^n$, where the laxator left associates trees and eliminates units.
+%
+%\end{definition}
+%
+%Explicitly:
+%
+%\begin{lemma}
+%$\int \Delta_\X$ is the strict monoidal category with:
+%\begin{description}
+%\item[Objects:] Finite lists of objects in $\X$.
+%
+%\item[Maps:]  Maps are binary forests, which are left associated where the units are elminated whenever possible.
+%
+%\item[Tensor:]  The tensor product is given by the cartesian product in pointed functors.
+%
+%\item[Composition:] The composition is given by nesting and then reducing the all connected components to the same normal form.
+%
+%
+%\end{description}
+%\end{lemma}
+%
+%
+%However, this is a very one-sided construction, as the string diagrams in $\int \Delta_\X$ has the shapes of trees. 
+%
+%Draw laxator:
+%
+%
+%One way to get around this is look at $\X$ as an object in $\Prof$, rather than $\Cat$.  There are two yoneda embeddings $y^* \Cat^\co \to \Prof$ and $y_*:\Cat^\op \to \Prof$.  Therefore, we can regard a monoidal category as both a pseudomonoid in $\Prof$ or a pseudocomonoid in $\Prof$. 
+%
+%
+%
+%\begin{definition}
+%The monoidal 2-category of pointed profunctors, $\Prof^*$, has
+%
 %
 %\begin{description}
-%\item[0-cells:] \int F
-%\item[1-cells:] strong monoidal functors $\int F \to \int G$ making the triangle commute.
-%\item[2-cells:] monoidal natural transformations
+%\item[0-cells:]
+%
+%\item[1-cells:]
+%
+%\item[2-cells:]
 %\end{description}
+%\end{definition}
 %
 %
+%Pointed profunctors has a very similar graphical calculus to pointed categories.  Given a monoidal category one can regard not only factorizations of the domains of maps $f:X\otimes Y\to Z$, and states $g:I\to X$ as pointed profunctors, but also factorizations of the codomains of maps   $g:X \to Y\times Z$, and effects $h:X\to I$:
 %
 %
+%TODO
 %
 %
+%Now, it is known that autonomous monoidal categories correspond to pseudofrobenius algebras in prof which interact with the units and counits of the adjunctions between the the different components of the yoneda embedding, see \cite{???,???}.  However, the literature is quite terse and lacking; indeed, in the literature, many people miss this extra coherence equation governing the interaction of the pseudofrobenius algebra with the adjoints.  Moreover, a general monoidal category would not induce a pseudo frobenius algebra, but a Lax frobenius algebra. 
+%
+%The lax frobeniusators are given by the following 2-cells; which are hardly ever going to be invertible:
+%
+%TODO
+%
+%Given a monoidal category $\X$, it is therefore and open question as to what notion of functor is needed to regard the monoidal structure of  $\X$ as some sort of monoidal functor $1\to\Prof$.  There are lots of coherence equations to work out, but I conjecture that it is a lax normal functor that is lax monoidal and oplax monoidal such that the lax and oplax structures interact to form a lax frobenius algebra where the monoidal lax structure  is XXXX adjoint to the oplax structure. 
 %
 %
+%As much as it would be nice to complete the picture, we don't really need this.  
 %
+%\begin{definition}
+%Given a category $\X$ and a 2-category $\Y$, a lax normal functor is a pseudofunctor where the compositors are no longer required to be isomorphisms.
+%A {\bf displayed category } is a category $\X$ equipped with a lax normal functor $\X\to \Prof$.
+%\end{definition}
 %
-%
-%Consider the 2-category of:
+%\begin{lemma}
+%Given a displayed category $F:\X\to \Prof$, the Grothendieck-Benabou category $\Pi \X$ has:
 %
 %\begin{description}
-%\item[0-cells:] Monoidal categories
-%\item[1-cells:] Monoidal functors.
-%\item[2-cells:] Monoidal natural transformations
+%\item[Objects:]
+%\item[Maps:]
+%\item[Composition:]
+%\item[Identities:]
 %\end{description}
 %
-%is 2-isomorphic 
+%
+%\end{lemma}
+%
+%
+%Moreover, the projection $\Pi \X\to \X$ is a functor.  Given some fixed category $\X$, the correspondence extends between an equivalence of categories between the lax normal functor category from $\X$ to $\Prof$ and the slice category over $\X$.  This correspondence exists in several places in the literature and is thought to be due to Benabou.  It has recently started being called the Grothendieck-Benabou construction.
+%
+%
+%\begin{lemma}
+%Take a displayed category $F:\X\to \Prof$ such that $\X$ is monoidal and $F$ has the structure of a strong monoidal 2-functor.
+%
+%Then $\Pi \X$ has a monoidal structure given by:
+%
+%\end{lemma}
+%
+%
+%%%%%This is where the important stuff is
+%
+%\begin{defintion}
+%Given a monoidal category $\X$, there is a strong monoidal lax functor $G_\X:frob\to \Prof$ with
 %
 %\begin{description}
-%\item[0-cells:] Pseudomonoids in Cat
-%\item[1-cells:] Pseudomonoid homomorphisms.
-%\item[2-cells:] Intertwiners
+%\item[Objects:] $n\mapsto \X^n$
+%\item[Compositor:] 
+%\item[Unitor:] 
+%\item[Tensorator:] 
+%\item[Tensor-unitor:] 
 %\end{description}
 %
-%is 2-isomorphic 
+%
+%\end{defintion}
+%
+%
+%\begin{lemma}
+%The Grothendieck benabou category $\Pi_\X$ is monoidal with:
+%
 %
 %\begin{description}
-%\item[0-cells:] XXX Frobenius pseudomonoid 
-%\item[1-cells:] Pseudomonoid homomorphisms.
-%Composition by conjugation
-%\item[2-cells:] Intertwiners
+%\item[Objects:] Finite lists of objects in $\X$.
+%
+%\item[Maps:] Two-sided forests in spider normal form, alongside elements:
+%
+%\item[Composition:] Composition is given by spider fusion of shapes.
+%
+%\item[Tensor:] The tensor product is given by the cartesian product in pointed profunctors.
+%
+%
+%
 %\end{description}
+%\end{lemma}
 %
-%is 2-isomorphic 
+%Proof nets live within the subcategory whose shapes are connected.  To actually get things to be connected, we have to force things to be connected:
 %
-%\begin{description}
-%\item[0-cells:] Frobenius monoidal functors $\mathbb{1}\to\Prof$
-%\item[1-cells:] Frobenius monoidal lax natural transformations.
-%\item[2-cells:] Intertwiners
-%\end{description}
 %
-%is 2-equivalent
+%\begin{lemma}
 %
-%\begin{description}
-%\item[0-cells:] \int F
-%\item[1-cells:] \alpha:\int F\to \int G
-%\item[2-cells:] Intertwiners
-%\end{description}
+%we can define a different tensor product on this category that squeezed to top and bottom wires together:
 %
-%is 2-isomorphic 
+%\begin{definition}
+%Given an object $X=[X_0,\cdots, X_{n-1}]$, define the projector on $X$ to be the map which inserts identities into the following diagram:
 %
-%\begin{description}
-%\item[0-cells:] Strict monoidal categories
-%\item[1-cells:] monoidal 
-%\item[2-cells:] Intertwiners
-%\end{description}
+%Take the full subcategory of the Karoubi envelope, $\Lambda \X$, consisting of these projectors.
+%
+%This is the same as pr
+%\end{definition}
 %
 %
 %
@@ -328,181 +797,245 @@
 %
 %
 %
-%Scalable ZX-calculus.
-%
-%hierarchical string diagrams
 %
 %
 %
 %
 %
-%Take the lax Frobenius monoidal $F:\N \to\Prof$
-%sending $n=\prod_i p_i^{a_i }\mapsto \prod \Span(\Mat_{\F_{p_i}})$  for where the tensor in $\N$ is multiplication.
-%
-%
-%There is a faithful functor $\int F\to\FHilb$ picking out phase free ZX diagrams with arbitrary finite dimension. This is because for the full subcategory off prime prower dimension $\int F |_p \hookrightarrow \int F$, $\int F |_p\cong \Span(\Mat_{\F_{p_i}})$. Moreover, the maps given by the laxators are change of basis vectors.
 %
 %
 %
-%If instead we do the same trick but sending $p$ to odd prime dimensional qudit complete-ZX diagrams, then we regain the qufinite presentation of the ZX-calculus of \cite{wang???}.
 %
 %
 %
-%For stabilizers, we can do the same modulo scalars, but with $F:\N/\{2\} \to\Prof$ picking out odd prime dimensional stabilizer diagrams.
 %
 %
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%%Monoidal categories are pseudomonoids in Cat:
+%
+%
+%%Consider the category of pointed categories:
+%
+%%So this gives a way to decompose inputs of string diagram. If we look inside the pseudomonoids, they have the following actions on the elements in the monoidal category:
+%
+%
+%
+%
+%
+%%The two yoneda embeddings of Cat into prof produce a pseudomonoid and a pseudocomonoid
+%
+%
+%%but these monoids and comonoids coming from both yoneda embeddings have more structure.  In particular, they have adjoints:
+%
+%%This gives a lax frobenius algebra
+%
+%
+%%This satisfies a bunch of coherences.
+%
+%%Monoidal categories and lax spiders
+%%Stratified spider fusion and coherence
+%
+%%Consider the category of pointed pointed profunctors. we can decompose both the inputs and outputs of string diagrams:
 
 
 
 
 
 
-
-
-
+Although we factorize the inputs and outputs of string diagrams using the (co)pants and (co)units, this is a monoidal 2-category, not an ordinary monoidal category.  We will need the following construction
 
 
 \begin{definition}
-Given bicategories $\X$ and $\Y$, a lax normal functor $\X\to\Y$ is:
+\newcommand{\D}{\mathbb{D}}
+A {\bf displayed category} is an ordinary category $\D$ equipped with a lax normal functor $F:\D\to \Prof$.
+That is to say, $F$ has the data of:
 
-TODO
+\begin{itemize}
+\item A function $F:\D_0\to \Prof_0$ taking objects of $\D$ to categories.
+\item For every pair of objects $X,Y \in \D_0$, a function $F_{X,Y}:\D(X,Y)\to \Prof(F(X),F(Y))$  such that $1_{F(X)}=F_{X,X}(1_X)$.
+\item For every triple of objects $X,Y,Z \in \D_0$, a $2$-cell, with components at $f:X\to Y,gY\to Z$
+$$F_{X,Y,Z}(f,g):F_{X,Y}(f);F_{Y,Z}(g) \Rightarrow F_{X,Z}(f;g)$$
+\end{itemize}
+
+Such that for any diagram $W\xrightarrow{f} X \xrightarrow{g} Y \xrightarrow{h} Z$ in $\X$ the following diagram commutes:
+
+
+$$
+\xymatrix{
+(F_{W,X}(f);F_{X,Y}(g));F_{Y,Z} \ar[d]_{F_{W,X,Y}(f;g);1_{F_{Y,Z}(h)}} \ar[rr]^{\alpha_{F_{W,X}(f),F_{X,Y}(g),F_{Y,Z}(h)}}
+  & & F_{W,X}(f);(F_{X,Y}(g);F_{Y,Z}(h)) \ar[d]^{1_{F_{W,X}(f)};F_{X,Y,Z}(g,h)}\\
+F_{W,Y}(f;g);F_{Y,Z}(h) \ar[dr]_{F_{W,Y,Z}(f;g,h) \ \ }
+  && F_{W,X}(f);F_{X,Z}(g;h) \ar[dl]^{\ \ F_{W,X,Z}(f,g;h)}\\
+  & F(W,Z)(f;g;h)
+}
+$$
 \end{definition}
 
 
-\begin{definition}
-Given monoidal bicategories $\X$ and $\Y$, a  Frobenius monoidal lax normal functor is a lax normal functor $\X\to\Y$, equipped with 2-cells $\mu$ and $\nu$ called the monoidal laxator and oplaxators, and coherences called the left and right frobeniusators interacting with the compositors todo 
+\begin{theorem}{Benabou-Grothendieck construction}
 
-TODO
-\end{definition}
+Then there is an ordinary category $\Pi F$ defined as follows:
 
 
+\begin{description}
+\item[Objects:] Pairs $(X\in \D_0, X^\sharp \in (F(X))_0)$
+\item[Maps:] The maps are pairs, $(f, f^\sharp):(X,X^\sharp )\to (Y,Y^\sharp)$ where $f \in \D(X,Y)$ and $f^\sharp \in F_{X,Y}(f)(Y^\sharp,X^\sharp)$
+\item[Identity:] $1_{(X,X^\sharp)} := (1_X, 1_{X^\sharp})$
+\item[Composition:] Given a composable pair:
+$$(X,X^\sharp)\xrightarrow{(f, f^\sharp)} (Y,Y^\sharp)\xrightarrow{(g, g^\sharp)} (Z,Z^\sharp)$$
+The composite is defined as follows:
+$$(f, f^\sharp);(g, g^\sharp):= (F_{X,Y,Z}(f,g))(f^\sharp, g^\sharp)$$
+\end{description}
 
-\begin{definition}
-A morphism between Frobenius monoidal lax normal functors $F,G\X\to\Y$ is.  Given two monoidal bicategories, this notion induces the Frobenius monoidal lax normal functor category, denoted $[\X,\Y]_{fln}$
-\end{definition}
 
-\begin{lemma}
-$[\X,\Y]_{fln}$ is a monoidal category with
-\end{lemma}
+Moreover, the first projection map $\pi_0:\Pi F\to \D$  is a (strict) functor.
 
 
-
-\begin{definition}
-A monoidal displayed category is a monoidal category $\D$ equipped with a  Frobenius monoidal lax functor $\mathcal{D}\to\Prof$.
-\end{definition}
-
-\begin{theorem}{Monoidal Grothendieck-Benabou construction}
-Given a monoidal category $\X$, there is a monoidal equivalence between the Frobenius monoidal lax normal functor category $[\X,\Prof]_{fln}$ and the strict monoidal coslice category over $\X$.
+We can actually go the other direction.  Given some fixed $\D$, this extends to an equivalence of categories between the slice category $\Cat/\D$ and the lax normal functor category $[\D,\Prof]$.  We won't restate this equivalence of categories, because it is not directly useful for us, and it takes considerable effort to expose.
 \end{theorem}
 
 
+\begin{definition}
+\newcommand{\esfa}{{\sf ESFA}}
+Given any monoidal category $\X$, there is an indexed category
+
+$F_\X:\escfa\to \Prof$ such that  
+\begin{description}
+\item $(F_\X)(n) = \X^n$
+\item $(F_\X){n,m}$ takes spiders in $\escfa$ to (stratified) spiders in $\Prof$ composed of the monoidal structure of $\X$.
+\item The natural transformation $(F_\X)_{n,m,k}$ performs (stratified) spider fusion.
+\end{description}
+
+
+\end{definition}
+
+
+
+\begin{lemma}
+The indexed category $\Pi F_{\X}$ has a concrete presentation:
+
+\begin{description}
+\item[Objects:] Finite lists of objects in $\X$.
+\item[Maps:] Given two finite lists $X=[X_0,\ldots, X_{n-1}]$ and $Y=[Y_0,\ldots, Y_{m-1}]$ of objects in $\X$, a map from $X\to Y$ is a pair consisting of a map $f:n\to m$ in $\esfa$ equipped with an element $f^\sharp \in  (F_{\X})_{n,m}( F_{\X})$.
+
+
+$f^\sharp$ can be described concretely by induction on the connected components on $n$. If $f$ is a single connected component, then $f^\sharp$ is a map with domains and codomains left-factorized as follows
+$$\otimes_{i=0}^{n-1} X_i \to \otimes_{i=0}^{m-1} Y_i$$
+
+Moreover, if $f$ is multiple connected components, then $f^\sharp$ is a finite list of maps whose domains and codomains factorized in this way.
+
+
+\item[Identity:] Given a list of objects $X=[X_0,\ldots, X_{n-1}]$  in $\X$, $1_X=[1_{X_0},\ldots, 1_{X_{n-1}}]$.
+
+
+\item[Composition:] Take a composable pair:
+$$X=[X_0,\ldots, X_{n-1}] \xrightarrow{(f,f^\sharp)} Y=[Y_0,\ldots, Y_{m-1}] \xrightarrow{(g,g^\sharp)} Z=[Z_0,\ldots, Z_{k-1}]$$
+
+Then the composite fuses together all connected components into stratified spiders:  effectively, so that if two maps are connected it just produces the composite in $\X$ and keeps track of the factorizations of inputs and outputs.
+
+\end{description}
+
+This is moreover a strict monoidal category.  The tensor product is defined on objects by concatenation.
+Given two maps 
+$$(f,f^\sharp):W=[W_0,\ldots, W_{n-1}]\to X=[X_{0},\ldots, X_{m-1}]$$
+and
+$$(g;g^\sharp):Y=[Y_0,\ldots, Y_{k-1}]\toZ= [Z_{0},\ldots, Z_{\ell-1}]$$
+
+the tensor product is defined as follows:
+
+$$
+(f,f^\sharp)\otimes(g;g^\sharp)
+:=
+(f\otimes 1_k, f^\sharp\times 1_Y );(1_m\otimes g, 1_X\times g^\sharp)
+$$
+
+This is strict because the composition stratifies shapes into lists
+
+
+\end{lemma}
+
+
+GIVE EXAMPLE
+
+
+We want to consider the category where all components are connected.  to do this, first remark that for any  finite list of objects $X=[X_0,\ldots, X_{n-1}]$ in $\X$ there is an idempotent $(s_X, s_X^\sharp)=e_X:X\to X$ in   $\Pi F_{\X}$ where $s_X$ is the fully connected spider from $n\to n$ and $s_X$ is the tensor factoriztion of $\otimes_{i=0}^{n-1} 1_{X_i}$.
+
+
+GIVE EXAMPLE
 
 
 
 
 
+\begin{definition}
+ $N\X:=K_{\{e_X\ | \ X \in [\X_0]}}(\Pi F_{\X})$ of the Karoubi envelope of $\Pi F_{\X}$ with objects $(X,e_X)$.  The maps are precisely the maps in $\Pi F_{\X}$ whose shapes are fully connected.
+\end{definition}
+
+
+\begin{lemma}
+This is a strict monoidal category, where the tensor product is defined on objects by
+$$
+([X_0,\ldots, X_{n-1}],e_{[X_0,\ldots, X_{n-1}]})
+\otimes
+([Y_0,\ldots, Y_{n-1}],e_{[Y_0,\ldots, Y_{n-1}]})
+:=
+([X_0,\ldots, X_{n-1},Y_0,\ldots, Y_{n-1}],e_{[X_0,\ldots, X_{n-1},Y_0,\ldots, Y_{n-1}]})
+$$
+\end{lemma}
+
+
+The tensor product just connects the shapes of both things that are tensored together.
+
+
+\begin{theorem}
+$N\X$ is the strict monoidal category of proof nets in $\X$.
+\end{theorem}
 \begin{proof}
-Fix a monoidal category $\X$.
-
-Take a strict monoidal functor $p:\Y\to\X$.
-
-
-Given an object $X$ of $\X$, the indexed category of $p$ over $X$, $p^{-1}(X)$ has:
-
-Objects in $Y \in \Y$ such that $p^{-1}(Y)=X$.
-
-Morphisms $f:Y\to Y'$ such that $p^{-1}(f)=1_X$.
-
-Composition and identities in $\Y$.
-
-
-Given a morphism $f:X\to X'$ to in $\X$, the reindexing profunctor $p^{-1}(f):p^{-1}(X)^\op  \times p^{-1}(X')\to \Set$ sends:
-
-objects: $p^{-1}(f)(Y,Y')= \{ g:Y\to Y' | p(g)=f \}$
-maps: $p^{-1}(f)(h:Y\to Y', k:Z \to Z')=\lambda x \in p^{-1}(f)(Y,Y'). h;x;k$.
-
-
-This has the structure of a lax normal functor $P^{-1}:\X\to\Prof$.
-
-
-For objects $X,X',X'' \in \X$ the compositors at $X,X',X''$ at components $f:X\to X'$ and $g:X'\to X''$ are functions $\int^Z p^{-1}(f)(X,Z) \times p^{-1}(g)(Z,X'') \to  p^{-1}(f;g)(X,X'')$,
-sending elements $(h,k)$ of the equivalence class to their composite $h;k$.  This is a function because $p(h;k) = p(h);p(k)=f;g$.
-
-
-For each $X \in \X$, $p^{-1}(f)=1_X$ is the identity profunctor on $p^{-1}(X)$, so this functor is normal.
-The desired commutative diagrams hold making this into a lax normal functor.
-
-Furthermore, we now show that this lax normal functor preserves the monoidal structure lax-Frobeniusly.
-
- 
-
-%1_{p^{-1}(X)} \to 
-
-%
-%The components of the monoidal laxtator at $(f,g)$
-%
-%$$
-%p^{-1}(f) \times p^{-1}(g) \Rightarrow p^{-1}(f \otimes g)
-%$$
-%
-%are given by functions
-%$$
-%p^{-1}(f)\times p^{-1}(g) = \int^{Y} p^{-1}(f) (X,Y) \times p^{-1}(g) (W,Z)
-%\Rightarrow 
-%p^{-1}(f) (X,Y)\times p^{-1}(g) (W,Z)
-%= \{h:X\to Y | p(h)=f \}\times  \{k: W\to Z | p(k)=g \}
-%\Rightarrow
-%\{\ell :X\otimes W \to Z \otimes Y | p(\ell)= f\otimes g  \}
-%$$
-%
-%taking $(h,k) \mapsto h\otimes k$
-%
-%and oplaxator:
-%
-%$$
-% p^{-1}(f \otimes g) \Rightarrow p^{-1}(f) \times p^{-1}(g)
-%$$
-%
-%by functions:
-%
-%$$
-% p^{-1}(f \otimes g)
-%=
-% \{h:X\to Y | p(h)=f\otimes g \}
-%$$
-%
-
-
-
-
-The components of the monoidal laxtator at $(f:X\to X',g:X''\to X''')$
-
-$$
-p^{-1}(f) \times p^{-1}(g) \Rightarrow p^{-1}(f \otimes g)
-$$
-
-are given by functions 
-sending elements $(h,k)\in p^{-1}(f)\times p^{-1}(g)$ to $h\otimes k \in p^{-1}(f \otimes g)$.  This is a function because $p(h\otimes k) = p(h)\otimes p(k)= h\otimes k$.
-
-
-Unitor
-
-
-
-For the oplaxator at $(f:X\to X',g:X''\to X''')$
-
-
-$$
-p^{-1}(f \otimes g) \Rightarrow p^{-1}(f) \times p^{-1}(g)  
-$$
-are given by functions 
-sending elements $h \in p^{-1}(f\otimes g)$
-
-
-% $h;k$.  This is a function because $p(h;k) = p(h);p(k)=f;g$.
-
 
 \end{proof}
+
+
+%Connecting idempotents
+%Subcategory of Karoubi envelope has another monoidal product
+
+
+
+
 
 
 
