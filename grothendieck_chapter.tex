@@ -1,5 +1,5 @@
-\newcommand{\Cat}{{\sf Cat}}
-\newcommand{\D}{\mathcal{D}}
+
+
 %
 %%
 %%%The Grothendieck construction establishes an equivalence of categories between pseudofunctors from categories $\X$ into $\Cat$ and fibrations over $\X$.  There is a two-sided variation of this construction:
@@ -842,46 +842,1190 @@
 %
 %
 %
-%
-%
-%
-%
-%%Monoidal categories are pseudomonoids in Cat:
-%
-%
-%%Consider the category of pointed categories:
-%
-%%So this gives a way to decompose inputs of string diagram. If we look inside the pseudomonoids, they have the following actions on the elements in the monoidal category:
-%
-%
-%
-%
-%
-%%The two yoneda embeddings of Cat into prof produce a pseudomonoid and a pseudocomonoid
-%
-%
-%%but these monoids and comonoids coming from both yoneda embeddings have more structure.  In particular, they have adjoints:
-%
-%%This gives a lax frobenius algebra
-%
-%
-%%This satisfies a bunch of coherences.
-%
-%%Monoidal categories and lax spiders
-%%Stratified spider fusion and coherence
-%
-%%Consider the category of pointed pointed profunctors. we can decompose both the inputs and outputs of string diagrams:
 
 
+In this Chapter, we attempt to understand proof nets/the categorical semantics for the scalable ZX-calculus by  categorifying Frobenius algebras and the spider theorem.
 
-
-
-
-Although we factorize the inputs and outputs of string diagrams using the (co)pants and (co)units, this is a monoidal 2-category, not an ordinary monoidal category.  We will need the following construction
-
+Throughout this thesis, we have been drawing string diagrams in monoidal, or symmetric monoidal categories in which our familiar notions of monoids and Frobenius algebras and so on live.  However, if we move to the higher dimensional setting of monoidal 2-categories, all of the equalities defining the axioms for these structures become natural transformations, satisfying more subtle coherence laws.   For this section, I will assume that the reader has some familiarity with monoidal 2-categories. Recall the categorified notion of a monoidal in a monoidal 2-category:
 
 \begin{definition}
-\newcommand{\D}{\mathbb{D}}
+A {\bf pseudomonoid} in a monoidal 2-category is an object $\mathcal C$ equipped with two 1-cells $\mu:\mathcal{C} \otimes \mathcal{C} \to \mathcal{C}$ and $\eta:I\to \mathcal C$ drawn as follows
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (1, 0) {};
+		\node [style=none] (1) at (1, 1) {};
+		\node [style=none] (2) at (0.5, -1) {};
+		\node [style=none] (3) at (1.5, -1) {};
+		\node [style=dot] (4) at (2.5, 0) {};
+		\node [style=none] (5) at (2.5, 1) {};
+		\node [style=none] (6) at (2, -1) {};
+		\node [style=none] (7) at (3, -1) {};
+		\node [style=none] (8) at (1.75, 0) {$=:$};
+		\node [style=box] (9) at (4, 0) {$I$};
+		\node [style=none] (10) at (4, 1) {};
+		\node [style=dot] (11) at (5.5, 0) {};
+		\node [style=none] (12) at (5.5, 1) {};
+		\node [style=none] (13) at (4.75, 0) {$=:$};
+		\node [style=none] (14) at (3.25, 0) {$,$};
+		\node [style=dot, fill=white] (15) at (1, 0) {$\otimes$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-135, out=90] (2.center) to (0.center);
+		\draw (0.center) to (1.center);
+		\draw [in=-45, out=90] (3.center) to (0.center);
+		\draw [in=-135, out=90] (6.center) to (4);
+		\draw (4) to (5.center);
+		\draw [in=-45, out=90] (7.center) to (4);
+		\draw (9) to (10.center);
+		\draw (11) to (12.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+
+
+
+
+ as well as two 2-cells, the associator, left and right unitors:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=dot,fill=white] (0) at (4, 0) {};
+		\node [style=dot,fill=white] (1) at (4.5, 1) {};
+		\node [style=none] (2) at (3.5, -1) {};
+		\node [style=none] (3) at (4.5, -1) {};
+		\node [style=none] (4) at (5.5, -1) {};
+		\node [style=none] (5) at (4.5, 2) {};
+		\node [style=dot,fill=white] (6) at (7.5, 0) {};
+		\node [style=dot,fill=white] (7) at (7, 1) {};
+		\node [style=none] (8) at (8, -1) {};
+		\node [style=none] (9) at (7, -1) {};
+		\node [style=none] (10) at (6, -1) {};
+		\node [style=none] (11) at (7, 2) {};
+		\node [style=none] (12) at (5.75, 1) {$\xRightarrow{\alpha}$};
+		\node [style=dot,fill=white] (13) at (9.5, 1) {};
+		\node [style=none] (15) at (10, 0) {};
+		\node [style=none] (16) at (9, 0) {};
+		\node [style=none] (18) at (9.5, 1.75) {};
+		\node [style=dot,fill=white] (19) at (9, 0) {};
+		\node [style=none] (20) at (10.25, 1) {$\xRightarrow{u^L}$};
+		\node [style=dot,fill=white] (21) at (12.5, 1) {};
+		\node [style=none] (22) at (12, 0) {};
+		\node [style=none] (23) at (13, 0) {};
+		\node [style=none] (24) at (12.5, 1.75) {};
+		\node [style=dot,fill=white] (25) at (13, 0) {};
+		\node [style=none] (26) at (11.75, 1) {$\xLeftarrow{u^R}$};
+		\node [style=none] (27) at (11, 1.75) {};
+		\node [style=none] (28) at (11, 0) {};
+		\node [style=none] (29) at (8.25, 0.75) {,};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=90, out=-135] (0) to (2.center);
+		\draw [in=-45, out=90] (3.center) to (0);
+		\draw [in=-135, out=90] (0) to (1);
+		\draw (1) to (5.center);
+		\draw [in=-45, out=90] (4.center) to (1);
+		\draw [in=90, out=-45] (6) to (8.center);
+		\draw [in=-135, out=90] (9.center) to (6);
+		\draw [in=-45, out=90] (6) to (7);
+		\draw (7) to (11.center);
+		\draw [in=-135, out=90] (10.center) to (7);
+		\draw [in=90, out=-45] (13) to (15.center);
+		\draw [in=-135, out=90] (16.center) to (13);
+		\draw (13) to (18.center);
+		\draw [in=90, out=-135] (21) to (22.center);
+		\draw [in=-45, out=90] (23.center) to (21);
+		\draw (21) to (24.center);
+		\draw (28.center) to (27.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+Satisfying the maclane pentagon coherence equation (where the red box indicates where the nonidentity natural transformation is being applied):
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (3.5, -4) {};
+		\node [style=none] (1) at (4, -4) {};
+		\node [style=none] (2) at (4.5, -4) {};
+		\node [style=none] (3) at (5, -4) {};
+		\node [style=none] (4) at (4.25, -1.5) {};
+		\node [style=dot] (5) at (4.25, -3.25) {};
+		\node [style=dot] (6) at (3.75, -2.75) {};
+		\node [style=dot] (7) at (4.25, -2.25) {};
+		\node [style=none] (8) at (2.75, -2.5) {$\xRightarrow{\alpha}$};
+		\node [style=none] (9) at (5.75, -4) {};
+		\node [style=none] (10) at (6.25, -4) {};
+		\node [style=none] (11) at (6.75, -4) {};
+		\node [style=none] (12) at (7.25, -4) {};
+		\node [style=none] (13) at (6.5, -1.5) {};
+		\node [style=dot] (14) at (6.5, -3.25) {};
+		\node [style=dot] (15) at (6.5, -2.25) {};
+		\node [style=none] (16) at (5.25, -2.5) {$\xRightarrow{\alpha}$};
+		\node [style=dot] (17) at (7, -2.75) {};
+		\node [style=none] (18) at (8, -2.5) {$\xRightarrow{\alpha}$};
+		\node [style=none] (19) at (2.75, 0.75) {$\xRightarrow{\alpha}$};
+		\node [style=none] (20) at (5.5, 0.75) {$\cong$};
+		\node [style=none] (21) at (8, 0.75) {$\xRightarrow{\alpha}$};
+		\node [style=none] (22) at (1.75, -3.5) {};
+		\node [style=none] (23) at (1.75, -2.5) {};
+		\node [style=none] (24) at (0.5, -2.5) {};
+		\node [style=none] (25) at (0.5, -3.5) {};
+		\node [style=none] (26) at (4.5, -3) {};
+		\node [style=none] (27) at (4.5, -2) {};
+		\node [style=none] (28) at (3.5, -2) {};
+		\node [style=none] (29) at (3.5, -3) {};
+		\node [style=none] (30) at (7.5, -3.5) {};
+		\node [style=none] (31) at (7.5, -2.5) {};
+		\node [style=none] (32) at (6.25, -2.5) {};
+		\node [style=none] (33) at (6.25, -3.5) {};
+		\node [style=none] (34) at (3.25, -0.75) {};
+		\node [style=none] (35) at (3.75, -0.75) {};
+		\node [style=none] (36) at (4.25, -0.75) {};
+		\node [style=none] (37) at (4.75, -0.75) {};
+		\node [style=dot] (38) at (3.5, 0) {};
+		\node [style=dot] (39) at (4.5, 0.5) {};
+		\node [style=dot] (40) at (4, 1) {};
+		\node [style=none] (41) at (4, 1.75) {};
+		\node [style=none] (42) at (5, -0.25) {};
+		\node [style=none] (43) at (5, 0.75) {};
+		\node [style=none] (44) at (3.25, 0.75) {};
+		\node [style=none] (45) at (3.25, -0.25) {};
+		\node [style=none] (46) at (7, 0.25) {};
+		\node [style=none] (47) at (7, 1.25) {};
+		\node [style=none] (48) at (6, 1.25) {};
+		\node [style=none] (49) at (6, 0.25) {};
+		\node [style=none] (50) at (2.25, 0.25) {};
+		\node [style=none] (51) at (2.25, 1.25) {};
+		\node [style=none] (52) at (1, 1.25) {};
+		\node [style=none] (53) at (1, 0.25) {};
+		\node [style=none] (54) at (6, -0.75) {};
+		\node [style=none] (55) at (6.5, -0.75) {};
+		\node [style=none] (56) at (7, -0.75) {};
+		\node [style=none] (57) at (7.5, -0.75) {};
+		\node [style=dot] (58) at (6.25, 0.5) {};
+		\node [style=dot] (59) at (7.25, 0) {};
+		\node [style=dot] (60) at (6.75, 1) {};
+		\node [style=none] (61) at (6.75, 1.75) {};
+		\node [style=none] (62) at (10, -0.5) {};
+		\node [style=none] (63) at (9.5, -0.5) {};
+		\node [style=none] (64) at (9, -0.5) {};
+		\node [style=none] (65) at (8.5, -0.5) {};
+		\node [style=dot] (66) at (9.75, 0.25) {};
+		\node [style=dot] (67) at (9.25, 0.75) {};
+		\node [style=dot] (68) at (8.75, 1.25) {};
+		\node [style=none] (69) at (8.75, 2) {};
+		\node [style=none] (70) at (1.5, -1.25) {$\shortparallel$};
+		\node [style=none] (71) at (9.25, -1.25) {$\shortparallel$};
+		\node [style=none] (72) at (10, -4) {};
+		\node [style=none] (73) at (9.5, -4) {};
+		\node [style=none] (74) at (9, -4) {};
+		\node [style=none] (75) at (8.5, -4) {};
+		\node [style=dot] (76) at (9.75, -3.25) {};
+		\node [style=dot] (77) at (9.25, -2.75) {};
+		\node [style=dot] (78) at (8.75, -2.25) {};
+		\node [style=none] (79) at (8.75, -1.5) {};
+		\node [style=none] (80) at (0.5, -4) {};
+		\node [style=none] (81) at (1, -4) {};
+		\node [style=none] (82) at (1.5, -4) {};
+		\node [style=none] (83) at (2, -4) {};
+		\node [style=dot] (84) at (0.75, -3.25) {};
+		\node [style=dot] (85) at (1.25, -2.75) {};
+		\node [style=dot] (86) at (1.75, -2.25) {};
+		\node [style=none] (87) at (1.75, -1.5) {};
+		\node [style=none] (88) at (0.5, -0.75) {};
+		\node [style=none] (89) at (1, -0.75) {};
+		\node [style=none] (90) at (1.5, -0.75) {};
+		\node [style=none] (91) at (2, -0.75) {};
+		\node [style=dot] (92) at (0.75, 0) {};
+		\node [style=dot] (93) at (1.25, 0.5) {};
+		\node [style=dot] (94) at (1.75, 1) {};
+		\node [style=none] (95) at (1.75, 1.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=90, out=-60] (5) to (2.center);
+		\draw [in=-120, out=90] (1.center) to (5);
+		\draw (5) to (6);
+		\draw [in=-165, out=90] (6) to (7);
+		\draw (7) to (4.center);
+		\draw [in=90, out=-45, looseness=0.75] (7) to (3.center);
+		\draw [in=90, out=-120] (6) to (0.center);
+		\draw [in=90, out=-60] (14) to (11.center);
+		\draw [in=-120, out=90] (10.center) to (14);
+		\draw (15) to (13.center);
+		\draw [in=90, out=-165] (17) to (14);
+		\draw [in=-45, out=90, looseness=0.75] (12.center) to (17);
+		\draw (17) to (15);
+		\draw [in=90, out=-150] (15) to (9.center);
+		\draw [style=red,dashed] (22.center) to (23.center);
+		\draw [style=red,dashed] (23.center) to (24.center);
+		\draw [style=red,dashed] (24.center) to (25.center);
+		\draw [style=red,dashed] (25.center) to (22.center);
+		\draw [style=red,dashed] (26.center) to (27.center);
+		\draw [style=red,dashed] (27.center) to (28.center);
+		\draw [style=red,dashed] (28.center) to (29.center);
+		\draw [style=red,dashed] (29.center) to (26.center);
+		\draw [style=red,dashed] (30.center) to (31.center);
+		\draw [style=red,dashed] (31.center) to (32.center);
+		\draw [style=red, dashed] (32.center) to (33.center);
+		\draw [style=red,dashed] (33.center) to (30.center);
+		\draw [in=90, out=-60] (38) to (35.center);
+		\draw [in=90, out=-120] (38) to (34.center);
+		\draw (41.center) to (40);
+		\draw [in=90, out=-15] (40) to (39);
+		\draw [in=90, out=-60] (39) to (37.center);
+		\draw [in=-120, out=90] (36.center) to (39);
+		\draw [in=90, out=-135] (40) to (38);
+		\draw [style=red,dashed] (42.center) to (43.center);
+		\draw [style=red,dashed] (43.center) to (44.center);
+		\draw [style=red,dashed] (44.center) to (45.center);
+		\draw [style=red,dashed] (45.center) to (42.center);
+		\draw [style=red,dashed] (46.center) to (47.center);
+		\draw [style=red,dashed] (47.center) to (48.center);
+		\draw [style=red,dashed] (48.center) to (49.center);
+		\draw [style=red,dashed] (49.center) to (46.center);
+		\draw [style=red,dashed] (50.center) to (51.center);
+		\draw [style=red,dashed] (51.center) to (52.center);
+		\draw [style=red,dashed] (52.center) to (53.center);
+		\draw [style=red,dashed] (53.center) to (50.center);
+		\draw [in=90, out=-60] (58) to (55.center);
+		\draw [in=90, out=-120] (58) to (54.center);
+		\draw (61.center) to (60);
+		\draw [in=90, out=-45] (60) to (59);
+		\draw [in=90, out=-60] (59) to (57.center);
+		\draw [in=-120, out=90] (56.center) to (59);
+		\draw [in=90, out=-165] (60) to (58);
+		\draw [in=90, out=-120] (66) to (63.center);
+		\draw [in=90, out=-60] (66) to (62.center);
+		\draw (69.center) to (68);
+		\draw [in=90, out=-15] (68) to (67);
+		\draw [in=90, out=-15] (67) to (66);
+		\draw [in=90, out=-120] (67) to (64.center);
+		\draw [in=90, out=-120] (68) to (65.center);
+		\draw [in=90, out=-120] (76) to (73.center);
+		\draw [in=90, out=-60] (76) to (72.center);
+		\draw (79.center) to (78);
+		\draw [in=90, out=-15] (78) to (77);
+		\draw [in=90, out=-15] (77) to (76);
+		\draw [in=90, out=-120] (77) to (74.center);
+		\draw [in=90, out=-120] (78) to (75.center);
+		\draw [in=90, out=-60] (84) to (81.center);
+		\draw [in=90, out=-120] (84) to (80.center);
+		\draw (87.center) to (86);
+		\draw [in=90, out=-165] (86) to (85);
+		\draw [in=90, out=-165] (85) to (84);
+		\draw [in=90, out=-60] (85) to (82.center);
+		\draw [in=90, out=-60] (86) to (83.center);
+		\draw [in=90, out=-60] (92) to (89.center);
+		\draw [in=90, out=-120] (92) to (88.center);
+		\draw (95.center) to (94);
+		\draw [in=90, out=-165] (94) to (93);
+		\draw [in=90, out=-165] (93) to (92);
+		\draw [in=90, out=-60] (93) to (90.center);
+		\draw [in=90, out=-60] (94) to (91.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+
+As well as the unit coherences:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (47) at (2.75, 0.75) {$\xRightarrow{\alpha}$};
+		\node [style=none] (100) at (1.5, -1.25) {$\shortparallel$};
+		\node [style=none] (120) at (0.75, -0.75) {};
+		\node [style=none] (121) at (2.25, -0.75) {};
+		\node [style=dot] (122) at (1.5, -0.25) {};
+		\node [style=dot] (123) at (1.25, 0.5) {};
+		\node [style=dot] (124) at (1.75, 1.25) {};
+		\node [style=none] (125) at (1.75, 1.75) {};
+		\node [style=none] (126) at (5, -0.5) {};
+		\node [style=none] (127) at (5, 0.75) {};
+		\node [style=none] (128) at (3.75, 0.75) {};
+		\node [style=none] (129) at (3.75, -0.5) {};
+		\node [style=none] (130) at (4.75, -0.75) {};
+		\node [style=none] (131) at (3.25, -0.75) {};
+		\node [style=dot] (132) at (4, -0.25) {};
+		\node [style=dot] (133) at (4.25, 0.5) {};
+		\node [style=dot] (134) at (3.75, 1.25) {};
+		\node [style=none] (135) at (3.75, 1.75) {};
+		\node [style=none] (136) at (2.25, 0.25) {};
+		\node [style=none] (137) at (2.25, 1.5) {};
+		\node [style=none] (138) at (1, 1.5) {};
+		\node [style=none] (139) at (1, 0.25) {};
+		\node [style=dot] (144) at (7.25, 0.75) {};
+		\node [style=none] (145) at (7.25, 1.75) {};
+		\node [style=none] (146) at (6.75, -0.75) {};
+		\node [style=none] (147) at (7.75, -0.75) {};
+		\node [style=none] (148) at (6, 0.75) {$\xRightarrow{ u^L}$};
+		\node [style=none] (149) at (7.25, -1.25) {$\shortparallel$};
+		\node [style=none] (150) at (0.5, -4.25) {};
+		\node [style=none] (151) at (2, -4.25) {};
+		\node [style=dot] (152) at (1.25, -3.75) {};
+		\node [style=dot] (153) at (1, -3) {};
+		\node [style=dot] (154) at (1.5, -2.25) {};
+		\node [style=none] (155) at (1.5, -1.75) {};
+		\node [style=none] (156) at (1.5, -4) {};
+		\node [style=none] (157) at (1.5, -2.75) {};
+		\node [style=none] (158) at (0.25, -2.75) {};
+		\node [style=none] (159) at (0.25, -4) {};
+		\node [style=none] (160) at (4.25, -3.25) {$\xRightarrow{u^R}$};
+		\node [style=dot] (161) at (7.25, -3) {};
+		\node [style=none] (162) at (7.25, -1.75) {};
+		\node [style=none] (163) at (6.75, -4.25) {};
+		\node [style=none] (164) at (7.75, -4.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (125.center) to (124);
+		\draw [in=90, out=-165] (124) to (123);
+		\draw [in=90, out=-45] (123) to (122);
+		\draw [in=90, out=-135] (123) to (120.center);
+		\draw [in=90, out=-45, looseness=0.75] (124) to (121.center);
+		\draw [style=red,dashed] (126.center) to (127.center);
+		\draw [style=red,dashed] (127.center) to (128.center);
+		\draw [style=red,dashed] (128.center) to (129.center);
+		\draw [style=red,dashed] (129.center) to (126.center);
+		\draw (135.center) to (134);
+		\draw [in=90, out=-15] (134) to (133);
+		\draw [in=90, out=-135] (133) to (132);
+		\draw [in=90, out=-45] (133) to (130.center);
+		\draw [in=90, out=-135, looseness=0.75] (134) to (131.center);
+		\draw [style=red,dashed] (136.center) to (137.center);
+		\draw [style=red,dashed] (137.center) to (138.center);
+		\draw [style=red,dashed] (138.center) to (139.center);
+		\draw [style=red,dashed] (139.center) to (136.center);
+		\draw (145.center) to (144);
+		\draw [in=90, out=-45] (144) to (147.center);
+		\draw [in=-135, out=90] (146.center) to (144);
+		\draw (155.center) to (154);
+		\draw [in=90, out=-165] (154) to (153);
+		\draw [in=90, out=-45] (153) to (152);
+		\draw [in=90, out=-135] (153) to (150.center);
+		\draw [in=90, out=-45, looseness=0.75] (154) to (151.center);
+		\draw [style=red,dashed] (156.center) to (157.center);
+		\draw [style=red,dashed] (157.center) to (158.center);
+		\draw [style=red,dashed] (158.center) to (159.center);
+		\draw [style=red,dashed] (159.center) to (156.center);
+		\draw (162.center) to (161);
+		\draw [in=90, out=-45] (161) to (164.center);
+		\draw [in=-135, out=90] (163.center) to (161);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+A pseudomonoid is {\bf strict} when the associator and unitors are idenities.
+
+\end{definition}
+
+Consider $\Cat$ as a symmetric monoidal 2-category where the tensor product is given by the product.
+
+\begin{lemma}
+Monoidal categories are pseudomonoids in $\Cat$ and strict monoidal categories are strict pseudomonoids in $\Cat$.
+\end{lemma}
+
+By looking at the points inside of $\Cat$, this way of viewing a monoidal category hints at some connection to proof nets:
+
+\begin{definition}
+The symmetric monoidal 2-category of {\bf pointed Categories} is the coslice category $\Cat^*:=1/\Cat$.  Explicitly, this has:
+
+\begin{description}
+\item[0-cells:] A pointed category is a pair consisting of a category along with a chosen object of that category: 
+
+$$(\X, X\in\X_0)$$
+
+\item[1-cells:] A pointed functor between pointed categories is a pair consisting of a functor between the underlying categories and a morphism that preserves the point:
+
+$$(F:\X\to\Y, f\in \Y(F(X),Y) ):(\X, X\in\X_0)\to (\Y, Y\in\Y_0)$$
+
+\item[2-cells:] Given two parallel pointed functors, 
+
+$$
+ (F:\X\to\Y, f\in \Y(F(X),Y) ),  (G:\X\to\Y, g\in \Y(G(X),Y) ):(\X, X\in\X_0)\to (\Y, Y\in\Y_0)
+$$
+
+a pointed natural transformation is natural transformation  $\phi:F\to G$ that preserves the distinguished map, so that $\phi_X:g=f$.
+\end{description}
+
+
+Composition of the 1-cells and 2-cells is given pointwise; and the monoidal structure is given by the Cartesian product.
+
+\end{definition}
+
+There is a graphical calculus for pointed categories.  Although to my knowledge, it is not fully worked out in the literature, it is alluded to in the work of \cite{vicary} (from which I will be using the source code for typesetting the diagrams) in the setting of vect-enriched profunctors; as well as later in the work of \cite{mario} for set-enriched profunctors.
+
+Given a category $\X$, and map $f:X\to Y$ in $\X$; draw the pointed functor $(1_\X, f \in \X(1_{\X}(X),Y))$ as follows:
+
+
+$$
+\begin{tikzpicture}[scale=2]
+    \node[Cyl, bot, top, height scale=1.0] (A) at (0,0) {};
+    \begin{scope}[internal string scope]
+        \node (i) at  ($(A.bot)+(0,-.3)$)  {\tiny $X$};
+        \node (j) at ($(A.top)+(0,.3)$)  {\tiny $Y$};
+        \node [tiny label] (g) at (A.center) {$f$};
+        \draw (A.bot) to (A.top);
+    \end{scope}
+\end{tikzpicture}
+$$
+
+One should think of the convex regions of space inside of the tube as the category itself; wherein one can apply rewrite rules coming from the equational theory of the category.  A functor is drawn as a membrane; functoriality means that things can pass up through the membrane:
+
+
+$$
+\begin{tikzpicture}[scale=2]
+    \node[Cyl, bot, top,xscale=1.5,yscale=1.1] (A) at (0,0) {};
+    \node[Cyl, bot, anchor=top,xscale=1.5,yscale=1.1] (B) at (A.bot) {};
+    \node (g) at ($(A.bot)+(-.5,0)$) {\tiny $F$};
+    \begin{scope}[internal string scope]
+        \node (i) at  ($(B.bot)+(0,-.3)$)  {\tiny $X$};
+        \node (j) at ($(A.top)+(0,.3)$)  {\tiny $F(Y)$};
+        \node [tiny label] (g) at (B.center) {$f$};
+        \draw (B.bot) to (A.top);
+    \end{scope}
+\end{tikzpicture}
+=
+\begin{tikzpicture}[scale=2]
+    \node[Cyl, bot, top,xscale=1.5,yscale=1.1] (A) at (0,0) {};
+    \node[Cyl, bot, anchor=top,xscale=1.5,yscale=1.1] (B) at (A.bot) {};
+    \node (g) at ($(A.bot)+(-.5,0)$) {\tiny $F$};
+    \begin{scope}[internal string scope]
+        \node (i) at  ($(B.bot)+(0,-.3)$)  {\tiny $X$};
+        \node (j) at ($(A.top)+(0,.3)$)  {\tiny $F(Y)$};
+        \node [tiny label] (g) at (A.center) {$F(f)$};
+        \draw (B.bot) to (A.top);
+    \end{scope}
+\end{tikzpicture}
+$$
+
+ If $\X$ is a monoidal category, then for every map with a binary tensor factorization of the codomain  $f:X\otimes Y\to Z$ there is a pointed functor:
+
+
+$$(\_\otimes \_ :\X^2\to\X, f\in \Y(F(X),Y) ):(\X^2, (X,Y)\in\X^2_0)\to (\X, Z\in\X_0)$$
+
+Drawn as follows:
+
+$$
+\begin{tikzpicture}[scale=2]
+    \node[Pants, bot, top, height scale=1.0] (A) at (0,0) {};
+    \begin{scope}[internal string scope]
+        \node (i) at (A.belt) [above] {\tiny $Z$};
+        \node (j) at (A.leftleg) [below] {\tiny $X$};
+        \node (k) at (A.rightleg) [below] { \tiny $Y$};
+        \node [tiny label] (g) at (0,0.02\cobheight) {$f$};
+        \draw (i.south)
+            to (g.center)
+            to [out=-140, in=up] (j.north);
+        \draw (g.center)
+            to [out=-40, in=up] (k.north);
+    \end{scope}
+\end{tikzpicture}
+$$
+
+
+And for every state $f:I\to X$, there is a pointed functor
+
+
+$$(I:1\to\X, f\in \Y(I,X) ):(1,* \in 1)\to (\X, I\in\X_0)$$
+
+
+
+Drawn as follows:
+
+$$
+\begin{tikzpicture}[scale=2]
+\setlength\cupheight{1.5\cupheight}
+\node (i) at (0,0) [Cup, top] {};
+\node (j) at (0,-\cobheight) [Bot3D, invisible] {};
+\node (g) [tiny label] at (0,-0.4\cobheight) {$f$};
+\begin{scope}[internal string scope]
+\node (di) at (i.center) [above] {\tiny $A$};
+\draw (i.center) to (g.center) {};
+\end{scope}
+\end{tikzpicture}
+$$
+
+
+So we see that, being remeniscent of proof nets, this gives us a way to decompose the inputs of string diagrams into tensor factors.  
+From now on, we will generally omit the points for the objects.
+Consider the action of the associator and unitor on the points:
+
+
+
+$$
+\begin{tikzpicture}[scale=2]
+    \node[Pants, bot, top] (B) at (0,0) {};
+    \node[Pants, bot, anchor=belt] (A) at (B.leftleg) {};
+    \node[SwishL, bot, anchor=top] (C) at (B.rightleg) {};
+    \begin{scope}[internal string scope]
+        \node (i) at (B.belt) {};
+        \node (j) at (A.leftleg){};
+        \node (k) at (A.rightleg) {};
+        \node (l) at (C.bot) {} ;
+        \node [tiny label] (f) at (B.center) {$f$};
+        \node [tiny label] (g) at (A.center) {$g$};
+        \node [tiny label] (h) at (C.center) {$h$};
+        \draw (f.center) to (i.center);
+        \draw (j.center) to [out=up, in=-135] (g.center);
+        \draw (k.center) to [out=up, in=-35] (g.center);
+        \draw (g.center) to [out=90, in=-135] node [left=-4pt] {} (f.center);
+        \draw (l.center)
+            to [out=90, in=-80] (h.center) 
+            to [out=up, in=down, out looseness=0.7]
+                (B.rightleg)
+            to [out=up, in=-45]
+                node [right=-4pt, pos=0.11] {}
+ (f.center);
+    \end{scope}
+    \end{tikzpicture}
+    \xRightarrow{\alpha}
+\begin{tikzpicture}[scale=2]
+    \node[Pants, bot, top] (B) at (0,0) {};
+    \node[Pants, bot, anchor=belt] (A) at (B.rightleg) {};
+    \node[SwishR, bot, anchor=top] (C) at (B.leftleg) {};
+    \begin{scope}[internal string scope]
+        \node (i) at (B.belt) {};
+        \node (j) at (C.bot)  {};
+        \node (k) at (A.leftleg) {};
+        \node (l) at (A.rightleg)  {};
+        \node [tiny label] (f) at (0.05\cobwidth,0.18\cobheight) {$f$};
+        \node [tiny label] (g)  at (-0.4\cobwidth,-0.1\cobheight) {$g$};
+        \draw (j.center)
+            to [out=up, in=-130] (g.center);
+        \draw (k.center)
+            to [out=up, in=down] (B-rightleg.in-leftthird)
+            to [out=up, in=-40] (g.center);
+        \draw (l.center) to [out=up, in=down] (B-rightleg.in-rightthird)
+            to [out=up, in=-60] (f.center);
+        \draw (f.center) to [out=90, in=-90, looseness=2] (i.center);
+        \draw (f.center) to [in=90, out=-120] (g.center);
+        \node [tiny label] (h) at (0.8\cobwidth,-0.25\cobheight) {$h$};
+    \end{scope}
+    \end{tikzpicture}
+$$
+$$
+\begin{tikzpicture}[scale=2]
+    \node[Pants, top, bot] (A) at (0,0) {};
+    \node[Cup] (B) at (A.leftleg) {};
+    \node[Cyl, bot, anchor=top] (C) at (A.rightleg) {};
+    \begin{scope}[internal string scope]
+        \node [tiny label] (f) at (0,0) {$f$};
+        \node [tiny label] (g) at ([yshift=-0.3\cobheight] B) {$g$};
+        \node [tiny label] (h) at (C) {$h$};
+        \node (i) at (A.belt) [above] {};
+        \node (i2) at (C.bottom) [below] {};
+        \draw (f.center) to [out=-140, in=90] node [left=-3pt] {} (g.center);
+        \draw (f.center) to (i);
+        \draw (f.center)
+            to [out=-40, in=90, looseness=0.9]
+                node [right=-2pt, pos=0.4] {} (h.center);
+        \draw (h.center) to (i2);
+    \end{scope}
+\end{tikzpicture}
+\xRightarrow{u^L}
+\begin{tikzpicture}[scale=2]
+    \node[Cyl, tall, bot, top] (A) at (0,0) {};
+    \begin{scope}[internal string scope]
+        \node [tiny label] (f) at (0,0.4\cobheight) {$f$};
+        \node [tiny label] (g) at (-0.20\cobwidth, -0.1\cobheight) {$g$};
+        \node [tiny label] (h) at (0.20\cobwidth,-0.5\cobheight) {$h$};
+        \node (i) at (A.top) [above] {};
+        \node (i2) at (A.bot) [below] {};
+        \draw (f.center) to [out=-120, in=90] (g.center);
+        \draw (f.center) to (i);
+        \draw (f.center)
+            to [out=-60, in=90, looseness=0.9] (h.center);
+        \draw (h.center) to [out=-90, in=up, looseness=1.2] (i2.north);
+    \end{scope}
+\end{tikzpicture}\ ,
+\hspace*{.5cm}
+\begin{tikzpicture}[scale=2]
+    \node[Pants, top, bot] (A) at (0,0) {};
+    \node[Cup] (B) at (A.rightleg) {};
+    \node[Cyl, bot, anchor=top] (C) at (A.leftleg) {};
+    \begin{scope}[internal string scope]
+        \node [tiny label] (f) at (0,0) {$f$};
+        \node [tiny label] (g) at ([yshift=-0.3\cobheight] B) {$g$};
+        \node [tiny label] (h) at (C) {$h$};
+        \node (i) at (A.belt) [above] {};
+        \node (i2) at (C.bottom) [below] {};
+        \draw (f.center) to [out=-40, in=90] node [right=-1pt] {} (g.center);
+        \draw (f.center) to (i);
+        \draw (f.center)
+            to [out=-140, in=90, looseness=0.9]
+                %node [left=-2pt, pos=0.4] {$Y$}
+                (h.center);
+        \draw (h.center) to (i2);
+    \end{scope}
+\end{tikzpicture}
+\xRightarrow{u^R}
+\begin{tikzpicture}[scale=2]
+    \node[Cyl, tall, bot, top] (A) at (0,0) {};
+    \begin{scope}[internal string scope]
+        \node [tiny label] (f) at (0,0.4\cobheight) {$f$};
+        \node [tiny label] (g) at (0.2\cobwidth, -0.1\cobheight) {$g$};
+        \node [tiny label] (h) at (-0.2\cobwidth,-0.5\cobheight) {$h$};
+        \node (i) at (A.top) [above] {};
+        \node (i2) at (A.bot) [below] {};
+        \draw (f.center) to [out=-60, in=90] (g.center);
+        \draw (f.center) to (i);
+        \draw (f.center)
+            to [out=-120, in=90, looseness=0.9] (h.center);
+        \draw (h.center) to [out=-90, in=90, looseness=1.2] (i2);
+    \end{scope}
+\end{tikzpicture}
+$$
+
+This is unsatisfying, because of the one-sided nature of the way we are able to factorize the tensor product of maps.  Instead of working in a Cartesian category, we want to work in a cartesian bicategory!
+Recall the category of internal profunctors described in Section \ref{???}, which is the 2-sided version of $\Cat$.  In this section it will be easier to work with profunctors {\em enriched} in $\Sets$, as opposed to profunctors internal to set.  This is more general as well, because it allows us to work with locally small categories, rather than merely small categories:
+
+
+\begin{description}
+\item[0-cells:] Categories
+\item[1-cells:]  The morphisms are {\em profunctors} given by the following correspondence.
+$$
+\dfrac{\mathcal{C}\proarrow \mathcal{D}\quad \in\ \Prof}
+{\mathcal{C}^\op\times\mathcal{D}\to\Sets \quad \in\ \Cat}
+$$
+
+The composition of profunctors $P:\mathcal{C}\proarrow \mathcal{D}$ and $Q:\mathcal{D}\proarrow \mathcal{E}$ is given by the coend:
+$$
+P;Q(C,E) := \int^{D \in \mathcal{D} } P(C,D) \times Q(D,E) 
+$$
+
+The identity profunctor on $\mathcal C$ is given by the hom functor ${\mathcal C}: \mathcal{C}^\op\times\mathcal{C}\to\Sets$.
+
+Formally, the coend of a functor $F:\mathcal{C}^\op\times\mathcal{C}\to \Sets$ is given by the coequalizer diagram (in $\Cat$):
+
+$$
+\coprod_{C_1,C_2 \in \mathcal{C}} {\mathcal{C}}(C_1,C_2) \times F(C_1,C_2) \rightrightarrows \prod_{C \in \mathcal{C}} F(C,C) \to \int^{C \in \mathcal{C}} F(C,C)
+$$
+
+Intutitively, this is a categorification of trace of a matrix where the natural numbers are replaced with categories, and the commutative ring is replaced with $\Sets$.  Thus, the composition of profunctors categorifies matrix multiplication: the trace of the product of matrices.
+
+
+\item[2-cells:] Natural transformations.
+
+\item[Compact closed structure:] The symmetric monoidal structure of $\Prof$ is given by extending the Cartesian structure in $\Cat$.   The units and counits of the compact closed structure are given by the hom functor.
+
+\end{description}
+
+There are two classes of profunctors which will be of interest to us:
+
+\begin{definition}
+
+
+A profunctor $\mathcal{C}\proarrow \mathcal{D}$ is {\bf representable} when it is naturally isomorphic to the profunctor $F_*:={\mathcal D}(F-,=)$ for a functor $F: \mathcal{C}\to \mathcal{D}$.
+
+
+Dually, a profunctor $\mathcal{D}\proarrow \mathcal{C}$ is {\bf corepresentable} when it is naturally isomorphic to the profunctor $F^*:={\mathcal D}(-,F=)$ for a functor $F: \mathcal{C}\to \mathcal{D}$.
+
+
+\end{definition}
+
+There are two embeddings of $\Cat$ into $\Prof$ that preserve the monoidal structure (formally, they are strong monoidal pseudofunctors):
+
+\begin{definition}
+The representable embedding $(\_)_*:\Cat^\co \to \Prof$ is the identity on objects,  covariant on 1-cells and contravariant on 2-cells.  It takes functors $F:\X\to \Y$ to profunctors  $F_*:\X\proarrow \Y$.
+
+
+Dually, the corepresentable embedding $(\_)^*:\Cat^\op \to \Prof$  is the identity on objects, contravariant on 1-cells and covariant on 2-cells.It takes functors $F:\X\to \Y$ to profunctors  $F^*:\Y\proarrow \X$.
+
+\end{definition}
+
+This two embeddings interact nicely:
+
+\begin{lemma}
+Given any functor $F:\X\to \Y$, there is an adjunction $F_* \dashv F^*$ with unit $\eta^F$ and counit $\epsilon^F$.
+\end{lemma}
+
+For example, if we draw the two embeddings of the pseudomonoid as follows:
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=box] (0) at (1, 0) {$\otimes_*$};
+		\node [style=none] (1) at (1, 1) {};
+		\node [style=none] (2) at (0.5, -1) {};
+		\node [style=none] (3) at (1.5, -1) {};
+		\node [style=dot] (4) at (2.5, 0) {};
+		\node [style=none] (5) at (2.5, 1) {};
+		\node [style=none] (6) at (2, -1) {};
+		\node [style=none] (7) at (3, -1) {};
+		\node [style=none] (8) at (1.75, 0) {$=:$};
+		\node [style=box] (9) at (4, 0) {$I_*$};
+		\node [style=none] (10) at (4, 1) {};
+		\node [style=dot] (11) at (5.5, 0) {};
+		\node [style=none] (12) at (5.5, 1) {};
+		\node [style=none] (13) at (4.75, 0) {$=:$};
+		\node [style=none] (14) at (3.25, 0) {$,$};
+		\node [style=box] (15) at (7.25, 0) {$\otimes^*$};
+		\node [style=none] (16) at (7.25, -1) {};
+		\node [style=none] (17) at (6.75, 1) {};
+		\node [style=none] (18) at (7.75, 1) {};
+		\node [style=dot] (19) at (8.75, 0) {};
+		\node [style=none] (20) at (8.75, -1) {};
+		\node [style=none] (21) at (8.25, 1) {};
+		\node [style=none] (22) at (9.25, 1) {};
+		\node [style=none] (23) at (8, 0) {$=:$};
+		\node [style=box] (24) at (10.25, 0) {$I^*$};
+		\node [style=none] (25) at (10.25, -1) {};
+		\node [style=dot] (26) at (11.75, 0) {};
+		\node [style=none] (27) at (11.75, -1) {};
+		\node [style=none] (28) at (11, 0) {$=:$};
+		\node [style=none] (29) at (9.5, 0) {$,$};
+		\node [style=none] (30) at (6.25, 0) {$,$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-135, out=90] (2.center) to (0);
+		\draw (0) to (1.center);
+		\draw [in=-45, out=90] (3.center) to (0);
+		\draw [in=-135, out=90] (6.center) to (4);
+		\draw (4) to (5.center);
+		\draw [in=-45, out=90] (7.center) to (4);
+		\draw (9) to (10.center);
+		\draw (11) to (12.center);
+		\draw [in=135, out=-90] (17.center) to (15);
+		\draw [in=90, out=-90] (15) to (16.center);
+		\draw [in=45, out=-90] (18.center) to (15);
+		\draw [in=135, out=-90] (21.center) to (19);
+		\draw (19) to (20.center);
+		\draw [in=45, out=-90] (22.center) to (19);
+		\draw (24) to (25.center);
+		\draw (26) to (27.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+Then we have the following 2-cells:
+
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=dot] (4) at (2.5, 0) {};
+		\node [style=none] (5) at (2.5, 0.75) {};
+		\node [style=dot] (6) at (2.5, -1) {};
+		\node [style=none] (7) at (2.5, -1.75) {};
+		\node [style=none] (9) at (3.75, 0.75) {};
+		\node [style=none] (11) at (3.75, -1.75) {};
+		\node [style=none] (12) at (3.25, -0.5) {$\xRightarrow{\eta^\otimes}$};
+		\node [style=none] (13) at (4.25, -0.5) {,};
+		\node [style=none] (14) at (5.25, 0.75) {};
+		\node [style=none] (15) at (5.25, -1.75) {};
+		\node [style=none] (16) at (6, 0.75) {};
+		\node [style=none] (17) at (6, -1.75) {};
+		\node [style=dot] (18) at (7.25, -1) {};
+		\node [style=dot] (19) at (7.25, 0) {};
+		\node [style=none] (20) at (6.75, 0.75) {};
+		\node [style=none] (21) at (7.75, 0.75) {};
+		\node [style=none] (22) at (6.75, -1.75) {};
+		\node [style=none] (23) at (7.75, -1.75) {};
+		\node [style=none] (24) at (6.5, -0.5) {$\xRightarrow{\epsilon^\otimes}$};
+		\node [style=none] (25) at (8.75, -0.5) {,};
+		\node [style=none] (26) at (11.25, 0.75) {};
+		\node [style=none] (27) at (11.25, -1.75) {};
+		\node [style=dot] (30) at (9.75, -1) {};
+		\node [style=dot] (31) at (9.75, 0) {};
+		\node [style=none] (36) at (10.5, -0.5) {$\xRightarrow{\epsilon^I}$};
+		\node [style=none] (37) at (12, -0.5) {,};
+		\node [style=dot] (40) at (14.5, -1) {};
+		\node [style=dot] (41) at (14.5, 0) {};
+		\node [style=none] (42) at (13.75, -0.5) {$\xRightarrow{\epsilon^I}$};
+		\node [style=none] (43) at (12.5, 0) {};
+		\node [style=none] (44) at (13.25, 0) {};
+		\node [style=none] (45) at (13.25, -1) {};
+		\node [style=none] (46) at (12.5, -1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (4) to (5.center);
+		\draw (6) to (7.center);
+		\draw [bend right=45, looseness=1.25] (4) to (6);
+		\draw [bend left=45, looseness=1.25] (4) to (6);
+		\draw (11.center) to (9.center);
+		\draw (15.center) to (14.center);
+		\draw (17.center) to (16.center);
+		\draw [in=-30, out=90] (23.center) to (18);
+		\draw [in=90, out=-150] (18) to (22.center);
+		\draw (18) to (19);
+		\draw [in=-90, out=30] (19) to (21.center);
+		\draw [in=-90, out=150] (19) to (20.center);
+		\draw (27.center) to (26.center);
+		\draw (30) to (31);
+		\draw (40) to (41);
+		\draw [dashed] (45.center) to (44.center);
+		\draw [dashed] (44.center) to (43.center);
+		\draw [dashed] (43.center) to (46.center);
+		\draw [dashed] (46.center) to (45.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+Indeed for any monoidal category, there are lax-Frobeniusators:
+
+$$
+\phi^L:=
+\left(
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=dot,fill=white] (96) at (13.25, 1) {};
+		\node [style=dot,fill=white] (97) at (14.25, 1.75) {};
+		\node [style=none] (98) at (14.25, 2.5) {};
+		\node [style=none] (99) at (13, 2.5) {};
+		\node [style=none] (100) at (13.25, -0.5) {};
+		\node [style=none] (101) at (14.5, -0.5) {};
+		\node [style=none] (102) at (14.75, 0) {};
+		\node [style=none] (103) at (14.75, 0.5) {};
+		\node [style=none] (104) at (13, 0.5) {};
+		\node [style=none] (105) at (13, 0) {};
+		\node [style=dot,fill=white] (106) at (16.5, 1.5) {};
+		\node [style=dot,fill=white] (107) at (17.5, 2.25) {};
+		\node [style=none] (108) at (17.5, 2.75) {};
+		\node [style=none] (109) at (16.25, 2.75) {};
+		\node [style=none] (110) at (17, 0.75) {};
+		\node [style=none] (111) at (17, 0.75) {};
+		\node [style=none] (112) at (16.5, -1) {};
+		\node [style=none] (113) at (17.5, -1) {};
+		\node [style=dot,fill=white] (114) at (17, 0.75) {};
+		\node [style=dot,fill=white] (115) at (17, -0.25) {};
+		\node [style=none] (116) at (17.75, 0.25) {};
+		\node [style=none] (117) at (17.75, 1.75) {};
+		\node [style=none] (118) at (16, 1.75) {};
+		\node [style=none] (119) at (16, 0.25) {};
+		\node [style=dot,fill=white] (120) at (20.25, 1.5) {};
+		\node [style=none] (122) at (20.25, 2.75) {};
+		\node [style=none] (123) at (19, 2.75) {};
+		\node [style=none] (124) at (19.75, 0.75) {};
+		\node [style=none] (125) at (19.75, 0.75) {};
+		\node [style=none] (126) at (19.25, -1) {};
+		\node [style=none] (127) at (20.25, -1) {};
+		\node [style=dot,fill=white] (128) at (19.75, 0.75) {};
+		\node [style=dot,fill=white] (129) at (19.75, -0.25) {};
+		\node [style=dot,fill=white] (134) at (20.25, 2.25) {};
+		\node [style=none] (135) at (20.75, 1.25) {};
+		\node [style=none] (136) at (20.75, 2.5) {};
+		\node [style=none] (137) at (19.75, 2.5) {};
+		\node [style=none] (138) at (19.75, 1.25) {};
+		\node [style=none] (144) at (22, -0.5) {};
+		\node [style=none] (145) at (23, -0.5) {};
+		\node [style=dot,fill=white] (147) at (22.5, 0.25) {};
+		\node [style=none] (148) at (22, 2) {};
+		\node [style=none] (149) at (23, 2) {};
+		\node [style=dot,fill=white] (150) at (22.5, 1.25) {};
+		\node [style=none] (151) at (15.5, 1) {$\xRightarrow{\epsilon^\otimes}$};
+		\node [style=none] (152) at (18.5, 1) {$\xRightarrow{\alpha_*^{-1}}$};
+		\node [style=none] (153) at (21.5, 1) {$\xRightarrow{\eta^\otimes}$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-75, out=90] (101.center) to (97);
+		\draw [in=15, out=-165, looseness=0.75] (97) to (96);
+		\draw (96) to (100.center);
+		\draw [in=270, out=105] (96) to (99.center);
+		\draw (98.center) to (97);
+		\draw [style=red, dashed] (102.center) to (103.center);
+		\draw [style=red, dashed] (103.center) to (104.center);
+		\draw [style=red, dashed] (104.center) to (105.center);
+		\draw [style=red, dashed] (105.center) to (102.center);
+		\draw [in=-75, out=45, looseness=0.75] (111.center) to (107);
+		\draw [in=15, out=-165, looseness=0.75] (107) to (106);
+		\draw [in=135, out=-90] (106) to (110.center);
+		\draw [in=270, out=105] (106) to (109.center);
+		\draw (108.center) to (107);
+		\draw [in=90, out=-150] (115) to (112.center);
+		\draw (115) to (114);
+		\draw [in=90, out=-30] (115) to (113.center);
+		\draw [style=red, dashed] (116.center) to (117.center);
+		\draw [style=red, dashed] (117.center) to (118.center);
+		\draw [style=red, dashed] (118.center) to (119.center);
+		\draw [style=red, dashed] (119.center) to (116.center);
+		\draw [in=45, out=-90] (120) to (124.center);
+		\draw [in=90, out=-150] (129) to (126.center);
+		\draw (129) to (128);
+		\draw [in=90, out=-30] (129) to (127.center);
+		\draw [bend left=45, looseness=1.25] (134) to (120);
+		\draw [bend left=45, looseness=1.25] (120) to (134);
+		\draw (122.center) to (134);
+		\draw [in=150, out=-90, looseness=0.75] (123.center) to (128);
+		\draw [style=red, dashed] (135.center) to (136.center);
+		\draw [style=red, dashed] (136.center) to (137.center);
+		\draw [style=red, dashed] (137.center) to (138.center);
+		\draw [style=red, dashed] (138.center) to (135.center);
+		\draw [in=90, out=-150] (147) to (144.center);
+		\draw [in=90, out=-30] (147) to (145.center);
+		\draw [in=-90, out=150] (150) to (148.center);
+		\draw [in=-90, out=30] (150) to (149.center);
+		\draw (147) to (150);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\right)
+$$
+
+$$
+\phi^R:=
+\left(
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=dot, fill=white] (0) at (14.5, 1) {};
+		\node [style=dot, fill=white] (1) at (13.5, 1.75) {};
+		\node [style=none] (2) at (13.5, 2.5) {};
+		\node [style=none] (3) at (14.75, 2.5) {};
+		\node [style=none] (4) at (14.5, -0.5) {};
+		\node [style=none] (5) at (13.25, -0.5) {};
+		\node [style=none] (6) at (13, 0) {};
+		\node [style=none] (7) at (13, 0.5) {};
+		\node [style=none] (8) at (14.75, 0.5) {};
+		\node [style=none] (9) at (14.75, 0) {};
+		\node [style=dot, fill=white] (10) at (17.25, 1.5) {};
+		\node [style=dot, fill=white] (11) at (16.25, 2.25) {};
+		\node [style=none] (12) at (16.25, 2.75) {};
+		\node [style=none] (13) at (17.5, 2.75) {};
+		\node [style=none] (14) at (16.75, 0.75) {};
+		\node [style=none] (15) at (16.75, 0.75) {};
+		\node [style=none] (16) at (17.25, -1) {};
+		\node [style=none] (17) at (16.25, -1) {};
+		\node [style=dot, fill=white] (18) at (16.75, 0.75) {};
+		\node [style=dot, fill=white] (19) at (16.75, -0.25) {};
+		\node [style=none] (20) at (16, 0.25) {};
+		\node [style=none] (21) at (16, 1.75) {};
+		\node [style=none] (22) at (17.75, 1.75) {};
+		\node [style=none] (23) at (17.75, 0.25) {};
+		\node [style=dot, fill=white] (24) at (19.5, 1.5) {};
+		\node [style=none] (25) at (19.5, 2.75) {};
+		\node [style=none] (26) at (20.75, 2.75) {};
+		\node [style=none] (27) at (20, 0.75) {};
+		\node [style=none] (28) at (20, 0.75) {};
+		\node [style=none] (29) at (20.5, -1) {};
+		\node [style=none] (30) at (19.5, -1) {};
+		\node [style=dot, fill=white] (31) at (20, 0.75) {};
+		\node [style=dot, fill=white] (32) at (20, -0.25) {};
+		\node [style=dot, fill=white] (33) at (19.5, 2.25) {};
+		\node [style=none] (34) at (19, 1.25) {};
+		\node [style=none] (35) at (19, 2.5) {};
+		\node [style=none] (36) at (20, 2.5) {};
+		\node [style=none] (37) at (20, 1.25) {};
+		\node [style=none] (38) at (23, -0.5) {};
+		\node [style=none] (39) at (22, -0.5) {};
+		\node [style=dot, fill=white] (40) at (22.5, 0.25) {};
+		\node [style=none] (41) at (23, 2) {};
+		\node [style=none] (42) at (22, 2) {};
+		\node [style=dot, fill=white] (43) at (22.5, 1.25) {};
+		\node [style=none] (44) at (15.5, 1) {$\xRightarrow{\epsilon^\otimes}$};
+		\node [style=none] (45) at (18.5, 1) {$\xRightarrow{\alpha_*}$};
+		\node [style=none] (46) at (21.5, 1) {$\xRightarrow{\eta^\otimes}$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-105, out=90] (5.center) to (1);
+		\draw [in=165, out=-15, looseness=0.75] (1) to (0);
+		\draw (0) to (4.center);
+		\draw [in=-90, out=75] (0) to (3.center);
+		\draw (2.center) to (1);
+		\draw [style=red, dashed] (6.center) to (7.center);
+		\draw [style=red, dashed] (7.center) to (8.center);
+		\draw [style=red, dashed] (8.center) to (9.center);
+		\draw [style=red, dashed] (9.center) to (6.center);
+		\draw [in=-105, out=135, looseness=0.75] (15.center) to (11);
+		\draw [in=165, out=-15, looseness=0.75] (11) to (10);
+		\draw [in=45, out=-90] (10) to (14.center);
+		\draw [in=-90, out=75] (10) to (13.center);
+		\draw (12.center) to (11);
+		\draw [in=90, out=-30] (19) to (16.center);
+		\draw (19) to (18);
+		\draw [in=90, out=-150] (19) to (17.center);
+		\draw [style=red, dashed] (20.center) to (21.center);
+		\draw [style=red, dashed] (21.center) to (22.center);
+		\draw [style=red, dashed] (22.center) to (23.center);
+		\draw [style=red, dashed] (23.center) to (20.center);
+		\draw [in=135, out=-90] (24) to (27.center);
+		\draw [in=90, out=-30] (32) to (29.center);
+		\draw (32) to (31);
+		\draw [in=90, out=-150] (32) to (30.center);
+		\draw [bend right=45, looseness=1.25] (33) to (24);
+		\draw [bend right=45, looseness=1.25] (24) to (33);
+		\draw (25.center) to (33);
+		\draw [in=30, out=-90, looseness=0.75] (26.center) to (31);
+		\draw [style=red, dashed] (34.center) to (35.center);
+		\draw [style=red, dashed] (35.center) to (36.center);
+		\draw [style=red, dashed] (36.center) to (37.center);
+		\draw [style=red, dashed] (37.center) to (34.center);
+		\draw [in=90, out=-30] (40) to (38.center);
+		\draw [in=90, out=-150] (40) to (39.center);
+		\draw [in=-90, out=30] (43) to (41.center);
+		\draw [in=-90, out=150] (43) to (42.center);
+		\draw (40) to (43);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\right)
+$$
+
+
+
+talk about coherences
+
+\begin{theorem}
+Given a monoidal category $\X$, and a connected diagram in $\Prof$ generated by the $1$-cells of the pseudo-Frobenius structure induced by $\X$ one can always reduce the diagram to spider normal form by repeated application of $\phi^L,\Psi^R,\eta^\otimes$ and $\eta^I$. Moreover, this is strictly confluent in the sense, so that any $2$-cells witnessing the reduction to the spider normal form are equal.
+
+
+Furthermore, given any {\em not-necessarily connected} diagram can be reduced to a normal form given by stratifying the connected components into spiders.
+\end{theorem}
+
+
+We can do the same thing we did with pointed categories, and look inside the profunctors:
+
+\begin{definition}
+The symmetric monoidal 2-category of {\bf pointed Profunctors}, $\Prof^*$ has:
+
+\begin{description}
+\item[0-cells:] Pointed categories:
+
+$$(\X, X\in\X_0)$$
+
+\item[1-cells:] A pointed functor  between pointed categories is a pair consisting of a profunctor between the underlying categories and a morphism that preserves the point:
+
+$$(F:\X\proarrow\Y, f\in F(X,Y)):(\X, X\in\X_0)\to (\Y, Y\in\Y_0)$$
+
+\item[2-cells:] Given two parallel pointed functors, 
+
+$$
+ (F:\X\proarrow\Y, f\in F(X,Y)),  (G:\X\proarrow\Y, g\in (X,Y)):(\X, X\in\X_0)\to (\Y, Y\in\Y_0)
+$$
+
+a pointed 2-cell is 2-cell $\phi:F\Rightarrow G$ of profunctors that preserves the distinguished map, so that $\phi_X:g=f$.
+\end{description}
+
+\end{definition}
+
+
+The graphical calculus for pointed profunctors is essentially the same as for pointed categories.  Except now we can factorize the domain and codomain of maps.  For example, consider the action unit and counit for the tensor product:
+
+
+$$
+  \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)},scale=2]
+    \node[Pants, top] (pants) {};
+    \node[Copants, bot, lowercob, anchor=leftleg] (copants) at (pants.leftleg) {};
+   % \node[Top3D] at (copants.rightleg) {};
+    \node[Bot3D] at (pants.rightleg) {};
+    \node[Bot3D] at (pants.leftleg) {};
+   \begin{scope}[internal string scope]
+     \node[sq tiny label] (f) at (pants.center) {$f$};
+     \node[sq tiny label] (g) at (copants.center) {$g$};
+     \draw (f.center) to (pants.belt);
+     \draw[bend right] (f.center) to (pants.leftleg);
+     \draw[bend left] (f.center) to (pants.rightleg);
+     \draw (g.center) to (copants.belt);
+     \draw[bend left] (g.center) to (copants.leftleg);
+     \draw[bend right] (g.center) to (copants.rightleg);
+   \end{scope}
+  \end{tikzpicture}
+\xRightarrow{\epsilon^\otimes}
+  \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)},scale=2]
+    \node[Cyl,xscale=1.2,top,anchor=bot] (tube) {};
+    \node[Cyl,xscale=1.2,bot,anchor=top] (tube1) at (tube.bot) {};
+    \begin{scope}[internal string scope]
+     \node[sq tiny label] (f) at (tube.center) {$f$};
+     \node[sq tiny label] (g) at (tube1.center) {$g$};
+     \draw (tube1.bot) to (g.center);
+     \draw (f.center) to (tube.top);
+     \draw[bend left] (f.center) to (g.center);
+     \draw[bend right] (f.center) to (g.center);
+    \end{scope}
+  \end{tikzpicture}\ ,
+\hspace*{.5cm}
+  \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)},scale=2]
+    \node[Cyl,top,anchor=bot] (tube) {};
+    \node[Cyl,bot,anchor=top] (tube1) at (tube.bot) {};
+    \begin{scope}[internal string scope]
+     \node[sq tiny label] (f) at (tube.bot) {$f$};
+     \draw (f.center) to (tube1.bot);
+     \draw (f.center) to (tube.top);
+    \end{scope}
+  \end{tikzpicture}\
+  \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)},scale=2]
+    \node[Cyl,top,anchor=bot] (tube) {};
+    \node[Cyl,bot,anchor=top] (tube1) at (tube.bot) {};
+    \begin{scope}[internal string scope]
+     \node[sq tiny label] (g) at (tube.bot) {$g$};
+     \draw (g.center) to (tube1.bot);
+     \draw (g.center) to (tube.top);
+    \end{scope}
+  \end{tikzpicture}
+\xRightarrow{\eta^\otimes}
+  \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)},scale=2]
+    \node[Pants,xscale=1.5,bot] (pants) {};
+    \node[Copants,xscale=1.5, top, anchor=belt] (copants) at (pants.belt) {};
+   % \node[Top3D] at (copants.rightleg) {};
+   % \node[Bot3D] at (pants.rightleg) {};
+    \node[Bot3D,xscale=1.5] at (pants.belt) {};
+    \begin{scope}[internal string scope]
+    \node[sq tiny label] (f) at ($(pants.belt)+(-0.22,.2)$) {$f$};
+     \node[sq tiny label] (g) at ($(pants.belt)+(0.22,.2)$) {$g$};
+     \draw[in=-90, out=90, looseness=1.3]  (f.center) to ($(copants.leftleg)+(0,0)$);
+     \draw[in=-90, out=90, looseness=1.3]  (g.center) to ($(copants.rightleg)+(0,0)$);
+     \draw[in=90, out=-90, looseness=1.3]  (f.center) to ($(pants.leftleg)+(0,0)$);
+     \draw[in=90, out=-90, looseness=1.3]  (g.center) to ($(pants.rightleg)+(0,0)$);
+    \end{scope}
+  \end{tikzpicture}
+$$
+And similarly for the tensor unit:
+$$
+  \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)},scale=2]
+    \node[Cup, top,scale=1.2] (cup) at (0,1.5) {};
+    \node[Cap, bot,scale=1.2] (cap) at (0,0) {};
+   % \node[Top3D] at (copants.rightleg) {};
+    \begin{scope}[internal string scope]
+    \node[sq tiny label] (f) at ($(cap.center)+(0,.2)$) {$g$};
+    \node[sq tiny label] (g) at ($(cup.center)+(0,-.27)$)  {$f$};
+     \draw (g.center) to (cup.center);
+     \draw (f.center) to (cap.center);
+    \end{scope}
+  \end{tikzpicture}
+\xRightarrow{\epsilon^I}
+  \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)},scale=2]
+    \node[Cyl,xscale=1.2,top,anchor=bot] (tube) {};
+    \node[Cyl,xscale=1.2,bot,anchor=top] (tube1) at (tube.bot) {};
+    \begin{scope}[internal string scope]
+     \node[sq tiny label] (f) at (tube.center) {$f$};
+     \node[sq tiny label] (g) at (tube1.center) {$g$};
+     \draw (tube1.bot) to (g.center);
+     \draw (f.center) to (tube.top);
+    \end{scope}
+  \end{tikzpicture}\ ,
+\hspace*{.5cm}
+  \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)},scale=2]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-1, 1) {};
+		\node [style=none] (1) at (-1, 0) {};
+		\node [style=none] (2) at (0, 0) {};
+		\node [style=none] (3) at (0, 1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw[style=dashed] (2.center) to (3.center);
+		\draw[style=dashed] (3.center) to (0.center);
+		\draw[style=dashed] (0.center) to (1.center);
+		\draw[style=dashed] (1.center) to (2.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\xRightarrow{\eta^I}
+  \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)},scale=2]
+    \node[Cup] (cup) {};
+    \node[Cap, bot]  at (cup) {};
+   % \node[Top3D] at (copants.rightleg) {};
+    \begin{scope}[internal string scope]
+    \end{scope}
+  \end{tikzpicture}
+$$
+
+
+
+These diagrams are very closed to proof nets; for example we can internalize the associators and unitors:
+
+DRAW The associator and unitor diagrams
+
+However, we are still living in a monoidal 2-category, moreover, the tensor/cotensor and unit introduction and removal are not inverse to each other; rather, they are adjoint. What is going on here?  To get a deeper perspective, we have to consider the following structure:
+
+\begin{definition}
 A {\bf displayed category} is an ordinary category $\D$ equipped with a lax normal functor $F:\D\to \Prof$.
 That is to say, $F$ has the data of:
 
@@ -897,14 +2041,34 @@ Such that for any diagram $W\xrightarrow{f} X \xrightarrow{g} Y \xrightarrow{h} 
 
 $$
 \xymatrix{
-(F_{W,X}(f);F_{X,Y}(g));F_{Y,Z} \ar[d]_{F_{W,X,Y}(f;g);1_{F_{Y,Z}(h)}} \ar[rr]^{\alpha_{F_{W,X}(f),F_{X,Y}(g),F_{Y,Z}(h)}}
+(F_{W,X}(f);F_{X,Y}(g));F_{Y,Z} \ar[d]_{F_{W,X,Y}(f;g);1_{F_{Y,Z}(h)}} \ar[rr]^{(\alpha_;)_{F_{W,X}(f),F_{X,Y}(g),F_{Y,Z}(h)}}
   & & F_{W,X}(f);(F_{X,Y}(g);F_{Y,Z}(h)) \ar[d]^{1_{F_{W,X}(f)};F_{X,Y,Z}(g,h)}\\
 F_{W,Y}(f;g);F_{Y,Z}(h) \ar[dr]_{F_{W,Y,Z}(f;g,h) \ \ }
   && F_{W,X}(f);F_{X,Z}(g;h) \ar[dl]^{\ \ F_{W,X,Z}(f,g;h)}\\
   & F(W,Z)(f;g;h)
 }
 $$
+
+Where $(\alpha_;)$ is the associator for composition in $\Prof$.
 \end{definition}
+
+We can recast the spider theorem in this light:
+
+\begin{definition}
+Given any monoidal category $\X$, there is an indexed category
+
+$F_\X:\esfa\to \Prof$ such that  
+\begin{itemize}
+\item $(F_\X)(n) = \X^n$
+\item $(F_\X){n,m}$ takes diagrams in $\esfa$ to (stratified) spiders in $\Prof$ composed of the monoidal structure of $\X$.
+\item The natural transformation $(F_\X)_{n,m,k}$ performs (stratified) spider fusion.
+\end{itemize}
+
+
+\end{definition}
+
+This way of framing the categorified spider theorem lends itself to the following canonical construction, usually attributed to Benabou (this is a variation of the eponymous construction of Grothendieck for pseudofunctors from ordinary categories into $\Cat$):
+
 
 
 \begin{theorem}{Benabou-Grothendieck construction}
@@ -929,22 +2093,7 @@ Moreover, the first projection map $\pi_0:\Pi F\to \D$  is a (strict) functor.
 We can actually go the other direction.  Given some fixed $\D$, this extends to an equivalence of categories between the slice category $\Cat/\D$ and the lax normal functor category $[\D,\Prof]$.  We won't restate this equivalence of categories, because it is not directly useful for us, and it takes considerable effort to expose.
 \end{theorem}
 
-
-\begin{definition}
-\newcommand{\esfa}{{\sf ESFA}}
-Given any monoidal category $\X$, there is an indexed category
-
-$F_\X:\escfa\to \Prof$ such that  
-\begin{description}
-\item $(F_\X)(n) = \X^n$
-\item $(F_\X){n,m}$ takes spiders in $\escfa$ to (stratified) spiders in $\Prof$ composed of the monoidal structure of $\X$.
-\item The natural transformation $(F_\X)_{n,m,k}$ performs (stratified) spider fusion.
-\end{description}
-
-
-\end{definition}
-
-
+Now, let us crank the handle for our example and see what we get out:
 
 \begin{lemma}
 The indexed category $\Pi F_{\X}$ has a concrete presentation:
@@ -974,7 +2123,7 @@ This is moreover a strict monoidal category.  The tensor product is defined on o
 Given two maps 
 $$(f,f^\sharp):W=[W_0,\ldots, W_{n-1}]\to X=[X_{0},\ldots, X_{m-1}]$$
 and
-$$(g;g^\sharp):Y=[Y_0,\ldots, Y_{k-1}]\toZ= [Z_{0},\ldots, Z_{\ell-1}]$$
+$$(g;g^\sharp):Y=[Y_0,\ldots, Y_{k-1}]\to Z= [Z_{0},\ldots, Z_{\ell-1}]$$
 
 the tensor product is defined as follows:
 
@@ -990,7 +2139,10 @@ This is strict because the composition stratifies shapes into lists
 \end{lemma}
 
 
-GIVE EXAMPLE
+Talk about unitors and associators being honest maps on connected components
+
+
+
 
 
 We want to consider the category where all components are connected.  to do this, first remark that for any  finite list of objects $X=[X_0,\ldots, X_{n-1}]$ in $\X$ there is an idempotent $(s_X, s_X^\sharp)=e_X:X\to X$ in   $\Pi F_{\X}$ where $s_X$ is the fully connected spider from $n\to n$ and $s_X$ is the tensor factoriztion of $\otimes_{i=0}^{n-1} 1_{X_i}$.
@@ -1003,7 +2155,7 @@ GIVE EXAMPLE
 
 
 \begin{definition}
- $N\X:=K_{\{e_X\ | \ X \in [\X_0]}}(\Pi F_{\X})$ of the Karoubi envelope of $\Pi F_{\X}$ with objects $(X,e_X)$.  The maps are precisely the maps in $\Pi F_{\X}$ whose shapes are fully connected.
+ $N\X:=K_{\{e_X\ | \ X \in [\X_0]\}}(\Pi F_{\X})$ of the Karoubi envelope of $\Pi F_{\X}$ with objects $(X,e_X)$.  The maps are precisely the maps in $\Pi F_{\X}$ whose shapes are fully connected.
 \end{definition}
 
 

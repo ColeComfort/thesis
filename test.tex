@@ -26,170 +26,21 @@
 %\date{} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed 
 
-\newcommand{\Set}{\Sets}
-\newcommand{\Mnd}{{\sf Mnd}}
-\newcommand{\Cat}{{\sf Cat}}
+
+\usepackage{Cobordism}
+\pgfsetlayers{bottom,background,main,internal,foreground,label,cobordism,top,selectionbox,edgelayer,nodelayer}
+\input{styles.tikzdefs}
+\input{styles.tikzstyles}
 
 \begin{document}
 \maketitle
 
 
-\newcommand{\D}{\mathbb{D}}
-
-
-
-
-Although we factorize the inputs and outputs of string diagrams using the (co)pants and (co)units, this is a monoidal 2-category, not an ordinary monoidal category.  We will need the following construction
-
-
-\begin{definition}
-\newcommand{\D}{\mathbb{D}}
-A {\bf displayed category} is an ordinary category $\D$ equipped with a lax normal functor $F:\D\to \Prof$.
-That is to say, $F$ has the data of:
-
-\begin{itemize}
-\item A function $F:\D_0\to \Prof_0$ taking objects of $\D$ to categories.
-\item For every pair of objects $X,Y \in \D_0$, a function $F_{X,Y}:\D(X,Y)\to \Prof(F(X),F(Y))$  such that $1_{F(X)}=F_{X,X}(1_X)$.
-\item For every triple of objects $X,Y,Z \in \D_0$, a $2$-cell, with components at $f:X\to Y,gY\to Z$
-$$F_{X,Y,Z}(f,g):F_{X,Y}(f);F_{Y,Z}(g) \Rightarrow F_{X,Z}(f;g)$$
-\end{itemize}
-
-Such that for any diagram $W\xrightarrow{f} X \xrightarrow{g} Y \xrightarrow{h} Z$ in $\X$ the following diagram commutes:
-
-
-$$
-\xymatrix{
-(F_{W,X}(f);F_{X,Y}(g));F_{Y,Z} \ar[d]_{F_{W,X,Y}(f;g);1_{F_{Y,Z}(h)}} \ar[rr]^{\alpha_{F_{W,X}(f),F_{X,Y}(g),F_{Y,Z}(h)}}
-  & & F_{W,X}(f);(F_{X,Y}(g);F_{Y,Z}(h)) \ar[d]^{1_{F_{W,X}(f)};F_{X,Y,Z}(g,h)}\\
-F_{W,Y}(f;g);F_{Y,Z}(h) \ar[dr]_{F_{W,Y,Z}(f;g,h) \ \ }
-  && F_{W,X}(f);F_{X,Z}(g;h) \ar[dl]^{\ \ F_{W,X,Z}(f,g;h)}\\
-  & F(W,Z)(f;g;h)
-}
-$$
-\end{definition}
-
-
-\begin{theorem}{Benabou-Grothendieck construction}
-
-Then there is an ordinary category $\Pi F$ defined as follows:
-
-
-\begin{description}
-\item[Objects:] Pairs $(X\in \D_0, X^\sharp \in (F(X))_0)$
-\item[Maps:] The maps are pairs, $(f, f^\sharp):(X,X^\sharp )\to (Y,Y^\sharp)$ where $f \in \D(X,Y)$ and $f^\sharp \in F_{X,Y}(f)(Y^\sharp,X^\sharp)$
-\item[Identity:] $1_{(X,X^\sharp)} := (1_X, 1_{X^\sharp})$
-\item[Composition:] Given a composable pair:
-$$(X,X^\sharp)\xrightarrow{(f, f^\sharp)} (Y,Y^\sharp)\xrightarrow{(g, g^\sharp)} (Z,Z^\sharp)$$
-The composite is defined as follows:
-$$(f, f^\sharp);(g, g^\sharp):= (F_{X,Y,Z}(f,g))(f^\sharp, g^\sharp)$$
-\end{description}
-
-
-Moreover, the first projection map $\pi_0:\Pi F\to \D$  is a (strict) functor.
-
-
-We can actually go the other direction.  Given some fixed $\D$, this extends to an equivalence of categories between the slice category $\Cat/\D$ and the lax normal functor category $[\D,\Prof]$.  We won't restate this equivalence of categories, because it is not directly useful for us, and it takes considerable effort to expose.
-\end{theorem}
-
-
-\begin{definition}
+\newcommand{\Cat}{{\sf Cat}}
+\newcommand{\D}{\mathcal{D}}
 \newcommand{\esfa}{{\sf ESFA}}
-Given any monoidal category $\X$, there is an indexed category
 
-$F_\X:\escfa\to \Prof$ such that  
-\begin{description}
-\item $(F_\X)(n) = \X^n$
-\item $(F_\X){n,m}$ takes spiders in $\escfa$ to (stratified) spiders in $\Prof$ composed of the monoidal structure of $\X$.
-\item The natural transformation $(F_\X)_{n,m,k}$ performs (stratified) spider fusion.
-\end{description}
-
-
-\end{definition}
-
-
-
-\begin{lemma}
-The indexed category $\Pi F_{\X}$ has a concrete presentation:
-
-\begin{description}
-\item[Objects:] Finite lists of objects in $\X$.
-\item[Maps:] Given two finite lists $X=[X_0,\ldots, X_{n-1}]$ and $Y=[Y_0,\ldots, Y_{m-1}]$ of objects in $\X$, a map from $X\to Y$ is a pair consisting of a map $f:n\to m$ in $\esfa$ equipped with an element $f^\sharp \in  (F_{\X})_{n,m}( F_{\X})$.
-
-
-$f^\sharp$ can be described concretely by induction on the connected components on $n$. If $f$ is a single connected component, then $f^\sharp$ is a map with domains and codomains left-factorized as follows
-$$\otimes_{i=0}^{n-1} X_i \to \otimes_{i=0}^{m-1} Y_i$$
-
-Moreover, if $f$ is multiple connected components, then $f^\sharp$ is a finite list of maps whose domains and codomains factorized in this way.
-
-
-\item[Identity:] Given a list of objects $X=[X_0,\ldots, X_{n-1}]$  in $\X$, $1_X=[1_{X_0},\ldots, 1_{X_{n-1}}]$.
-
-
-\item[Composition:] Take a composable pair:
-$$X=[X_0,\ldots, X_{n-1}] \xrightarrow{(f,f^\sharp)} Y=[Y_0,\ldots, Y_{m-1}] \xrightarrow{(g,g^\sharp)} Z=[Z_0,\ldots, Z_{k-1}]$$
-
-Then the composite fuses together all connected components into stratified spiders:  effectively, so that if two maps are connected it just produces the composite in $\X$ and keeps track of the factorizations of inputs and outputs.
-
-\end{description}
-
-This is moreover a strict monoidal category.  The tensor product is defined on objects by concatenation.
-Given two maps 
-$$(f,f^\sharp):W=[W_0,\ldots, W_{n-1}]\to X=[X_{0},\ldots, X_{m-1}]$$
-and
-$$(g;g^\sharp):Y=[Y_0,\ldots, Y_{k-1}]\toZ= [Z_{0},\ldots, Z_{\ell-1}]$$
-
-the tensor product is defined as follows:
-
-$$
-(f,f^\sharp)\otimes(g;g^\sharp)
-:=
-(f\otimes 1_k, f^\sharp\times 1_Y );(1_m\otimes g, 1_X\times g^\sharp)
-$$
-
-This is strict because the composition stratifies shapes into lists
-
-
-\end{lemma}
-
-
-GIVE EXAMPLE
-
-
-We want to consider the category where all components are connected.  to do this, first remark that for any  finite list of objects $X=[X_0,\ldots, X_{n-1}]$ in $\X$ there is an idempotent $(s_X, s_X^\sharp)=e_X:X\to X$ in   $\Pi F_{\X}$ where $s_X$ is the fully connected spider from $n\to n$ and $s_X$ is the tensor factoriztion of $\otimes_{i=0}^{n-1} 1_{X_i}$.
-
-
-GIVE EXAMPLE
-
-
-
-
-
-\begin{definition}
- $N\X:=K_{\{e_X\ | \ X \in [\X_0]}}(\Pi F_{\X})$ of the Karoubi envelope of $\Pi F_{\X}$ with objects $(X,e_X)$.  The maps are precisely the maps in $\Pi F_{\X}$ whose shapes are fully connected.
-\end{definition}
-
-
-\begin{lemma}
-This is a strict monoidal category, where the tensor product is defined on objects by
-$$
-([X_0,\ldots, X_{n-1}],e_{[X_0,\ldots, X_{n-1}]})
-\otimes
-([Y_0,\ldots, Y_{n-1}],e_{[Y_0,\ldots, Y_{n-1}]})
-:=
-([X_0,\ldots, X_{n-1},Y_0,\ldots, Y_{n-1}],e_{[X_0,\ldots, X_{n-1},Y_0,\ldots, Y_{n-1}]})
-$$
-\end{lemma}
-
-
-The tensor product just connects the shapes of both things that are tensored together.
-
-
-\begin{theorem}
-$N\X$ is the strict monoidal category of proof nets in $\X$.
-\end{theorem}
-\begin{proof}
-
-\end{proof}
+\input{grothendieck_chapter}
 
 
 \bibliography{bibliography} 
