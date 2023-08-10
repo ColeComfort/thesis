@@ -844,9 +844,10 @@
 %
 
 
-In this Chapter, we attempt to understand proof nets/the categorical semantics for the scalable ZX-calculus by  categorifying Frobenius algebras and the spider theorem.
+In this Chapter, we attempt a high-level construction of  proof nets by categorifying Frobenius algebras and the spider theorem. We have left the categorification of the spider theorem as a conjecture; however, we  hope that the highly conceptual level of the construction opens up avenues for finding string diagrams for algebraic structures other than pseudomonoids.
 
-Throughout this thesis, we have been drawing string diagrams in monoidal, or symmetric monoidal categories in which our familiar notions of monoids and Frobenius algebras and so on live.  However, if we move to the higher dimensional setting of monoidal 2-categories, all of the equalities defining the axioms for these structures become natural transformations, satisfying more subtle coherence laws.   For this section, I will assume that the reader has some familiarity with monoidal 2-categories. Recall the categorified notion of a monoidal in a monoidal 2-category:
+
+Throughout this thesis, we have been drawing string diagrams in monoidal, or symmetric monoidal categories in which our familiar notions of monoids and Frobenius algebras and so on live.  However, if we move to the higher dimensional setting of monoidal 2-categories, all of the equalities defining the axioms for these structures become natural transformations, satisfying more subtle coherence laws.   For this section, I will assume that the reader has some familiarity with monoidal 2-categories. First, we categorify a monoid in a monoidal category:
 
 \begin{definition}
 A {\bf pseudomonoid} in a monoidal 2-category is an object $\mathcal C$ equipped with two 1-cells $\mu:\mathcal{C} \otimes \mathcal{C} \to \mathcal{C}$ and $\eta:I\to \mathcal C$ drawn as follows
@@ -1222,7 +1223,7 @@ A pseudomonoid is {\bf strict} when the associator and unitors are idenities.
 
 \end{definition}
 
-Consider $\Cat$ as a symmetric monoidal 2-category where the tensor product is given by the product.
+Regard $\Cat$ as a symmetric monoidal 2-category where the tensor product is given by the product.
 
 \begin{lemma}
 Monoidal categories are pseudomonoids in $\Cat$ and strict monoidal categories are strict pseudomonoids in $\Cat$.
@@ -1231,7 +1232,7 @@ Monoidal categories are pseudomonoids in $\Cat$ and strict monoidal categories a
 By looking at the points inside of $\Cat$, this way of viewing a monoidal category hints at some connection to proof nets:
 
 \begin{definition}
-The symmetric monoidal 2-category of {\bf pointed Categories} is the coslice category $\Cat^*:=1/\Cat$.  Explicitly, this has:
+The symmetric monoidal 2-category of {\bf pointed categories} is the coslice category $\Cat^*:=1/\Cat$.  Explicitly, this has:
 
 \begin{description}
 \item[0-cells:] A pointed category is a pair consisting of a category along with a chosen object of that category: 
@@ -1242,12 +1243,7 @@ $$(\X, X\in\X_0)$$
 
 $$(F:\X\to\Y, f\in \Y(F(X),Y) ):(\X, X\in\X_0)\to (\Y, Y\in\Y_0)$$
 
-\item[2-cells:] Given two parallel pointed functors, 
-
-$$
- (F:\X\to\Y, f\in \Y(F(X),Y) ),  (G:\X\to\Y, g\in \Y(G(X),Y) ):(\X, X\in\X_0)\to (\Y, Y\in\Y_0)
-$$
-
+\item[2-cells:] Given two parallel pointed functors $(F,f),  (G,g):(\X,X)\to (\Y,X)$,
 a pointed natural transformation is natural transformation  $\phi:F\to G$ that preserves the distinguished map, so that $\phi_X:g=f$.
 \end{description}
 
@@ -1273,7 +1269,9 @@ $$
 \end{tikzpicture}
 $$
 
-One should think of the convex regions of space inside of the tube as the category itself; wherein one can apply rewrite rules coming from the equational theory of the category.  A functor is drawn as a membrane; functoriality means that things can pass up through the membrane:
+The maps inside the category live within the convex space contained withing the tubes; wherein one can apply rewrite rules coming from the equational theory of the category.  
+
+Functors are drawn as membranes between tubes; functoriality means that things can pass up through the membrane:
 
 
 $$
@@ -1302,10 +1300,11 @@ $$
 \end{tikzpicture}
 $$
 
- If $\X$ is a monoidal category, then for every map with a binary tensor factorization of the codomain  $f:X\otimes Y\to Z$ there is a pointed functor:
+ If $\X$ is a monoidal category, then for every map with a binary tensor factorization of the domain  $f:X\otimes Y\to Z$ there is a pointed functor:
 
 
-$$(\_\otimes \_ :\X^2\to\X, f\in \Y(F(X),Y) ):(\X^2, (X,Y)\in\X^2_0)\to (\X, Z\in\X_0)$$
+$$
+(\_\otimes \_ :\X^2\to\X, f\in \Y(X\otimes Y ,Z) ):(\X^2, (X,Y)\in\X^2_0)\to (\X, Z\in\X_0)$$
 
 Drawn as follows:
 
@@ -1349,8 +1348,8 @@ $$
 \end{tikzpicture}
 $$
 
-
-So we see that, being remeniscent of proof nets, this gives us a way to decompose the inputs of string diagrams into tensor factors.  
+Inside of the cobordisms, draw the string diagrams for a strictification of the monoidal category.
+Remeniscent of proof nets, this gives us a way to decompose the inputs of string diagrams into tensor factors.  
 From now on, we will generally omit the points for the objects.
 Consider the action of the associator and unitor on the points:
 
@@ -1480,7 +1479,7 @@ $$
 \end{tikzpicture}
 $$
 
-This is unsatisfying, because of the one-sided nature of the way we are able to factorize the tensor product of maps.  Instead of working in a Cartesian category, we want to work in a cartesian bicategory!
+This is unsatisfying, because of the one-sided nature of the way we are able to factorize the tensor product of maps.
 Recall the category of internal profunctors described in Section \ref{???}, which is the 2-sided version of $\Cat$.  In this section it will be easier to work with profunctors {\em enriched} in $\Sets$, as opposed to profunctors internal to set.  This is more general as well, because it allows us to work with locally small categories, rather than merely small categories:
 
 
@@ -1488,27 +1487,29 @@ Recall the category of internal profunctors described in Section \ref{???}, whic
 \item[0-cells:] Categories
 \item[1-cells:]  The morphisms are {\em profunctors} given by the following correspondence.
 $$
-\dfrac{\mathcal{C}\proarrow \mathcal{D}\quad \in\ \Prof}
-{\mathcal{C}^\op\times\mathcal{D}\to\Sets \quad \in\ \Cat}
+\dfrac
+{F:\X^\op\times\Y\to\Sets \quad \in\ \Cat}
+{F:\X\proarrow \Y\quad \in\ \Prof}
 $$
 
-The composition of profunctors $P:\mathcal{C}\proarrow \mathcal{D}$ and $Q:\mathcal{D}\proarrow \mathcal{E}$ is given by the coend:
+The composition of profunctors $P:\X\proarrow \Y$ and $Q:\Y\proarrow \Z$ is given by the coend:
 $$
-P;Q(C,E) := \int^{D \in \mathcal{D} } P(C,D) \times Q(D,E) 
+P;Q := \int^{Y \in \Y } P(-,Y) \times Q(Y,=):\X \proarrow \Z
+$$
+Where the coend of a functor $F:\X^\op\times\X\to \Sets$ is given by the coequalizer diagram (in $\Cat$):
+$$
+\coprod_{X_1,X_2 \in \X} {\X}(X_1,X_2) \times F(X_1,X_2) \rightrightarrows \prod_{X \in \X} F(X,X) \to \int^{X \in \X} F(X,X)
 $$
 
-The identity profunctor on $\mathcal C$ is given by the hom functor ${\mathcal C}: \mathcal{C}^\op\times\mathcal{C}\to\Sets$.
 
-Formally, the coend of a functor $F:\mathcal{C}^\op\times\mathcal{C}\to \Sets$ is given by the coequalizer diagram (in $\Cat$):
+The identity profunctor on $\X$ is given by the hom functor
+$$\X(-,=): \X^\op\times\X\to\Sets$$
 
-$$
-\coprod_{C_1,C_2 \in \mathcal{C}} {\mathcal{C}}(C_1,C_2) \times F(C_1,C_2) \rightrightarrows \prod_{C \in \mathcal{C}} F(C,C) \to \int^{C \in \mathcal{C}} F(C,C)
-$$
 
 Intutitively, this is a categorification of trace of a matrix where the natural numbers are replaced with categories, and the commutative ring is replaced with $\Sets$.  Thus, the composition of profunctors categorifies matrix multiplication: the trace of the product of matrices.
 
 
-\item[2-cells:] Natural transformations.
+\item[2-cells:]  2-cells between parallel profunctors $P,Q:\X\proarrow \Y$ are natural transformations between the underlying profunctors $P,Q:\X^\op\times \Y \to \Sets$.
 
 \item[Compact closed structure:] The symmetric monoidal structure of $\Prof$ is given by extending the Cartesian structure in $\Cat$.   The units and counits of the compact closed structure are given by the hom functor.
 
@@ -1519,10 +1520,10 @@ There are two classes of profunctors which will be of interest to us:
 \begin{definition}
 
 
-A profunctor $\mathcal{C}\proarrow \mathcal{D}$ is {\bf representable} when it is naturally isomorphic to the profunctor $F_*:={\mathcal D}(F-,=)$ for a functor $F: \mathcal{C}\to \mathcal{D}$.
+A profunctor $\X\proarrow \Y$ is {\bf representable} when it is naturally isomorphic to the profunctor $F_*:=\Y(F-,=)$ for a functor $F: \X\to \Y$.
 
 
-Dually, a profunctor $\mathcal{D}\proarrow \mathcal{C}$ is {\bf corepresentable} when it is naturally isomorphic to the profunctor $F^*:={\mathcal D}(-,F=)$ for a functor $F: \mathcal{C}\to \mathcal{D}$.
+Dually, a profunctor $\Y\proarrow \X$ is {\bf corepresentable} when it is naturally isomorphic to the profunctor $F^*:=\Y(-,F=)$ for a functor $F: \X\to \mathbb{D}$.
 
 
 \end{definition}
@@ -1860,19 +1861,216 @@ $$
 \right)
 $$
 
+These Frobeniusators interact with the (co)associators and (co)unitors of the (co)omonoid to satisfy several coherences to form a {\bf lax-Frobenius algebra} algebra in $\Prof$.  The coherences for a strong pseudofrobenius algebra (where the frobeniusators are isomorphisms) are stated explicitly in \cite{???}.  The lax version is presumably the same situation.  Monoidal categories are not just any old Frobenius algebras in Prof, as the pseudomonoid and pseudocomonoid are adjoint to each other making them categorified $\dag$-frobenius algebras.  Moreover, the unit and counits of these adjunctions are coherent with respec to the lax-Frobenius structure.  
 
 
-talk about coherences
+This leads to the following conjecture. 
 
-\begin{theorem}
-Given a monoidal category $\X$, and a connected diagram in $\Prof$ generated by the $1$-cells of the pseudo-Frobenius structure induced by $\X$ one can always reduce the diagram to spider normal form by repeated application of $\phi^L,\Psi^R,\eta^\otimes$ and $\eta^I$. Moreover, this is strictly confluent in the sense, so that any $2$-cells witnessing the reduction to the spider normal form are equal.
-
-
-Furthermore, given any {\em not-necessarily connected} diagram can be reduced to a normal form given by stratifying the connected components into spiders.
-\end{theorem}
+\begin{definition}
+Fix a monoidal category $\X$. Say that a connected diagram in prof composed of the generators of the corresponding pseudomonoid is in {\bf spider normal form} when is any of the four following types of diagrams
 
 
-We can do the same thing we did with pointed categories, and look inside the profunctors:
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=dot] (0) at (1.25, 3) {};
+		\node [style=dot] (1) at (0.5, 4) {};
+		\node [style=dot] (2) at (1.25, 2.25) {};
+		\node [style=dot] (3) at (0.5, 1.25) {};
+		\node [style=none] (4) at (1.5, 4) {};
+		\node [style=none] (5) at (1.5, 1.25) {};
+		\node [style=none] (6) at (0.25, 0.5) {};
+		\node [style=none] (7) at (1.5, 4.75) {};
+		\node [style=none] (8) at (1.5, 0.5) {};
+		\node [style=none] (9) at (0.75, 4.75) {};
+		\node [style=none] (10) at (0.25, 4.75) {};
+		\node [style=none] (11) at (0.75, 0.5) {};
+		\node [style=none] (12) at (1, 3.25) {};
+		\node [style=none] (13) at (0.5, 3.75) {};
+		\node [style=none] (14) at (0.5, 1.5) {};
+		\node [style=none] (15) at (1, 2) {};
+		\node [style=none] (16) at (0.75, 3.5) {$\ddots$};
+		\node [style=none] (17) at (0.75, 1.75) {$\reflectbox{$\ddots$}$};
+		\node [style=none] (18) at (1.2, 0.5) {$\cdots$};
+		\node [style=none] (19) at (1.2, 4.75) {$\cdots$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (7.center) to (4.center);
+		\draw [in=105, out=-90] (10.center) to (1);
+		\draw [in=60, out=-90, looseness=0.75] (4.center) to (0);
+		\draw [in=-90, out=75] (1) to (9.center);
+		\draw [in=300, out=90] (5.center) to (2);
+		\draw [in=90, out=-120] (3) to (6.center);
+		\draw [in=90, out=-60] (3) to (11.center);
+		\draw (8.center) to (5.center);
+		\draw (0) to (2);
+		\draw (3) to (14.center);
+		\draw (15.center) to (2);
+		\draw (13.center) to (1);
+		\draw (0) to (12.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=:
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (1.5, 1.75) {};
+		\node [style=none] (1) at (2.75, 1.75) {};
+		\node [style=none] (2) at (2, 1.75) {};
+		\node [style=none] (3) at (2.45, 1.75) {$\cdots$};
+		\node [style=none] (4) at (2.75, 3.25) {};
+		\node [style=none] (5) at (2, 3.25) {};
+		\node [style=none] (6) at (1.5, 3.25) {};
+		\node [style=none] (7) at (2.45, 3.25) {$\cdots$};
+		\node [style=dot] (8) at (2, 2.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=45] (8) to (4.center);
+		\draw (8) to (5.center);
+		\draw [in=135, out=-90] (6.center) to (8);
+		\draw [in=90, out=-150] (8) to (0.center);
+		\draw (2.center) to (8);
+		\draw [in=90, out=-30] (8) to (1.center);
+	\end{pgfonlayer}
+\end{tikzpicture}\ ,
+\hspace*{.5cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=dot] (0) at (1.5, 3) {};
+		\node [style=dot] (2) at (1.5, 2.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (0) to (2);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ ,
+\hspace*{.5cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=dot] (3) at (2.5, 3) {};
+		\node [style=none] (4) at (2.5, 2.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (4.center) to (3);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ ,
+\hspace*{.5cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=dot] (5) at (3.5, 2.25) {};
+		\node [style=none] (6) at (3.5, 3) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (6.center) to (5);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+
+Say that a not necessarily connected diagram is in {\bf stratified spider normal form} when it can be composed into a strictly progressive sequence of spiders:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (1.5, 1.75) {};
+		\node [style=none] (1) at (2.75, 1.75) {};
+		\node [style=none] (2) at (2, 1.75) {};
+		\node [style=none] (3) at (2.45, 1.75) {$\cdots$};
+		\node [style=none] (4) at (2.75, 3.25) {};
+		\node [style=none] (5) at (2, 3.25) {};
+		\node [style=none] (6) at (1.5, 3.25) {};
+		\node [style=none] (7) at (2.45, 6.25) {$\cdots$};
+		\node [style=dot] (8) at (2, 2.5) {};
+		\node [style=none] (9) at (3.5, 3.25) {};
+		\node [style=none] (10) at (4.75, 3.25) {};
+		\node [style=none] (11) at (4, 3.25) {};
+		\node [style=none] (12) at (4.45, 1.75) {$\cdots$};
+		\node [style=none] (13) at (4.75, 4.75) {};
+		\node [style=none] (14) at (4, 4.75) {};
+		\node [style=none] (15) at (3.5, 4.75) {};
+		\node [style=none] (16) at (4.45, 6.25) {$\cdots$};
+		\node [style=dot] (17) at (4, 4) {};
+		\node [style=none] (18) at (6, 4.75) {};
+		\node [style=none] (19) at (7.25, 4.75) {};
+		\node [style=none] (20) at (6.5, 4.75) {};
+		\node [style=none] (21) at (6.95, 1.75) {$\cdots$};
+		\node [style=none] (22) at (7.25, 6.25) {};
+		\node [style=none] (23) at (6.5, 6.25) {};
+		\node [style=none] (24) at (6, 6.25) {};
+		\node [style=none] (25) at (6.95, 6.25) {$\cdots$};
+		\node [style=dot] (26) at (6.5, 5.5) {};
+		\node [style=none] (27) at (2, 6.25) {};
+		\node [style=none] (28) at (1.5, 6.25) {};
+		\node [style=none] (29) at (2.75, 6.25) {};
+		\node [style=none] (30) at (4, 6.25) {};
+		\node [style=none] (31) at (3.5, 6.25) {};
+		\node [style=none] (32) at (4.75, 6.25) {};
+		\node [style=none] (33) at (4, 1.75) {};
+		\node [style=none] (34) at (3.5, 1.75) {};
+		\node [style=none] (35) at (4.75, 1.75) {};
+		\node [style=none] (36) at (6.5, 1.75) {};
+		\node [style=none] (37) at (6, 1.75) {};
+		\node [style=none] (38) at (7.25, 1.75) {};
+		\node [style=none] (39) at (5.4, 4.45) {\reflectbox{$\ddots$}};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=45] (8) to (4.center);
+		\draw (8) to (5.center);
+		\draw [in=135, out=-90] (6.center) to (8);
+		\draw [in=90, out=-150] (8) to (0.center);
+		\draw (2.center) to (8);
+		\draw [in=90, out=-30] (8) to (1.center);
+		\draw [in=-90, out=45] (17) to (13.center);
+		\draw (17) to (14.center);
+		\draw [in=135, out=-90] (15.center) to (17);
+		\draw [in=90, out=-150] (17) to (9.center);
+		\draw (11.center) to (17);
+		\draw [in=90, out=-30] (17) to (10.center);
+		\draw [in=-90, out=45] (26) to (22.center);
+		\draw (26) to (23.center);
+		\draw [in=135, out=-90] (24.center) to (26);
+		\draw [in=90, out=-150] (26) to (18.center);
+		\draw (20.center) to (26);
+		\draw [in=90, out=-30] (26) to (19.center);
+		\draw (28.center) to (6.center);
+		\draw (5.center) to (27.center);
+		\draw (4.center) to (29.center);
+		\draw (15.center) to (31.center);
+		\draw (30.center) to (14.center);
+		\draw (13.center) to (32.center);
+		\draw (34.center) to (9.center);
+		\draw (11.center) to (33.center);
+		\draw (35.center) to (10.center);
+		\draw (18.center) to (37.center);
+		\draw (36.center) to (20.center);
+		\draw (19.center) to (38.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+\end{definition}
+
+\begin{lemma}
+Given a monoidal category $\X$, and a connected diagram in $\Prof$ generated by the $1$-cells of the pseudo-Frobenius structure induced by $\X$ one can always reduce the diagram to spider normal form by repeated application of
+
+$$\phi^L,\phi^R,\eta^\otimes,\alpha_*,\alpha^*,(u^L)_*,(u^L)^*,(u^R)_*,(u^R)^*$$
+Furthermore, given any {\em not-necessarily connected} diagram can be reduced to stratified spider normal form.
+\end{lemma}
+
+
+This lemma is an obvious corollary  of spider theorem for special Frobenius algebras; however, the following is not  so immediate:
+
+
+\begin{conjecture}
+Stratified spider normal form is strictly confluent so that any $2$-cells witnessing the reduction to the spider normal form are equal.
+\end{conjecture}
+
+
+ In some sense, this should be  restatement of the coherence theorem for monoidal categories; however, the author is unable to prove it.
+The rest of this chapter relies on this categorification of the spider theorem being true.  
+
+
+To see what is going on here, we can do the same thing we did with pointed categories, and look inside the profunctors:
 
 \begin{definition}
 The symmetric monoidal 2-category of {\bf pointed Profunctors}, $\Prof^*$ has:
@@ -1886,19 +2084,14 @@ $$(\X, X\in\X_0)$$
 
 $$(F:\X\proarrow\Y, f\in F(X,Y)):(\X, X\in\X_0)\to (\Y, Y\in\Y_0)$$
 
-\item[2-cells:] Given two parallel pointed functors, 
-
-$$
- (F:\X\proarrow\Y, f\in F(X,Y)),  (G:\X\proarrow\Y, g\in (X,Y)):(\X, X\in\X_0)\to (\Y, Y\in\Y_0)
-$$
-
+\item[2-cells:] Given two parallel pointed functors $(F, f),  (G, g):(\X, X)\to (\Y,Y)$,
 a pointed 2-cell is 2-cell $\phi:F\Rightarrow G$ of profunctors that preserves the distinguished map, so that $\phi_X:g=f$.
 \end{description}
 
 \end{definition}
 
 
-The graphical calculus for pointed profunctors is essentially the same as for pointed categories.  Except now we can factorize the domain and codomain of maps.  For example, consider the action unit and counit for the tensor product:
+The graphical calculus for pointed profunctors is essentially the same as for pointed categories.  Except now, due to the two different yoneda embeddings, we can factorize the domain and codomain of maps.  For example, consider the action unit and counit for the tensor product:
 
 
 $$
@@ -2019,11 +2212,104 @@ $$
 
 
 
-These diagrams are very closed to proof nets; for example we can internalize the associators and unitors:
+These diagrams are very closed to proof nets.  For example, by applying, $\phi^L$ followed by two applications of $\eta^\otimes$  to the diagram on the left, we obtain the pointed profunctor 
+$$
+(\X(-,=), \alpha_{X,Y,Z}):
+(\X(-,=), (X\otimes Y)\otimes Z)\proarrow (\X(-,=),X\otimes(Y\otimes Z))
+$$
 
-DRAW The associator and unitor diagrams
 
-However, we are still living in a monoidal 2-category, moreover, the tensor/cotensor and unit introduction and removal are not inverse to each other; rather, they are adjoint. What is going on here?  To get a deeper perspective, we have to consider the following structure:
+$$
+\begin{tikzpicture}[scale=2]
+    \node[Pants, bot, top] (B) at (0,0) {};
+    \node[Pants, bot, anchor=belt] (A) at (B.rightleg) {};
+    \node[SwishR, bot, anchor=top] (C) at (B.leftleg) {};
+    \node[Copants, bot, anchor=rightleg] (D) at (A.leftleg) {};
+    \node[SwishR, bot, anchor=top] (E) at (A.rightleg) {};
+    \node[Copants, bot, anchor=rightleg] (F) at (E.bot) {};
+    \begin{scope}[internal string scope]
+    \draw [in=270, out=90] ($(F.belt)+(-.125,0)$) to ($(D.belt)+(-.1,0)$) to (C.bot) to (B.leftleg) to ($(B.belt)+(-.125,0)$);
+    \draw [in=270, out=90] (F.belt) to ($(D.belt)+(.1,0)$) to (A.leftleg) to ($(B.rightleg)+(-.125,0)$) to (B.belt);
+    \draw [in=270, out=90] ($(F.belt)+(.125,0)$)  to (E.bot) to (A.rightleg) to ($(B.rightleg)+(.125,0)$) to ($(B.belt)+(.125,0)$);
+    \node (i) at (B.belt) [above] {\tiny $X\otimes(Y\otimes Z)$};
+    \node (i) at (F.belt) [below] {\tiny $(X\otimes Y)\otimes Z$};
+    \end{scope}
+\end{tikzpicture}
+\Rightarrow
+\begin{tikzpicture}[scale=2]
+    \node[Pants, bot, top] (A) at (0,0) {};
+    \node[Copants, bot, anchor=leftleg] (B) at (A.leftleg) {};
+    \node[Pants, bot, anchor=belt] (C) at (B.belt) {};
+    \node[Copants, bot, anchor=leftleg] (D) at (C.leftleg) {};
+    \begin{scope}[internal string scope]
+    \draw [in=270, out=90] ($(D.belt)+(-.125,0)$) to ($(C.leftleg)+(-.1,0)$) to ($(B.belt)+(-.125,0)$) to ($(B.leftleg)+(0,0)$) to  ($(A.belt)+(-.125,0)$);
+    \draw [in=270, out=90] ($(D.belt)+(0,0)$) to ($(C.leftleg)+(.1,0)$) to ($(B.belt)+(0,0)$) to ($(B.rightleg)+(-.1,0)$) to  ($(A.belt)+(0,0)$);
+    \draw [in=270, out=90] ($(D.belt)+(.125,0)$) to ($(C.rightleg)+(0,0)$) to ($(B.belt)+(.125,0)$) to ($(B.rightleg)+(.1,0)$) to  ($(A.belt)+(.125,0)$);
+    \node (i) at (A.belt) [above] {\tiny $X\otimes(Y\otimes Z)$};
+    \node (i) at (D.belt) [below] {\tiny $(X\otimes Y)\otimes Z$};
+    \end{scope}
+\end{tikzpicture}
+\Rightarrow
+\begin{tikzpicture}[scale=2]
+    \node[Cyl, top] (A) at (0,0) {};
+    \node[Cyl, anchor=top] (B) at (A.bot) {};
+    \node[Cyl, anchor=top] (C) at (B.bot) {};
+    \node[Cyl, bot, anchor=top] (D) at (C.bot) {};
+    \begin{scope}[internal string scope]
+    \draw ($(A.top)+(.125,0)$) to ($(D.bot)+(.125,0)$) ;
+    \draw ($(A.top)+(0,0)$) to ($(D.bot)+(0,0)$);
+    \draw ($(A.top)+(-.125,0)$) to ($(D.bot)+(-.125,0)$) ;
+    \node (i) at (A.top) [above] {\tiny $X\otimes(Y\otimes Z)$};
+    \node (i) at (D.bot) [below] {\tiny $(X\otimes Y)\otimes Z$};
+    \end{scope}
+\end{tikzpicture}
+$$
+
+
+We can do a similar thing for the left unitor:
+
+$$
+\begin{tikzpicture}[scale=2]
+    \node[Copants, bot] (A) at (0,0) {};
+    \node[Cyl, top, bot, anchor=bot] (B) at (A.rightleg) {};
+    \node[Cap,bot] (C) at (A.leftleg) {};
+    \begin{scope}[internal string scope]
+    \draw [in=270, out=90] (A.belt) to (A.rightleg) to (B.top);
+    \node (i) at (A.belt) [below] {\tiny $ I\otimes A$};
+    \node (i) at (B.top) [above] {\tiny $ A$};
+    \end{scope}
+\end{tikzpicture}
+\Rightarrow
+\begin{tikzpicture}[scale=2]
+    \node[Cyl, top] (A) at (0,0) {};
+    \node[Cyl, bot, anchor=top] (B) at (A.bot) {};
+    \begin{scope}[internal string scope]
+    \draw [in=270, out=90] ($(A.top)+(0,-.1)$) to ($(B.bot)+(0,.1)$);
+    \node (i) at (B.bot) [below] {\tiny $ I\otimes A$};
+    \node (i) at (A.top) [above] {\tiny $ A$};
+    \end{scope}
+\end{tikzpicture}
+$$
+
+%
+%$$
+%\begin{tikzpicture}[scale=2]
+%    \node[Pants, bot, top] (B) at (0,0) {};
+%    \node[Pants, bot, anchor=belt] (A) at (B.leftleg) {};
+%    \node[SwishL, bot, anchor=top] (C) at (B.rightleg) {};
+%    \node[Copants, bot, anchor=leftleg] (D) at (A.rightleg) {};
+%    \node[SwishL, bot, anchor=top] (E) at (A.leftleg) {};
+%    \node[Copants, bot, anchor=leftleg] (F) at (E.bot) {};
+%    \begin{scope}[internal string scope]
+%    \end{scope}
+%    \end{tikzpicture}
+%$$
+
+
+
+
+
+In the setting of proof nets, the tensor is inverse to the cotensor and the unit introduction is inverse to the unit removal.  However, in $\Prof^*$ these 2-cells are merely adjoint to each other.  In order to relate these two notions, we want to consider the 2-cells in $\Prof^*$ which normalize the shapes of diagrams, as the maps themselves.  We need the following definition to this end:
 
 \begin{definition}
 A {\bf displayed category} is an ordinary category $\D$ equipped with a lax normal functor $F:\D\to \Prof$.
@@ -2060,7 +2346,7 @@ Given any monoidal category $\X$, there is an indexed category
 $F_\X:\esfa\to \Prof$ such that  
 \begin{itemize}
 \item $(F_\X)(n) = \X^n$
-\item $(F_\X){n,m}$ takes diagrams in $\esfa$ to (stratified) spiders in $\Prof$ composed of the monoidal structure of $\X$.
+\item $(F_\X){n,m}$ takes diagrams in $\esfa$ to (stratified) spiders in $\Prof$ composed of the monoidal structure of $\X$; moreover, sending scalars to the identity on $1$.
 \item The natural transformation $(F_\X)_{n,m,k}$ performs (stratified) spider fusion.
 \end{itemize}
 
@@ -2073,12 +2359,26 @@ This way of framing the categorified spider theorem lends itself to the followin
 
 \begin{theorem}{Benabou-Grothendieck construction}
 
-Then there is an ordinary category $\Pi F$ defined as follows:
+Given a displayed category $F:\D\to \Prof$, the Benabou-Grothendieck category,  $\Pi F$ is given by the pullback:
+
+$$
+\xymatrix{
+\Pi  F \ar[r]^{\pi_1} \ar[d]_{\pi_0} & \Prof^* \ar[d] \\
+\D \ar[r]_F & \Prof
+}
+$$
+
+Where $\Prof^* \to \Prof$ is the canonical projection.
+
+
+Concretely $\Pi F$ has:
 
 
 \begin{description}
 \item[Objects:] Pairs $(X\in \D_0, X^\sharp \in (F(X))_0)$
-\item[Maps:] The maps are pairs, $(f, f^\sharp):(X,X^\sharp )\to (Y,Y^\sharp)$ where $f \in \D(X,Y)$ and $f^\sharp \in F_{X,Y}(f)(Y^\sharp,X^\sharp)$
+\item[Maps:] The maps are  pointed profunctors:
+$$(f, f^\sharp):(X,X^\sharp )\to (Y,Y^\sharp)$$
+ where $f \in \D(X,Y)$ and $f^\sharp \in F_{X,Y}(f)(Y^\sharp,X^\sharp)$
 \item[Identity:] $1_{(X,X^\sharp)} := (1_X, 1_{X^\sharp})$
 \item[Composition:] Given a composable pair:
 $$(X,X^\sharp)\xrightarrow{(f, f^\sharp)} (Y,Y^\sharp)\xrightarrow{(g, g^\sharp)} (Z,Z^\sharp)$$
@@ -2100,79 +2400,226 @@ The indexed category $\Pi F_{\X}$ has a concrete presentation:
 
 \begin{description}
 \item[Objects:] Finite lists of objects in $\X$.
-\item[Maps:] Given two finite lists $X=[X_0,\ldots, X_{n-1}]$ and $Y=[Y_0,\ldots, Y_{m-1}]$ of objects in $\X$, a map from $X\to Y$ is a pair consisting of a map $f:n\to m$ in $\esfa$ equipped with an element $f^\sharp \in  (F_{\X})_{n,m}( F_{\X})$.
+%\item[Maps:] Given two finite lists $X=[X_0,\ldots, X_{n-1}]$ and $Y=[Y_0,\ldots, Y_{m-1}]$ of objects in $\X$, a map from $X\to Y$ is a pair $(f,f^\sharp)$ where $f:n\to m$ is a map in $\sfa$ equipped with an element $f^\sharp \in  (F_{\X})_{n,m}( F_{\X})$.
+%
+%
+%$f^\sharp$ can be described concretely by induction on the connected components on $n$. If $f$ is a single connected component, then $f^\sharp$ is a map with domains and codomains left-factorized as follows
+%$$\otimes_{i=0}^{n-1} X_i \to \otimes_{i=0}^{m-1} Y_i$$
+%
+%Moreover, if $f$ is multiple connected components, then $f^\sharp$ is a finite list of maps whose domains and codomains factorized in this way.
+
+\item[Maps:] Given two finite lists $X=[X_0,\ldots, X_{n-1}]$ and $Y=[Y_0,\ldots, Y_{m-1}]$ of objects in $\X$, a map from $X\to Y$ is a pointed profunctor
+
+$$
+(P,f): (\X^n,X)) \proarrow (\X^n,X)
+$$
+
+Generated by the (co)tensor and (co)unit of the monoidal structure of $\X$.
 
 
-$f^\sharp$ can be described concretely by induction on the connected components on $n$. If $f$ is a single connected component, then $f^\sharp$ is a map with domains and codomains left-factorized as follows
-$$\otimes_{i=0}^{n-1} X_i \to \otimes_{i=0}^{m-1} Y_i$$
+Modulo the equivalence relation that two parallel maps
 
-Moreover, if $f$ is multiple connected components, then $f^\sharp$ is a finite list of maps whose domains and codomains factorized in this way.
+$$ (P,f),(Q,g): (\X^n,X) \proarrow (\X^n,X)$$
+
+are equivalent when $\nu(P,f) = \nu(Q,g)$.
+
+\item[Identity:]  The identity on $(\X^n,X)$ is the identity in poitned profunctors
+
+$$
+1_{(\X^n,X)} = (\X(-,=)^n,1_X)
+$$
 
 
-\item[Identity:] Given a list of objects $X=[X_0,\ldots, X_{n-1}]$  in $\X$, $1_X=[1_{X_0},\ldots, 1_{X_{n-1}}]$.
+%Given a list of objects $X=[X_0,\ldots, X_{n-1}]$  in $\X$, $$1_X:=([1_{X_0},\ldots, 1_{X_{n-1}}], \X(-,=)^n)$$
+%vizualized as $n$ tubes occupied by identities:
+%
+%$$
+%\begin{tikzpicture}[scale=2]
+%    \node[Cyl, top,bot] (A) at (0,0) {};
+%    \begin{scope}[internal string scope]
+%    \draw [in=270, out=90] ($(A.top)+(0,-.01)$) to ($(A.bot)+(0,.01)$);
+%    \node (i) at (A.bot) [below] {\tiny $X_0$};
+%    \node (i) at (A.top) [above] {\tiny $ X_0$};
+%    \end{scope}
+%\end{tikzpicture}\
+%\begin{tikzpicture}[scale=2]
+%    \node[Cyl, top,bot] (A) at (0,0) {};
+%    \begin{scope}[internal string scope]
+%    \draw [in=270, out=90] ($(A.top)+(0,-.01)$) to ($(A.bot)+(0,.01)$);
+%    \node (i) at (A.bot) [below] {\tiny $X_1$};
+%    \node (i) at (A.top) [above] {\tiny $ X_1$};
+%    \end{scope}
+%\end{tikzpicture}\ \
+%\cdots
+%\begin{tikzpicture}[scale=2]
+%    \node[Cyl, top,bot] (A) at (0,0) {};
+%    \begin{scope}[internal string scope]
+%    \draw [in=270, out=90] ($(A.top)+(0,-.01)$) to ($(A.bot)+(0,.01)$);
+%    \node (i) at (A.bot) [below] {\tiny $X_{n-1}$};
+%    \node (i) at (A.top) [above] {\tiny $ X_{n-1}$};
+%    \end{scope}
+%\end{tikzpicture}
+%$$
 
 
-\item[Composition:] Take a composable pair:
-$$X=[X_0,\ldots, X_{n-1}] \xrightarrow{(f,f^\sharp)} Y=[Y_0,\ldots, Y_{m-1}] \xrightarrow{(g,g^\sharp)} Z=[Z_0,\ldots, Z_{k-1}]$$
-
-Then the composite fuses together all connected components into stratified spiders:  effectively, so that if two maps are connected it just produces the composite in $\X$ and keeps track of the factorizations of inputs and outputs.
+\item[Composition:] The composition is the composition of pointed profunctors.
 
 \end{description}
 
-This is moreover a strict monoidal category.  The tensor product is defined on objects by concatenation.
-Given two maps 
-$$(f,f^\sharp):W=[W_0,\ldots, W_{n-1}]\to X=[X_{0},\ldots, X_{m-1}]$$
-and
-$$(g;g^\sharp):Y=[Y_0,\ldots, Y_{k-1}]\to Z= [Z_{0},\ldots, Z_{\ell-1}]$$
-
-the tensor product is defined as follows:
-
-$$
-(f,f^\sharp)\otimes(g;g^\sharp)
-:=
-(f\otimes 1_k, f^\sharp\times 1_Y );(1_m\otimes g, 1_X\times g^\sharp)
-$$
-
-This is strict because the composition stratifies shapes into lists
+This is moreover a strict monoidal category.  The tensor product is given by the tensor product in $\Prof^*$.
 
 
 \end{lemma}
 
 
-Talk about unitors and associators being honest maps on connected components
+In $\Pi F_\X$, the components of the unitors and associators that we drew before as 2-cells are now honest maps.  Moreover, the different ways of associating and introducing/removing units are now genuine inverses because their composite reduces to the identity.
 
 
 
 
+However, this is still not proof nets.  We can only normalize connected components.  For example, the following equation does not hold because the profunctors in which the string diagrams are drawn are not connected:
 
-We want to consider the category where all components are connected.  to do this, first remark that for any  finite list of objects $X=[X_0,\ldots, X_{n-1}]$ in $\X$ there is an idempotent $(s_X, s_X^\sharp)=e_X:X\to X$ in   $\Pi F_{\X}$ where $s_X$ is the fully connected spider from $n\to n$ and $s_X$ is the tensor factoriztion of $\otimes_{i=0}^{n-1} 1_{X_i}$.
+$$
+\begin{tikzpicture}[scale=2]
+    \node[Copants, top,bot] (A) at (0,0) {};
+    \node[Pants,bot, anchor=belt] (B) at (A.belt) {};
+    \begin{scope}[internal string scope]
+    \draw [in=270, out=90] (B.leftleg) to ($(B.belt)+(-.1,0)$) to (A.leftleg);
+    \draw [in=270, out=90] (B.rightleg) to ($(B.belt)+(.1,0)$) to (A.rightleg);
+    \end{scope}
+\end{tikzpicture}
+\neq\ \
+\begin{tikzpicture}[scale=2]
+    \node[Cyl, top] (A) at (0,0) {};
+    \node[Cyl, bot, anchor=top] (B) at (A.bot) {};
+    \node[Cyl, top] (AA) at (.75,0) {};
+    \node[Cyl, bot, anchor=top] (BB) at (AA.bot) {};
+    \begin{scope}[internal string scope]
+    \draw [in=270, out=90] ($(A.top)+(0,-.1)$) to ($(B.bot)+(0,.1)$);
+    \draw [in=270, out=90] ($(AA.top)+(0,-.1)$) to ($(BB.bot)+(0,.1)$);
+    \end{scope}
+\end{tikzpicture}
+$$
+
+However, if in context $\Gamma$ we knew that the profunctors were connected then we could apply this rewrite rule:
 
 
-GIVE EXAMPLE
+$$
+\begin{tikzpicture}[scale=2]
+    \node[Copants,bot] (A) at (0,0) {};
+    \node[Pants, anchor=belt] (B) at (A.belt) {};
+    \node (x1) at ($(A.rightleg)+(.5,0)$) {};
+    \node (x2) at ($(A.rightleg)+(.5,.4)$) {};
+    \node (x3) at ($(A.leftleg)+(-1.5,.4)$) {};
+    \node (x4) at ($(B.leftleg)+(-1.5,-.4)$) {};
+    \node (x5) at ($(B.rightleg)+(.5,-.4)$) {};
+    \node (x6) at ($(B.rightleg)+(.5,0)$) {};
+    \node (x7) at ($(B.leftleg)+(-.5,0)$) {};
+    \node (x8) at ($(A.leftleg)+(-.5,0)$) {};
+    \node[Cyl,top, anchor=bot] (C) at ($(x3.center)+(.75,0)$) {};
+    \node[Cyl,top, anchor=bot] (D) at ($(x2.center)+(-.75,0)$) {};
+    \node[Cyl,bot, anchor=top] (E) at ($(x4.center)+(.75,0)$) {};
+    \node[Cyl,bot, anchor=top] (F) at ($(x5.center)+(-.75,0)$) {};
+    \node(G) at($(x3.center)+(1.5,.5)$)  {$\cdots$};
+    \node(H) at($(x4.center)+(1.5,-.5)$)  {$\cdots$};
+    \node(K) at($(A.belt)+(-1.55,0)$)  {$\Gamma$};
+    \begin{scope}[internal string scope]
+    \draw [in=270, out=90] (B.leftleg) to ($(B.belt)+(-.1,0)$) to (A.leftleg);
+    \draw [in=270, out=90] (B.rightleg) to ($(B.belt)+(.1,0)$) to (A.rightleg);
+    \draw (C.bot) to (C.top);
+    \draw (D.bot) to (D.top);
+    \draw (E.bot) to (E.top);
+    \draw (F.bot) to (F.top);
+    \end{scope}
+    \draw [color=black, fill=blue, fill opacity=.4] (x1.center) to  (x1.center) to [bend left=15]  (x2.center) to (x3.center) to  [bend left=-15] (x4.center) to (x5.center) to [bend left=15]  (x6.center) to (x7.center) to  [bend left=15] (x8.center) to cycle;
+\end{tikzpicture}
+=
+\begin{tikzpicture}[scale=2]
+    \node[Cyl] (A0) at (0,0) {};
+    \node[Cyl,anchor=center] (A1) at ($(A.center)+(1,0)$) {};
+    \node[Cyl,anchor=top] (B0) at (A0.bot) {};
+    \node[Cyl,anchor=top] (B1) at (A1.bot) {};
+    \node (x1) at ($(A1.top)+(.5,0)$) {};
+    \node (x2) at ($(A1.top)+(.5,.4)$) {};
+    \node (x3) at ($(A0.top)+(-1.5,.4)$) {};
+    \node (x4) at ($(B0.bot)+(-1.5,-.4)$) {};
+    \node (x5) at ($(B1.bot)+(.5,-.4)$) {};
+    \node (x6) at ($(B1.bot)+(.5,0)$) {};
+    \node (x7) at ($(B0.bot)+(-.5,0)$) {};
+    \node (x8) at ($(A0.top)+(-.5,0)$) {};
+    \node[Cyl,top, anchor=bot] (C) at ($(x3.center)+(.75,0)$) {};
+    \node[Cyl,top, anchor=bot] (D) at ($(x2.center)+(-.75,0)$) {};
+    \node[Cyl,bot, anchor=top] (E) at ($(x4.center)+(.75,0)$) {};
+    \node[Cyl,bot, anchor=top] (F) at ($(x5.center)+(-.75,0)$) {};
+    \node(G) at($(x3.center)+(1.5,.5)$)  {$\cdots$};
+    \node(H) at($(x4.center)+(1.5,-.5)$)  {$\cdots$};
+    \node(K) at($(A0.bot)+(-1.1,0)$)  {$\Gamma$};
+    \begin{scope}[internal string scope]
+    \draw (C.bot) to (C.top);
+    \draw (D.bot) to (D.top);
+    \draw (E.bot) to (E.top);
+    \draw (F.bot) to (F.top);
+    \draw (A0.top) to (B0.bot);
+    \draw (A1.top) to (B1.bot);
+    \end{scope}
+    \draw [color=black, fill=blue, fill opacity=.4] (x1.center) to  (x1.center) to [bend left=15]  (x2.center) to (x3.center) to  [bend left=-15] (x4.center) to (x5.center) to [bend left=15]  (x6.center) to (x7.center) to  [bend left=15] (x8.center) to cycle;
+\end{tikzpicture}
+$$
 
+
+
+To this end, we want to force all components to be connected. To do this, first remark that for any  finite list of objects $X=[X_0,\ldots, X_{n-1}]$ in $\X$ there is an idempotent $(s_X, s_X^\sharp)=e_X:X\to X$ in   $\Pi F_{\X}$ where $s_X$ is the fully connected spider from $\X^n\to\X^n$ and $s_X^\sharp$ is the tensor factorized identity $s_X^\sharp = \otimes_{i=0}^{n-1}1 _{X_i}$ regarded as an element of the spider.
+For example 
+
+$$
+e_{[X_0,X_1,X_2]}
+=
+\begin{tikzpicture}[scale=2]
+    \node[Copants,top,bot] (A) at (0,0) {};
+    \node[Copants, bot,anchor=leftleg] (B) at (A.belt) {};
+    \node[Pants, bot ,anchor=belt] (C) at (B.belt) {};
+    \node[Pants, bot ,anchor=belt] (D) at (C.leftleg) {};
+    \node[SwishR, bot,top, anchor=bot] (E) at (B.rightleg) {};
+    \node[SwishL, bot, anchor=top] (F) at (C.rightleg) {};
+    \begin{scope}[internal string scope]
+    \draw [in=270, out=90] ($(D.leftleg)+(0,0)$) to ($(C.leftleg)+(-.1,0)$) to ($(B.belt)+(-.125,0)$) to ($(A.belt)+(-.1,0)$) to ($(A.leftleg)+(0,0)$);
+    \draw [in=270, out=90] ($(D.rightleg)+(0,0)$) to ($(C.leftleg)+(.1,0)$) to ($(B.belt)+(0,0)$) to ($(A.belt)+(.1,0)$) to ($(A.rightleg)+(0,0)$);
+    \draw [in=270, out=90] ($(F.bot)+(0,0)$) to ($(C.rightleg)+(0,0)$) to ($(B.belt)+(.125,0)$) to (E.bot) to (E.top);
+    \node (i) at (A.leftleg) [above] {\tiny $ X_0$};
+    \node (i) at (A.rightleg) [above] {\tiny $ X_1$};
+    \node (i) at (E.top) [above] {\tiny $ X_2$};
+    \node (i) at (D.leftleg) [below] {\tiny $ X_0$};
+    \node (i) at (D.rightleg) [below] {\tiny $ X_1$};
+    \node (i) at (F.bot) [below] {\tiny $ X_3$};
+    \end{scope}
+\end{tikzpicture}
+$$
 
 
 
 
 \begin{definition}
- $N\X:=K_{\{e_X\ | \ X \in [\X_0]\}}(\Pi F_{\X})$ of the Karoubi envelope of $\Pi F_{\X}$ with objects $(X,e_X)$.  The maps are precisely the maps in $\Pi F_{\X}$ whose shapes are fully connected.
+Take $N\X:=K_{\{e_X\ | \ X \in [\X_0]\}}(\Pi F_{\X})$; that is, the full subcategory of the  the Karoubi envelope of $\Pi F_{\X}$ with objects $(X,e_X)$. Concretely $N\X$ has;
+
+\begin{description}
+\item[Objects:] Lists of objects in $\X$.
+
+\item[Maps:] 
+$$\dfrac{(P,f);X\to Y \hspace*{.5cm} \in \Pi F_\X\ \text{ where $P$ is fully connected} }{(P,f);X\to Y \hspace*{.5cm} \in \N\X}$$
+
+\item[Composition:] Same as in $\Pi F_\X$.
+
+\item[Identity:] Same as in $\Pi F_\X$.
+
+\item[Monoidal structure:] Given two $(P,f);W\to X$ and $(Q,g);Y\to Z$
+
+$$
+(P,f)\otimes(Q,g) := e_{W,Y};(P\times Q, (f,g)); e_{X,Z}
+$$
+
+\end{description}
+
 \end{definition}
-
-
-\begin{lemma}
-This is a strict monoidal category, where the tensor product is defined on objects by
-$$
-([X_0,\ldots, X_{n-1}],e_{[X_0,\ldots, X_{n-1}]})
-\otimes
-([Y_0,\ldots, Y_{n-1}],e_{[Y_0,\ldots, Y_{n-1}]})
-:=
-([X_0,\ldots, X_{n-1},Y_0,\ldots, Y_{n-1}],e_{[X_0,\ldots, X_{n-1},Y_0,\ldots, Y_{n-1}]})
-$$
-\end{lemma}
-
-
-The tensor product just connects the shapes of both things that are tensored together.
-
 
 \begin{theorem}
 $N\X$ is the strict monoidal category of proof nets in $\X$.
@@ -2189,6 +2636,17 @@ $N\X$ is the strict monoidal category of proof nets in $\X$.
 
 
 
+
+
+Obviously there is a lot more to be done here; a proof of the uniqueness of the stratified spider normal form being the most important.  However, this gives a highly conceptual approach to proof nets for monoidal categories. The (co)tensor and unit introduction/removal in some can be regarded as the "abstract shapes" of string diagrams in monoidal categories, coming from the monoidal structure of the original category.  Moreover, the idempotents can be regarded as the {\em property} of such an abstract shape being connected.
+
+This is highly amenable to different notions of algebraic structure in $\Prof$.One could change the displayed category to pick out an extra special lax commutative Frobenius algebra in $\Prof$; corresponding to categorification of the spider theorem for special commutative Frobenius algebras to get a semantics for proof nets for monoidal closed categories.
+
+Similarly, by asking that the frobeniusators be pseudo, one would get a semantics for proof nets for monoidal categories with duals; by asking for commutativity and pseudo-ness of the Frobeniusators, this would give a semantics for proof nets for compact closed categories.
+
+
+
+These graphical calculi already exist, however, this approach to coherence begs the question of string diagrams for more exotic structures.  For example a bi-actegory is essentially a monoidal category with compatible left and right strengths that commute with the tensor product. However, regarded as extra structure on a lax Frobenius algebra in Prof, this is a categorification of phased spiders. A categorified phased-spider normal form would apparently give string diagrams for monoidal actegories (presumably which would be a special case of the proof nets for linear actegories found in \cite{}).  More generally, one could ask for the categorification of the various other normal forms we have discussed throughout this thesis... does the bialgebra law have some sort of categorified analogue?  From a quantum perspective, the question I pose is if the structures of the ZX-calculus can categorified to structures in Prof; and hopefuly they yield string diagrams with useful semantics.
 
 
 
