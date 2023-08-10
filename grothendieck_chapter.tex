@@ -512,7 +512,7 @@
 %We first need the following definition to motivate where we are going:
 %
 %\begin{definition}
-%The symmetric monoidal 2-category of {\bf pointed Categories} is the coslice category $\Cat^*:=1/\Cat$.  Explicitly, this has:
+%The symmetric monoidal 2-category of {\bf pointed Categories} is the coslice category $\Cat_*:=1/\Cat$.  Explicitly, this has:
 %
 %\begin{description}
 %\item[0-cells:] A pointed category is a pair consisting of a category along with a chosen object of that category: 
@@ -1061,18 +1061,9 @@ $$
 		\draw [in=-45, out=90, looseness=0.75] (12.center) to (17);
 		\draw (17) to (15);
 		\draw [in=90, out=-150] (15) to (9.center);
-		\draw [style=red,dashed] (22.center) to (23.center);
-		\draw [style=red,dashed] (23.center) to (24.center);
-		\draw [style=red,dashed] (24.center) to (25.center);
-		\draw [style=red,dashed] (25.center) to (22.center);
-		\draw [style=red,dashed] (26.center) to (27.center);
-		\draw [style=red,dashed] (27.center) to (28.center);
-		\draw [style=red,dashed] (28.center) to (29.center);
-		\draw [style=red,dashed] (29.center) to (26.center);
-		\draw [style=red,dashed] (30.center) to (31.center);
-		\draw [style=red,dashed] (31.center) to (32.center);
-		\draw [style=red, dashed] (32.center) to (33.center);
-		\draw [style=red,dashed] (33.center) to (30.center);
+		\draw [color=blue,dashed] (22.center) to (23.center) to (24.center) to (25.center) to cycle;
+		\draw [color=blue,dashed] (26.center) to (27.center) to (28.center) to (29.center) to cycle;
+		\draw [color=blue,dashed] (30.center) to (31.center) to (32.center) to (33.center) to cycle;
 		\draw [in=90, out=-60] (38) to (35.center);
 		\draw [in=90, out=-120] (38) to (34.center);
 		\draw (41.center) to (40);
@@ -1080,18 +1071,9 @@ $$
 		\draw [in=90, out=-60] (39) to (37.center);
 		\draw [in=-120, out=90] (36.center) to (39);
 		\draw [in=90, out=-135] (40) to (38);
-		\draw [style=red,dashed] (42.center) to (43.center);
-		\draw [style=red,dashed] (43.center) to (44.center);
-		\draw [style=red,dashed] (44.center) to (45.center);
-		\draw [style=red,dashed] (45.center) to (42.center);
-		\draw [style=red,dashed] (46.center) to (47.center);
-		\draw [style=red,dashed] (47.center) to (48.center);
-		\draw [style=red,dashed] (48.center) to (49.center);
-		\draw [style=red,dashed] (49.center) to (46.center);
-		\draw [style=red,dashed] (50.center) to (51.center);
-		\draw [style=red,dashed] (51.center) to (52.center);
-		\draw [style=red,dashed] (52.center) to (53.center);
-		\draw [style=red,dashed] (53.center) to (50.center);
+		\draw [color=blue,dashed] (42.center) to (43.center) to (44.center) to (45.center) to cycle;
+		\draw [color=blue,dashed] (46.center) to (47.center) to (48.center) to (49.center) to cycle;
+		\draw [color=blue,dashed] (50.center) to (51.center) to (52.center) to (53.center) to cycle;
 		\draw [in=90, out=-60] (58) to (55.center);
 		\draw [in=90, out=-120] (58) to (54.center);
 		\draw (61.center) to (60);
@@ -1187,19 +1169,13 @@ $$
 		\draw [in=90, out=-45] (123) to (122);
 		\draw [in=90, out=-135] (123) to (120.center);
 		\draw [in=90, out=-45, looseness=0.75] (124) to (121.center);
-		\draw [style=red,dashed] (126.center) to (127.center);
-		\draw [style=red,dashed] (127.center) to (128.center);
-		\draw [style=red,dashed] (128.center) to (129.center);
-		\draw [style=red,dashed] (129.center) to (126.center);
+		\draw [color=blue,dashed] (126.center) to (127.center) to (128.center) to (129.center) to cycle;
 		\draw (135.center) to (134);
 		\draw [in=90, out=-15] (134) to (133);
 		\draw [in=90, out=-135] (133) to (132);
 		\draw [in=90, out=-45] (133) to (130.center);
 		\draw [in=90, out=-135, looseness=0.75] (134) to (131.center);
-		\draw [style=red,dashed] (136.center) to (137.center);
-		\draw [style=red,dashed] (137.center) to (138.center);
-		\draw [style=red,dashed] (138.center) to (139.center);
-		\draw [style=red,dashed] (139.center) to (136.center);
+		\draw [color=blue,dashed] (136.center) to (137.center) to (138.center) to (139.center) to cycle;
 		\draw (145.center) to (144);
 		\draw [in=90, out=-45] (144) to (147.center);
 		\draw [in=-135, out=90] (146.center) to (144);
@@ -1208,10 +1184,7 @@ $$
 		\draw [in=90, out=-45] (153) to (152);
 		\draw [in=90, out=-135] (153) to (150.center);
 		\draw [in=90, out=-45, looseness=0.75] (154) to (151.center);
-		\draw [style=red,dashed] (156.center) to (157.center);
-		\draw [style=red,dashed] (157.center) to (158.center);
-		\draw [style=red,dashed] (158.center) to (159.center);
-		\draw [style=red,dashed] (159.center) to (156.center);
+		\draw [color=blue,dashed] (156.center) to (157.center) to (158.center) to (159.center) to cycle;
 		\draw (162.center) to (161);
 		\draw [in=90, out=-45] (161) to (164.center);
 		\draw [in=-135, out=90] (163.center) to (161);
@@ -1232,7 +1205,7 @@ Monoidal categories are pseudomonoids in $\Cat$ and strict monoidal categories a
 By looking at the points inside of $\Cat$, this way of viewing a monoidal category hints at some connection to proof nets:
 
 \begin{definition}
-The symmetric monoidal 2-category of {\bf pointed categories} is the coslice category $\Cat^*:=1/\Cat$.  Explicitly, this has:
+The symmetric monoidal 2-category of {\bf pointed categories} is the coslice category $\Cat_*:=1/\Cat$.  Explicitly, this has:
 
 \begin{description}
 \item[0-cells:] A pointed category is a pair consisting of a category along with a chosen object of that category: 
@@ -1258,7 +1231,7 @@ Given a category $\X$, and map $f:X\to Y$ in $\X$; draw the pointed functor $(1_
 
 
 $$
-\begin{tikzpicture}[scale=2]
+\begin{tikzpicture}[scale=1.5]
     \node[Cyl, bot, top, height scale=1.0] (A) at (0,0) {};
     \begin{scope}[internal string scope]
         \node (i) at  ($(A.bot)+(0,-.3)$)  {\tiny $X$};
@@ -1275,7 +1248,7 @@ Functors are drawn as membranes between tubes; functoriality means that things c
 
 
 $$
-\begin{tikzpicture}[scale=2]
+\begin{tikzpicture}[scale=1.5]
     \node[Cyl, bot, top,xscale=1.5,yscale=1.1] (A) at (0,0) {};
     \node[Cyl, bot, anchor=top,xscale=1.5,yscale=1.1] (B) at (A.bot) {};
     \node (g) at ($(A.bot)+(-.5,0)$) {\tiny $F$};
@@ -1287,7 +1260,7 @@ $$
     \end{scope}
 \end{tikzpicture}
 =
-\begin{tikzpicture}[scale=2]
+\begin{tikzpicture}[scale=1.5]
     \node[Cyl, bot, top,xscale=1.5,yscale=1.1] (A) at (0,0) {};
     \node[Cyl, bot, anchor=top,xscale=1.5,yscale=1.1] (B) at (A.bot) {};
     \node (g) at ($(A.bot)+(-.5,0)$) {\tiny $F$};
@@ -1309,7 +1282,7 @@ $$
 Drawn as follows:
 
 $$
-\begin{tikzpicture}[scale=2]
+\begin{tikzpicture}[scale=1.5]
     \node[Pants, bot, top, height scale=1.0] (A) at (0,0) {};
     \begin{scope}[internal string scope]
         \node (i) at (A.belt) [above] {\tiny $Z$};
@@ -1336,7 +1309,7 @@ $$(I:1\to\X, f\in \Y(I,X) ):(1,* \in 1)\to (\X, I\in\X_0)$$
 Drawn as follows:
 
 $$
-\begin{tikzpicture}[scale=2]
+\begin{tikzpicture}[scale=1.5]
 \setlength\cupheight{1.5\cupheight}
 \node (i) at (0,0) [Cup, top] {};
 \node (j) at (0,-\cobheight) [Bot3D, invisible] {};
@@ -1356,7 +1329,7 @@ Consider the action of the associator and unitor on the points:
 
 
 $$
-\begin{tikzpicture}[scale=2]
+\begin{tikzpicture}[scale=1.5]
     \node[Pants, bot, top] (B) at (0,0) {};
     \node[Pants, bot, anchor=belt] (A) at (B.leftleg) {};
     \node[SwishL, bot, anchor=top] (C) at (B.rightleg) {};
@@ -1382,7 +1355,7 @@ $$
     \end{scope}
     \end{tikzpicture}
     \xRightarrow{\alpha}
-\begin{tikzpicture}[scale=2]
+\begin{tikzpicture}[scale=1.5]
     \node[Pants, bot, top] (B) at (0,0) {};
     \node[Pants, bot, anchor=belt] (A) at (B.rightleg) {};
     \node[SwishR, bot, anchor=top] (C) at (B.leftleg) {};
@@ -1407,7 +1380,7 @@ $$
     \end{tikzpicture}
 $$
 $$
-\begin{tikzpicture}[scale=2]
+\begin{tikzpicture}[scale=1.5]
     \node[Pants, top, bot] (A) at (0,0) {};
     \node[Cup] (B) at (A.leftleg) {};
     \node[Cyl, bot, anchor=top] (C) at (A.rightleg) {};
@@ -1426,7 +1399,7 @@ $$
     \end{scope}
 \end{tikzpicture}
 \xRightarrow{u^L}
-\begin{tikzpicture}[scale=2]
+\begin{tikzpicture}[scale=1.5]
     \node[Cyl, tall, bot, top] (A) at (0,0) {};
     \begin{scope}[internal string scope]
         \node [tiny label] (f) at (0,0.4\cobheight) {$f$};
@@ -1442,7 +1415,7 @@ $$
     \end{scope}
 \end{tikzpicture}\ ,
 \hspace*{.5cm}
-\begin{tikzpicture}[scale=2]
+\begin{tikzpicture}[scale=1.5]
     \node[Pants, top, bot] (A) at (0,0) {};
     \node[Cup] (B) at (A.rightleg) {};
     \node[Cyl, bot, anchor=top] (C) at (A.leftleg) {};
@@ -1462,7 +1435,7 @@ $$
     \end{scope}
 \end{tikzpicture}
 \xRightarrow{u^R}
-\begin{tikzpicture}[scale=2]
+\begin{tikzpicture}[scale=1.5]
     \node[Cyl, tall, bot, top] (A) at (0,0) {};
     \begin{scope}[internal string scope]
         \node [tiny label] (f) at (0,0.4\cobheight) {$f$};
@@ -1867,7 +1840,7 @@ These Frobeniusators interact with the (co)associators and (co)unitors of the (c
 This leads to the following conjecture. 
 
 \begin{definition}
-Fix a monoidal category $\X$. Say that a connected diagram in prof composed of the generators of the corresponding pseudomonoid is in {\bf spider normal form} when is any of the four following types of diagrams
+Fix a monoidal category $\X$. Say that a connected diagram in prof composed of the generators of the corresponding pseudomonoid is in {\bf spider normal form} when is any of the four following types of diagrams (the last of which we will call a scalar spider)
 
 
 $$
@@ -1931,16 +1904,6 @@ $$
 		\draw (2.center) to (8);
 		\draw [in=90, out=-30] (8) to (1.center);
 	\end{pgfonlayer}
-\end{tikzpicture}\ ,
-\hspace*{.5cm}
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=dot] (0) at (1.5, 3) {};
-		\node [style=dot] (2) at (1.5, 2.25) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (0) to (2);
-	\end{pgfonlayer}
 \end{tikzpicture}
 \ ,
 \hspace*{.5cm}
@@ -1964,86 +1927,113 @@ $$
 		\draw (6.center) to (5);
 	\end{pgfonlayer}
 \end{tikzpicture}
+\ ,
+\hspace*{.5cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=dot] (0) at (1.5, 3) {};
+		\node [style=dot] (2) at (1.5, 2.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (0) to (2);
+	\end{pgfonlayer}
+\end{tikzpicture}
 $$
 
 
-Say that a not necessarily connected diagram is in {\bf stratified spider normal form} when it can be composed into a strictly progressive sequence of spiders:
+Say that a not necessarily connected diagram is in {\bf stratified spider normal form} when it can be composed into a strictly progressive sequence of nonscalar spiders followed by a strictly progressive sequence of scalar spiders:
 
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (0) at (1.5, 1.75) {};
-		\node [style=none] (1) at (2.75, 1.75) {};
-		\node [style=none] (2) at (2, 1.75) {};
-		\node [style=none] (3) at (2.45, 1.75) {$\cdots$};
-		\node [style=none] (4) at (2.75, 3.25) {};
-		\node [style=none] (5) at (2, 3.25) {};
-		\node [style=none] (6) at (1.5, 3.25) {};
-		\node [style=none] (7) at (2.45, 6.25) {$\cdots$};
-		\node [style=dot] (8) at (2, 2.5) {};
-		\node [style=none] (9) at (3.5, 3.25) {};
-		\node [style=none] (10) at (4.75, 3.25) {};
-		\node [style=none] (11) at (4, 3.25) {};
-		\node [style=none] (12) at (4.45, 1.75) {$\cdots$};
-		\node [style=none] (13) at (4.75, 4.75) {};
-		\node [style=none] (14) at (4, 4.75) {};
-		\node [style=none] (15) at (3.5, 4.75) {};
-		\node [style=none] (16) at (4.45, 6.25) {$\cdots$};
-		\node [style=dot] (17) at (4, 4) {};
-		\node [style=none] (18) at (6, 4.75) {};
-		\node [style=none] (19) at (7.25, 4.75) {};
-		\node [style=none] (20) at (6.5, 4.75) {};
-		\node [style=none] (21) at (6.95, 1.75) {$\cdots$};
-		\node [style=none] (22) at (7.25, 6.25) {};
-		\node [style=none] (23) at (6.5, 6.25) {};
-		\node [style=none] (24) at (6, 6.25) {};
-		\node [style=none] (25) at (6.95, 6.25) {$\cdots$};
-		\node [style=dot] (26) at (6.5, 5.5) {};
-		\node [style=none] (27) at (2, 6.25) {};
-		\node [style=none] (28) at (1.5, 6.25) {};
-		\node [style=none] (29) at (2.75, 6.25) {};
-		\node [style=none] (30) at (4, 6.25) {};
-		\node [style=none] (31) at (3.5, 6.25) {};
-		\node [style=none] (32) at (4.75, 6.25) {};
-		\node [style=none] (33) at (4, 1.75) {};
-		\node [style=none] (34) at (3.5, 1.75) {};
-		\node [style=none] (35) at (4.75, 1.75) {};
-		\node [style=none] (36) at (6.5, 1.75) {};
-		\node [style=none] (37) at (6, 1.75) {};
-		\node [style=none] (38) at (7.25, 1.75) {};
-		\node [style=none] (39) at (5.4, 4.45) {\reflectbox{$\ddots$}};
+		\node [style=none] (7) at (4.5, 1.75) {};
+		\node [style=none] (8) at (5.75, 1.75) {};
+		\node [style=none] (9) at (5, 1.75) {};
+		\node [style=none] (10) at (5.45, 1.75) {$\cdots$};
+		\node [style=none] (11) at (5.75, 3.25) {};
+		\node [style=none] (12) at (5, 3.25) {};
+		\node [style=none] (13) at (4.5, 3.25) {};
+		\node [style=none] (14) at (5.45, 9.5) {$\cdots$};
+		\node [style=dot] (15) at (5, 2.5) {};
+		\node [style=none] (16) at (6.5, 3.25) {};
+		\node [style=none] (17) at (7.75, 3.25) {};
+		\node [style=none] (18) at (7, 3.25) {};
+		\node [style=none] (19) at (7.45, 1.75) {$\cdots$};
+		\node [style=none] (20) at (7.75, 4.75) {};
+		\node [style=none] (21) at (7, 4.75) {};
+		\node [style=none] (22) at (6.5, 4.75) {};
+		\node [style=none] (23) at (7.45, 9.5) {$\cdots$};
+		\node [style=dot] (24) at (7, 4) {};
+		\node [style=none] (25) at (9, 4.75) {};
+		\node [style=none] (26) at (10.25, 4.75) {};
+		\node [style=none] (27) at (9.5, 4.75) {};
+		\node [style=none] (28) at (9.95, 1.75) {$\cdots$};
+		\node [style=none] (29) at (10.25, 6.25) {};
+		\node [style=none] (30) at (9.5, 6.25) {};
+		\node [style=none] (31) at (9, 6.25) {};
+		\node [style=none] (32) at (9.95, 9.5) {$\cdots$};
+		\node [style=dot] (33) at (9.5, 5.5) {};
+		\node [style=none] (34) at (5, 9.5) {};
+		\node [style=none] (35) at (4.5, 9.5) {};
+		\node [style=none] (36) at (5.75, 9.5) {};
+		\node [style=none] (37) at (7, 9.5) {};
+		\node [style=none] (38) at (6.5, 9.5) {};
+		\node [style=none] (39) at (7.75, 9.5) {};
+		\node [style=none] (40) at (7, 1.75) {};
+		\node [style=none] (41) at (6.5, 1.75) {};
+		\node [style=none] (42) at (7.75, 1.75) {};
+		\node [style=none] (43) at (9.5, 1.75) {};
+		\node [style=none] (44) at (9, 1.75) {};
+		\node [style=none] (45) at (10.25, 1.75) {};
+		\node [style=none] (46) at (8.4, 4.45) {\reflectbox{$\ddots$}};
+		\node [style=dot] (47) at (11.5, 7) {};
+		\node [style=dot] (48) at (11.5, 6.25) {};
+		\node [style=none] (49) at (9.5, 9.5) {};
+		\node [style=none] (50) at (9, 9.5) {};
+		\node [style=none] (51) at (10.25, 9.5) {};
+		\node [style=dot] (52) at (12.25, 8) {};
+		\node [style=dot] (53) at (12.25, 7.25) {};
+		\node [style=dot] (54) at (13.75, 9.25) {};
+		\node [style=dot] (55) at (13.75, 8.5) {};
+		\node [style=none] (56) at (13, 8.2) {\reflectbox{$\ddots$}};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=-90, out=45] (8) to (4.center);
-		\draw (8) to (5.center);
-		\draw [in=135, out=-90] (6.center) to (8);
-		\draw [in=90, out=-150] (8) to (0.center);
-		\draw (2.center) to (8);
-		\draw [in=90, out=-30] (8) to (1.center);
-		\draw [in=-90, out=45] (17) to (13.center);
-		\draw (17) to (14.center);
-		\draw [in=135, out=-90] (15.center) to (17);
-		\draw [in=90, out=-150] (17) to (9.center);
-		\draw (11.center) to (17);
-		\draw [in=90, out=-30] (17) to (10.center);
-		\draw [in=-90, out=45] (26) to (22.center);
-		\draw (26) to (23.center);
-		\draw [in=135, out=-90] (24.center) to (26);
-		\draw [in=90, out=-150] (26) to (18.center);
-		\draw (20.center) to (26);
-		\draw [in=90, out=-30] (26) to (19.center);
-		\draw (28.center) to (6.center);
-		\draw (5.center) to (27.center);
-		\draw (4.center) to (29.center);
-		\draw (15.center) to (31.center);
-		\draw (30.center) to (14.center);
-		\draw (13.center) to (32.center);
-		\draw (34.center) to (9.center);
-		\draw (11.center) to (33.center);
-		\draw (35.center) to (10.center);
-		\draw (18.center) to (37.center);
-		\draw (36.center) to (20.center);
-		\draw (19.center) to (38.center);
+		\draw [in=-90, out=45] (15) to (11.center);
+		\draw (15) to (12.center);
+		\draw [in=135, out=-90] (13.center) to (15);
+		\draw [in=90, out=-150] (15) to (7.center);
+		\draw (9.center) to (15);
+		\draw [in=90, out=-30] (15) to (8.center);
+		\draw [in=-90, out=45] (24) to (20.center);
+		\draw (24) to (21.center);
+		\draw [in=135, out=-90] (22.center) to (24);
+		\draw [in=90, out=-150] (24) to (16.center);
+		\draw (18.center) to (24);
+		\draw [in=90, out=-30] (24) to (17.center);
+		\draw [in=-90, out=45] (33) to (29.center);
+		\draw (33) to (30.center);
+		\draw [in=135, out=-90] (31.center) to (33);
+		\draw [in=90, out=-150] (33) to (25.center);
+		\draw (27.center) to (33);
+		\draw [in=90, out=-30] (33) to (26.center);
+		\draw (35.center) to (13.center);
+		\draw (12.center) to (34.center);
+		\draw (11.center) to (36.center);
+		\draw (22.center) to (38.center);
+		\draw (37.center) to (21.center);
+		\draw (20.center) to (39.center);
+		\draw (41.center) to (16.center);
+		\draw (18.center) to (40.center);
+		\draw (42.center) to (17.center);
+		\draw (25.center) to (44.center);
+		\draw (43.center) to (27.center);
+		\draw (26.center) to (45.center);
+		\draw (47) to (48);
+		\draw (29.center) to (51.center);
+		\draw (30.center) to (49.center);
+		\draw (50.center) to (31.center);
+		\draw (52) to (53);
+		\draw (54) to (55);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
@@ -2054,7 +2044,10 @@ $$
 Given a monoidal category $\X$, and a connected diagram in $\Prof$ generated by the $1$-cells of the pseudo-Frobenius structure induced by $\X$ one can always reduce the diagram to spider normal form by repeated application of
 
 $$\phi^L,\phi^R,\eta^\otimes,\alpha_*,\alpha^*,(u^L)_*,(u^L)^*,(u^R)_*,(u^R)^*$$
-Furthermore, given any {\em not-necessarily connected} diagram can be reduced to stratified spider normal form.
+
+As well as the symmetric monoidal structure of $\Prof$.
+
+Furthermore, given any {\em not-necessarily connected} diagram can be reduced to stratified spider normal form using the same collection of $2$-cells.
 \end{lemma}
 
 
@@ -2095,7 +2088,7 @@ The graphical calculus for pointed profunctors is essentially the same as for po
 
 
 $$
-  \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)},scale=2]
+  \begin{tikzpicture}[scale=1.5]
     \node[Pants, top] (pants) {};
     \node[Copants, bot, lowercob, anchor=leftleg] (copants) at (pants.leftleg) {};
    % \node[Top3D] at (copants.rightleg) {};
@@ -2113,7 +2106,7 @@ $$
    \end{scope}
   \end{tikzpicture}
 \xRightarrow{\epsilon^\otimes}
-  \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)},scale=2]
+  \begin{tikzpicture}[scale=1.5]
     \node[Cyl,xscale=1.2,top,anchor=bot] (tube) {};
     \node[Cyl,xscale=1.2,bot,anchor=top] (tube1) at (tube.bot) {};
     \begin{scope}[internal string scope]
@@ -2125,8 +2118,8 @@ $$
      \draw[bend right] (f.center) to (g.center);
     \end{scope}
   \end{tikzpicture}\ ,
-\hspace*{.5cm}
-  \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)},scale=2]
+\hspace*{1cm}
+  \begin{tikzpicture}[scale=1.5]
     \node[Cyl,top,anchor=bot] (tube) {};
     \node[Cyl,bot,anchor=top] (tube1) at (tube.bot) {};
     \begin{scope}[internal string scope]
@@ -2134,8 +2127,8 @@ $$
      \draw (f.center) to (tube1.bot);
      \draw (f.center) to (tube.top);
     \end{scope}
-  \end{tikzpicture}\
-  \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)},scale=2]
+  \end{tikzpicture}\ \
+  \begin{tikzpicture}[scale=1.5]
     \node[Cyl,top,anchor=bot] (tube) {};
     \node[Cyl,bot,anchor=top] (tube1) at (tube.bot) {};
     \begin{scope}[internal string scope]
@@ -2145,7 +2138,7 @@ $$
     \end{scope}
   \end{tikzpicture}
 \xRightarrow{\eta^\otimes}
-  \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)},scale=2]
+  \begin{tikzpicture}[scale=1.5]
     \node[Pants,xscale=1.5,bot] (pants) {};
     \node[Copants,xscale=1.5, top, anchor=belt] (copants) at (pants.belt) {};
    % \node[Top3D] at (copants.rightleg) {};
@@ -2163,7 +2156,7 @@ $$
 $$
 And similarly for the tensor unit:
 $$
-  \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)},scale=2]
+  \begin{tikzpicture}[scale=1.5]
     \node[Cup, top,scale=1.2] (cup) at (0,1.5) {};
     \node[Cap, bot,scale=1.2] (cap) at (0,0) {};
    % \node[Top3D] at (copants.rightleg) {};
@@ -2175,7 +2168,7 @@ $$
     \end{scope}
   \end{tikzpicture}
 \xRightarrow{\epsilon^I}
-  \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)},scale=2]
+  \begin{tikzpicture}[scale=1.5]
     \node[Cyl,xscale=1.2,top,anchor=bot] (tube) {};
     \node[Cyl,xscale=1.2,bot,anchor=top] (tube1) at (tube.bot) {};
     \begin{scope}[internal string scope]
@@ -2185,8 +2178,8 @@ $$
      \draw (f.center) to (tube.top);
     \end{scope}
   \end{tikzpicture}\ ,
-\hspace*{.5cm}
-  \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)},scale=2]
+\hspace*{1cm}
+  \begin{tikzpicture}[scale=1.5]
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (-1, 1) {};
 		\node [style=none] (1) at (-1, 0) {};
@@ -2194,14 +2187,11 @@ $$
 		\node [style=none] (3) at (0, 1) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw[style=dashed] (2.center) to (3.center);
-		\draw[style=dashed] (3.center) to (0.center);
-		\draw[style=dashed] (0.center) to (1.center);
-		\draw[style=dashed] (1.center) to (2.center);
+		\draw[style=dashed] (2.center) to (3.center) to (0.center) to (1.center) to cycle;
 	\end{pgfonlayer}
 \end{tikzpicture}
 \xRightarrow{\eta^I}
-  \begin{tikzpicture}[baseline={([yshift=-.5ex]current bounding box.center)},scale=2]
+  \begin{tikzpicture}[scale=1.5]
     \node[Cup] (cup) {};
     \node[Cap, bot]  at (cup) {};
    % \node[Top3D] at (copants.rightleg) {};
@@ -2212,15 +2202,15 @@ $$
 
 
 
-These diagrams are very closed to proof nets.  For example, by applying, $\phi^L$ followed by two applications of $\eta^\otimes$  to the diagram on the left, we obtain the pointed profunctor 
+These diagrams are very closed to proof nets.  We can obtain the following profunctor
 $$
 (\X(-,=), \alpha_{X,Y,Z}):
 (\X(-,=), (X\otimes Y)\otimes Z)\proarrow (\X(-,=),X\otimes(Y\otimes Z))
 $$
-
+By normalizing this diagram:
 
 $$
-\begin{tikzpicture}[scale=2]
+\begin{tikzpicture}[scale=1.5]
     \node[Pants, bot, top] (B) at (0,0) {};
     \node[Pants, bot, anchor=belt] (A) at (B.rightleg) {};
     \node[SwishR, bot, anchor=top] (C) at (B.leftleg) {};
@@ -2234,9 +2224,10 @@ $$
     \node (i) at (B.belt) [above] {\tiny $X\otimes(Y\otimes Z)$};
     \node (i) at (F.belt) [below] {\tiny $(X\otimes Y)\otimes Z$};
     \end{scope}
+    \draw [color=blue,dashed] ($(B.leftleg)+(-1,0)$) to ($(B.rightleg)+(1,0)$) to ($(F.rightleg)+(1,0)$) to ($(F.leftleg)+(-1,0)$) to cycle;
 \end{tikzpicture}
-\Rightarrow
-\begin{tikzpicture}[scale=2]
+\xRightarrow{\phi^L}
+\begin{tikzpicture}[scale=1.5]
     \node[Pants, bot, top] (A) at (0,0) {};
     \node[Copants, bot, anchor=leftleg] (B) at (A.leftleg) {};
     \node[Pants, bot, anchor=belt] (C) at (B.belt) {};
@@ -2249,8 +2240,8 @@ $$
     \node (i) at (D.belt) [below] {\tiny $(X\otimes Y)\otimes Z$};
     \end{scope}
 \end{tikzpicture}
-\Rightarrow
-\begin{tikzpicture}[scale=2]
+\xRightarrow{\eta^\otimes;\eta^\otimes}
+\begin{tikzpicture}[scale=1.5]
     \node[Cyl, top] (A) at (0,0) {};
     \node[Cyl, anchor=top] (B) at (A.bot) {};
     \node[Cyl, anchor=top] (C) at (B.bot) {};
@@ -2266,10 +2257,65 @@ $$
 $$
 
 
-We can do a similar thing for the left unitor:
+Similarly, we get the inverse associator by connecting the shapes in the other way:
+$$
+(\X(-,=), \alpha_{X,Y,Z}^{-1}):
+(\X(-,=), X\otimes (Y\otimes Z))\proarrow (\X(-,=),(X\otimes Y)\otimes Z)
+$$
+
 
 $$
-\begin{tikzpicture}[scale=2]
+\begin{tikzpicture}[scale=1.5]
+    \node[Pants, bot, top] (B) at (0,0) {};
+    \node[Pants, bot, anchor=belt] (A) at (B.leftleg) {};
+    \node[SwishL, bot, anchor=top] (C) at (B.rightleg) {};
+    \node[Copants, bot, anchor=leftleg] (D) at (A.rightleg) {};
+    \node[SwishL, bot, anchor=top] (E) at (A.leftleg) {};
+    \node[Copants, bot, anchor=leftleg] (F) at (E.bot) {};
+    \begin{scope}[internal string scope]
+    \draw [in=270, out=90] ($(F.belt)+(.125,0)$) to ($(D.belt)+(.1,0)$) to (C.bot) to (B.rightleg) to ($(B.belt)+(.125,0)$);
+    \draw [in=270, out=90] (F.belt) to ($(D.belt)+(-.1,0)$) to (A.rightleg) to ($(B.leftleg)+(.125,0)$) to (B.belt);
+    \draw [in=270, out=90] ($(F.belt)+(-.125,0)$)  to (E.bot) to (A.leftleg) to ($(B.leftleg)+(-.125,0)$) to ($(B.belt)+(-.125,0)$);
+    \node (i) at (B.belt) [above] {\tiny $(X\otimes Y)\otimes Z$};
+    \node (i) at (F.belt) [below] {\tiny $X\otimes(Y\otimes Z)$};
+    \end{scope}
+    \draw [color=blue,dashed] ($(B.leftleg)+(-1,0)$) to ($(B.rightleg)+(1,0)$) to ($(F.rightleg)+(1,0)$) to ($(F.leftleg)+(-1,0)$) to cycle;
+\end{tikzpicture}
+\xRightarrow{\phi^R}
+\begin{tikzpicture}[scale=1.5]
+    \node[Pants, bot, top] (A) at (0,0) {};
+    \node[Copants, bot, anchor=leftleg] (B) at (A.leftleg) {};
+    \node[Pants, bot, anchor=belt] (C) at (B.belt) {};
+    \node[Copants, bot, anchor=leftleg] (D) at (C.leftleg) {};
+    \begin{scope}[internal string scope]
+    \draw [in=270, out=90] ($(D.belt)+(-.1,0)$) to ($(C.leftleg)+(0,0)$) to ($(B.belt)+(-.1,0)$) to ($(B.leftleg)+(-.1,0)$) to  ($(A.belt)+(-.1,0)$);
+    \draw [in=270, out=90] ($(D.belt)+(0,0)$) to ($(C.rightleg)+(-.1,0)$) to ($(B.belt)+(0,0)$) to ($(B.leftleg)+(.1,0)$) to  ($(A.belt)+(0,0)$);
+    \draw [in=270, out=90] ($(D.belt)+(.125,0)$) to ($(C.rightleg)+(.1,0)$) to ($(B.belt)+(.125,0)$) to ($(B.rightleg)+(0,0)$) to  ($(A.belt)+(.125,0)$);
+    \node (i) at (A.belt) [above]  {\tiny $(X\otimes Y)\otimes Z$};
+    \node (i) at (D.belt) [below] {\tiny $X\otimes(Y\otimes Z)$};
+    \end{scope}
+\end{tikzpicture}
+\xRightarrow{\eta^\otimes;\eta^\otimes}
+\begin{tikzpicture}[scale=1.5]
+    \node[Cyl, top] (A) at (0,0) {};
+    \node[Cyl, anchor=top] (B) at (A.bot) {};
+    \node[Cyl, anchor=top] (C) at (B.bot) {};
+    \node[Cyl, bot, anchor=top] (D) at (C.bot) {};
+    \begin{scope}[internal string scope]
+    \draw ($(A.top)+(.125,0)$) to ($(D.bot)+(.125,0)$) ;
+    \draw ($(A.top)+(0,0)$) to ($(D.bot)+(0,0)$);
+    \draw ($(A.top)+(-.125,0)$) to ($(D.bot)+(-.125,0)$) ;
+    \node (i) at (A.top) [above]  {\tiny $(X\otimes Y)\otimes Z$};
+    \node (i) at (D.bot) [below] {\tiny $X\otimes(Y\otimes Z)$};
+    \end{scope}
+\end{tikzpicture}
+$$
+
+
+We can do a similar thing for the left and right unitors:
+
+$$
+\begin{tikzpicture}[scale=1.5]
     \node[Copants, bot] (A) at (0,0) {};
     \node[Cyl, top, bot, anchor=bot] (B) at (A.rightleg) {};
     \node[Cap,bot] (C) at (A.leftleg) {};
@@ -2279,8 +2325,28 @@ $$
     \node (i) at (B.top) [above] {\tiny $ A$};
     \end{scope}
 \end{tikzpicture}
-\Rightarrow
-\begin{tikzpicture}[scale=2]
+\xRightarrow{(u^L)_*}
+\begin{tikzpicture}[scale=1.5]
+    \node[Cyl, top] (A) at (0,0) {};
+    \node[Cyl, bot, anchor=top] (B) at (A.bot) {};
+    \begin{scope}[internal string scope]
+    \draw [in=270, out=90] ($(A.top)+(0,-.1)$) to ($(B.bot)+(0,.1)$);
+    \node (i) at (B.bot) [below] {\tiny $ I\otimes A$};
+    \node (i) at (A.top) [above] {\tiny $ A$};
+    \end{scope}
+\end{tikzpicture}\ ,\hspace*{.5cm}
+\begin{tikzpicture}[scale=1.5]
+    \node[Copants, bot] (A) at (0,0) {};
+    \node[Cyl, top, bot, anchor=bot] (B) at (A.leftleg) {};
+    \node[Cap,bot] (C) at (A.rightleg) {};
+    \begin{scope}[internal string scope]
+    \draw [in=270, out=90] (A.belt) to (A.leftleg) to (B.top);
+    \node (i) at (A.belt) [below] {\tiny $ A\otimes I$};
+    \node (i) at (B.top) [above] {\tiny $ A$};
+    \end{scope}
+\end{tikzpicture}
+\xRightarrow{(u^R)_*}
+\begin{tikzpicture}[scale=1.5]
     \node[Cyl, top] (A) at (0,0) {};
     \node[Cyl, bot, anchor=top] (B) at (A.bot) {};
     \begin{scope}[internal string scope]
@@ -2291,20 +2357,52 @@ $$
 \end{tikzpicture}
 $$
 
-%
-%$$
-%\begin{tikzpicture}[scale=2]
-%    \node[Pants, bot, top] (B) at (0,0) {};
-%    \node[Pants, bot, anchor=belt] (A) at (B.leftleg) {};
-%    \node[SwishL, bot, anchor=top] (C) at (B.rightleg) {};
-%    \node[Copants, bot, anchor=leftleg] (D) at (A.rightleg) {};
-%    \node[SwishL, bot, anchor=top] (E) at (A.leftleg) {};
-%    \node[Copants, bot, anchor=leftleg] (F) at (E.bot) {};
-%    \begin{scope}[internal string scope]
-%    \end{scope}
-%    \end{tikzpicture}
-%$$
+As well as their inverses:
 
+
+
+$$
+\begin{tikzpicture}[scale=1.5]
+    \node[Pants, top, bot] (A) at (0,0) {};
+    \node[Cyl, bot, anchor=top] (B) at (A.rightleg) {};
+    \node[Cup] (C) at (A.leftleg) {};
+    \begin{scope}[internal string scope]
+    \draw [in=90, out=270] (A.belt) to (A.rightleg) to (B.bot);
+    \node (i) at (A.belt) [above] {\tiny $ I\otimes A$};
+    \node (i) at (B.bot) [below] {\tiny $ A$};
+    \end{scope}
+\end{tikzpicture}
+\xRightarrow{(u^L)^*}
+\begin{tikzpicture}[scale=1.5]
+    \node[Cyl, top] (A) at (0,0) {};
+    \node[Cyl, bot, anchor=top] (B) at (A.bot) {};
+    \begin{scope}[internal string scope]
+    \draw [in=270, out=90] ($(A.top)+(0,-.1)$) to ($(B.bot)+(0,.1)$);
+    \node (i) at (B.bot) [below] {\tiny $A$};
+    \node (i) at (A.top) [above] {\tiny $ I\otimes  A$};
+    \end{scope}
+\end{tikzpicture}\ ,\hspace*{.5cm}
+\begin{tikzpicture}[scale=1.5]
+    \node[Pants, top, bot] (A) at (0,0) {};
+    \node[Cyl, bot, anchor=top] (B) at (A.leftleg) {};
+    \node[Cup,bot] (C) at (A.rightleg) {};
+    \begin{scope}[internal string scope]
+    \draw [in=90, out=270] (A.belt) to (A.leftleg) to (B.bot);
+    \node (i) at (A.belt) [above] {\tiny $ A\otimes I$};
+    \node (i) at (B.bot) [below] {\tiny $ A$};
+    \end{scope}
+\end{tikzpicture}
+\xRightarrow{(u^R)^*}
+\begin{tikzpicture}[scale=1.5]
+    \node[Cyl, top] (A) at (0,0) {};
+    \node[Cyl, bot, anchor=top] (B) at (A.bot) {};
+    \begin{scope}[internal string scope]
+    \draw [in=270, out=90] ($(A.top)+(0,-.1)$) to ($(B.bot)+(0,.1)$);
+    \node (i) at (B.bot) [below] {\tiny $ I\otimes A$};
+    \node (i) at (A.top) [above] {\tiny $ A$};
+    \end{scope}
+\end{tikzpicture}
+$$
 
 
 
@@ -2318,11 +2416,11 @@ That is to say, $F$ has the data of:
 \begin{itemize}
 \item A function $F:\D_0\to \Prof_0$ taking objects of $\D$ to categories.
 \item For every pair of objects $X,Y \in \D_0$, a function $F_{X,Y}:\D(X,Y)\to \Prof(F(X),F(Y))$  such that $1_{F(X)}=F_{X,X}(1_X)$.
-\item For every triple of objects $X,Y,Z \in \D_0$, a $2$-cell, with components at $f:X\to Y,gY\to Z$
+\item For every triple of objects $X,Y,Z \in \D_0$, a $2$-cell, with components at $(f:X\to Y,g:Y\to Z)$:
 $$F_{X,Y,Z}(f,g):F_{X,Y}(f);F_{Y,Z}(g) \Rightarrow F_{X,Z}(f;g)$$
 \end{itemize}
 
-Such that for any diagram $W\xrightarrow{f} X \xrightarrow{g} Y \xrightarrow{h} Z$ in $\X$ the following diagram commutes:
+Such that for any diagram $W\xrightarrow{f} X \xrightarrow{g} Y \xrightarrow{h} Z$ in $\X$ the following diagram commutes in $\Prof$:
 
 
 $$
@@ -2343,10 +2441,10 @@ We can recast the spider theorem in this light:
 \begin{definition}
 Given any monoidal category $\X$, there is an indexed category
 
-$F_\X:\esfa\to \Prof$ such that  
+$F_\X:\sfa\to \Prof$ such that:
 \begin{itemize}
 \item $(F_\X)(n) = \X^n$
-\item $(F_\X){n,m}$ takes diagrams in $\esfa$ to (stratified) spiders in $\Prof$ composed of the monoidal structure of $\X$; moreover, sending scalars to the identity on $1$.
+\item $(F_\X){n,m}$ takes diagrams in $\sfa$ to (stratified) spiders in $\Prof$.
 \item The natural transformation $(F_\X)_{n,m,k}$ performs (stratified) spider fusion.
 \end{itemize}
 
@@ -2388,10 +2486,11 @@ $$(f, f^\sharp);(g, g^\sharp):= (F_{X,Y,Z}(f,g))(f^\sharp, g^\sharp)$$
 
 
 Moreover, the first projection map $\pi_0:\Pi F\to \D$  is a (strict) functor.
+\end{theorem}
+
 
 
 We can actually go the other direction.  Given some fixed $\D$, this extends to an equivalence of categories between the slice category $\Cat/\D$ and the lax normal functor category $[\D,\Prof]$.  We won't restate this equivalence of categories, because it is not directly useful for us, and it takes considerable effort to expose.
-\end{theorem}
 
 Now, let us crank the handle for our example and see what we get out:
 
@@ -2411,19 +2510,28 @@ The indexed category $\Pi F_{\X}$ has a concrete presentation:
 \item[Maps:] Given two finite lists $X=[X_0,\ldots, X_{n-1}]$ and $Y=[Y_0,\ldots, Y_{m-1}]$ of objects in $\X$, a map from $X\to Y$ is a pointed profunctor
 
 $$
-(P,f): (\X^n,X)) \proarrow (\X^n,X)
+(P,f): (\X^n,X) \proarrow (\X^n,X)
 $$
 
 Generated by the (co)tensor and (co)unit of the monoidal structure of $\X$.
 
+The equality of these maps is modulo the equivalence relation generated by two congruences:
 
-Modulo the equivalence relation that two parallel maps
+\begin{itemize}
+\item
+All scalars are equal to $(1_\one,1_*)$.
+
+
+\item 
+For two scalar-free parallel maps
 
 $$ (P,f),(Q,g): (\X^n,X) \proarrow (\X^n,X)$$
 
-are equivalent when $\nu(P,f) = \nu(Q,g)$.
+are equivalent when $Q$ and $P$ are normalized to the same stratified spider $\nu_0:P\Rightarrow S \Leftarrow Q:\nu_1$ where moreover, the normalization agrees on points so that $\nu_0(f)=\nu_1(g)$.
 
-\item[Identity:]  The identity on $(\X^n,X)$ is the identity in poitned profunctors
+\end{itemize}
+
+\item[Identity:]  The identity on $(\X^n,X)$ is the identity in pointed profunctors
 
 $$
 1_{(\X^n,X)} = (\X(-,=)^n,1_X)
@@ -2434,7 +2542,7 @@ $$
 %vizualized as $n$ tubes occupied by identities:
 %
 %$$
-%\begin{tikzpicture}[scale=2]
+%\begin{tikzpicture}[scale=1.5]
 %    \node[Cyl, top,bot] (A) at (0,0) {};
 %    \begin{scope}[internal string scope]
 %    \draw [in=270, out=90] ($(A.top)+(0,-.01)$) to ($(A.bot)+(0,.01)$);
@@ -2442,7 +2550,7 @@ $$
 %    \node (i) at (A.top) [above] {\tiny $ X_0$};
 %    \end{scope}
 %\end{tikzpicture}\
-%\begin{tikzpicture}[scale=2]
+%\begin{tikzpicture}[scale=1.5]
 %    \node[Cyl, top,bot] (A) at (0,0) {};
 %    \begin{scope}[internal string scope]
 %    \draw [in=270, out=90] ($(A.top)+(0,-.01)$) to ($(A.bot)+(0,.01)$);
@@ -2451,7 +2559,7 @@ $$
 %    \end{scope}
 %\end{tikzpicture}\ \
 %\cdots
-%\begin{tikzpicture}[scale=2]
+%\begin{tikzpicture}[scale=1.5]
 %    \node[Cyl, top,bot] (A) at (0,0) {};
 %    \begin{scope}[internal string scope]
 %    \draw [in=270, out=90] ($(A.top)+(0,-.01)$) to ($(A.bot)+(0,.01)$);
@@ -2466,7 +2574,7 @@ $$
 
 \end{description}
 
-This is moreover a strict monoidal category.  The tensor product is given by the tensor product in $\Prof^*$.
+This is moreover a strict monoidal category.  The tensor product is given by the tensor product in $\Prof^*$, so that the projection functor $\pi_0:\Pi F_\X\to \sfa$ is strict monoidal.
 
 
 \end{lemma}
@@ -2475,21 +2583,31 @@ This is moreover a strict monoidal category.  The tensor product is given by the
 In $\Pi F_\X$, the components of the unitors and associators that we drew before as 2-cells are now honest maps.  Moreover, the different ways of associating and introducing/removing units are now genuine inverses because their composite reduces to the identity.
 
 
+Moreover, $\eta^\otimes$ is now a proper equality:
+$$
+\begin{tikzpicture}[scale=1.5]
+    \node[Pants, top,bot] (A) at (0,0) {};
+    \node[Copants,bot, anchor=leftleg] (B) at (A.leftleg) {};
+    \begin{scope}[internal string scope]
+    \draw [in=270, out=90] ($(B.belt)+(-.1,0)$) to (A.leftleg) to ($(A.belt)+(-.1,0)$) ;
+    \draw [in=270, out=90] ($(B.belt)+(.1,0)$) to (A.rightleg) to ($(A.belt)+(.1,0)$) ;
+    \end{scope}
+\end{tikzpicture}
+=
+\begin{tikzpicture}[scale=1.5]
+    \node[Cyl, top] (A) at (0,0) {};
+    \node[Cyl, bot, anchor=top] (B) at (A.bot) {};
+    \begin{scope}[internal string scope]
+    \draw [in=270, out=90] ($(A.top)+(0,-.1)$) to ($(B.bot)+(0,.1)$);
+    \end{scope}
+\end{tikzpicture}
+$$
 
 
 However, this is still not proof nets.  We can only normalize connected components.  For example, the following equation does not hold because the profunctors in which the string diagrams are drawn are not connected:
 
 $$
-\begin{tikzpicture}[scale=2]
-    \node[Copants, top,bot] (A) at (0,0) {};
-    \node[Pants,bot, anchor=belt] (B) at (A.belt) {};
-    \begin{scope}[internal string scope]
-    \draw [in=270, out=90] (B.leftleg) to ($(B.belt)+(-.1,0)$) to (A.leftleg);
-    \draw [in=270, out=90] (B.rightleg) to ($(B.belt)+(.1,0)$) to (A.rightleg);
-    \end{scope}
-\end{tikzpicture}
-\neq\ \
-\begin{tikzpicture}[scale=2]
+\begin{tikzpicture}[scale=1.5]
     \node[Cyl, top] (A) at (0,0) {};
     \node[Cyl, bot, anchor=top] (B) at (A.bot) {};
     \node[Cyl, top] (AA) at (.75,0) {};
@@ -2499,42 +2617,22 @@ $$
     \draw [in=270, out=90] ($(AA.top)+(0,-.1)$) to ($(BB.bot)+(0,.1)$);
     \end{scope}
 \end{tikzpicture}
+\ \ \neq\ 
+\begin{tikzpicture}[scale=1.5]
+    \node[Copants, top,bot] (A) at (0,0) {};
+    \node[Pants,bot, anchor=belt] (B) at (A.belt) {};
+    \begin{scope}[internal string scope]
+    \draw [in=270, out=90] (B.leftleg) to ($(B.belt)+(-.1,0)$) to (A.leftleg);
+    \draw [in=270, out=90] (B.rightleg) to ($(B.belt)+(.1,0)$) to (A.rightleg);
+    \end{scope}
+\end{tikzpicture}
 $$
 
 However, if in context $\Gamma$ we knew that the profunctors were connected then we could apply this rewrite rule:
 
 
 $$
-\begin{tikzpicture}[scale=2]
-    \node[Copants,bot] (A) at (0,0) {};
-    \node[Pants, anchor=belt] (B) at (A.belt) {};
-    \node (x1) at ($(A.rightleg)+(.5,0)$) {};
-    \node (x2) at ($(A.rightleg)+(.5,.4)$) {};
-    \node (x3) at ($(A.leftleg)+(-1.5,.4)$) {};
-    \node (x4) at ($(B.leftleg)+(-1.5,-.4)$) {};
-    \node (x5) at ($(B.rightleg)+(.5,-.4)$) {};
-    \node (x6) at ($(B.rightleg)+(.5,0)$) {};
-    \node (x7) at ($(B.leftleg)+(-.5,0)$) {};
-    \node (x8) at ($(A.leftleg)+(-.5,0)$) {};
-    \node[Cyl,top, anchor=bot] (C) at ($(x3.center)+(.75,0)$) {};
-    \node[Cyl,top, anchor=bot] (D) at ($(x2.center)+(-.75,0)$) {};
-    \node[Cyl,bot, anchor=top] (E) at ($(x4.center)+(.75,0)$) {};
-    \node[Cyl,bot, anchor=top] (F) at ($(x5.center)+(-.75,0)$) {};
-    \node(G) at($(x3.center)+(1.5,.5)$)  {$\cdots$};
-    \node(H) at($(x4.center)+(1.5,-.5)$)  {$\cdots$};
-    \node(K) at($(A.belt)+(-1.55,0)$)  {$\Gamma$};
-    \begin{scope}[internal string scope]
-    \draw [in=270, out=90] (B.leftleg) to ($(B.belt)+(-.1,0)$) to (A.leftleg);
-    \draw [in=270, out=90] (B.rightleg) to ($(B.belt)+(.1,0)$) to (A.rightleg);
-    \draw (C.bot) to (C.top);
-    \draw (D.bot) to (D.top);
-    \draw (E.bot) to (E.top);
-    \draw (F.bot) to (F.top);
-    \end{scope}
-    \draw [color=black, fill=blue, fill opacity=.4] (x1.center) to  (x1.center) to [bend left=15]  (x2.center) to (x3.center) to  [bend left=-15] (x4.center) to (x5.center) to [bend left=15]  (x6.center) to (x7.center) to  [bend left=15] (x8.center) to cycle;
-\end{tikzpicture}
-=
-\begin{tikzpicture}[scale=2]
+\begin{tikzpicture}[scale=1.5]
     \node[Cyl] (A0) at (0,0) {};
     \node[Cyl,anchor=center] (A1) at ($(A.center)+(1,0)$) {};
     \node[Cyl,anchor=top] (B0) at (A0.bot) {};
@@ -2564,17 +2662,128 @@ $$
     \end{scope}
     \draw [color=black, fill=blue, fill opacity=.4] (x1.center) to  (x1.center) to [bend left=15]  (x2.center) to (x3.center) to  [bend left=-15] (x4.center) to (x5.center) to [bend left=15]  (x6.center) to (x7.center) to  [bend left=15] (x8.center) to cycle;
 \end{tikzpicture}
+=
+\begin{tikzpicture}[scale=1.5]
+    \node[Copants,bot] (A) at (0,0) {};
+    \node[Pants, anchor=belt] (B) at (A.belt) {};
+    \node (x1) at ($(A.rightleg)+(.5,0)$) {};
+    \node (x2) at ($(A.rightleg)+(.5,.4)$) {};
+    \node (x3) at ($(A.leftleg)+(-1.5,.4)$) {};
+    \node (x4) at ($(B.leftleg)+(-1.5,-.4)$) {};
+    \node (x5) at ($(B.rightleg)+(.5,-.4)$) {};
+    \node (x6) at ($(B.rightleg)+(.5,0)$) {};
+    \node (x7) at ($(B.leftleg)+(-.5,0)$) {};
+    \node (x8) at ($(A.leftleg)+(-.5,0)$) {};
+    \node[Cyl,top, anchor=bot] (C) at ($(x3.center)+(.75,0)$) {};
+    \node[Cyl,top, anchor=bot] (D) at ($(x2.center)+(-.75,0)$) {};
+    \node[Cyl,bot, anchor=top] (E) at ($(x4.center)+(.75,0)$) {};
+    \node[Cyl,bot, anchor=top] (F) at ($(x5.center)+(-.75,0)$) {};
+    \node(G) at($(x3.center)+(1.5,.5)$)  {$\cdots$};
+    \node(H) at($(x4.center)+(1.5,-.5)$)  {$\cdots$};
+    \node(K) at($(A.belt)+(-1.55,0)$)  {$\Gamma$};
+    \begin{scope}[internal string scope]
+    \draw [in=270, out=90] (B.leftleg) to ($(B.belt)+(-.1,0)$) to (A.leftleg);
+    \draw [in=270, out=90] (B.rightleg) to ($(B.belt)+(.1,0)$) to (A.rightleg);
+    \draw (C.bot) to (C.top);
+    \draw (D.bot) to (D.top);
+    \draw (E.bot) to (E.top);
+    \draw (F.bot) to (F.top);
+    \end{scope}
+    \draw [color=black, fill=blue, fill opacity=.4] (x1.center) to  (x1.center) to [bend left=15]  (x2.center) to (x3.center) to  [bend left=-15] (x4.center) to (x5.center) to [bend left=15]  (x6.center) to (x7.center) to  [bend left=15] (x8.center) to cycle;
+\end{tikzpicture}
 $$
 
 
+Similarly:
 
-To this end, we want to force all components to be connected. To do this, first remark that for any  finite list of objects $X=[X_0,\ldots, X_{n-1}]$ in $\X$ there is an idempotent $(s_X, s_X^\sharp)=e_X:X\to X$ in   $\Pi F_{\X}$ where $s_X$ is the fully connected spider from $\X^n\to\X^n$ and $s_X^\sharp$ is the tensor factorized identity $s_X^\sharp = \otimes_{i=0}^{n-1}1 _{X_i}$ regarded as an element of the spider.
+$$
+  \begin{tikzpicture}[scale=1.5]
+    \node[Cup, top,scale=1.2] (cup) at (0,1.5) {};
+    \node[Cap, bot,scale=1.2] (cap) at (0,0) {};
+   % \node[Top3D] at (copants.rightleg) {};
+    \begin{scope}[internal string scope]
+    \end{scope}
+  \end{tikzpicture}
+\neq
+  \begin{tikzpicture}[scale=1.5]
+    \node[Cyl,xscale=1.2,top,anchor=bot] (tube) {};
+    \node[Cyl,xscale=1.2,bot,anchor=top] (tube1) at (tube.bot) {};
+    \begin{scope}[internal string scope]
+    \end{scope}
+  \end{tikzpicture}
+$$
+
+However, we know that the profunctors are connected in context $\Gamma$, we have:
+
+
+$$
+\begin{tikzpicture}[scale=1.5]
+    \node[Cyl] (A0) at (0,0) {};
+    \node[Cyl,anchor=top] (B0) at (A0.bot) {};
+    \node (x1) at ($(A0.top)+(1.5,0)$) {};
+    \node (x2) at ($(A0.top)+(1.5,.4)$) {};
+    \node (x3) at ($(A0.top)+(-1.5,.4)$) {};
+    \node (x4) at ($(B0.bot)+(-1.5,-.4)$) {};
+    \node (x5) at ($(B0.bot)+(1.5,-.4)$) {};
+    \node (x6) at ($(B0.bot)+(1.5,0)$) {};
+    \node (x7) at ($(B0.bot)+(-.5,0)$) {};
+    \node (x8) at ($(A0.top)+(-.5,0)$) {};
+    \node[Cyl,top, anchor=bot] (C) at ($(x3.center)+(.75,0)$) {};
+    \node[Cyl,top, anchor=bot] (D) at ($(x2.center)+(-.75,0)$) {};
+    \node[Cyl,bot, anchor=top] (E) at ($(x4.center)+(.75,0)$) {};
+    \node[Cyl,bot, anchor=top] (F) at ($(x5.center)+(-.75,0)$) {};
+    \node(G) at($(x3.center)+(1.5,.5)$)  {$\cdots$};
+    \node(H) at($(x4.center)+(1.5,-.5)$)  {$\cdots$};
+    \node(K) at($(A0.bot)+(-1.1,0)$)  {$\Gamma$};
+    \begin{scope}[internal string scope]
+    \draw (C.bot) to (C.top);
+    \draw (D.bot) to (D.top);
+    \draw (E.bot) to (E.top);
+    \draw (F.bot) to (F.top);
+    \end{scope}
+    \draw [color=black, fill=blue, fill opacity=.4] (x1.center) to  (x1.center) to [bend left=15]  (x2.center) to (x3.center) to  [bend left=-15] (x4.center) to (x5.center) to [bend left=15]  (x6.center) to (x7.center) to  [bend left=15] (x8.center) to cycle;
+\end{tikzpicture}
+=
+\
+\begin{tikzpicture}[scale=1.5]
+    \node (A00) at (0,0) {};
+    \node (B00) at (A0.center) {};
+    \node [Cup] (A0) at ($(A00.center)+(0,.75)$) {};
+    \node [Cap,anchor=center]  (B0) at ($(B00.center)+(0.,-.75)$) {};
+    \node (x1) at ($(A0.center)+(1.5,0)$) {};
+    \node (x2) at ($(A0.center)+(1.5,.4)$) {};
+    \node (x3) at ($(A0.center)+(-1.5,.4)$) {};
+    \node (x4) at ($(B0.center)+(-1.5,-.4)$) {};
+    \node (x5) at ($(B0.center)+(1.5,-.4)$) {};
+    \node (x6) at ($(B0.center)+(1.5,0)$) {};
+    \node (x7) at ($(B0.center)+(-.5,0)$) {};
+    \node (x8) at ($(A0.center)+(-.5,0)$) {};
+    \node[Cyl,top, anchor=bot] (C) at ($(x3.center)+(.75,0)$) {};
+    \node[Cyl,top, anchor=bot] (D) at ($(x2.center)+(-.75,0)$) {};
+    \node[Cyl,bot, anchor=top] (E) at ($(x4.center)+(.75,0)$) {};
+    \node[Cyl,bot, anchor=top] (F) at ($(x5.center)+(-.75,0)$) {};
+    \node(G) at($(x3.center)+(1.5,.5)$)  {$\cdots$};
+    \node(H) at($(x4.center)+(1.5,-.5)$)  {$\cdots$};
+    \node(K) at($(A0.center)+(-1.1,-.75)$)  {$\Gamma$};
+    \begin{scope}[internal string scope]
+    \draw (C.bot) to (C.top);
+    \draw (D.bot) to (D.top);
+    \draw (E.bot) to (E.top);
+    \draw (F.bot) to (F.top);
+    \end{scope}
+    \draw [color=black, fill=blue, fill opacity=.4] (x1.center) to  (x1.center) to [bend left=15]  (x2.center) to (x3.center) to  [bend left=-15] (x4.center) to (x5.center) to [bend left=15]  (x6.center) to (x7.center) to  [bend left=15] (x8.center) to cycle;
+\end{tikzpicture}
+$$
+
+To this end, we want to force all components to be connected. 
+
+First remark that for any  finite list of objects $X=[X_0,\ldots, X_{n-1}]$ in $\X$ there is an idempotent $(s_X, s_X^\sharp)=e_X:X\to X$ in   $\Pi F_{\X}$ where $s_X$ is the fully connected spider from $\X^n\to\X^n$ and $s_X^\sharp$ is the tensor factorized identity $s_X^\sharp = \otimes_{i=0}^{n-1}1 _{X_i}$ regarded as an element of the spider.
 For example 
 
 $$
 e_{[X_0,X_1,X_2]}
 =
-\begin{tikzpicture}[scale=2]
+\begin{tikzpicture}[scale=1.5]
     \node[Copants,top,bot] (A) at (0,0) {};
     \node[Copants, bot,anchor=leftleg] (B) at (A.belt) {};
     \node[Pants, bot ,anchor=belt] (C) at (B.belt) {};
@@ -2595,17 +2804,17 @@ e_{[X_0,X_1,X_2]}
 \end{tikzpicture}
 $$
 
-
+This determines a strict monoidal category in which all shapes connected to the boundary are connected.
 
 
 \begin{definition}
-Take $N\X:=K_{\{e_X\ | \ X \in [\X_0]\}}(\Pi F_{\X})$; that is, the full subcategory of the  the Karoubi envelope of $\Pi F_{\X}$ with objects $(X,e_X)$. Concretely $N\X$ has;
+Take $N\X:=K_{\{e_X\ | \ X \in [\X_0]\}}(\Pi F_{\X})$; that is, the full subcategory of the  the Karoubi envelope of $\Pi F_{\X}$ with objects $(X,e_X)$, for every finite list of objects in $X$. Concretely $N\X$ has;
 
 \begin{description}
-\item[Objects:] Lists of objects in $\X$.
+\item[Objects:] Nonempty finite lists of objects in $\X$.
 
 \item[Maps:] 
-$$\dfrac{(P,f);X\to Y \hspace*{.5cm} \in \Pi F_\X\ \text{ where $P$ is fully connected} }{(P,f);X\to Y \hspace*{.5cm} \in \N\X}$$
+$$\dfrac{(P,f);X\to Y \hspace*{.5cm} \in \Pi F_\X\ \text{ where the boundaries of $P$ are fully connected} }{(P,f);X\to Y \hspace*{.5cm} \in N\X}$$
 
 \item[Composition:] Same as in $\Pi F_\X$.
 
@@ -2621,13 +2830,31 @@ $$
 
 \end{definition}
 
-\begin{theorem}
-$N\X$ is the strict monoidal category of proof nets in $\X$.
-\end{theorem}
-\begin{proof}
 
-\end{proof}
+This monoidal category is very close to the strictification of a monoidal category; however, it is not quite there.  There is no way to eliminate the scalars  (maps of the form $[]\to[]$) in this category. For example, the following equation does not hold:
 
+
+$$
+ \begin{tikzpicture}[scale=1.5]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-1, 1) {};
+		\node [style=none] (1) at (-1, 0) {};
+		\node [style=none] (2) at (0, 0) {};
+		\node [style=none] (3) at (0, 1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw[style=dashed] (2.center) to (3.center) to (0.center) to (1.center) to cycle;
+	\end{pgfonlayer}
+\end{tikzpicture}
+\neq
+  \begin{tikzpicture}[scale=1.5]
+    \node[Cup] (cup) {};
+    \node[Cap, bot]  at (cup) {};
+   % \node[Top3D] at (copants.rightleg) {};
+    \begin{scope}[internal string scope]
+    \end{scope}
+  \end{tikzpicture}
+$$
 
 %Connecting idempotents
 %Subcategory of Karoubi envelope has another monoidal product
