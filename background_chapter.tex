@@ -620,21 +620,21 @@ $$
 \hspace*{.5cm}
 u_X^L
 =
-\begin{tikzpicture}
+ \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (63) at (7.5, -2.5) {};
-		\node [style=none] (64) at (8.5, -2.5) {};
-		\node [style=none] (65) at (8, -1.75) {};
-		\node [style=none] (66) at (8, -1) {};
-		\node [style=none] (67) at (8.5, -2.75) {$X$};
-		\node [style=none] (68) at (8, -0.75) {$I\otimes X$};
-		\node [style=otimes] (69) at (8, -1.75) {};
-		\node [style=unit] (70) at (7.5, -2.5) {};
+		\node [style=none] (79) at (11.25, 2) {};
+		\node [style=none] (80) at (12.25, 2) {};
+		\node [style=none] (81) at (11.75, 1.25) {};
+		\node [style=none] (82) at (11.75, 0.5) {};
+		\node [style=none] (83) at (12.25, 2.25) {$X$};
+		\node [style=none] (84) at (11.75, 0.25) {$I\otimes X$};
+		\node [style=otimes] (85) at (11.75, 1.25) {};
+		\node [style=unit] (86) at (11.25, 2) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (66.center) to (65.center);
-		\draw [in=90, out=-150] (65.center) to (63.center);
-		\draw [in=90, out=-30] (65.center) to (64.center);
+		\draw (82.center) to (81.center);
+		\draw [in=-90, out=150] (81.center) to (79.center);
+		\draw [in=-90, out=30] (81.center) to (80.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 \ ,
@@ -643,19 +643,19 @@ u_X^R
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (54) at (8.5, 0.25) {};
-		\node [style=none] (55) at (7.5, 0.25) {};
-		\node [style=none] (56) at (8, 1) {};
-		\node [style=none] (57) at (8, 1.75) {};
-		\node [style=none] (58) at (7.5, 0) {$X$};
-		\node [style=none] (60) at (8, 2) {$X\otimes I$};
-		\node [style=otimes] (61) at (8, 1) {};
-		\node [style=unit] (62) at (8.5, 0.25) {};
+		\node [style=none] (71) at (12.25, -0.75) {};
+		\node [style=none] (72) at (11.25, -0.75) {};
+		\node [style=none] (73) at (11.75, -1.5) {};
+		\node [style=none] (74) at (11.75, -2.25) {};
+		\node [style=none] (75) at (11.25, -0.5) {$X$};
+		\node [style=none] (76) at (11.75, -2.5) {$X\otimes I$};
+		\node [style=otimes] (77) at (11.75, -1.5) {};
+		\node [style=unit] (78) at (12.25, -0.75) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (57.center) to (56.center);
-		\draw [in=90, out=-30] (56.center) to (54.center);
-		\draw [in=90, out=-150] (56.center) to (55.center);
+		\draw (74.center) to (73.center);
+		\draw [in=-90, out=30] (73.center) to (71.center);
+		\draw [in=-90, out=150] (73.center) to (72.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
@@ -705,19 +705,19 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (79) at (11.25, 2) {};
-		\node [style=none] (80) at (12.25, 2) {};
-		\node [style=none] (81) at (11.75, 1.25) {};
-		\node [style=none] (82) at (11.75, 0.5) {};
-		\node [style=none] (83) at (12.25, 2.25) {$X$};
-		\node [style=none] (84) at (11.75, 0.25) {$I\otimes X$};
-		\node [style=otimes] (85) at (11.75, 1.25) {};
-		\node [style=unit] (86) at (11.25, 2) {};
+		\node [style=none] (63) at (7.5, -2.5) {};
+		\node [style=none] (64) at (8.5, -2.5) {};
+		\node [style=none] (65) at (8, -1.75) {};
+		\node [style=none] (66) at (8, -1) {};
+		\node [style=none] (67) at (8.5, -2.75) {$X$};
+		\node [style=none] (68) at (8, -0.75) {$I\otimes X$};
+		\node [style=otimes] (69) at (8, -1.75) {};
+		\node [style=unit] (70) at (7.5, -2.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (82.center) to (81.center);
-		\draw [in=-90, out=150] (81.center) to (79.center);
-		\draw [in=-90, out=30] (81.center) to (80.center);
+		\draw (66.center) to (65.center);
+		\draw [in=90, out=-150] (65.center) to (63.center);
+		\draw [in=90, out=-30] (65.center) to (64.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 \ ,
@@ -726,19 +726,19 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (71) at (12.25, -0.75) {};
-		\node [style=none] (72) at (11.25, -0.75) {};
-		\node [style=none] (73) at (11.75, -1.5) {};
-		\node [style=none] (74) at (11.75, -2.25) {};
-		\node [style=none] (75) at (11.25, -0.5) {$X$};
-		\node [style=none] (76) at (11.75, -2.5) {$X\otimes I$};
-		\node [style=otimes] (77) at (11.75, -1.5) {};
-		\node [style=unit] (78) at (12.25, -0.75) {};
+		\node [style=none] (54) at (8.5, 0.25) {};
+		\node [style=none] (55) at (7.5, 0.25) {};
+		\node [style=none] (56) at (8, 1) {};
+		\node [style=none] (57) at (8, 1.75) {};
+		\node [style=none] (58) at (7.5, 0) {$X$};
+		\node [style=none] (60) at (8, 2) {$X\otimes I$};
+		\node [style=otimes] (61) at (8, 1) {};
+		\node [style=unit] (62) at (8.5, 0.25) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (74.center) to (73.center);
-		\draw [in=-90, out=30] (73.center) to (71.center);
-		\draw [in=-90, out=150] (73.center) to (72.center);
+		\draw (57.center) to (56.center);
+		\draw [in=90, out=-30] (56.center) to (54.center);
+		\draw [in=90, out=-150] (56.center) to (55.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
