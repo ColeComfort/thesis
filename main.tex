@@ -25,8 +25,7 @@
 %\date{} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed 
 
-\newcommand{\Set}{\Sets}
-\newcommand{\Mnd}{{\sf Mnd}}
+
 
 
 
@@ -127,7 +126,7 @@ Finally in Chapter \ref{chap:stab}  we analyze the structure of odd-prime dimens
 We expose the relational interpretation of these circuits, by adding generators: at each point, obtaining a richer semantics.  We first recall that the phase-free fragment of the ZX-calculus modulo scalars, for prime qudit dimension $p$ is isomorphic to the prop of linear relations over $\F_p$: ie where the maps are linear subspaces over $\F_p$.  By doubling the phase-free picture using the CPM construction, we obtain a semantics for Weyl-free odd-prime dimensional qudit stabilizer circuits: Lagrangian relations over $\F_p$.  The Weyl operators are introduced to this picture by adding affine shifts to obtain a prop of affine Lagrangian relations.  Finally, to add quantum discarding, we show that one doesn't need to take the CPM construction again, but it suffices to add the discard {\em relation} to obtain the prop of affine coisotropic relations.  By splitting idempotents, we recover measurement; which has a nice relational interpretation.  Using this relational interpretation of mixed stabilizer circuits, we show how stabilizer error correction protocols can be implemented.
 
 
-In Chapter \ref{chap:grothendieck}, we regard monoidal categories as certain categorified Frobenius algebras in profunctors; the 2-category profunctors being itself a categorification of relations.  We show how computing the Grothendieck-Benabou construction of this Frobenius algebra, and then splitting idempotents yields a semantics for proof nets.  We discuss the relation to the scalable ZX-calculus as well as avenues for future work.
+In Chapter \ref{chap:grothendieck}, we regard monoidal categories as certain categorified Frobenius algebras in profunctors; the 2-category profunctors being itself a categorification of relations.  We conjecture that there is a confluent normal form for these structures, categorifying the spider theorem for special Frobnenius algebras.  By regarding this spider theorem as a monoidal displayed category, we compute the Grothendieck Benabou construction, and split idempotents, to obtain a strict monoidal category which is very close to proof nets for monoidal categories. We discuss the relation to the scalable ZX-calculus as well as avenues for future work.
 
 In Chapter \ref{chap:conclusion} we discuss future work and the limitations of this thesis.
 
@@ -147,7 +146,7 @@ In Chapter \ref{chap:conclusion} we discuss future work and the limitations of t
 
 \
 
-Chapter \ref{chap:background} is a literature review.  Chapters \ref{chap:zxa} and \ref{chap:dist} contain work written  by the author of this thesis with Chapter \ref{chap:zxa} being adapted from conference proceedings \cite{zxa}.  Chapter \ref{chap:stab} contains work jointly coauthored with my supervisor Aleks Kissinger, published in conference proceedings \cite{lagrel}.  The final part of Chapter  \ref{chap:stab} after and including Section \ref{sec:coisotrel} contains original work of my own.
+Chapter \ref{chap:background} is a literature review.  Chapter \ref{chap:zxa} contains work written solely by the author of this thesis with Sections \ref{sec:szx:intro}-\ref{sec:ZXA} of Chapter \ref{chap:zxa} being adapted from conference proceedings \cite{zxa}.  Chapter \ref{chap:stab} contains work jointly coauthored with my supervisor Aleks Kissinger, published in conference proceedings \cite{lagrel}.  The final part of Chapter  \ref{chap:stab} after and including Section \ref{sec:coisotrel} contains original work of my own. Chapter \ref{chap:grothendieck} contains work solely by the author of this thesis.
 
 
 
@@ -175,5 +174,5 @@ Chapter \ref{chap:background} is a literature review.  Chapters \ref{chap:zxa} a
 \label{chap:conclusion}
 
 \bibliography{bibliography} 
-\bibliographystyle{plain}
+\bibliographystyle{eptcs}
 \end{document}
