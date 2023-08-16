@@ -173,7 +173,7 @@
 \newcommand{\ParIso}{\mathsf{ParIso}}
 
 \newcommand{\Total}{\mathsf{Total}}
-\newcommand{\CFrob}{\mathsf{CFrob}}
+%\newcommand{\CFrob}{\mathsf{CFrob}}
 \newcommand{\tr}{\mathsf{Tr}}
 \newcommand{\ox}{\otimes}
 \newcommand{\Csp}{{\sf Cospan}}
@@ -207,7 +207,7 @@
 \newcommand{\cb}{{\sf cb}}
 \newcommand{\pcm}{{\sf pcm}}
 \renewcommand{\r}{{\sf r}}
-\newcommand{\scfrob}{{\sf scfrob}}
+%\newcommand{\scfrob}{{\sf scfrob}}
 
 \newcommand{\bi}{{\sf b1}}
 \newcommand{\bii}{{\sf b2}}
@@ -286,6 +286,7 @@
 \newcommand{\FVect}{\mathsf{FVect}}
 \newcommand{\Lag}{\mathsf{Lag}}
 \newcommand{\im}{\mathsf{im}}
+\renewcommand{\ker}{\mathsf{ker}}
 \newcommand{\ZX}{\mathsf{ZX}}
 \newcommand{\ZH}{\mathsf{ZH}}
 \DeclareMathSymbol{\bot}{\mathord}{symbols}{"3F}
@@ -303,6 +304,8 @@
 
 \newcommand{\Isot}{{\sf Isot}}
 \newcommand{\Co}{{\sf Co}}
+
+\newcommand{\B}{\mathbb{B}}
 
 \newcommand{\STOCH}{\mathsf{STOCH}}
 
@@ -328,7 +331,7 @@
 
 \newcommand{\Cat}{{\sf Cat}}
 \newcommand{\D}{\mathcal{D}}
-\newcommand{\sfa}{{\sf SFA}}
+%\newcommand{\sfa}{{\sf SFA}}
 \newcommand{\one}{\mathbbm{1}}
 
 
@@ -363,6 +366,20 @@
 \end{tikzpicture}
 }}
 
+
+
+
+\newcommand{\zcirc}{\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (0) at (0, 0) {};
+	\end{pgfonlayer}
+\end{tikzpicture}}
+
+\newcommand{\xcirc}{\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (0) at (0, 0) {};
+	\end{pgfonlayer}
+\end{tikzpicture}}
 
 
 
@@ -405,6 +422,10 @@
 \xymatrixcolsep{.65cm}
 
 
+\newcommand{\fa}{{\sf fa}}
+\newcommand{\sfa}{{\sf sfa}}
+\newcommand{\scfa}{{\sf scfa}}
+\newcommand{\cfa}{{\sf cfa}}
 
 
 \tikzset{meter/.append style={draw, inner sep=10, rectangle, font=\vphantom{A}, minimum width=30, line width=.8,

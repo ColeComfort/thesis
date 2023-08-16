@@ -1822,6 +1822,156 @@ $$
 For $p$ prime, $\Lag\Rel_{\F_p} \cong \CPM[\LinRel_{\F_p}]$ and  $\Lag\Rel_{\mathbb{Q}} \cong \CPM[\LinRel_{\mathbb{Q}}]$.
 \end{corollary}
 
+
+\begin{remark}
+Although $\LinRel_k$ is a bicategory of relations, $\Lag\Rel$ is not.  No matter, which Frobenius algebra we chose, it is not laxly natural with respect to both the phase shifts and the fourier transform of the phase shifts:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (0) at (-1.25, 0) {};
+		\node [style=Z] (1) at (0.25, 0) {};
+		\node [style=none] (2) at (-1.75, 1) {};
+		\node [style=none] (3) at (-0.75, 1) {};
+		\node [style=none] (4) at (-0.25, 1) {};
+		\node [style=none] (5) at (0.75, 1) {};
+		\node [style=X] (13) at (-1.25, -1) {};
+		\node [style=Z] (14) at (0.25, -0.5) {};
+		\node [style=X] (15) at (-1.25, -1.5) {};
+		\node [style=Z] (16) at (0.25, -1.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=150] (0) to (2.center);
+		\draw [in=270, out=30] (0) to (3.center);
+		\draw [bend right] (4.center) to (1);
+		\draw [bend right] (1) to (5.center);
+		\draw (15) to (13);
+		\draw (13) to (0);
+		\draw (13) to (14);
+		\draw (14) to (1);
+		\draw (14) to (16);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (51) at (2, -0.25) {};
+		\node [style=Z] (52) at (3.5, 0.25) {};
+		\node [style=none] (53) at (1.5, 0.75) {};
+		\node [style=none] (54) at (2.5, 0.75) {};
+		\node [style=none] (55) at (3, 1.25) {};
+		\node [style=none] (56) at (4, 1.25) {};
+		\node [style=none] (57) at (2.5, 1.25) {};
+		\node [style=none] (58) at (1.5, 1.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=150] (51) to (53.center);
+		\draw [in=270, out=30] (51) to (54.center);
+		\draw [bend right] (55.center) to (52);
+		\draw [bend right] (52) to (56.center);
+		\draw (51) to (52);
+		\draw (53.center) to (58.center);
+		\draw (57.center) to (54.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\not\subseteq
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (80) at (7.75, -0.75) {};
+		\node [style=none] (81) at (7.25, 0.25) {};
+		\node [style=none] (82) at (8.25, 0.25) {};
+		\node [style=Z] (83) at (8.25, 0.75) {};
+		\node [style=none] (84) at (7.25, 1.25) {};
+		\node [style=none] (85) at (8.25, 1.25) {};
+		\node [style=X] (86) at (9, 0.75) {};
+		\node [style=none] (87) at (9, 0.75) {};
+		\node [style=Z] (89) at (9.75, 0.75) {};
+		\node [style=none] (90) at (9, 1.25) {};
+		\node [style=none] (91) at (9.75, 1.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=150] (80) to (81.center);
+		\draw [in=270, out=30] (80) to (82.center);
+		\draw (82.center) to (83);
+		\draw (83) to (85.center);
+		\draw (81.center) to (84.center);
+		\draw [in=90, out=-150] (83) to (80);
+		\draw (89) to (91.center);
+		\draw (87.center) to (90.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (59) at (11.25, -0.75) {};
+		\node [style=none] (61) at (10.75, 0.25) {};
+		\node [style=none] (62) at (11.75, 0.25) {};
+		\node [style=Z] (68) at (11.75, 0.75) {};
+		\node [style=none] (71) at (10.75, 1.25) {};
+		\node [style=none] (72) at (11.75, 1.25) {};
+		\node [style=X] (73) at (12.75, -0.75) {};
+		\node [style=none] (74) at (12.25, 0.25) {};
+		\node [style=none] (75) at (13.25, 0) {};
+		\node [style=Z] (76) at (13.25, 0.75) {};
+		\node [style=none] (77) at (12.25, 1.25) {};
+		\node [style=none] (78) at (13.25, 1.25) {};
+		\node [style=s] (79) at (13.25, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=150] (59) to (61.center);
+		\draw [in=270, out=30] (59) to (62.center);
+		\draw (62.center) to (68);
+		\draw (68) to (72.center);
+		\draw (61.center) to (71.center);
+		\draw [in=90, out=-150] (68) to (59);
+		\draw [in=-90, out=150] (73) to (74.center);
+		\draw [in=270, out=30] (73) to (75.center);
+		\draw (75.center) to (76);
+		\draw (76) to (78.center);
+		\draw (74.center) to (77.center);
+		\draw [in=90, out=-150] (76) to (73);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (35) at (14.75, -0.5) {};
+		\node [style=Z] (36) at (16.25, -0.5) {};
+		\node [style=none] (37) at (14.25, 0.5) {};
+		\node [style=none] (38) at (15.25, 0.5) {};
+		\node [style=none] (39) at (15.75, 0.5) {};
+		\node [style=none] (40) at (16.75, 0.5) {};
+		\node [style=X] (41) at (14.75, -1.25) {};
+		\node [style=Z] (42) at (16.25, -1.25) {};
+		\node [style=X] (43) at (14.25, 0.5) {};
+		\node [style=Z] (44) at (15.25, 1) {};
+		\node [style=X] (45) at (15.75, 0.5) {};
+		\node [style=Z] (46) at (16.75, 1) {};
+		\node [style=none] (47) at (14.25, 1.5) {};
+		\node [style=none] (48) at (15.25, 1.5) {};
+		\node [style=none] (49) at (15.75, 1.5) {};
+		\node [style=none] (50) at (16.75, 1.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=150] (35) to (37.center);
+		\draw [in=270, out=30] (35) to (38.center);
+		\draw [bend right] (39.center) to (36);
+		\draw [bend right] (36) to (40.center);
+		\draw (43) to (44);
+		\draw (45) to (46);
+		\draw (38.center) to (44);
+		\draw (44) to (48.center);
+		\draw (49.center) to (45);
+		\draw (40.center) to (46);
+		\draw (46) to (50.center);
+		\draw (47.center) to (43);
+		\draw (41) to (35);
+		\draw (36) to (42);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+\end{remark}
+
 \section{Affine Lagrangian relations and stabilizer circuits}
 \label{sec:aff}
 
@@ -4454,7 +4604,7 @@ The $X$ projector discards and then codiscards the $Z$-gradient: cutting the $Z$
 We will split only one of these projectors for simplicity:
 
 \begin{definition}
-Let $\Aff\Co\Isot\Rel_k^M= {\sf Split}_{\{p_Z^{\otimes n}, 1_n | n \in \N \}}^\dag(\Aff\Co\Isot\Rel_k)$ denote the two-coloured prop generated by splitting $p_Z$ in $\Aff\Co\Isot\Rel_k$.
+Let $\Aff\Co\Isot\Rel_k^M= {\sf Split}_{\{p_Z^{\otimes n}, 1_n | n \in \N \}}(\Aff\Co\Isot\Rel_k)$ denote the two-coloured prop generated by splitting $p_Z$ in $\Aff\Co\Isot\Rel_k$.
 Let $Q=(1_1,1_1)$ denote the original generating object and $C=(1_1,p_Z)$ the object obtained by splitting $p_Z$.
 \end{definition}
 
@@ -7220,20 +7370,36 @@ $$
 
 It is important to note that the controlled operation we applied for the error correction step requires nonlinear classical processing power, and therefore the diagram we drew doesn't ``live'' within the calculus we have constructed throughout this paper. 
 
-A graphical calculus for Boolean relations exists in the literature \cite{zxa} which combined with the calculus for stabilizer codes in this paper yields a syntax for qubit CSS codes and full nondeterministic classical processing.
+Indeed, in this example, we have secretly been working in the pushout:
 
-To find a graphical syntax for qudit stabilizer codes with classical error correction, and an insightful characterization of the semantics we leave for future work.  
+$$\ZXA \leftarrow \LinRel_{\F_2} \rightarrow \Aff\Co\Isot\Rel_{\F_p}^M$$
 
-%\section{Undoubled completeness for affine coisotropic relations}
-%
-%In this section we give a proper completeness theorem for affine coisotropic relations in terms of adding generators and relations to the presentation of affine relations.
-%
-%BIAFFINE RELATIONS
-%%$\Aff\Rel_{k} \leftarrowtail \LinRel_k^{+1} \xrightarrow[\cong]{\perp} \LinRel_k^{+1} \Af\fRel_k$
-%
-%Graphically, this is presented by:
-%
-%GIVE GENERATORS AND EQUATIONS IN TERMS OF SPIDERS
-%
-%
+We can afford to do this because of the presentation of $\ZXA$ in the previous chapter. However, this is not very satisfying, because we only have a presentation for qubit nonlinear post-processing; and the symplectic formalism only gives a semantics for quantum circuits without phase-shift gates.   This gives more motivation to actually work out a presentation for the qudit version of $\ZXA$.
+
+
+This also begs the following question.  If quopit stabilizer circuits correspond to affine coisotropic subspaces of symplectic vector spaces, is there a succinct characterization of the structure of the subsets of  $\F_p^{2n}$ obtained by applying nonlinear classical processing to stabilizer states?
+The nonlinear processing imposes equations which mean that the subset is no longer affine, for example:
+
+TODO 
+
+However, not every subset of $\F_p^{2n}$ can be constructed in this way.  In particular, there is no quantum circuit that can simultaneously copy the position and momentum.  To the knowledge of the author, this question has not yet been addressed, presumably, because classical processing and stabilizer codes are usually presented on different footings, as opposed to both being regarded themeselves as subspaces.
+
+ 
+
+
+We have not given an undoubled completeness proof for $\Aff\Co\Isot\Rel_k$; instead this will be presented in a forthcoming paper.  The completeness proof mirrors the completeness result of \cite{poor}; where symplectic geometry is secretly hiding behind the normal form which they use to prove completeness.
+
+There is also a practical motivation for providing this graphical calculus.  Just as increasing the characteristic of the prime field increases the quopit dimension; if one transitions to working in $\Aff\Co\Isot\Rel_k$ where $k$ has characteristic 0, it appears that this will give a semantics for continous variable quantum mechanics.
+
+
+For example, given a linear subspace of $\R^n$; then $\ell^2(\R^n)$ has the structure of a countably infinite Hilbert space; the dirac deltas being picked out by the indicator functions on the elements of $\R^n$. 
+
+Such a Hilbert space is the natural semantics for Guassian quantum mechanics; where a state is determined not by a finite set of stabilizers, but rather, by a probability distribution over $\R^{2n}$.  Such a probabilty distribution has the propery 
+
+
+
+
+ interpretatble in  $\Aff\Co\Isot\Rel_\C$, following the 
+
+
 

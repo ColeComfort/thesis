@@ -151,7 +151,18 @@ Chapter \ref{chap:background} is a literature review.  Chapter \ref{chap:zxa} co
 
 
 \chapter{Background}
+
+
 \label{chap:background}
+In order to understand this thesis, we will assume only basic knowledge of category theory and quantum computing.  I intend for most of this thesis to be understandable by an average theoretical computer science; except for some parts to be understood by category theorists.
+
+
+Although, we formally state the various categorical constructions which are used throughout this thesis, in almost all cases, the accompanying string diagrams also help give intuition to the reader.  The exception to this rule is the somewhat more technical  material on internal category theory and distributive laws of monoidal theories reviewed in Subsection \ref{chap:background}.\ref{sec:cat}\ref{subsec:internal} and used in Section \ref{chap:zxa}.\ref{sec:dist}.  For this, we assume some basic understanding of 2-categories.  The most category theory heavy material is contained in Chapter \ref{grothendieck_chapter} and assumes understanding of monoidal 2-categories.  However, both of these parts stand on their own and are not needed to understand the rest of this thesis.
+
+As far as quantum theory is involved, in Section \ref{chap:background}.\ref{sec:cqm} we will introduce everything from scratch using the traditional algebraic paradigm, followed by a translation into string diagrams.
+
+
+
 \input{background_chapter}
 
 \chapter{Boolean circuits as spans of finite sets}
@@ -159,7 +170,7 @@ Chapter \ref{chap:background} is a literature review.  Chapter \ref{chap:zxa} co
 \input{zxa_chapter}
 
 \section{Decomposing Boolean circuits via distributive law}
-%\label{chap:dist}
+\label{sec:dist}
 \input{decomposing_zx_chapter}
 
 \chapter{Stabilizer codes as affine cosiotropic relations}

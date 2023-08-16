@@ -844,7 +844,7 @@
 %
 
 
-The strictification of a monoidal category has a particularly succinct presentation due to \cite{wilson}:
+Recall the presentation of the strictification of a monoidal category in terms of generators and relations, whose string diagrams we have referred to as proof nets for monoidal categories:
 \begin{definition}
 Given a monoidal category $(\X,\otimes,I,\alpha,u^L,u^R)$, there is a monoidally equivalent strict monoidal category $\bar \X$ with:
 
@@ -1237,7 +1237,7 @@ $$
 \end{definition}
 
 
-I will refer to the string diagrams in this category as proof nets for monoidal categories.
+
 
 
 
@@ -1246,7 +1246,7 @@ I will refer to the string diagrams in this category as proof nets for monoidal 
 
 In this Chapter, we attempt a high-level reconstruction of  proof nets by categorifying Frobenius algebras and appealing to a conjectural categorified spider theorem.  Starting with a monoidal category, we obtain a monoidal category which is not itself the strictification, but which is closely related.
 
-We  hope that the highly conceptual level of the construction opens up avenues for finding string diagrams for algebraic structures; our goal being to find canonical ways to glue monoidal categories together and obtain new kinds of string diagrams thereof.  This kind of problem has previously been considered in the setting where one wants to glue together monoidal categories along multiple different monoidal functors \cite{lobski}.  The motivation therein is to give a semantics for ways to explain systems which are stratified into multiple different layers, although they obtain a monoidla 2-category, rather than an ordinary monoidal category.
+We  hope that the highly conceptual level of the construction opens up avenues for finding string diagrams for more general algebraic structures; our goal being to find canonical ways to glue monoidal categories together and obtain new kinds of string diagrams thereof.  This kind of problem has previously been considered in the setting where one wants to glue together monoidal categories along multiple different monoidal functors \cite{lobski}.  The motivation therein is to give a semantics for ways to explain systems which are stratified into multiple different layers, although they obtain a monoidal 2-category, rather than an ordinary monoidal category where one has to keep track of coherence information.
 
 
 Indeed, throughout this thesis, we have been drawing string diagrams in monoidal, or symmetric monoidal categories in which our familiar notions of monoids and Frobenius algebras and so on live.  However, if we move to the higher dimensional setting of monoidal 2-categories, all of the equalities defining the axioms for these structures become natural transformations subject to  coherence conditions.   
@@ -1280,7 +1280,7 @@ $$
 
 
 
- as well as two 2-cells, the associator, left and right unitors:
+ as well as three 2-cells, the associator, left and right unitors:
 
 $$
 \begin{tikzpicture}
@@ -1336,7 +1336,7 @@ $$
 \end{tikzpicture}
 $$
 
-Satisfying the maclane pentagon coherence equation (where the red box indicates where the nonidentity natural transformation is being applied):
+Satisfying the maclane pentagon coherence equation (where the dashed blue box indicates where the nonidentity natural transformation is being applied):
 
 $$
 \begin{tikzpicture}
@@ -1597,14 +1597,14 @@ Monoidal categories are pseudomonoids in $\Cat$ and strict monoidal categories a
 By looking at the points inside of $\Cat$, this way of viewing a monoidal category hints at some connection to proof nets:
 
 \begin{definition}
-The symmetric monoidal 2-category of {\bf pointed categories} is the coslice category $\Cat_*:=\one/\Cat$.  Explicitly, this has:
+The symmetric monoidal 2-category of {\bf pointed categories} is the coslice 2-category $\Cat_*:=\one/\Cat$.  Explicitly, this has:
 
 \begin{description}
-\item[0-cells:] A pointed category is a pair consisting of a category along with a chosen object of that category: 
+\item[0-cells:] Pointed categories, pairs consisting of a category along with a chosen object of that category: 
 
 $$(\X, X\in\X_0)$$
 
-\item[1-cells:] A pointed functor between pointed categories is a pair consisting of a functor between the underlying categories and a morphism that preserves the point:
+\item[1-cells:] Pointed functor between pointed categories,   pairs consisting of a functor between the underlying categories and a morphism that preserves the point:
 
 $$(F:\X\to\Y, f\in \Y(F(X),Y) ):(\X, X\in\X_0)\to (\Y, Y\in\Y_0)$$
 
@@ -1617,7 +1617,7 @@ Composition of the 1-cells and 2-cells is given pointwise; and the monoidal stru
 
 \end{definition}
 
-There is a graphical calculus for pointed categories.  To my knowledge the graphical calculus is not fully worked out literature.  Initially called ``internal string diagrams''  by \cite{vicary} when applied to  $\Vect$-enriched Profunctors, these have also been called ``open diagrams'' by \cite{mario} for $\Sets$-enriched profunctors.  We will return to the case of $\Sets$-enriched profunctors shortly.
+There is a graphical calculus for pointed profunctors, which we will first specialize to pointed categories.  To my knowledge the graphical calculus is not fully worked out literature.  Initially called ``internal string diagrams''  by \cite{vicary} when applied to  $\Vect$-enriched Profunctors, these have also been called ``open diagrams'' by \cite{mario} for $\Sets$-enriched profunctors.  We will return to the case of $\Sets$-enriched profunctors shortly.
 
 Given the pointed functor,$(1_\X, f \in \X(1_{\X}(X),Y))$, draw the identity as a cylinder and the map inside the cylinder as follows:
 
@@ -1633,9 +1633,9 @@ $$
     \end{scope}
 \end{tikzpicture}
 $$
-Think if the maps maps inside the category as ``living'' within the convex space contained with this cobordism; wherein one can apply rewrite rules coming from the equational theory of the category.  
+Think if the maps maps inside the category as ``living'' within the cylinder; wherein one can apply rewrite rules coming from the equational theory of the category.  
 
-Functors are drawn as membranes between tubes; functoriality means that things can pass up through the membrane:
+Functors are drawn as membranes between separating the cylinder for the domain and codomain category; functoriality means that things can pass up through the membrane:
 
 
 $$
@@ -1664,8 +1664,23 @@ $$
 \end{tikzpicture}
 $$
 
- If $\X$ is a monoidal category, then for every map with a binary tensor factorization of the domain  $f:X\otimes Y\to Z$ there is a pointed functor:
+If $\X$ is a monoidal category, then one can tensor maps within the cobordism using the tensor product of $\X$, so that for $f:W\to X$ and $g:Y\to Z$, we have the the pointed functor  $(1_\X, f\times  \in \X(1_{\X}(W\otimes X),(Y\otimes Z)))$  with the following graphical representation:
 
+$$
+\begin{tikzpicture}[scale=1.5]
+    \node[Cyl, bot, top,xscale=1.5,yscale=1.1] (A) at (0,0) {};
+    \begin{scope}[internal string scope]
+        \node [tiny label] (f) at ($(A.center)+(-.15,0)$) {$f$};
+        \node [tiny label] (g) at ($(A.center)+(.15,0)$) {$g$};
+        \draw ($(A.bot)+(-.15,0)$) to (f) to ($(A.top)+(-.15,0)$);
+        \draw ($(A.bot)+(.15,0)$) to (g) to ($(A.top)+(.15,0)$) ;
+        \node (i) at (A.top) [above] {\tiny $Y\otimes Z$};
+        \node (j) at (A.bot) [below] {\tiny $W\otimes X$};
+    \end{scope}
+\end{tikzpicture}
+$$
+
+Moreover, for every map with a binary tensor factorization of the domain  $f:X\otimes Y\to Z$, we can use the external tensor product of $\Cat$ to obtain a pointed functor:
 
 $$
 (\_\otimes \_ :\X^2\to\X, f\in \Y(X\otimes Y ,Z) ):(\X^2, (X,Y)\in\X^2_0)\to (\X, Z\in\X_0)$$
@@ -1712,9 +1727,6 @@ $$
 \end{tikzpicture}
 $$
 
-Inside of the cobordisms, draw the string diagrams for a strictification of the monoidal category.
-Remeniscent of proof nets, this gives us a way to decompose the inputs of string diagrams into tensor factors.  
-From now on, we will generally omit the points for the objects.
 Consider the action of the associator and unitor on the points:
 
 
@@ -1849,7 +1861,7 @@ Luckily, for monoidal categories, this issue can be resovled via the multicatego
 
 An equivalent way to define a pseudomonoid in $\Cat$ would be to ask for a monoidal pseudofunctor $\one\to \Cat$ from the terminal monoidal category into $\Cat$.  This is the same data as a multifunctor $\one \to \Cat$ from the one object multicategory to $\Cat$ regarded as a multicategory.
 
-Indeed, Hermida \cite{hermida}, showed that when one regards a monoidal category as a multifunctor $F:\one\to\Cat$, by computing the following pullback in the 2-category of 2-multicategories, the Grothendieck category $\int F_\X$ is precisely a representable multicategory:
+Indeed, Hermida \cite{hermida}, showed that when one regards an (unbaised) monoidal category as a multifunctor $F:\one\to\Cat$, by computing the following pullback in the 2-category of 2-multicategories, the Grothendieck category $\int F_\X$ is precisely a representable multicategory:
 
 $$
 \xymatrix{
@@ -1938,7 +1950,7 @@ For example, if we draw the two embeddings of the pseudomonoid as follows:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z]  (0) at (1, 0) {$\otimes_*$};
+		\node [style=map]  (0) at (1, 0) {$\otimes_*$};
 		\node [style=none] (1) at (1, 1) {};
 		\node [style=none] (2) at (0.5, -1) {};
 		\node [style=none] (3) at (1.5, -1) {};
@@ -1947,13 +1959,13 @@ $$
 		\node [style=none] (6) at (2, -1) {};
 		\node [style=none] (7) at (3, -1) {};
 		\node [style=none] (8) at (1.75, 0) {$=:$};
-		\node [style=Z]  (9) at (4, 0) {$I_*$};
+		\node [style=map]  (9) at (4, 0) {$I_*$};
 		\node [style=none] (10) at (4, 1) {};
 		\node [style=Z] (11) at (5.5, 0) {};
 		\node [style=none] (12) at (5.5, 1) {};
 		\node [style=none] (13) at (4.75, 0) {$=:$};
 		\node [style=none] (14) at (3.25, 0) {$,$};
-		\node [style=Z]  (15) at (7.25, 0) {$\otimes^*$};
+		\node [style=map]  (15) at (7.25, 0) {$\otimes^*$};
 		\node [style=none] (16) at (7.25, -1) {};
 		\node [style=none] (17) at (6.75, 1) {};
 		\node [style=none] (18) at (7.75, 1) {};
@@ -1962,7 +1974,7 @@ $$
 		\node [style=none] (21) at (8.25, 1) {};
 		\node [style=none] (22) at (9.25, 1) {};
 		\node [style=none] (23) at (8, 0) {$=:$};
-		\node [style=Z]  (24) at (10.25, 0) {$I^*$};
+		\node [style=map]  (24) at (10.25, 0) {$I^*$};
 		\node [style=none] (25) at (10.25, -1) {};
 		\node [style=Z] (26) at (11.75, 0) {};
 		\node [style=none] (27) at (11.75, -1) {};
@@ -2829,8 +2841,6 @@ $$
 $$
 
 
-
-
 In the setting of proof nets, the tensor is inverse to the cotensor and the unit introduction is inverse to the unit removal.  Howver, slightly closer than in $\Cat_*$, in $\Prof_*$ these 2-cells are at least adjoint.  We want to turn the adjunctions into equalities somehow.  We attempt this by regarding the normalization of the diagrams in $\Prof_*$ as the maps themselves.  
 We need the following definition to this end:
 
@@ -2928,7 +2938,7 @@ Moreover, they identify representable *-polycategories as the  *-polycategories 
 
 However, we can not directly appeal to this result if we want to recapture proof nets.  This is because the composition in polycategories is defined only at a single object at a time. The counit for the tensor product does not make sense in this setting.  Thus, we are not able to get the associators by untensoring twice and then retensoring in the other direction:  such a map can not even be formed!
 
-The displayed {\em category} $F_\X:\sfa\to \Prof$ which we constructed is in some sense trying to recapture this way of looking at things.  Let us see what happens when we compute the Benabou-Grothendieck category of $\F_\X$.
+The displayed {\em category} $F_\X:\sfa\to \Prof$ which we constructed is in some sense trying to recapture this way of looking at things.  Let us see what happens when we compute the Benabou-Grothendieck category of $F_\X$.
 
 \begin{lemma}
 The indexed category $\Pi F_{\X}$ has a concrete presentation:
@@ -2946,7 +2956,7 @@ The indexed category $\Pi F_{\X}$ has a concrete presentation:
 \item[Maps:] Given two finite lists $X=[X_0,\ldots, X_{n-1}]$ and $Y=[Y_0,\ldots, Y_{m-1}]$ of objects in $\X$, a map from $X\to Y$ is a pointed profunctor
 
 $$
-(P,f): (\X^n,X) \proarrow (\X^m,Y)
+(P,f): (\X^n,X) \proarrow (\Y^m,Y)
 $$
 
 Generated by the (co)tensor and (co)unit of the monoidal structure of $\X$.
@@ -3272,7 +3282,7 @@ We can regard these idempotents as the {\em property} that the boundary be conne
 
 
 \begin{definition}
-Take $N\X:=K_{\{e_X\ | \ X \in [\X_0]\}}(\Pi F_{\X})$; that is, the full subcategory of the  the Karoubi envelope of $\Pi F_{\X}$ with objects $(X,e_X)$, for every finite list of objects in $X$. Concretely $N\X$ has:
+Take $N\X:={\sf Split}_{\{e_X\ | \ X \in [\X_0]\}}(\Pi F_{\X})$; that is, the full subcategory of the  the Karoubi envelope of $\Pi F_{\X}$ with objects $(X,e_X)$, for every finite list of objects in $X$. Concretely $N\X$ has:
 
 \begin{description}
 \item[Objects:] Nonempty finite lists of objects in $\X$.
