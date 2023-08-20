@@ -130,7 +130,7 @@
 \newcommand{\Mat}{\mathsf{Mat}}
 
 
-
+\newcommand{\AND}{{\sf and}}
 \newcommand{\Set}{\Sets}
 \newcommand{\Mnd}{{\sf Mnd}}
 \newcommand{\Map}{{\sf Map}}
@@ -426,6 +426,28 @@
 \newcommand{\sfa}{{\sf sfa}}
 \newcommand{\scfa}{{\sf scfa}}
 \newcommand{\cfa}{{\sf cfa}}
+
+\newcommand{\disc}
+{{
+\begin{tikzpicture}[scale=.5]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (7) at (24.2, -0.25) {};
+		\node [style=none] (8) at (24.2, 0.275) {};
+		\node [style=none] (9) at (24.4, 0.025) {};
+		\node [style=none] (10) at (24, 0.025) {};
+		\node [style=none] (11) at (24.35, 0.1) {};
+		\node [style=none] (12) at (24.05, 0.1) {};
+		\node [style=none] (13) at (24.3, 0.175) {};
+		\node [style=none] (14) at (24.1, 0.175) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (8.center) to (7.center);
+		\draw (10.center) to (9.center);
+		\draw (12.center) to (11.center);
+		\draw (14.center) to (13.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+}}
 
 
 \tikzset{meter/.append style={draw, inner sep=10, rectangle, font=\vphantom{A}, minimum width=30, line width=.8,

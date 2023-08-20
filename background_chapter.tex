@@ -1262,7 +1262,7 @@ $$
 \item[Compatibility with the tensor product:]\
 
 
-\hspace*{-.6cm}
+\hspace*{-.9cm}
 \scalebox{1}{$
 \xymatrix{
 I  \ar[rr]^{(u_I^L)^{-1}} \ar[rrrddddd]!<-.5ex,-.5ex>_{\eta_{X\otimes Y}}
@@ -1706,8 +1706,10 @@ $$
 \xymatrix{
 I \ar[r]^{\epsilon_X^\dag} \ar[dr]_{\eta_X}   &  X\otimes X^* \ar[d]^{c_{X,X^*}}\\
  &  X^* \otimes X 
-}\ ,
-\hspace*{1cm}
+}
+\hspace*{.5cm}
+\text{or equivalently}
+\hspace*{.5cm}
 \xymatrix{
 X\otimes X^* \ar[dr]_{\eta_X} \ar[r]^{c_{X,X*}}
  & X^* \otimes X  \ar[d]^{\epsilon_X^\dag}\\
@@ -4630,7 +4632,7 @@ $
 $\\
 such that:
 
-\begin{multicols}{4}
+\begin{multicols}{2}
 \begin{enumerate}[label={\bf [R.\arabic*]}, ref={\bf [R.\arabic*]}]
 \item $\bar f ; f  = f$
 \label{R.1}
@@ -6022,7 +6024,7 @@ $
 \end{description}
 \end{definition}
 
-The coherence data for the monoidal structure is inherited in a straightforward way from $\X$. Moreover, if $\X$ is symmetric monoidal, then it is easy to see how ${\CoPara}(\X)$ is as well.
+The coherence data for the monoidal structure is inherited in a straightforward way from $\X$. Moreover, if $\X$ is symmetric monoidal, then it is easy to see how ${\CoPara}(\X)$ is as well.  Indeed ${\CoPara}(\X)$ is merely freely adding generators to the monoidal theory of $\X$.  However, variations on this theme will occur throughout this thesis, so we have promoted it to its own construction; for example: 
 
 \begin{definition}\cite[Def. 5.1.1]{giles}
 Given a discrete inverse category $\X$,  its {\bf Cartesian completion} $\tilde \X$ is the quotient of ${\CoPara}(\X)$ by either of the following equivalent symmetric monoidal congruence relations:
@@ -7423,7 +7425,7 @@ We present this construction in terms of a quotient of the $\CoPara$ constructio
 
 %Dagger category... equivalent to ioo compact closed conjugation 
 
-Given a $\dag$-compact closed category $\X$, then  $\CPM(\X)$ is the quotient of ${\CoPara}(\X)$ by the congruence relation:
+Given a compact closed $\dag$-symmetric monoidal category $\X$, then  $\CPM(\X)$ is the quotient of ${\CoPara}(\X)$ by the congruence relation:
 $$
 (f,S) \sim (g,T) \iff
 \begin{tikzpicture}
@@ -7542,6 +7544,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
+Making $\CPM(\X)$ a \dag-symmetric monoidal cateory.
 
 The canonical functor $\X\to \CoPara(\X)\to\CPM(\X,\dag)$ taking $f \mapsto (f,I)$ is called {\bf doubling}. The maps in the image of this functor are {\bf pure}, and those which aren't are {\bf mixed}.
 
@@ -7551,7 +7554,7 @@ The map $d_X=((u^L_X)^{-1}, X)$ is called the {\bf discarding map} on $X$.  A ma
 All maps can be obtained by composing pure maps with discard maps.  Any such factorization is called a {\bf dilation}.
 
 
-The compact closed structure of $\CPM(\X)$ is inhereted from the doubling of the compact closed structure of $\X$. And it is  compatible with the dagger that we just defined such that  $\CPM(\X)$ is \dag-compact closed.
+The compact closed structure of $\CPM(\X)$ is inhereted from the doubling of the compact closed structure of $\X$.  If the \dag-symmetric monoidal structure of $\X$ is compatible with it's compact closed structure, so that $\X$ is \dag-compact closed, then $\CPM(\X)$ is \dag-compact closed as well.
 \end{definition}
 
 Oftentimes, we will bend the ``doubled picture" so that the inputs are on the bottom and the outputs are on the top:
@@ -8352,32 +8355,32 @@ Therefore every endomorphism on $(\mathcal{H},p_B)$ is of the following form, fo
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (76) at (24.925, -3.3) {};
-		\node [style=Z] (77) at (24.925, -2.575) {};
-		\node [style=none] (78) at (24.675, -2.325) {};
-		\node [style=none] (79) at (24.2, -2.325) {};
-		\node [style=none] (80) at (24.2, -3.325) {};
-		\node [style=map] (151) at (24.925, -1.775) {$g$};
-		\node [style=none] (152) at (24.95, -0.825) {};
-		\node [style=none] (153) at (24.2, -0.075) {};
-		\node [style=none] (154) at (24.2, 0.425) {};
-		\node [style=Z] (160) at (24.2, -0.825) {};
-		\node [style=none] (161) at (24.2, -0.825) {};
-		\node [style=none] (162) at (24.95, -0.075) {};
-		\node [style=none] (163) at (24.95, 0.425) {};
+		\node [style=none] (0) at (24.925, -3.3) {};
+		\node [style=Z] (1) at (24.925, -2.575) {};
+		\node [style=none] (2) at (24.675, -2.325) {};
+		\node [style=none] (3) at (24.2, -2.325) {};
+		\node [style=none] (4) at (24.2, -3.325) {};
+		\node [style=map] (5) at (24.925, -1.775) {$g$};
+		\node [style=none] (6) at (24.95, -0.825) {};
+		\node [style=none] (7) at (24.2, -0.075) {};
+		\node [style=none] (8) at (24.2, 0.425) {};
+		\node [style=Z] (9) at (24.2, -0.825) {};
+		\node [style=none] (10) at (24.2, -0.825) {};
+		\node [style=none] (11) at (24.95, -0.075) {};
+		\node [style=none] (12) at (24.95, 0.425) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=-75, out=135] (77) to (78.center);
-		\draw [bend right=90, looseness=1.25] (78.center) to (79.center);
-		\draw (79.center) to (80.center);
-		\draw (77) to (76.center);
-		\draw (154.center) to (153.center);
-		\draw [in=-90, out=90, looseness=0.75] (152.center) to (153.center);
-		\draw (163.center) to (162.center);
-		\draw [in=-90, out=90, looseness=0.75] (161.center) to (162.center);
-		\draw [in=270, out=-90, looseness=1.25] (161.center) to (152.center);
-		\draw [in=90, out=-105, looseness=1.25] (161.center) to (151);
-		\draw (77) to (151);
+		\draw [in=-75, out=135] (1) to (2.center);
+		\draw [bend right=90, looseness=1.25] (2.center) to (3.center);
+		\draw (3.center) to (4.center);
+		\draw (1) to (0.center);
+		\draw (8.center) to (7.center);
+		\draw [in=-90, out=90, looseness=0.75] (6.center) to (7.center);
+		\draw (12.center) to (11.center);
+		\draw [in=-90, out=90, looseness=0.75] (10.center) to (11.center);
+		\draw [in=270, out=-45, looseness=1.25] (10.center) to (6.center);
+		\draw [in=90, out=-90, looseness=1.25] (10.center) to (5);
+		\draw (1) to (5);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
@@ -8536,6 +8539,7 @@ $$
 $$
 
 
+
 There is a very important relationship which bases can have to each other:
 
 
@@ -8606,6 +8610,8 @@ $$
 Strongly complementary bases have important information-theoretical properties:
 
 \begin{lemma}
+\label{lem:strongcomp}
+
 Given two strongly complementary bases given by special commutative \dag-Frobenius alegbras $\zcirc$ and $\xcirc$ preparing a state with respect to basis $\xcirc$ and measuring with respect to $\zcirc$ preserves no infomation, as:
 
 $$
@@ -9218,7 +9224,6 @@ $$
 \end{tikzpicture}
 \ \right\rrbracket
 =
-\dfrac{1}{\sqrt{d}}
 \sum_{j=0}^{d-1} e^{2\cdot \pi \cdot i \cdot j\cdot g_j(\phi)/d} | j, \ldots, j\rangle \langle j,\ldots, j|
 $$
 $$
@@ -9245,11 +9250,14 @@ $$
 \end{tikzpicture}
 \ \right\rrbracket
 =
+\dfrac{1}{\sqrt{d}}
 \sum_{j=0}^{d-1} e^{2\cdot \pi \cdot i \cdot j\cdot h_j(\psi)/d} \mathcal{F} | j, \ldots, j\rangle \langle j,\ldots, j| \mathcal{F}^\dag
 $$
 
 A fragment of the ZX-calculus, is {\bf complete} when this interpretation is faithful. 
 \end{definition}
+
+Notice how we have normalized the $X$ spider, but not the $X$ spider, so that they interact to form Hopf algebras on the nose.  This choice of normalization will be useful for our purposes; however, in the literature other scaling factors are used \cite{flexsymmetric}.
 
 The {\bf scalable ZX-calculus} \cite{szx} refers to the proof nets for fragments of the ZX-calculus Frobenius algebras on wires of composite dimension are denoted as follows:
 
@@ -9368,7 +9376,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
+As we use proof nets for monoidal categories extensively throughout this thesis, we won't declare when we are using scalable ZX-notation; it will just be the default setting which we work in.
 
 
 Consider the simplest fragment of the ZX-calculus:
@@ -9438,20 +9446,30 @@ This has a relational semantics; to expose which we need the following definitio
 
 \begin{definition}
 A unitary map $f:\mathcal{H}\to \mathcal{H}$ is a {\bf stabilizer} of a state $|\phi\rangle$ on $\mathcal H$ in case $\phi$ is a +1-eigenvector of $g$ so that $g| \phi\rangle = |\phi \rangle$.
+
+
+The qudit ${\cal X}$-gate  shifts the computational basis vectors by $a$ modulo $p$:
+
+$${\cal X} := \sum_{b=0}^{p-1} | b+1\rangle \langle b|$$
+
+An $X$-stabilizer of an $n$-qudit state $\phi$ is a stabilizer of the form:
+
+$$
+\bigotimes_{j=0}^{n-1}{\cal X}^{a_j}
+$$
+
+Where note that:
+$${\cal X}^a := \sum_{b=0}^{p-1} | b+a\rangle \langle b|$$
+
 \end{definition}
 
 The $X$ stabilizers characterize the phase-free ZX-calculus:
 
 \begin{lemma}[\cite{cole}]
-Given an odd prime $p$, $\LinRel_{\F_p}$ is isomorphic to the $p$-dimensional qudit phase-free ZX-calculus modulo invertible scalars.
+Given an odd prime $p$, $\LinRel_{\F_p}$ is isomorphic to the qupit phase-free ZX-calculus modulo invertible scalars.
 \end{lemma}
 
 \begin{proof}
-Recall that for qudits $X^a$ is the gate that shifts the computational basis vectors by $a$ modulo $p$:
-
-$$X^a := \dfrac{1}{\sqrt{p}}\sum_{b=0}^{p-1} | b+a\rangle \langle b|$$
-
-
 A phase free ZX-diagram $D$ is characterized exactly by  its $X$ stabilizers, so that:
 $$
 \left\llbracket
@@ -9476,10 +9494,10 @@ D
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=map] (0) at (1, 0) {$D$};
-		\node [style=map] (1) at (0.45, 0.75) {$X^{b_1}$};
-		\node [style=map] (2) at (1.55, 0.75) {$X^{b_m}$};
-		\node [style=map] (3) at (1.55, -0.75) {$X^{a_n}$};
-		\node [style=map] (4) at (0.45, -0.75) {$X^{a_1}$};
+		\node [style=map] (1) at (0.45, 0.75) {${\cal X}^{b_1}$};
+		\node [style=map] (2) at (1.55, 0.75) {${\cal X}^{b_m}$};
+		\node [style=map] (3) at (1.55, -0.75) {${\cal X}^{a_n}$};
+		\node [style=map] (4) at (0.45, -0.75) {${\cal X}^{a_1}$};
 		\node [style=none] (5) at (0.45, 1.25) {};
 		\node [style=none] (6) at (1.55, 1.25) {};
 		\node [style=none] (7) at (0.45, -1.25) {};
@@ -9720,27 +9738,34 @@ $}
 
 We can go add some phases to get a bit more expressiveness:
 \begin{definition}
-The $X$-gate fragment of the ZX-calculus is given by adjoining the $X$-gate as a generator to the phase free ZX-calculus.
+The $\cal X$-gate fragment of the ZX-calculus is given by adjoining the $\cal X$-gate as a generator to the phase free ZX-calculus.
 \end{definition}
 
 
-For any prime qudit dimension $d$, the qudit $X$ gate is a phase for the 
-$X$ spider as:
+For any prime qudit dimension $d$, the qudit $\cal X$-gate is a phase for the 
+$X$-spider as:
 
 $$
-X = \sum_{j=0}^{p-1} e^{2 \pi\cdot i\cdot j/p} {\mathcal F} | j \rangle \langle j|  {\mathcal F}^\dag
+{\cal X} =
+ \sum_{b=0}^{p-1} | b+1\rangle \langle b|
+=
+ \sum_{j=0}^{p-1} e^{2 \pi\cdot i\cdot j/p} {\mathcal F} | j \rangle \langle j|  {\mathcal F}^\dag
 $$
 
-Therefore, natural number powers of the $X$-gate are also phases for the $X$-spider as:
+Therefore, natural number powers of the ${\cal X}$-gate are also phases for the $X$-spider as:
 
 $$
-X^n = \sum_{j=0}^{p-1} e^{2 \pi\cdot i\cdot n\cdot j/p} {\mathcal F} | j \rangle \langle j|  {\mathcal F}^\dag
+{\cal X}^n
+= 
+ \sum_{bj=0}^{p-1} | j+n\rangle \langle j|
+=
+\sum_{j=0}^{p-1} e^{2 \pi\cdot i\cdot n\cdot j/p} {\mathcal F} | j \rangle \langle j|  {\mathcal F}^\dag
 $$
 
-So it one can ask if the the fragment of the odd prime qudit ZX-calculus with these $X$-gate phases has a similar relational semantics to the phase-free ZX-calculus.  The answer is yes, and this result is not contained in the literature to my knowledge:
+So it one can ask if the the fragment of the odd prime qudit ZX-calculus with these $\cal X$-gate phases has a similar relational semantics to the phase-free ZX-calculus.  The answer is yes, and this result is not contained in the literature to my knowledge:
 
 \begin{lemma}
-$\Aff\Rel_{\F_p}$ is isomorphic to the $p$-dimensional qudit fragment of the ZX-calculus with Pauli $X$ phases modulo invertible scalars.
+$\Aff\Rel_{\F_p}$ is isomorphic to the qupit fragment of the ZX-calculus with Pauli $\cal X$-gates as phases modulo invertible scalars.
 \end{lemma}
 This is given by the interpretation:
 $$
@@ -9800,7 +9825,7 @@ The proof is almost identical to that for linear relations and phase-free ZX-dia
 
 
 \begin{example}
-Consider the following phase-free+$X$ gate ZX-diagram:
+Consider the following phase-free+$\cal X$-gate ZX-diagram:
 
 
 $$
@@ -9814,7 +9839,7 @@ $$
 		\node [style=none] (5) at (42.25, 2.25) {};
 		\node [style=none] (6) at (43.25, 2.25) {};
 		\node [style=none] (7) at (44.25, 2.25) {};
-		\node [style=map] (8) at (43.25, 1.5) {$X^c$};
+		\node [style=map] (8) at (43.25, 1.5) {${\cal X}^c$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [in=-135, out=90] (2.center) to (0);
@@ -9848,13 +9873,13 @@ $$
 		\node [style=none] (11) at (42.2, -1.5) {};
 		\node [style=none] (12) at (43.25, -1.5) {};
 		\node [style=none] (13) at (44.3, -1.5) {};
-		\node [style=map] (14) at (42.2, -0.75) {$X^{a_1}$};
-		\node [style=map] (15) at (43.25, -0.75) {$X^{a_2}$};
-		\node [style=map] (16) at (44.3, -0.75) {$X^{a_3}$};
-		\node [style=map] (17) at (42.2, 1.75) {$X^{b_1}$};
-		\node [style=map] (18) at (43.25, 1.75) {$X^{b_2}$};
-		\node [style=map] (19) at (44.3, 1.75) {$X^{b_3}$};
-		\node [style=map] (20) at (43.25, 1) {$X^c$};
+		\node [style=map] (14) at (42.2, -0.75) {${\cal X}^{a_1}$};
+		\node [style=map] (15) at (43.25, -0.75) {${\cal X}^{a_2}$};
+		\node [style=map] (16) at (44.3, -0.75) {${\cal X}^{a_3}$};
+		\node [style=map] (17) at (42.2, 1.75) {${\cal X}^{b_1}$};
+		\node [style=map] (18) at (43.25, 1.75) {${\cal X}^{b_2}$};
+		\node [style=map] (19) at (44.3, 1.75) {${\cal X}^{b_3}$};
+		\node [style=map] (20) at (43.25, 1) {${\cal X}^c$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [in=-135, out=90] (2.center) to (0);
@@ -9890,7 +9915,7 @@ $$
 		\node [style=none] (11) at (42.25, -1) {};
 		\node [style=none] (12) at (43.25, -1) {};
 		\node [style=none] (13) at (44.25, -1) {};
-		\node [style=map] (14) at (43.25, 1.5) {$X^c$};
+		\node [style=map] (14) at (43.25, 1.5) {${\cal X}^c$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [in=-135, out=90] (2.center) to (0);
@@ -10094,21 +10119,16 @@ So far, the two fragments of the ZX-calculus we have described are relatively si
 \begin{definition}
 \label{definition:begin}
 Fix some dimension $d$.
-An single qudit {\bf Weyl operator} an $p$-dimensional unitary generated by the qudit $Z$ and $X$ operators under matrix multiplication.  Single qudit Weyl operators all can be factored into the following form for $a,z,x \in \Z/d\Z$:
-
-$$
-e^{2\pi \cdot i\cdot a /p} {\cal Z}^z{\cal X}^x
-$$
-
+A single qudit {\bf Weyl operator} an $p$-dimensional unitary generated by the qudit $\mathcal Z$ and $\mathcal X$ operators under matrix multiplication.  
 Where:
 
 $$
-X^x = \dfrac{1}{\sqrt{p}}\sum_{b=0}^{p-1} | b+x\rangle \langle b|
+{\cal X}^x = \dfrac{1}{\sqrt{p}}\sum_{b=0}^{p-1} | b+x\rangle \langle b|
 \ , \hspace*{.2cm}
-Z^z
+{\cal Z}^z
 :=
 {\cal F}
-X^z
+{\cal X}^z
 {\cal F}^\dag
 =
 \dfrac{1}{\sqrt{p}}\sum_{b=0}^{p-1}
@@ -10121,10 +10141,11 @@ $$
 \dfrac{1}{\sqrt{d}} \sum_{j,k=0}^{d-1} e^{2\pi\cdot i \cdot j \cdot k/d} | k\rangle \langle j |
 $$
 
-The $n$-qudit {\bf Weyl group}, ${\cal P}_p^{ n}$, is generated by the $n$-qudit Weyl operators under matrix multiplication.
+
+The $n$-qudit {\bf Weyl group} is generated by Weyl operators under matrix multiplication and tensor product.
 
 
-An $n$-qudit {\bf Clifford operator} $U$ is an $p^n$-dimensional unitary that preserves the Weyl group, so that $U {\cal P}_p^{ n} U^\dag = {\cal P}_p^{ n}$.  The $n$-qudit Clifford operators form the {\bf Clifford group } under matrix multiplication.
+An $n$-qudit {\bf Clifford operator} $U$ is an $d^n$-dimensional unitary that preserves the Weyl group, so that $U {\cal P}_d^{ n} U^\dag = {\cal P}_d^{ n}$.  The $n$-qudit Clifford operators form the $n$-qudit {\bf Clifford group } under matrix multiplication.  The qudit Clifford Groupoid (or full Clifford group) is the prop where the maps $n\to n$ are Clifford operators.
 
 
 An $n$-qudit {\bf stabilizer state} is a state $ U |0\rangle^{\otimes n}$ for an $n$-qudit Clifford $U$.
@@ -10138,7 +10159,46 @@ The prop of qudit {\bf stabilizer circuits}, is the subcategory of $\Mat_\C$ gen
 \end{definition}
 
 
+\begin{lemma}\cite[Pg. 5]{gota}% https://arxiv.org/pdf/quant-ph/9802007.pdf
+Up to nonzero scalars, the qupit Clifford groupoid is generated by the Fourier transform, Weyl operators, the  phase-shift gate $\mathcal S$, controlled-$\mathcal X$ gate $\mathcal{C}_{\mathcal X}$, and scaling gates $\mathcal{M}_a$ for every $a \in \F_p^*$ where:
+
+
+$$
+\mathcal{C}_{\mathcal X}:= \sum_{j,k=0}^{p-1} |j,j+k \rangle \langle j,k |
+\mathcal{M}_a := \sum_{j=0}^{p-1} |j\cdot a \rangle\langle j |
+$$ 
+
+Such that for qubits:
+$$
+\mathcal{S}:= \sum_{j=0}^{0} i^j |j\rangle\langle j |
+$$
+
+
+And for quopits
+
+$$
+\mathcal{S}:= \sum_{j=0}^{p-1} e^{\pi\cdot i \cdot j(j-1)/p} |j\rangle\langle j |
+$$
+\end{lemma}
+
 These circuits can be characterized in terms of the ZX-calculus.
+However, there is a crucial difference between the qubit and quopit cases:
+
+\begin{lemma}
+Single quopit Weyl operators all can be factored into the following form for $a,z,x \in \F_p$:
+
+$$
+e^{2\pi \cdot i\cdot a /p} {\cal Z}^z{\cal X}^x
+$$
+
+Whereas single qudit Weyl operators can be factored into the following form for $z,x \in \F_2$ and $a \in \Z/4\Z$:
+
+$$
+i^a {\cal Z}^z{\cal X}^x
+$$
+
+\end{lemma}
+
 
 
 \begin{definition}
@@ -10154,9 +10214,7 @@ $$
 $$
 \end{definition}
 
-The qubit and quopit fragments of the ZX-calculus pick out precisely the qubit and quopit stabilizer circuits.  The qubit \cite{backensstab,backens2015} and qutrit \cite{qutrit} stabilizer ZX-calculus have been shown to be complete.  Howver, during the process of writing this thesis, an axiomatization was provided for the quopit ZX-calculus \cite{booth}, followed shortly by an even simpler presentation \cite{poor}:
-
-TODO INSERT
+The qubit and quopit fragments of the ZX-calculus pick out precisely the qubit and quopit stabilizer circuits.  The qubit \cite{backensstab,backens2015} and qutrit \cite{qutrit} stabilizer ZX-calculus have been shown to be complete.  However, during the process of writing this thesis, an axiomatization was provided for the quopit ZX-calculus \cite{booth}, followed shortly by an even simpler presentation \cite{poor}.
 
 
 It is worth mentioning that stabilizer circuits can be classically simulated probabilistically in polynomial time.  Therefore, all of the fragments that we have discussed so far are not computationally very powerful.  However, stabilizer circuits are very important for quantum error correction, as we will discuss in \ref{chap:stab}.  In the same Chapter we will also give a relational semantics for quopit stabilizer circuits.
@@ -10243,10 +10301,10 @@ $$
 \end{tikzpicture}
 $$
 
-Therefore, one should not confuse an $H$-box with one input and one output (drawn in grey) with the antipode for the Hopf algebra (drawn in black) for the Z and X spiders.
+Therefore, one should not confuse an $H$-box with one input and one output (drawn in grey) with the antipode for the Hopf algebra (drawn in black) for the $Z$ and $X$-spiders.
 
 
-Although H-boxes do not correspond to Frobenius algebras, they do satisfy a sort of fusion rule:
+Although $H$-boxes do not correspond to Frobenius algebras, they do satisfy a sort of fusion rule:
 
 $$
 \begin{tikzpicture}
@@ -10360,18 +10418,19 @@ $$
 
 \end{definition}
 
-
-
-In analogy to the ZX-calculus, the {\bf ZH-calculus} is presented by unphased $Z$ and $X$ spiders, the X gate and phased $H$-boxes.
+In analogy to the ZX-calculus, the {\bf ZH-calculus} is presented by unphased $Z$ and $X$-spiders, the $\sf X$-gate and phased $H$-boxes.
 
 
 A {\bf fragment of the ZH-calculus} is a presentation where the phases on the $H$-boxes are restricted.
 
 The full qubit ZH-calculus was proved to be complete and universal for all qubit complex matrices in the original paper \cite{zh}.  Completeness for the phase-free ZH-calculus, where the labels are generated by $-1$, shortly followed \cite{zhpi}.  They show that the phase-free ZH-calculus is universal for qubit matrices over the dyadic rationals $\Z[1/2]$.
 
-In the following chapter we prove completeness for the circuits generated by unphased Z and X spiders as well as and gates and X gates.  We prove that this is essentially the ZH-calculus whose H-boxes have natural number label; the only difference, being that we carefully avoid having matrices with entries which are not natural numbers.
+In the following chapter we prove completeness for the circuits generated by unphased $Z$ and $X$-spiders as well as $\AND$ gates and $\cal X$-gates.  We prove that this is essentially the ZH-calculus whose H-boxes have natural number label; the only difference, being that we carefully avoid having matrices with entries which are not natural numbers.
 
 Recently, generators have been proposed for the qudit ZH-calculus, but no completeness theorem exists so far \cite{roy}.
 
 
 
+
+
+For the interest of the reader,  there has recently been work on axiomatizing density matrices in terms of generators and relations.  Given a $\dag$-monoidal category $\X$, the discard construction on $\X$, $\X^\disc$ can be regarded as the quotient of $\CoPara(\X)$  by the congruence that  the isometries of $\X$ are freely discarded \cite{discard}.  They show, for example,  that when $\X$ is a complete axiomatization of any one of  the qubit stabilizer fragment of the ZX-calculus, the full qubit ZX-calculus, or the ZH-calculus, then there is a $\dag$-symmetric monoidal isomorphism $\X^\disc\cong \CPM(\X)$.  Unlike the CPM construction, this approach to density matrices is amenable to presentations in terms of generators and relations.  All three of these props have complete presentations where their isometries are known, so mixed circuits automatically get a complete axiomatization.   We will see in Chapter \ref{chap:stab} how we add discarding in a very similar way.
