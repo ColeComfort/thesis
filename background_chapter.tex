@@ -1262,7 +1262,7 @@ $$
 \item[Compatibility with the tensor product:]\
 
 
-\hspace*{-.9cm}
+\hspace*{-1cm}
 \scalebox{1}{$
 \xymatrix{
 I  \ar[rr]^{(u_I^L)^{-1}} \ar[rrrddddd]!<-.5ex,-.5ex>_{\eta_{X\otimes Y}}
@@ -1560,6 +1560,68 @@ $$
 
 %The graphical calculus for strict compact closed categories extends string diagrams for symmetric monoidal categories, where  the units and counits are drawn without the tensor/untensor and unit removal/introduction.
 
+One thing that is nice about compact closed categories is that we can treat all maps as either states or effects:
+\begin{definition}
+In a compact closed category, every map $f:X\to Y$ canonically induces a state $\lfloor f \rfloor:I\to X^* \otimes Y$ and an effect
+$\lceil f \rceil: X \otimes Y^* \to I$ given by bending the wires of $f$ as follows:
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (432) at (264, 7) {$\lfloor f \rfloor$};
+		\node [style=none] (433) at (263.75, 8) {};
+		\node [style=none] (434) at (264.25, 8) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=60, out=-90] (434.center) to (432);
+		\draw [in=270, out=120] (432) to (433.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+:=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (436) at (267.25, 8.25) {};
+		\node [style=none] (437) at (267.75, 8.25) {};
+		\node [style=map] (438) at (267.75, 7.5) {$f$};
+		\node [style=none] (439) at (267.25, 7) {};
+		\node [style=none] (440) at (267.75, 7) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (436.center) to (439.center);
+		\draw [in=270, out=-90, looseness=1.75] (439.center) to (440.center);
+		\draw (440.center) to (437.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ , \hspace*{.5cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (441) at (264.25, 6.25) {$\lceil f \rceil$};
+		\node [style=none] (442) at (264, 5.25) {};
+		\node [style=none] (443) at (264.5, 5.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-60, out=90] (443.center) to (441);
+		\draw [in=-270, out=-120] (441) to (442.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+:=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (444) at (268, 5) {};
+		\node [style=none] (445) at (267.5, 5) {};
+		\node [style=map] (446) at (267.5, 5.75) {$f$};
+		\node [style=none] (447) at (268, 6.25) {};
+		\node [style=none] (448) at (267.5, 6.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (444.center) to (447.center);
+		\draw [in=90, out=90, looseness=1.75] (447.center) to (448.center);
+		\draw (448.center) to (445.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+\end{definition}
+
+This abstract wire-bending induces a functor:
 
 \begin{definition}
 If $\X$ is a compact closed category, there is a  symmetric monoidal functor, $(\_)^*:\X^\op\to\X$, called {\bf the transpose}, which sends:
@@ -1681,6 +1743,11 @@ The Hermetian adjoint corresponds to the complex conjugate transpose along the e
 \end{lemma}
 
 
+This example is actually a bit tricky; while the dagger in $\Mat_\C$ is given by the complex conjugate transpose; the complex conjugate transpose in $\FHilb$ is {\em not } the Hermetian adjoint.  This is because, unlike the case in $\Mat_\C$, the tranpose is not the identity on objects in $\FHilb$.  Moreover, it is not even covariant on objects as  $(A\otimes B)^* = B^*\otimes A^*$ which is merely {\em isomorphic} to  $A^*\otimes B^*$.
+
+
+
+
 
 There is a natural way to combined monoidal and dagger structure:
 
@@ -1721,7 +1788,6 @@ $$
 \begin{example}
 The compact closed and \dag-symmetric monoidal structures of $\Mat_\C$ and $\FHilb$ are both compatible making them \dag-compact closed.
 \end{example}
-
 
 \subsection{Monoidal presentations}
 In this section, we review how monoidal categories can be presented in terms of generators and equations. A more detailed reference can be found in \cite{ih}:
@@ -5257,7 +5323,7 @@ A restriction category $\X$ is an inverse category if and only if there is a dag
 The unitary maps in an inverse category are the total maps.
 
 
-Sets and partial injections are intimately related to Hilbert spaces
+Sets and partial injections are intimately related to Hilbert spaces.  The following functor was first discovered by \cite{barr}; later studied in much more detail in \cite{elltwo}:
 
 \begin{definition}
 There is a \dag-symmetric monoidal embedding $\ell^2:\Pinj\to\Hilb$ taking:
@@ -7382,7 +7448,7 @@ Commutative \dag-Frobenius algebras in $\FHilb$ are in bijection with orthogonal
 
 An orthonormal basis $\{ |b_j\rangle \}_{j=0,\ldots, d-1}$ yields a Frobenius algebra where the spiders are of the form:
 $$
-\dfrac{1}{\sqrt{d}}\sum_{j=0}^{d-1} |b_j, \ldots, b_j \rangle\langle b_j,\ldots, b_j|
+\sum_{j=0}^{d-1} |b_j, \ldots, b_j \rangle\langle b_j,\ldots, b_j|
 $$
 \end{lemma}
 The idea is that these structures are in bijection with dirac deltas for orthonormal bases.  
@@ -7633,11 +7699,59 @@ $$
 This different perspective will prove useful for the purposes of calculation.  
 
 
+Also notice that when $\X$ is a self-dual compact closed \dag- category; then the \dag-structure is equivalent to an identity on objects conjugation functor.  For example in $\Mat_\C$, one could have instead have defined the $\CPM$ construction in terms of complex conjugation.  Because skeletal categories are much easier to work with, this perspective will also be useful;  in which case we can regard elements of the equivalence class as follows:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (88) at (54.05, -0.5) {};
+		\node [style=ground, scale=-1] (89) at (53.55, 0.5) {};
+		\node [style=none] (90) at (54.55, 0.5) {};
+		\node [style=map] (91) at (54.05, -0.5) {$f$};
+		\node [style=none] (92) at (54.05, -1.25) {};
+		\node [style=none] (93) at (54.55, 1.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=150] (88.center) to (89);
+		\draw [in=-90, out=30] (88.center) to (90.center);
+		\draw (92.center) to (88.center);
+		\draw (93.center) to (90.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (339) at (241.725, 9.25) {$\bar f$};
+		\node [style=map] (340) at (243, 9.25) {$f$};
+		\node [style=none] (341) at (242, 10.25) {};
+		\node [style=none] (342) at (243.25, 10.25) {};
+		\node [style=none] (343) at (241.75, 9.25) {};
+		\node [style=none] (344) at (243, 9.25) {};
+		\node [style=none] (345) at (241.75, 8.5) {};
+		\node [style=none] (346) at (243, 8.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=45] (343.center) to (341.center);
+		\draw [in=60, out=-90] (342.center) to (344.center);
+		\draw [in=120, out=135, looseness=2.25] (343.center) to (344.center);
+		\draw (345.center) to (343.center);
+		\draw (344.center) to (346.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+This perspective will often make indexing the wires easier; especially when the conjugation is more natural to use than the dagger.  Therefore, we shall invoke the $\CPM$ construction for both dagger structures and conjugation functors depending on which setting is most natural.
+
 
 As mentioned before, the following example motivated this categorical construction:
 
 \begin{example}
 $\CPM(\FHilb, \dag)$ is the dagger compact closed category of density matrices between finite dimensional Hilbert spaces.
+
+
+Or equivalently 
+$\CPM(\Mat_\C, \bar{(\_)})$
+is the skeleton of density matrices.
 \end{example}
 
 Density matrices model mixed quantum circuits. The discarding map is interpreted as exposing the quantum system to the classical world. A (mixed) {\bf quantum state}, is a trace-preserving state in $\CPM(\FHilb)$.  Quantum states model the possible physical states which are not-necessarily pure quantum states. Note that in $\CPM(\FHilb)$, the doubling acts on scalars by complex conjugation, so that the canonical map $\Hilb\to \CPM(\FHilb)$ is not injective.  The trace-preserving maps in $\CPM(\FHilb)$ model the mixed quantum-classical evolution of quantum states; as they are precisely the maps in $\CPM(\FHilb)$ which preserve quantum states.
@@ -8802,8 +8916,7 @@ and ``X-spiders'' for the Fourier basis in  grey as follows:
 \end{tikzpicture}
 \ \right\rrbracket
 &=
-\dfrac{1}{\sqrt{p}}
-\sum_{j=0}^{p-1} | j, \ldots, j\rangle \langle j,\ldots, j|\\
+\sum_{j=0}^{d-1} | j, \ldots, j\rangle \langle j,\ldots, j|\\
 \left\llbracket\ 
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -8827,9 +8940,9 @@ and ``X-spiders'' for the Fourier basis in  grey as follows:
 \end{tikzpicture}
 \ \right\rrbracket
 &=
-\sum_{j=0}^{p-1}  \mathcal{F} | j, \ldots, j\rangle \langle j,\ldots, j| \mathcal{F}^\dag\\
+\sqrt{d}\sum_{j=0}^{d-1}  \mathcal{F} | j, \ldots, j\rangle \langle j,\ldots, j| \mathcal{F}^\dag\\
 &=
-\sum_{\forall (x_j) \in \F_p^n,  (y_k) \in \F_p^m: \sum  x_j= \sum y _k \mod p} | y_1 ,\ldots, y_n \rangle \langle  x_1,\ldots, x_n|
+\sum_{\forall x \in (\Z/d\Z)^n,  y  \in (\Z/d\Z)^m: \sum  x_j= \sum y _k \mod d} | y_1 ,\ldots, y_n \rangle \langle  x_1,\ldots, x_n|
 \end{align*}
 
 
@@ -8964,12 +9077,12 @@ The motivating example is again  $\FHilb$:
 \begin{example}
 Given an orthonormal basis $\{| j \rangle \}_{j \in I}$ in $\FHilb$, of dimension $d$, the phases are generated by the following unitaries, for all $\{\theta_0,\ldots, \theta_{d-1}\} \in [0, 1)^d$:
 
-$$\dfrac{1}{\sqrt d}\sum_{j=0}^{d-1} e^{  2\pi \cdot i \cdot j \cdot \theta_j/d }|  j \rangle\langle j|$$
+$$\sum_{j=0}^{d-1} e^{  2\pi \cdot i \cdot j \cdot \theta_j/d }|  j \rangle\langle j|$$
 
 
 \end{example}
 
-Therefore, because phases are required to be unitary, we fix $\theta_0=0$ so that each tuple picks out a unique phase.
+Therefore, working up to global phase, fix $\theta_0=0$.
 
 %The curve  $\{e^{2 \pi \cdot i \cdot \theta}\ | \ \theta \in [0, 1)\}$ carves out the unit circle in the complex plane so the phase group is isomorphic to the circle (hence the name).
 
@@ -9250,7 +9363,7 @@ $$
 \end{tikzpicture}
 \ \right\rrbracket
 =
-\dfrac{1}{\sqrt{d}}
+\sqrt{d}
 \sum_{j=0}^{d-1} e^{2\cdot \pi \cdot i \cdot j\cdot h_j(\psi)/d} \mathcal{F} | j, \ldots, j\rangle \langle j,\ldots, j| \mathcal{F}^\dag
 $$
 
@@ -9455,11 +9568,8 @@ $${\cal X} := \sum_{b=0}^{p-1} | b+1\rangle \langle b|$$
 An $X$-stabilizer of an $n$-qudit state $\phi$ is a stabilizer of the form:
 
 $$
-\bigotimes_{j=0}^{n-1}{\cal X}^{a_j}
+\bigotimes_{j=0}^{n-1}{\cal X}_{(j)}^{a_j}
 $$
-
-Where note that:
-$${\cal X}^a := \sum_{b=0}^{p-1} | b+a\rangle \langle b|$$
 
 \end{definition}
 
@@ -9749,7 +9859,7 @@ $$
 {\cal X} =
  \sum_{b=0}^{p-1} | b+1\rangle \langle b|
 =
- \sum_{j=0}^{p-1} e^{2 \pi\cdot i\cdot j/p} {\mathcal F} | j \rangle \langle j|  {\mathcal F}^\dag
+ \sum_{j=0}^{p-1} e^{2 \pi\cdot i\cdot j/p} {\mathcal F}^\dag | j \rangle \langle j|  {\mathcal F}
 $$
 
 Therefore, natural number powers of the ${\cal X}$-gate are also phases for the $X$-spider as:
@@ -9759,7 +9869,7 @@ $$
 = 
  \sum_{bj=0}^{p-1} | j+n\rangle \langle j|
 =
-\sum_{j=0}^{p-1} e^{2 \pi\cdot i\cdot n\cdot j/p} {\mathcal F} | j \rangle \langle j|  {\mathcal F}^\dag
+\sum_{j=0}^{p-1} e^{2 \pi\cdot i\cdot n\cdot j/p} {\mathcal F}^\dag | j \rangle \langle j|  {\mathcal F}
 $$
 
 So it one can ask if the the fragment of the odd prime qudit ZX-calculus with these $\cal X$-gate phases has a similar relational semantics to the phase-free ZX-calculus.  The answer is yes, and this result is not contained in the literature to my knowledge:
@@ -10112,7 +10222,7 @@ $$
 
 
 
-So far, the two fragments of the ZX-calculus we have described are relatively simple; however, ZX-calculus gives a natural syntax for stabilizer circuits.  We review the stabilizer formalism to this end:
+So far, the two fragments of the ZX-calculus we have described are relatively simple; they are actually fragments of stabilizer circuits:
 
 
 
@@ -10123,22 +10233,14 @@ A single qudit {\bf Weyl operator} an $p$-dimensional unitary generated by the q
 Where:
 
 $$
-{\cal X}^x = \dfrac{1}{\sqrt{p}}\sum_{b=0}^{p-1} | b+x\rangle \langle b|
-\ , \hspace*{.2cm}
 {\cal Z}^z
 :=
 {\cal F}
 {\cal X}^z
 {\cal F}^\dag
 =
-\dfrac{1}{\sqrt{p}}\sum_{b=0}^{p-1}
+\sum_{b=0}^{p-1}
 e^{2\cdot\pi \cdot z\cdot b/p} | b\rangle \langle b|
-\
-$$
-$$
-{\cal F}
-=
-\dfrac{1}{\sqrt{d}} \sum_{j,k=0}^{d-1} e^{2\pi\cdot i \cdot j \cdot k/d} | k\rangle \langle j |
 $$
 
 
@@ -10148,41 +10250,28 @@ The $n$-qudit {\bf Weyl group} is generated by Weyl operators under matrix multi
 An $n$-qudit {\bf Clifford operator} $U$ is an $d^n$-dimensional unitary that preserves the Weyl group, so that $U {\cal P}_d^{ n} U^\dag = {\cal P}_d^{ n}$.  The $n$-qudit Clifford operators form the $n$-qudit {\bf Clifford group } under matrix multiplication.  The qudit Clifford Groupoid (or full Clifford group) is the prop where the maps $n\to n$ are Clifford operators.
 
 
-An $n$-qudit {\bf stabilizer state} is a state $ U |0\rangle^{\otimes n}$ for an $n$-qudit Clifford $U$.
-
-Given any $n$-qudit stabilizer state $|\psi \rangle$,  the {\bf stabilizer group} of $|\psi \rangle$  is the (Abelian) subgroup of ${\cal S}_{|\psi\rangle} \subset {\cal P}_d^{ n}$ whose elements are the $U \in {\cal P}_d^{ n}$ for which $U|\psi \rangle=|\psi \rangle$.
-
-Two stabilizer states with the same stabilizer groups are the same, up to global phases.
+An $n$-qudit (pure) {\bf stabilizer state} is a state $ U |0\rangle^{\otimes n}$ for an $n$-qudit Clifford $U$.
 
 
+Given any $n$-qudit pure stabilizer state $|\psi \rangle$,  the {\bf stabilizer group} of $|\psi \rangle$   is the subgroup of ${\cal S}_{|\psi\rangle} \subset {\cal P}_d^{ n}$  whose elements  stabilize $|\psi\rangle$.
+\end{definition}
+
+The reason why stabilizer states are so nice is because we can chose to work with their very well-behaved stabilizer groups:
+
+
+\begin{lemma}
+Stabilizer states are determined, up to global phase, by their stabilizer groups, and stabilizer groups are in bijection with maximal abelian subgroups of $ {\cal P}_d^{ n}$.
+\end{lemma}
+
+
+
+\begin{definition}
 The prop of qudit {\bf stabilizer circuits}, is the subcategory of $\Mat_\C$ generated by qudit Clifford operators as well as the state $|0\rangle$ and effect $\langle 0|$.
 \end{definition}
 
 
-\begin{lemma}\cite[Pg. 5]{gota}% https://arxiv.org/pdf/quant-ph/9802007.pdf
-Up to nonzero scalars, the qupit Clifford groupoid is generated by the Fourier transform, Weyl operators, the  phase-shift gate $\mathcal S$, controlled-$\mathcal X$ gate $\mathcal{C}_{\mathcal X}$, and scaling gates $\mathcal{M}_a$ for every $a \in \F_p^*$ where:
 
-
-$$
-\mathcal{C}_{\mathcal X}:= \sum_{j,k=0}^{p-1} |j,j+k \rangle \langle j,k |
-\mathcal{M}_a := \sum_{j=0}^{p-1} |j\cdot a \rangle\langle j |
-$$ 
-
-Such that for qubits:
-$$
-\mathcal{S}:= \sum_{j=0}^{0} i^j |j\rangle\langle j |
-$$
-
-
-And for quopits
-
-$$
-\mathcal{S}:= \sum_{j=0}^{p-1} e^{\pi\cdot i \cdot j(j-1)/p} |j\rangle\langle j |
-$$
-\end{lemma}
-
-These circuits can be characterized in terms of the ZX-calculus.
-However, there is a crucial difference between the qubit and quopit cases:
+There is a crucial difference between the  qubit and quopit Weyl group:
 
 \begin{lemma}
 Single quopit Weyl operators all can be factored into the following form for $a,z,x \in \F_p$:
@@ -10198,6 +10287,31 @@ i^a {\cal Z}^z{\cal X}^x
 $$
 
 \end{lemma}
+
+This difference between qubits and quopits  is also reflected in the structure of the Clifford groupoid:
+
+\begin{lemma}\cite[Pg. 5]{gota}
+Up to nonzero scalars, the qupit Clifford groupoid is generated by the Fourier transform, Weyl operators, the  phase-shift gate $\mathcal S$, controlled-$\mathcal X$ gate $\mathcal{C}_{\mathcal X}$, and scaling gates $\mathcal{M}_a$ for every $a \in \F_p^*$ where:
+
+
+$$
+\mathcal{C}_{\mathcal X}:= \sum_{j,k=0}^{p-1} |j,j+k \rangle \langle j,k |\, \hspace*{.5cm}
+\mathcal{M}_a := \sum_{j=0}^{p-1} |j\cdot a \rangle\langle j |
+$$ 
+
+Such that for qubits:
+$$
+\mathcal{S}:= \sum_{j=0}^{1} i^j |j\rangle\langle j |
+$$
+
+
+And for quopits
+
+$$
+\mathcal{S}:= \sum_{j=0}^{p-1} e^{\pi\cdot i \cdot j(j-1)/p} |j\rangle\langle j |
+$$
+\end{lemma}
+
 
 
 
@@ -10217,7 +10331,7 @@ $$
 The qubit and quopit fragments of the ZX-calculus pick out precisely the qubit and quopit stabilizer circuits.  The qubit \cite{backensstab,backens2015} and qutrit \cite{qutrit} stabilizer ZX-calculus have been shown to be complete.  However, during the process of writing this thesis, an axiomatization was provided for the quopit ZX-calculus \cite{booth}, followed shortly by an even simpler presentation \cite{poor}.
 
 
-It is worth mentioning that stabilizer circuits can be classically simulated probabilistically in polynomial time.  Therefore, all of the fragments that we have discussed so far are not computationally very powerful.  However, stabilizer circuits are very important for quantum error correction, as we will discuss in \ref{chap:stab}.  In the same Chapter we will also give a relational semantics for quopit stabilizer circuits.
+It is worth mentioning that stabilizer circuits can be classically simulated probabilistically in polynomial time \cite{gottesmanknill}.  Therefore, all of the fragments that we have discussed so far are not computationally very powerful.  However, stabilizer circuits are very important for quantum error correction, as we will discuss in \ref{chap:stab}.  In the same Chapter we will also give a relational semantics for quopit stabilizer circuits.
 
 It is also worth mentioning that, at least in the qubit case, there are complete presentations for the ZX-calculus where all phases are allowed \cite{zxcompletea,zxcompletea}.  This gives a graphical presentation for the full subcategory of $\Mat_\C$ whose objects are powers of $2$; which is of course not classically simulatable in polynomial time.
 
@@ -10363,7 +10477,7 @@ $$
 		\node [style=none] (6) at (0, 2.75) {$\cdots$};
 		\node [style=H] (7) at (0, 4.25) {};
 		\node [style=none] (8) at (0, 5) {};
-		\node [style=H] (9) at (-1, 4) {$2$};
+		\node [style=H] (9) at (-1, 4) {$1/2$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [in=90, out=-30] (0) to (1.center);
@@ -10427,10 +10541,10 @@ The full qubit ZH-calculus was proved to be complete and universal for all qubit
 
 In the following chapter we prove completeness for the circuits generated by unphased $Z$ and $X$-spiders as well as $\AND$ gates and $\cal X$-gates.  We prove that this is essentially the ZH-calculus whose H-boxes have natural number label; the only difference, being that we carefully avoid having matrices with entries which are not natural numbers.
 
-Recently, generators have been proposed for the qudit ZH-calculus, but no completeness theorem exists so far \cite{roy}.
+Recently, generators hazve been proposed for the qudit ZH-calculus, but no completeness theorem exists so far \cite{roy}.
 
 
-
-
-
-For the interest of the reader,  there has recently been work on axiomatizing density matrices in terms of generators and relations.  Given a $\dag$-monoidal category $\X$, the discard construction on $\X$, $\X^\disc$ can be regarded as the quotient of $\CoPara(\X)$  by the congruence that  the isometries of $\X$ are freely discarded \cite{discard}.  They show, for example,  that when $\X$ is a complete axiomatization of any one of  the qubit stabilizer fragment of the ZX-calculus, the full qubit ZX-calculus, or the ZH-calculus, then there is a $\dag$-symmetric monoidal isomorphism $\X^\disc\cong \CPM(\X)$.  Unlike the CPM construction, this approach to density matrices is amenable to presentations in terms of generators and relations.  All three of these props have complete presentations where their isometries are known, so mixed circuits automatically get a complete axiomatization.   We will see in Chapter \ref{chap:stab} how we add discarding in a very similar way.
+%
+%
+%
+%For the interest of the reader,  there has recently been work on axiomatizing density matrices in terms of generators and relations.  Given a $\dag$-monoidal category $\X$, the discard construction on $\X$, $\X^\disc$ can be regarded as the quotient of $\CoPara(\X)$  by the congruence that  the isometries of $\X$ are freely discarded \cite{discard}.  They show, for example,  that when $\X$ is a complete axiomatization of any one of  the qubit stabilizer fragment of the ZX-calculus, the full qubit ZX-calculus, or the ZH-calculus, then there is a $\dag$-symmetric monoidal isomorphism $\X^\disc\cong \CPM(\X)$.  Unlike the CPM construction, this approach to density matrices is amenable to presentations in terms of generators and relations.  All three of these props have complete presentations where their isometries are known, so mixed circuits automatically get a complete axiomatization.   We will see in Chapter \ref{chap:stab} how we add discarding in a very similar way.

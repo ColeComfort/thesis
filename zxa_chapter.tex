@@ -3449,7 +3449,7 @@ We give a more elegant presentation of this category in terms of interacting mon
 \begin{definition}
 The  \dag-compact closed prop $\ZXA$ presented by phase-free $Z$-spiders, $\Z/2\Z$-phased  $X$-spiders and the $\AND$-gate; interpreted in $\Mat_\C$ as follows:
 
-$$
+\begin{align*}
 \left\llbracket\ 
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3472,11 +3472,8 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 \ \right\rrbracket
-=
-\sum_{j=0}^{1}  | j, \ldots, j\rangle \langle j,\ldots, j|
-$$
-
-$$
+&=
+\sum_{j=0}^{1}  | j, \ldots, j\rangle \langle j,\ldots, j|\\
 \left\llbracket\ 
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3499,13 +3496,11 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 \ \right\rrbracket
-=
-\dfrac{1}{\sqrt{2}}
-\sum_{j=0}^{1} e^{2\cdot \pi \cdot i \cdot j\cdot \psi /2} \mathcal{F} | j, \ldots, j\rangle \langle j,\ldots, j| \mathcal{F}^\dag
-$$
-
-
-$$
+&=
+\sqrt{2}
+\sum_{j=0}^{1} e^{2\cdot \pi \cdot i \cdot j\cdot \psi /2} \mathcal{F} | j, \ldots, j\rangle \langle j,\ldots, j| \mathcal{F}^\dag\\
+&=
+\sum_{\sum  x_i = \sum y _j +\phi \mod 2} | y_1 ,\ldots, y_n \rangle \langle  x_1,\ldots, x_n|\\
 \left\llbracket\ 
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3524,10 +3519,9 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 \ \right\rrbracket
-=
-\dfrac{1}{\sqrt{2}^n}\sum_{a_0,\ldots, a_{n-1}=0}^1
+&=
 |a_0\cdot\ldots\cdot a_{n-1}\rangle\langle a_0,\cdots, a_{n-1}|
-$$
+\end{align*}
 
 Subject to the identities in Figure \ref{fig:ZXA}:
 
@@ -13523,7 +13517,7 @@ The ancillae are trivial.  For the Toffoli gate:
 
 
 \begin{remark}
-The triangle gate and natural number h-boxes have the following interpretation in $\ZXA:$
+The triangle gate and natural number $H$-boxes have the following interpretation in $\ZXA:$
 
 $$
 \begin{tikzpicture}

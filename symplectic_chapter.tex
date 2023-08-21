@@ -177,7 +177,7 @@ Therefore, the condition asking that $W=W^\omega$ is graphically:
 \end{equation}
 
 
-The category of Lagrangian relations is compact closed.  Given a relation $V$ between symplectic vector spaces, we can curry it into a state $\hat V$; and similarily, we can uncurry a state $W$ into a process $\widecheck W$,
+The category of Lagrangian relations is compact closed.  Given a relation $V$ between symplectic vector spaces, we can curry it into a state $\lfloor V \rfloor$; and similarily, we can uncurry a states back into processes:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -194,7 +194,7 @@ $$
 		\draw [in=90, out=-120] (0) to (3.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\xmapsto{\hat{(\_)} }
+\xmapsto{\lfloor{\_}\rfloor }
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=map] (0) at (0.75, -1.75) {$V$};
@@ -234,7 +234,7 @@ $$
 		\draw [in=-90, out=75] (0) to (6.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\xmapsto{\widecheck{(\_)} }
+\mapsto
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=map] (0) at (1.75, -2.25) {$W$};
@@ -2511,31 +2511,38 @@ Note that these generators do not generate the whole category of Lagrangian rela
 \subsection{Stabilizer circuits and Spekkens' toy model}
 
 
-In this subsection, we show that, when $p$ is an odd prime, the prop of affine Lagrangian relations over $\F_p$  is isomorphic to quopit stabilizer circuits modulo invertible scalars.  To show this, we must first recall some very important results, relating stabilizer circuits to symplectic geometry.  First:
+In this subsection, we show that, when $p$ is an odd prime, the prop of affine Lagrangian relations over $\F_p$  is isomorphic to quopit stabilizer circuits modulo invertible scalars. 
 
 
+To show this, we must first recall some very important results of Gross, relating the stabilizer formalism to symplectic geometry.  First we need the following convention to represent Weyl operators:
 
-\begin{lemma}\cite[Thm. 3]{gross}
-For every odd prime $p$ the prop  of affine symplectomorphisms over  $\F_p$ is isomorphic to the quopit Clifford groupoid modulo scalars.
-\end{lemma}
-
-\begin{proof}
-As a matter of notation let
+\begin{definition}
+Given $a \in \F_p$ and $(z,x )\in \F_p^{2n}$, define:
 $$
 \chi(a) = e^{2\pi\cdot i \cdot a/p}, \hspace*{1cm} {\mathcal W}(z,x)=\chi(-zx^T/2)\bigotimes_{j=0}^{n-1}\mathcal{Z}_{(j)}^{z_j}\mathcal{X}_{(j)}^{x_j}
 $$
 Where the subscript $(j)$ denotes that we are applying a gate on wire $(j)$ tensored on both sides with identities.
 
+\end{definition}
 
-We know that the Clifford group is defined as the normalizer of the Pauli group so that a Clifford operator is defined by its action on Weyl operators. Given an $n$ qudit Clifford operator $C$  and $(z,x)\in \F_p^{2n}$, there exists  an isomorphism $C_L:\F_p^{2n}\to \F_p^{2n}$ and a vector  $C_a\in \F_p^{2n}$ such that:
+
+This makes the following result more easy to prove:
+
+\begin{lemma}\cite[Thm. 3]{gross}
+For every odd prime $p$ the prop  of affine symplectomorphisms over  $\F_p$ is isomorphic to the quopit Clifford groupoid modulo scalars.
+\end{lemma}
+
+
+
+\begin{proof}
+We know that the Clifford group is defined as the normalizer of the Pauli group so that a Clifford operator is defined by its action on Weyl operators. Given an $n$ quopit Clifford operator $C$  and $(z,x)\in \F_p^{2n}$, there exists  an isomorphism $C_L:\F_p^{2n}\to \F_p^{2n}$ and a vector  $C_a\in \F_p^{2n}$ such that:
 
 $$
-{\mathcal W}(z,x) C {\mathcal W}(z,x)^\dag
+C {\mathcal W}(z,x) C^\dag
 =
 \chi(C_a(z,x)){\mathcal W}(C_L(z,x))
 $$
 
-Note that for qubits the phase is not $\chi(C_a(z,x))$, so this is not true.
 
 We seek to show that $C_L$ is the the symplectomorphism and $C_a$ is the affine shift.  $C_L$ is clearly linear.  To see that it is a symplectomorphism, first observe:
 
@@ -2554,33 +2561,122 @@ Therefore,
 &=\chi(\omega((z_0,x_0),(z_1,x_1)))(\mathcal{Z}^{z_1} \mathcal{X}^{x_1})(  \mathcal{Z}^{z_0}\mathcal{X}^{x_0} ) 
 \end{align*}
 
-So that:
+So that Weyl operators commute with each other up to the symplectic form:
 
 $$
-{\mathcal W}(z,x) {\mathcal W}(z',x') = \chi(z_0x_1-x_0z_1) {\mathcal W}(z',x') {\mathcal W}(z,x) $$
+{\mathcal W}(z,x) {\mathcal W}(z',x') = \chi(\omega(z,x),(z',x')) {\mathcal W}(z',x') {\mathcal W}(z,x) $$
+
+Moreover, we can combine Weyl operators together as follows:
+
+\begin{align*}
+{\mathcal W}(z,x) {\mathcal W}(z',x')
+&=\chi(\omega((z,x),(z',x'))/2){\mathcal W}(z+z',x+x') 
+\end{align*}
 
 
-Take $P=\mathcal{W}(z,x)$ and  $P'=\mathcal{W}(z',x')$.
-There are two ways to compute  $(P'P)C(P'P)^\dag$;  we could compute the conjugation of $C$ by $P'P$; or we could first compute the conjugation of $C$ by $P$ and then conjugate by $P'$.  In either case, to obtain a Weyl operator in normal form (so that tensors of  powers of $\cal Z$ are followed by tensors of powers of $\cal X$), we must commute the Paulis past each other.  This means that:
+Therefore:
+\begin{align*}
+&C\mathcal{W}(z,x)\mathcal{W}(z',x')C^\dag\\
+&=C(\mathcal{W}(z,x) C^\dag C \mathcal{W}(z',x'))C^\dag\\
+&=\chi(C_a(z,x)+C_a(z',x')) \mathcal{W}(C_L(z,x))\mathcal{W}(C_L(z',x')) \\
+&=\chi(C_a(z,x)+C_a(z',x')+\omega(C_L(z,x)),C_L(z',x'))/2)  \mathcal{W}(C_L(z,x)+C_L(z',x')) \\
+\end{align*}
 
-$$
-\omega(C_L(z,x),C_L(z',x')) = C_L(\omega((z_0,x_0),(z_0',x_0')),\cdots, \omega((z_{n-1},x_{n-1}),(z_{n-1}',x_{n-1}')) )
-$$
+Similarly:
 
-So that $C_L$ is a symplectomorphism.   Given another Clifford operator $D$:
-$$
-\chi(C_a){\cal W}(C_L(z,x)) D {\cal W}(C_L(z,x))^\dag
-=
- \chi(C_a+D_a(C_L(z,x)))    {\mathcal W}( D_L(C_L(z,x)))
-$$
+\begin{align*}
+&C\mathcal{W}(z,x)\mathcal{W}(z',x')C^\dag\\
+&= \chi(\omega((z,x),(z',x'))/2) C \mathcal{W}(z+z',x+x') C^\dag\\
+&= \chi(\omega((z,x),(z',x'))/2+C_a(z+z',x+x')) \mathcal{W}(C_{L}(z+z',x+x'))\\
+&= \chi(\omega((z,x),(z',x'))/2+C_a(z,x)+ C_a(z',x')) \mathcal{W}(C_L(z,x)+C_L(z',x'))\\
+\end{align*}
 
-So that  $C_L$ and $C_a$ determine an affine transformation $(z,x) \mapsto C_L(z,x)+C_a$ with respect to composition of Clifford operators.
-Indeed, the affine symplectormorphisms $\F_p^{2n}\to \F_p^{2n}$ are the only functions which determine Clifford operators in this way.
+
+So that $\omega(C_L(z,x),C_L(z',x')) = \omega((z,x),(z',x'))$; meaning that $C_L$ is a symplectomorphism. Moreover for a Clifford operator $D$:
+
+\begin{align*}
+DC {\mathcal W}(z,x) C^\dag D^\dag
+&=D\chi(C_a(z,x)){\mathcal W}(C_L(z,x))D^\dag\\
+&=\chi(C_a(z,x)+D_a(C_L(z,x))){\mathcal W}(D_L(C_L(z,x)))\\
+\end{align*}
+
+So that $C_L$ and $C_a$ determine an affine transformation.
+
 \end{proof}
 
 
+The reason this fails for qubits is because one can not represent all Weyl operators in the following way:
 
-Recall that, up to scalars, the $n$-quopit Clifford group is generated by the Pauli $\mathcal X$-gate, the controlled-$\mathcal X$ gate, the Fourier transform $\mathcal F$ and the phase gate $\mathcal S$ and scaling gates $\mathcal{M}_a$ for all $a \in \F_p^*$.
+$$
+\chi(C_a(z,x)){\mathcal W}(z,x)
+$$
+
+ For example, the qubit phase shift gate $\mathcal{S}\mathcal{X} \mathcal{S}^{\dag} = i \mathcal{Z}\mathcal{X}$; however $i=e^{2\pi \cdot i/4}$, so there is no value of $a\in \F_2$ for which $\chi(a)=e^{2\pi\cdot i\cdot a/2} =e^{\pi\cdot i a} = i$.
+
+
+%
+%\begin{proof}
+%As a matter of notation let
+%$$
+%\chi(a) = e^{2\pi\cdot i \cdot a/p}, \hspace*{1cm} {\mathcal W}(z,x)=\chi(-zx^T/2)\bigotimes_{j=0}^{n-1}\mathcal{Z}_{(j)}^{z_j}\mathcal{X}_{(j)}^{x_j}
+%$$
+%Where the subscript $(j)$ denotes that we are applying a gate on wire $(j)$ tensored on both sides with identities.
+%
+%
+%We know that the Clifford group is defined as the normalizer of the Pauli group so that a Clifford operator is defined by its action on Weyl operators. Given an $n$ qudit Clifford operator $C$  and $(z,x)\in \F_p^{2n}$, there exists  an isomorphism $C_L:\F_p^{2n}\to \F_p^{2n}$ and a vector  $C_a\in \F_p^{2n}$ such that:
+%
+%$$
+%{\mathcal W}(z,x) C {\mathcal W}(z,x)^\dag
+%=
+%\chi(C_a(z,x)){\mathcal W}(C_L(z,x))
+%$$
+%
+%Note that for qubits the phase is not $\chi(C_a(z,x))$, so this is not true.  For example, the qubit phase shift gate $\mathcal{X}\mathcal{S}\mathcal{X} = i \cdot I_2$; however $i=e^{2\pi \cdot i/4}$, so there is no value of $a\in \F_2$ for which $\chi(a)=e^{2\pi\cdot i\cdot a/2} =e^{\pi\cdot i a} = i$.
+%
+%We seek to show that $C_L$ is the the symplectomorphism and $C_a$ is the affine shift.  $C_L$ is clearly linear.  To see that it is a symplectomorphism, first observe:
+%
+%$$
+%\mathcal{Z}\mathcal{X}  = \chi(1)\mathcal{X} \mathcal{Z}
+%$$
+%
+%Therefore, 
+%
+%
+%\begin{align*}
+%(\mathcal{Z}^{z_0}\mathcal{X}^{x_0})(\mathcal{Z}^{z_1}\mathcal{X}^{x_1} )
+%&=\chi(-x_0z_1) \mathcal{Z}^{z_0}\mathcal{Z}^{z_1}\mathcal{X}^{x_0}\mathcal{X}^{x_1}  \\
+%&=\chi(-x_0z_1)\mathcal{Z}^{z_1}  \mathcal{Z}^{z_0}\mathcal{X}^{x_1} \mathcal{X}^{x_0}  \\
+%&=\chi(z_0x_1-x_0z_1)(\mathcal{Z}^{z_1} \mathcal{X}^{x_1})(  \mathcal{Z}^{z_0}\mathcal{X}^{x_0} ) \\
+%&=\chi(\omega((z_0,x_0),(z_1,x_1)))(\mathcal{Z}^{z_1} \mathcal{X}^{x_1})(  \mathcal{Z}^{z_0}\mathcal{X}^{x_0} ) 
+%\end{align*}
+%
+%So that:
+%
+%$$
+%{\mathcal W}(z,x) {\mathcal W}(z',x') = \chi(\omega(z,x),(z',x')) {\mathcal W}(z',x') {\mathcal W}(z,x) $$
+%
+%
+%Take $P=\mathcal{W}(z,x)$ and  $P'=\mathcal{W}(z',x')$.
+%There are two ways to compute  $(P'P)C(P'P)^\dag$;  we could compute the conjugation of $C$ by $P'P$ via $C_a$ and $C_L$; or we could first compute the conjugation of $C$ by $P$ and then conjugate by $P'$.  In either case, to obtain a Weyl operator in normal form (so that tensors of  powers of $\cal Z$ are followed by tensors of powers of $\cal X$), we must commute the Weyl operators past each other.  This means that:
+%
+%$$
+%\omega(C_L(z,x),C_L(z',x')) = C_L(\omega((z_0,x_0),(z_0',x_0')),\cdots, \omega((z_{n-1},x_{n-1}),(z_{n-1}',x_{n-1}')) )
+%$$
+%
+%So that $C_L$ is a symplectomorphism.   Given another Clifford operator $D$:
+%$$
+%\chi(C_a(z,x)){\cal W}(C_L(z,x)) D {\cal W}(C_L(z,x))^\dag
+%=
+% \chi(C_a(z,x)+D_a(C_L(z,x)))    {\mathcal W}( D_L(C_L(z,x)))
+%$$
+%
+%So that  $C_L$ and $C_a$ determine an affine transformation $(z,x) \mapsto C_L(z,x)+C_a$ with respect to composition of Clifford operators.
+%Indeed, the affine symplectormorphisms $\F_p^{2n}\to \F_p^{2n}$ are the only functions which determine Clifford operators in this way.
+%\end{proof}
+
+
+
+Recall that, up to scalars, the $n$-quopit Clifford group is generated by the Pauli $\mathcal X$-gate, the $\mathcal{C}_\mathcal{X}$ gate, the Fourier transform $\mathcal F$ and the phase gate $\mathcal S$ and scaling gates $\mathcal{M}_a$ for all $a \in \F_p^*$.
 In the odd prime case, these correspond to the affine symplectormorphisms:
 
 $$
@@ -2599,7 +2695,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
  \leftrightarrow \mathcal{X},\hspace*{.2cm}
-\begin{tikzpicture}
+\begin{tikzpicture}[yscale=-1]
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (300) at (234.5, 1) {};
 		\node [style=none] (301) at (234, -0.25) {};
@@ -2687,40 +2783,36 @@ $$
 The following result gets us even closer to where we need to be:
 
 \begin{lemma}\cite[Lem. 8]{gross}
-For every odd prime $p$ and $n \in \N$, there is a bijection between (nonempty) affine coisotropic subspaces of $\F_p^{2n}$ and $n$-quopit stabilizer states modulo nonzero scalars.
+For every odd prime $p$ and $n \in \N$, there is a bijection between (nonempty) affine Lagrangian subspaces of $\F_p^{2n}$ and $n$-quopit stabilizer states modulo nonzero scalars.
 \end{lemma}
+
+
 \begin{proof}
-Recall that every stabilizer state is of the form $C|0\rangle^{\otimes n}$ for some Clifford $C$.  Therefore, the stabilizers are of the form $$\chi( C_L^{-1}(z_0,\cdots,z_{n-1},0,\cdots, 0)) {\cal W}( C_L^{-1}(z_0,\cdots,z_{n-1},0,\cdots, 0))$$ so that:
-
-
+Given any affine Lagrangian subspace $L+a\subseteq \F_p^{2n}$; then up to global phase there is a stabilizer state $C | 0\rangle^{\otimes n}$ determined by the rank 1 projector:
+$$
+C | 0\rangle^{\otimes n} \langle 0| ^{\otimes n}C^{\dag}:=\dfrac{1}{p^n}\sum_{v \in L}\chi(\omega(a,v)) {\cal W}(v)
+$$
+as for any $v' \in L$:
 \begin{align*}
-C|0\rangle^{\otimes n}
-&=
-\chi( C_L^{-1}(z_0,\cdots,z_{n-1},0,\cdots, 0)){\cal W}(C_L^{-1}(z_0,\cdots,z_{n-1},0,\cdots, 0)) \\
-&\ \ \ \cdot C {\cal W}(C_L^{-1}(z_0,\cdots,z_{n-1},0,\cdots, 0))^\dag |0\rangle^{\otimes n}\\
-&=
-\chi( C_L^{-1}(z_0,\cdots,z_{n-1},0,\cdots, 0))C_L^{-1}(z_0,\cdots,z_{n-1},0,\cdots, 0)) C |0\rangle^{\otimes n}
+\chi(\omega(a,v')) {\cal W}(v') &\dfrac{1}{p^n}\sum_{v \in L}\chi(\omega(a,v)) {\cal W}(v) \chi(-\omega(a,v')) {\cal W}(v')^\dag\\
+=&
+ \dfrac{1}{p^n}\sum_{v \in L}\chi(\omega(a,v)+\omega(v,v')) {\cal W}(v)
+{\cal W}(v2') {\cal W}(v')^\dag\\
+=&
+ \dfrac{1}{p^n}\sum_{v \in L}\chi(\omega(a,v) ){\cal W}(v)
+{\cal W}(v') {\cal W}(v')^\dag\\
+=&
+ \dfrac{1}{p^n}\sum_{v \in L}\chi(\omega(a,v)) {\cal W}(v)
 \end{align*}
 
-Because $C_L$ is an isomorphism, there are exactly $n$ such stabilizers; moreover, given any two stabilizers $\chi(a){\cal W}(z,x)$ and $\chi(a'){\cal W}(z',x')$:
-
-\begin{align*}
-\chi(a'){\cal W}(z',x') \chi(a){\cal W}(z,x)U|0\rangle^{\otimes n} &= \chi(a'){\cal W}(z',x')U|0\rangle^{\otimes n}\\
-&= U|0\rangle^{\otimes n}\\
-&= \chi(a){\cal W}(z,x)U|0\rangle^{\otimes n}\\
-& =  \chi(a){\cal W}(z,x) \chi(a'){\cal W}(z',x')U|0\rangle^{\otimes n}   
-\end{align*}
-
-So that ${\cal W}(z',x'){\cal W}(z,x)={\cal W}(z,x) {\cal W}(z',x')$, and thus $\omega((z,x),(z',x'))=0$.
-
-
-Conversely, given any affine Lagrangian subspace $L+a\subseteq \F_p^{2n}$; the stabilizer state is given by:
-$$
-\dfrac{1}{p^n}\sum_{v \in L}\chi(\omega(a,v)) {\cal W}(v)
-$$
+Moreover, every stabilizer state is of this form.  Recall that stabilizer groups are Abelian.
+If two stabilizers $\chi(a){\cal W}(u)$ and $\chi(b){\cal W}(v)$ stabilize the same state, they must commute so that $\omega(u,v)=0$.
+Moreover a stabilizer state is stabilized by exactly $p^n$ stabilizers,  making the space of stabilizers into an affine Lagrangian subspace of $\F_p$. 
 \end{proof}
 
-Explicitly, the state $|0\rangle$ with an affine Lagrangian subspace:
+In other words, a symplectic basis for the affine Lagrangian subspace over $\F_p$ corresponds to the {\bf stabilizer tableau} for a pure quopit stabilizer state (ie a stabilizer tableau on $n$ qudits with dimension $n$).
+
+Explicitly, the state $|0\rangle$ is identified with the following Afffine Lagrangian subspace:
 
 $$
 \begin{tikzpicture}
@@ -2739,10 +2831,6 @@ $$
 $$
 
 
-
-
-
-
 We seek to recast these results in a more compositional light; to prove that for odd prime $p$, $\Aff\Lag\Rel_{\F_p}$ is isomorphic to quopit stabilizer circuits, modulo scalars.  Let us give the latter category a name:
 
 
@@ -2759,7 +2847,8 @@ We extend this isomorphim of states to an isomorphism of props using a symplecti
 
 
 \begin{definition}
-Given a field $k$ and natural number $n$, the {\bf symplectic Pauli group} on $n$ wires, $P_k^n$ is generated by the following affine Lagrangian relations under tensor product, for $z,x \in k$:
+Given a field $k$  the  $1$-fold symplectic Weyl operators are the symplectomorphisms of the following form,  for $a,b \in k$:
+
 
 $$
 W(a,b):=
@@ -2781,20 +2870,24 @@ W(a,b):=
 \end{tikzpicture}
 $$
 
-Call elements of the generalized Pauli group {\bf symplectic Weyl operators}.
-Given a tuple $$((z_1,\cdots, z_n),(x_1,\cdots, x_n)) \in (k^n)^2$$ define a Weyl operator $$W((z_1,\cdots, z_n),(x_1,\cdots, x_n) )= W(z_1,x_1)\oplus \cdots \oplus W(z_n,x_n)$$
+Given a tuple $$((z_1,\cdots, z_n),(x_1,\cdots, x_n)) \in k^{2n}$$ define the $n$-fold  symplectic Weyl operator $$W((z_1,\cdots, z_n),(x_1,\cdots, x_n) )= W(z_1,x_1)\oplus \cdots \oplus W(z_n,x_n)$$
 
-Notice that unlike the qudit Pauli group, there is no phase-factor.
+
+
+
+The $n$-fold symplectic Weyl operators form the $n$-fold {\bf symplectic Weyl group}, $P_k^n$ under composition.  And altogether, they form a prop under tensor product and composition. 
 
 Given some affine Lagrangian subspace $f$ of $\F_k^{2n}$, the {\bf symplectic stabilizer group} of $f$ is the subgroup  $S\subseteq P_k^n$ so that for all $a\in S$, $f; a =f$.
 \end{definition}
+
+Notice that unlike the qudit Pauli group, there is no phase-factor.
 
 \begin{lemma}
 Two states in $\Aff\Lag\Rel_k$ are equal if and only if they have the same symplectic stabilizer group.
 \end{lemma}
 
 \begin{proof}
-Take a state $f:0\to n$ in $\Aff\Lag\Rel_k$.  Then $(z,x) \in f$ if and only if $W(z,x)$ is stabilized by $f$.  Since subspaces are equal if and only if they have the same elements.
+Take a state $f:0\to n$ in $\Aff\Lag\Rel_k$.  Then $W(z,x)$ is a stabilizer of $f$ if and only if  $(z,x) \in f$; therefore two subspaces are equal if and only if they have the same elements if and only if they have the same stabilizers.
 \end{proof}
 
 
@@ -2802,7 +2895,7 @@ Take a state $f:0\to n$ in $\Aff\Lag\Rel_k$.  Then $(z,x) \in f$ if and only if 
 
 \begin{theorem}
 \label{theorem:spekkens}
-When $p$ is an odd prime, the mapping $H:\Aff\Lag\Rel_{\F_p} \to \Stab_p$ defined by:
+When $p$ is an odd prime, the mapping $\Lag\Rel_{\F_p} \to \Stab_p$ defined by:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2821,10 +2914,10 @@ $$
 \end{tikzpicture}
 \mapsto
 \begin{cases}
-0 & \text{if $\hat f=\emptyset$}\\
+{\bf 0} & \text{if $f=\emptyset$}\\
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=map] (7) at (12, 0) {$G\left(\hat f\right)$};
+		\node [style=map] (7) at (12, 0) {$G\left(\lfloor f\rfloor\right)$};
 		\node [style=none] (8) at (11.25, 1.5) {};
 		\node [style=Z] (10) at (13, 1) {};
 		\node [style=none] (12) at (13.5, -0.5) {};
@@ -2837,7 +2930,7 @@ $$
 \end{tikzpicture} & \text{otherwise}
 \end{cases}
 $$
-is a symmetric monoidal isomorphism, where $G$ is the bijection  between affine Lagrangian subspaces and stabilizer states modulo scalars.
+is a symmetric monoidal isomorphism, where $G$ is the bijection  between affine Lagrangian subspaces and stabilizer states modulo scalars. And $\bf 0$ is the unique stabilizer circuit of appropriate dimension which is multiplied by the scalar 0.
 \end{theorem}
 
 %
@@ -3278,7 +3371,7 @@ Therefore, the following two states in $\Stab_p$ have the same stabilizers
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=map] (29) at (23, 0) {$G\left(\hat {f;g}\right)$};
+		\node [style=map] (29) at (23, 0) {$G\left(\lfloor {f;g}\rfloor\right)$};
 		\node [style=none] (30) at (22.25, 1.5) {};
 		\node [style=none] (33) at (23.75, 1.5) {};
 	\end{pgfonlayer}
@@ -3290,11 +3383,11 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=map] (21) at (175.25, -4.5) {$\hat g$};
+		\node [style=map] (21) at (175.25, -4.5) {$\lfloor g\rfloor$};
 		\node [style=none] (22) at (174.5, -3.25) {};
 		\node [style=X] (23) at (175.75, -3.5) {};
 		\node [style=Z] (24) at (176.25, -3.5) {};
-		\node [style=map] (25) at (176.75, -4.5) {$\hat f$};
+		\node [style=map] (25) at (176.75, -4.5) {$\lfloor f\rfloor$};
 		\node [style=none] (26) at (177.5, -3.25) {};
 		\node [style=none] (27) at (174.85, -2.5) {};
 		\node [style=none] (28) at (177.1, -2.5) {};
@@ -3332,8 +3425,8 @@ $$
 \hspace*{.5cm}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=map] (40) at (179.75, -4) {$\hat g$};
-		\node [style=map] (44) at (181, -4) {$\hat f$};
+		\node [style=map] (40) at (179.75, -4) {$\lfloor g\rfloor$};
+		\node [style=map] (44) at (181, -4) {$\lfloor f \rfloor$};
 		\node [style=none] (46) at (179.35, -2.5) {};
 		\node [style=none] (47) at (181.35, -2.5) {};
 		\node [style=none] (48) at (181.35, -2.5) {};
@@ -3375,10 +3468,10 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=map] (64) at (204.75, 0) {$G\left(\hat g\right)$};
+		\node [style=map] (64) at (204.5, 0) {$G\left(\lfloor g\rfloor \right)$};
 		\node [style=none] (65) at (204, 1.25) {};
 		\node [style=Z] (66) at (205.5, 1) {};
-		\node [style=map] (67) at (206.25, 0) {$G\left(\hat f\right)$};
+		\node [style=map] (67) at (206.5, 0) {$G\left(\lfloor f\rfloor\right)$};
 		\node [style=none] (68) at (207, 1.25) {};
 		\node [style=none] (69) at (207, 2.5) {};
 		\node [style=none] (70) at (204, 2.5) {};
@@ -3401,7 +3494,7 @@ Therefore:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=map] (295) at (233.75, 0) {$G\left(\hat {f;g}\right)$};
+		\node [style=map] (295) at (233.75, 0) {$G\left(\lfloor {f;g}\rfloor \right)$};
 		\node [style=none] (296) at (233, 1.5) {};
 		\node [style=none] (297) at (234.5, 1) {};
 		\node [style=Z] (298) at (234.5, 1) {};
@@ -3416,8 +3509,8 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=map] (259) at (222.25, 0) {$G\left(\hat g\right)$};
-		\node [style=map] (260) at (223.75, 0) {$G\left(\hat f\right)$};
+		\node [style=map] (259) at (222, 0) {$G\left(\lfloor g\rfloor \right)$};
+		\node [style=map] (260) at (224, 0) {$G\left(\lfloor f\rfloor\right)$};
 		\node [style=Z] (263) at (223, 1) {};
 		\node [style=Z] (264) at (224.5, 1) {};
 		\node [style=none] (265) at (223.75, 0) {};
@@ -3443,24 +3536,32 @@ $$
 
 
 
-A basis for the affine Lagrangian subspace over $\F_p$ corresponds to the stabilizer tableau for a pure quopit stabilizer state (ie a stabilizer tableau on $n$ qudits with dimension $n$).
+
 The novelty in interpreting stabilizer states in this categorical framework is that it reveals that the {\em relational composition} of tableaus is the composition of stabilizer circuits.
-If we drop the affine shifts, we get a smallre fragment of stabilizer circuits:
+
+
+If we drop the affine shifts, we get a smaller fragment of stabilizer circuits:
 
 
 \begin{corollary}
 For odd prime $p$, $\Lag\Rel_{\F_p}$ is a presentation for Weyl-free quopit stabilizer circuits.
 \end{corollary}
 
-Notice that  $\Aff\Lag\Rel_{\F_2}$ is not isomorphic to $\Stab_2$.  However, this does give the semantics for a known structure:
+Bevcause of the reasons we mentioned earlier $\Aff\Lag\Rel_{\F_2}$ is not isomorphic to $\Stab_2$.  
+However, only some generators cause this problem:
 
+\begin{corollary}
+\label{cor:nophase}
+For any prime $p$, the image of $L(\LinRel_{\F_p}) \hookrightarrow \Aff\Lag\Rel_{\F_p}$ in addition to the symplectic Weyl operators can be interpreted in $\Stab_p$.
+\end{corollary}
 
+On the other hand $\Aff\Lag\Rel_{\F_2}$ has already been studied in other terms.
 
 TODO FULLY INTRODUCE SPEKKENS TOY MODEL
 
 
 \begin{corollary}
-$\Lag\Rel_{\F_2}$ is a presentation for the pure states in Spekkens' qubit toy model.
+$\Aff\Lag\Rel_{\F_2}$ is a presentation for the pure states in Spekkens' qubit toy model.
 \end{corollary}
 
 There is another way to present $\Aff\Lag\Rel_{k}$ which makes it clear that $\Aff\Lag\Rel_{\F_p}$ can be regarded as a fragment of the ZX-calculus:
@@ -3707,7 +3808,6 @@ $$
 $$
 
 
-
 %Transporting the complex conjugation along the isomorphism $\Aff\Lag\Rel_k \cong \Stab_p$ yields a conjugation functor $\Aff\Lag\Rel_k\to \Aff\Lag\Rel_k$ such that:
 
 %In $\Stab_p$ the spiders are linear maps:
@@ -3917,6 +4017,12 @@ e^{\pi\cdot i/ p \cdot (n\cdot b-m\cdot b^2)} |e, \ldots,e \rangle \langle a, \l
 Notice that this implies that the phase groups for quopit stabilizer spiders are now the torus $(\Z/p\Z)^2$; this is in contrast to the qubit case where the phase groups are $\Z/4\Z$.
 
 
+However, the restricted class of circuits described in Corollary \ref{cor:nophase} is the fragment of the stabilizer ZX-calculus where in the qubit case, the phases are in the subgroup $\Z/2\Z\subseteq \Z/4\Z$ sending $a\mapsto 2a$; and in the quopit case, they are in the subgroup $\Z/p\Z \subseteq (\Z/p\Z)^2$ which sends $a\mapsto (a,0)$.  These subgroups both agree for the qubits and quopits, so we can think of them both as Affine Lagrangian spiders with trivial linear phases.
+
+
+Up until now, we have also neglected to relate the symplectic picture to the \dag-structure of $\FHilb$:
+
+
 \begin{definition}
 There is a monoidal conjugation functor $\bar{(\_)}:\Aff\Lag\Rel_k\to \Aff\Lag\Rel_k$ given by:
 $$
@@ -4008,6 +4114,7 @@ In the case of $k=\F_p$ for $p$ an odd prime, this is transported to the complex
 For odd prime $p$, $\Aff\Lag\Rel_{\F_p}$ and  $\Stab_p$ are isomorphic as \dag-compact closed categories.
 \end{lemma}
 
+The proof follows by checking the action of the complex conjugation on the generators.
 
 \section{Affine coisotropic relations and stabilizer codes}
 \label{sec:coisotrel}
@@ -4289,7 +4396,7 @@ $$
 We extend the notion of a symplectic stabilizer group to the mixed setting:
 
 \begin{definition}
-Given some state $f:0\to n$ in $\CPM(\Aff\Lag\Rel_k)$ the (mixed)  {\bf symplectic stabilizer group} of $f$ is the subgroup of the generalized Pauli group generated by the Weyl operators $a \in P_k^n$ so that:
+Given some state $f:0\to n$ in $\CPM(\Aff\Lag\Rel_k)$ the (mixed)  {\bf symplectic stabilizer group} of $f$ is the (not necessarily maximal) subgroup of the symplectic Weyl group group generated by the Weyl operators $a \in P_k^n$ so that:
 
 $$
 \begin{tikzpicture}
@@ -4698,13 +4805,16 @@ This formalizes the relationship between mixed stabilizer circuits and stabilize
 
 
 
-Every stabilizer code has an associated affine isotropic subspace and affine coisotropic subspace taking the symplectic complement of the linear component of the affine subspace. However, as noted in Remark  \ref{rem:xdisc}, $\Aff\Isot\Rel_{\F_p} \not \cong \Aff\Co\Isot\Rel_{\F_p}$, so their compositions as affine relations are different. The interpretation of the doubled zero postselection as the quantum discard map is not sound with respect to relational composition.
-% Even though pure stabilizer states have larger stabilizer groups than mixed stabilizer states (stabilizer codes); the corresponding $\F_p$-linear subspaces have smaller dimensions.
+It was already known that stabilizer codes are in bijection with  affine isotropic subspaces, for example \cite[???]{gross}.  Indeed any affine coisotropic subspace is canonically associated to an affine isotropic subspace by  taking the symplectic complement of the linear component of the affine subspace. However, as noted in Remark  \ref{rem:xdisc}, $\Aff\Isot\Rel_{\F_p} \not \cong \Aff\Co\Isot\Rel_{\F_p}$, so their compositions as affine relations are different. The interpretation of the doubled zero postselection as the quantum discard map is not sound with respect to relational composition.   
+
+
+
 We also can do the same for Spekkens' toy model:
 
 \begin{corollary}
 $\Aff\Co\Isot\Rel_{\F_2}\cong \CPM(\Aff\Lag\Rel_{\F_2})$ is Spekkens' toy model with mixed states.
 \end{corollary}
+
 Just as Spekkens' toy model is an epistemic restricted toy theory of quantum circuits; by dualizing things, we also have that $\Aff\Co\Isot\Rel_{\F_p}$ is an empistemically restricted toy theory of quantum circuits; albeit the epistemic restriction is going in the wrong direction to capture stabilizer quantum mechanics.
 
 
@@ -5369,7 +5479,7 @@ This can be verified by factoring the generators in \cite{impedence} into the ap
 %Recall the observation from Corollary \ref{cor:stabcode} that nonempty states in $\Aff\Co\Isot\Rel_{\F_p}$ correspond to stabilizer codes. Moreover an affine coisotropic subspace of $\F_p^{2n}$ with dimension $m$  interpreted as a state in $\CPM(\Stab_p)$ encodes $m-n$ logical qubits in $n$ physical qubits.  In the literature, these are the $[n,m-n]$ odd prime dimensional qudit stabilizer codes \cite{????}.  In this section we show how to model error correction protocols within this framework.  Starting with stabilizer codes and then extending this interpretation to topological stabilizer codes by looking at the quantized Weinstein category.
 
 Quantum channels are inherently noisy, and it is an active area of study to protect quantum channels against errors.  Quantum error detection/correction protocols are often performed using stabilizer circuits, which is amenable to the symplectic formalism.  We will the categorical semantics for stabilier codes to describe quantum error correction protocols. 
-In this section, we show how to implement quantum error correction protocols for stabilizer codes (see \cite{gottesman}) using the string diagrams we developed in the previous section.   This generalizes the graphical $\F_2$-linear subspace semantics of qubit CSS codes in \cite{grok} to quopit stabilizer codes as well as qubit CSS codes.
+In this section, we show how to implement quantum error correction protocols for stabilizer codes (see \cite{gottesman}) using the string diagrams we developed in the previous section.   This generalizes the graphical $\F_2$-linear subspace semantics of qubit CSS codes in \cite{grok} to quopit stabilizer codes as well as qubit CSS codes plus Weyl operators.
 
 
 Fix an odd prime $p$.
@@ -6208,7 +6318,7 @@ $$
 %Because the encoder is an affine symplectomorphism,  it an affine transformation ${\sf enc}: \F_p^{2k}\to \F_p^{2n}$.  Given a logical Weyl operator $W(z,x)$ on $k$ qudits the corresponding physical operator is $W({\sf enc}(z,x))$ on $n$ qudits.  One may wish to apply logical operations to the physically encoded state before the decoding proceedure.
 
 
-All of the things we have discussed in the section also works for qubits when the stabilizer code has trivial phases: ie, it is a CSS code.  Indeed qubit CSS codes are very common in the literature.  We use the threefold qubit repetition code (see \cite[\S 10.1.1]{nielsen}) as an example:
+All of the things we have discussed in the section also works for qubits when the stabilizer code has trivial phases linear: ie, it is a CSS code, possibly with Weyl operators.  Indeed qubit CSS codes are very common in the literature.  We use the threefold qubit repetition code (see \cite[\S 10.1.1]{nielsen}) as an example:
 \begin{example}
 \label{ex:rep}
 Consider the Linear subspace:
@@ -7395,38 +7505,123 @@ $$
 $$
 \end{example}
 
+
+\section{Discussion}
 It is important to note that the controlled operation we applied for the error correction step requires nonlinear classical processing power, and therefore the diagram we drew doesn't ``live'' within the calculus we have constructed throughout this paper. 
 
 Indeed, in this example, we have secretly been working in the pushout:
 
-$$\ZXA \leftarrow \LinRel_{\F_2} \rightarrow \Aff\Co\Isot\Rel_{\F_p}^M$$
+$$\ZXA/\sim \leftarrow \Aff\Rel_{\F_2} \rightarrow \Aff\Co\Isot\Rel_{\F_2}^M$$
 
-We can afford to do this because of the presentation of $\ZXA$ in the previous chapter. However, this is not very satisfying, because we only have a presentation for qubit nonlinear post-processing; and the symplectic formalism only gives a semantics for quantum circuits without phase-shift gates.   This gives more motivation to actually work out a presentation for the qudit version of $\ZXA$.
+
+Where $\ZXA/\sim$ is the prop of Boolean {\em relations} which we presented by taking a quotient of the prop $\ZXA$.
+Where moreover  $\Aff\Rel_{\F_2}\to \ZXA/\sim$ sends linear subspaces to subsets; and  $\Aff\Rel_{\F_2} \to \Aff\Co\Isot\Rel_{\F_2}^M$  sends 
+$$(n\xrightarrow{f} m) \mapsto (C^{\otimes n}\xrightarrow{(p_Z^{\otimes n}, f, p_Z^{\otimes m})} C^{\otimes n})$$
+
+So that we can regard the {\em classical wires} as being subsets rather than affine subspaces.
+We can afford to do this because of the presentation of $\ZXA/\sim$ in the previous chapter. However, this is not very satisfying, because we only have a presentation for qubit nonlinear post-processing; and the symplectic formalism only gives a semantics for quantum circuits without phase-shift gates, as discussed in ???? \ref{????}.   This gives more motivation to actually work out a presentation for the quopit version of $\ZXA/\sim$ where there is no such subtlely.
 
 
 This also begs the following question.  If quopit stabilizer circuits correspond to affine coisotropic subspaces of symplectic vector spaces, is there a succinct characterization of the structure of the subsets of  $\F_p^{2n}$ obtained by applying nonlinear classical processing to stabilizer states?
-The nonlinear processing imposes equations which mean that the subset is no longer affine, for example:
+The nonlinear processing imposes equations which mean that the subset is no longer affine, for example consider the following stabilizer state which is measured, the measurement outcomes are multiplied and then a phase correction is performed using this value:
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (358) at (248.5, 10.5) {};
+		\node [style=Z] (359) at (249.75, 10.5) {};
+		\node [style=none] (360) at (248.75, 11) {};
+		\node [style=none] (362) at (248.25, 11) {};
+		\node [style=none] (363) at (249.5, 11) {};
+		\node [style=none] (365) at (250, 11) {};
+		\node [style=X] (369) at (247.5, 10.5) {};
+		\node [style=Z] (370) at (250.75, 10.5) {};
+		\node [style=none] (371) at (247.75, 11) {};
+		\node [style=none] (372) at (247.25, 11) {};
+		\node [style=none] (373) at (250.5, 11) {};
+		\node [style=none] (374) at (251, 11) {};
+		\node [style=Z] (375) at (248.75, 11) {};
+		\node [style=Z] (376) at (247.75, 11) {};
+		\node [style=none] (377) at (251, 11) {};
+		\node [style=none] (378) at (250, 11) {};
+		\node [style=mult] (37wer9) at (250.75, 12) {};
+		\node [style=none] (379) at (250.75, 12) {};
+		\node [style=X] (380) at (250, 13) {};
+		\node [style=Z] (381) at (247.75, 12) {};
+		\node [style=X] (382) at (250, 12) {};
+		\node [style=Z] (383) at (247.75, 13) {};
+		\node [style=Z] (384) at (248.5, 12) {};
+		\node [style=none] (385) at (250, 13.75) {};
+		\node [style=none] (386) at (247.75, 13.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=45, out=-90] (360.center) to (358);
+		\draw [in=135, out=-90] (362.center) to (358);
+		\draw [in=45, out=-90] (365.center) to (359);
+		\draw [in=135, out=-90] (363.center) to (359);
+		\draw [in=45, out=-90] (371.center) to (369);
+		\draw [in=135, out=-90] (372.center) to (369);
+		\draw [in=45, out=-90] (374.center) to (370);
+		\draw [in=135, out=-90] (373.center) to (370);
+		\draw [style=red, in=-120, out=90] (378.center) to (379);
+		\draw [style=red, in=-15, out=90, looseness=0.75] (379) to (380);
+		\draw [style=red, in=90, out=-60] (379) to (377.center);
+		\draw [in=225, out=90] (372.center) to (381);
+		\draw [in=90, out=-45] (381) to (362.center);
+		\draw [in=-45, out=90] (373.center) to (382);
+		\draw [in=90, out=-135] (382) to (363.center);
+		\draw (383) to (381);
+		\draw [in=-15, out=90, looseness=1.25] (384) to (383);
+		\draw (382) to (380);
+		\draw (383) to (386.center);
+		\draw (380) to (385.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
 
-TODO 
+This mixed quantum state is stabilized by Weyl operators of the form:
+$$\{W(z,x_1+x_2+x_1\cdot x_2)\ |\ \forall z,x_1,x_2\in \F_p\}$$
+However, the stabilizers do {\em not} correspond to an affine subspace of $\F_p^2$ because of the nonlinear factor $x_1\cdot x_2$.
 
-However, not every subset of $\F_p^{2n}$ can be constructed in this way.  In particular, there is no quantum circuit that can simultaneously copy the position and momentum.  To the knowledge of the author, this question has not yet been addressed, presumably, because classical processing and stabilizer codes are usually presented on different footings, as opposed to both being regarded themeselves as subspaces.
+
+
+We can't construct circuits stabilized by Weyl operators corresponding to arbitrary {\em subsets} of $\F_p^{2n}$; for example, we can't copy the $Z$ and $X$ variables, because they can not be simultaneously measured.
+
+
+Similarly, we can't produce the qudit generalization of the gate which multiplies standard basis elements in $\FHilb$, as we did with the $\AND$ gate in $\ZXA$.  This is because we can only multiply the {\em classical} outcomes.
+
+
+What is the structure of this intermediate notion of subspace?
+ To the knowledge of the author, this question has not yet been addressed, presumably, because classical processing and stabilizer codes are usually presented on different footings, as opposed to both being regarded themeselves as subspaces.
 
  
 
+We have not given an undoubled completeness proof for $\Aff\Co\Isot\Rel_k$, although the completeness of the quopit stabilizer ZX-calculus \cite{poor} gives a completness result for $\Aff\Co\Isot\Rel_{\F_p}$.  A completness result for arbitrary fields should closely follow their techniques.
 
-We have not given an undoubled completeness proof for $\Aff\Co\Isot\Rel_k$; instead this will be presented in a forthcoming paper.  The completeness proof mirrors the completeness result of \cite{poor}; where symplectic geometry is secretly hiding behind the normal form which they use to prove completeness.
+Even though completeness for the quopit stabilizer fragment of the ZX-calculus is known, there is motivation for generalizing their result.
+Because everything we have developed in this chapter works for all fields, rather than just odd prime fields; this begs the question if this semantics could be used for continuous variable quantum mechanics/quantum photontics, by working over fields with characteristic 0.  For example, \cite[????]{gross} discusses how  Gaussian states on the Hilbert space $\ell^2(\R^n)$ are in bijection with the affine Lagrangian subspaces of the symplectic vector space $\C^{2n}$ given by complex valued graph states, acted on by real valued Weyl operators. 
+Gaussian states are the analogue of stabilizer states for continuous variables, allowing for coherent control ????.
+However,  $\Aff\Lag\Rel_{\C}$ contains not only these Gaussian states, but also the dirac deltas for the position and momentum observables, providing a path towards exploring continuous variable ZX-calculi.
 
-There is also a practical motivation for providing this graphical calculus.  Just as increasing the characteristic of the prime field increases the quopit dimension; if one transitions to working in $\Aff\Co\Isot\Rel_k$ where $k$ has characteristic 0, it appears that this will give a semantics for continous variable quantum mechanics.
+These   dirac deltas are ``nonphysical'' in the sense that they can not be interpreted as states in $\Hilb$; which is one way to see why $\Hilb$ not compact closed.  However, they are often used  to perform calculation, for example continuous variable quantum teleportation \cite{???}. 
 
-
-For example, given a linear subspace of $\R^n$; then $\ell^2(\R^n)$ has the structure of a countably infinite Hilbert space; the dirac deltas being picked out by the indicator functions on the elements of $\R^n$. 
-
-Such a Hilbert space is the natural semantics for Guassian quantum mechanics; where a state is determined not by a finite set of stabilizers, but rather, by a probability distribution over $\R^{2n}$.  Such a probabilty distribution has the propery 
-
-
-
-
- interpretatble in  $\Aff\Co\Isot\Rel_\C$, following the 
+Nonstandard analysis has been used to try to solve the problem of dirac deltas not existing in $\Hilb$/the lack of compact closure in infinite dimensions; however, this approach is considerably more powerful, as well as complicated.  The symplectic approach could potentially provide a simpler path towards expanding categorical quantum mechanics towards continous variables.
 
 
+
+
+
+%
+%There is also a practical motivation for providing this graphical calculus.  Just as increasing the characteristic of the prime field increases the quopit dimension; if one transitions to working in $\Aff\Co\Isot\Rel_k$ where $k$ has characteristic 0, it appears that this will give a semantics for continous variable quantum mechanics.
+%
+%
+%For example, given a linear subspace of $\R^n$; then $\ell^2(\R^n)$ has the structure of a countably infinite Hilbert space; the dirac deltas being picked out by the indicator functions on the elements of $\R^n$. 
+%
+%Such a Hilbert space is the natural semantics for Guassian quantum mechanics; where a state is determined not by a finite set of stabilizers, but rather, by a probability distribution over $\R^{2n}$.  Such a probabilty distribution has the propery 
+%
+%
+%
+%
+% interpretatble in  $\Aff\Co\Isot\Rel_\C$, following the 
+%
+%
 

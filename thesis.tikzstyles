@@ -21,7 +21,7 @@
 \tikzstyle{quantum}=[line width=.6mm]
 \tikzstyle{map}=[draw, color=black, fill=white, rectangle]
 \tikzstyle{mapperp}=[draw, color=white, fill=black, text=white, rectangle]
-\tikzstyle{s}=[draw, color=black, fill=gray, rectangle]
+\tikzstyle{s}=[draw, color=black, fill=black, rectangle]
 \tikzstyle{mapthick}=[draw, color=black, fill=white, rectangle, inner sep=0pt, minimum size=15pt, line width=0.5mm]
 \tikzstyle{otimes}=[draw, fill=white, rotate=45, scale=0.9, minimum height=.1cm, circle, append after command={[shorten >=\pgflinewidth, shorten <=\pgflinewidth]
 (\tikzlastnode.north) edge (\tikzlastnode.south)
@@ -45,6 +45,14 @@ label={center:{\it \&}},
 }}
 
 
+\tikzset{mult/.style={
+draw,
+scale=1,
+and gate US,
+rotate=90,
+fill=white,
+label={center:{.}},
+}}
 
 \tikzset{andin/.style={
 draw,
