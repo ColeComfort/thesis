@@ -1208,7 +1208,7 @@ Composition of the 1-cells and 2-cells is given pointwise; and the monoidal stru
 
 \end{definition}
 
-There is a graphical calculus for pointed profunctors, which we will first specialize to pointed categories.  To my knowledge the graphical calculus is not fully worked out literature.  Initially called ``internal string diagrams''  by \cite{vicary} when applied to  $\Vect$-enriched Profunctors, these have also been called ``open diagrams'' by \cite{mario} for $\Sets$-enriched profunctors.  We will return to the case of $\Sets$-enriched profunctors shortly.
+There is a graphical calculus for pointed profunctors, which we will first specialize to pointed categories.  To my knowledge the graphical calculus is not fully worked out in the literature.  Initially called ``internal string diagrams''  by \cite{vicary} when applied to  $\Vect$-enriched Profunctors, these have also been called ``open diagrams'' by \cite{mario} for $\Sets$-enriched profunctors.  We will return to the case of $\Sets$-enriched profunctors shortly.
 
 Given the pointed functor,$(1_\X, f \in \X(1_{\X}(X),Y))$, draw the identity as a cylinder and the map inside the cylinder as follows:
 
@@ -1224,7 +1224,7 @@ $$
     \end{scope}
 \end{tikzpicture}
 $$
-Think if the maps maps inside the category as ``living'' within the cylinder; wherein one can apply rewrite rules coming from the equational theory of the category.  
+Think of the maps inside the category as ``living'' within the cylinder; wherein one can apply rewrite rules coming from the equational theory of the category.  
 
 Functors are drawn as membranes between separating the cylinder for the domain and codomain category; functoriality means that things can pass up through the membrane:
 
@@ -1446,9 +1446,9 @@ $$
 $$
 
 
-One way in which this diverges from proof nets is that these generators from a monoidal bicategory, not a monoidal category; forcing one to keep track of which 2-cells have been applied.  A-priori, in this kind of setting, there is no guarantee that two different ways to get to the same diagram are equal.
+One way in which this diverges from proof nets is that these generators form a monoidal bicategory, not a monoidal category; forcing one to keep track of which 2-cells have been applied.  A-priori, in this kind of setting, there is no guarantee that two different ways to get to the same diagram are equal.
 
-Luckily, for monoidal categories, this issue can be resovled via the multicategories.  Informally, a multicategory is like a category, except for the multimaps now go from lists of objects in the domain to a single object in the codomain.  Composition of multimaps corresponds to plugging a single output into an inputs as if one is nesting trees.  Strict monoidal categories correspond to the representable multicategories where every list of objects can be tensored together.
+Luckily, for monoidal categories, this issue can be resovled via the multicategories.  Informally, a multicategory is like a category, except for the multimaps now go from lists of objects in the domain to a single object in the codomain.  Composition of multimaps corresponds to plugging a single output into an input as if one is nesting trees.  Strict monoidal categories correspond to the representable multicategories where every list of objects can be tensored together.
 
 An equivalent way to define a pseudomonoid in $\Cat$ would be to ask for a monoidal pseudofunctor $\one\to \Cat$ from the terminal monoidal category into $\Cat$.  This is the same data as a multifunctor $\one \to \Cat$ from the one object multicategory to $\Cat$ regarded as a multicategory.
 
@@ -1475,7 +1475,7 @@ To attempt to rectify this with the 2-sided nature of proof nets, we recall the 
 The category of $\Prof$, of profunctors internal to $\Sets$ has:
 \begin{description}
 \item[0-cells:] Categories
-\item[1-cells:]  The morphisms are {\em profunctors} given by the following correspondence.
+\item[1-cells:]  The morphisms are {\em profunctors} given by the following correspondence:
 $$
 \dfrac
 {F:\X^\op\times\Y\to\Sets \quad \in\ \Cat}
@@ -1496,7 +1496,7 @@ The identity profunctor on $\X$ is given by the hom functor
 $$\X(-,=): \X^\op\times\X\to\Sets$$
 
 
-Intutitively, this is a categorification of trace of a matrix where the natural numbers are replaced with categories, and the commutative ring is replaced with $\Sets$.  Thus, the composition of profunctors categorifies matrix multiplication: the trace of the product of matrices.
+Intutitively, this is a categorification of trace of a matrix where the natural numbers are replaced with categories, and the commutative ring is replaced with $\Sets$.  Thus, the composition of profunctors categorifies matrix multiplication.
 
 
 \item[2-cells:]  2-cells between parallel profunctors $P,Q:\X\proarrow \Y$ are natural transformations between the underlying profunctors $P,Q:\X^\op\times \Y \to \Sets$.
@@ -1527,11 +1527,11 @@ There are two embeddings of $\Cat$ into $\Prof$ that preserve the monoidal struc
 The representable embedding $(\_)_*:\Cat^\co \to \Prof$ is the identity on objects,  covariant on 1-cells and contravariant on 2-cells.  It takes functors $F:\X\to \Y$ to profunctors  $F_*:\X\proarrow \Y$.
 
 
-Dually, the corepresentable embedding $(\_)^*:\Cat^\op \to \Prof$  is the identity on objects, contravariant on 1-cells and covariant on 2-cells.It takes functors $F:\X\to \Y$ to profunctors  $F^*:\Y\proarrow \X$.
+Dually, the corepresentable embedding $(\_)^*:\Cat^\op \to \Prof$  is the identity on objects, contravariant on 1-cells and covariant on 2-cells. It takes functors $F:\X\to \Y$ to profunctors  $F^*:\Y\proarrow \X$.
 
 \end{definition}
 
-This two embeddings interact nicely:
+These two embeddings interact nicely:
 
 \begin{lemma}
 Given any functor $F:\X\to \Y$, there is an adjunction $F_* \dashv F^*$ with unit $\eta^F$ and counit $\epsilon^F$.
@@ -1864,7 +1864,7 @@ For context, a similar unpublised result Shulman discussed on the n-category caf
 We can repeatedly apply natural transformations to reduce diagrams composed of the pseudo-Frobenius algbra structure coming from a monoidal category:
 
 \begin{definition}
-Fix a monoidal category $\X$. Say that a connected diagram in $\Prof$ composed of the generators of the corresponding pseudomonoid is in {\bf spider normal form} when is any of the four following types of diagrams (the last of which we will call a scalar spider):
+Fix a monoidal category $\X$. Say that a connected diagram in $\Prof$ composed of the generators of the corresponding pseudomonoid is in {\bf spider normal form} when it is any of the four following types of diagrams (the last of which we will call a scalar spider):
 
 
 $$
@@ -2071,7 +2071,7 @@ $$\phi^L,\phi^R,\eta^\otimes,\alpha_*,\alpha^*,(u^L)_*,(u^L)^*,(u^R)_*,(u^R)^*$$
 
 As well as the symmetric monoidal structure of $\Prof$.  
 
-Furthermore, given any {\em not-necessarily connected} diagram can be reduced to stratified spider normal form using the same collection of $2$-cells, where the order of the scalars spiders with respect to the tensor product is preserved by normalization
+Furthermore, given any {\em not-necessarily connected} diagram can be reduced to stratified spider normal form using the same collection of $2$-cells, where the order of the scalars spiders with respect to the tensor product is preserved by normalization.
 \end{lemma}
 
 
@@ -2089,7 +2089,7 @@ The rest of this chapter relies on this categorification of the spider theorem b
 
 A similar result is proven for diagrams generated by the free pseudo-Frobenius algebra \cite{dunn}.  However, because the monoid and the comonoid are not required to be adjoint to each other, they require that the shapes be simply connected.  They also require that the shape has a nontrivial boundary, so that scalars are not allowed.
 
-From now on, let us assume that the scalars in our monoidal category are central, so that they commute with all other maps.  Because of the way we moved the scalar spiders out of the way to perform spider fusion unobstructed, we have to make this concession if we want to have any meaningful semantics
+From now on, let us assume that the scalars in our monoidal category are central, so that they commute with all other maps.  Because of the way we moved the scalar spiders out of the way to perform spider fusion unobstructed, we have to make this concession if we want to have any meaningful semantics.
 
 Let us ``look inside'' $\Prof$ just as we did for $\Cat$, to see how normalization acts on points.
 
@@ -2484,9 +2484,9 @@ This way of framing the categorified spider theorem lends itself to the followin
 
 
 
-\begin{theorem}[Benabou-Grothendieck construction]
+\begin{theorem}[B\'enabou-Grothendieck construction]
 
-Given a displayed category $F:\D\to \Prof$, the Benabou-Grothendieck category,  $\Pi F$ is given by the pullback:
+Given a displayed category $F:\D\to \Prof$, the B\'enabou-Grothendieck category,  $\Pi F$ is given by the pullback:
 
 $$
 \xymatrix{
@@ -2523,13 +2523,13 @@ We can actually go the other direction.  Given some fixed $\D$, this extends to 
 
 
 
-The idea of regarding monoidal categories as displayed categories is partially motivated by the work of \cite{blanco}, transporting the work of Hermida in the multicategorical setting to the polycategorical setting:  where the inputs and outputs are now both lists of objects.  In this work, they construct the Benabou-Grothendieck {\em *-polycatgory}, coming from a {\em displayed polycategory} $\one\to \Prof$, where $\Prof$ is regarded as a 2-polycategory.  In this *-polycategorical setting, their notion of a Frobenius algebra is precisely  a displayed categories from the terminal *-polycategory.
-Moreover, they identify representable *-polycategories as the  *-polycategories which are poly-bifibrations over the terminal *-polycategory, where representable *-polycategories are in bijection with strict *-autonomous categories.  This notion of bifibration is closely related to the Benabou-Grothendieck construction. 
+The idea of regarding monoidal categories as displayed categories is partially motivated by the work of \cite{blanco}, transporting the work of Hermida in the multicategorical setting to the polycategorical setting:  where the inputs and outputs are now both lists of objects.  In this work, they construct the B\'enabou-Grothendieck {\em *-polycatgory}, coming from a {\em displayed polycategory} $\one\to \Prof$, where $\Prof$ is regarded as a 2-polycategory.  In this *-polycategorical setting, their notion of a Frobenius algebra is precisely  a displayed categories from the terminal *-polycategory.
+Moreover, they identify representable *-polycategories as the  *-polycategories which are poly-bifibrations over the terminal *-polycategory, where representable *-polycategories are in bijection with strict *-autonomous categories.  This notion of bifibration is closely related to the B\'enabou-Grothendieck construction. 
 
 
-However, we can not directly appeal to this result if we want to recapture proof nets.  This is because the composition in polycategories is defined only at a single object at a time. The counit for the tensor product does not make sense in this setting.  Thus, we are not able to get the associators by untensoring twice and then retensoring in the other direction:  such a map can not even be formed!
+However, we can not directly appeal to this result if we want to recapture proof nets.  This is because the composition in polycategories is defined only with respect to a single object at a time. The counit for the tensor product does not make sense in this setting.  Thus, we are not able to get the associators by untensoring twice and then retensoring in the other direction:  such a map can not even be formed!
 
-The displayed {\em category} $F_\X:\sfa\to \Prof$ which we constructed is in some sense trying to recapture this way of looking at things.  Let us see what happens when we compute the Benabou-Grothendieck category of $F_\X$.
+The displayed {\em category} $F_\X:\sfa\to \Prof$ which we constructed is in some sense trying to recapture this way of looking at things.  Let us see what happens when we compute the B\'enabou-Grothendieck category of $F_\X$.
 
 \begin{lemma}
 The indexed category $\Pi F_{\X}$ has a concrete presentation:
@@ -2608,7 +2608,7 @@ This is moreover a strict monoidal category.  The tensor product is given by the
 
 
 In $\Pi F_\X$, the components of the unitors and associators that we drew before as 2-cells are now honest maps which are inverse to each other.% Moreover, the different ways of associating and introducing/removing units are now genuine inverses because their composite reduces to the identity.
-Moreover, $\eta^\otimes$ now induces the equality:
+ Moreover, $\eta^\otimes$ now induces the equality:
 %$$
 %\begin{tikzpicture}[scale=1.5]
 %    \node[Pants, top,bot] (A) at (0,0) {};

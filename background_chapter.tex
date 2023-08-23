@@ -2,12 +2,12 @@
 \section{Category theory}
 \label{sec:cat}
 
-In this section we review some category theory needed for this thesis. We will review the theory of monoidal category theory and its more refined cousins as well as some basic properties of limits as well as internal category theory.
+In this section we review some category theory needed for this thesis. We will review the theory of monoidal category theory and its more refined cousins. We will review some basic properties of limits and categories of spans and relations.  Finally we will review some basic notions in internal category theory.
 
 \subsection{Monoidal categories and string diagrams}
 \label{subsec:moncat}
 
-In this subsection we review the basic theory of monoidal categories as well as their string diagrams. 
+In this subsection we review the basic theory of monoidal categories as well as their string diagrams.   The material for which a reference is not provided can be found in an introductory reference to category theory (eg MacLane \cite{maclane}).
 
 \begin{definition}
 A {\bf monoidal category} is a category $\X$ equipped with a functor $\X\times\X\to \X$ called the {\bf tensor product}, equipped with a distinguished object $I$ of $\X$ called the {\bf tensor unit}; along with the following natural isomorphisms (given by components):
@@ -61,28 +61,44 @@ $$
 
 
 We will call a map out of the tensor unit a {\bf state}, a map into the tensor unit an {\bf effect}, and an endomorphism on a the tensor unit a {\bf scalar}.
+\end{definition}
 
 
+\begin{example}
+Both the category $\FSets$ of finite sets and functions and the category $\Sets$ of sets and functions are monoidal categories under both the product and under the coproduct.
+
+Given a field $k$, the category $\Vect_k$ vector spaces over $k$  and the category $\FVect_k$ of finite-dimensional vector spaces over $k$ are monoidal with respect to the bilinear tensor product and the direct sum.
+
+The category $\Hilb$ of Hilbert spaces and the category $\FHilb$ of finite dimensional Hilbert spaces are both monoidal categories with respect to the bilinear tensor product and direct sum.
+\end{example}
+
+
+
+\begin{definition}
 Given two monoidal categories $\X$ and $\Y$ a (strong) {\bf monoidal functor} from $\X$ to $\Y$ is a functor $F:\X\to \Y$ together with an isomorphism $\epsilon:I^\X \to F(I^\X)$ and natural isomorphism with components $\mu_{X,Y}:F(X)\otimes^\Y F(Y) \to F(X \otimes^\X Y)$ such that the following coherence equations hold:
 
+\begin{description}
+
+\item[Interaction with associator:]
 
 $$
 \xymatrix{
  (F(X)\otimes^\Y F(Y))\otimes^\Y F(Z) \ar[rrr]^{\alpha_{F(X),F(Y),F(Z)}^{\Y}} \ar[d]_{\mu_{X,Y}\otimes^\Y F(Z)}
    &&& F(X) \otimes^\Y (F(Y)\otimes^\Y F(Z)) \ar[d]^{F(X)\otimes^\Y \mu_{Y,Z}}
  \\F(X\otimes^\X Y)\otimes^\Y F(Z) \ar[d]_{\mu_{X\otimes^\X Y,Z}}
-   &&& F(X)\otimes^\Y F(Y\otimes^\X Z) \ar[d]_{\mu_{X,Y\otimes^\Y Z}}
+   &&& F(X)\otimes^\Y F(Y\otimes^\X Z) \ar[d]^{\mu_{X,Y\otimes^\Y Z}}
  \\ F((X\otimes^\X Y) \otimes^\X Z) \ar[rrr]_{F(\alpha_{X,Y,Z}^\Y)}
    &&& F(X\otimes^\X (Y\otimes^\X Z))
 }
 $$
 
+\item[Interaction with unitors:]
 $$
 \xymatrix{
  I^\Y \otimes^\Y F(X) \ar[rr]^{\epsilon \otimes^\Y F(X)} \ar[d]_{(u^L)^\Y_{F(X)}}
   &&  F(I^\X) \otimes^\Y F(X) \ar[d]^{\mu_{1^\X,X}}
 \\F(X)
- & & F(I^\X\otimes^\X X) \ar[ll]_{F((u^L)^\X_{X} )}
+ & & F(I^\X\otimes^\X X) \ar[ll]^{F((u^L)^\X_{X} )}
 }
 $$
 
@@ -92,9 +108,10 @@ $$
   F(X)  \otimes^\Y I^\Y \ar[rr]^{ F(X)  \otimes^\Y \epsilon} \ar[d]_{(u^R)^\Y_{F(X)}}
   && F(X) \otimes^\Y    F(I^\X)  \ar[d]^{\mu_{X,1^\X}}
 \\F(X)
- & & F(X \otimes^\X I^\X ) \ar[ll]_{F((u^R)^\X_{X} )}
+ & & F(X \otimes^\X I^\X ) \ar[ll]^{F((u^R)^\X_{X} )}
 }
 $$
+\end{description}
 
 
 A {\bf monoidal natural transformation} between parallel monoidal functors $F,F':\X\to \Y$ is a natural transformation $\phi:F\to F'$ such that the following coherence equations hold:
@@ -118,23 +135,10 @@ Monoidal categories, monoidal functors and monoidal natural transformations arra
 \end{definition}
 
 
-\begin{example}
-Both the category $\FSets$ of finite sets and functions and the category $\Sets$, of sets and functions is a monoidal category under both the product and under the coproduct.
+%Both the category $\FinMonot$ of finite sets and monotone functions and the category $\Monot$ of sets and monotone functions are monoidal categories under both the product and under the coproduct.
 
 
-%Finite ordinals and functions are a strict monoidal under the same tensor product.
 
-Both the category $\FinMonot$ of finite sets and monotone functions and the category $\Monot$, of sets and monotone functions is a monoidal category under both the product and under the coproduct.
-
-
-%Finite ordinals and order preserving maps is also a monoidal category under the tensor product.
-
-
-Given a field $k$, the category $\Vect_k$ vector spaces over $k$  and the category $\FVect_k$ of finite-dimensional vector spaces over $k$ are monoidal with respect to the bilinear tensor product and the direct sum.
-
-
-The category $\Hilb$ of Hilbert spaces and the category $\FHilb$ of finite dimensional Hilbert spaces are both monoidal categories with respect to the bilinear tensor product and direct sum.
-\end{example}
 
 
 
@@ -142,12 +146,24 @@ If all of the components of the natural transformations are equalities, then the
 A {\bf strict monoidal functor} is a monoidal functor where $\epsilon$ and $\mu$ are the identity.
 Likewise, strict monoidal categories, strict monoidal functors and monoidal natural transformations arrange themselves into the 2-category of strict monoidal categories.
 
+
+
+
 \begin{example}
-The category $\FinOrd$ of  finite ordinals and functions is a strict monoidal category under the product and coproduct.
 
-The category $\FinOrdMonot$ of finite ordinals and order-preserving maps is a strict monoidal category under the coproduct.
+The category $\FinOrd$ of finite ordinals and functions is a strict monoidal category where:
 
-Given a semiring $S$, the category, $\Mat_S$, of matrices over $S$ is strict monoidal under the bilinear tensor product and the direct sum.
+\begin{description}
+\item[Objects:] The objects are the natural numbers.
+
+\item[Maps:]
+A map from $n\to m$ is a function from $[n]\to [m]$
+
+
+\item[Tensor product:]
+
+\end{description}
+
 \end{example}
 
 
@@ -156,7 +172,13 @@ Every monoidal category is monoidally equivalent to a strict monoidal category.
 \end{theorem}
 
 
-Strict monoidal categories have a particularly concise graphical calculus, called {\bf string diagrams}.  A map $f:X_1\otimes \cdots X_n\to Y_1\otimes \cdots \otimes Y_n$ is drawn as a box with $n$ wires coming out of the bottom and $m$ wires coming out of the top, all being labelled by their respective objects, as follows:
+The category $\FinOrd$ of  finite ordinals and functions is a strict monoidal category under the product and coproduct.
+
+Given a commutative semiring $S$, the category, $\Mat_S$, of matrices over $S$ is strict monoidal under the bilinear tensor product and the direct sum.
+
+
+
+Strict monoidal categories have a particularly concise graphical calculus, called {\bf string diagrams}.  A map $f:X_1\otimes \cdots X_n\to Y_1\otimes \cdots \otimes Y_m$ is drawn as a box with $n$ wires coming out of the bottom and $m$ wires coming out of the top, all being labelled by their respective objects, as follows:
 
 
 $$
@@ -189,8 +211,43 @@ $$
 \end{tikzpicture}
 $$
 
+The identity on an object $X$ is drawn as a line:
 
-We often omit the objects when it is clear from context.  The tensor product of two maps $f:W_1\otimes W_n\to X_1\otimes \cdots \otimes X_m$ and $g:Y_1\otimes Y_k\to Z_1\otimes \cdots \otimes Z_\ell$,  $f\otimes g$ is given by pasting them side-by-side:
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (1) at (0.5, 0.5) {};
+		\node [style=none] (3) at (0.5, 3) {};
+		\node [style=none] (4) at (0.5, 0.25) {$X$};
+		\node [style=none] (6) at (0.5, 3.25) {$X$};
+		\node [style=map] (13) at (0.5, 1.75) {$1_X$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (3.center) to (13);
+		\draw (13) to (1.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (9) at (1.5, 0.5) {};
+		\node [style=none] (10) at (1.5, 3) {};
+		\node [style=none] (11) at (1.5, 0.25) {$X$};
+		\node [style=none] (14) at (1.5, 3.25) {$X$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (10.center) to (9.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+We often omit the objects when it is clear from context.  The tensor product of two maps
+
+$$
+\dfrac{f:W_1\otimes\cdots \otimes W_n\to X_1\otimes \cdots \otimes X_m, \hspace*{.5cm} g:Y_1\otimes\cdots \otimes Y_k\to Z_1\otimes \cdots \otimes Z_\ell}{f\otimes g:W_1\otimes\cdots \otimes W_n\otimes Y_1\otimes\cdots \otimes Y_k\to  X_1\otimes \cdots \otimes X_m\otimes Z_1\otimes \cdots \otimes Z_\ell}
+$$
+
+is drawn by pasting them side-by-side:
 
 
 $$
@@ -298,7 +355,15 @@ $$
 \end{tikzpicture}
 $$
 
-And a map $f:X_1\otimes X_n:\to Y_1\otimes \cdots \otimes Y_m$ is composed with a map $f:Y_1\otimes Y_m:\to Z_1\otimes \cdots \otimes Z_k$ by connecting the $Z_i$ together:
+And the composite of two  composable maps
+
+$$
+\dfrac{
+f:X_1\otimes \cdots \otimes X_n\to Y_1\otimes \cdots \otimes Y_m,\hspace*{.5cm}g:Y_1\otimes\cdots \otimes Y_m\to Z_1\otimes \cdots \otimes Z_k}
+{f;g:X_1\otimes \cdots \otimes X_n\to Z_1\otimes \cdots \otimes Z_k}
+$$ 
+
+is drawn by connecting each of  the $Z_i$ wires together:
 
 $$
 \begin{tikzpicture}
@@ -363,7 +428,7 @@ $$
 \end{tikzpicture}
 $$
 
-The axioms of a strict monoidal category are equivalent to planar isotopy of their string diagrams, for example, one can exchange two disconnected maps:
+The axioms of a strict monoidal category are equivalent to planar isotopy of their string diagrams, for example, the functoriality of the tensor product allows one to exchange two disconnected maps:
 
 $$
 \begin{tikzpicture}
@@ -801,7 +866,7 @@ $$
 \end{definition}
 
 
-Notice that the by flipping around the diagrams for the unitors and associators we get their inverses: 
+Notice that by flipping around the diagrams for the unitors and associators we get their inverses: 
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -923,7 +988,7 @@ $$
 
 
 
-I will refer to the string diagrams in this category as proof nets for monoidal categories, because of their close relation to proof nets for linearly distributive categories.  Even in the case when we are already working in a strict monoidal category, it will still often be useful to use proof nets; for example, we can bundle up wires together and forgo having to forgo induction arguments.  Indeed, proof nets have been rediscovered in the setting of quantum circuits as the scalable ZX-calculus for precisely this reason \cite{szx} (although they have not discovered the units and counits).  We will discuss this further in Section \ref{sec:cqm}.
+I will refer to the string diagrams in this category as proof nets for monoidal categories, because of their close relation to proof nets for linearly distributive categories.  Even in the case when we are already working in a strict monoidal category, it will still often be useful to use proof nets; for example, we can bundle up wires together so that we can make induction arguments using pictures.  Indeed, proof nets have been rediscovered in the setting of quantum circuits as the scalable ZX-calculus for precisely this reason \cite{szx} (although they have not discovered the units and counits).  We will discuss this further in Section \ref{sec:cqm}.
 
 
 These proof nets are closely related to proof nets for linearly-distributive categories; so much so, that this monoidal counterpart was considered folklore by some.  I will discuss the relation of proof nets in linear logic in Chapter \ref{chap:grothendieck}, as well as an attempt to connect them to other categorical constructions.  This proved to be much more difficult than expected.
@@ -938,7 +1003,7 @@ $\FinOrdMonot$ is a skeletal category and is strict monoidal under the coproduct
 $\FinOrd$ is a skeletal category and strict monoidal. It is monoidally equivalent to $\FSets$ under the product and coproduct.
 
 
-Given a semiring $R$, $\Mat_R$ is a skeletal a skeletal category and is strict monoidal. Moreover for a field $k$, $\Mat_k$ is monoidally equivalent to $\FVect_k$ under the bilinear tensor product and the direct sum.
+Given a commutative semiring $R$, $\Mat_R$ is a skeletal a skeletal category and is strict monoidal. Moreover for a field $k$, $\Mat_k$ is monoidally equivalent to $\FVect_k$ under the bilinear tensor product and the direct sum.
 
 In particular, because $\FVect_\C$ and $\FHilb$ are monoidally equivalent under both the bilinear tensor product and the direct sum, then $\FHilb$ is monoidally equivalent to the skeletal strict monoidal category $\Mat_C$ under both tensor products.
 \end{example}
@@ -946,7 +1011,7 @@ In particular, because $\FVect_\C$ and $\FHilb$ are monoidally equivalent under 
 There is a more refined notion of monoidal category where one can pass wires through each other:
 
 \begin{definition}
-A {\bf symmetric monoidal category} is a monoidal category equipped with an extra natural isomorphism called the symmetry:
+A {\bf symmetric monoidal category} is a monoidal category equipped with an extra natural isomorphism called the braid:
 
 $$
 c_{X,Y}:X\otimes Y \to Y\otimes X
@@ -1007,7 +1072,7 @@ A {\bf symmetric monoidal transformation} is a monoidal natural transformation b
 
 
 
-A {\bf strict symmetric monoidal category} is a symmetric monoidal category, whose underlying monoidal category is strict. That is to say, all the coherence isomorphisms, except for the symmetry map are identities.
+A {\bf strict symmetric monoidal category} is a symmetric monoidal category, whose underlying monoidal category is strict. That is to say, all the coherence isomorphisms, except for the braid are identities.
 A {\bf strict symmetric monoidal functor} is a symmetric monoidal functor which is simultaneously a strict monoidal functor.
 
 
@@ -1019,7 +1084,7 @@ Just as in the monoidal case, there are 2-categories of strict monoidal and mono
 $\Sets$, $\FSets$, $\FinOrd$ $\Mat_R$, $\Vect_k$, $\Hilb$, $\FHilb$ are all symmetric monoidal categories with respect to the aforementioned monoidal structures; and the corresponding equivalences between these categories are also symmetric monoidal.
 \end{example}
 
-Strict monoidal categories also have a notion of string diagrams, except the symmetry allows wires to pass over each other:
+Strict monoidal categories also have a notion of string diagrams, except the braid allows wires to pass over each other:
 
 $$
 c_{X,Y}=
@@ -1172,7 +1237,7 @@ $$
 Every symmetric monoidal category is symmetric monoidally equivalent to a strict symmetric monoidal category. 
 \end{theorem}
 
-Non-strict symmetric monoidal categories have essentially the same notion of proof nets as non-strict monoidal categories, except where the symmetry is internalized to untensoring, swapping and then tensoring:
+Non-strict symmetric monoidal categories have essentially the same notion of proof nets as non-strict monoidal categories, except where the braid is internalized to untensoring, braiding and then tensoring:
 
 $$
 \begin{tikzpicture}
@@ -1261,11 +1326,10 @@ $$
 
 \item[Compatibility with the tensor product:]\
 
-
-\hspace*{-1cm}
-\scalebox{1}{$
+\hspace*{-1.1cm}
+\scalebox{.97}{$
 \xymatrix{
-I  \ar[rr]^{(u_I^L)^{-1}} \ar[rrrddddd]!<-.5ex,-.5ex>_{\eta_{X\otimes Y}}
+I  \ar[rr]^{(u_I^L)^{-1}} \ar[rrrdddddd]!<-2ex,-2ex>_{\eta_{X\otimes Y}}
  &
  & I\otimes I \ar[r]^{\hspace*{-1.3cm}\eta_X\otimes \eta_Y}
  & (X\otimes X^*)\otimes(Y\otimes Y^*)  \ar[d]^{\alpha_{X,X*,Y\otimes Y*}} 
@@ -1289,23 +1353,24 @@ I&
 \\
 X^*\otimes( X\otimes (Y^*\otimes Y))  \ar[u]^{\alpha_{X^*,X,X^*\otimes 1_Y}^{-1}} &
 &
-& (X\otimes Y)\otimes (X^*\otimes Y^*)
+& (X\otimes Y)\otimes (X^*\otimes Y^*) \ar[d]^{1_{X\otimes Y} \otimes c_{X^*,Y^*}}
 \\
 X^*\otimes( (X\otimes Y^*)\otimes Y)   \ar[u]^{1_{X^*}\otimes \alpha_{X,Y^*,Y}} &
 &
-& 
+&  (X\otimes Y)\otimes (Y^*\otimes X^*)
 \\
 X^*\otimes( (Y^*\otimes X)\otimes Y) \ar[u]^{1_{X^*}\otimes (c_{Y^*,X}\otimes Y)} &
 &
-X^*\otimes( Y^*\otimes (X\otimes Y))   \ar[ll]^{1_{X^*} \otimes \alpha^{-1}_{Y^*,X,Y}} & (X^*\otimes Y^*)\otimes (X\otimes Y)  \ar[l]^{\ \ \ \ \ \alpha^{-1}_{X^*,Y^*,X\otimes Y}} \ar[llluuuuu]!<0ex,.0ex>_{\epsilon_{X\otimes Y}}
+ &\\
+X^*\otimes( Y^*\otimes (X\otimes Y))   \ar[u]^{1_{X^*} \otimes \alpha^{-1}_{Y^*,X,Y}} &
+&  (X^*\otimes Y^*)\otimes (X\otimes Y)  \ar[ll]^{\ \ \ \ \ \alpha^{-1}_{X^*,Y^*,X\otimes Y}}
+&  (Y^*\otimes X^*)\otimes (X\otimes Y) \ar[llluuuuuu]!<0.5ex,0.5ex>_{\epsilon_{X\otimes Y}} \ar[l]^{c_{Y^*, X^*}\otimes 1_{X\otimes Y}}
 }
 $}
 
 
 
 \end{description}
-
-
 
 A strict compact closed category is a compact closed category where the underlying symmetric monoidal category is strict.
 
@@ -1321,7 +1386,7 @@ Every compact closed category is  symmetric monoidally equivalent to a strict co
 
 
 
-Compact-closed categories axiomatize the kinds of processes where inputs can be turned into outputs, and vice-versa.  In other words, they axiomatize a particular notion of feedback.  This is illuminated by looking at the proof nets.
+Compact closed categories axiomatize the kinds of processes where inputs can be turned into outputs, and vice-versa.  In other words, they axiomatize a particular notion of feedback.  This is illuminated by looking at the proof nets.
 %In proof net notation the unit and counit are drawn as follows:
 We will draw the unit and counit for the compact closed structure as follows in the strict case:
 %
@@ -1558,6 +1623,7 @@ $$
 \end{tikzpicture}
 $$
 
+Where it is evident that $(X\otimes Y)^* = Y^* \otimes X^*$.
 %The graphical calculus for strict compact closed categories extends string diagrams for symmetric monoidal categories, where  the units and counits are drawn without the tensor/untensor and unit removal/introduction.
 
 One thing that is nice about compact closed categories is that we can treat all maps as either states or effects:
@@ -1567,13 +1633,13 @@ $\lceil f \rceil: X \otimes Y^* \to I$ given by bending the wires of $f$ as foll
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=map] (432) at (264, 7) {$\lfloor f \rfloor$};
-		\node [style=none] (433) at (263.75, 8) {};
-		\node [style=none] (434) at (264.25, 8) {};
+		\node [style=map] (3) at (266.75, 5.5) {$\lfloor f \rfloor$};
+		\node [style=none] (4) at (266.25, 6.5) {};
+		\node [style=none] (5) at (267.25, 6.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=60, out=-90] (434.center) to (432);
-		\draw [in=270, out=120] (432) to (433.center);
+		\draw [in=45, out=-90] (5.center) to (3);
+		\draw [in=270, out=135] (3) to (4.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 :=
@@ -1594,13 +1660,13 @@ $$
 \ , \hspace*{.5cm}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=map] (441) at (264.25, 6.25) {$\lceil f \rceil$};
-		\node [style=none] (442) at (264, 5.25) {};
-		\node [style=none] (443) at (264.5, 5.25) {};
+		\node [style=map] (0) at (264.25, 6.25) {$\lceil f \rceil$};
+		\node [style=none] (1) at (263.75, 5.25) {};
+		\node [style=none] (2) at (264.75, 5.25) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=-60, out=90] (443.center) to (441);
-		\draw [in=-270, out=-120] (441) to (442.center);
+		\draw [in=-45, out=90] (2.center) to (0);
+		\draw [in=-270, out=-135] (0) to (1.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 :=
@@ -1698,11 +1764,11 @@ The unit and counit are $\epsilon_n=(1,\cdots, 1)$ and  $\eta_n=\epsilon_n^T$.  
 
 
 \subsection{Dagger-monoidal categories}
-In this thesis, we will usually work with monoidal categories with extra structure called the dagger which allows one in some sense to``run maps in reverse:''
+In this thesis, we will usually work with monoidal categories with extra structure called the dagger which allows one in some sense to``run maps in reverse.'' See \cite{cpm,coecke} for further reference.
 
 
 \begin{definition}
-A {\bf \dag-category} ({\em read dagger-category}) is a category $\X$ equipped with a functor ${(\_)}^\dag:\X^\op\to\X$ (the dagger) which is.  This structure will arise both in our exposition of nondeterministic categorical semantics as well as for quantum computing.
+A {\bf \dag-category} ({\em read dagger-category}) is a category $\X$ equipped with a functor ${(\_)}^\dag:\X^\op\to\X$ ({\em read the dagger}).  This structure will arise both in our exposition of nondeterministic categorical semantics as well as for quantum computing.
 
 \begin{description}
 \item[\ \ Identity on objects:] so that for all objects $X$ of $\X$, $X^\dag = X$.
@@ -1908,7 +1974,7 @@ $$
 This is a presentation for the pro $\FinMonot$, of finite ordinals and monotone maps.
 \end{example}
 
-Two diagrams in this prop whose components are connected have are equal, so we will use the following notation to refer to them:
+Two diagrams in this prop of the same arity whose components are connected are equal, so we will use the following notation to refer to them:
 
 $$
 \begin{tikzpicture}
@@ -2007,7 +2073,7 @@ $$
 \end{tikzpicture}
 $$
 
-This is a presentation for the prop of finite sets and relations $\FSets$.
+This is a presentation for the prop of finite ordinal and functions $\FinOrd$.
 This is a formal way to talk about the graph of a function between finite sets.
 
 \end{example}
@@ -2031,9 +2097,10 @@ $$
 \end{lemma}
 
 
+The following result has almost surely been known for quite some time, but it is contained in \cite[\S 3.2]{zanasi}; where a much more fine grained presentation is given:
 
 \begin{example}
-Take semiring $S$.
+Take a commutative semiring $S$.
 Consider the prop ${\sf cb}_S$ generated by a commutative monoid $\xcirc$ and comonoid $\zcirc$ interacting to form a {\bf bialgebra}:
 $$
   \begin{tikzpicture}
@@ -2156,7 +2223,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-And generators for all elements $a,b \in S$ such that the structure of the semiring $S$ is reflected in the convolution of the bialgebra:
+And generators for all elements $a,b \in S$ such that the structure of the commutative semiring $S$ is reflected in the convolution of the bialgebra:
 
 $$
 \begin{tikzpicture}
@@ -2665,8 +2732,346 @@ $$
 \end{example}
 
 
+For example, consider the following matrix
+TODO
+
+This is drawn as the string diagram:
+TODO
+
+
+
+Moreover, if we define monoids and comonoids on composite systems using proof net notation:
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (100) at (9.5, 1) {};
+		\node [style=none] (101) at (9, 2) {};
+		\node [style=none] (102) at (10, 2) {};
+		\node [style=none] (103) at (9.5, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=150] (100) to (101.center);
+		\draw [in=270, out=30] (100) to (102.center);
+		\draw (100) to (103.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+:=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (79) at (7, 1) {};
+		\node [style=none] (84) at (7.5, 0.25) {};
+		\node [style=Z] (91) at (8, 1) {};
+		\node [style=none] (92) at (7, 2) {};
+		\node [style=none] (93) at (8, 2) {};
+		\node [style=none] (94) at (7, 2.5) {};
+		\node [style=none] (95) at (8, 2.5) {};
+		\node [style=none] (96) at (7.5, -0.25) {};
+		\node [style=otimes] (97) at (7, 2) {};
+		\node [style=otimes] (98) at (8, 2) {};
+		\node [style=otimes] (99) at (7.5, 0.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=150] (84.center) to (79);
+		\draw (91) to (92.center);
+		\draw (79) to (93.center);
+		\draw [bend left=45, looseness=1.25] (93.center) to (91);
+		\draw [bend left=45, looseness=1.25] (79) to (92.center);
+		\draw (92.center) to (94.center);
+		\draw (93.center) to (95.center);
+		\draw [in=30, out=-90] (91) to (84.center);
+		\draw (84.center) to (96.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ ,\hspace*{.2cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (100) at (9.5, 1) {};
+		\node [style=none] (103) at (9.5, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (100) to (103.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+:=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (79) at (7, 1) {};
+		\node [style=none] (84) at (7.5, 0.25) {};
+		\node [style=Z] (91) at (8, 1) {};
+		\node [style=none] (96) at (7.5, -0.25) {};
+		\node [style=otimes] (99) at (7.5, 0.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=150] (84.center) to (79);
+		\draw [in=30, out=-90] (91) to (84.center);
+		\draw (84.center) to (96.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ ,\hspace*{.2cm}
+\begin{tikzpicture}[yscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (100) at (9.5, 1) {};
+		\node [style=none] (101) at (9, 2) {};
+		\node [style=none] (102) at (10, 2) {};
+		\node [style=none] (103) at (9.5, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=150] (100) to (101.center);
+		\draw [in=270, out=30] (100) to (102.center);
+		\draw (100) to (103.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+:=
+\begin{tikzpicture}[yscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (79) at (7, 1) {};
+		\node [style=none] (84) at (7.5, 0.25) {};
+		\node [style=X] (91) at (8, 1) {};
+		\node [style=none] (92) at (7, 2) {};
+		\node [style=none] (93) at (8, 2) {};
+		\node [style=none] (94) at (7, 2.5) {};
+		\node [style=none] (95) at (8, 2.5) {};
+		\node [style=none] (96) at (7.5, -0.25) {};
+		\node [style=otimes] (97) at (7, 2) {};
+		\node [style=otimes] (98) at (8, 2) {};
+		\node [style=otimes] (99) at (7.5, 0.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=150] (84.center) to (79);
+		\draw (91) to (92.center);
+		\draw (79) to (93.center);
+		\draw [bend left=45, looseness=1.25] (93.center) to (91);
+		\draw [bend left=45, looseness=1.25] (79) to (92.center);
+		\draw (92.center) to (94.center);
+		\draw (93.center) to (95.center);
+		\draw [in=30, out=-90] (91) to (84.center);
+		\draw (84.center) to (96.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ ,\hspace*{.2cm}
+\begin{tikzpicture}[yscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (100) at (9.5, 1) {};
+		\node [style=none] (103) at (9.5, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (100) to (103.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+:=
+\begin{tikzpicture}[yscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (79) at (7, 1) {};
+		\node [style=none] (84) at (7.5, 0.25) {};
+		\node [style=X] (91) at (8, 1) {};
+		\node [style=none] (96) at (7.5, -0.25) {};
+		\node [style=otimes] (99) at (7.5, 0.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=150] (84.center) to (79);
+		\draw [in=30, out=-90] (91) to (84.center);
+		\draw (84.center) to (96.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+Then arbitrary  matrices $M:n\to m$ are natural with respect to these families of maps:
+
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (12) at (2, 0) {};
+		\node [style=none] (15) at (2.5, 0.75) {};
+		\node [style=none] (17) at (2, -0.75) {};
+		\node [style=none] (18) at (1.5, 0.75) {};
+		\node [style=map](19) at (2, -0.75) {$M$};
+		\node [style=none] (20) at (2, -1.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (17.center) to (12);
+		\draw [in=-90, out=30] (12) to (15.center);
+		\draw [in=150, out=-90] (18.center) to (12);
+		\draw (20.center) to (17.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (21) at (3.75, -0.75) {};
+		\node [style=none] (22) at (4.25, 0) {};
+		\node [style=none] (23) at (3.75, -1.5) {};
+		\node [style=none] (24) at (3.25, 0) {};
+		\node [style=map](25) at (3.25, 0) {$M$};
+		\node [style=map](27) at (4.25, 0) {$M$};
+		\node [style=none] (28) at (3.25, 0.75) {};
+		\node [style=none] (29) at (4.25, 0.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (23.center) to (21);
+		\draw [in=-90, out=30] (21) to (22.center);
+		\draw [in=150, out=-90] (24.center) to (21);
+		\draw (28.center) to (25);
+		\draw (29.center) to (27);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ ,
+\hspace*{.2cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (0) at (2, 0) {};
+		\node [style=none] (2) at (2, -0.75) {};
+		\node [style=map](4) at (2, -0.75) {$M$};
+		\node [style=none] (5) at (2, -1.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (2.center) to (0);
+		\draw (5.center) to (2.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (6) at (3.75, -0.75) {};
+		\node [style=none] (8) at (3.75, -1.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (8.center) to (6);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ ,
+\hspace*{.2cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (36) at (7.5, 0) {};
+		\node [style=none] (37) at (8, -0.75) {};
+		\node [style=none] (38) at (7.5, 0.75) {};
+		\node [style=none] (39) at (7, -0.75) {};
+		\node [style=map](40) at (7, -0.75) {$M$};
+		\node [style=map](41) at (8, -0.75) {$M$};
+		\node [style=none] (42) at (7, -1.5) {};
+		\node [style=none] (43) at (8, -1.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (38.center) to (36);
+		\draw [in=90, out=-30] (36) to (37.center);
+		\draw [in=-150, out=90] (39.center) to (36);
+		\draw (42.center) to (40);
+		\draw (43.center) to (41);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (30) at (5.75, -0.75) {};
+		\node [style=none] (31) at (6.25, -1.5) {};
+		\node [style=none] (32) at (5.75, 0) {};
+		\node [style=none] (33) at (5.25, -1.5) {};
+		\node [style=map](34) at (5.75, 0) {$M$};
+		\node [style=none] (35) at (5.75, 0.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (32.center) to (30);
+		\draw [in=90, out=-30] (30) to (31.center);
+		\draw [in=-150, out=90] (33.center) to (30);
+		\draw (35.center) to (32.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ ,
+\hspace*{.2cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (15) at (7.5, 0) {};
+		\node [style=none] (17) at (7.5, 0.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (17.center) to (15);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (9) at (5.75, -0.75) {};
+		\node [style=none] (11) at (5.75, 0) {};
+		\node [style=map](13) at (5.75, 0) {$M$};
+		\node [style=none] (14) at (5.75, 0.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (11.center) to (9);
+		\draw (14.center) to (11.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+Therefore, given two parallel matrices  $M$ and $N$, their sum is given by convolution with the bialgebra:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (79) at (7, 1) {};
+		\node [style=X] (80) at (7, 3) {};
+		\node [style=map] (81) at (6.5, 2) {$M$};
+		\node [style=map] (82) at (7.5, 2) {$N$};
+		\node [style=none] (83) at (7, 3.75) {};
+		\node [style=none] (84) at (7, 0.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-30, out=90] (82) to (80);
+		\draw (80) to (83.center);
+		\draw [in=90, out=-150] (80) to (81);
+		\draw [in=150, out=-90] (81) to (79);
+		\draw [in=-90, out=30] (79) to (82);
+		\draw (84.center) to (79);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (87) at (9, 2) {$M+N$};
+		\node [style=none] (89) at (9, 3.75) {};
+		\node [style=none] (90) at (9, 0.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (90.center) to (87);
+		\draw (87) to (89.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+There is a slighly more general notion than affine matrices, where there is no fixed origin:
+
+\begin{definition}
+Given a commutative semiring $R$, the prop of affine matrices over $R$, $\Aff\Mat_R$ has:
+\begin{description}
+\item[Objects:] Natural numbers.
+
+\item[Maps:] A map $(M,a):n\to m$ is a pair of a matrix $M:n\to m$ and a vector $1\to m$.
+
+\item[Identity:] The identity on an object $n$ is the pair
+$$(I_n,{\bf 0}:1\to n)$$
+ where $I_n$ is the identity matrix and $\bf 0$ is the zero vector.
+
+
+\item[Composition]
+
+Given composable  pair:
+$$
+n \xrightarrow{(M,a)} m \xrightarrow {(N,b)} k
+$$
+The composite is defined as follows:
+$$
+(NM, Na+b)
+$$
+
+\item[Monoidal structure:]  The tensor product is given pointwise $(M,a)\otimes (N,b):=(M\oplus n, a\oplus b)$.  The tensor unit is the identity on $0$.
+\end{description}
+\end{definition}
+
+
+I can not find a reference for the following result, but it is is an immediate consequence of the analysis of affine relations in \cite{affine}:
+
 \begin{example}
-Consider the symmetric monoidal theory generated by a commutative monoid $\zcirc$ in addition to this new generator and equation:
+Given a commutative semiring $R$, the symmetric monoidal theory generated by adding the following generators and relations to $\cb_R$:
 
 $$
 \begin{tikzpicture}
@@ -2725,8 +3130,214 @@ $$
 $$
 
 
-We see that $\FinOrd^\op$ embeds in this prop as well as in the prop $\Mat_S$ for some semiring $S$.  The pushout of this diagram is presented by adding this generator and equations to the presentation of $\Mat_S$.  This is a presentation for the prop of affine matrices over $S$.
+This is a presentation for the prop of affine matrices over $S$.  This new generator is interpreted as the affine shift.
+
+The way we have described adding a new generator to $\cb_R$ in terms of the interaction with the monoid $\zcirc$ is secrely a pushout over $\cm^\op$.  We have specified the interaction of the new generator with the commutative monoid structure, embedded it in $\cb_R$ and then taken the free prop given by these generators and equations.
+
 \end{example}
+
+Given an affine matrix $(M,a)$, we can represent this as the following string diagram:
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (0) at (0, 0) {$M$};
+		\node [style=map] (1) at (1, 0) {$a$};
+		\node [style=X] (2) at (0.5, 1) {};
+		\node [style=X] (3) at (1, -0.75) {$1$};
+		\node [style=none] (4) at (0, -1) {};
+		\node [style=none] (5) at (0.5, 1.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (3) to (1);
+		\draw [in=-30, out=90] (1) to (2);
+		\draw (2) to (5.center);
+		\draw [in=90, out=-150] (2) to (0);
+		\draw (0) to (4.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+So that in particular  $\Mat_R$ embeds into $\Aff\Mat_R$ via 
+$$
+\left(n \xrightarrow{M} m\right)
+\mapsto 
+\left(n \xrightarrow{(M,{\bf 0})} m\right)
+$$
+
+So that the composite of two affine matrices can be computed diagramatically:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (0) at (0.5, 0) {$M$};
+		\node [style=map] (1) at (1.5, 0) {$a$};
+		\node [style=X] (2) at (1, 1) {};
+		\node [style=X] (3) at (1.5, -0.75) {$1$};
+		\node [style=none] (4) at (0.5, -1) {};
+		\node [style=map] (6) at (1, 2) {$N$};
+		\node [style=map] (7) at (2, 2) {$b$};
+		\node [style=X] (8) at (1.5, 3) {};
+		\node [style=X] (9) at (2, 1.25) {$1$};
+		\node [style=none] (10) at (1, 1) {};
+		\node [style=none] (11) at (1.5, 3.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (3) to (1);
+		\draw [in=-30, out=90] (1) to (2);
+		\draw [in=90, out=-150] (2) to (0);
+		\draw (0) to (4.center);
+		\draw (9) to (7);
+		\draw [in=-30, out=90] (7) to (8);
+		\draw (8) to (11.center);
+		\draw [in=90, out=-150] (8) to (6);
+		\draw (6) to (10.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (12) at (3.5, 0) {$N$};
+		\node [style=map] (13) at (4.5, 0) {$N$};
+		\node [style=X] (14) at (4, 1) {};
+		\node [style=map] (18) at (5, 2) {$b$};
+		\node [style=X] (19) at (4.5, 3) {};
+		\node [style=X] (20) at (5, 1.25) {$1$};
+		\node [style=none] (21) at (4, 2) {};
+		\node [style=none] (22) at (4.5, 3.75) {};
+		\node [style=X] (23) at (4.5, -1.5) {$1$};
+		\node [style=none] (24) at (3.5, -1.75) {};
+		\node [style=map] (25) at (3.5, -0.75) {$M$};
+		\node [style=map] (26) at (4.5, -0.75) {$a$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-30, out=90] (13) to (14);
+		\draw [in=90, out=-150] (14) to (12);
+		\draw (20) to (18);
+		\draw [in=-30, out=90] (18) to (19);
+		\draw (19) to (22.center);
+		\draw [in=-150, out=90] (21.center) to (19);
+		\draw (21.center) to (14);
+		\draw (24.center) to (25);
+		\draw (25) to (12);
+		\draw (26) to (13);
+		\draw (23) to (26);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (27) at (6, 1) {$N$};
+		\node [style=map] (28) at (7, 1) {$N$};
+		\node [style=X] (29) at (6.5, 2) {};
+		\node [style=X] (31) at (7.25, 3) {};
+		\node [style=none] (33) at (6.5, 2) {};
+		\node [style=none] (34) at (7.25, 3.75) {};
+		\node [style=none] (36) at (6, -1.5) {};
+		\node [style=map] (37) at (6, 0.25) {$M$};
+		\node [style=map] (38) at (7, 0.25) {$a$};
+		\node [style=X] (39) at (7.5, -1.25) {$1$};
+		\node [style=none] (40) at (8, 2) {};
+		\node [style=map] (41) at (8, 0.25) {$b$};
+		\node [style=Z] (42) at (7.5, -0.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-30, out=90] (28) to (29);
+		\draw [in=90, out=-150] (29) to (27);
+		\draw (31) to (34.center);
+		\draw [in=-150, out=90] (33.center) to (31);
+		\draw (36.center) to (37);
+		\draw (37) to (27);
+		\draw (38) to (28);
+		\draw [in=90, out=-30] (31) to (40.center);
+		\draw (41) to (40.center);
+		\draw (39) to (42);
+		\draw [in=-90, out=30] (42) to (41);
+		\draw [in=-90, out=150] (42) to (38);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (43) at (9, 1.5) {$N$};
+		\node [style=map] (44) at (9.75, 1.5) {$N$};
+		\node [style=none] (48) at (9.75, 3.75) {};
+		\node [style=none] (49) at (9, -1) {};
+		\node [style=map] (50) at (9, 0.75) {$M$};
+		\node [style=map] (51) at (9.75, 0.75) {$a$};
+		\node [style=X] (52) at (10.25, -0.75) {$1$};
+		\node [style=map] (54) at (10.75, 0.75) {$b$};
+		\node [style=Z] (55) at (10.25, 0) {};
+		\node [style=X] (56) at (10.25, 2.25) {};
+		\node [style=X] (57) at (9.75, 3) {};
+		\node [style=none] (58) at (10.75, 1.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (49.center) to (50);
+		\draw (50) to (43);
+		\draw (51) to (44);
+		\draw (52) to (55);
+		\draw [in=-90, out=30] (55) to (54);
+		\draw [in=-90, out=150] (55) to (51);
+		\draw [in=-150, out=90] (43) to (57);
+		\draw (57) to (48.center);
+		\draw [in=90, out=-30] (57) to (56);
+		\draw (54) to (58.center);
+		\draw [in=-30, out=90] (58.center) to (56);
+		\draw [in=90, out=-150] (56) to (44);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (79) at (14, 1.75) {$NM$};
+		\node [style=none] (80) at (14.7, 3.75) {};
+		\node [style=none] (81) at (14, 0.75) {};
+		\node [style=X] (82) at (15.4, 1) {$1$};
+		\node [style=X] (83) at (14.7, 3) {};
+		\node [style=map] (84) at (15.4, 1.75) {$Na+b$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-150, out=90] (79) to (83);
+		\draw (83) to (80.center);
+		\draw (82) to (84);
+		\draw [in=-30, out=90] (84) to (83);
+		\draw (81.center) to (79);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+And we see that the other axiom is needed for the identity law:
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (8) at (1.5, 3) {};
+		\node [style=X] (9) at (2, 0.75) {$1$};
+		\node [style=none] (10) at (1, 2.25) {};
+		\node [style=none] (11) at (1.5, 3.75) {};
+		\node [style=Z] (69) at (2, 1.5) {};
+		\node [style=X] (70) at (2, 2.25) {};
+		\node [style=none] (71) at (1, 0.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (8) to (11.center);
+		\draw (9) to (69);
+		\draw [in=-30, out=90] (70) to (8);
+		\draw [in=90, out=-150] (8) to (10.center);
+		\draw (71.center) to (10.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (74) at (3.25, 3.75) {};
+		\node [style=none] (78) at (3.25, 0.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (78.center) to (74.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
 
 
 The following structure will show up quite a lot throughout this thesis:
@@ -2825,7 +3436,7 @@ $$
 Call a (commutative) monoid/comonoid pair  satisfying Equations \ref{frobl} and \ref{frobr} a (commutative) {\bf Frobenius algebra}; and  a {\bf special} (commutative) Frobenius algebra, when they additionally satisfy Equation \ref{special}.
 
 Denote the pro generated by a Frobenius algebra by $\fa$, and a special Frobenius algebra by $\sfa$.
-Denote the prop generated by a commutative frobenius algebra by $\cfa$, and a special commutative Frobenius algebra by $\scfa$.
+Denote the prop generated by a commutative Frobenius algebra by $\cfa$, and a special commutative Frobenius algebra by $\scfa$.
 
 
 A (special) (commutative) \dag-Frobenius algebra in a \dag-(symmetric) monoidal category is a  (special) (commutative) algebra where the monoid and comonoid are daggers of each other.
@@ -2842,10 +3453,12 @@ There is another  more elegant way to present Frobenius algebras and bialgebras 
 
 \subsection{Spans and relations in computation}
 
-Categories are defined in a manner which distinguishes the inputs and outputs of morphisms.  \dag-categories are one approach to moving beyond this bias; however, they are evil in the sense are the \dag-structure is not always preserved/reflected by categorical equivalence: the theory of \dag-categories does not play well with the theory of ordinary categories.  
+Categories are defined in a manner which distinguishes the inputs and outputs of morphisms.  \dag-categories are one approach to moving beyond this bias; however, they are evil in the sense that the \dag-structure is not always preserved/reflected by categorical equivalence: the theory of \dag-categories does not play well with the theory of ordinary categories.  
 
 Spans and relations provide a categorically well-behaved, flexible setting with which to interpret processes without elevating inputs over outputs.
-If functions produce unique outputs from inputs, spans and relations nondeterministicaly associate several inputs with several outputs.  To introduce these mathematical constructions, we first need to recall some basic facts about limits: 
+If functions produce unique outputs from inputs, spans and relations nondeterministicaly associate several inputs with several outputs.  To introduce these mathematical constructions.
+All of the category theory in this subsection which is not explicitly cited is standard and can be found, for example, in most introductions to category theory; for example \cite{maclane}.
+We first need to recall some basic facts about limits.
 
 
 
@@ -2889,13 +3502,21 @@ A terminal object in a category (if it exists) is an object $\one$ equipped with
 
 
 
-A category is  {\bf Cartesian } when it has all finite products and a terminal object. In a Cartesian category, the discard maps and {\bf diagonals} $\langle 1, 1 \rangle$ yield a natural family of commutative monoids.
+A category is  {\bf Cartesian} when it has all finite products and a terminal object. In a Cartesian category, the discard maps and {\bf diagonals} $\langle 1, 1 \rangle$ yield a natural family of commutative monoids.
 
 
 The products/projections/pairing maps/terminal objects/diagonal maps in $\X$ are respectively called {\bf coproducts}/{\bf injections}/{\bf copairing maps}/{\bf initial objects}/{\bf codiagonal maps} in $\X^\op$.
 
 Moreover, $\X$ is Cartesian iff $\X^\op$ is coCartesian.
 \end{definition}
+
+
+
+\begin{example}
+Matrices, sets 
+\end{example}
+
+
 
 
 The following Lemma justifies thinking of our running  examples of (finite) sets under the (co)product product as well as matrices, vector spaces and Hilbert spaces under the direct sum as symmetric monoidal categories:
@@ -3160,6 +3781,7 @@ $$
 $$
 \end{lemma}
 
+Therefore, when we gave presentations for $\FinOrd$ and $\Mat_S$; the natural white commutative comonoid is precisely the one coming from the Cartesian structure.
 
 
 
@@ -3342,7 +3964,7 @@ A 2-cell between two processes thus describes a method to transform one process 
 Notice that one can have many parallel unequal 2-cells.
 
 
-\begin{example}
+\begin{example}{\cite{????}}
 $\Span^\sim(\FSets)$ under the coproduct symmetric monoidally equivalent to the prop $\Mat_\N$ under the direct sum. 
 
 Recall that $\Mat_\N$ is presented by the prop $\cb=\cb_\N$ generated by a bicommutative bialgebra.
@@ -3389,7 +4011,7 @@ The situation is essentially the same for matrices.
 \end{example}
 
 
-We want to use coequalizers to ask for a requirements in which categories have notions of images and kernels:
+We  use coequalizers to ask for conditions in which categories have good notions of images and kernels:
 
 
 \begin{definition}
@@ -3399,7 +4021,7 @@ Call this diagram a {\bf kernel pair} at $f$, and call the object  the {\bf kern
 
 If the kernel pair at $f$ admits an coequalizer, call this object the {\bf image} of $f$, denoted by $\im(f)$.
 
-A {\bf regular category } is a finitely complete category such that:
+A {\bf regular category} is a finitely complete category such that:
 \begin{itemize}
 \item Every kernel pair admits a coequalizer.
 
@@ -3540,9 +4162,9 @@ A 2-cell $R\Rightarrow S$ is a subset $R\subseteq S$.
 
 
 
-This quotient of multiplicity from spans to relations in the case of finite sets, corresponds to applying the semiring homorphism $\N\to \B$, where $\B$ is the boolean semiring:
+This quotient of multiplicity from spans to relations in the case of finite sets, corresponds to applying the commutative semiring homorphism $\N\to \B$, where $\B$ is the Boolean semiring:
 
-\begin{lemma}
+\begin{lemma}{\cite{????}}
 $\Rel(\FSets)\cong \Mat(\B)$ so that it is presented by $\cb_\B$.
 \end{lemma}
 
@@ -3622,7 +4244,7 @@ $$
 
 
 \begin{lemma}[\cite{ihpub}]
-Given a field $k$, $\LinRel_{k}$ is generated by the generators and equations of the presentation of $\Mat_k$ as well as those of $\Mat_k^{\op}$ (drawn as the vertically flipped generators of $\Mat_k$) modulo the equations for all $a \in k$, $a\neq 0$:
+Given a field $k$, $\LinRel_{k}$ is generated by the generators and equations of the presentation of $\Mat_k$ as well as those of $\Mat_k^{\op}$ (drawn as the vertically flipped generators of $\Mat_k$) modulo the following equations for all $a \in k$, $a\neq 0$:
 
 $$
 \begin{tikzpicture}
@@ -3967,10 +4589,11 @@ $$
 
 \end{lemma}
 
+TODO HOMOGENIZATION
 
 So far, we have not talked about the Cartesian monoidal of categories of spans or internal relations.  Indeed, in both examples for which we have provided a presentation, the tensor product has been the coproduct/direct sum.
 
-The essence of the Cartesian monoidal structure of categories of relations can be generalised to the following algebraic notion:
+The essence of the Cartesian monoidal structure of categories of relations can be generalised to the following algebraic notion due to \cite{carboni}:
 
 
 \begin{definition}
@@ -4235,7 +4858,7 @@ $$
 \end{tikzpicture}
 $$
 
-Where moreover, the units and counits both have right adjoints :
+Where moreover, the units and counits both have right adjoints:
 
 $$
 \begin{tikzpicture}
@@ -4402,7 +5025,7 @@ $$
 $$
 
 
-From these other axioms, it follows that
+From these other axioms, it follows that:
 
 
 $$
@@ -4665,7 +5288,7 @@ $$
 The category of comonoid homorphisms of a Cartesian bicategory of relations is Cartesian category $\Map(\X)$.
 \end{definition}
 
-Span is not a Cartesian bicategory of relations because it is poset enriched.  As alluded to before, one could have given a similar axiomatization for non-poset enriched categories, as done in \cite{carbonia}, however this is much more difficult to work with because this notion requires coherence conditions.
+Span is not a Cartesian bicategory of relations because it is not poset enriched (there can be more than one 2-cell between 1-cells); however it is a {\em Cartesian bicategory} (see \cite{carbonia}).  All of the equations now only hold up to coherent isomorphism, however the story is essentially the same. This is much more difficult to work with because this notion requires coherence conditions so we will omit this more general definition for the sake of brevity. 
 
 
 As stated before, bicategories of relations subsume categories of internal relations:
@@ -4795,7 +5418,8 @@ Stable systems of monics allow one to represent the domains of definition of a p
 Given a stable system of monics $\M$ in a category $\X$, the {\bf partial map category} $\Par(\X,\M)$ is given by the same objects as in $\X$ where morphisms $X\to Y$, given by isomorphism classes of spans $X\xleftarrowtail{m} Z \xrightarrow{f} Y$ where $f$ is a map in $\X$ and $m$ is a map in $\M$.  Composition is given by pullback and the identity is given by the trivial span.
 
 
-Partial map categories have a restriction structure given by:  $(X\xleftarrowtail{m} Z \xrightarrow{f} Y) \mapsto (X\xleftarrowtail{m} Z \xrightarrowtail{m} X)$.  Moreover, a partial isomorphism is a span $X\xleftarrowtail{e} Z \xrightarrowtail{m} Y$ where $e,m \in \M$; the partial inverse given by  $Y\xleftarrowtail{m} Z \xrightarrowtail{e} X$.
+Partial map categories have a restriction structure given by:  
+$$(X\xleftarrowtail{m} \ Z \xrightarrow{f} Y) \mapsto (X\xleftarrowtail{m} \ Z\ \xrightarrowtail{m} X)$$  Moreover, a partial isomorphism is a span $X\xleftarrowtail{e}\ Z\  \xrightarrowtail{m} Y$ where $e,m \in \M$; the partial inverse given by  $Y\xleftarrowtail{m} \ Z  \ \xrightarrowtail{e} X$.
 \end{definition}
 
 
@@ -5292,7 +5916,7 @@ By forcing the unit to be natural, we obtain a Cartesian category:
 If $\X$ is a  Cartesian restriction category, then $\Total(\X)$ is Cartesian.
 \end{proposition}
 
-Discrete Cartesian restriction categories are a deterministic, but still partial version of relations:
+Discrete Cartesian restriction categories are a deterministic, yet partial version of relations:
 
 \begin{lemma}
 The category of comultiplication homorphisms of a Cartesian bicategory of relations is a discrete Cartesian restriction category.
@@ -5343,7 +5967,7 @@ $$
 
 \end{description}
 
-The partial inverse is mapped to the adjoint
+The partial inverse is mapped to the Hermetian adjoint.
 \end{definition}
 
 
@@ -5677,7 +6301,7 @@ $$
 \end{tikzpicture}
 $$
 
-Where the commutative semigroup and cocommutative cosemigroup  interact interact to form a $\dag$-semi-Frobenius algebra:
+Where the commutative semigroup and cocommutative cosemigroup  interact to form a $\dag$-semi-Frobenius algebra:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -5881,7 +6505,7 @@ $$
 
 Discrete inverse categories are the canonical notion of weakened products for monoidal inverse categories:
 
-\begin{lemma}
+\begin{lemma}\cite[???]{giles}
 The subcategory of semi-Frobenius algebra homorphisms of a Cartesian bicategory of relations is a discrete inverse category.
 
 Similarly the subcategory of  semi-Frobenius algebra homorphisms of a discrete Cartesian restriction category (the partial isomorphisms) is a discrete inverse category.
@@ -5889,7 +6513,7 @@ Similarly the subcategory of  semi-Frobenius algebra homorphisms of a discrete C
 
 
 
-At least as far as the literature is concerned, the other direction is not so trvial.  We will first introduce the more copara construction, which freely adds an effect to every object in a way that is compatible with the tensor product:
+At least as far as the literature is concerned, the other direction is not so trivial.  We will first introduce the more copara construction, which freely adds an effect to every object in a way that is compatible with the tensor product:
 
 
 \begin{definition}
@@ -5904,7 +6528,7 @@ Given a symmetric monoidal category $\X$, the copara construction, $\CoPara(\X)$
          { X\xrightarrow{(f,S)} Y \in  \CoPara(\X) }
 $
 
-\item[Composition]:  
+\item[Composition:]
 \hfil $
 \dfrac{X\xrightarrow{(f,S)} Y , \hspace*{.5cm} Y\xrightarrow{(g,T)} Z }
          {(f,S);(g;T) := (f;(g\otimes 1_S);\alpha^{-1}_{Z,S,T} ,S\otimes T) } 
@@ -6390,20 +7014,28 @@ Suppose that $\iota(f)\sim\iota(g)$, Then:
 &=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (0) at (-0.5, 0.5) {};
-		\node [style=map] (1) at (0, 2.5) {$g$};
-		\node [style=Z] (2) at (-0.5, 1.5) {};
-		\node [style=Z] (3) at (-0.5, 3.5) {};
-		\node [style=none] (4) at (-0.5, 4.5) {};
-		\node [style=map] (5) at (-1, 2.5) {$f$};
+		\node [style=none] (0) at (1, 0.5) {};
+		\node [style=Z] (2) at (1, 1) {};
+		\node [style=Z] (3) at (1, 4) {};
+		\node [style=none] (4) at (1, 4.5) {};
+		\node [style=map] (7) at (1.5, 2.5) {$g$};
+		\node [style=map] (8) at (0.5, 2.5) {$f$};
+		\node [style=none] (9) at (0.5, 3.5) {};
+		\node [style=none] (10) at (1.5, 3.5) {};
+		\node [style=none] (11) at (0.5, 1.5) {};
+		\node [style=none] (12) at (1.5, 1.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw (4.center) to (3);
-		\draw [in=-60, out=90] (1) to (3);
-		\draw [style=simple, in=90, out=-120] (3) to (5);
 		\draw (2) to (0.center);
-		\draw [in=60, out=-90] (1) to (2);
-		\draw [in=-90, out=120] (2) to (5);
+		\draw [in=90, out=-90] (9.center) to (7);
+		\draw [in=90, out=-90] (7) to (11.center);
+		\draw [in=-90, out=90] (12.center) to (8);
+		\draw [in=-90, out=90] (8) to (10.center);
+		\draw [in=-15, out=90] (10.center) to (3);
+		\draw [in=90, out=-165] (3) to (9.center);
+		\draw [in=165, out=-90] (11.center) to (2);
+		\draw [in=-90, out=15] (2) to (12.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
@@ -6529,7 +7161,7 @@ A process being a comultiplication homomorphism means it is deterministic and a 
 
 
 
-In this section we review some basic results regarding internal categories.  By regarding categories as certain monads, this will allow us to compose categories via distributive law. 
+In this section we review some basic results regarding internal categories.  Unless explicitly referenced, the results and definitions of internal category theory contained within this chapter can be found within a standard textbook in category theory (eg. \cite{maclane}).  By regarding categories as certain monads, this machinery will allow us to compose categories via distributive law. 
 
 
 \begin{definition}
@@ -6539,7 +7171,7 @@ In this section we review some basic results regarding internal categories.  By 
 %\begin{description}
 %\item[0-cells:]
 
-Given a 2-category $\mathcal B$,  A {\bf monad} in $\mathcal B$ is a 0-cell $X$ and a 1-cell $T:X\to X$ in $\mathcal B$ equipped with 2-cells $\mu:T^2 \to T$ and $\eta:1_X\to T$ satisfying the associativity and unit laws
+Given a 2-category $\mathcal B$,  A {\bf monad} in $\mathcal B$ is a 0-cell $X$ and a 1-cell $T:X\to X$ in $\mathcal B$ equipped with 2-cells $\mu:T^2 \to T$ and $\eta:1_X\to T$ satisfying the associativity and unit laws:
 
 
 \hfil$
@@ -6657,7 +7289,7 @@ Given a category $\mathcal V$ with finite pullbacks $\mathcal V$, a $\mathcal V$
 Monads internal to $\Set$ are in bijection with small categories.
 \end{lemma}
 
-Let us upack this a bit.  An small category has a {\em set} $\sf Ob$ of objects, and a set {\sf Ar} of maps.  There is a map ${\sf dom}:{\sf Ar}\to {\sf Ob}$ which picks out the domain of maps and another map  ${\sf codom}:{\sf Ar}\to {\sf Ob}$ picking out the codomain.  That is to say, a span of sets:
+Let us upack this a bit.  A small category has a {\em set} $\sf Ob$ of objects, and a set {\sf Ar} of maps.  There is a map ${\sf dom}:{\sf Ar}\to {\sf Ob}$ which picks out the domain of maps and another map  ${\sf codom}:{\sf Ar}\to {\sf Ob}$ picking out the codomain.  That is to say, a span of sets:
 $$
 S=\xymatrix{
 & {\sf Ar} \ar[dl]_{{\sf dom}} \ar[dr]^{\sf codom}\\
@@ -6670,12 +7302,13 @@ On the other hand, the unit of a small category is a function from ${\sf Ob}$ to
 The converse direction is the same.
 
 
-In \cite{rosebrugh} they demonstrate that distributive laws of monads in  $\Span(\Set)$ correspond to strict factorization systems on the underlying internal category:  morphisms in the composite category $T;S$ of a distributive law $\lambda:S;T\to T;S$ can always be uniquely factored uniquely into the maps of $T$ followed by $S$.  
+In \cite{rosebrugh} they demonstrate that distributive laws of monads in  $\Span(\Set)$ correspond to strict factorization systems on the underlying internal category:  morphisms in the composite category $T;S$ of a distributive law $\lambda:S;T\to T;S$ can always be uniquely factored into the maps of $T$ followed by $S$.  
 
 
 %One might hope that monad homorphisms correspond to functors between internal categories; however, these actually correspond to {\em cofunctors}.  Functors are instead tight maps in the  {\em double category} of monads of spans of sets; however, this is not so relevant for this thesis, so we will not give more detail.
 
 
+By changing $\Set$ to another category, we can construct other sorts of internal categories: 
 
 \begin{definition}
 \label{def:monoid}
@@ -6685,7 +7318,7 @@ Let $\Mon$ denote the category with set-monoids as objects and monoid homorphism
 Now every internal category is equipped with a tensor product given by the monoid structure of the set:
 
 
-\begin{lemma}
+\begin{lemma}{\cite[????]{lack}}
 \label{def:internalmonoidalcat}
 
 Monads internal to $\Mon$ are in bijection with small monoidal categories.
@@ -6695,14 +7328,14 @@ Indeed, in analogy to the case for small catgories, a distributive law $\X;\Y$ o
 
 Distributive laws of monoidal theories yield a monoidal theory for the composite internal monoidal category:  the two theories are combined,  plus rules to push the generators past each other:
 
-\begin{lemma}
+\begin{lemma}{\cite[????]{????}}
 Take two monoidal theories
 
 $$
 T_0=({\sf Ob},\Sigma_0 ,E_0 ), \ T_1=({\sf Ob},\Sigma_1 ,E_1 )
 $$
 
-With the same objects.  Regard their corresponding pros $\bar{T_0}$ and $\bar{T_1}$ as monads in $\Span(\Mon)$ such that there is a a distributive $\lambda:\bar{T_0};\bar{T_1} \Rightarrow \bar{T_1};\bar{T_0}$.
+With the same objects.  Regard their corresponding pros $\bar{T_0}$ and $\bar{T_1}$ as monads in $\Span(\Mon)$ such that there is a distributive $\lambda:\bar{T_0};\bar{T_1} \Rightarrow \bar{T_1};\bar{T_0}$.
 
 
 Then the monoidal theory for the composite pro $\bar{T_1};\bar{T_0}$ is given by 
@@ -7007,7 +7640,7 @@ $$
 
 
 
-We want to be able to take distributive laws of two categories which both share some structure.  For example, what is the appropriate notion of distributive law of symmetric monoidal categories where the braiding of both categories are identified with each other?  For this, we need to work in bimodules of internal categories; where the shared structure shall act on both parts parties of the distributive law:
+We want to be able to take distributive laws of two categories which both share some structure.  For example, what is the appropriate notion of distributive law of symmetric monoidal categories where the braiding of both categories are identified with each other?  For this, we need to work in bimodules of internal categories; where the shared structure shall act on both parts of the distributive law:
 
 
 
@@ -7115,14 +7748,14 @@ Let $\P_X$ denote the free strict symmetric monoidal category with objects label
 %$$
 %\end{lemma}
 
-\begin{lemma}
+\begin{lemma}{\cite[???]{????}}
 Take two symmetric monoidal theories
 
 $$
 T_0=({\sf Ob},\Sigma_0 ,E_0 ), \ T_1=({\sf Ob},\Sigma_1 ,E_1 ),  \ T_2=({\sf Ob},\Sigma_2 ,E_3 )
 $$
 
-With the same objects, where $\bar{T_2}$ is embeds as a symmetric monoidal category within both $\bar{T_0}$ and $\bar{T_3}$.  Regard both $\bar{T_0}$ and $\bar{T_0}$ as  $\bar{T_2}$-bimodules, where the left and right actions are given by lifting the maps in $\bar{T_2}$ along this embedding.
+With the same objects, where $\bar{T_2}$ embeds as a symmetric monoidal category within both $\bar{T_0}$ and $\bar{T_3}$.  Regard both $\bar{T_0}$ and $\bar{T_0}$ as  $\bar{T_2}$-bimodules, where the left and right actions are given by lifting the maps in $\bar{T_2}$ along this embedding.
 
 Suppose there is a distributive law
 
@@ -7143,7 +7776,7 @@ where $E_\lambda$ is the set of equations dictating the unique ways in which the
 The simplest way to take distributive laws of props is to regard them as modules over free props:
 
 
-\begin{lemma}
+\begin{lemma}{\cite[???]{??}}
 Every multicloloured prop generated by objects $\sf Ob$ can be identified with a monad in $\Mon$-$\Prof$ on the $0$-cell $\P_{\sf Ob}$.  
 \end{lemma}
 
@@ -7270,7 +7903,7 @@ In fact $\cb=\cb_\N$ is equivalent to the prop of matrices over $\N$.
 \end{example}
 
 
-Similarly for frobenius algebras:
+Similarly for Frobenius algebras:
 \begin{lemma} \cite[?]{lack}
 {\sfa} is a presentation for $(\Span^\sim(\FSets^\op),+)$.
 \end{lemma}
@@ -7368,7 +8001,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-This is the prop $\scfa$ the prop for the free  special commutative Frobenius algebra, which we discussed earlier.
+This is the prop $\scfa$ for the free  special commutative Frobenius algebra, which we discussed earlier.
 \end{example}
 
 
@@ -7383,7 +8016,7 @@ The (special) spider theorem also holds for (special) commutative Frobenius alge
 In analogy to the noncommutative case, the spider theorem for non-special commutative Fronbenius algebras, although this arises from a distributive law of {\em symmetric polycategories}, rather than of monoidal categories.
 
 
-Actually, the original spider theorem was the spider theorem for non-special symmetric Frobenius algebras, first published in the PhD thesis of \cite{spider}; whereing it was proved by topological methods rather than using the machinery of distributive laws.
+Actually, the original spider theorem was the spider theorem for non-special symmetric Frobenius algebras, first published in the PhD thesis of \cite{spider}; wherein it was proved by topological methods rather than using the machinery of distributive laws.
 
 
 
@@ -7414,12 +8047,12 @@ Actually, the original spider theorem was the spider theorem for non-special sym
 %The first step in introducing this formalism, is a graphical counterpart of the notion of an orthonormal basis:
 
 
-String diagrams have been used in quantum theory for quite some time.  For example in the work of Penrose \cite{penrosei}.  In such settings, string diagrams have been used as (often heuristic) tools used for calculation. The more recent programme of ``categorical quantum mechanics,'' following the seminal paper of Abramsky and Coecke \cite{abramsky} has endeavoured to formulate finite dimensional quantum quantum mechanics using category theory.  In this setting,  string diagrams are formal mathematical objects: allowing certain essential features to be abstracted away from the category of finite dimensional Hilbert spaces.
+String diagrams have been used in quantum theory for quite some time.  For example in the work of Penrose \cite{penrosei}.  In such settings, string diagrams have been used as (often heuristic) tools for calculation. The more recent programme of ``categorical quantum mechanics,'' following the seminal paper of Abramsky and Coecke \cite{abramsky} has endeavoured to formulate finite dimensional quantum mechanics using category theory.  In this setting,  string diagrams are formal mathematical objects: allowing certain essential features to be abstracted away from the category of finite dimensional Hilbert spaces.
 
 In this section, we shall briefly review this formalism; however a more in depth mathematical introduction can be found in \cite{heunen}, with a more broadly accessible introduction being found in \cite{pqp}.
 
 
-To motivate the graphical this graphical treatment of finite dimensional quantum theory, we first establish some basic algebraic notations.
+To motivate this graphical treatment of finite dimensional quantum theory, we first establish some basic algebraic notations.
 
 
 Fix a finite dimensional Hilbert space $\mathcal H$ with dimension $d\geq 2$, which we will regard as our local state-space. An element of $\mathcal H$ is called a {\bf qudit}.  A $\mathcal H$ is called a {\bf qubit} when $d=2$, a {\bf qutrit} when $d=3$, a {\bf qupit} when $d$ is any prime and a {\bf quopit} when $d$ any odd prime.
@@ -7454,7 +8087,7 @@ $$
 The idea is that these structures are in bijection with dirac deltas for orthonormal bases.  
 
 
-As a matter of notation: given some fixed dimension $d$, and a distinguished standard basis, we will call the  connected components of the special commutative $\dag$-Frobenius algebra corresponding the standard basis qudit {\bf Z-spiders}.  We will draw then in white, as follows:
+As a matter of notation: given some fixed dimension $d$, and a distinguished standard basis, we will call the  connected components of the special commutative $\dag$-Frobenius algebra corresponding the standard basis qudit {\bf $Z$-spiders}.  We will draw them in white, as follows:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -7773,7 +8406,7 @@ Now the question is, what does this have to do with the $\CPM$ construction?
 
 
 \begin{definition}
-Given a special \dag-commutative frobenius algebra $B$ on a \dag-compact closed category $\X$,
+Given a special \dag-commutative Fsrobenius algebra $B$ on a \dag-compact closed category $\X$,
 $$
 p_B=
 \begin{tikzpicture}[scale=-1]
@@ -8225,7 +8858,7 @@ Given a quantum state $| \psi \rangle$ and an orthonormal basis  $B$, a  {\bf de
 To promote these classical mixtures to their own systems,  we regard the projectors onto quantum observables themselves as objects. First, we recall the Karoubi envelope:
 
 \begin{definition}
-Given a category $\X$ and a class of idempotents $\mathcal I$ (so that $\forall e\in \mathcal I$, $e^2=e$), the {\bf Karoubi-envelope} at $\mathcal{I}$, ${\sf Split}_{\mathcal I}(\X)$ is the category with:
+Given a category $\X$ and a class of idempotents $\mathcal I$ (so that $\forall e\in \mathcal I$, $e^2=e$), the {\bf Karoubi envelope of $\X$ at $\mathcal{I}$}, ${\sf Split}_{\mathcal I}(\X)$ is the category with:
 \begin{description}
 \item[\ \ Objects:] Pairs $(X,e)$ where $X$ is an object of $\X$ and $e:X\to X$ is in $\mathcal I$.
 \item[\ \ Maps:] A map $(e,f,m):(X,e)\to (Y,m)$ is a map $f:X\to Y$ in $\X$ such that $e;f;m=f$.
@@ -8234,7 +8867,7 @@ Given a category $\X$ and a class of idempotents $\mathcal I$ (so that $\forall 
 \end{description}
 
 
-In particular, when $\mathcal{I}$ is contains all idempotents in $\X$, call  ${\sf Split}(\X):={\sf Split}_{\mathcal I}(\X)$ {\bf the Karoubi envelope of $\X$}.
+In particular, when $\mathcal{I}$ contains all idempotents in $\X$, call  ${\sf Split}(\X):={\sf Split}_{\mathcal I}(\X)$ {\bf the Karoubi envelope of $\X$}.
 $\X$ fully and faithfully embeds into its Karoubi envelope via the functor:
 $$
 \left(X\xrightarrow{f}Y\right)
@@ -8279,7 +8912,7 @@ In particular, when $\X$ is $\dag$-compact closed then so is ${\sf Split}^\dag(\
 In \cite{idempotent}, they show that splitting projectors in $\CPM(\FHilb)$ yields a category where the the split projectors can be interpreted as classical types:
 
 \begin{remark}
-Given a basis $B = \{|b_0\rangle,\ldots,|b_{n-1}\rangle\}$ for $\mathcal{H}$, the isometry  $(p_B,1_\mathcal{H}, 1_\mathcal{H}) :(\mathcal{H},p_B)\to (\mathcal{H},1_\mathcal{H})$ is regarded as the {\bf state preparation map} and its adjoint $(1_\mathcal{H},1_\mathcal{H}, p_B) :(\mathcal{H},1_\mathcal{H})\to (\mathcal{H},p_B)$  a {\bf nondestructive measurement}, with respect to the basis $B$.
+Given a basis $B = \{|b_0\rangle,\ldots,|b_{n-1}\rangle\}$ for $\mathcal{H}$, the isometry  $(p_B,1_\mathcal{H}, 1_\mathcal{H}) :(\mathcal{H},p_B)\to (\mathcal{H},1_\mathcal{H})$ is regarded as the {\bf state preparation map} and its adjoint $(1_\mathcal{H},1_\mathcal{H}, p_B) :(\mathcal{H},1_\mathcal{H})\to (\mathcal{H},p_B)$  a {\bf nondestructive measurement}, with respect to the basis $B$.  The maps between these idempotents are (un-normalized) stochastic processes.
 \end{remark}
 
 Let us unpack this a bit. 
@@ -8663,7 +9296,7 @@ There is a very important relationship which bases can have to each other:
 Take \dag-commutative Frobenius algebras $\zcirc$ and $\xcirc$; they are  {\bf complementary} when the monoids and comonoids of different colours interact to form bialgebras. 
 
 
-They are moreover {\bf strongly complementary} when the the bialgebras are Hopf algebras whoes antipode is equivalently any of the following maps:
+They are moreover {\bf strongly complementary} when the the bialgebras are Hopf algebras whose antipode is equivalently any of the following maps:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -8887,10 +9520,12 @@ $$\mathcal{F} := \dfrac{1}{\sqrt{d}} \sum_{j,k=0}^{d-1} e^{2\pi\cdot i \cdot j \
 The standard basis and Fourier bases are strongly complementary.
 \end{example}
 
-Notice how we had to multiply the basis elements by a factor of $\sqrt d$ so that these two Frobenius algebras interact to form a Hopf algebra on the nose.  This means that the Fourier basis we have chosen is not normalized, and thus the corresponding Frobenius not special.  However, this isn't a problem, because it is special up to the invertible  scalar $1/\sqrt{d}$.
+For qubits, the  state $|+\rangle:=\mathcal{F}|0\rangle$ is called the {\bf plus state}; and  $|-\rangle:=\mathcal{F}|1\rangle$ is called the {\bf minus state}.  Although, this notation obviously does not generalize well to qudits.
 
-This pair of complementary bases will occur throughout this thesis.  As a matter of notation, as mentioned earlier we draw the ``Z-spiders'' for the standard basis in white,
-and ``X-spiders'' for the Fourier basis in  grey as follows:
+Notice how we had to multiply the basis elements by a factor of $\sqrt d$ so that these two Frobenius algebras interact to form a Hopf algebra on the nose.  This means that the Fourier basis we have chosen is not normalized, and thus the corresponding Frobenius algebra is not special.  However, this isn't a problem, because it is special up to the invertible  scalar $1/\sqrt{d}$.
+
+This pair of complementary bases will occur throughout this thesis.  As a matter of notation, as mentioned earlier we draw the ``$Z$-spiders'' for the standard basis in white,
+and ``$X$-spiders'' for the Fourier basis in  grey as follows:
 
 \begin{align*}
 \left\llbracket\ 
@@ -9573,9 +10208,9 @@ $$
 
 \end{definition}
 
-The $X$ stabilizers characterize the phase-free ZX-calculus:
+The $X$ stabilizers characterize the phase-free ZX-calculus (this has been known for quite some time to both the Italian and Oxford groups in the qubit case, see for example \cite[p. 8]{zanasi}):
 
-\begin{lemma}[\cite{cole}]
+\begin{lemma}
 Given an odd prime $p$, $\LinRel_{\F_p}$ is isomorphic to the qupit phase-free ZX-calculus modulo invertible scalars.
 \end{lemma}
 
@@ -9694,12 +10329,12 @@ $$
 		\node [style=none] (11) at (42.2, -1) {};
 		\node [style=none] (12) at (43.25, -1) {};
 		\node [style=none] (13) at (44.3, -1) {};
-		\node [style=map] (14) at (42.2, -0.25) {$X^{a_1}$};
-		\node [style=map] (15) at (43.25, -0.25) {$X^{a_2}$};
-		\node [style=map] (16) at (44.3, -0.25) {$X^{a_3}$};
-		\node [style=map] (17) at (42.2, 1.5) {$X^{b_1}$};
-		\node [style=map] (18) at (43.25, 1.5) {$X^{b_2}$};
-		\node [style=map] (19) at (44.3, 1.5) {$X^{b_3}$};
+		\node [style=map] (14) at (42.2, -0.25) {${\cal X}^{a_1}$};
+		\node [style=map] (15) at (43.25, -0.25) {${\cal X}^{a_2}$};
+		\node [style=map] (16) at (44.3, -0.25) {${\cal X}^{a_3}$};
+		\node [style=map] (17) at (42.2, 1.5) {${\cal X}^{b_1}$};
+		\node [style=map] (18) at (43.25, 1.5) {${\cal  X}^{b_2}$};
+		\node [style=map] (19) at (44.3, 1.5) {${\cal X}^{b_3}$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [in=-135, out=90] (2.center) to (0);
@@ -9872,7 +10507,7 @@ $$
 \sum_{j=0}^{p-1} e^{2 \pi\cdot i\cdot n\cdot j/p} {\mathcal F}^\dag | j \rangle \langle j|  {\mathcal F}
 $$
 
-So it one can ask if the the fragment of the odd prime qudit ZX-calculus with these $\cal X$-gate phases has a similar relational semantics to the phase-free ZX-calculus.  The answer is yes, and this result is not contained in the literature to my knowledge:
+So one can ask if the the fragment of the odd prime qudit ZX-calculus with these $\cal X$-gate phases has a similar relational semantics to the phase-free ZX-calculus.  The answer is yes, and this result is not contained in the literature to my knowledge:
 
 \begin{lemma}
 $\Aff\Rel_{\F_p}$ is isomorphic to the qupit fragment of the ZX-calculus with Pauli $\cal X$-gates as phases modulo invertible scalars.
@@ -9901,7 +10536,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 \ \right\rrbracket
-\propto
+=
 \sum_{i=0}^{p-1} | i, \ldots, i\rangle \langle i,\ldots, i|
 $$
 $$
@@ -9927,7 +10562,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 \ \right\rrbracket
-\propto
+=
 \sum_{\sum  x_i = \sum y _j +a \mod p} | y_1 ,\ldots, y_n \rangle \langle  x_1,\ldots, x_n|
 $$
 
@@ -10222,7 +10857,7 @@ $$
 
 
 
-So far, the two fragments of the ZX-calculus we have described are relatively simple; they are actually fragments of stabilizer circuits:
+So far, the two fragments of the ZX-calculus we have described are relatively simple; they are actually fragments of stabilizer circuits.  We proceed to overview the qudit stabilizer formalism.  The qubit stabilizer formalism was first introduced in \cite{???} and later generalized to qudits in \cite{????}:
 
 
 
@@ -10313,7 +10948,7 @@ $$
 \end{lemma}
 
 
-
+As we will discuss in much further detail in Chapter \ref{chap:stab}, the ZX-calculus is naturally suited for stabilizer circuits:
 
 \begin{definition}
 The {\bf qubit stabilizer fragment of the ZX-calculus} is generated by two spiders with phases in the group $\Z/4\Z$ where
@@ -10331,18 +10966,18 @@ $$
 The qubit and quopit fragments of the ZX-calculus pick out precisely the qubit and quopit stabilizer circuits.  The qubit \cite{backensstab,backens2015} and qutrit \cite{qutrit} stabilizer ZX-calculus have been shown to be complete.  However, during the process of writing this thesis, an axiomatization was provided for the quopit ZX-calculus \cite{booth}, followed shortly by an even simpler presentation \cite{poor}.
 
 
-It is worth mentioning that stabilizer circuits can be classically simulated probabilistically in polynomial time \cite{gottesmanknill}.  Therefore, all of the fragments that we have discussed so far are not computationally very powerful.  However, stabilizer circuits are very important for quantum error correction, as we will discuss in \ref{chap:stab}.  In the same Chapter we will also give a relational semantics for quopit stabilizer circuits.
+It is worth mentioning that stabilizer circuits can be classically simulated probabilistically in polynomial time \cite{gottesmanknill}.  Therefore, all of the fragments that we have discussed so far are not computationally very powerful.  However, stabilizer circuits are very important for quantum error correction, as we will discuss in Chapter \ref{chap:stab}.  In the same Chapter we will also give a relational semantics for quopit stabilizer circuits.
 
-It is also worth mentioning that, at least in the qubit case, there are complete presentations for the ZX-calculus where all phases are allowed \cite{zxcompletea,zxcompletea}.  This gives a graphical presentation for the full subcategory of $\Mat_\C$ whose objects are powers of $2$; which is of course not classically simulatable in polynomial time.
+It is also worth mentioning that, at least in the qubit case, there are complete presentations for the ZX-calculus where all phases are allowed \cite{zxcomplete,zxcompletea}.  This gives a graphical presentation for the full subcategory of $\Mat_\C$ whose objects are powers of $2$; which is of course not classically simulatable in polynomial time.
 
 
 Up until this point, we have discussed quantum circuits as being generated by spiders. Although spiders are good for copying and adding standard basis elements; it is hard to construct nonlinear behaviour using these generators.
 
 
-To accommodate for this, so called ``H-boxes'' were devised in the qubit case by \cite{zh}:
+To accommodate for this, {\bf $H$-boxes} were devised in the qubit case by \cite{zh}:
 
 \begin{definition}
-Given any $c\in \C$, the $c$-labelled qubit H-box with $n$ inputs and $n$ outputs is the linear map $\C^{2^n}\to\C^{2^m}$:
+Given any $c\in \C$, the $c$-labelled qubit $H$-box with $n$ inputs and $n$ outputs is the linear map $\C^{2^n}\to\C^{2^m}$:
 
 $$
 \left\llbracket
@@ -10373,8 +11008,8 @@ $$
 Ie, the matrix where all entries are $1$, except for the bottom-right entry which is $c$.
 
 
-The H box with label $-1$ and one input and one out is equal to $\sqrt{2}\mathcal{F}$.
-Because of this relationship with the Fourier transform, a ``phase-free'' H-box with no label, corresponds to one with label -1:
+The $H$-box with label $-1$ and one input and one out is equal to $\sqrt{2}\mathcal{F}$.
+Because of this relationship with the Fourier transform, a ``phase-free'' $H$-box with no label, corresponds to one with label -1:
 
 $$
 \begin{tikzpicture}
@@ -10415,7 +11050,9 @@ $$
 \end{tikzpicture}
 $$
 
-Therefore, one should not confuse an $H$-box with one input and one output (drawn in grey) with the antipode for the Hopf algebra (drawn in black) for the $Z$ and $X$-spiders.
+This is the reason for the name ``$H$-box'' as the qubit Fourier transform is often called the ``Hadamard gate.''
+
+One should not confuse an $H$-box with one input and one output (drawn in grey) with the antipode for the Hopf algebra (drawn in black) for the $Z$ and $X$-spiders.
 
 
 Although $H$-boxes do not correspond to Frobenius algebras, they do satisfy a sort of fusion rule:
@@ -10492,7 +11129,7 @@ $$
 |a_0\cdot\ldots\cdot a_{n-1}\rangle\langle a_0,\cdots, a_{n-1}|
 $$
 
-That is to say, H-boxes, allow us to construct and-gates, which we denote as follows:
+That is to say, $H$-boxes, allow us to construct and-gates, which we denote as follows:
 
 $$
 \begin{tikzpicture}
@@ -10532,14 +11169,14 @@ $$
 
 \end{definition}
 
-In analogy to the ZX-calculus, the {\bf ZH-calculus} is presented by unphased $Z$ and $X$-spiders, the $\sf X$-gate and phased $H$-boxes.
+In analogy to the ZX-calculus, the {\bf ZH-calculus} is presented by unphased $Z$ and $X$-spiders, the $\cal X$-gate and phased $H$-boxes.
 
 
 A {\bf fragment of the ZH-calculus} is a presentation where the phases on the $H$-boxes are restricted.
 
-The full qubit ZH-calculus was proved to be complete and universal for all qubit complex matrices in the original paper \cite{zh}.  Completeness for the phase-free ZH-calculus, where the labels are generated by $-1$, shortly followed \cite{zhpi}.  They show that the phase-free ZH-calculus is universal for qubit matrices over the dyadic rationals $\Z[1/2]$.
+The full qubit ZH-calculus was proved to be complete and universal for all qubit complex matrices in the original paper \cite{zh}.  Completeness for the phase-free ZH-calculus, where the labels are generated by $-1$, shortly followed \cite{zhpi}.  They show that the phase-free ZH-calculus is universal for qubit matrices over the ring $\Z[1/\sqrt{2}]$.
 
-In the following chapter we prove completeness for the circuits generated by unphased $Z$ and $X$-spiders as well as $\AND$ gates and $\cal X$-gates.  We prove that this is essentially the ZH-calculus whose H-boxes have natural number label; the only difference, being that we carefully avoid having matrices with entries which are not natural numbers.
+In the following chapter we prove completeness for the circuits generated by unphased $Z$ and $X$-spiders as well as $\AND$ gates and $\cal X$-gates.  We prove that this is essentially the ZH-calculus whose $H$-boxes have natural number label; the only difference being that we carefully avoid having matrices with entries which are not natural numbers.
 
 Recently, generators hazve been proposed for the qudit ZH-calculus, but no completeness theorem exists so far \cite{roy}.
 
