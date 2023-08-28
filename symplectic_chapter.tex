@@ -91,7 +91,7 @@ $$
 		\draw [in=-90, out=120] (616) to (617.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
-+
+\oplus
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=map] (616) at (272, 0) {$W$};
@@ -478,10 +478,125 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-For this reason, we will depict Lagrangian relations as processes, where the input wires are on the bottom and output wires on on the top.  There is a functor in the other direction
+For this reason, we will depict Lagrangian relations as processes, where the input wires are on the bottom and output wires on on the top.
+
+There is a graphical interpretation of the orthogonal complement:
+
+\begin{lemma}[{\cite[??]{??}}]
+Given a field $k$, the orthogonal complement extends to a symmetric monoidal involution $(\_)^\perp:\LinRel_k\to \LinRel_k$.
+
+The orthogonal complement corresponds to the colour swapping functor $\ih_k\to \ih_k;$
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (17) at (2.5, 0.5) {};
+		\node [style=none] (18) at (3.5, 0.5) {};
+		\node [style=Z] (19) at (3, 1.25) {};
+		\node [style=none] (20) at (3, 0.75) {$\cdots$};
+		\node [style=none] (21) at (3, 1.75) {$\cdots$};
+		\node [style=none] (22) at (3.5, 2) {};
+		\node [style=none] (23) at (3, 1.25) {};
+		\node [style=none] (24) at (2.5, 2) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=simple, in=-56, out=90] (18.center) to (19);
+		\draw [style=simple, in=90, out=-124] (19) to (17.center);
+		\draw [style=simple, in=56, out=-90] (22.center) to (23.center);
+		\draw [style=simple, in=-90, out=124] (23.center) to (24.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\mapsto 
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (17) at (2.5, 0.5) {};
+		\node [style=none] (18) at (3.5, 0.5) {};
+		\node [style=X] (19) at (3, 1.25) {};
+		\node [style=none] (20) at (3, 0.75) {$\cdots$};
+		\node [style=none] (21) at (3, 1.75) {$\cdots$};
+		\node [style=none] (22) at (3.5, 2) {};
+		\node [style=none] (23) at (3, 1.25) {};
+		\node [style=none] (24) at (2.5, 2) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=simple, in=-56, out=90] (18.center) to (19);
+		\draw [style=simple, in=90, out=-124] (19) to (17.center);
+		\draw [style=simple, in=56, out=-90] (22.center) to (23.center);
+		\draw [style=simple, in=-90, out=124] (23.center) to (24.center);
+	\end{pgfonlayer}
+\end{tikzpicture}\ , \hspace*{.2cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (17) at (2.5, 0.5) {};
+		\node [style=none] (18) at (3.5, 0.5) {};
+		\node [style=X] (19) at (3, 1.25) {};
+		\node [style=none] (20) at (3, 0.75) {$\cdots$};
+		\node [style=none] (21) at (3, 1.75) {$\cdots$};
+		\node [style=none] (22) at (3.5, 2) {};
+		\node [style=none] (23) at (3, 1.25) {};
+		\node [style=none] (24) at (2.5, 2) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=simple, in=-56, out=90] (18.center) to (19);
+		\draw [style=simple, in=90, out=-124] (19) to (17.center);
+		\draw [style=simple, in=56, out=-90] (22.center) to (23.center);
+		\draw [style=simple, in=-90, out=124] (23.center) to (24.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\mapsto 
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (17) at (2.5, 0.5) {};
+		\node [style=none] (18) at (3.5, 0.5) {};
+		\node [style=Z] (19) at (3, 1.25) {};
+		\node [style=none] (20) at (3, 0.75) {$\cdots$};
+		\node [style=none] (21) at (3, 1.75) {$\cdots$};
+		\node [style=none] (22) at (3.5, 2) {};
+		\node [style=none] (23) at (3, 1.25) {};
+		\node [style=none] (24) at (2.5, 2) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=simple, in=-56, out=90] (18.center) to (19);
+		\draw [style=simple, in=90, out=-124] (19) to (17.center);
+		\draw [style=simple, in=56, out=-90] (22.center) to (23.center);
+		\draw [style=simple, in=-90, out=124] (23.center) to (24.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ , \hspace*{.2cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=scalar] (54) at (15, -2.5) {$a$};
+		\node [style=none] (55) at (15, -2) {};
+		\node [style=none] (56) at (15, -3) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (56.center) to (54);
+		\draw (54) to (55.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\mapsto 
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=scalarop] (54) at (15, -2.5) {$a$};
+		\node [style=none] (55) at (15, -2) {};
+		\node [style=none] (56) at (15, -3) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (56.center) to (54);
+		\draw (54) to (55.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+\end{lemma}
+
+
+
+
+There is a functor in the other direction:
 
 \begin{lemma}
-There is a faithful, strong symmetric monoidal functor $L:\LinRel_k\to\Lag\Rel_k$ given by the following action on the generators of $\ih_k$; doubling, and then changing the colours of one of the copies:
+There is a faithful, strong symmetric monoidal functor $L:\LinRel_k\to\Lag\Rel_k$, given by doubling with respect to the orthogonal complement:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2207,7 +2322,7 @@ Where the subscript $(j)$ denotes that we are applying a gate on wire $(j)$ tens
 
 This makes the following result more easy to prove:
 
-\begin{lemma}\cite[Thm. 3]{gross}
+\begin{lemma}[{\cite[Thm. 3]{gross}}]
 For every odd prime $p$ the prop  of affine symplectomorphisms over  $\F_p$ is isomorphic to the quopit Clifford groupoid modulo scalars.
 \end{lemma}
 
@@ -2461,7 +2576,7 @@ $$
 
 The following result gets us even closer to where we need to be:
 
-\begin{lemma}\cite[Lem. 8]{gross}
+\begin{lemma}[{\cite[Lem. 8]{gross}}]
 For every odd prime $p$ and $n \in \N$, there is a bijection between (nonempty) affine Lagrangian subspaces of $\F_p^{2n}$ and $n$-quopit stabilizer states modulo nonzero scalars.
 \end{lemma}
 
