@@ -482,7 +482,7 @@ For this reason, we will depict Lagrangian relations as processes, where the inp
 
 There is a graphical interpretation of the orthogonal complement:
 
-\begin{lemma}[{\cite[??]{??}}]
+\begin{lemma}[{\cite{ortho}}]
 Given a field $k$, the orthogonal complement extends to a symmetric monoidal involution $(\_)^\perp:\LinRel_k\to \LinRel_k$.
 
 The orthogonal complement corresponds to the colour swapping functor $\ih_k\to \ih_k;$
@@ -1851,7 +1851,7 @@ The phase-purification is so-named because of the similarity to the purification
 \label{cor}
 Given $k=\F_p$ for $p$ prime or $k=\mathbb{Q}$:
 
-$$\CPM(\LinRel_{k}, \perp) \cong \Lag\Rel_k$$
+$$\CPM(\LinRel_{k}, (\_)^\perp) \cong \Lag\Rel_k$$
 \end{corollary}
 \begin{proof}
 Remark that:
@@ -2305,17 +2305,16 @@ The connection between the stabilizer formalism and symplectic geometry has been
 \cite{css,cssone} in the qubit case.
 This developped in great detail in the quopit case by Gross \cite{gross}. However, its role in the stabilizer formalism is often underplayed, for example, it is not explicitly mentioned in Gottesman's highly influential PhD thesis \cite{gottesman}.  Perhaps a reason for this is that despite their dominance in the quantum computer literature, qubit stabilizer circuits do not conform so nicely to the symplectic geometric framework as do all other prime qudit dimensions
 
-In this subsection, we with build on the work of Gross and show that, when $p$ is an odd prime, the prop of affine Lagrangian relations over $\F_p$  is isomorphic to quopit stabilizer circuits modulo invertible scalars. 
+In this subsection, we with build on the work of Gross and show that, when $p$ is an odd prime, the prop of affine Lagrangian relations over $\F_p$  is isomorphic to quopit stabilizer circuits modulo invertible scalars.
 
 
 To show this, we must first recall some very important results of Gross, relating the stabilizer formalism to symplectic geometry.  First we need the following convention to represent Weyl operators:
 
 \begin{definition}
-Given $a \in \F_p$ and $(z,x )\in \F_p^{2n}$, define:
+Given $a \in \F_p$ and $(z,x )\in \F_p^{2n}$, define the following operators:
 $$
 \chi(a) = e^{2\pi\cdot i \cdot a/p}, \hspace*{1cm} {\mathcal W}(z,x)=\chi(-zx^T/2)\bigotimes_{j=0}^{n-1}\mathcal{Z}_{(j)}^{z_j}\mathcal{X}_{(j)}^{x_j}
 $$
-Where the subscript $(j)$ denotes that we are applying a gate on wire $(j)$ tensored on both sides with identities.
 
 \end{definition}
 
@@ -2689,7 +2688,14 @@ Take a state $f:0\to n$ in $\Aff\Lag\Rel_k$.  Then $W(z,x)$ is a stabilizer of $
 
 \begin{theorem}
 \label{theorem:spekkens}
-When $p$ is an odd prime, the mapping $\Lag\Rel_{\F_p} \to \Stab_p$ defined by:
+When $p$ is an odd prime, the mapping $\Lag\Rel_{\F_p} \to \Stab_p$ defined on objects by:
+
+$$
+n\mapsto \ell^2(\F_p^n)
+$$
+
+
+And on maps:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3331,7 +3337,7 @@ $$
 
 
 
-The novelty in interpreting stabilizer states in this categorical framework is that it reveals that the {\em relational composition} of tableaus is the composition of stabilizer circuits.
+The novelty in interpreting stabilizer states in this categorical framework is that it reveals that the {\em relational composition} of tableaux is the composition of stabilizer circuits.
 
 
 If we drop the affine shifts, we get a smaller fragment of stabilizer circuits:
@@ -4957,27 +4963,39 @@ z\\x
 $$
 \end{corollary}
 
-This formalizes the relationship between mixed stabilizer circuits and stabilizer tableaux with not-necessarily-full rank in  a compositional way. This presentation is similar in spirit to the way in which adding quantum discarding can often be presented by adding a generator which freely discarding the isometries, formalized by the discard construction \cite{disc}. Although in our case the quantum discarding is interpreted as the literal discard relation, therefore our semantics is still in affine relations.
+
+
+This is conceptually very close to the result of \cite{huot} where they show that the affine completion of isometries between finite dimensional Hilbert spaces, which freely adds a discard map, yields completely positive trace-preserving maps.  And even more similar, to the more refined result of   \cite{disc}, where they show that various fragments of the ZX-calculus can be augmented with quantum discarding by freely adding discarding. 
+
+Although in our case the quantum discarding is interpreted as the literal {\bf discard relation} of the corresponding stabilizers, therefore our semantics still lives within affine relations.
 
 
 
-It was already known that stabilizer codes are in bijection with  affine isotropic subspaces, for example \cite[Sec. A]{gross}.  Indeed any affine coisotropic subspace is canonically associated to an affine isotropic subspace by  taking the symplectic complement of the linear component of the affine subspace. However, as noted in Remark  \ref{rem:xdisc}, $\Aff\Isot\Rel_{\F_p} \not \cong \Aff\Co\Isot\Rel_{\F_p}$, so their compositions as affine relations are different. The interpretation of the doubled zero postselection as the quantum discard map is not sound with respect to relational composition.   
 
 
 
-We also can do the same for Spekkens' toy model:
+
+
+It was already known that stabilizer codes are in bijection with  affine isotropic subspaces, for example \cite[Sec. A]{gross}.  Indeed affine coisotropic subspaces are in bijection with affine isotropic subspace by  taking the symplectic complement of the linear component of the affine subspace. However, as noted in Remark  \ref{rem:xdisc}, $\Aff\Isot\Rel_{\F_p} \not \cong \Aff\Co\Isot\Rel_{\F_p}$, so their compositions as affine relations are different. The interpretation of the doubled zero postselection as the quantum discard map is not sound with respect to relational composition.   
+
+
+This formalizes the relationship between mixed stabilizer circuits and stabilizer tableaux with not-necessarily-full rank in  a compositional way.  It is standard, and indeed very useful to regard the augmented symplectic basis $L+a$ of an affine isotropic subspace as the stabilizer tableau.  In order to compose these tableaux, one must take the symplectic complement of both spaces, and then compute  their relational composition.  Then the stabilizer tableau for this composite is obtained by taking the symplectic complement once again.
+
+
+
+We can add mixed states to Spekkens' toy model in the same way:
 
 \begin{corollary}
 $\Aff\Co\Isot\Rel_{\F_2}\cong \CPM(\Aff\Lag\Rel_{\F_2})$ is Spekkens' toy model with mixed states.
 \end{corollary}
 
-Just as Spekkens' toy model is an epistemic restricted toy theory of quantum circuits; by dualizing things, we also have that $\Aff\Co\Isot\Rel_{\F_p}$ is an empistemically restricted toy theory of quantum circuits; albeit the epistemic restriction is going in the wrong direction to capture stabilizer quantum mechanics.
+Just as Spekkens' toy model is an epistemic restricted toy theory of quantum circuits; by dualizing things, we also have that $\Aff\Co\Isot\Rel_{\F_p}$ is an empistemically restricted toy theory of quantum circuits; albeit the epistemic restriction is going in the wrong direction.
 
 
 {\em Absolutely remarkably}, and seemingly out of nowhere, the quopit stabilizer codes with trivial affine phase (no Pauli gates) can be expressed, modulo invertible phase, in terms of an iterated $\CPM$ construction with respect to the orthogonal complement at the inner level, and the complex conjugation at the outer level:
 \begin{corollary}
 Given a prime $p$ and $k=\F_p$ or $k=\mathbb{Q}$
-$$\Isot\Rel_{k}\cong\Co\Isot\Rel_{k}\cong \CPM(\CPM(\LinRel_{k},\perp),\bar{(\_)})$$
+$$\Isot\Rel_{k}\cong\Co\Isot\Rel_{k}\cong \CPM(\CPM(\LinRel_{k},(\_)^\perp),\bar{(\_)})$$
 \end{corollary}
 The astounding symmetry involved here begs the question if iterating the $\CPM$ construction more times yields anything physically interesting. Perhaps the work of \cite{CPMho} can shed some light on this question. 
 

@@ -271,7 +271,7 @@
 %%%
 %%%
 %%%
-%%%Consider the 2-category of:
+%%%Consider the bicategory of:
 %%%
 %%%\begin{description}
 %%%\item[0-cells:] Monoidal categories
@@ -512,7 +512,7 @@
 %We first need the following definition to motivate where we are going:
 %
 %\begin{definition}
-%The symmetric monoidal 2-category of {\bf pointed Categories} is the coslice category $\Cat_*:=1/\Cat$.  Explicitly, this has:
+%The symmetric monoidal bicategory of {\bf pointed Categories} is the coslice category $\Cat_*:=1/\Cat$.  Explicitly, this has:
 %
 %\begin{description}
 %\item[0-cells:] A pointed category is a pair consisting of a category along with a chosen object of that category: 
@@ -679,7 +679,7 @@
 %
 %
 %\begin{definition}
-%The monoidal 2-category of pointed profunctors, $\Prof_*$, has
+%The monoidal bicategory of pointed profunctors, $\Prof_*$, has
 %
 %
 %\begin{description}
@@ -710,7 +710,7 @@
 %As much as it would be nice to complete the picture, we don't really need this.  
 %
 %\begin{definition}
-%Given a category $\X$ and a 2-category $\Y$, a lax normal functor is a pseudofunctor where the compositors are no longer required to be isomorphisms.
+%Given a category $\X$ and a bicategory $\Y$, a lax normal functor is a pseudofunctor where the compositors are no longer required to be isomorphisms.
 %A {\bf displayed category } is a category $\X$ equipped with a lax normal functor $\X\to \Prof$.
 %\end{definition}
 %
@@ -837,16 +837,20 @@
 
 In this Chapter, we attempt a high-level reconstruction of  proof nets by categorifying Frobenius algebras and appealing to a conjectural categorified spider theorem.  Starting with a monoidal category, we obtain a monoidal category which is not itself the strictification, but which is closely related.
 
-We  hope that the highly conceptual level of the construction opens up avenues for finding string diagrams for more general algebraic structures; our goal being to find canonical ways to glue monoidal categories together and obtain new kinds of string diagrams thereof.  This kind of problem has previously been considered in the setting where one wants to glue together monoidal categories along multiple different monoidal functors \cite{lobski}.  The motivation therein is to give a semantics for ways to explain systems which are stratified into multiple different layers, although they obtain a monoidal 2-category, rather than an ordinary monoidal category where one has to keep track of coherence information.
+We  hope that the highly conceptual level of the construction opens up avenues for finding string diagrams for more general algebraic structures; our goal being to find canonical ways to glue monoidal categories together and obtain new kinds of string diagrams thereof.  This kind of problem has previously been considered in the setting where one wants to glue together monoidal categories along multiple different monoidal functors \cite{lobski}.  The motivation therein is to give a semantics for ways to explain systems which are stratified into multiple different layers, although they obtain a monoidal bicategory, rather than an ordinary monoidal category where one has to keep track of coherence information.
 
 
 Indeed, throughout this thesis, we have been drawing string diagrams in monoidal, or symmetric monoidal categories in which our familiar notions of monoids and Frobenius algebras and so on live.  However, if we move to the higher dimensional setting of monoidal 2-categories, all of the equalities defining the axioms for these structures become natural transformations subject to  coherence conditions.   
 
 
-For this Chapter, unlike the rest, I will assume that the reader has some familiarity with monoidal 2-categories. First, we categorify a monoid in a monoidal category:
+For this Chapter, unlike the rest, I will assume that the reader has some familiarity with monoidal 2-categories.
+
+
+\section{Pointed categories and multicategories}
+ First, we categorify a monoid in a monoidal category:
 
 \begin{definition}
-A {\bf pseudomonoid} in a monoidal 2-category is an object $\mathcal C$ equipped with two 1-cells ${C} \otimes \mathcal{C} \to \mathcal{C}$ and $\one \to \mathcal C$ drawn as follows:
+A {\bf pseudomonoid} in a monoidal bicategory is an object $\mathcal C$ equipped with two 1-cells ${C} \otimes \mathcal{C} \to \mathcal{C}$ and $\one \to \mathcal C$ drawn as follows:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1179,7 +1183,7 @@ A pseudomonoid is {\bf strict} when the associator and unitors are idenities.
 
 \end{definition}
 
-If we take $\Cat$ to be a monoidal 2-category with respect to the Cartesian product, then monoidal categories have a slick definition:
+If we take $\Cat$ to be a monoidal bicategory with respect to the Cartesian product, then monoidal categories have a slick definition:
 
 \begin{lemma}
 Monoidal categories are pseudomonoids in $\Cat$ and strict monoidal categories are strict pseudomonoids in $\Cat$.
@@ -1188,7 +1192,7 @@ Monoidal categories are pseudomonoids in $\Cat$ and strict monoidal categories a
 By looking at the points inside of $\Cat$, this way of viewing a monoidal category hints at some connection to proof nets:
 
 \begin{definition}
-The symmetric monoidal 2-category of {\bf pointed categories} is the coslice 2-category $\Cat_*:=\one/\Cat$.  Explicitly, this has:
+The symmetric monoidal bicategory of {\bf pointed categories} is the coslice bicategory $\Cat_*:=\one/\Cat$.  Explicitly, this has:
 
 \begin{description}
 \item[0-cells:] Pointed categories, pairs consisting of a category along with a chosen object of that category: 
@@ -1448,11 +1452,71 @@ $$
 
 One way in which this diverges from proof nets is that these generators form a monoidal bicategory, not a monoidal category; forcing one to keep track of which 2-cells have been applied.  A-priori, in this kind of setting, there is no guarantee that two different ways to get to the same diagram are equal.
 
+
+
 Luckily, for monoidal categories, this issue can be resovled via the multicategories.  Informally, a multicategory is like a category, except for the multimaps now go from lists of objects in the domain to a single object in the codomain.  Composition of multimaps corresponds to plugging a single output into an input as if one is nesting trees.  Strict monoidal categories correspond to the representable multicategories where every list of objects can be tensored together.
 
-An equivalent way to define a pseudomonoid in $\Cat$ would be to ask for a monoidal pseudofunctor $\one\to \Cat$ from the terminal monoidal category into $\Cat$.  This is the same data as a multifunctor $\one \to \Cat$ from the one object multicategory to $\Cat$ regarded as a multicategory.
 
-Indeed, Hermida \cite{hermida}, showed that when one regards an (unbaised) monoidal category as a multifunctor $F:\one\to\Cat$, by computing the following pullback in the 2-category of 2-multicategories, the Grothendieck category $\int F_\X$ is precisely a representable multicategory:
+Formally multicategories can be constructed in a very similar way to internal categories (see \cite[Defininition 4.2.2]{leinster} for a more general, thorough treatment):
+
+\begin{definition}
+{\sf MultiSpan} is the bicategory with:
+
+\begin{description}
+\item[0-cells:] Sets
+\item[1-cells:] 
+
+$$
+\dfrac{[X] \xleftarrow{f} A \xrightarrow{g} Y \hspace*{.5cm}\text{in $\Sets$}}
+{X \xrightarrow{(A,f)} Y  \hspace*{.5cm}\text{in {\sf MultiSpan}}}
+$$
+
+The identity on $X$ is given by the span:
+$$ [X] \xleftarrow{\eta_X } X = X$$
+
+
+The composition of multispans
+$$X \xrightarrow{(f,A,g)} Y\xrightarrow{(h,B,k)} Z $$
+
+is given by taking the following pullback
+$$
+\xymatrix{
+     &         &      &[A] {}_{[g]}\times_h B \ar[dr]^{\pi_1} \ar[dl]_{\pi_0} \\
+     &         &[A] \ar[dr]^{[g]} \ar[dl]_{[f]}&      & B \ar[dl]_h \ar[ddrrr]^k &   & \\
+     & [[X]] \ar[dl]_{\mu_X} &      &[Y] &    &    &  \\
+[X] &         &      &     &    &    &&Z
+}
+$$
+
+Yielding a 1-cell:
+
+$$
+X\xleftarrow{(\pi_0;[f];\mu_X, [A] {}_{[g]}\times_h B, \pi_1;k)} Z
+$$
+Where, recall that $[-]:\Sets\to\Sets $ is the list monad where the unit $\eta_X(x)\mapsto [x]$ inserts into the singleton list  and the multiplication $\mu$ flattens lists of lists.
+
+\item[2-cells:] The 2-cell structure is the same as for spans and coherence 2-cells are essentially the same as for spans.
+
+\end{description}
+\end{definition}
+
+
+\begin{definition}
+A (small) {\bf multicategory} is a monad is {\sf MultiSpan}.
+\end{definition}
+
+So if we have a monad on the 1-cell $[ {\sf Ob}] \xleftarrow{\sf dom} {\sf Ar} \xrightarrow{\sf codom} {\sf Ob}$.  As opposed to the setting for internal categories, the domain is now a list of objects.  The way that the composition and unit are defined plugs the single object in the codomain into the list of objects in the domain.
+
+
+%An equivalent way to define a pseudomonoid in $\Cat$ would be to ask for a monoidal pseudofunctor $\one\to \Cat$ from the terminal monoidal category into $\Cat$.  
+%This is the same data as a multifunctor $\one \to \Cat$ from the one object multicategory to $\Cat$ regarded as a multicategory.
+
+%Indeed, 
+
+An equivalent way to define a pseudomonoid in $\Cat$ would be to ask for a monoidal pseudofunctor $\one\to \Cat$ from the terminal monoidal category into $\Cat$.  If one were to ask for a multifunctor from $\one\to \Cat$, this would give you what is sometimes called an unbiased monoidal category. This is very much like a monoidal category, except instead of there being a tensor product bi-functor, there is is a tensor product functor $\X^n\to \X$ for every arity $n \in \N$.
+
+
+Hermida \cite{hermida}, showed that when one regards an (unbiased) monoidal category as a multifunctor $F:\one\to\Cat$, by computing the following pullback in the bicategory of 2-multicategories, the Grothendieck category $\int F_\X$ is precisely a representable multicategory:
 
 $$
 \xymatrix{
@@ -1464,53 +1528,59 @@ $$
 
 
 And moreover, the projection map $\pi_0:F_\X\to \one$ is a fibration of multicategories.  He shows that there is an equivalence of 2-categories between the multifunctor category $[\one,\Cat]$ and the subcategory of the slice category of multifibrations over $\one$.  
-In some sense, this equivalence can be regarded as proof of coherence for monoidal categories.
+In some sense, this equivalence can be regarded as a different version of the coherence theorem for monoidal categories.
 However, from a string diagrammatic perspective, this is unsatisfying.  Indeed, despite representable multicategories being in bijection with monoidal categories, the way that composition is defined in multicategories biases the inputs over the outputs; moreover, we are only allowed to compose along one object at a time.
 
 
-To attempt to rectify this with the 2-sided nature of proof nets, we recall the category of internal profunctors described in Section \ref{???}, which is the 2-sided version of $\Cat$.  In this section it will be easier to work with profunctors {\em enriched} in $\Sets$, as opposed to profunctors internal to $\Sets$.  This is more general as well, because it allows us to work with locally small categories, rather than merely small categories:
+
+\section{Pointed profunctors and polycategories}
+
+To attempt to rectify this with the 2-sided nature of proof nets, we recall the category of (internal) profunctors described in Definition \ref{def:internalprof}.
 
 
-\begin{definition}
-The category of $\Prof$, of profunctors internal to $\Sets$ has:
-\begin{description}
-\item[0-cells:] Categories
-\item[1-cells:]  The morphisms are {\em profunctors} given by the following correspondence:
-$$
-\dfrac
-{F:\X^\op\times\Y\to\Sets \quad \in\ \Cat}
-{F:\X\proarrow \Y\quad \in\ \Prof}
-$$
+% which is the 2-sided version of $\Cat$.  In this section it will be easier to work with profunctors {\em enriched} in $\Sets$, as opposed to profunctors internal to $\Sets$.  This is more general as well, because it allows us to work with locally small categories, rather than merely small categories:
 
-The composition of profunctors $P:\X\proarrow \Y$ and $Q:\Y\proarrow \Z$ is given by the coend:
-$$
-P;Q := \int^{Y \in \Y } P(-,Y) \times Q(Y,=):\X \proarrow \Z
-$$
-Where the coend of a functor $F:\X^\op\times\X\to \Sets$ is given by the coequalizer diagram (in $\Cat$):
-$$
-\coprod_{X_1,X_2 \in \X} {\X}(X_1,X_2) \times F(X_1,X_2) \rightrightarrows \prod_{X \in \X} F(X,X) \to \int^{X \in \X} F(X,X)
-$$
-
-
-The identity profunctor on $\X$ is given by the hom functor
-$$\X(-,=): \X^\op\times\X\to\Sets$$
-
-
-Intutitively, this is a categorification of trace of a matrix where the natural numbers are replaced with categories, and the commutative ring is replaced with $\Sets$.  Thus, the composition of profunctors categorifies matrix multiplication.
-
-
-\item[2-cells:]  2-cells between parallel profunctors $P,Q:\X\proarrow \Y$ are natural transformations between the underlying profunctors $P,Q:\X^\op\times \Y \to \Sets$.
-
-\item[Compact closed structure:] The symmetric monoidal structure of $\Prof$ is given by extending the Cartesian structure in $\Cat$.   The units and counits of the compact closed structure are given by the hom functor.
-
-\end{description}
-\end{definition}
-
-
-A comprehensive review of the basic theory of profunctors and their calculus is contained in \cite{fosco}.
-There are two classes of profunctors which will be of interest to us:
-
-\begin{definition}
+%
+%\begin{definition}
+%The category of $\Prof$, of profunctors internal to $\Sets$ has:
+%\begin{description}
+%\item[0-cells:] Categories
+%\item[1-cells:]  The morphisms are {\em profunctors} given by the following correspondence:
+%$$
+%\dfrac
+%{F:\X^\op\times\Y\to\Sets \quad \in\ \Cat}
+%{F:\X\proarrow \Y\quad \in\ \Prof}
+%$$
+%
+%The composition of profunctors $P:\X\proarrow \Y$ and $Q:\Y\proarrow \Z$ is given by the coend:
+%$$
+%P;Q := \int^{Y \in \Y } P(-,Y) \times Q(Y,=):\X \proarrow \Z
+%$$
+%Where the coend of a functor $F:\X^\op\times\X\to \Sets$ is given by the coequalizer diagram (in $\Cat$):
+%$$
+%\coprod_{X_1,X_2 \in \X} {\X}(X_1,X_2) \times F(X_1,X_2) \rightrightarrows \prod_{X \in \X} F(X,X) \to \int^{X \in \X} F(X,X)
+%$$
+%
+%
+%The identity profunctor on $\X$ is given by the hom functor
+%$$\X(-,=): \X^\op\times\X\to\Sets$$
+%
+%
+%Intutitively, this is a categorification of trace of a matrix where the natural numbers are replaced with categories, and the commutative ring is replaced with $\Sets$.  Thus, the composition of profunctors categorifies matrix multiplication.
+%
+%
+%\item[2-cells:]  2-cells between parallel profunctors $P,Q:\X\proarrow \Y$ are natural transformations between the underlying profunctors $P,Q:\X^\op\times \Y \to \Sets$.
+%
+%\item[Compact closed structure:] The symmetric monoidal structure of $\Prof$ is given by extending the Cartesian structure in $\Cat$.   The units and counits of the compact closed structure are given by the hom functor.
+%
+%\end{description}
+%\end{definition}
+%
+%
+%A comprehensive review of the basic theory of profunctors and their calculus is contained in \cite{fosco}.
+%There are two classes of profunctors which will be of interest to us:
+%
+%\begin{definition}
 
 
 A profunctor $\X\proarrow \Y$ is {\bf representable} when it is naturally isomorphic to the profunctor $F_*:=\Y(F-,=)$ for a functor $F: \X\to \Y$.
@@ -1857,7 +1927,7 @@ $$
 These Frobeniusators interact with the (co)associators and (co)unitors of the (co)omonoid and adjoints to to satisfy several coherences forming what Franco et al call ``map monoidal object'' \cite[Rem. 6.3]{dualsinvert}. They also remark that when the monoidal category is additionally autonomous, so that it has duals, the Frobeniusators are invertible.  As a technical note,  map monoidal objects in $\Prof$ are not precisely monoidal categories, as this biconditional only holds for Cauchy-complete categories.
 
 
-For context, a similar unpublised result Shulman discussed on the n-category cafe \cite{shula} as well as in his paper \cite{shulb}, characterizes biclosed linearly distributive categories and  *-autonomous categories as, respectively, lax and pseudo-Frobenius algebras in the compact closed 2-category multivariable adjunctions.  This refines the similar result of  \cite{Street2004}, where it is shown that  Cauchy complete  *-autonomous categories are in bijection with Frobenius pseudomonoids in Prof.
+For context, a similar unpublised result Shulman discussed on the n-category cafe \cite{shula} as well as in his paper \cite{shulb}, characterizes biclosed linearly distributive categories and  *-autonomous categories as, respectively, lax and pseudo-Frobenius algebras in the compact closed bicategory multivariable adjunctions.  This refines the similar result of  \cite{Street2004}, where it is shown that  Cauchy complete  *-autonomous categories are in bijection with Frobenius pseudomonoids in Prof.
 
 
 
@@ -2094,7 +2164,7 @@ From now on, let us assume that the scalars in our monoidal category are central
 Let us ``look inside'' $\Prof$ just as we did for $\Cat$, to see how normalization acts on points.
 
 \begin{definition}
-The symmetric monoidal 2-category of {\bf pointed profunctors}, $\Prof_*$ has:
+The symmetric monoidal bicategory of {\bf pointed profunctors}, $\Prof_*$ has:
 
 \begin{description}
 \item[0-cells:] Pointed categories:
@@ -2432,7 +2502,13 @@ $$
 $$
 
 
-In the setting of proof nets, the tensor is inverse to the cotensor and the unit introduction is inverse to the unit removal.  Howver, slightly closer than in $\Cat_*$, in $\Prof_*$ these 2-cells are at least adjoint.  We want to turn the adjunctions into equalities somehow.  We attempt this by regarding the normalization of the diagrams in $\Prof_*$ as the maps themselves.  
+In the setting of proof nets, the tensor is inverse to the cotensor and the unit introduction is inverse to the unit removal. 
+
+
+
+\section{Monoidal categories as displayed categories}
+
+ However, slightly closer than in $\Cat_*$, in $\Prof_*$ these 2-cells are at least adjoint.  We want to turn the adjunctions into equalities somehow.  We attempt this by regarding the normalization of the diagrams in $\Prof_*$ as the maps themselves.  
 We need the following definition to this end:
 
 \begin{definition}

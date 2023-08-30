@@ -186,32 +186,6 @@ The forward direction is trivial. For the converse, assume the right hand side h
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (0, 1) {};
-		\node [style=Z] (1) at (0.25, 3.25) {};
-		\node [style=none] (2) at (-0.75, 3.75) {};
-		\node [style=none] (3) at (0.25, 3.75) {};
-		\node [style=none] (4) at (0, 0.5) {};
-		\node [style=Z] (5) at (-0.75, 3.25) {};
-		\node [style=map] (6) at (0.25, 1.75) {$f$};
-		\node [style=map] (7) at (-0.25, 2.5) {$g$};
-		\node [style=none] (8) at (-0.75, 2.25) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (2.center) to (5);
-		\draw (1) to (3.center);
-		\draw (4.center) to (0);
-		\draw [in=-90, out=135] (0) to (7);
-		\draw [in=45, out=-90] (6) to (0);
-		\draw [in=-124, out=60] (7) to (1);
-		\draw [in=120, out=-60] (5) to (7);
-		\draw [in=60, out=-60] (1) to (6);
-		\draw [in=-90, out=120, looseness=0.75] (6) to (8.center);
-		\draw [in=-90, out=90] (8.center) to (5);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (0) at (1.25, 0.5) {};
 		\node [style=Z] (1) at (1.5, 3.25) {};
 		\node [style=none] (2) at (0.5, 3.75) {};
@@ -1242,6 +1216,7 @@ This is clearly a counital copy category, with a restriction terminal object giv
 
 \begin{lemma}
 \label{lemma:envstruct}
+\label{cor:copy}
 Given a discrete inverse category $\X$, its counital completion $c(\X)$ and  Cartesian completion $\tilde \X$ are isomorphic as discrete Cartesian restriction categories.
 \end{lemma}
 
@@ -3054,9 +3029,69 @@ $}
 \end{figure}
 
 
-The Toffoli gate and the 1-ancillary bits allow $\cnot$, $\Not$, $\zeroin$, $\zeroout$, and flipped $\tof$ gate and flipped $\cnot$ gate can defined in this setting:
+The Toffoli gate, $\tof$ as well as the ancillae are interpreted as follows:
 
-\[ \begin{array}{ccc}
+$$
+\left\llbracket\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=nothing] (29) at (0, 3.5) {};
+		\node [style=nothing] (30) at (-0.5, 3.5) {};
+		\node [style=nothing] (31) at (-0.5, 4.5) {};
+		\node [style=nothing] (32) at (0, 4.5) {};
+		\node [style=oplus] (33) at (0, 4) {};
+		\node [style=dot] (34) at (-0.5, 4) {};
+		\node [style=nothing] (35) at (-1, 3.5) {};
+		\node [style=nothing] (36) at (-1, 4.5) {};
+		\node [style=dot] (37) at (-1, 4) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (30) to (34);
+		\draw (34) to (31);
+		\draw (32) to (33);
+		\draw (33) to (29);
+		\draw (33) to (34);
+		\draw (35) to (37);
+		\draw (37) to (36);
+		\draw (37) to (34);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket
+=\sum_{x_0,x_1,x_2=0}^{1} |x_0,x_1, x_0\cdot x_1+x_2 \rangle\langle x_0, x_1,x_2|
+\ ,\hspace*{.5cm}
+\left\llbracket\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=onein] (15) at (8.75, -2.5) {};
+		\node [style=none] (19) at (8.75, -1.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (19.center) to (15);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket
+=|0 \rangle
+ \ ,\hspace*{.5cm}
+\left\llbracket\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (15) at (8.75, -2.5) {};
+		\node [style=oneout] (19) at (8.75, -1.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (19.center) to (15);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket
+=\langle 0 |
+$$
+
+The generators $\tof$, $|0\rangle$ and $\langle 0|$ allow the $\cnot$, $\Not$ gates to be defined as well as $\sqrt{2}|+\rangle$ and $\sqrt{2}\langle +|$:
+
+
+
+
+\[ \begin{array}{cccc}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=nothing] (28) at (0, 3.5) {};
@@ -3097,7 +3132,7 @@ The Toffoli gate and the 1-ancillary bits allow $\cnot$, $\Not$, $\zeroin$, $\ze
 		\draw (37) to (36);
 		\draw (37) to (34);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}\
 ,
 &
 \begin{tikzpicture}
@@ -3128,7 +3163,7 @@ The Toffoli gate and the 1-ancillary bits allow $\cnot$, $\Not$, $\zeroin$, $\ze
 		\draw (5) to (4);
 		\draw (4) to (6);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}\
 ,
 &
 \begin{tikzpicture}
@@ -3151,7 +3186,8 @@ The Toffoli gate and the 1-ancillary bits allow $\cnot$, $\Not$, $\zeroin$, $\ze
 		\draw (3) to (5);
 		\draw (5) to (4);
 	\end{pgfonlayer}
-\end{tikzpicture}\\
+\end{tikzpicture}\ ,
+&
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=nothing] (4) at (0, 0) {};
@@ -3173,8 +3209,14 @@ The Toffoli gate and the 1-ancillary bits allow $\cnot$, $\Not$, $\zeroin$, $\ze
 		\draw (7) to (6);
 	\end{pgfonlayer}
 \end{tikzpicture}
-,
-&
+\end{array}  \]
+
+
+
+As well as the flipped $\tof$ gate and flipped $\cnot$ gate can defined in this setting:
+
+\[
+\begin{array}{cc}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=nothing] (6) at (0, 0) {};
@@ -3222,7 +3264,7 @@ The Toffoli gate and the 1-ancillary bits allow $\cnot$, $\Not$, $\zeroin$, $\ze
 		\draw (14) to (15);
 	\end{pgfonlayer}
 \end{tikzpicture}
-,
+\ ,
 &
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3259,50 +3301,20 @@ The Toffoli gate and the 1-ancillary bits allow $\cnot$, $\Not$, $\zeroin$, $\ze
 		\draw (13) to (14);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\end{array}  \]
-
+\end{array}
+\]
 \end{definition}
 
 
-\begin{definition}
-Let $\FPinj_2$, $\FPar_2$ and $\FSpan_2$ denote, repsectively, the full subcategories of $\ParIso(\Par(\FinOrd))$ , $\Par(\FinOrd)$, $\Span^\sim (\FinOrd)$ where the objects are powers of two.
-\end{definition}
+\begin{lemma}[{\cite[Proposition 6.2]{tof}}]
 
-\begin{theorem}[{\cite[???]{tof}}]
-$\TOF$ is \dag-symmetric monoidally isomorphic to $\FPinj_2$.
-\end{theorem}
+$\TOF$ is a discrete inverse category, where the partial inverse sends:
 
-\begin{corollary}
-$\TOF$ embeds in $\FHilb$ via the $\ell^2$ functor so that:
-$$\TOF \cong \FPinj\ \xrightarrowtail{\ell^2} \FHilb$$
-
-The object $n$ is sent to
-
-$$\left\{\phi:\{0,1\}^n\to \C \ \bigl\vert \ \sum_{(b_1,\ldots,b_n )\in \{0,1\}^n } |\phi (b_1,\ldots, b_n)|^2 < \infty \right\}$$
-
-The $2^n$ dirac deltas induce an orthonormal basis:
 $$
-\delta_{a_1,\ldots, a_n} (b_1,\ldots, b_n) := 
-\begin{cases}
- 1 & \text{if $\forall i\in[n], a_i=b_i$ }\\
-0 & \text{otherwise}
-\end{cases}
+\tof\mapsto \tof \ , \hspace*{.2cm} |0\rangle \mapsto \langle 0|\ , \hspace*{.2cm} \langle 0| \mapsto |0\rangle
 $$
 
-\end{corollary}
-
-
-In this category, one can construct generalized controlled not gates with arbitrarily many control wires using ladders of Toffoli gates.  Let $\lbparen x,X \rbparen$ denote a generalized Toffoli gate acting on the $x$th wire, controlled on the wires indexed by a set $X$ where $x\notin X$. Then we can partially commute generalized controlled-not gates:
-
-\begin{lemma}[{\cite[???]{iwama}}]
-\label{lemma:Iwama}
-Let $\lbparen x,X \rbparen$ and $\lbparen y,Y \rbparen$ be generalized controlled not gates in $\TOF$ where $x\notin Y$.  By the completeness of $\TOF$, we can commute them past each other with a trailing generalized controlled not gate as a side effect:
-$$
-\lbparen x,X\rbparen;\lbparen y,\{x\}\sqcup Y\rbparen = \lbparen y,{X\cup Y}\rbparen ; \lbparen y,{Y\sqcup\{x\}}\rbparen ;\lbparen x,X \rbparen
-$$
-\end{lemma}
-
-In $\TOF$, one can define the diagonal map as follows:
+The diagonal map on one wire is defined as follows:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3335,68 +3347,27 @@ $$
 \end{tikzpicture}
 $$
 
-
-\begin{lemma}[{\cite[\S 5.3.2]{cole}}]
-The diagonal map is a natural special commutative  \dag-symmetric % \linebreak[4] 
-monoidal  nonunital Frobenius algebra.
 \end{lemma}
 
-It is also natural on target qubits:
-\begin{lemma}[{\cite[Lem. B.0.2 (iii)]{cole}}]
-\label{lemma:natoplus}
-$$
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=fanout] (12) at (0, 2.25) {};
-		\node [style=oplus] (13) at (0, 1.75) {};
-		\node [style=dot] (14) at (-0.75, 1.75) {};
-		\node [style=none] (15) at (-0.75, 1.25) {};
-		\node [style=none] (16) at (0, 1.25) {};
-		\node [style=none] (17) at (0.25, 3) {};
-		\node [style=none] (18) at (-0.25, 3) {};
-		\node [style=none] (19) at (-0.75, 3) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (15.center) to (14);
-		\draw (14) to (19.center);
-		\draw (13) to (14);
-		\draw (16.center) to (13);
-		\draw (13) to (12);
-		\draw [in=-90, out=108] (12) to (18.center);
-		\draw [in=72, out=-90] (17.center) to (12);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=fanout] (13) at (0, 0.75) {};
-		\node [style=none] (14) at (-0.75, 0.25) {};
-		\node [style=none] (15) at (0, 0.25) {};
-		\node [style=none] (16) at (0.25, 1.5) {};
-		\node [style=none] (17) at (-0.25, 1.5) {};
-		\node [style=none] (18) at (-0.75, 2.5) {};
-		\node [style=dot] (19) at (-0.75, 1.5) {};
-		\node [style=oplus] (20) at (-0.25, 1.5) {};
-		\node [style=none] (21) at (0.25, 2) {};
-		\node [style=dot] (22) at (-0.75, 2) {};
-		\node [style=oplus] (23) at (0.25, 2) {};
-		\node [style=none] (24) at (0.25, 2.5) {};
-		\node [style=none] (25) at (-0.25, 2.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [in=-90, out=108] (13) to (17.center);
-		\draw [in=72, out=-90] (16.center) to (13);
-		\draw (20) to (19);
-		\draw (18.center) to (14.center);
-		\draw (23) to (22);
-		\draw (24.center) to (21.center);
-		\draw (21.center) to (16.center);
-		\draw (13) to (15.center);
-		\draw (17.center) to (25.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-$$
-\end{lemma}
+
+\begin{theorem}[{\cite[Theorem 10.6]{tof}}]
+$\TOF$ is isomorphic to $\FPinj_2$ as a discrete inverse category.
+\end{theorem}
+
+\begin{definition}
+Let $\FPinj_2$, $\FPar_2$ and $\FSpan_2$ denote, repsectively, the full subcategories of $\ParIso(\Par(\FinOrd))$ , $\Par(\FinOrd)$, $\Span^\sim (\FinOrd)$ where the objects are powers of two.
+\end{definition}
+
+The interpretation of the generators we gave into $\Mat_\C$ can therefore be restated in terms of the $\ell^2$ functor:
+
+\begin{corollary}
+$\TOF$ embeds in $\FHilb$ via the $\ell^2$ functor so that:
+$$\TOF \cong \FPinj\ \xrightarrowtail{\ell^2} \FHilb$$
+
+
+\end{corollary}
+
+
 
 
 \subsubsection{Adding a unit and counit to  TOF}
@@ -4393,8 +4364,351 @@ $
 \end{definition}
 
 
-Before, we prove there is a functor from $\ZXA$ to $\hat \TOF$, we establish some basic properties of $\hat \TOF$.
+Before, we prove there is a functor from $\ZXA$ to $\hat \TOF$ we recall some basic properties of $\TOF$.
+In $\TOF$, one can construct controlled-not gates with arbitrarily many control wires using ladders of Toffoli gates:
 
+\begin{definition}
+A {\bf generalized controlled-not gate} on $n$ wires is denoted by $\lbparen x,X \rbparen$, where $X$ indexes a subset of the $n$ wires, and $x$ is an index for precisely one wire such that $x \notin X$.
+
+We define draw a generalized controlled-not gates $\lbparen x,X \rbparen$ on $n$ wires where $x$ is the last wire and $|X|=n-1$ as follows:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=nothing] (79) at (18.5, -0.5) {};
+		\node [style=nothing] (80) at (18, -0.5) {};
+		\node [style=nothing] (81) at (18, 0.5) {};
+		\node [style=nothing] (82) at (18.5, 0.5) {};
+		\node [style=oplus] (83) at (18.5, 0) {};
+		\node [style=dot] (84) at (18, 0) {};
+		\node [style=nothing] (85) at (16.25, -0.5) {};
+		\node [style=nothing] (86) at (16.25, 0.5) {};
+		\node [style=dot] (87) at (16.25, 0) {};
+		\node [style=none] (88) at (16.75, 0) {};
+		\node [style=none] (89) at (17.5, 0) {};
+		\node [style=none] (93) at (17.125, 0.275) {$n-1$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (80) to (84);
+		\draw (84) to (81);
+		\draw (82) to (83);
+		\draw (83) to (79);
+		\draw (83) to (84);
+		\draw (85) to (87);
+		\draw (87) to (86);
+		\draw (89.center) to (84);
+		\draw (88.center) to (87);
+		\draw [style=dotted] (89.center) to (88.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+These gates are defined by induction on the number of wires.  For the base cases:
+
+\begin{itemize}
+\item For $n=1$ it is $\Not$.
+\item For $n=2$ it is  $\cnot$.
+\item For $n=3$ it is $\tof$.
+\end{itemize}
+
+
+For $n\geq 3$, then generalized controlled-not gate on $n+1$ wires is defined as follows:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=oplus] (50) at (24.25, -1) {};
+		\node [style=dot] (51) at (23.75, -1) {};
+		\node [style=dot] (52) at (23.25, -1) {};
+		\node [style=oplus] (53) at (24.25, -2) {};
+		\node [style=dot] (54) at (23.75, -2) {};
+		\node [style=dot] (55) at (23.25, -2) {};
+		\node [style=dot] (56) at (24.25, -1.5) {};
+		\node [style=none] (59) at (24.75, -1.5) {};
+		\node [style=none] (60) at (25.5, -1.5) {};
+		\node [style=none] (61) at (25.125, -1.225) {$n$};
+		\node [style=oplus] (62) at (26.5, -1.5) {};
+		\node [style=dot] (63) at (26, -1.5) {};
+		\node [style=zeroout] (64) at (24.25, -0.5) {};
+		\node [style=zeroin] (65) at (24.25, -2.5) {};
+		\node [style=nothing] (66) at (23.75, -0.25) {};
+		\node [style=nothing] (67) at (23.25, -0.25) {};
+		\node [style=nothing] (68) at (23.75, -2.75) {};
+		\node [style=nothing] (69) at (23.25, -2.75) {};
+		\node [style=nothing] (70) at (26, -0.25) {};
+		\node [style=nothing] (71) at (26.5, -0.25) {};
+		\node [style=nothing] (72) at (26, -2.75) {};
+		\node [style=nothing] (73) at (26.5, -2.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (51) to (52);
+		\draw (51) to (50);
+		\draw (54) to (55);
+		\draw (54) to (53);
+		\draw [style=dotted] (60.center) to (59.center);
+		\draw (56) to (59.center);
+		\draw (63) to (60.center);
+		\draw (63) to (62);
+		\draw (69) to (55);
+		\draw (55) to (52);
+		\draw (52) to (67);
+		\draw (66) to (51);
+		\draw (51) to (54);
+		\draw (54) to (68);
+		\draw (65) to (53);
+		\draw (53) to (56);
+		\draw (56) to (50);
+		\draw (50) to (64);
+		\draw (70) to (63);
+		\draw (63) to (72);
+		\draw (73) to (62);
+		\draw (62) to (71);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+
+
+\end{definition}
+
+
+
+
+We can partially commute generalized controlled-not gates:
+
+\begin{lemma}[{\cite[\S 3 (3)]{iwama}}]
+\label{lemma:Iwama}
+Let $\lbparen x,X \rbparen$ and $\lbparen y,Y \rbparen$ be generalized controlled-not gates in $\TOF$ where $x\notin Y$.  By the completeness of $\TOF$, we can commute them past each other with a trailing generalized controlled-not gate as a side effect:
+$$
+\lbparen x,X\rbparen;\lbparen y,\{x\}\sqcup Y\rbparen = \lbparen y,{X\cup Y}\rbparen ; \lbparen y,{Y\sqcup\{x\}}\rbparen ;\lbparen x,X \rbparen
+$$
+\end{lemma}
+
+
+
+The following equations hold in $\TOF$:
+
+\begin{lemma}[{\cite[Lemma 4.1]{cnot}}]
+\label{CNOT.2}
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=nothing] (109) at (22.25, -1.25) {};
+		\node [style=nothing] (110) at (22.75, -1.25) {};
+		\node [style=nothing] (111) at (22.25, -2.75) {};
+		\node [style=nothing] (112) at (22.75, -2.75) {};
+		\node [style=oplus] (113) at (22.75, -1.75) {};
+		\node [style=dot] (114) at (22.25, -1.75) {};
+		\node [style=oplus] (115) at (22.75, -2.25) {};
+		\node [style=dot] (116) at (22.25, -2.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (114) to (113);
+		\draw (116) to (115);
+		\draw (111) to (116);
+		\draw (116) to (114);
+		\draw (110) to (113);
+		\draw (113) to (115);
+		\draw (115) to (112);
+		\draw (114) to (109);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=nothing] (117) at (23.75, -1.25) {};
+		\node [style=nothing] (118) at (24.25, -1.25) {};
+		\node [style=nothing] (119) at (23.75, -2.75) {};
+		\node [style=nothing] (120) at (24.25, -2.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (119) to (117);
+		\draw (120) to (118);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+\end{lemma}
+
+\begin{lemma}[{\cite[Lemma 4.1]{cnot}}]
+\label{CNOT.8}
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=nothing] (109) at (22.25, -1.25) {};
+		\node [style=nothing] (110) at (22.75, -1.25) {};
+		\node [style=nothing] (111) at (22.25, -3.25) {};
+		\node [style=nothing] (112) at (22.75, -3.25) {};
+		\node [style=oplus] (113) at (22.75, -1.75) {};
+		\node [style=dot] (114) at (22.25, -1.75) {};
+		\node [style=oplus] (115) at (22.75, -2.75) {};
+		\node [style=dot] (116) at (22.25, -2.75) {};
+		\node [style=nothing] (117) at (23.25, -1.25) {};
+		\node [style=oplus] (123) at (23.25, -2.25) {};
+		\node [style=dot] (124) at (22.75, -2.25) {};
+		\node [style=nothing] (125) at (23.25, -3.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (114) to (113);
+		\draw (116) to (115);
+		\draw (111) to (116);
+		\draw (116) to (114);
+		\draw (110) to (113);
+		\draw (113) to (115);
+		\draw (115) to (112);
+		\draw (114) to (109);
+		\draw (124) to (123);
+		\draw (117) to (123);
+		\draw (123) to (125);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=nothing] (126) at (24.25, -1.25) {};
+		\node [style=nothing] (127) at (24.75, -1.25) {};
+		\node [style=nothing] (128) at (24.25, -3.25) {};
+		\node [style=nothing] (129) at (24.75, -3.25) {};
+		\node [style=oplus] (130) at (25.25, -2) {};
+		\node [style=dot] (131) at (24.25, -2) {};
+		\node [style=oplus] (132) at (25.25, -2.5) {};
+		\node [style=dot] (133) at (24.75, -2.5) {};
+		\node [style=nothing] (134) at (25.25, -1.25) {};
+		\node [style=nothing] (137) at (25.25, -3.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (131) to (130);
+		\draw (133) to (132);
+		\draw (131) to (126);
+		\draw (128) to (131);
+		\draw (129) to (133);
+		\draw (137) to (132);
+		\draw (132) to (130);
+		\draw (130) to (134);
+		\draw (127) to (133);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+\end{lemma}
+
+\begin{lemma}[{\cite[Lemma 4.1]{cnot}}]
+\label{CNOT.5}
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=nothing] (109) at (22.25, -1.25) {};
+		\node [style=nothing] (110) at (22.75, -1.25) {};
+		\node [style=nothing] (111) at (22.25, -2.75) {};
+		\node [style=nothing] (112) at (22.75, -2.75) {};
+		\node [style=oplus] (113) at (22.75, -1.75) {};
+		\node [style=dot] (114) at (22.25, -1.75) {};
+		\node [style=nothing] (117) at (23.25, -1.25) {};
+		\node [style=nothing] (125) at (23.25, -2.75) {};
+		\node [style=oplus] (126) at (22.75, -2.25) {};
+		\node [style=dot] (127) at (23.25, -2.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (114) to (113);
+		\draw (110) to (113);
+		\draw (114) to (109);
+		\draw (127) to (126);
+		\draw (125) to (127);
+		\draw (127) to (117);
+		\draw (113) to (126);
+		\draw (114) to (111);
+		\draw (112) to (126);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=nothing] (128) at (24.25, -2.75) {};
+		\node [style=nothing] (129) at (24.75, -2.75) {};
+		\node [style=nothing] (130) at (24.25, -1.25) {};
+		\node [style=nothing] (131) at (24.75, -1.25) {};
+		\node [style=oplus] (132) at (24.75, -2.25) {};
+		\node [style=dot] (133) at (24.25, -2.25) {};
+		\node [style=nothing] (134) at (25.25, -2.75) {};
+		\node [style=nothing] (135) at (25.25, -1.25) {};
+		\node [style=oplus] (136) at (24.75, -1.75) {};
+		\node [style=dot] (137) at (25.25, -1.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (133) to (132);
+		\draw (129) to (132);
+		\draw (133) to (128);
+		\draw (137) to (136);
+		\draw (135) to (137);
+		\draw (137) to (134);
+		\draw (132) to (136);
+		\draw (133) to (130);
+		\draw (131) to (136);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+\end{lemma}
+
+The diagonal map is natural on target qubits:
+\begin{lemma}[{\cite[Lem. B.0.2 (iii)]{cole}}]
+\label{lemma:natoplus}
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=fanout] (12) at (0, 2.25) {};
+		\node [style=oplus] (13) at (0, 1.75) {};
+		\node [style=dot] (14) at (-0.75, 1.75) {};
+		\node [style=none] (15) at (-0.75, 1.25) {};
+		\node [style=none] (16) at (0, 1.25) {};
+		\node [style=none] (17) at (0.25, 3) {};
+		\node [style=none] (18) at (-0.25, 3) {};
+		\node [style=none] (19) at (-0.75, 3) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (15.center) to (14);
+		\draw (14) to (19.center);
+		\draw (13) to (14);
+		\draw (16.center) to (13);
+		\draw (13) to (12);
+		\draw [in=-90, out=108] (12) to (18.center);
+		\draw [in=72, out=-90] (17.center) to (12);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=fanout] (13) at (0, 0.75) {};
+		\node [style=none] (14) at (-0.75, 0.25) {};
+		\node [style=none] (15) at (0, 0.25) {};
+		\node [style=none] (16) at (0.25, 1.5) {};
+		\node [style=none] (17) at (-0.25, 1.5) {};
+		\node [style=none] (18) at (-0.75, 2.5) {};
+		\node [style=dot] (19) at (-0.75, 1.5) {};
+		\node [style=oplus] (20) at (-0.25, 1.5) {};
+		\node [style=none] (21) at (0.25, 2) {};
+		\node [style=dot] (22) at (-0.75, 2) {};
+		\node [style=oplus] (23) at (0.25, 2) {};
+		\node [style=none] (24) at (0.25, 2.5) {};
+		\node [style=none] (25) at (-0.25, 2.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=108] (13) to (17.center);
+		\draw [in=72, out=-90] (16.center) to (13);
+		\draw (20) to (19);
+		\draw (18.center) to (14.center);
+		\draw (23) to (22);
+		\draw (24.center) to (21.center);
+		\draw (21.center) to (16.center);
+		\draw (13) to (15.center);
+		\draw (17.center) to (25.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+\end{lemma}
+
+
+We also establish some basic properties of $\hat \TOF$.
 First, the $\cnot$ gate is its own mate on the second wire:
 \begin{lemma}
 \label{prop:twist}
@@ -5441,7 +5755,7 @@ We prove that all of the axioms of $\ZXA$ hold in $\hat \TOF$:
 		\draw [style=simple] (3) to (5);
 	\end{pgfonlayer}
 \end{tikzpicture}\
-\eq{Rem. \ref{cor:copy}}
+\eq{Lem. \ref{cor:copy}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (3) at (0.5, 3) {};
@@ -5515,7 +5829,7 @@ We prove that all of the axioms of $\ZXA$ hold in $\hat \TOF$:
 		\draw [style=simple] (13) to (8);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\eq{\ref{CNOT.8}}
+\eq{Lem. \ref{CNOT.8}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (7) at (0, 2) {};
@@ -5544,7 +5858,7 @@ We prove that all of the axioms of $\ZXA$ hold in $\hat \TOF$:
 		\draw [style=simple] (7.center) to (12);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\eq{Rem. \ref{cor:copy}}
+\eq{Lem. \ref{cor:copy}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (8) at (0, 3.25) {};
@@ -5705,7 +6019,7 @@ We prove that all of the axioms of $\ZXA$ hold in $\hat \TOF$:
 		\draw [style=simple] (20) to (13);
 	\end{pgfonlayer}
 \end{tikzpicture}\\
-\eq{\ref{CNOT.5}}&
+\eq{Lem. \ref{CNOT.5}}&
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=dot] (14) at (0.75, 6.25) {};
@@ -6477,7 +6791,7 @@ This is immediate.
 %		\draw (1) to (5);
 %	\end{pgfonlayer}
 %\end{tikzpicture}
-%\eq{Rem. \ref{cor:copy}}
+%\eq{Lem. \ref{cor:copy}}
 %\begin{tikzpicture}
 %	\begin{pgfonlayer}{nodelayer}
 %		\node [style=Z] (0) at (4.5, -1.5) {};
@@ -6735,7 +7049,7 @@ This is immediate.
 		\draw [style=simple] (13) to (16);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\eq{Rem. \ref{cor:copy}}
+\eq{Lem. \ref{cor:copy}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=dot] (4) at (0, 1.5) {};
@@ -6893,7 +7207,7 @@ This is immediate.
 		\draw (11) to (18);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\eq{Rem. \ref{cor:copy}}
+\eq{Lem. \ref{cor:copy}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (7) at (4.175, 5.5) {};
@@ -7044,7 +7358,7 @@ This is immediate.
 		\draw (14) to (18);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\eq{Rem. \ref{cor:copy}}
+\eq{Lem. \ref{cor:copy}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (14) at (0, 8) {};
@@ -7533,7 +7847,7 @@ This is immediate.
 		\draw (37) to (36);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\eq{Rem. \ref{cor:copy}}
+\eq{Lem. \ref{cor:copy}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (35) at (-0.5, 5.75) {};
@@ -7904,7 +8218,7 @@ $$
 		\draw (54) to (43);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\eq{Rem. \ref{cor:copy}}
+\eq{Lem. \ref{cor:copy}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=dot] (44) at (0, 7) {};
@@ -7953,7 +8267,7 @@ $$
 		\draw (45) to (51);
 	\end{pgfonlayer}
 \end{tikzpicture}\\
-&\eq{Rem. \ref{cor:copy}}
+&\eq{Lem. \ref{cor:copy}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (46) at (0, 7) {};
@@ -8123,7 +8437,7 @@ This is precisely \ref{TOF.7}.
 		\draw (64) to (66);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\eq{Rem. \ref{cor:copy}}
+\eq{Lem. \ref{cor:copy}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (52) at (2, 7.5) {};
@@ -8156,7 +8470,7 @@ This is precisely \ref{TOF.7}.
 		\draw (60.center) to (55);
 	\end{pgfonlayer}
 \end{tikzpicture}\\
-&\eq{Rem. \ref{cor:copy}}
+&\eq{Lem. \ref{cor:copy}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (53) at (2, 8) {};
@@ -8328,7 +8642,7 @@ This is precisely \ref{TOF.7}.
 		\draw (63.center) to (56);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\eq{Rem. \ref{cor:copy}}
+\eq{Lem. \ref{cor:copy}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=dot] (57) at (0.5, 6.75) {};
@@ -8370,7 +8684,7 @@ This is precisely \ref{TOF.7}.
 		\draw (76) to (75);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\eq{Rem. \ref{cor:copy}}
+\eq{Lem. \ref{cor:copy}}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=dot] (58) at (0.5, 6.75) {};
@@ -8653,7 +8967,13 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (0) at (0, -0) {};
+		\node [style=none] (0) at (2, 0) {};
+		\node [style=none] (1) at (2, -1) {};
+		\node [style=none] (2) at (3, -1) {};
+		\node [style=none] (3) at (3, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw[style=dashed] (3.center) to (0.center) to (1.center) to (2.center) to cycle;
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
@@ -13920,7 +14240,7 @@ $$
 =
 \sqrt{2}{\cal F}|1\rangle = | -\rangle = (1,-1)^T$$
 
-so that the $Z$-spiders are also phased by $\alpha,\beta\in \Z/2\Z$
+so that the $Z$-spiders are also phased by $\alpha,\beta\in \Z/2\Z$:
 
 $$
 \begin{tikzpicture}
@@ -14263,16 +14583,13 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (27) at (2, 5) {};
-		\node [style=none] (28) at (2, 4) {};
-		\node [style=none] (29) at (3, 4) {};
-		\node [style=none] (30) at (3, 5) {};
+		\node [style=none] (0) at (2, 0) {};
+		\node [style=none] (1) at (2, -1) {};
+		\node [style=none] (2) at (3, -1) {};
+		\node [style=none] (3) at (3, 0) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw[style=dashed] (30.center) to (27.center);
-		\draw[style=dashed] (27.center) to (28.center);
-		\draw[style=dashed] (28.center) to (29.center);
-		\draw[style=dashed] (29.center) to (30.center);
+		\draw[style=dashed] (3.center) to (0.center) to (1.center) to (2.center) to cycle;
 	\end{pgfonlayer}
 \end{tikzpicture}\ ,
 \hspace*{.2cm}
