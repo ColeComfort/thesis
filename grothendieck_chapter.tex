@@ -170,7 +170,7 @@
 %%%
 %%%This is essentially the two-sided version of the coherence data of a monoidal category. 
 %%%
-%%%2-categorical spider theorem
+%%%bicateggorical spider theorem
 %%%
 %%%Since $\mathbb{1}$ is strict monoidal, $\int \delta p$ is as well.
 %%%Therefore we can deduce that this is the strictification of $\X$.
@@ -840,10 +840,10 @@ In this Chapter, we attempt a high-level reconstruction of  proof nets by catego
 We  hope that the highly conceptual level of the construction opens up avenues for finding string diagrams for more general algebraic structures; our goal being to find canonical ways to glue monoidal categories together and obtain new kinds of string diagrams thereof.  This kind of problem has previously been considered in the setting where one wants to glue together monoidal categories along multiple different monoidal functors \cite{lobski}.  The motivation therein is to give a semantics for ways to explain systems which are stratified into multiple different layers, although they obtain a monoidal bicategory, rather than an ordinary monoidal category where one has to keep track of coherence information.
 
 
-Indeed, throughout this thesis, we have been drawing string diagrams in monoidal, or symmetric monoidal categories in which our familiar notions of monoids and Frobenius algebras and so on live.  However, if we move to the higher dimensional setting of monoidal 2-categories, all of the equalities defining the axioms for these structures become natural transformations subject to  coherence conditions.   
+Indeed, throughout this thesis, we have been drawing string diagrams in monoidal, or symmetric monoidal categories in which our familiar notions of monoids and Frobenius algebras and so on live.  However, if we move to the higher dimensional setting of monoidal bicategories, all of the equalities defining the axioms for these structures become natural transformations subject to  coherence conditions.   
 
 
-For this Chapter, unlike the rest, I will assume that the reader has some familiarity with monoidal 2-categories.
+For this Chapter, unlike the rest, I will assume that the reader has some familiarity with monoidal bicategories.
 
 
 \section{Pointed categories and multicategories}
@@ -1491,7 +1491,7 @@ $$
 Yielding a 1-cell:
 
 $$
-X\xleftarrow{(\pi_0;[f];\mu_X, [A] {}_{[g]}\times_h B, \pi_1;k)} Z
+X\xrightarrow{(\pi_0;[f];\mu_X, [A] {}_{[g]}\times_h B, \pi_1;k)} Z
 $$
 Where, recall that $[-]:\Sets\to\Sets $ is the list monad where the unit $\eta_X(x)\mapsto [x]$ inserts into the singleton list  and the multiplication $\mu$ flattens lists of lists.
 
@@ -1527,7 +1527,7 @@ $$
 
 
 
-And moreover, the projection map $\pi_0:F_\X\to \one$ is a fibration of multicategories.  He shows that there is an equivalence of 2-categories between the multifunctor category $[\one,\Cat]$ and the subcategory of the slice category of multifibrations over $\one$.  
+And moreover, the projection map $\pi_0:F_\X\to \one$ is a fibration of multicategories.  He shows that there is an equivalence of bicategories between the multifunctor category $[\one,\Cat]$ and the subcategory of the slice category of multifibrations over $\one$.  
 In some sense, this equivalence can be regarded as a different version of the coherence theorem for monoidal categories.
 However, from a string diagrammatic perspective, this is unsatisfying.  Indeed, despite representable multicategories being in bijection with monoidal categories, the way that composition is defined in multicategories biases the inputs over the outputs; moreover, we are only allowed to compose along one object at a time.
 
@@ -1535,52 +1535,49 @@ However, from a string diagrammatic perspective, this is unsatisfying.  Indeed, 
 
 \section{Pointed profunctors and polycategories}
 
-To attempt to rectify this with the 2-sided nature of proof nets, we recall the category of (internal) profunctors described in Definition \ref{def:internalprof}.
+To attempt to rectify this with the 2-sided nature of proof nets, we recall the category of internal profunctors described in Definition \ref{def:internalprof}, which is the 2-sided version of $\Cat$.  In this section it will be easier to work with profunctors {\em enriched} in $\Sets$, as opposed to profunctors internal to $\Sets$.  This is more general as well, because it allows us to work with locally small categories, rather than merely small categories:
 
 
-% which is the 2-sided version of $\Cat$.  In this section it will be easier to work with profunctors {\em enriched} in $\Sets$, as opposed to profunctors internal to $\Sets$.  This is more general as well, because it allows us to work with locally small categories, rather than merely small categories:
+\begin{definition}
+The category of $\Prof$, of profunctors internal to $\Sets$ has:
+\begin{description}
+\item[0-cells:] Categories
+\item[1-cells:]  The morphisms are {\em profunctors} given by the following correspondence:
+$$
+\dfrac
+{F:\X^\op\times\Y\to\Sets \quad \in\ \Cat}
+{F:\X\proarrow \Y\quad \in\ \Prof}
+$$
 
-%
-%\begin{definition}
-%The category of $\Prof$, of profunctors internal to $\Sets$ has:
-%\begin{description}
-%\item[0-cells:] Categories
-%\item[1-cells:]  The morphisms are {\em profunctors} given by the following correspondence:
-%$$
-%\dfrac
-%{F:\X^\op\times\Y\to\Sets \quad \in\ \Cat}
-%{F:\X\proarrow \Y\quad \in\ \Prof}
-%$$
-%
-%The composition of profunctors $P:\X\proarrow \Y$ and $Q:\Y\proarrow \Z$ is given by the coend:
-%$$
-%P;Q := \int^{Y \in \Y } P(-,Y) \times Q(Y,=):\X \proarrow \Z
-%$$
-%Where the coend of a functor $F:\X^\op\times\X\to \Sets$ is given by the coequalizer diagram (in $\Cat$):
-%$$
-%\coprod_{X_1,X_2 \in \X} {\X}(X_1,X_2) \times F(X_1,X_2) \rightrightarrows \prod_{X \in \X} F(X,X) \to \int^{X \in \X} F(X,X)
-%$$
-%
-%
-%The identity profunctor on $\X$ is given by the hom functor
-%$$\X(-,=): \X^\op\times\X\to\Sets$$
-%
-%
-%Intutitively, this is a categorification of trace of a matrix where the natural numbers are replaced with categories, and the commutative ring is replaced with $\Sets$.  Thus, the composition of profunctors categorifies matrix multiplication.
-%
-%
-%\item[2-cells:]  2-cells between parallel profunctors $P,Q:\X\proarrow \Y$ are natural transformations between the underlying profunctors $P,Q:\X^\op\times \Y \to \Sets$.
-%
-%\item[Compact closed structure:] The symmetric monoidal structure of $\Prof$ is given by extending the Cartesian structure in $\Cat$.   The units and counits of the compact closed structure are given by the hom functor.
-%
-%\end{description}
-%\end{definition}
-%
-%
-%A comprehensive review of the basic theory of profunctors and their calculus is contained in \cite{fosco}.
-%There are two classes of profunctors which will be of interest to us:
-%
-%\begin{definition}
+The composition of profunctors $P:\X\proarrow \Y$ and $Q:\Y\proarrow \Z$ is given by the coend:
+$$
+P;Q := \int^{Y \in \Y } P(-,Y) \times Q(Y,=):\X \proarrow \Z
+$$
+Where the coend of a functor $F:\X^\op\times\X\to \Sets$ is given by the coequalizer diagram (in $\Cat$):
+$$
+\coprod_{X_1,X_2 \in \X} {\X}(X_1,X_2) \times F(X_1,X_2) \rightrightarrows \prod_{X \in \X} F(X,X) \to \int^{X \in \X} F(X,X)
+$$
+
+
+The identity profunctor on $\X$ is given by the hom functor
+$$\X(-,=): \X^\op\times\X\to\Sets$$
+
+
+Intutitively, this is a categorification of trace of a matrix where the natural numbers are replaced with categories, and the commutative ring is replaced with $\Sets$.  Thus, the composition of profunctors categorifies matrix multiplication.
+
+
+\item[2-cells:]  2-cells between parallel profunctors $P,Q:\X\proarrow \Y$ are natural transformations between the underlying profunctors $P,Q:\X^\op\times \Y \to \Sets$.
+
+\item[Compact closed structure:] The symmetric monoidal structure of $\Prof$ is given by extending the Cartesian structure in $\Cat$.   The units and counits of the compact closed structure are given by the hom functor.
+
+\end{description}
+\end{definition}
+
+
+A comprehensive review of the basic theory of profunctors and their calculus is contained in \cite{fosco}.
+There are two classes of profunctors which will be of interest to us:
+
+\begin{definition}
 
 
 A profunctor $\X\proarrow \Y$ is {\bf representable} when it is naturally isomorphic to the profunctor $F_*:=\Y(F-,=)$ for a functor $F: \X\to \Y$.
@@ -2599,7 +2596,10 @@ We can actually go the other direction.  Given some fixed $\D$, this extends to 
 
 
 
-The idea of regarding monoidal categories as displayed categories is partially motivated by the work of \cite{blanco}, transporting the work of Hermida in the multicategorical setting to the polycategorical setting:  where the inputs and outputs are now both lists of objects.  In this work, they construct the B\'enabou-Grothendieck {\em *-polycatgory}, coming from a {\em displayed polycategory} $\one\to \Prof$, where $\Prof$ is regarded as a 2-polycategory.  In this *-polycategorical setting, their notion of a Frobenius algebra is precisely  a displayed categories from the terminal *-polycategory.
+The idea of regarding monoidal categories as displayed categories is partially motivated by the work of \cite{blanco}, transporting the work of Hermida in the multicategorical setting to the polycategorical setting:  where the inputs and outputs are now both lists of objects.  There is a similar construction of internal polycategories to internal categories and internal multicategories due to \cite{kowlowski}; however, it is quite a bit more complicated to describe formally.  
+
+
+In \cite{blanco}, they construct the B\'enabou-Grothendieck {\em *-polycatgory}, coming from a {\em displayed polycategory} $\one\to \Prof$, where $\Prof$ is regarded as a 2-polycategory.  In this *-polycategorical setting, their notion of a Frobenius algebra is precisely  a displayed categories from the terminal *-polycategory.
 Moreover, they identify representable *-polycategories as the  *-polycategories which are poly-bifibrations over the terminal *-polycategory, where representable *-polycategories are in bijection with strict *-autonomous categories.  This notion of bifibration is closely related to the B\'enabou-Grothendieck construction. 
 
 
