@@ -590,6 +590,8 @@ $$
 
 \end{lemma}
 
+This graphical characterization of the orthogonal complement  can be derived by a simple induction proof (which is not actually provided in \cite{ortho}).  However, a fully graphical proof remains open.
+
 
 
 
@@ -1786,8 +1788,8 @@ F
 \end{align*}
 \end{proof}
 
-In the ZX-calculus literature, this decomposition of the Fourier transform is known as {\it Euler decomposition} \cite{duncan2009graph}.
-A variant of this decomposition is given in \cite[p.6]{control}; although in the context of plain old linear relations instead of Lagrangian relations, so an antipode is missing in their case.  A similar observation was made in \cite[Eq. 34]{ranchin2014depicting} in terms of qudit controlled-{\cal X} gates; however, the connection to phase-shift gates and Euler decomposition was not made.
+
+A variant of this decomposition is given in \cite[p.6]{control}; although in the context of plain old linear relations instead of Lagrangian relations, so an antipode is missing in their case.  A similar observation was made in \cite[Eq. 34]{ranchin2014depicting} in terms of qudit controlled-{\cal X} gates.
 
 From Corollary \ref{theorem:unbiased}, we know that we can build any Lagrangian relation using pure Lagrangian relations and discard maps. Since the former is closed under composition and monoidal product, the following can be shown immediately from string diagram deformation.
 
@@ -2133,10 +2135,205 @@ $$
 Thus, by applying the previous equation $m$ times, this can be rewritten into an circuit in the image of $L(\LinRel_{\mathbb Q})$ followed by $n\times m$ traces.
 \end{proof}
 
+
+\subsection{Passive linear electrical circuits as Lagrangian relations}
+
+Symplectic geometry was motivated by the goal to formalize classical mechanics in a synthetic setting.  
+Therefore, it is not a coincidence that in \cite{passive} they use linear Lagrangian relations to give a semantics for ``passive linear circuits''.  These are an idealized class of electrical circuits with linear behaviour.
+
+
+To each idealized wire with no resistance, they associate the symplectic vector space $\R^{2}$.  Given an element $(z,x) \in (\R^+)^2$,  they interpret the $z$ as the current flowing through the wire and $x$ as the potential.  Recall that the voltage around a node in a circuit is is the outcoming potential minus the incoming potential.
+
+%They remark that junctions of wires and resistors are Lagrangian relations.
+They recall the following physical laws due to Ohm \cite{ohm} followed by Kirchhoff (where I can't find the original reference):
+
+\begin{description}
+\item[Ohm's law:]  The voltage around the node in a circuit is equal to the current multiplied by the resistance.
+
+\item[Kirchhoff's current law:] The sum of currents flowing into a node is equal to the sum of currents flowing out of the node.
+\end{description}
+%Kirchoffs voltage law: The sum of currents flowing into a circuit is equal to the sum of currents flowing out of the circuit.
+
+
+
+
+
+This allows us to capture an (ideal) junction with no resistance with $n$ incoming wires and $m$ outcoming wires as a Lagrangian relation.  By Kirchoff's current law, the sum of the $n$ ingoing wires is equal to the sum of the $m$ outgoing wires.  Moreover, by Ohm's law, because resistance is zero, the $n$ incoming and $m$ outgoing potentials are all made to be equal.  That is to say that the junction is interpreted as the following Lagrangian relation:
+
+$$
+\left\llbracket\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (21, 5) {};
+		\node [style=none] (1) at (22, 5) {};
+		\node [style=none] (2) at (21, 2.5) {};
+		\node [style=none] (3) at (22, 2.5) {};
+		\node [style=dot] (4) at (21.5, 3.75) {};
+		\node [style=none] (5) at (21.5, 4.5) {$\cdots$};
+		\node [style=none] (6) at (21.5, 3) {$\cdots$};
+		\node [style=none] (7) at (21.5, 4.75) {$m$};
+		\node [style=none] (8) at (21.5, 2.75) {$n$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=150, out=-90, looseness=0.75] (0.center) to (4);
+		\draw [in=90, out=-150, looseness=0.75] (4) to (2.center);
+		\draw [in=-30, out=90, looseness=0.75] (3.center) to (4);
+		\draw [in=-90, out=30, looseness=0.75] (4) to (1.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (21, 5) {};
+		\node [style=none] (1) at (22, 5) {};
+		\node [style=none] (2) at (21, 2.5) {};
+		\node [style=none] (3) at (22, 2.5) {};
+		\node [style=X] (4) at (21.5, 3.75) {};
+		\node [style=none] (5) at (21.5, 4.5) {$\cdots$};
+		\node [style=none] (6) at (21.5, 3) {$\cdots$};
+		\node [style=none] (7) at (21.5, 4.75) {$m$};
+		\node [style=none] (8) at (21.5, 2.75) {$n$};
+		\node [style=none] (9) at (23, 5) {};
+		\node [style=none] (10) at (24, 5) {};
+		\node [style=none] (11) at (23, 2.5) {};
+		\node [style=none] (12) at (24, 2.5) {};
+		\node [style=Z] (13) at (23.5, 3.75) {};
+		\node [style=none] (14) at (23.5, 4.5) {$\cdots$};
+		\node [style=none] (15) at (23.5, 3) {$\cdots$};
+		\node [style=none] (16) at (23.5, 4.75) {$m$};
+		\node [style=none] (17) at (23.5, 2.75) {$n$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=150, out=-90, looseness=0.75] (0.center) to (4);
+		\draw [in=90, out=-150, looseness=0.75] (4) to (2.center);
+		\draw [in=-30, out=90, looseness=0.75] (3.center) to (4);
+		\draw [in=-90, out=30, looseness=0.75] (4) to (1.center);
+		\draw [in=150, out=-90, looseness=0.75] (9.center) to (13);
+		\draw [in=90, out=-150, looseness=0.75] (13) to (11.center);
+		\draw [in=-30, out=90, looseness=0.75] (12.center) to (13);
+		\draw [in=-90, out=30, looseness=0.75] (13) to (10.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+
+
+This also allows us to capture (linear) resistors as Lagrangian relations.  Given a linear resistor with resistance $r\in \R^{+}$, by Ohm's law the incoming current is equal to the outgoing current; and by By Kirchoff's current law, the outgoing potential is equal to the current multiplied by $r$ plus the incoming potential:
+
+$$
+\left\llbracket
+\tikz \draw (0,0) to[R=$r$] (0,2);
+\ \right\rrbracket
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (18) at (25, 3.5) {};
+		\node [style=X] (19) at (26, 5) {};
+		\node [style=none] (20) at (25, 5.5) {};
+		\node [style=none] (21) at (26, 5.5) {};
+		\node [style=none] (22) at (25, 3) {};
+		\node [style=none] (23) at (26, 3) {};
+		\node [style=scalar] (24) at (25.5, 4.25) {$r$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (22.center) to (18);
+		\draw [in=-105, out=30] (18) to (24);
+		\draw [in=-150, out=90] (24) to (19);
+		\draw (19) to (21.center);
+		\draw (19) to (23.center);
+		\draw (18) to (20.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+In \cite{passive} they augment this semantics with time-dependent components.  The exposition of which necessitates recalling the following construction:
+
+
+\begin{definition}
+Given an integral domain $R$, the {\bf field of fractions} of  $R$ has:
+
+\begin{itemize}
+\item Elements given by pairs $(a,b) \in R \times R^*$ modulo the equivalence relation $(a,b)\sim (c,d)$ whenever $ad=bc$.  Denote the equivalence class of $(a,b)$ by $a/b$.
+
+\item Addition is defined by $a/b+c/d = (ad+cb)/(bd)$.  The unit for addition is $0/1$.  The additive inverse of $a/b$ is $(-a)/b$.
+
+\item Multiplication by $(a/b)(c/d) = (ac)/(b/d)$. The unit for multiplication is $1/1$. Given a nonzero element $c/d$, the inverse is $d/c$.
+\end{itemize}
+
+Because there is an obvious embedding of rings $a\mapsto (a/1)$, denote the equivalence class $a/1=a$.
+
+The {\bf field of real rational functions} $\R(s)$ is the field of fractions of the polynomial ring $\R[s]$.
+\end{definition}
+
+
+In \cite{control}, they interpret ``linear constant-coefficient ordinary differential equations'' relating $n$ inputs to $m$ outputs as $\R(s)$-linear relations from $n$ to $m$.  The multiplication of the polynomial indeterminate $s$ is regarded as differentiation, and multiplication by $s^{-1}$ as integration.   Regarding these differential equations as being dependent on time, in \cite{passive}, they interpret inductors and capacitors as Lagrangian relations over $\R(s)$.  In some sense, the multiplication by the scalar $s$ is interpreted as a discrete step forward in time, and by $s^{-1}$ a discrete step backwards in time. 
+
+A (linear) inductor with inductance $\ell \in \R^+$ is a component with one input and one output such that the voltage is equal to the rate of change of the current multiplied by $\ell$.  Applying Kirchoff's current law Ohm's law we have that an inductor is interpreted as follows:
+
+$$
+\left\llbracket
+\tikz \draw (0,0) to[L=$\ell$] (0,2);
+\ \right\rrbracket
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (25) at (28, 3.5) {};
+		\node [style=Z] (26) at (27, 5) {};
+		\node [style=none] (27) at (28, 5.5) {};
+		\node [style=none] (28) at (27, 5.5) {};
+		\node [style=none] (29) at (28, 3) {};
+		\node [style=none] (30) at (27, 3) {};
+		\node [style=scalar] (31) at (27.5, 4.25) {$\ell s$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (29.center) to (25);
+		\draw [in=-75, out=150] (25) to (31);
+		\draw [in=-30, out=90] (31) to (26);
+		\draw (26) to (28.center);
+		\draw (26) to (30.center);
+		\draw (25) to (27.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+
+Dually, a (linear) capacitor with capacitance $c \in \R^+$ is a component with one input and one output where the current is equal to the rate of change of the voltage multiplied by $c$.  The interpretation is given by:
+
+
+$$
+\left\llbracket
+\tikz \draw (0,0) to[C=$c$] (0,2);
+\ \right\rrbracket
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (18) at (25, 3.5) {};
+		\node [style=Z] (19) at (26, 5) {};
+		\node [style=none] (20) at (25, 5.5) {};
+		\node [style=none] (21) at (26, 5.5) {};
+		\node [style=none] (22) at (25, 3) {};
+		\node [style=none] (23) at (26, 3) {};
+		\node [style=scalar] (24) at (25.5, 4.25) {$cs$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (22.center) to (18);
+		\draw [in=-105, out=30] (18) to (24);
+		\draw [in=-150, out=90] (24) to (19);
+		\draw (19) to (21.center);
+		\draw (19) to (23.center);
+		\draw (18) to (20.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+
+Recently, the fragment of electrical circuits generated by these idealized junctions and resistors has been given a complete equational theory \cite{amolak}.  A presentation of a more general class of circuits remains open, as we will discuss at the end of this chapter.
+
 \section{Affine Lagrangian relations}
 \label{sec:aff}
 
-Affine Lagrangian relations are perhaps of more practical interest than linear Lagrangian relations.  As we will discuss in this section, these give a semantics for qudit stabilizer circuits as well as certain electrical circuits with current and voltage sources.
+Affine Lagrangian relations are perhaps of more practical interest than linear Lagrangian relations.  As we will discuss in this section, these give a semantics for qudit stabilizer circuits as well as well as passive electrical circuits plus current and voltage sources.
 
 
 \begin{definition}
@@ -3355,7 +3552,7 @@ However, only some generators cause this problem:
 For any prime $p$, the image of $L(\LinRel_{\F_p}) \hookrightarrow \Aff\Lag\Rel_{\F_p}$ in addition to the symplectic Weyl operators can be interpreted in $\Stab_p$.
 \end{corollary}
 
-On the other hand $\Aff\Lag\Rel_{\F_2}$ has already been studied in other terms. Spekkens first introduced his toy model as a noncontextual hidden variable alternative to qubit stabilizer quantum mechanics, satisfying the so-called "knowledge-balance" principle \cite{spekkens}.
+On the other hand $\Aff\Lag\Rel_{\F_2}$ has already been studied in other terms. Spekkens first introduced his toy model as a noncontextual hidden variable alternative to qubit stabilizer quantum mechanics, satisfying the so-called ``knowledge-balance principle'' \cite{spekkens}.
 Later, this was formalized in terms of symplectic geometry, where he showed that the pure states in the toy model are affine Lagrangian relations over $\F_2$ and the reversible evolution is given by affine symplectomorphisms: the knowledge balance principle corresponding to the preservation of the symplectic form \cite{spekkens2016quasi}.  Therefore:
 
 
@@ -3368,16 +3565,16 @@ In fact, this prop  already has a complete axiomatization in the literature in t
 There is another way to present $\Aff\Lag\Rel_{k}$ which makes it clear that $\Aff\Lag\Rel_{\F_p}$ can be regarded as a fragment of the ZX-calculus:
 
 \begin{theorem}
-$\Aff\Lag\Rel_{k}$ is generated by two spiders both decorated by the additive group of $k^2$:
+$\Aff\Lag\Rel_{k}$ is generated by two spiders both decorated by the additive group of $k^2$ as well as scaling gates when $k$ is not a prime field:
 $$
-\left\llbracket
+\left\llbracket\
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (21, 5) {};
 		\node [style=none] (1) at (22, 5) {};
 		\node [style=none] (2) at (21, 2.5) {};
 		\node [style=none] (3) at (22, 2.5) {};
-		\node [style=Z] (4) at (21.5, 3.75) {$\hspace*{.05cm}n,m\hspace*{.05cm}$};
+		\node [style=Z] (4) at (21.5, 3.75) {$\hspace*{.05cm}a,b\hspace*{.05cm}$};
 		\node [style=none] (5) at (21.5, 4.5) {$\cdots$};
 		\node [style=none] (6) at (21.5, 3) {$\cdots$};
 		\node [style=none] (7) at (21.5, 4.75) {};
@@ -3390,7 +3587,7 @@ $$
 		\draw [in=-90, out=30, looseness=0.75] (4) to (1.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\right\rrbracket
+\ \right\rrbracket
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3401,14 +3598,14 @@ $$
 		\node [style=none] (13) at (231, -2.5) {$\cdots$};
 		\node [style=none] (14) at (230.75, 0.5) {};
 		\node [style=none] (15) at (229.25, -3) {};
-		\node [style=X] (16) at (230, -0.5) {$n$};
+		\node [style=X] (16) at (230, -0.5) {$a$};
 		\node [style=none] (17) at (230, 0) {$\cdots$};
 		\node [style=none] (18) at (229.72, -1.25) {$\cdots$};
 		\node [style=none] (19) at (230, -3) {};
 		\node [style=none] (20) at (230.25, -3) {};
 		\node [style=none] (21) at (229.25, 0.5) {};
 		\node [style=none] (22) at (231, 0.5) {};
-		\node [style=scalar] (23) at (230.5, -1.25) {$m$};
+		\node [style=scalar] (23) at (230.5, -1.25) {$b$};
 		\node [style=none] (24) at (230, 0.25) {};
 		\node [style=none] (25) at (231, -2.75) {};
 		\node [style=none] (26) at (229.7, -1.5) {};
@@ -3426,16 +3623,16 @@ $$
 		\draw [in=-75, out=150] (11) to (23);
 		\draw [in=330, out=90] (23) to (16);
 	\end{pgfonlayer}
-\end{tikzpicture}
-\hspace*{.5cm}
-\left\llbracket
+\end{tikzpicture},
+\hspace*{.2cm}
+\left\llbracket \
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (21, 5) {};
 		\node [style=none] (1) at (22, 5) {};
 		\node [style=none] (2) at (21, 2.5) {};
 		\node [style=none] (3) at (22, 2.5) {};
-		\node [style=X] (4) at (21.5, 3.75) {$\hspace*{.05cm}n,m\hspace*{.05cm}$};
+		\node [style=X] (4) at (21.5, 3.75) {$\hspace*{.05cm}a,b\hspace*{.05cm}$};
 		\node [style=none] (5) at (21.5, 4.5) {$\cdots$};
 		\node [style=none] (6) at (21.5, 3) {$\cdots$};
 		\node [style=none] (7) at (21.5, 4.75) {};
@@ -3448,8 +3645,8 @@ $$
 		\draw [in=-90, out=30, looseness=0.75] (4) to (1.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\right\rrbracket
-:=
+\ \right\rrbracket
+=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (232.75, 0.5) {};
@@ -3459,14 +3656,14 @@ $$
 		\node [style=none] (4) at (233.5, -2.5) {$\cdots$};
 		\node [style=none] (5) at (233.75, 0.5) {};
 		\node [style=none] (6) at (235.25, -3) {};
-		\node [style=X] (7) at (234.5, -0.5) {$n$};
+		\node [style=X] (7) at (234.5, -0.5) {$a$};
 		\node [style=none] (8) at (234.5, 0) {$\cdots$};
 		\node [style=none] (9) at (234.82, -1.25) {$\cdots$};
 		\node [style=none] (10) at (234.5, -3) {};
 		\node [style=none] (11) at (234.25, -3) {};
 		\node [style=none] (12) at (235.25, 0.5) {};
 		\node [style=none] (13) at (233.5, 0.5) {};
-		\node [style=scalar] (14) at (234, -1.25) {$m$};
+		\node [style=scalar] (14) at (234, -1.25) {$b$};
 		\node [style=none] (15) at (233.25, -1) {};
 		\node [style=none] (16) at (234.5, 0.25) {};
 		\node [style=none] (17) at (233.5, -2.75) {};
@@ -3485,15 +3682,47 @@ $$
 		\draw [in=-150, out=90] (14) to (7);
 	\end{pgfonlayer}
 \end{tikzpicture}
+,
+\hspace*{.2cm}
+\left\llbracket \
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (23, 4.5) {};
+		\node [style=none] (1) at (23, 3) {};
+		\node [style=scalar] (2) at (23, 3.75) {$a$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1.center) to (2);
+		\draw (2) to (0.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (3) at (24.25, 4.5) {};
+		\node [style=none] (4) at (24.25, 3) {};
+		\node [style=scalarop] (5) at (24.25, 3.75) {$a$};
+		\node [style=none] (6) at (25, 4.5) {};
+		\node [style=none] (7) at (25, 3) {};
+		\node [style=scalar] (8) at (25, 3.75) {$a$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (4.center) to (5);
+		\draw (5) to (3.center);
+		\draw (7.center) to (8);
+		\draw (8) to (6.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
 $$
 
-Where we recall that Fourier transform is derived by Euler composition:
+Where we recall that Fourier transform derived from the decomposition we discussed in the previous section:
 $$
-\left\llbracket
+\left\llbracket\
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (1.25, -1) {};
-		\node [style=map] (1) at (1.25, -1.5) {$F$};
+		\node [style=map] (1) at (1.25, -1.5) {$\mathcal F$};
 		\node [style=none] (2) at (1.25, -2) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
@@ -3607,6 +3836,9 @@ $$
 \end{tikzpicture}
 \right\rrbracket
 $$
+
+In the ZX-calculus literature, this decomposition of the Fourier transform is known as {\it Euler decomposition} \cite{duncan2009graph}.  To my knowledge, this way in which Hopf algebras are used to derive the Euler decomoposition was not previously known.  Although in the quantum literature, this same rule describes the ``external'' interaction of ${\cal C}_{\cal X}$ gates (as opposed to the ``internal'' interaction of phases).
+
 
 
 %Transporting the complex conjugation along the isomorphism $\Aff\Lag\Rel_k \cong \Stab_p$ yields a conjugation functor $\Aff\Lag\Rel_k\to \Aff\Lag\Rel_k$ such that:
@@ -3755,7 +3987,7 @@ Call the first component of the phase group the {\bf affine phase} and the secon
 
 
 
-In Hilbert spaces, the spiders are interpreted as follows:
+In Hilbert spaces, the spiders $\ell \to k$ are interpreted as follows:
 
 \begin{align*}
 \left\llbracket\
@@ -3765,7 +3997,8 @@ In Hilbert spaces, the spiders are interpreted as follows:
 		\node [style=none] (1) at (22, 5) {};
 		\node [style=none] (2) at (21, 2.5) {};
 		\node [style=none] (3) at (22, 2.5) {};
-		\node [style=Z] (4) at (21.5, 3.75) {$\hspace*{.05cm}n,m\hspace*{.05cm}$};
+		\node [style=none] (4) at (21.5, 3.75) {};
+		\node [style=Z] (40) at (21.5, 3.75) {$\hspace*{.05cm}n,m\hspace*{.05cm}$};
 		\node [style=none] (5) at (21.5, 4.5) {$\cdots$};
 		\node [style=none] (6) at (21.5, 3) {$\cdots$};
 		\node [style=none] (7) at (21.5, 4.75) {};
@@ -3788,7 +4021,8 @@ In Hilbert spaces, the spiders are interpreted as follows:
 		\node [style=none] (1) at (22, 5) {};
 		\node [style=none] (2) at (21, 2.5) {};
 		\node [style=none] (3) at (22, 2.5) {};
-		\node [style=X] (4) at (21.5, 3.75) {$\hspace*{.05cm}n,m\hspace*{.05cm}$};
+		\node [style=none] (4) at (21.5, 3.75) {};
+		\node [style=X] (40) at (21.5, 3.75) {$\hspace*{.05cm}n,m\hspace*{.05cm}$};
 		\node [style=none] (5) at (21.5, 4.5) {$\cdots$};
 		\node [style=none] (6) at (21.5, 3) {$\cdots$};
 		\node [style=none] (7) at (21.5, 4.75) {};
@@ -3803,16 +4037,7 @@ In Hilbert spaces, the spiders are interpreted as follows:
 \end{tikzpicture}\
 \right\rrbracket
 \propto &
-\sum_{a,b,c,d,e=0}^{p-1} 
-e^{- \pi\cdot i/ p \cdot d} |e, \ldots,e \rangle \langle d, \ldots, d|\\
-&\hspace*{.25cm} \cdot e^{\pi\cdot i /p (n\cdot c-m\cdot c^2)} |c, \ldots, c \rangle \langle c, \ldots, c|\\
-&\hspace*{.25cm}  e^{\pi\cdot i/ p \cdot b} |b, \ldots, b \rangle \langle a, \ldots, a| \\
-=&
-\sum_{a,e=0}^{p-1} 
-e^{\pi\cdot i/ p \cdot (-b+n\cdot b-m\cdot b^2+b)} |e, \ldots,e \rangle \langle a, \ldots, a| \\
-=&
-\sum_{a,e=0}^{p-1} 
-e^{\pi\cdot i/ p \cdot (n\cdot b-m\cdot b^2)} |e, \ldots,e \rangle \langle a, \ldots, a| \\
+\sum_{a=0}^{p-1}  e^{\pi\cdot i /p (n\cdot a+m\cdot a^2)} \mathcal{F}^{\otimes k}|a, \ldots, a \rangle \langle a, \ldots, a|(\mathcal{F}^\dag)^{\otimes \ell} \\
 \end{align*}
 
 Notice that this implies that the phase groups for quopit stabilizer spiders are now the torus $(\Z/p\Z)^2$  as noted \cite[p. 166]{ranchin2016alternative}.  This is in contrast to the qubit case where the phase groups are $\Z/4\Z$; which \cite{coecke2011phase} point out as a crucial difference between the toy model and qubit stabilizer theory.
@@ -3832,7 +4057,8 @@ $$
 		\node [style=none] (1) at (22, 5) {};
 		\node [style=none] (2) at (21, 2.5) {};
 		\node [style=none] (3) at (22, 2.5) {};
-		\node [style=Z] (4) at (21.5, 3.75) {$\hspace*{.05cm}n,m\hspace*{.05cm}$};
+		\node [style=none] (4) at (21.5, 3.75) {};
+		\node [style=Z] (40) at (21.5, 3.75) {$\hspace*{.05cm}n,m\hspace*{.05cm}$};
 		\node [style=none] (5) at (21.5, 4.5) {$\cdots$};
 		\node [style=none] (6) at (21.5, 3) {$\cdots$};
 		\node [style=none] (7) at (21.5, 4.75) {};
@@ -3852,7 +4078,7 @@ $$
 		\node [style=none] (1) at (22.25, 5) {};
 		\node [style=none] (2) at (20.75, 2.5) {};
 		\node [style=none] (3) at (22.25, 2.5) {};
-		\node [style=Z] (4) at (21.5, 3.75) {};
+		\node [style=none] (4) at (21.5, 3.75) {};
 		\node [style=none] (5) at (21.5, 4.75) {$\cdots$};
 		\node [style=none] (6) at (21.5, 2.75) {$\cdots$};
 		\node [style=Z] (9) at (21.5, 3.75) {$\hspace*{.05cm}-n,-m\hspace*{.05cm}$};
@@ -3863,7 +4089,7 @@ $$
 		\draw [in=-30, out=90, looseness=0.75] (3.center) to (4);
 		\draw [in=-90, out=30, looseness=0.75] (4) to (1.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}\ ,
 \hspace*{1cm}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3871,7 +4097,8 @@ $$
 		\node [style=none] (1) at (22, 5) {};
 		\node [style=none] (2) at (21, 2.5) {};
 		\node [style=none] (3) at (22, 2.5) {};
-		\node [style=X] (4) at (21.5, 3.75) {$\hspace*{.05cm}n,m\hspace*{.05cm}$};
+		\node [style=none] (4) at (21.5, 3.75) {};
+		\node [style=X] (40) at (21.5, 3.75) {$\hspace*{.05cm}n,m\hspace*{.05cm}$};
 		\node [style=none] (5) at (21.5, 4.5) {$\cdots$};
 		\node [style=none] (6) at (21.5, 3) {$\cdots$};
 		\node [style=none] (7) at (21.5, 4.75) {};
@@ -3891,16 +4118,41 @@ $$
 		\node [style=none] (1) at (22.25, 5) {};
 		\node [style=none] (2) at (20.75, 2.5) {};
 		\node [style=none] (3) at (22.25, 2.5) {};
-		\node [style=X] (4) at (21.5, 3.75) {};
+		\node [style=none] (4) at (21.5, 3.75) {};
 		\node [style=none] (5) at (21.5, 4.75) {$\cdots$};
 		\node [style=none] (6) at (21.5, 2.75) {$\cdots$};
-		\node [style=X] (9) at (21.5, 3.75) {$\hspace*{.05cm}n,-m\hspace*{.05cm}$};
+		\node [style=none] (9) at (21.5, 3.75) {};
+		\node [style=X] (90) at (21.5, 3.75) {$\hspace*{.05cm}n,-m\hspace*{.05cm}$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [in=150, out=-90, looseness=0.75] (0.center) to (4);
 		\draw [in=90, out=-150, looseness=0.75] (4) to (2.center);
 		\draw [in=-30, out=90, looseness=0.75] (3.center) to (4);
 		\draw [in=-90, out=30, looseness=0.75] (4) to (1.center);
+	\end{pgfonlayer}
+\end{tikzpicture}\ ,
+\hspace*{1cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (23, 4.5) {};
+		\node [style=none] (1) at (23, 3) {};
+		\node [style=scalar] (2) at (23, 3.75) {$a$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1.center) to (2);
+		\draw (2) to (0.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\mapsto
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (23, 4.5) {};
+		\node [style=none] (1) at (23, 3) {};
+		\node [style=scalar] (2) at (23, 3.75) {$a$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1.center) to (2);
+		\draw (2) to (0.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
@@ -3918,29 +4170,191 @@ The proof follows by checking the action of the complex conjugation on the gener
 
 
 
+\begin{remark}
+ In \cite{network}, the relational semantics of electrical circuits is broaded even further to capture current and voltage sources as affine Lagrangian relations over $\R(s)$.  We can restate the interpretation of passive electrical circuits in our string diagrams. An idealized junction, a resistor with resistance $r$, a capacitor with capacitance $c$ and an inductor with inductance $\ell$, where $a=-1/(\ell s)$ are interpreted as follows:
 
-\subsection{Electrical circuits}
+$$
+\left\llbracket\ 
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (21, 4.75) {};
+		\node [style=none] (1) at (22, 4.75) {};
+		\node [style=none] (2) at (21, 2.75) {};
+		\node [style=none] (3) at (22, 2.75) {};
+		\node [style=dot] (4) at (21.5, 3.75) {};
+		\node [style=none] (5) at (21.5, 4.5) {$\cdots$};
+		\node [style=none] (6) at (21.5, 3) {$\cdots$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=150, out=-90, looseness=0.75] (0.center) to (4);
+		\draw [in=90, out=-150, looseness=0.75] (4) to (2.center);
+		\draw [in=-30, out=90, looseness=0.75] (3.center) to (4);
+		\draw [in=-90, out=30, looseness=0.75] (4) to (1.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (21, 4.75) {};
+		\node [style=none] (1) at (22, 4.75) {};
+		\node [style=none] (2) at (21, 2.75) {};
+		\node [style=none] (3) at (22, 2.75) {};
+		\node [style=Z] (4) at (21.5, 3.75) {};
+		\node [style=none] (5) at (21.5, 4.5) {$\cdots$};
+		\node [style=none] (6) at (21.5, 3) {$\cdots$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=150, out=-90, looseness=0.75] (0.center) to (4);
+		\draw [in=90, out=-150, looseness=0.75] (4) to (2.center);
+		\draw [in=-30, out=90, looseness=0.75] (3.center) to (4);
+		\draw [in=-90, out=30, looseness=0.75] (4) to (1.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ ,\hspace*{.2cm}
+\left\llbracket
+\tikz \draw (0,0) to[R=$r$] (0,2);
+\ \right\rrbracket
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (21, 4.75) {};
+		\node [style=none] (2) at (21, 2.75) {};
+		\node [style=X] (4) at (21, 3.75) {\ $0,r$\ \ };
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (0.center) to (4);
+		\draw (4) to (2.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ ,\hspace*{.2cm}
+\left\llbracket
+\tikz \draw (0,0) to[C=$c$] (0,2);
+\ \right\rrbracket
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (21, 4.75) {};
+		\node [style=none] (2) at (21, 2.75) {};
+		\node [style=X] (4) at (21, 3.75) {\ $0,cs$\ \ };
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (0.center) to (4);
+		\draw (4) to (2.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ ,\hspace*{.2cm}
+\left\llbracket
+\tikz \draw (0,0) to[L=$\ell$] (0,2);
+\ \right\rrbracket
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (21, 4.75) {};
+		\node [style=none] (2) at (21, 2.75) {};
+		\node [style=Z] (4) at (21, 3.75) {\ $0,a$\ \ };
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (0.center) to (4);
+		\draw (4) to (2.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
 
-Symplectic geometry, and indeed the early work of Weinsten and his ``symplectic category'' was motivated by the goal to formalize classical mechanics in a synthetic setting.  
+A voltage source is a component with a fixed voltage $v$,  imposes the affine Lagrangian relation:
+$$
+\left\{\
+\left(
+\begin{bmatrix}
+z_0 \\ x_0
+\end{bmatrix},
+\begin{bmatrix}
+z_1 \\ x_1
+\end{bmatrix}
+\right)
+\  \in \R(s)^{2(2)} | x_1-x_0=v, z_1=z_0 \right\}
+$$
 
+So that it is interpreted as the phased-spider:
+$$
+\left\llbracket
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (0, 2) {};
+		\node [style=isourceAMshape,rotate=90] (1) at (0, 1) {};
+		\node [style=none] (2) at (0, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (2.center) to (1);
+		\draw (1) to (0.center);
+		\node [style=none] (3) at (-.7, 1) {$v$};
+	\end{pgfonlayer}
+\end{tikzpicture}
+\hspace*{.3cm}
+\right\rrbracket
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (21, 4.75) {};
+		\node [style=none] (2) at (21, 2.75) {};
+		\node [style=X] (4) at (21, 3.75) {\ $v, 0$\ \ };
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (0.center) to (4);
+		\draw (4) to (2.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
 
-In \cite{passive} used Lagrangian relations to give a semantics for passive linear electrical circuits:
+Similarly a current source has a fixed current $I$, imposing the affine Lagrangian relation:
 
+$$
+\left\{\
+\left(
+\begin{bmatrix}
+z_0 \\ x_0
+\end{bmatrix},
+\begin{bmatrix}
+z_1 \\ x_1
+\end{bmatrix}
+\right)
+\  \in \R(s)^{2(2)} | z_0=I=z_1 \right\}
+$$
 
+So that it is interpreted as the following diagram where $J=-1/I$:
 
-Ohms law
+$$
+\left\llbracket
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (0, 2) {};
+		\node [style=vsourceAMshape,rotate=-90] (1) at (0, 1) {};
+		\node [style=none] (2) at (0, 0) {};
+		\node [style=none] (3) at (-.7, 1) {$I$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (2.center) to (1);
+		\draw (1) to (0.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\hspace*{.3cm}
+\right\rrbracket
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (13) at (26.5, 4.25) {\ $0,I$ \ };
+		\node [style=Z] (14) at (26.5, 2.75) {\ $0,J$ \ };
+		\node [style=none] (15) at (26.5, 5.2) {};
+		\node [style=none] (16) at (26.5, 1.8) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (16.center) to (14);
+		\draw (13) to (15.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
 
-
-Kirkoffs voltage law
-
-
-
-derivative and real rational functions following \cite{control}
-
-
-
-
-Affine Lagrangian relations and power sources \cite{network}
+\end{remark}
 
 
 %
@@ -7770,7 +8184,7 @@ What is the structure of this intermediate notion of subspace?
 
  
 
-We have not given an undoubled completeness proof for $\Aff\Co\Isot\Rel_k$, although the completeness of the quopit stabilizer ZX-calculus \cite{poor} gives a completness result for $\Aff\Co\Isot\Rel_{\F_p}$.  A completness result for arbitrary fields should closely follow their techniques.
+We have not given an undoubled completeness proof for $\Aff\Co\Isot\Rel_k$, although the completeness of the quopit stabilizer ZX-calculus \cite{booth} gives a completness result for $\Aff\Co\Isot\Rel_{\F_p}$. The subsequent paper of \cite{poor} which establishes a unique ``AP-normal form'' for quopit circuits greatly simplifies this presentation.  A completness result for arbitrary fields should closely follow their techniques.
 
 Even though completeness for the quopit stabilizer fragment of the ZX-calculus is known, there is motivation for generalizing their result.
 Because everything we have developed in this chapter works for all fields, rather than just odd prime fields; this begs the question if this semantics could be used for continuous variable quantum mechanics/quantum photontics, by working over fields with characteristic 0; so that a complete axiomatization of $\Aff\Lag\Rel_k$ would yield continous variable analogues of the ZX-calculus.
@@ -7783,9 +8197,11 @@ These   dirac deltas are ``nonphysical'' in the sense that they can not be inter
 
 Nonstandard analysis has been used to try to solve the problem of dirac deltas not existing in $\Hilb$/the lack of compact closure in infinite dimensions \cite{Gogioso2017}; however, this approach is considerably more powerful, as well as complicated.  The symplectic approach could potentially provide a simpler path towards expanding categorical quantum mechanics towards continous variables.
 
+\nocite{kirch}
 
+This question of a continuous variable ZX-calculus is closely related to the question of finding a graphical calculus for passive linear electrical circuits with current and voltage sources.  In \cite{amolak}, they give a complete set of equations for the electrical circuits generated by ideal junctions and resistors.  The normal form which they use involves a modified pivoting rule which avoids rewriting the resistances to be negative.  Indeed, one can regard the normal form of this paper as a variation of the AP-normal form of \cite{poor}.  So finding a presentation for affine Lagrangian relations would be very close to adding capacitors, inductors and current and voltage sources to the presentation of \cite{amolak}; however, not every affine Lagrangian relation over $\R(x)$ can be interpreted as an electrical circuit, so one would have to take extra care to answer this question.
 
-
+The connection of the ZX-calculus to electrical circuits is fascinating and poses many questions.  For example, using the technique developed in \cite{control} and applied to electrical circuits \cite{network}, $\Aff\Co\Isot\Rel_{\F_p(s)}$ apparently gives a notion of stabilizer codes with discrete-time evolution.  What is the physical interpretation of this?
 
 %
 %There is also a practical motivation for providing this graphical calculus.  Just as increasing the characteristic of the prime field increases the quopit dimension; if one transitions to working in $\Aff\Co\Isot\Rel_k$ where $k$ has characteristic 0, it appears that this will give a semantics for continous variable quantum mechanics.
