@@ -483,7 +483,7 @@ For this reason, we will depict Lagrangian relations as processes, where the inp
 There is a graphical interpretation of the orthogonal complement:
 
 \begin{lemma}[{\cite{ortho}}]
-Given a field $k$, the orthogonal complement extends to a symmetric monoidal involution $(\_)^\perp:\LinRel_k\to \LinRel_k$.
+Given a field $k$, the orthogonal complement extends to a symmetric monoidal involution $(-)^\perp:\LinRel_k\to \LinRel_k$.
 
 The orthogonal complement corresponds to the colour swapping functor $\ih_k\to \ih_k;$
 
@@ -1017,7 +1017,7 @@ In this section, we give a universal set of generators for $\Lag\Rel_k$; althoug
 
 Consider the following symplectomorphisms; the symplectic Fourier transform $F$,  the $a$-shift gate $S_a$ and the controlled-$a$ gate $C_a$:
 $$
-\left\llbracket
+\left\llbracket\
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (0.5, 1) {};
@@ -1033,7 +1033,7 @@ $$
 		\draw [in=-90, out=90] (2.center) to (5.center);
 		\draw (5.center) to (0.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}\
 \right\rrbracket
 =
 \begin{bmatrix}
@@ -1044,7 +1044,7 @@ $$
 $$
 
 $$
-\left\llbracket
+\left\llbracket\
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=X] (0) at (0.5, 1.25) {};
@@ -1063,7 +1063,7 @@ $$
 		\draw (3.center) to (0);
 		\draw (0) to (6.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}\
 \right\rrbracket
 =
 \begin{bmatrix}
@@ -1073,7 +1073,7 @@ $$
 $$
 
 $$
-\left\llbracket
+\left\llbracket\
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (430) at (219.75, 0) {};
@@ -1107,7 +1107,7 @@ $$
 		\draw [in=270, out=90] (442.center) to (446.center);
 		\draw [in=270, out=90] (445.center) to (432.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}\
 \right\rrbracket
 =
 \begin{bmatrix}
@@ -1130,7 +1130,7 @@ $$
 
 Use the notation $G^{(j)}$ to denote a gate $G$ being applied to wire $j$; and the notation $C_a^{(i,j)}$ to denote the controlled-$a$ gate controlling on wire $i$ targetting wire $j$.
 
-Note the right action of these gates in terms of matrix multiplication of Lagrangian subspaces for any nonzero $a \in k$ (as observed in \cite[p. 4]{aaronson}):
+Note the right action of these gates in terms of matrix multiplication of Lagrangian subspaces for any nonzero $a \in k$ (as observed in \cite[page 4]{aaronson}):
 
 \begin{itemize}
 \item
@@ -1246,7 +1246,7 @@ X' | -I
 $$
 
 That is to say $X'$ is symmetric, meaning that $X'$ describes the adjacency matrix of a graph coloured by the elements of $k$.
-In the language of stabilizer circuits, this is called a {\em graph state}.  In the case of prime fields, this observation was made in \cite[Eq. 18]{gross}.  Graph states were originally discussed in \cite{hein2006entanglement}.
+In the language of stabilizer circuits, this is called a {\em graph state}.  In the case of prime fields, this observation was made in \cite[Equation 18]{gross}.  Graph states were originally discussed in \cite{hein2006entanglement}.
 
 We prove that graph states can be reduced to the subspace $[I|0]$ by right multiplication of  symplectomorphisms.
 The proof is by induction on the dimension of the subspace.
@@ -1789,7 +1789,7 @@ F
 \end{proof}
 
 
-A variant of this decomposition is given in \cite[p.6]{control}; although in the context of plain old linear relations instead of Lagrangian relations, so an antipode is missing in their case.  A similar observation was made in \cite[Eq. 34]{ranchin2014depicting} in terms of qudit controlled-{\cal X} gates.
+A variant of this decomposition is given in \cite[p.6]{control}; although in the context of plain old linear relations instead of Lagrangian relations, so an antipode is missing in their case.  A similar observation was made in \cite[Equation 34]{ranchin2014depicting} in terms of qudit controlled-{\cal X} gates.
 
 From Corollary \ref{theorem:unbiased}, we know that we can build any Lagrangian relation using pure Lagrangian relations and discard maps. Since the former is closed under composition and monoidal product, the following can be shown immediately from string diagram deformation.
 
@@ -1853,7 +1853,7 @@ The phase-purification is so-named because of the similarity to the purification
 \label{cor}
 Given $k=\F_p$ for $p$ prime or $k=\mathbb{Q}$:
 
-$$\CPM(\LinRel_{k}, (\_)^\perp) \cong \Lag\Rel_k$$
+$$\CPM(\LinRel_{k}, (-)^\perp) \cong \Lag\Rel_k$$
 \end{corollary}
 \begin{proof}
 Remark that:
@@ -2152,13 +2152,13 @@ They recall the following physical laws due to Ohm \cite{ohm} followed by Kirchh
 
 \item[Kirchhoff's current law:] The sum of currents flowing into a node is equal to the sum of currents flowing out of the node.
 \end{description}
-%Kirchoffs voltage law: The sum of currents flowing into a circuit is equal to the sum of currents flowing out of the circuit.
+%Kirchhoffs voltage law: The sum of currents flowing into a circuit is equal to the sum of currents flowing out of the circuit.
 
 
 
 
 
-This allows us to capture an (ideal) junction with no resistance with $n$ incoming wires and $m$ outcoming wires as a Lagrangian relation.  By Kirchoff's current law, the sum of the $n$ ingoing wires is equal to the sum of the $m$ outgoing wires.  Moreover, by Ohm's law, because resistance is zero, the $n$ incoming and $m$ outgoing potentials are all made to be equal.  That is to say that the junction is interpreted as the following Lagrangian relation:
+This allows us to capture an (ideal) junction with no resistance with $n$ incoming wires and $m$ outcoming wires as a Lagrangian relation.  By Kirchhoff's current law, the sum of the $n$ ingoing wires is equal to the sum of the $m$ outgoing wires.  Moreover, by Ohm's law, because resistance is zero, the $n$ incoming and $m$ outgoing potentials are all made to be equal.  That is to say that the junction is interpreted as the following Lagrangian relation:
 
 $$
 \left\llbracket\
@@ -2219,7 +2219,7 @@ $$
 
 
 
-This also allows us to capture (linear) resistors as Lagrangian relations.  Given a linear resistor with resistance $r\in \R^{+}$, by Ohm's law the incoming current is equal to the outgoing current; and by By Kirchoff's current law, the outgoing potential is equal to the current multiplied by $r$ plus the incoming potential:
+This also allows us to capture (linear) resistors as Lagrangian relations.  Given a linear resistor with resistance $r\in \R^{+}$, by Ohm's law the incoming current is equal to the outgoing current; and by By Kirchhoff's current law, the outgoing potential is equal to the current multiplied by $r$ plus the incoming potential:
 
 $$
 \left\llbracket
@@ -2269,7 +2269,7 @@ The {\bf field of real rational functions} $\R(s)$ is the field of fractions of 
 
 In \cite{control}, they interpret ``linear constant-coefficient ordinary differential equations'' relating $n$ inputs to $m$ outputs as $\R(s)$-linear relations from $n$ to $m$.  The multiplication of the polynomial indeterminate $s$ is regarded as differentiation, and multiplication by $s^{-1}$ as integration.   Regarding these differential equations as being dependent on time, in \cite{passive}, they interpret inductors and capacitors as Lagrangian relations over $\R(s)$.  In some sense, the multiplication by the scalar $s$ is interpreted as a discrete step forward in time, and by $s^{-1}$ a discrete step backwards in time. 
 
-A (linear) inductor with inductance $\ell \in \R^+$ is a component with one input and one output such that the voltage is equal to the rate of change of the current multiplied by $\ell$.  Applying Kirchoff's current law Ohm's law we have that an inductor is interpreted as follows:
+A (linear) inductor with inductance $\ell \in \R^+$ is a component with one input and one output such that the voltage is equal to the rate of change of the current multiplied by $\ell$.  Applying Kirchhoff's current law Ohm's law we have that an inductor is interpreted as follows:
 
 $$
 \left\llbracket
@@ -2518,7 +2518,7 @@ $$
 
 This makes the following result more easy to prove:
 
-\begin{lemma}[{\cite[Thm. 3]{gross}}]
+\begin{lemma}[{\cite[Theorem 3]{gross}}]
 For every odd prime $p$ the prop  of affine symplectomorphisms over  $\F_p$ is isomorphic to the quopit Clifford groupoid modulo scalars.
 \end{lemma}
 
@@ -3552,7 +3552,7 @@ However, only some generators cause this problem:
 For any prime $p$, the image of $L(\LinRel_{\F_p}) \hookrightarrow \Aff\Lag\Rel_{\F_p}$ in addition to the symplectic Weyl operators can be interpreted in $\Stab_p$.
 \end{corollary}
 
-On the other hand $\Aff\Lag\Rel_{\F_2}$ has already been studied in other terms. Spekkens first introduced his toy model as a noncontextual hidden variable alternative to qubit stabilizer quantum mechanics, satisfying the so-called ``knowledge-balance principle'' \cite{spekkens}.
+On the other hand $\Aff\Lag\Rel_{\F_2}$ has already been studied in other terms. Spekkens' first introduced his toy model as a noncontextual hidden variable alternative to qubit stabilizer quantum mechanics, satisfying the so-called ``knowledge-balance principle'' \cite{spekkens}.
 Later, this was formalized in terms of symplectic geometry, where he showed that the pure states in the toy model are affine Lagrangian relations over $\F_2$ and the reversible evolution is given by affine symplectomorphisms: the knowledge balance principle corresponding to the preservation of the symplectic form \cite{spekkens2016quasi}.  Therefore:
 
 
@@ -3574,7 +3574,7 @@ $$
 		\node [style=none] (1) at (22, 5) {};
 		\node [style=none] (2) at (21, 2.5) {};
 		\node [style=none] (3) at (22, 2.5) {};
-		\node [style=Z] (4) at (21.5, 3.75) {$\hspace*{.05cm}a,b\hspace*{.05cm}$};
+		\node [style=Z] (4) at (21.5, 3.75) {$a,b$};
 		\node [style=none] (5) at (21.5, 4.5) {$\cdots$};
 		\node [style=none] (6) at (21.5, 3) {$\cdots$};
 		\node [style=none] (7) at (21.5, 4.75) {};
@@ -3632,7 +3632,7 @@ $$
 		\node [style=none] (1) at (22, 5) {};
 		\node [style=none] (2) at (21, 2.5) {};
 		\node [style=none] (3) at (22, 2.5) {};
-		\node [style=X] (4) at (21.5, 3.75) {$\hspace*{.05cm}a,b\hspace*{.05cm}$};
+		\node [style=X] (4) at (21.5, 3.75) {$a,b$};
 		\node [style=none] (5) at (21.5, 4.5) {$\cdots$};
 		\node [style=none] (6) at (21.5, 3) {$\cdots$};
 		\node [style=none] (7) at (21.5, 4.75) {};
@@ -3881,7 +3881,7 @@ In the ZX-calculus literature, this decomposition of the Fourier transform is kn
 
 
 
-The spider fusion is pointwise  where $(a,b)=(n+k,m+\ell)$:
+The spider fusion is pointwise:
 
 $$
 \begin{tikzpicture}
@@ -3920,7 +3920,7 @@ $$
 		\node [style=none] (16) at (4.5, -0.5) {};
 		\node [style=none] (17) at (3.5, -2) {$\cdots$};
 		\node [style=none] (18) at (3, -2) {};
-		\node [style=Z] (19) at (3.5, -1.25) {$a,b$};
+		\node [style=Z] (19) at (3.5, -1.25) {$n+k,m+\ell$};
 		\node [style=none] (20) at (4, -2) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
@@ -3969,7 +3969,7 @@ $$
 		\node [style=none] (16) at (4.5, -0.5) {};
 		\node [style=none] (17) at (3.5, -2) {$\cdots$};
 		\node [style=none] (18) at (3, -2) {};
-		\node [style=X] (19) at (3.5, -1.25) {$a,b$};
+		\node [style=X] (19) at (3.5, -1.25) {$n+k,m+\ell$};
 		\node [style=none] (20) at (4, -2) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
@@ -3983,7 +3983,7 @@ $$
 \end{tikzpicture}
 $$
 
-Call the first component of the phase group the {\bf affine phase} and the second component the {\bf linear phase}.  The white spider corresponds to the $Z$ basis and the grey spider corresponds to the $X$ basis.
+Call the first component of the phase group the {\bf affine phase} and the second component the {\bf linear phase}.  The white spider corresponds to the $Z$-basis and the grey spider corresponds to the $X$-basis.
 
 
 
@@ -3998,7 +3998,7 @@ In Hilbert spaces, the spiders $\ell \to k$ are interpreted as follows:
 		\node [style=none] (2) at (21, 2.5) {};
 		\node [style=none] (3) at (22, 2.5) {};
 		\node [style=none] (4) at (21.5, 3.75) {};
-		\node [style=Z] (40) at (21.5, 3.75) {$\hspace*{.05cm}n,m\hspace*{.05cm}$};
+		\node [style=Z] (40) at (21.5, 3.75) {$n,m$};
 		\node [style=none] (5) at (21.5, 4.5) {$\cdots$};
 		\node [style=none] (6) at (21.5, 3) {$\cdots$};
 		\node [style=none] (7) at (21.5, 4.75) {};
@@ -4012,7 +4012,7 @@ In Hilbert spaces, the spiders $\ell \to k$ are interpreted as follows:
 	\end{pgfonlayer}
 \end{tikzpicture}\
 \right\rrbracket
-\propto &
+= &
 \sum_{a=0}^{p-1}  e^{\pi\cdot i /p (n\cdot a+m\cdot a^2)} |a, \ldots, a \rangle \langle a, \ldots, a|\\
 \left\llbracket\
 \begin{tikzpicture}
@@ -4022,7 +4022,7 @@ In Hilbert spaces, the spiders $\ell \to k$ are interpreted as follows:
 		\node [style=none] (2) at (21, 2.5) {};
 		\node [style=none] (3) at (22, 2.5) {};
 		\node [style=none] (4) at (21.5, 3.75) {};
-		\node [style=X] (40) at (21.5, 3.75) {$\hspace*{.05cm}n,m\hspace*{.05cm}$};
+		\node [style=X] (40) at (21.5, 3.75) {$n,m$};
 		\node [style=none] (5) at (21.5, 4.5) {$\cdots$};
 		\node [style=none] (6) at (21.5, 3) {$\cdots$};
 		\node [style=none] (7) at (21.5, 4.75) {};
@@ -4036,20 +4036,44 @@ In Hilbert spaces, the spiders $\ell \to k$ are interpreted as follows:
 	\end{pgfonlayer}
 \end{tikzpicture}\
 \right\rrbracket
-\propto &
+= &
 \sum_{a=0}^{p-1}  e^{\pi\cdot i /p (n\cdot a+m\cdot a^2)} \mathcal{F}^{\otimes k}|a, \ldots, a \rangle \langle a, \ldots, a|(\mathcal{F}^\dag)^{\otimes \ell} \\
 \end{align*}
 
-Notice that this implies that the phase groups for quopit stabilizer spiders are now the torus $(\Z/p\Z)^2$  as noted \cite[p. 166]{ranchin2016alternative}.  This is in contrast to the qubit case where the phase groups are $\Z/4\Z$; which \cite{coecke2011phase} point out as a crucial difference between the toy model and qubit stabilizer theory.
+Where we recall the interpretation of the scaling gate:
 
-However, the restricted class of circuits described in Corollary \ref{cor:nophase} is the fragment of the stabilizer ZX-calculus where in the qubit case, the phases are in the subgroup $\Z/2\Z\subseteq \Z/4\Z$ sending $a\mapsto 2a$; and in the quopit case, they are in the subgroup $\Z/p\Z \subseteq (\Z/p\Z)^2$ which sends $a\mapsto (a,0)$.  These subgroups both agree for the qubits and quopits, so we can think of them both as Affine Lagrangian spiders with trivial linear phases.
+$$
+\left\llbracket \
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (23, 4.5) {};
+		\node [style=none] (1) at (23, 3) {};
+		\node [style=scalar] (2) at (23, 3.75) {$b$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1.center) to (2);
+		\draw (2) to (0.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket
+=
+\sum_{a=0}^{p-1} |a\cdot b \rangle \langle a |
+$$
+
+This view of quopit stabilizer circuits in terms of the ZX-calculus, means that the phase groups for the $Z$ and $X$-spiders are the torus $(\Z/p\Z)^2$  as noted \cite[Page 166]{ranchin2016alternative}.  This is in contrast to the qubit case where the phase groups are $\Z/4\Z$; which \cite{coecke2011phase} point out as a crucial difference between Spekkens' toy model and qubit stabilizer theory.
+
+However, the restricted class of circuits described in Corollary \ref{cor:nophase} is the fragment of the stabilizer ZX-calculus where in the qubit case, the phases are in the subgroup
+$$\Z/2\Z\subseteq \Z/4\Z; \ a\mapsto 2a$$
+In the quopit case, they are in the subgroup
+$$\Z/p\Z \subseteq (\Z/p\Z)^2; \ a\mapsto (a,0)$$
+The interpretation in $\Stab_p$ of the spiders decorated  by  subgroups both agree for the qubits and quopits.  Therefore can think of them both as affine Lagrangian spiders with trivial linear phases.
 
 
 Up until now, we have also neglected to relate the symplectic picture to the \dag-structure of $\FHilb$:
 
 
 \begin{definition}
-There is a monoidal conjugation functor $\bar{(\_)}:\Aff\Lag\Rel_k\to \Aff\Lag\Rel_k$ given by:
+There is a monoidal conjugation functor $\bar{(-)}:\Aff\Lag\Rel_k\to \Aff\Lag\Rel_k$ given by:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -4058,7 +4082,7 @@ $$
 		\node [style=none] (2) at (21, 2.5) {};
 		\node [style=none] (3) at (22, 2.5) {};
 		\node [style=none] (4) at (21.5, 3.75) {};
-		\node [style=Z] (40) at (21.5, 3.75) {$\hspace*{.05cm}n,m\hspace*{.05cm}$};
+		\node [style=Z] (40) at (21.5, 3.75) {$n,m$};
 		\node [style=none] (5) at (21.5, 4.5) {$\cdots$};
 		\node [style=none] (6) at (21.5, 3) {$\cdots$};
 		\node [style=none] (7) at (21.5, 4.75) {};
@@ -4081,7 +4105,7 @@ $$
 		\node [style=none] (4) at (21.5, 3.75) {};
 		\node [style=none] (5) at (21.5, 4.75) {$\cdots$};
 		\node [style=none] (6) at (21.5, 2.75) {$\cdots$};
-		\node [style=Z] (9) at (21.5, 3.75) {$\hspace*{.05cm}-n,-m\hspace*{.05cm}$};
+		\node [style=Z] (9) at (21.5, 3.75) {$-n,-m $};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [in=150, out=-90, looseness=0.75] (0.center) to (4);
@@ -4098,7 +4122,7 @@ $$
 		\node [style=none] (2) at (21, 2.5) {};
 		\node [style=none] (3) at (22, 2.5) {};
 		\node [style=none] (4) at (21.5, 3.75) {};
-		\node [style=X] (40) at (21.5, 3.75) {$\hspace*{.05cm}n,m\hspace*{.05cm}$};
+		\node [style=X] (40) at (21.5, 3.75) {$n,m$};
 		\node [style=none] (5) at (21.5, 4.5) {$\cdots$};
 		\node [style=none] (6) at (21.5, 3) {$\cdots$};
 		\node [style=none] (7) at (21.5, 4.75) {};
@@ -4122,7 +4146,7 @@ $$
 		\node [style=none] (5) at (21.5, 4.75) {$\cdots$};
 		\node [style=none] (6) at (21.5, 2.75) {$\cdots$};
 		\node [style=none] (9) at (21.5, 3.75) {};
-		\node [style=X] (90) at (21.5, 3.75) {$\hspace*{.05cm}n,-m\hspace*{.05cm}$};
+		\node [style=X] (90) at (21.5, 3.75) {$n,-m$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [in=150, out=-90, looseness=0.75] (0.center) to (4);
@@ -4171,7 +4195,7 @@ The proof follows by checking the action of the complex conjugation on the gener
 
 
 \begin{remark}
- In \cite{network}, the relational semantics of electrical circuits is broaded even further to capture current and voltage sources as affine Lagrangian relations over $\R(s)$.  We can restate the interpretation of passive electrical circuits in our string diagrams. An idealized junction, a resistor with resistance $r$, a capacitor with capacitance $c$ and an inductor with inductance $\ell$, where $a=-1/(\ell s)$ are interpreted as follows:
+ In \cite{network}, the relational semantics of electrical circuits is broaded even further to capture current and voltage sources as affine Lagrangian relations over $\R(s)$.  We can restate the interpretation of passive electrical circuits in our string diagrams. An idealized junction, a resistor with resistance $r$, a capacitor with capacitance $c$ and an inductor with inductance $\ell$ are interpreted as follows:
 
 $$
 \left\llbracket\ 
@@ -4220,7 +4244,7 @@ $$
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (21, 4.75) {};
 		\node [style=none] (2) at (21, 2.75) {};
-		\node [style=X] (4) at (21, 3.75) {\ $0,r$\ \ };
+		\node [style=X] (4) at (21, 3.75) {$0,r$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw (0.center) to (4);
@@ -4236,7 +4260,7 @@ $$
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (21, 4.75) {};
 		\node [style=none] (2) at (21, 2.75) {};
-		\node [style=X] (4) at (21, 3.75) {\ $0,cs$\ \ };
+		\node [style=X] (4) at (21, 3.75) {$0,cs$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw (0.center) to (4);
@@ -4252,7 +4276,7 @@ $$
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (21, 4.75) {};
 		\node [style=none] (2) at (21, 2.75) {};
-		\node [style=Z] (4) at (21, 3.75) {\ $0,a$\ \ };
+		\node [style=Z] (4) at (21, 3.75) {$0,-1/(\ell s)$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw (0.center) to (4);
@@ -4272,7 +4296,7 @@ z_0 \\ x_0
 z_1 \\ x_1
 \end{bmatrix}
 \right)
-\  \in \R(s)^{2(2)} | x_1-x_0=v, z_1=z_0 \right\}
+  \in \R(s)^{2(2)}\ |\ x_1-x_0=v, z_1=z_0 \ \right\}
 $$
 
 So that it is interpreted as the phased-spider:
@@ -4297,7 +4321,7 @@ $$
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (21, 4.75) {};
 		\node [style=none] (2) at (21, 2.75) {};
-		\node [style=X] (4) at (21, 3.75) {\ $v, 0$\ \ };
+		\node [style=X] (4) at (21, 3.75) {$v, 0$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw (0.center) to (4);
@@ -4318,10 +4342,10 @@ z_0 \\ x_0
 z_1 \\ x_1
 \end{bmatrix}
 \right)
-\  \in \R(s)^{2(2)} | z_0=I=z_1 \right\}
+  \in \R(s)^{2(2)} \ |\ z_0=I=z_1\ \right\}
 $$
 
-So that it is interpreted as the following diagram where $J=-1/I$:
+So that it is interpreted as the following diagram:
 
 $$
 \left\llbracket
@@ -4342,8 +4366,8 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (13) at (26.5, 4.25) {\ $0,I$ \ };
-		\node [style=Z] (14) at (26.5, 2.75) {\ $0,J$ \ };
+		\node [style=Z] (13) at (26.5, 4.25) {$0,I$};
+		\node [style=Z] (14) at (26.5, 2.75) {$0,1/I$};
 		\node [style=none] (15) at (26.5, 5.2) {};
 		\node [style=none] (16) at (26.5, 1.8) {};
 	\end{pgfonlayer}
@@ -5390,7 +5414,7 @@ Although in our case the quantum discarding is interpreted as the literal {\bf d
 
 
 
-It was already known that stabilizer codes are in bijection with  affine isotropic subspaces, for example \cite[Sec. A]{gross}.  Indeed affine coisotropic subspaces are in bijection with affine isotropic subspace by  taking the symplectic complement of the linear component of the affine subspace. However, as noted in Remark  \ref{rem:xdisc}, $\Aff\Isot\Rel_{\F_p} \not \cong \Aff\Co\Isot\Rel_{\F_p}$, so their compositions as affine relations are different. The interpretation of the doubled zero postselection as the quantum discard map is not sound with respect to relational composition.   
+It was already known that stabilizer codes are in bijection with  affine isotropic subspaces, for example \cite[\S A]{gross}.  Indeed affine coisotropic subspaces are in bijection with affine isotropic subspace by  taking the symplectic complement of the linear component of the affine subspace. However, as noted in Remark  \ref{rem:xdisc}, $\Aff\Isot\Rel_{\F_p} \not \cong \Aff\Co\Isot\Rel_{\F_p}$, so their compositions as affine relations are different. The interpretation of the doubled zero postselection as the quantum discard map is not sound with respect to relational composition.   
 
 
 This formalizes the relationship between mixed stabilizer circuits and stabilizer tableaux with not-necessarily-full rank in  a compositional way.  It is standard, and indeed very useful to regard the augmented symplectic basis $L+a$ of an affine isotropic subspace as the stabilizer tableau.  In order to compose these tableaux, one must take the symplectic complement of both spaces, and then compute  their relational composition.  Then the stabilizer tableau for this composite is obtained by taking the symplectic complement once again.
@@ -5409,11 +5433,11 @@ Just as Spekkens' toy model is an epistemic restricted toy theory of quantum cir
 {\em Absolutely remarkably}, and seemingly out of nowhere, the quopit stabilizer codes with trivial affine phase (no Pauli gates) can be expressed, modulo invertible phase, in terms of an iterated $\CPM$ construction with respect to the orthogonal complement at the inner level, and the complex conjugation at the outer level:
 \begin{corollary}
 Given a prime $p$ and $k=\F_p$ or $k=\mathbb{Q}$
-$$\Isot\Rel_{k}\cong\Co\Isot\Rel_{k}\cong \CPM(\CPM(\LinRel_{k},(\_)^\perp),\bar{(\_)})$$
+$$\Isot\Rel_{k}\cong\Co\Isot\Rel_{k}\cong \CPM(\CPM(\LinRel_{k},(-)^\perp),\bar{(-)})$$
 \end{corollary}
 The astounding symmetry involved here begs the question if iterating the $\CPM$ construction more times yields anything physically interesting. Perhaps the work of \cite{CPMho} can shed some light on this question. 
 
-In order to add measurement and state preparation in the symplectic setting, we split the projectors for the $Z$ and $X$ bases:
+In order to add measurement and state preparation in the symplectic setting, we split the projectors for the $Z$ and $X$-bases:
 
 \begin{definition}
 The $X$ and $Z$ projectors are defined as follows in $\Aff\Co\Isot\Rel_{\F_p}$:
@@ -5571,7 +5595,7 @@ $$
 We draw the classical wire in red to indicate the type, (although the colour is just syntactic sugar).
 
  The classical state ``lives'' on a single wire and the stabilizer state ``lives'' on the doubled wires.
-Because of this, the  aforementioned circuits are interpreted in terms of state preparation (which we denote by the box labelled ``$a\mapsto|a\rangle$'') and measurement in the $Z$ basis:
+Because of this, the  aforementioned circuits are interpreted in terms of state preparation (which we denote by the box labelled ``$a\mapsto|a\rangle$'') and measurement in the $Z$-basis:
 
 $$
 \left\llbracket \
@@ -5634,7 +5658,7 @@ $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node[style=map,fill=white] at (0,0) {$ a \mapsto |a \rangle$};
-		\node at (0,-1.2) {$a$};
+		\node at (0,-1.2) {$x$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw (.1,0) to (.1,-1);
@@ -5678,7 +5702,7 @@ $$
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (23, 2) {};
 		\node [style=none] (1) at (23, 3) {};
-		\node [style=none] (2) at (23, 1.75) {$|a\rangle$};
+		\node [style=none] (2) at (23, 1.75) {$|x\rangle$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw (0.center) to (1.center);
@@ -5687,7 +5711,7 @@ $$
 \right\rrbracket 
 $$
 
-The state preparation and discarding in the $Z$ basis are obtained by composition of these morphisms with the Fourier transform; yielding morphisms which discard the $X$ wire instead of the $Z$ wire:
+The state preparation and discarding in the $Z$-basis are obtained by composition of these morphisms with the Fourier transform; yielding morphisms which discard the $X$ wire instead of the $Z$ wire:
 
 $$
 \left\llbracket \
@@ -5749,7 +5773,7 @@ $$
 $$
 
 \begin{remark}
-Recall that in Lemma \ref{lem:strongcomp}, we used the Hopf rule to show that preparing X basis and then measuring in the Z basis preserves no information.  In the symplectic picture, this result becomes purely topological:
+Recall that in Lemma \ref{lem:strongcomp}, we used the Hopf rule to show that preparing $X$-basis and then measuring in the $Z$-basis preserves no information.  In the symplectic picture, this result becomes purely topological:
 
 $$
 \left\llbracket\
@@ -5965,7 +5989,7 @@ Then $f$ is a coarse-graining of $g$ when $f \subset g$ is a (strict)  affine su
 \end{remark}
 
 \begin{example}
-For an extreme example, the identity circuit on a classical wire is contained within  the circuit obtained by preparing in the $Z$ basis and measuring in the $X$:
+For an extreme example, the identity circuit on a classical wire is contained within  the circuit obtained by preparing in the $Z$-basis and measuring in the $X$-basis:
 
 $$
 \begin{tikzpicture}
@@ -6177,7 +6201,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-Suppose that Alice encodes a state and sends it to Bob on a noisy quantum channel with Pauli error $W(e)$.  To detect the error apply the non-destructive measurement with respect to our chosen basis on the last $n-k$ wires in the $Z$ basis conjugated by $U$:
+Suppose that Alice encodes a state and sends it to Bob on a noisy quantum channel with Pauli error $W(e)$.  To detect the error apply the non-destructive measurement with respect to our chosen basis on the last $n-k$ wires in the $Z$-basis conjugated by $U$:
 \begin{align*}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -7273,7 +7297,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-Also, we will chose to measure in the $Z$ basis:
+Also, we will chose to measure in the $Z$-basis:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -8189,7 +8213,7 @@ We have not given an undoubled completeness proof for $\Aff\Co\Isot\Rel_k$, alth
 Even though completeness for the quopit stabilizer fragment of the ZX-calculus is known, there is motivation for generalizing their result.
 Because everything we have developed in this chapter works for all fields, rather than just odd prime fields; this begs the question if this semantics could be used for continuous variable quantum mechanics/quantum photontics, by working over fields with characteristic 0; so that a complete axiomatization of $\Aff\Lag\Rel_k$ would yield continous variable analogues of the ZX-calculus.
 
- For example, in \cite[Thm. 2]{gross} Gross proves how  Gaussian states on the Hilbert space $\ell^2(\R^n)$ are in bijection with the affine Lagrangian subspaces of the symplectic vector space $\C^{2n}$ given by complex valued graph states, acted on by real valued Weyl operators. 
+ For example, in \cite[Theorem 2]{gross} Gross proves how  Gaussian states on the Hilbert space $\ell^2(\R^n)$ are in bijection with the affine Lagrangian subspaces of the symplectic vector space $\C^{2n}$ given by complex valued graph states, acted on by real valued Weyl operators. 
 Gaussian states are the analogue of stabilizer states for continuous variables, allowing for coherent control.
 However,  $\Aff\Lag\Rel_{\C}$ contains not only these Gaussian states, but also the dirac deltas for the position and momentum observables, providing a path towards exploring continuous variable ZX-calculi.
 

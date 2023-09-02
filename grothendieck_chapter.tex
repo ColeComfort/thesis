@@ -847,6 +847,7 @@ For this Chapter, unlike the rest, I will assume that the reader has some famili
 
 
 \section{Pointed categories and multicategories}
+
  First, we categorify a monoid in a monoidal category:
 
 \begin{definition}
@@ -1188,6 +1189,8 @@ If we take $\Cat$ to be a monoidal bicategory with respect to the Cartesian prod
 \begin{lemma}
 Monoidal categories are pseudomonoids in $\Cat$ and strict monoidal categories are strict pseudomonoids in $\Cat$.
 \end{lemma}
+
+Contrast this with the view of small {\em strict} monoidal categories as categories internal to monoids between sets; in the non-internal setting, the ability to express the pseudoness of the monoid allows the tensor product to not be strict.
 
 By looking at the points inside of $\Cat$, this way of viewing a monoidal category hints at some connection to proof nets:
 
@@ -1591,10 +1594,10 @@ Dually, a profunctor $\Y\proarrow \X$ is {\bf corepresentable} when it is natura
 There are two embeddings of $\Cat$ into $\Prof$ that preserve the monoidal structure (formally, they are strong monoidal pseudofunctors):
 
 \begin{definition}
-The representable embedding $(\_)_*:\Cat^\co \to \Prof$ is the identity on objects,  covariant on 1-cells and contravariant on 2-cells.  It takes functors $F:\X\to \Y$ to profunctors  $F_*:\X\proarrow \Y$.
+The representable embedding $(-)_*:\Cat^\co \to \Prof$ is the identity on objects,  covariant on 1-cells and contravariant on 2-cells.  It takes functors $F:\X\to \Y$ to profunctors  $F_*:\X\proarrow \Y$.
 
 
-Dually, the corepresentable embedding $(\_)^*:\Cat^\op \to \Prof$  is the identity on objects, contravariant on 1-cells and covariant on 2-cells. It takes functors $F:\X\to \Y$ to profunctors  $F^*:\Y\proarrow \X$.
+Dually, the corepresentable embedding $(-)^*:\Cat^\op \to \Prof$  is the identity on objects, contravariant on 1-cells and covariant on 2-cells. It takes functors $F:\X\to \Y$ to profunctors  $F^*:\Y\proarrow \X$.
 
 \end{definition}
 
@@ -1921,7 +1924,7 @@ $$
 \right)
 $$
 
-These Frobeniusators interact with the (co)associators and (co)unitors of the (co)omonoid and adjoints to to satisfy several coherences forming what Franco et al call ``map monoidal object'' \cite[Rem. 6.3]{dualsinvert}. They also remark that when the monoidal category is additionally autonomous, so that it has duals, the Frobeniusators are invertible.  As a technical note,  map monoidal objects in $\Prof$ are not precisely monoidal categories, as this biconditional only holds for Cauchy-complete categories.
+These Frobeniusators interact with the (co)associators and (co)unitors of the (co)omonoid and adjoints to to satisfy several coherences forming what Franco et al call ``map monoidal object'' \cite[Remark 6.3]{dualsinvert}. They also remark that when the monoidal category is additionally autonomous, so that it has duals, the Frobeniusators are invertible.  As a technical note,  map monoidal objects in $\Prof$ are not precisely monoidal categories, as this biconditional only holds for Cauchy-complete categories.
 
 
 For context, a similar unpublised result Shulman discussed on the n-category cafe \cite{shula} as well as in his paper \cite{shulb}, characterizes biclosed linearly distributive categories and  *-autonomous categories as, respectively, lax and pseudo-Frobenius algebras in the compact closed bicategory multivariable adjunctions.  This refines the similar result of  \cite{Street2004}, where it is shown that  Cauchy complete  *-autonomous categories are in bijection with Frobenius pseudomonoids in Prof.

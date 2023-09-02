@@ -1030,7 +1030,7 @@ There is a more refined notion of monoidal category where one can pass wires thr
 A {\bf symmetric monoidal category} is a monoidal category equipped with an extra natural isomorphism called the braid:
 
 $$
-c_{X,Y}:X\otimes Y \to Y\otimes X
+\sigma_{X,Y}:X\otimes Y \to Y\otimes X
 $$
 
 satisfying the following coherence equations:
@@ -1039,7 +1039,7 @@ satisfying the following coherence equations:
 \item[Interaction with unitors:]
 $$
 \xymatrix{
-I \otimes X \ar[rr]^{c_{I,X}} \ar[rd]_{u^L_X} && X \otimes I \ar[ld]^{u^R_X} \\
+I \otimes X \ar[rr]^{\sigma_{I,X}} \ar[rd]_{u^L_X} && X \otimes I \ar[ld]^{u^R_X} \\
 & X &
 }
 $$
@@ -1047,12 +1047,12 @@ $$
 \item[Interaction with associator:]
 $$
 \xymatrix{
-  (X\otimes Y)\otimes Z \ar[rr]^{c_{X,Y}\otimes 1_Z} \ar[d]_{\alpha_{X,Y,Z}}
+  (X\otimes Y)\otimes Z \ar[rr]^{\sigma_{X,Y}\otimes 1_Z} \ar[d]_{\alpha_{X,Y,Z}}
     &
     &  (Y\otimes X)\otimes Z \ar[d]^{\alpha_{Y,X,Z}}
-  \\X\otimes(Y\otimes Z) \ar[d]_{c_{X,Y\otimes Z}}
+  \\X\otimes(Y\otimes Z) \ar[d]_{\sigma_{X,Y\otimes Z}}
     &
-    &  Y\otimes(X\otimes Z) \ar[d]^{1_Y\otimes c_{X,Z}}
+    &  Y\otimes(X\otimes Z) \ar[d]^{1_Y\otimes \sigma_{X,Z}}
   \\ (Y\otimes Z)\otimes X \ar[rr]_{\alpha_{Y,Z,X}}
     &
     & Y\otimes (Z\otimes X)
@@ -1062,8 +1062,8 @@ $$
 \item[Braid is self-inverse:]
 $$
 \xymatrix{
-   X\otimes Y \ar[r]^{c_{X,Y}} \ar@{=}[dr]
-   &  Y\otimes X \ar[d]^{c_{Y,X}}\\
+   X\otimes Y \ar[r]^{\sigma_{X,Y}} \ar@{=}[dr]
+   &  Y\otimes X \ar[d]^{\sigma_{Y,X}}\\
    & X \otimes Y
 }
 $$
@@ -1081,9 +1081,9 @@ A (strong) {\bf symmetric monoidal functor} between symmetric monoidal categorie
 
 $$
 \xymatrix{
-  F(X)\otimes^\Y F(Y) \ar[rr]^{c_{F(X),F(Y)}^\Y} \ar[d]_{\mu_{X,Y}}
+  F(X)\otimes^\Y F(Y) \ar[rr]^{\sigma_{F(X),F(Y)}^\Y} \ar[d]_{\mu_{X,Y}}
    && F(Y) \otimes^\Y F(X) \ar[d]^{\mu_{Y,X}}
-\\F(X\otimes^\X Y) \ar[rr]_{F(c_{X,Y}^\X)}
+\\F(X\otimes^\X Y) \ar[rr]_{F(\sigma_{X,Y}^\X)}
  && F(Y \otimes^\X X)
 }
 $$
@@ -1108,7 +1108,7 @@ Just as in the monoidal case, there are bicategories of strict monoidal and mono
 Strict monoidal categories also have a notion of string diagrams, except the braid allows wires to pass over each other:
 
 $$
-c_{X,Y}=
+\sigma_{X,Y}=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (22) at (1, 5) {};
@@ -1267,7 +1267,7 @@ $$
 		\node [style=none] (4) at (20.75, 5) {$Y\otimes X$};
 		\node [style=none] (8) at (20.75, 1.25) {};
 		\node [style=none] (13) at (20.75, 1) {$X\otimes Y$};
-		\node [style=map] (14) at (20.75, 3) {$c_{X,Y}$};
+		\node [style=map] (14) at (20.75, 3) {$\sigma_{X,Y}$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw (14) to (1.center);
@@ -1332,9 +1332,9 @@ $$
   (X\otimes X^*)\otimes X \ar[rr]^{\alpha_{X,X^*,X}}  \ar[d]_{\epsilon_X\otimes 1_X}
     & 
     & X\otimes(X^*\otimes X)
-  \\I\otimes X \ar[rr]_{c_{I,X}}
+  \\I\otimes X \ar[rr]_{\sigma_{I,X}}
     &
-    & X\otimes I \ar[u]_{a_X\otimes \eta_X}
+    & X\otimes I \ar[u]_{1_X\otimes \eta_X}
 }
 $$
 
@@ -1343,7 +1343,7 @@ $$
   X^*\otimes ( X\otimes X^*) \ar[rr]^{\alpha_{X^*,X,X^*}}  \ar[d]_{1_{X^*}\otimes \epsilon_X}
     & 
     & (X^* \otimes X)\otimes X^*
-  \\X^*\otimes I \ar[rr]_{c_{X^*,I}}
+  \\X^*\otimes I \ar[rr]_{\sigma_{X^*,I}}
     &
     & I\otimes X^* \ar[u]_{\eta_X\otimes 1_X{X^*}}
 }
@@ -1366,7 +1366,7 @@ I  \ar[rr]^{(u_I^L)^{-1}} \ar[rrrdddddd]!<-2ex,-2ex>_{\eta_{X\otimes Y}}
 \\
 I&
 &
-& X\otimes ((X^*\otimes Y)\otimes Y^*) \ar[d]^{1_X\otimes (c_{X^*,Y}\otimes 1_Y^*)}
+& X\otimes ((X^*\otimes Y)\otimes Y^*) \ar[d]^{1_X\otimes (\sigma_{X^*,Y}\otimes 1_Y^*)}
 \\
  I\otimes I \ar[u]^{u^R_I}&
 &
@@ -1379,18 +1379,18 @@ I&
 \\
 X^*\otimes( X\otimes (Y^*\otimes Y))  \ar[u]^{\alpha_{X^*,X,X^*\otimes 1_Y}^{-1}} &
 &
-& (X\otimes Y)\otimes (X^*\otimes Y^*) \ar[d]^{1_{X\otimes Y} \otimes c_{X^*,Y^*}}
+& (X\otimes Y)\otimes (X^*\otimes Y^*) \ar[d]^{1_{X\otimes Y} \otimes \sigma_{X^*,Y^*}}
 \\
 X^*\otimes( (X\otimes Y^*)\otimes Y)   \ar[u]^{1_{X^*}\otimes \alpha_{X,Y^*,Y}} &
 &
 &  (X\otimes Y)\otimes (Y^*\otimes X^*)
 \\
-X^*\otimes( (Y^*\otimes X)\otimes Y) \ar[u]^{1_{X^*}\otimes (c_{Y^*,X}\otimes Y)} &
+X^*\otimes( (Y^*\otimes X)\otimes Y) \ar[u]^{1_{X^*}\otimes (\sigma_{Y^*,X}\otimes Y)} &
 &
  &\\
 X^*\otimes( Y^*\otimes (X\otimes Y))   \ar[u]^{1_{X^*} \otimes \alpha^{-1}_{Y^*,X,Y}} &
 &  (X^*\otimes Y^*)\otimes (X\otimes Y)  \ar[ll]^{\ \ \ \ \ \alpha^{-1}_{X^*,Y^*,X\otimes Y}}
-&  (Y^*\otimes X^*)\otimes (X\otimes Y) \ar[llluuuuuu]!<0.5ex,0.5ex>_{\epsilon_{X\otimes Y}} \ar[l]^{c_{Y^*, X^*}\otimes 1_{X\otimes Y}}
+&  (Y^*\otimes X^*)\otimes (X\otimes Y) \ar[llluuuuuu]!<0.5ex,0.5ex>_{\epsilon_{X\otimes Y}} \ar[l]^{\sigma_{Y^*, X^*}\otimes 1_{X\otimes Y}}
 }
 $}
 
@@ -1719,7 +1719,7 @@ $$
 This abstract wire-bending induces a functor:
 
 \begin{definition}
-If $\X$ is a compact closed category, there is a  symmetric monoidal functor, $(\_)^*:\X^\op\to\X$, called {\bf the transpose}, which sends:
+If $\X$ is a compact closed category, there is a  symmetric monoidal functor, $(-)^*:\X^\op\to\X$, called {\bf the transpose}, which sends:
 
 \begin{description}
 \item[Objects]\hfil $X \mapsto X^*$
@@ -1796,7 +1796,7 @@ In this thesis, we will usually work with monoidal categories with extra structu
 
 
 \begin{definition}
-A {\bf \dag-category} ({\em read dagger-category}) is a category $\X$ equipped with a functor ${(\_)}^\dag:\X^\op\to\X$ ({\em read the dagger}) that is:
+A {\bf \dag-category} ({\em read dagger-category}) is a category $\X$ equipped with a functor ${(-)}^\dag:\X^\op\to\X$ ({\em read the dagger}) that is:
 
 \begin{description}
 \item[\ \ Identity on objects:] so that for all objects $X$ of $\X$, $X^\dag = X$.
@@ -1867,14 +1867,14 @@ A {(strict) \dag-compact closed category} is a (strict) compact closed category 
 
 $$
 \xymatrix{
-I \ar[r]^{\epsilon_X^\dag} \ar[dr]_{\eta_X}   &  X\otimes X^* \ar[d]^{c_{X,X^*}}\\
+I \ar[r]^{\epsilon_X^\dag} \ar[dr]_{\eta_X}   &  X\otimes X^* \ar[d]^{\sigma_{X,X^*}}\\
  &  X^* \otimes X 
 }
 \hspace*{.5cm}
 \text{or equivalently}
 \hspace*{.5cm}
 \xymatrix{
-X\otimes X^* \ar[dr]_{\eta_X} \ar[r]^{c_{X,X*}}
+X\otimes X^* \ar[dr]_{\eta_X} \ar[r]^{\sigma_{X,X*}}
  & X^* \otimes X  \ar[d]^{\epsilon_X^\dag}\\
 & I
 }
@@ -1895,10 +1895,10 @@ In this section, we review how monoidal categories can be presented in terms of 
 \begin{definition}
 \label{def:monoidaltheory}
 
-%A {\bf symmetric monoidal theory} is a triple $T=({\sf Ob},\Sigma ,E \)$. $\sf Ob$ is a set of {\em objects}. $\Sigma\in [{\sf Ob}]\times [{\sf Ob}]^{G}$ is a set of {\bf generators} $g$ with associated arities $(X,Y) \in [{\sf Ob}]\times [{\sf Ob}]$,  denoted $g:X\to Y$, where $[\_]$ is the finite list monad. Let $\Sigma'$ denote the set $\Sigma\sqcup\{c_X: [X,X]\to[X,X] | \forall X \in {\sf Ob} \}$, where the $c_X$ are regarded as the braiding maps.  Moreover, let $\Sigma^*$ denote the 
+%A {\bf symmetric monoidal theory} is a triple $T=({\sf Ob},\Sigma ,E \)$. $\sf Ob$ is a set of {\em objects}. $\Sigma\in [{\sf Ob}]\times [{\sf Ob}]^{G}$ is a set of {\bf generators} $g$ with associated arities $(X,Y) \in [{\sf Ob}]\times [{\sf Ob}]$,  denoted $g:X\to Y$, where $[\_]$ is the finite list monad. Let $\Sigma'$ denote the set $\Sigma\sqcup\{\sigma_X: [X,X]\to[X,X] | \forall X \in {\sf Ob} \}$, where the $\sigma_X$ are regarded as the braiding maps.  Moreover, let $\Sigma^*$ denote the 
 %$E \subseteq \{(f:X\to Y,g:X\to Y) \in \Sigma^2\}$
 
-A {\bf monoidal theory} is a triple $T=({\sf Ob},\Sigma ,E )$ where: ${\sf Ob}$ is regarded as the set of generating objects; $\Sigma$, the set of generating morphisms with arities in $[{\sf Ob}]\times [{\sf Ob}]$, denoted $f:X\to Y$;  and $E$ the set of generating equations between parallel maps generated by $\Sigma$.
+A {\bf monoidal theory} is a triple $T=({\sf Ob},\Sigma ,E )$ where ${\sf Ob}$ is regarded as the set of generating objects; $\Sigma$, the set of generating morphisms with arities in $[{\sf Ob}]\times [{\sf Ob}]$, denoted $f:X\to Y$;  and $E$ the set of generating equations between parallel maps generated by $\Sigma$.
 
 Every monoidal theory uniquely defines a strict monoidal category $\bar T$ given by quotienting the strict monoidal category freely generated by the objects in $\sf Ob$ and maps in $\Sigma$ modulo the equations in $E$.  Call such a monoidal category a {\bf multicoloured pro}, or merely a {\bf pro} when $|{\sf Ob}|=1$.  We will say that $T$ is a presentation of a monoidal category $\X$ when $\bar T$ is monoidally equivalent to $\X$.
 \end{definition}
@@ -2052,7 +2052,7 @@ $$
 $$
 \begin{definition}
 
-A {\bf symmetric monoidal theory} $T$ consists of the same data as a monoidal theory except the equations are now defined by parallel maps generated by $\Sigma\sqcup C$, where  $C=\{c_X:[X,X]\to [X,X]\ |\ \forall X \in {\sf Ob}\}$ is the set of distinguished braiding maps.
+A {\bf symmetric monoidal theory} $T$ consists of the same data as a monoidal theory except the equations are now defined by parallel maps generated by $\Sigma\sqcup C$, where  $C=\{\sigma_X:[X,X]\to [X,X]\ |\ \forall X \in {\sf Ob}\}$ is the set of distinguished braiding maps.
 
 
 The corresponding strict symmetric monoidal category $\bar T$ is given by quotienting the symmetric monoidal category freely generated by the objects $\sf Ob$ and maps $\Sigma$ by the equations in $E$.  These symmetric monoidal categories are called {\bf multicoloured props}, or merely {\bf props} when $|{\sf Ob}|=1$.
@@ -2116,7 +2116,7 @@ The following result has almost surely been known for quite some time, but it is
 
 \begin{example}
 Take a commutative semiring $S$.
-Consider the prop ${\sf cb}_S$ generated by a commutative monoid $\xcirc$ and comonoid $\zcirc$ interacting to form a {\bf bialgebra}:
+Consider the prop ${\sf cb}_S$ generated by a commutative monoid $\xcirc$ and comonoid $\zcirc$ interacting to form a {\bf bicommutative bialgebra}:
 $$
   \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3352,7 +3352,7 @@ n \xrightarrow{(M,a)} m\ , \hspace*{.5cm} m \xrightarrow {(N,b)} k
 $$
 
 \item[Monoidal structure:]  The tensor product is given pointwise:
- $$(M,a)\otimes (N,b):=(M\oplus n, a\oplus b)$$ 
+ $$(M,a)\oplus (N,b):=(M\oplus n, a\oplus b)$$ 
 The tensor unit is the identity on $0$.
 \end{description}
 \end{definition}
@@ -3368,7 +3368,7 @@ $$
 I can not find a reference for the following result, but it is is an immediate consequence of the analysis of affine relations in \cite{affine}:
 
 \begin{example}
-Given a commutative semiring $R$, the symmetric monoidal theory generated by adding the following generators and relations to $\cb_R$:
+Given a commutative semiring $R$, the prop $\acb_R$ is presented by adding the following generators and relations to $\cb_R$:
 
 $$
 \begin{tikzpicture}
@@ -4079,7 +4079,7 @@ As we alluded to in the introduction of this subsection, the Cartesian notion of
 
 
 \begin{definition}
-The {\bf pullback} of a diagram  $X \xrightarrow{f} A \xleftarrow{g} Y$ (if it exists) is an object $X\ {}_f \times_{g} Y$ called and maps $\pi_0:X\ {}_f \times_{g} Y\to X$ and  $\pi_1:X\ {}_f \times_{g} Y\to Y$ called {\bf the  projections}, such that for any diagram $X \xleftarrow{p_0} P \xrightarrow{p_1} Y$ making the the following diagram commute:
+The {\bf pullback} of a diagram  $X \xrightarrow{f} A \xleftarrow{g} Y$ (if it exists) is an object $X\ {}_f \times_{g} Y$ called the {\bf apex} and maps $\pi_0:X\ {}_f \times_{g} Y\to X$ and  $\pi_1:X\ {}_f \times_{g} Y\to Y$ called {\bf the  projections}, such that for any diagram $X \xleftarrow{p_0} P \xrightarrow{p_1} Y$ making the the following diagram commute:
 
 $$
 \xymatrix{
@@ -4110,7 +4110,7 @@ $$
     &
   \\
     &
-    & X\ {}_f \times_{g} Y  \ar[dll]_{\pi_0} \ar[drr]^{\pi_1}
+    & X\ {}_f \times_{g} Y  \ar[dll]_{\pi_0} \ar[drr]^{\pi_1} \pullbackcorner[d]
     &
     &
   \\X \ar[drr]_f 
@@ -4126,10 +4126,40 @@ $$
 }
 $$
 
+
+Where a chevron is drawn under the apex of the span to denote that the square is a pullback.
+
 A category is {\bf finitely complete} if it has a terminal object and all pullbacks exist. Notice that product $X\times Y$ is the pullback of the diagram $X \rightarrow 1 \leftarrow Y$.
 
 
 The dual notion of a pullback is a {\bf pushout}; the pushout of a diagram $X\xrightarrow{f} A \xleftarrow{g} Y$ is denoted by $X{}_f +_{g} Y$.
+
+We draw a chevron on the apex of the cospan, to denote that a square is a pushout as follows:
+
+
+$$
+\xymatrix{
+    &
+    & P 
+    &
+    &
+  \\
+    &
+    & X\ {}_f +_{g} Y \ar@{-->}[u] \pullbackcorner[d]
+    &
+    &
+  \\X \ar[urr]^{\iota_0} \ar@/^/[uurr]^{i_0}
+    &
+    & 
+    &
+    & Y \ar[ull]_{\iota_1} \ar@/_/[uull]_{i_1}
+  \\
+    &
+    & A \ar[urr]_{g} \ar[ull]_{f}
+    &
+    & 
+}
+$$
 \end{definition}
 
 \begin{example} 
@@ -4179,7 +4209,7 @@ $$
 :=
 \xymatrix{
     &
-    & A {}_g\times_k B \ar[dl]_{\pi_0} \ar[dr]^{\pi_1}
+    & A {}_g\times_k B \ar[dl]_{\pi_0} \ar[dr]^{\pi_1} \pullbackcorner[d]
     &
     &
   \\
@@ -4233,14 +4263,16 @@ Note that composition of 1-cells is not strict, so that the associativity and un
 
 The 1-category of spans of $\X$, $\Span^\sim(\X)$, has maps being equivalence classes of isomorphic spans; so that:
 
-
-\begin{centering}
-$(X\xleftarrow{f} A \xrightarrow{g} Y)
+\hfil\scalebox{1.4}{
+$
+\Dfrac{
+(X\xleftarrow{f} A \xrightarrow{g} Y)
  \sim
-(X\xleftarrow{h} B \xrightarrow{k} Y)$\\
-$\text{\rotatebox{90}{$\iff$}}$\\
-$\exists$  an isomorphism $\phi:A\to B$: \\
-\hfil$\xymatrix{
+(X\xleftarrow{h} B \xrightarrow{k} Y)
+}{
+\Ifrac{
+{\exists \text{ an isomorphism $A\xrightarrow{\phi} B$ such that the following diagram commutes:}  } }{
+\xymatrix{
     & A \ar[dl]_{f} \ar[dr]^{g} \ar[dd]^{\phi}_{\cong}
     &
   \\X 
@@ -4249,11 +4281,17 @@ $\exists$  an isomorphism $\phi:A\to B$: \\
   \\
     & B \ar[ul]^{h} \ar[ur]_{k}
     &
+}}
 }$
-\end{centering}
+}
+
 
 \end{definition}
+ Regarded as a monoidal category under the Cartesian product, the (co)diagonal maps and (co)discard maps interact to form \dag-Frobenius algebras, making  $\Span^\sim(\X)$  \dag-compact closed, where the \dag-functor is given by the converse  $(f,A,g)\to (g,A,f)$.
 
+
+
+For the interested reader, he monoidal structures (or lack thereof) of categories of cospans and and spans of sets is elaborated on in great detail in \cite{bruni}.
 
 Categories of spans give mathematical semantics for nondeterminstic processes where inputs are associated to possible outputs with multiplicity. 
 A 2-cell between two processes thus describes a method to transform one process into another in a way that preserves the relationships between inputs and outputs.  For example, consider the following well-known result:
@@ -4270,6 +4308,19 @@ This example is quite useful for developing ones intuition.  Take a span of fini
 
 We seek moreover, to quotient by multiplicity, to obtain a semantics for merely nondeterministic processes: where things can be related at most once.  To do so, we need more assumptions about the category with which we seek to work internal to.
 
+\begin{definition}
+A map $f:X\to Y$ is a {\bf monomorphism} when for all maps $g,h:Z\to X$, $g;f=h;f \implies g=h$.
+
+Dually, a map $f:X\to Y$ is an {\bf epimorphism} when for all maps $g,h:Y\to Z$, $f;g=f;h \implies g=h$.
+
+To add extra information to our commutative diagrams, we denote monomorphisms as arrows with tails $\rightarrowtail$ and epimorphisms as arrows with two heads $\twoheadrightarrow$.  
+\end{definition}
+
+Monomorphisms and epimorphisms are the categorically well-behaved analogues of injections and surjections; where a map is similarly an isomorphism when it is an epimorphism and a monomorphism.  In all of the examples we care about in this thesis, the monomorphisms are exactly the injections and the epimorphisms are exactly the surjections.  However, it is needed for a proper exposition of categories of relations.
+
+There are  special kinds of monomorphisms and epimorphisms which come up:
+
+
 
 \begin{definition}
 The {\bf equalizer}, of two parallel maps $f,g:X\to Y$, if it exists, is an object $E_{f,g}$ equipped with a map $m:E_{f,g}\to X$ such that for all objects $F$ and maps $h:F\to E_{f,g}$, there exists a unique map $u:F\to A$ such that the following diagram commutes:
@@ -4283,13 +4334,14 @@ $$
 }
 $$
 
-The maps $e$ arising from equalizers are monomorphisms.  Monomorphisms arising this way are called {\bf regular monomorphisms}.
 
+The maps $e$ arising from equalizers are monomorphisms.  Monomorphisms arising this way are called {\bf regular monomorphisms}.
 
 The dual notion to an equalizer is a {\bf coequalizer}, and the epimorphisms arizing in this way are called {\bf regular epimorphisms}.
 \end{definition}
 
 
+We have already been using coequalizers throughout this thesis whenever we impose equations by taking quotients:
 
 
 \begin{example}
@@ -4345,7 +4397,7 @@ $$
 
 
 \begin{definition}
-Given a regular category $\X$,  the strict bicategory of {\bf relations} internal to $\X$, $\Rel(\X)$ has:
+Given a regular category $\X$,  the strict 2-category of {\bf relations} internal to $\X$, $\Rel(\X)$ has:
 
 \begin{description}
 \item[0-cells:] Objects of $\X$.
@@ -4367,7 +4419,7 @@ To compose jointly monic spans $(A,f,g):X\to Y$ and $(B,h,k):Y\to Z$,  first com
 $$
 \xymatrix{
     &
-    & A\ {}_g\times_k B \ar[dl]_{\pi_0} \ar[dr]^{\pi_1}
+    & A\ {}_g\times_k B \ar[dl]_{\pi_0} \ar[dr]^{\pi_1} \pullbackcorner[d]
     &
     &
   \\
@@ -4429,11 +4481,16 @@ The identity for composition is the same as for spans.
 
 \end{definition}
 
-
-The fact that internal relations is a strict bicategory means that we can regard is a an ordinary category; as, unlike it the case of spans, composition is strictly associative.
-
-
 Relations have the special property, unlike spans, that they are poset-enriched; that is to say, either there exists a single 2-cell between 1-cells or there doesn't. This makes things much simpler than the spans picture, because one never has to deal with coherence equations.  This also justifies the interpretation of nondeterministic processes in this setting: possibility amounts to the mere existence of a 2-cell.  Any two ways to arrive at the same result must be the same.
+
+
+The fact that internal relations is a strict bicategory means that we can regard is a an ordinary category; as, unlike it the case of spans, composition is strictly associative. Therefore, we don't have to quotient to obtain an ordinary category of relations.
+
+Just as in the case of spans, relations is a \dag-compact closed category with respect to the Cartesian product where the \dag-functor is given by the converse.
+
+
+
+
 
 
 
@@ -4817,7 +4874,7 @@ However, the category $\Aff\Mat_k$ is not a regular category, in fact it isn't e
 The empty set can not be regarded as a vector space because it has no origin; however, because affine transformations are not required to preserve the origin, it is perfectly fine to ask for an affine transformation from an empty space.
 
 
-By shifting to the category $\Aff\Mat_k+1$ where one freely adds the empty set as the initial object,  we obtain an algebraic theory, and thus a regular category.  Therefore, we can take the category of internal relations:
+By shifting to the category $\Aff\Mat_k+1$ where one freely adds the empty set as the initial object, so that there is a unique map $\emptyset \xrightarrow{?} k^n$, for all $n$,  we obtain an algebraic theory, and thus a regular category.  Therefore, we can take the category of internal relations:
 
 
 
@@ -4834,7 +4891,7 @@ Concretely, this is constructed in the same way as $\LinRel_k$ except map $n\to 
 We chose to forget the empty set as an object and retain it merely as a subobject so that we can present it as a (single sorted prop):
 
 \begin{lemma}[{\cite[\S A]{affine}}]
-$\Aff\Rel_{k}$ is presented adding the following generators and equations to the presentation of $\LinRel_k$:
+$\Aff\Rel_{k}$ is presented by the prop $\aih_k$ given adding the following generators and equations to the presentation of $\ih_k$:
 
 $$
 \begin{tikzpicture}
@@ -5806,7 +5863,7 @@ $\Par$ is a canonical example of a Cartesian restriction category; the restricti
 
 
 
-\begin{theorem}[{\cite[Thm. 5.2]{restiii}}]
+\begin{theorem}[{\cite[Theorem 5.2]{restiii}}]
 Cartesian restriction categories are in bijection with symmetric monoidal categories equipped with a supply of (co)commutative comonoids:
 $$
 \begin{tikzpicture}[xscale=-1]
@@ -6275,8 +6332,8 @@ The subcategory of partial isomorphisms of $\Par$ is  $\Pinj$.
 
 Inverse categories are particular kinds of \dag-categories:
 
-\begin{theorem}[{\cite[Thm. 2.20]{cockett}}]
-A restriction category $\X$ is an inverse category if and only if there is a dagger functor $(\_)^\circ:\X^\op\to\X$ such that for all $X\xleftarrow{f} Z \xrightarrow{g} Y$:
+\begin{theorem}[{\cite[Theorem 2.20]{cockett}}]
+A restriction category $\X$ is an inverse category if and only if there is a dagger functor $(-)^\circ:\X^\op\to\X$ such that for all $X\xleftarrow{f} Z \xrightarrow{g} Y$:
 \begin{center}
 \begin{tabular}{cc}
  $f; f^\circ ; f = f$ & 
@@ -6320,7 +6377,7 @@ We also have a deterministic partially invertible notion of copying:
 
 
 
-\begin{definition}[{\cite[Def. 4.3.1]{giles}}]
+\begin{definition}[{\cite[Definition 4.3.1]{giles}}]
 A symmetric monoidal inverse category $\X$ is a {\bf discrete inverse category} when it is a dagger symmetric monoidal  category, 
 equipped commutative semigroup and cocommutative cosemigroup on every object which are daggers of each other:
 $$
@@ -6460,7 +6517,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
-\begin{tikzpicture}[yscale=-1]
+\begin{tikzpicture}[scale=-1]
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (0) at (12, 2) {};
 		\node [style=none] (1) at (12.5, 1.25) {};
@@ -6962,7 +7019,7 @@ $
 \hspace*{-2cm}
 $
 \dfrac{X\xrightarrow{(f,S)} Y, \hspace*{.5cm} Z\xrightarrow{(g,T)} W}
-{(f,S)\otimes (g;T) := ((f\otimes g);(1_{X\otimes S} \otimes c_{W,T});\alpha_{X,S,T\otimes W};(1_X\otimes \alpha_{S,T,W}^{-1};(c_{S,T}));\alpha_{Y,W,S\otimes T}^{-1} ,S\otimes T)} 
+{(f,S)\otimes (g;T) := ((f\otimes g);(1_{X\otimes S} \otimes \sigma_{W,T});\alpha_{X,S,T\otimes W};(1_X\otimes \alpha_{S,T,W}^{-1};(\sigma_{S,T}));\alpha_{Y,W,S\otimes T}^{-1} ,S\otimes T)} 
 $
 
 \hfil Or in proof net notation:
@@ -7056,7 +7113,7 @@ $
 
 The coherence data for the monoidal structure is inherited in a straightforward way from $\X$. Moreover, if $\X$ is symmetric monoidal, then it is easy to see how ${\CoPara}(\X)$ is as well.  Indeed ${\CoPara}(\X)$ is merely freely adding generators to the monoidal theory of $\X$.  However, variations on this theme will occur throughout this thesis, so we have promoted it to its own construction; for example: 
 
-\begin{definition}\cite[Def. 5.1.1]{giles}
+\begin{definition}\cite[Definition 5.1.1]{giles}
 Given a discrete inverse category $\X$,  its {\bf Cartesian completion} $\tilde \X$ is the quotient of ${\CoPara}(\X)$ by either of the following equivalent symmetric monoidal congruence relations:
 $$
 (f,S)\sim(g,T) \iff
@@ -7201,14 +7258,14 @@ $
 
 
 
-\begin{theorem}[{\cite[Thm. 5.2.6]{giles}}]
+\begin{theorem}[{\cite[Theorem 5.2.6]{giles}}]
 There is an equivalence of categories between the category of discrete inverse categories and the category of discrete Cartesian categories.
 
 
 \end{theorem}
  This equivalence is witnessed on the one hand by the Cartesian completion and on the other by taking the wide subcategory of partial isomorphisms.
 
-\begin{example}[{\cite[Ex. 5.3.3]{giles}}]
+\begin{example}[{\cite[Example 5.3.3]{giles}}]
 $\tilde \Pinj$ is $\Par$.
 \end{example}
 \begin{proof}
@@ -7496,7 +7553,9 @@ Cartesian bicategory of relations & lax  & lax & lax & lax \\
 
 
 
-In this section we review some basic results regarding internal categories.  Unless explicitly referenced, the results and definitions of internal category theory contained within this chapter can be found within a standard textbook in category theory (eg. \cite{maclane}). 
+In this section we review some aspects of internal category theory, so that we can compose props via distributive law.
+
+% basic results regarding internal categories.  Unless explicitly referenced, the results and definitions of internal category theory contained within this chapter can be found within a standard textbook in category theory (eg. \cite{maclane}). 
 
 
 
@@ -7518,18 +7577,19 @@ $$
 
 \end{lemma}
 
-In practice, I iusually won't be so explicit about the pushout of (symmetric) monoidal theories.  Rather, I will present a set of generators and multiple equations between different subsets of generators.  Indeed, we have done this many times up to this point when glueing *symmetric) monoidal theories together.  However, there is a more refined notion of composition of pro(p)s.
- By regarding categories as certain monads, this machinery will allow us to compose categories via distributive law. 
+In practice, we usually won't be so explicit about the pushout of (symmetric) monoidal theories.  Rather, we will present a set of generators and multiple equations between different subsets of generators.  Indeed, we have done this many times up to this point when glueing (symmetric) monoidal theories together.  However, there is a more refined notion of composition of pro(p)s; to expose which, we first need to review  a considerable amount of internal category theory:
+
+
 
 
 \begin{definition}
 \label{def:monad}
-%Given a bicategory $\mathcal B$, there is a bicategory of monads in $\mathcal B$, $\Mnd({\mathcal B})$ with:
-%
-%\begin{description}
-%\item[0-cells:]
+Given a bicategory $\mathcal B$, there is a bicategory of monads in $\mathcal B$, $\Mnd({\mathcal B})$ with:
 
-Given a bicategory $\mathcal B$,  A {\bf monad} in $\mathcal B$ is a 0-cell $X$ and a 1-cell $T:X\to X$ in $\mathcal B$ equipped with 2-cells $\mu:T^2 \to T$ and $\eta:1_X\to T$ satisfying the associativity and unit laws:
+\begin{description}
+\item[0-cells:]
+
+{\bf Monads} are tuples $(X,T,\mu,\eta)$ in $\mathcal B$.  Where $X$ is a $0$-cell $T:X\to X$ is a $1-cell and  $\mu:T^2 \to T$ and $\eta:1_X\to T$ are $2$-cells satisfying the associativity and unit laws:
 
 
 \hfil$
@@ -7545,95 +7605,39 @@ T^2 \ar[r]_{\mu} & T
 }
 $
 
-%
-%\item[1-cells:] {\bf Monad maps} from $(X,T,\mu^T, \eta^T)\to (Y,S,\mu^S, \eta^S)$ are a 1-cell $F:X\to Y$ and a 2-cell $\lambda:F;S\to T;F$ satisfying the equations:
-%
-%\hfil$
-%\xymatrix{
-%F \ar[r]^{\eta^S;F} \ar[dr]_{F;\eta^T} 
-%  & S;F \ar[d]^{\lambda}\\
-%  &  F;T
-%}
-%\hspace*{1cm}
-%\xymatrix{
-%S^2; F \ar[r]^{S;\lambda} \ar[d]_{\mu^S;F}
-% & S;F;T \ar[r] ^{\lambda; T}
-% & F;T^2 \ar[d]^{F;\mu^T}\\
-%S;F \ar[rr]_{\lambda}
-% &
-% & F;T
-%}
-%$
-%\item[2-cells:] {\bf Intertwiners} between monad maps $(F,\lambda) \to (G;\chi)$ are 2-cells $\phi: F\to G$ such that:
-%
-%$$
-%\xymatrix{
-%S;F \ar[r]^{S;\phi} \ar[d]_{\lambda}
-% & S;G \ar[d]^{\chi}\\
-%F;T \ar[r]_{\phi;T}
-% & G;T
-%}
-%$$
-%\end{description}
-\end{definition}
 
+\item[1-cells:] {\bf Monad maps}   $(F,\lambda):(X,T,\mu^T, \eta^T)\to (Y,S,\mu^S, \eta^S)$.  Where  $F:X\to Y$ is a $1$-cell and $\lambda:F;S\to T;F$ is a 2-cell preserving the unit and multiplication as follows:
 
-
-\begin{definition}
-Given two monads $\mathbb{T}=(X,T,\mu^T, \eta^T)$ and $\mathbb{S}=(X,S,\mu^S, \eta^S)$, a distributive law of $S$ over $T$ is a 2-cell $\lambda:S;T\to T;S$ satisfying the following coherence equations:
-
-
-\hfil
-$
+\hfil$
 \xymatrix{
-S \ar[dr]^{S;\eta^T} \ar[d]_{\eta^T;S}\\
- T;S \ar[r]_{\lambda}
- & S;T
+F \ar[r]^{\eta^S;F} \ar[dr]_{F;\eta^T} 
+  & S;F \ar[d]^{\lambda}\\
+  &  F;T
 }
 \hspace*{1cm}
 \xymatrix{
-T^2;S \ar[r]^{T;\lambda} \ar[d]_{\mu^T;S}
- & T;S;T \ar[r]^{\lambda;T}
-  & S;T;T \ar[d]^{S;\mu^T}\\
-T;S \ar[rr]_{\lambda}
-  & 
-  &S;T
+S^2; F \ar[r]^{S;\lambda} \ar[d]_{\mu^S;F}
+ & S;F;T \ar[r] ^{\lambda; T}
+ & F;T^2 \ar[d]^{F;\mu^T}\\
+S;F \ar[rr]_{\lambda}
+ &
+ & F;T
 }
 $
+\item[2-cells:] {\bf Intertwiners} between monad maps $(F,\lambda) \to (G;\chi)$ are 2-cells $\phi: F\to G$ such that:
 
-\hfil
-$
+$$
 \xymatrix{
-S \ar[dr]^{\eta^S;T} \ar[d]_{T;\eta^S}\\
- T;S \ar[r]_{\lambda}
- & S;T
+S;F \ar[r]^{S;\phi} \ar[d]_{\lambda}
+ & S;G \ar[d]^{\chi}\\
+F;T \ar[r]_{\phi;T}
+ & G;T
 }
-\hspace*{1cm}
-\xymatrix{
-T;S^2 \ar[r]^{\lambda;S} \ar[d]_{T;\mu^S}
- & S;T;S \ar[r]^{S;\lambda}
-  & S;S;T \ar[d]^{\mu^S;T}\\
-T;S \ar[rr]_{\lambda}
-  & 
-  &S;T
-}
-$
+$$
+\end{description}
 \end{definition}
 
-
-\begin{lemma}
-Given a distributive law of monads $\lambda:S;T\to T;S$,
-$T;S$ has a monad structure with:
-
-\begin{tabular}{lc}
-{\bf unit:} & $\eta^{T;S}:=1_{X} \xrightarrow{\eta^T;\eta^S} T;S $\\
-{\bf multiplication:} & $\mu^{T;S}:=(T;S)^2 \xrightarrow{1_X; \lambda ; 1_X} T;T;S;S \xrightarrow{\mu^T;\mu^S} T;S$
-\end{tabular}
-
-\end{lemma}
-
-%Yang baxter
-
+This allows us to define the following:
 
 \begin{definition}
 \label{def:internalcat}
@@ -7645,8 +7649,7 @@ Given a category $\mathcal V$ with finite pullbacks $\mathcal V$, a $\mathcal V$
 
 \begin{lemma}
 \label{lem:internalcat}
-
-Monads internal to $\Set$ are in bijection with small categories.
+Monads internal to $\Span(\Set)$ are in bijection with small categories.
 \end{lemma}
 
 Let us upack this a bit.  A small category has a {\em set} $\sf Ob$ of objects, and a set {\sf Ar} of maps.  There is a map ${\sf dom}:{\sf Ar}\to {\sf Ob}$ which picks out the domain of maps and another map  ${\sf codom}:{\sf Ar}\to {\sf Ob}$ picking out the codomain.  That is to say, a span of sets:
@@ -7657,54 +7660,136 @@ S=\xymatrix{
 }
 $$
 
-Composition of maps is a function which takes maps $f:X\to Y$ and $g:Y\to X$ to a new map $(f;g):X\to Y$.   This is asking for a 2-cell $\mu:S^2\to S$ in $\Span(\Set)$; the pullback picks out the composable maps.  The associativity of composition corresponds to the associativity of $\mu$ as a semigroup.
+Composition of maps is a function which takes maps $f:X\to Y$ and $g:Y\to X$ to a new map $(f;g):X\to Y$.   This is asking for a 2-cell $\mu:S^2\to S$ in $\Span(\Set)$; the pullback picks out the composable maps and composes them.  The associativity of composition corresponds to the associativity of $\mu$ as a semigroup.
 On the other hand, the unit of a small category is a function from ${\sf Ob}$ to $S$, picking out for every object $X$, a map $1_X$ with domain and codomain $X$ , that is to say, a 2-cell $\mu:1_{\sf Ob}\to S$.  The unitality of composition is the unitality of the monad.
-The converse direction is the same.
+
+One should be careful to notice that the $1$-cells in $\Mnd(\Span(\Set))$ do not correspond to functors between small categories.  This structure naturally arizes by considering the tight 1-cells in the analagous double double category (although, this is out of scope for this thesis).
 
 
-In \cite{rosebrugh} they demonstrate that distributive laws of monads in  $\Span(\Set)$ correspond to strict factorization systems on the underlying internal category:  morphisms in the composite category $T;S$ of a distributive law $\lambda:S;T\to T;S$ can always be uniquely factored into the maps of $T$ followed by $S$.  
+There is a canonical way to compose monads, and thus small categories:
+
+\begin{definition}
+Given two monads $\mathbb{L}=(X,L,\mu^L, \eta^L)$ and $\mathbb{R}=(X,R,\mu^R, \eta^R)$ in a bicategory $\cal B$, a distributive law of $R$ over $L$ is a 2-cell $\lambda:R;L\to L;R$ in $\mathcal B$ satisfying the following coherence equations:
 
 
-%One might hope that monad homorphisms correspond to functors between internal categories; however, these actually correspond to {\em cofunctors}.  Functors are instead tight maps in the  {\em double category} of monads of spans of sets; however, this is not so relevant for this thesis, so we will not give more detail.
+\hfil
+$
+\xymatrix{
+R \ar[dr]^{R;\eta^L} \ar[d]_{\eta^L;R}\\
+ L;R \ar[r]_{\lambda}
+ & R;L
+}
+\hspace*{1cm}
+\xymatrix{
+L^2;R \ar[r]^{L;\lambda} \ar[d]_{\mu^L;R}
+ & L;R;L \ar[r]^{\lambda;L}
+  & R;L;L \ar[d]^{R;\mu^L}\\
+L;R \ar[rr]_{\lambda}
+  & 
+  &R;L
+}
+$
+
+\hfil
+$
+\xymatrix{
+R \ar[dr]^{\eta^R;L} \ar[d]_{L;\eta^R}\\
+ L;R \ar[r]_{\lambda}
+ & R;L
+}
+\hspace*{1cm}
+\xymatrix{
+L;R^2 \ar[r]^{\lambda;R} \ar[d]_{L;\mu^R}
+ & R;L;R \ar[r]^{R;\lambda}
+  & R;R;L \ar[d]^{\mu^R;L}\\
+L;R \ar[rr]_{\lambda}
+  & 
+  &R;L
+}
+$
+\end{definition}
 
 
-By changing $\Set$ to another category, we can construct other sorts of internal categories: 
+Distributive laws of monads are compositions in the following sense:
+
+\begin{lemma}
+Given a distributive law of monads $\lambda:R;L\to L;R$,
+$L;R$ has a monad structure with:
+
+\begin{tabular}{lc}
+{\bf unit:} & $\eta^{L;R}:=1_{X} \xrightarrow{\eta^L;\eta^R} L;R $\\
+{\bf multiplication:} & $\mu^{L;R}:=(L;R)^2 \xrightarrow{1_X; \lambda ; 1_X} L;L;R;R \xrightarrow{\mu^L;\mu^R} L;R$
+\end{tabular}
+
+\end{lemma}
+
+
+There is a very concise way of viewing distributive laws:
+
+\begin{lemma}[{\cite[\S 6]{street}}]
+Distributive laws of monads in a bicategory $\cal B$ are precisely monads in $\Mnd({\cal B})$.
+\end{lemma}
+
+
+The following notion allows one to factorize the maps in categories:
+
+
+\begin{definition}
+A {\bf strict factorization system} on a category $\X$ is a pair of subcategories $(\mathbb{L},\mathbb{R})$ of $\X$ with the same objects as $\X$, such that every map in $\X$ can be uniquely factored into a map in $\mathbb{L}$ followed by a map in  $\mathbb{R}$.
+\end{definition}
+
+\begin{lemma}[{\cite[Theorem 3.8]{rosebrugh}}]
+\label{lemma:rosebrugh}
+Strict factorization systems of small categories $(\mathbb L,\mathbb R)$ are precisely distributive of $\mathbb R$ over $\mathbb L$ , viewed as monads in $\Span(\Set)$.
+\end{lemma}
+
+Therefore, a distributive law of small categories can be regarded as a way to uniquely factorize maps into two disjoint subcategories; so that if a composite is out of order, there is a rule to push them past each other uniquely.
+
+
+By changing $\Set$ to the category of monoids, \cite{lack} observed that one can recover the appropriate notion of a strict factorization system of pros.  First recall the category of monoids: 
 
 \begin{definition}
 \label{def:monoid}
 Let $\Mon$ denote the category with set-monoids as objects and monoid homorphisms as morphisms.
 \end{definition}
 
-Now every internal category is equipped with a tensor product given by the monoid structure of the set:
+$\Mon$ has finite pullbacks, so there is a well defined notion of internal categories within in:
 
 
 \begin{lemma}[{\cite[\S 2.3]{lack}}]
 \label{def:internalmonoidalcat}
 
-Monads in $\Span(\Mon)$ are in bijection with small monoidal categories.
+Monads in $\Span(\Mon)$ are in bijection with small strict monoidal categories.
 \end{lemma}
 
-Indeed, in analogy to the case for small catgories, a distributive law $\X;\Y$ of two small monoidal categories is precisely a way to combine the two theories, respecting their monoidal structure,  where the maps can be uniquely factored into maps in $\X$ followed by maps in $\Y$.
+%Indeed, in analogy to the case for small catgories, a distributive law $\X;\Y$ of two small strict monoidal categories is precisely a way to combine the two theories, respecting their monoidal structure,  where the maps can be uniquely factored into maps in $\X$ followed by maps in $\Y$.
 
-Distributive laws of monoidal theories yield a monoidal theory for the composite internal monoidal category. The two theories are combined,  plus rules to push the generators past each other (
-This follows immediately from the analysis of distributive laws of props of \cite{lack}):
+There is an obvious analogue of strict factorizations for small strict monoidal categories, which I shall call monoidal strict factorization systems.  In this setting $\mathbb L$ and $\mathbb R$ are small monoidal subcategories of $\X$
+
+Therefore, reproducing Lemma \ref{lemma:rosebrugh} internal to $\Mon$ we have:
+
+\begin{lemma}[{\cite[\S 2.3]{lack}}]
+Monoidal strict factorization systems of small categories $(\mathbb L,\mathbb R)$ are precisely distributive of $\mathbb R$ over $\mathbb L$ , viewed as monads in $\Span(\Mon)$.
+\end{lemma}
+
+Distributive laws of monoidal theories yield a monoidal theory for the composite internal monoidal category. The two theories are combined,  plus rules to push the generators past each other.  This follows immediately from the analysis of distributive laws of props of \cite[Theorem 3.8]{lack}, where a prop is a strict monoidal category on the free monoid $\N$:
 
 \begin{lemma}
 Take two monoidal theories
 
 $$
-T_0=({\sf Ob},\Sigma_0 ,E_0 ), \ T_1=({\sf Ob},\Sigma_1 ,E_1 )
+R=({\sf Ob},\Sigma_R ,E_R ), \ L=({\sf Ob},\Sigma_L ,E_L )
 $$
 
-With the same objects.  Regard their corresponding pros $\bar{T_0}$ and $\bar{T_1}$ as monads in $\Span(\Mon)$ such that there is a distributive $\lambda:\bar{T_0};\bar{T_1} \Rightarrow \bar{T_1};\bar{T_0}$.
+With the same objects.  Regard their corresponding pros $\bar{R}$ and $\bar{L}$ as monads in $\Span(\Mon)$ such that there is a distributive $\lambda:\bar{R};\bar{L} \Rightarrow \bar{L};\bar{R}$.  Where $ \bar{L};\bar{R}$ is a monoidal category and both $\bar L$ and $\bar R$ are strict monoidal subcategories of   $\bar{L};\bar{R}$
 
 
-Then the monoidal theory for the composite pro $\bar{T_1};\bar{T_0}$ is given by 
+Then the monoidal theory for the composite pro $\bar{L};\bar{R}$ is given by 
 $$
-({\sf Ob}, \Sigma_0\cup \Sigma_1, E_0\cup E_1 \cup E_\lambda)
+({\sf Ob}, \Sigma_R\cup \Sigma_L, E_R\cup E_L \cup E_\lambda)
 $$
 
-where $\lambda$ is the set of equations dictating the unique ways in which the maps in $T_0$ can be pushed past those in $T_1$.
+where $\lambda$ is the set of equations dictating the unique ways in which the maps in $R$ can be pushed past those in $L$.
 \end{lemma}
 
 
@@ -7716,10 +7801,10 @@ Consider the distributive law of pros of a comonoid $\zcirc$ over a monoid $\zci
 \m; \m^\op;&
     \begin{tikzpicture}[rotate=90]
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=X] (0) at (-6.25, 0.25) {};
+		\node [style=Z] (0) at (-6.25, 0.25) {};
 		\node [style=none] (1) at (-7, 0.25) {};
 		\node [style=none] (2) at (-4.75, 0.25) {};
-		\node [style=X] (3) at (-5.5, 0.25) {};
+		\node [style=Z] (3) at (-5.5, 0.25) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw (0) to (1.center);
@@ -7728,7 +7813,7 @@ Consider the distributive law of pros of a comonoid $\zcirc$ over a monoid $\zci
 		\draw [bend right, looseness=1.25] (0) to (3);
 	\end{pgfonlayer}
   \end{tikzpicture}
-  \eqzxa{special}
+  \eref{special}
   \begin{tikzpicture}[rotate=90]
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (-7, 0.25) {};
@@ -7741,8 +7826,8 @@ Consider the distributive law of pros of a comonoid $\zcirc$ over a monoid $\zci
   \hspace*{.5cm}
   \begin{tikzpicture}[rotate=90]
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=X] (0) at (-7, -0) {};
-		\node [style=X] (1) at (-6.25, 0.5) {};
+		\node [style=Z] (0) at (-7, -0) {};
+		\node [style=Z] (1) at (-6.25, 0.5) {};
 		\node [style=none] (2) at (-7, 0.75) {};
 		\node [style=none] (3) at (-7.75, 0.75) {};
 		\node [style=none] (4) at (-7.75, -0) {};
@@ -7763,8 +7848,8 @@ Consider the distributive law of pros of a comonoid $\zcirc$ over a monoid $\zci
  =
   \begin{tikzpicture}[rotate=90,xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=X] (0) at (-7, -0) {};
-		\node [style=X] (1) at (-6.25, 0.5) {};
+		\node [style=Z] (0) at (-7, -0) {};
+		\node [style=Z] (1) at (-6.25, 0.5) {};
 		\node [style=none] (2) at (-7, 0.75) {};
 		\node [style=none] (3) at (-7.75, 0.75) {};
 		\node [style=none] (4) at (-7.75, -0) {};
@@ -7786,9 +7871,9 @@ Consider the distributive law of pros of a comonoid $\zcirc$ over a monoid $\zci
   \begin{tikzpicture}[rotate=90]
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (-4.75, -0.25) {};
-		\node [style=X] (1) at (-5.5, -0) {};
+		\node [style=Z] (1) at (-5.5, -0) {};
 		\node [style=none] (2) at (-7, -0.25) {};
-		\node [style=X] (3) at (-6.25, 0) {};
+		\node [style=Z] (3) at (-6.25, 0) {};
 		\node [style=none] (4) at (-4.75, 0.25) {};
 		\node [style=none] (5) at (-7, 0.25) {};
 	\end{pgfonlayer}
@@ -7802,7 +7887,7 @@ Consider the distributive law of pros of a comonoid $\zcirc$ over a monoid $\zci
 \end{tikzpicture}
   \end{align*}
 
-Which we recall is the  pro {\sf sfa} for the free {\bf special  Frobenius algebra}.
+Which we recall is the  pro {\sf sfa} for the free  special  Frobenius algebra.
 
 \end{definition}
 
@@ -7821,12 +7906,12 @@ Which we recall is the  pro {\sf sfa} for the free {\bf special  Frobenius algeb
 %
 
 
-The unique normal form induced by this distributive law will be quite useful for the purposes of computation:
+The unique normal form induced by this distributive will be widely used throughout this thesis:
 
 
 
-\begin{lemma}[Spider theorem]
-Consider the free pro generated by a special Frobenius algebra $\xcirc$. Then the circuits generated by the connected components have a unique normal form. We use the spider notation on the right to refer to these simply connected components:
+\begin{lemma}[Special spider theorem]
+The circuits in $\sf sfa$ generated by the connected components of the Frobenius algebra have a unique normal form. We use the ``spider notation'' on the right to refer to these simply connected components:
 
 
 $$
@@ -7840,7 +7925,7 @@ $$
 		\node [style=none] (5) at (2, 3.25) {};
 		\node [style=none] (6) at (1.5, 3.25) {};
 		\node [style=none] (7) at (2.45, 3.25) {$\cdots$};
-		\node [style=X] (8) at (2, 2.5) {};
+		\node [style=Z] (8) at (2, 2.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [in=-90, out=45] (8) to (4.center);
@@ -7854,10 +7939,10 @@ $$
 :=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=X] (0) at (1.25, 3) {};
-		\node [style=X] (1) at (0.5, 4) {};
-		\node [style=X] (2) at (1.25, 2.25) {};
-		\node [style=X] (3) at (0.5, 1.25) {};
+		\node [style=Z] (0) at (1.25, 3) {};
+		\node [style=Z] (1) at (0.5, 4) {};
+		\node [style=Z] (2) at (1.25, 2.25) {};
+		\node [style=Z] (3) at (0.5, 1.25) {};
 		\node [style=none] (4) at (1.5, 4) {};
 		\node [style=none] (5) at (1.5, 1.25) {};
 		\node [style=none] (6) at (0.25, 0.5) {};
@@ -7903,11 +7988,11 @@ $$
 		\node [style=none] (33) at (19.25, -0.5) {};
 		\node [style=none] (34) at (19.75, -0.5) {$\cdots$};
 		\node [style=none] (35) at (19.25, -2.75) {};
-		\node [style=X] (36) at (19.75, -1.25) {};
+		\node [style=Z] (36) at (19.75, -1.25) {};
 		\node [style=none] (37) at (20.75, -0.5) {};
 		\node [style=none] (38) at (20.25, -2.75) {$\cdots$};
 		\node [style=none] (39) at (19.75, -2.75) {};
-		\node [style=X] (40) at (20.25, -2) {};
+		\node [style=Z] (40) at (20.25, -2) {};
 		\node [style=none] (41) at (20.75, -2.75) {};
 		\node [style=none] (42) at (20, -1.5) {\reflectbox{$\ddots$}};
 	\end{pgfonlayer}
@@ -7933,7 +8018,7 @@ $$
 		\node [style=none] (16) at (4.5, -0.5) {};
 		\node [style=none] (17) at (3.5, -2) {$\cdots$};
 		\node [style=none] (18) at (3, -2) {};
-		\node [style=X] (19) at (3.5, -1.25) {};
+		\node [style=Z] (19) at (3.5, -1.25) {};
 		\node [style=none] (20) at (4, -2) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
@@ -7946,8 +8031,13 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
+\end{lemma}
 
-In the case when the Frobenius algebra is not special, then the spider theorem only holds for simply connected circuits.  This does not arise from a distributive law of props, but rather a distributive law of polycategories, however, we won't go into any more detail.  For example, given a Frobenius algebra $\zcirc$:
+We will also use the following related result:
+
+\begin{lemma}[Spider theorem]
+
+In the case of the prop $\sf fa$ when the Frobenius algebra is not special, then the spider theorem only holds for simply connected circuits.  For example, given a Frobenius algebra $\xcirc$:
 
 
 $$
@@ -7957,11 +8047,11 @@ $$
 		\node [style=none] (1) at (0.5, -0.5) {};
 		\node [style=none] (2) at (1, -0.5) {$\cdots$};
 		\node [style=none] (3) at (0.5, -2.75) {};
-		\node [style=Z] (4) at (1, -1.25) {};
+		\node [style=X] (4) at (1, -1.25) {};
 		\node [style=none] (5) at (2, -0.5) {};
 		\node [style=none] (6) at (1.5, -2.75) {$\cdots$};
 		\node [style=none] (7) at (1, -2.75) {};
-		\node [style=Z] (8) at (1.5, -2) {};
+		\node [style=X] (8) at (1.5, -2) {};
 		\node [style=none] (9) at (2, -2.75) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
@@ -7985,7 +8075,7 @@ $$
 		\node [style=none] (16) at (4.5, -0.5) {};
 		\node [style=none] (17) at (3.5, -2) {};
 		\node [style=none] (18) at (3, -2) {};
-		\node [style=Z] (19) at (3.5, -1.25) {};
+		\node [style=X] (19) at (3.5, -1.25) {};
 		\node [style=none] (20) at (4, -2) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
@@ -7999,12 +8089,10 @@ $$
 \end{tikzpicture}
 $$
 
-
+This does not arise from a distributive law of props.  This should arize instead from a distributive law of polycategories, however, we won't go into any more detail here.  We will however discuss polycategories in Chapter \ref{chap:grothendieck} which will make this clearler.
 \end{lemma}
 
-
-
-We want to be able to take distributive laws of two categories which both share some structure.  For example, what is the appropriate notion of distributive law of symmetric monoidal categories where the braiding of both categories are identified with each other?  For this, we need to work in bimodules of internal categories; where the shared structure shall act on both parts of the distributive law:
+We want to be able to take distributive laws of two categories which both share some structure.  For an elementary example, what is the appropriate notion of distributive law of symmetric monoidal categories where the braiding of both categories are identified with each other?  For this, we can regard the structure of a subcategory as an action on the larger category; formally, this is a kind of bimodule:
 
 
 
@@ -8014,29 +8102,34 @@ the bicategory of modules in $\mathcal B$, $\Mod(\mathcal{B})$ has:
 
 \begin{description}
 \item[\ \ 0-cells:] Monads in $\mathcal B$.
-\item[\ \ 1-cells:] A $1$-cell between monads $\mathbb{T}=(X,T,\mu^T,\eta^T)\to \mathbb{S}=(Y,S,\mu^S,\eta^S)$ is a $(\mathbb{T},\mathbb{S})$-bimodule; that is, a 1-cell $F:X\to Y$ in $\mathcal B$ equipped with 2-cells $\tau:S;F\to F$ and $\rho:F;T\to F$ (the left and right actions, respectively) satisfying the following coherence equations: 
+\item[\ \ 1-cells:] A $1$-cell between monads $\mathbb{T}=(X,T,\mu^T,\eta^T)\to \mathbb{S}=(Y,S,\mu^S,\eta^S)$ is a $(\mathbb{T},\mathbb{S})$-{\bf bimodule}.  That is a triple $(F,\tau,\rho)$ where  $F:X\to Y$ is a 1-cell in $\mathcal B$ and $\tau:S;F\to F$ and $\rho:F;T\to F$ are  2-cells (the left and right {\bf actions}, respectively) satisfying the following coherence equations: 
 
+\begin{description}
 
+\item[$(F,\tau,\rho)$ is a left $\mathbb{S}$-module:]
 $$
 \xymatrix{
  S;S;F \ar[r]^{\ \mu^S;F} \ar[d]_{S;\tau}
   & S;F \ar[d]^{\tau}
 \\S;F \ar[r]_{\tau}
   &F
-}
+}\ ,
 \hspace{.5cm}
 \xymatrix{
   F \ar@{=}[dr] \ar[d]_{\eta^S;F} 
 \\S;F \ar[r]_{\tau}
    & F
 }
-\hspace{.5cm}
+$$
+
+\item[$(F,\tau,\rho)$ is a right $\mathbb{S}$-module:]
+$$
 \xymatrix{
  F;T;T \ar[r]^{\ F;\mu^T} \ar[d]_{\rho;T}
   & F;T \ar[d]^{\rho}
 \\F;T \ar[r]_{\rho}
   &F
-}
+}\ ,
 \hspace{.5cm}
 \xymatrix{
   F \ar@{=}[dr] \ar[d]_{F;\eta^T} 
@@ -8044,6 +8137,8 @@ $$
    & F
 }
 $$
+
+\item[Module compatibility:]
 $$
 \xymatrix{
 S;F;T \ar[r]^{S;\rho} \ar[d]_{\tau;T}
@@ -8053,6 +8148,7 @@ F;T \ar[r]_{\rho}
 }
 $$
 
+\end{description}
 
 Given a $(\mathbb{S},\mathbb{T})$-bimodule $(F,\tau,\rho)$ and a  $(\mathbb{T},\mathbb{U})$-bimodule $(G,\tau,\rho')$, the composite has 1-cell given by the coequalizer:
 
@@ -8088,68 +8184,265 @@ Composition and identities are given pointwise in $\mathcal B$.
 \end{description}
 \end{definition}
 
-Now we can look at actions on internal categories:
+Now we can look at modules of internal categories:
 
 \begin{definition}
 \label{def:internalprof}
-Given a category $\mathcal V$ with finite pullbacks and coequalizers preserving them, let $\mathcal V$-$\Prof:=\Mod(\Span(\mathcal V))$ denote the bicategory of $\mathcal V$-{\bf internal profunctors}.  
-The 1-cells of $\Prof$ are called (internal) {\bf  profunctors}.
+Given a category $\mathcal V$ with finite pullbacks and coequalizers preserving them, let $\mathcal V$-$\Prof:=\Mod(\Span(\mathcal V))^\op$ denote the bicategory of $\mathcal V$-{\bf internal profunctors}.  
+The 1-cells of $\mathcal V$-$\Prof$ are called (internal) {\bf  profunctors}.
 The tensor product of bimodules of internal categories is the (internal) {\bf coend}.
 \end{definition}
 
-The natural question arizes:  what is the minimal structure two multicoloured props can share?
+This is a special case of ordinary profunctors , attributed to B\'enabou \cite{???}:
+
+\begin{example}
+$\Set$-$\Prof$ is the category of profunctors between small categories.
+\end{example}
+
+As well as a strict, internal version of Tamabara bimodules \cite{???}:
+\begin{example}
+$\Mon$-$\Prof$ is the category of Tambara bimodules between small strict monoidal  categories.
+\end{example}
+
+We related distributive laws in internal cateogories to factorization systems.  To do so we introduce the following notation:
 
 \begin{definition}
-Let $\P_X$ denote the free strict symmetric monoidal category with objects labelled by $X$. Where $\P$ is the prop generated by a single object.
+Let $\Iso(\X)$ denote the groupoid  of all isomorphisms of $\X$.
 \end{definition}
 
+There is a notion of factorization system where the factorization need only hold up to isomorphism:
+\begin{definition}
+An {\bf orthogonal factorization system} on a category $\X$ is a pair of subcategories $(\mathbb{L},\mathbb{R})$ of $\X$ with the same objects as $\X$, where $\mathbb{L}$ and $\mathbb{R}$ contain all isomorphisms in $\X$, and moreover, where every map in $\X$ factors as a map in  $\mathbb{L}$, followed by one $\mathbb{R}$ up to unique isomorphism.
 
-This structure allows us to regard multicoloured props as bimodules (the case of single sorted props was originally conisdered, but this is a slight generalization):
+
+That is to say every map $f:X\to Y$ factorizes as follows
 
 
-\begin{lemma}[{\cite[\S 4]{lack}}]
-Every multicloloured prop generated by objects $\sf Ob$ can be identified with a monad in $\Mon$-$\Prof$ on the $0$-cell $\P_{\sf Ob}$.  
+$$
+\xymatrix{
+X  \ar[rr]^{f} \ar[dr]_{\ell \in {\mathbb L}} &       & Y\\
+   & A \ar[ur]_{r \in {\mathbb R}}
+}
+$$
+
+such that given another such factorization
+$$
+\xymatrix{
+X  \ar[rr]^{f} \ar[dr]_{\ell' \in {\mathbb L}} &       & Y\\
+   & A' \ar[ur]_{r' \in {\mathbb R}}
+}
+$$
+
+then there is a unique isomorphism $\phi:A\to A'$ such that the following diagram commutes:
+
+$$
+\xymatrixrowsep{10mm}
+\xymatrixcolsep{50mm}
+\xymatrix{
+X \ar@{=}[d] \ar[r]^{\ell}   & A  \ar@{-->}[d]^{\phi} \ar[r]^{r} & Y \ar@{=}[d]\\
+X   \ar[r]_{\ell'}                & A' \ar[r]_{r'} & Y'
+}
+$$
+
+\end{definition}
+
+This is the same as a distributive law of monads in $\Set$-$\Prof$ over $\Iso(\X)$:
+
+\begin{lemma}[{\cite[Theorem 5.9]{rosebrugh}}]
+An orthogonal factorization system $(\mathbb{L},\mathbb{R})$ on a small category $\X$ is precisely a distributive law of monads between $\mathbb{L}$ and $\mathbb{R}$, regarded as $\Iso(\X)$-bimodules.
 \end{lemma}
 
-The canonical left and right actions merely absorb the braids of $\P_{\sf Ob}$ into the prop on the left and right.
+We have already discussed two examples of orthogonal factorization systems in order to define categories of internal relations:
+
+\begin{example}
+Given a finitely complete category $\X$, the category $\Span^\sim(\X)$ has an orthogonal factorization system given by $\mathbb{L}$ the spans of the form $X \leftarrow Y =Y$ and $\mathbb{R}$ the spans of the form $X =X \rightarrow Y$.  
+
+The distributive law is given by the pullback of spans.
+\end{example}
 
 
-%\begin{lemma}
-%Given a $2$-category $\mathcal B$, a $0$-cell $X$ of $\mathcal B$ and a monad $\mathcal F$ on $\mathcal B$, then there is an equivalence:
-%$$
-%\Mnd(\Mod(\Span(\mathcal{B}))) \cong \mathcal{F}/\Mnd(\mathcal{B}(X,X))
-%$$
+\begin{example}
+Regular categories have orthogonal factorization systems given by $\mathbb{E}$ the regular epimorphisms, and $\mathbb M$ the monomorphisms.
+\end{example}
+
+
+
+By asking that $\X$ is a small strict monoidal category and  $\mathbb{L}$ and $\mathbb{R}$ are strict monoidal subcategories of $\X$, the notion of an orthogonal factorization system is adapted immediately to monoidal categories. And there is an alagous correspondence  between $\mathbb{L}$ and $\mathbb{R}$, regarded as $\Iso(\X)$-bimodules in $\Span(\Mon)$.  However, this is not satisfying for our purposes.
+
+ In the most basic setting, the shared structure of small {\em symmetric} monoidal categories on the same set of objects is not all isomorphisms, but rather only the permutations.  Indeed, lack observed this in his paper where he shows how to compose props via distributive law \cite{lack}. However, factorizations up permutations do not form a  strict factorization system.  And they are only an orthogonal factorization system when all isomorphisms are permutation.  For our purposes, we wil also need to consider cases when $\mathbb J$ is not even a groupoid!  We will recall a considerably more general notion to this end:
+
+\begin{definition}[{\cite[Definition 4.10]{lawvere}}]
+Let $\X$ be a category equipped with a subcategory $\mathbb J$ with the same objects.
+
+A {\bf factorization system of $\X$ over $\mathbb J$} consists of a pair of subcategories $(\mathbb L,\mathbb R)$ of $\X$ with the same objects as $\X$ such that $\mathbb J$ is a subcategory of both $\mathbb L$ and $\mathbb R$.  And moreover, every map in $\X$ factorizes into maps in $\mathbb L$ followed by maps in $\mathbb R$ uniquely up to zig-zags in $\mathbb J$.
+
+That is to say, given any map $f:X\to Y$ in $\X$, there is a factorization
+
+$$
+\xymatrix{
+X  \ar[rr]^{f} \ar[dr]_{\ell \in {\mathbb L}} &       & Y\\
+   & A \ar[ur]_{r \in {\mathbb R}}
+}
+$$
+
+such that given another such factorization
+
+$$
+\xymatrix{
+X  \ar[rr]^{f} \ar[dr]_{\ell' \in {\mathbb L}} &       & Y\\
+   & A' \ar[ur]_{r'  \in {\mathbb R}}
+}
+$$
+
+there exists a natural number $n$, such that  for $j \in [0,n)$ so that there are $n$ factorizations
+
+
+$$
+\xymatrix{
+X  \ar[rr]^{f} \ar[dr]_{\ell_j\in {\mathbb L}} &       & Y\\
+   & A_j \ar[ur]_{r_j \in {\mathbb R}}
+}
+$$
+
+and zig zags in  $\mathbb J$
+
+$$
+\xymatrix{
+A \ar[r]^{\phi_0}
+& A_0 
+& A_1 \ar[l]_{\phi_1} \ar[r]^{\phi_2}
+& A_2 
+& A_3 \ar[l]_{\phi_3} \ar[r]^{\phi_4}
+&\cdots
+& A_{n-1} \ar[l]_{\phi_{n-1}} \ar[r]^{\phi_n}
+& A'
+}
+$$
+
+making the following diagram commute uniquely up to the identity being a zig or a zag:
+
+
+$$
+\xymatrixrowsep{10mm}
+\xymatrixcolsep{50mm}
+\xymatrix{
+X   \ar[r]^{\ell}\ar@{=}[d]              & A \ar@{-->}[d]^{\phi_0} \ar[r]^{r}                                               & Y \ar@{=}[d]\\
+X   \ar[r]^{\ell_0}\ar@{=}[d]          & A_0  \ar[r]^{r_0}                                                                          & Y\ar@{=}[d]\\
+X   \ar[r]^{\ell_1}\ar@{=}[d]           & A_1 \ar@{-->}[u]_{\phi_1} \ar@{-->}[d]^{\phi_2} \ar[r]^{r_1}  & Y \ar@{=}[d]\\
+X   \ar[r]^{\ell_2}\ar@{=}[d]           & A_2 \ar[r]^{r_2}                                                                             & Y \ar@{=}[d]\\
+X   \ar[r]^{\ell_3}\ar@{=}[d]         & A_ 3\ar@{-->}[u]_{\phi_3} \ar@{-->}[d]^{\phi_4}\ar[r]^{r_3}   & Y \ar@{=}[d]\\
+ \vdots\ar@{=}[d]         & \vdots & \vdots \ar@{=}[d] \\
+X   \ar[r]^{\ell_{n-1}}\ar@{=}[d]   & A_{n-1}  \ar@{-->}[u]_{\phi_{n-1}} \ar@{-->}[d]^{\phi_n}  \ar[r]^{r_{n-1}}         & Y    \ar@{=}[d]\\
+X   \ar[r]^{\ell'}                         & A'   \ar[r]^{r'} & Y
+}
+$$
+
+\end{definition}
+
+This specializes to strict factorization systems when $\mathbb J$ contains exactly the identities on all objects; and to orthogonal factorization systems when it contains all isomorphisms. 
+
+
+Suppose that  $\mathbb J $ is not a groupoid and we tried to replace the definition of an orthogonal factorization system $(\mathbb L, \mathbb R)$ with one where the unique mediating map is merely in $\mathbb J$.
+
+
+Then if want to reduce a map in the composite
+$$\mathbb{L} \otimes_{\mathbb J} \otimes \mathbb{R} \otimes_{\mathbb J}  \cdots \otimes_{\mathbb J} \mathbb{L} \otimes_{\mathbb J} \mathbb R  $$
+ to one in 
+$$\mathbb{L} \otimes_{\mathbb J} \otimes \mathbb{R}$$
+then notice how $\mathbb J$ acts on $\mathbb L$ and $\mathbb R$ from both on the left and and on the right.  The one action is covariant and the other is contravariant.  So there is a priori no canonical way to slide all the maps in the various copies of $\mathbb J$ around and group them all together.  However, when $\mathbb J$ is a groupoid, a map $\phi:X\to Y$ in $\mathbb J$ induces another map $\phi^{-1}:Y\to X$, meaning that this is not a problem.
+
+
+ Indeed, \cite{lawvere} shows that such a notion of factorization system corresponds to distributive laws of monads in $\Set$-$\Prof$.   The result is mentioned specifically for the case of distributive laws of Lawvere theories, but there is a more general fact:
+
+
+\begin{lemma}
+A factorization system $(\mathbb{L},\mathbb{R})$ of a small  category $\X$ over a subcategory  $\mathbb J $ is precisely a distributive law of monads  $\mathbb{R}$ over $\mathbb{L}$, both regarded as $\mathbb{J}$-bimodules.
+\end{lemma}
+
+
+By asking that $\X$ is a small strict monoidal category and  $\mathbb{L}$, $\mathbb{R}$ and $\mathbb{J}$ are strict monoidal subcategories, the notion of a factorization system of $\X$ over $\mathbb J$ is adapted immediately to  monoidal categories. And there is an alagous correspondence  to distributive laws of $\mathbb{R}$ over $\mathbb{L}$, regarded as $\mathbb J$-bimodules in $\Span(\Mon)$.  
+
+
+To do the same for small strict symmetric monoidal categories, one must ask moreover that $\X$ is a small strict symmetric monoidal category, $\mathbb{L}$, $\mathbb{R}$ are strict symmetric monoidal subcategories of $\X$ and $\mathbb J$ is a strict symmetric monoidal subcategory of $\mathbb L$ and $\mathbb R$:
+
+%In order to do to something similar with small strict monoidal categories, consider the following structure:
+%
+%
+%\begin{definition}
+%Let $\P_X$ denote the free strict symmetric monoidal category with objects labelled by $X$. Where $\P$ is the prop generated by a single object.
+%\end{definition}
+%
+%
+%This structure allows us to regard multicoloured props as bimodules (the case of single sorted props was originally conisdered, but this is a slight generalization):
+%
+%
+%\begin{lemma}[{\cite[\S 4]{lack}}]
+%Every multicloloured prop generated by objects $\sf Ob$ can be identified with a monad in $\Mon$-$\Prof$ on the $0$-cell $\P_{\sf Ob}$.  
 %\end{lemma}
+%
+%The canonical left and right actions merely absorb the braids of $\P_{\sf Ob}$ into the prop on the left and right.  Note that not all monads on $\P_{\sf Ob}$ in $\Mon$-$\Prof$ are strict monoidal categories.
+%
+%
+%The following characterization of distributive laws of props in terms of monoidal theories will prove to be useful for us:
 
 
-The folliwing characterization of distributive laws of props in terms of monoidal theories will prove to be useful for us.  This specific result does not appear to be in the literature, but it follows easily from \cite{lack,ih}:
 \begin{lemma}
 Take three symmetric monoidal theories
 
 $$
-T_0=({\sf Ob},\Sigma_0 ,E_0 ), \ T_1=({\sf Ob},\Sigma_1 ,E_1 ),  \ T_2=({\sf Ob},\Sigma_2 ,E_3 )
+R=({\sf Ob},\Sigma_R ,E_R ), \ L=({\sf Ob},\Sigma_L ,E_L ),  \ J=({\sf Ob},\Sigma_J ,E_J )
 $$
 
-With the same objects, where $\bar{T_2}$ embeds as a symmetric monoidal category within both $\bar{T_0}$ and $\bar{T_3}$.  Regard both $\bar{T_0}$ and $\bar{T_0}$ as  $\bar{T_2}$-bimodules, where the left and right actions are given by lifting the maps in $\bar{T_2}$ along this embedding.
+With the same objects, where $\bar{J}$ embeds as a strict symmetric monoidal category within both $\bar{R}$ and $\bar{L}$.  Regard both $\bar{R}$ and $\bar{R}$ as  $\bar{J}$-bimodules, where the left and right actions are given by lifting the maps in $\bar{J}$ along this embedding.
 
-Suppose there is a distributive law
-
-$$
-\lambda:\bar{T_0}\otimes_{\bar{T_2}} \bar{T_1}\Rightarrow \bar{T_1}\otimes_{\bar{T_2}} \bar{T_0}
-$$
-
-Then the induced prop $\bar{T_1}\otimes_{\bar{T_2}} \bar{T_0}$ is presented by a monoidal theory
+Suppose there is a distributive law of monads in the bicategory $\Mon$-$\Prof$:
 
 $$
-({\sf Ob}, \Sigma_0\cup \Sigma_1, E_0\cup E_1 \cup E_\lambda)
+\lambda:\bar{R}\otimes_{\bar{J}} \bar{L}\Rightarrow \bar{L}\otimes_{\bar{J}} \bar{R}
 $$
 
-where $E_\lambda$ is the set of equations dictating the unique ways in which the generators of $\Sigma_0$ can be pushed past those of $\Sigma_1$ up to the maps in the image of the embeddings $\bar{T_2}\rightarrow \bar{T_0}$ and $\bar{T_2}\rightarrow \bar{T_1}$.
+That is to say, where $\bar{R}$ and $\bar{L}$ are regarded as $(\bar{J}, \bar{J})$-bimodules where the 2-cell between them witnessing the distributive law lives in $\Mon$-$\Prof$.  Suppose moreover, that the  $\bar{L}$ and $\bar{R}$ are canonically strict monoidal subcategories of $\bar{L}\otimes_{\bar{J}} \bar{R}$
+
+Then the induced prop $\bar{L}\otimes_{\bar{J}} \bar{R}$ is presented by a monoidal theory
+
+$$
+({\sf Ob}, \Sigma_R\cup \Sigma_L, E_R\cup E_L \cup E_\lambda)
+$$
+
+where $E_\lambda$ is the set of equations dictating the unique ways in which the generators of $\Sigma_R$ can be pushed past those of $\Sigma_L$ up to the maps in the maps in $\bar{J}$.
 \end{lemma}
 
+This seems like a very complicated construction, but let us see some examples to get a feel for what is going on.  As a general rule, because factorization systems are decompositional, we will start first with a symmetric monoidal theory which we already know.
+
+For the most basic examples consider the free strict symmetric monoidal category on a set of objects:
+
+\begin{definition}
+Let $\P_X$ denote the free strict symmetric monoidal category with objects labelled by $X$. Where $\P$ is the prop generated by a single object.
+\end{definition}
+%
+%Following \cite{lack}:
+%
+%\begin{definition}
+%A {\bf distributive law of (mutlicoloured) props} is a distributive law $\mathbb L \otimes_{\P_{\sf Ob}} \mathbb R$ in $\Mon$-$\Prof$ where $\mathbb L$ and $\mathb R$ are small strict monoidal categories with objects generated by $\sf Ob$.
+%\end{definition}
 
 
-\begin{example}[{\cite[\S 5.1]{lack}}]
+%
+%
+%
+%The notion of taking distributive laws of small categories up to shared structure was first introduced in \cite{rosebrugh}. They identify distributive laws of bimodules of groupoids of all isomorphisms regarded as monads in $\Set$-$\Prof$ with so called ``relaxed distributive laws.''  They show how these relaxed distributive laws are in bijection with orthogonal factorization systems \cite[Theorem 5.9]{rosebrugh}. They comment of how this could also be applied to other kinds of internal categories in their paper.  This was later generalized to distributive laws of monads in  $\Mon$-$\Prof$ over permutations by \cite{lack} to define very basic distributive laws of props corresponding to certain factorization systems of props.
+%
+%
+%This was further generalized to distributive laws of monads in $\Mon$-$\Prof$ over the groupoid of all isomorphisms by  \cite[Proposition 2.30]{ih} in order to account for distributive laws arizing from categories spans and cospans of props; yielding orthogonal factorization systems of props.  
+%
+%
+%We do not make any assumptions about the strict monoidal category which we are tensoring over being a groupoid; just that it in embeds in both of the strict monoidal categories which are acting on it.  When it is not a groupoid, we lose the bijective correspondence with factorization systems. SEE CHENG \cite{Theorem 4.16}[lawvere]
+%
+%Note that there is another way to compose multiple props together, which we will not use in this thesis.  In  \cite[Proposition 2.33]{ih} they compose distributive laws of 3 props; where the props interact via distributive law regarded as bimodules over $\P$. This composition is constructed by asking that the distrubutive laws interact to satisfy the Yang-Baxter equation, following  \cite{iterdist}.  Such a composite of distributive laws is a distributive law, and thus a monad in $\Mnd(\Mnd(\Mon$-$\Prof))$. This is to be contrasted with the distributive law of props which we just defined, regarded as monads in $\Mnd(\Mon$-$\Prof)$.
+%Many distributive laws of multicoloured props are over $\P_{\sf Ob}$.
+
+Consider the following distributive law of props, coming from the epi-mono factorization system of finite sets:
+\begin{example}[{\cite[Example 5.1]{lack}}]
 Let $\inj$ be the prop generated by a single generator $0\to 1$ and no equations:
 
 
@@ -8250,9 +8543,7 @@ $$
 $\inj$ is a presentation for the injections and $\surj$ the surjections in $\FinOrd\cong \FSets$ under the coprodcut.  Moreover, distributive law:
 
 $$
-\cm=\inj\otimes_\P \surj
-$$
-$$
+\cm=\inj\otimes_\P \surj;\
 \begin{tikzpicture}[xscale=-1,yscale=-1]
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=X] (0) at (5.75, -0.75) {};
@@ -8300,12 +8591,10 @@ $$
 induces the prop for the commutative comonoid $\cm\cong \FinOrd\cong \FSets$.
 \end{example}
 
-That is to say, we can regard the epi-mono factorization system of finite sets as a distributive law.
-
 Bicommutative bialgebras also arise in this way:
 
 \begin{example}
-Conside the distributive law $\cb$ between a monoid $\xcirc$ and comonoid $\zcirc$:
+The prop for a bicommutative bimonoid, $\cb$  is a distributive law between a monoid $\xcirc$ and comonoid $\zcirc$:
 $$
 \cm^\op  \otimes_\P \cm;
   \begin{tikzpicture}
@@ -8415,18 +8704,16 @@ $$
 \eref{extra}
 \\
 $$
-
-This is the prop of the free {\bf bicommutative bialgebra}.
-
-In fact $\cb=\cb_\N$ is equivalent to the prop of matrices over $\N$.
 \end{example}
 
 
-Similarly for Frobenius algebras:
-\begin{lemma}[{\cite[?]{lack}}]
-{\sfa} is a presentation for $(\Span^\sim(\FSets^\op),+)$.
+In fact, this is a symmetric monoidal orthogonal factorization system since it arizes from a category of spans: 
+\begin{lemma}[{\cite[Example 5.3]{lack}}]
+{\cb} is a presentation for $(\Span^\sim(\FSets),+)$.
 \end{lemma}
 
+
+Dually:
 
 \begin{example}
 Consider the distributive law between a monoid $\xcirc$ and comonoid $\xcirc$:
@@ -8524,21 +8811,33 @@ This is the prop $\scfa$ for the free  special commutative Frobenius algebra, wh
 \end{example}
 
 
-\begin{lemma}[{ \cite[?]{lack}}]
-{\sfa} is a presentation for $(\Span^\sim(\FSets),+)$.
+\begin{lemma}[{\cite[Example 5.4]{lack}}]
+{\sfa} is a presentation for $(\Span^\sim(\FSets^\op),+)$.
 \end{lemma}
+
 
 
 The (special) spider theorem also holds for (special) commutative Frobenius algebras, where now components can be connected together using the braids.
 
 
-In analogy to the noncommutative case, the spider theorem for non-special commutative Fronbenius algebras, although this arises from a distributive law of {\em symmetric polycategories}, rather than of monoidal categories.
+In analogy to the noncommutative case, the spider theorem for non-special commutative Frobenius algebras, although this should from a distributive law of {\em symmetric polycategories}, rather than of monoidal categories.
 
 
 Actually, the original spider theorem was the spider theorem for non-special symmetric Frobenius algebras, first published in the PhD thesis of \cite{spider}; wherein it was proved by topological methods rather than using the machinery of distributive laws.
 
+%
+%
+%All of the examples of distributive laws of props which we have introduced so far also happen to correspond to strict factorization systems of small strict symmetric monoidal categories.  This is only because $\Iso(\FinOrd) = \P$.
+
+Note that all of these examples of distributive laws of props are actually orthogonal factorizations of strict monoidal categories.  However, not all distributive laws of props arize in this manner.
+
+For example, consider the prop $\cb_R$
 
 
+DISTRIBUTIVE LAW OF LAWVERE THEORIES
+
+
+DISTRIBUTION OF MULTIPLICATION OVER ADDITION
 
 
 \section{Categorical quantum mechanics}
@@ -8627,26 +8926,54 @@ The idea is that these structures are in bijection with dirac deltas for orthono
 
 
 As a matter of notation: given some fixed dimension $d$, and a distinguished standard basis, we will call the  connected components of the special commutative $\dag$-Frobenius algebra corresponding the standard basis qudit {\bf $Z$-spiders}.  We will draw them in white, as follows:
+
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (0) at (1.5, 1.75) {};
-		\node [style=none] (1) at (2.75, 1.75) {};
-		\node [style=none] (2) at (2, 1.75) {};
-		\node [style=none] (3) at (2.45, 1.75) {$\cdots$};
-		\node [style=none] (4) at (2.75, 3.25) {};
-		\node [style=none] (5) at (2, 3.25) {};
-		\node [style=none] (6) at (1.5, 3.25) {};
-		\node [style=none] (7) at (2.45, 3.25) {$\cdots$};
-		\node [style=Z] (8) at (2, 2.5) {};
+		\node [style=none] (32) at (20.25, -0.5) {};
+		\node [style=none] (33) at (19.25, -0.5) {};
+		\node [style=none] (34) at (19.75, -0.5) {$\cdots$};
+		\node [style=none] (35) at (19.25, -2.75) {};
+		\node [style=Z] (36) at (19.75, -1.25) {};
+		\node [style=none] (37) at (20.75, -0.5) {};
+		\node [style=none] (38) at (20.25, -2.75) {$\cdots$};
+		\node [style=none] (39) at (19.75, -2.75) {};
+		\node [style=Z] (40) at (20.25, -2) {};
+		\node [style=none] (41) at (20.75, -2.75) {};
+		\node [style=none] (42) at (20, -1.5) {\reflectbox{$\ddots$}};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=-90, out=45] (8) to (4.center);
-		\draw (8) to (5.center);
-		\draw [in=135, out=-90] (6.center) to (8);
-		\draw [in=90, out=-150] (8) to (0.center);
-		\draw (2.center) to (8);
-		\draw [in=90, out=-30] (8) to (1.center);
+		\draw [in=-135, out=90] (35.center) to (36);
+		\draw [in=-90, out=56] (36) to (32.center);
+		\draw [in=124, out=-90] (33.center) to (36);
+		\draw [in=-124, out=90] (39.center) to (40);
+		\draw [in=90, out=-56] (40) to (41.center);
+		\draw [in=-90, out=45] (40) to (37.center);
+		\draw [bend right=45, looseness=1.25] (40) to (36);
+		\draw [bend right=45, looseness=1.25] (36) to (40);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (11) at (4, -0.5) {};
+		\node [style=none] (12) at (3, -0.5) {};
+		\node [style=none] (13) at (3.5, -0.5) {$\cdots$};
+		\node [style=none] (14) at (2.5, -2) {};
+		\node [style=none] (15) at (3.5, -1.25) {};
+		\node [style=none] (16) at (4.5, -0.5) {};
+		\node [style=none] (17) at (3.5, -2) {$\cdots$};
+		\node [style=none] (18) at (3, -2) {};
+		\node [style=Z] (19) at (3.5, -1.25) {};
+		\node [style=none] (20) at (4, -2) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-150, out=90] (14.center) to (15);
+		\draw [in=-90, out=56] (15) to (11.center);
+		\draw [in=124, out=-90] (12.center) to (15);
+		\draw [in=-124, out=90] (18.center) to (19);
+		\draw [in=90, out=-56] (19) to (20.center);
+		\draw [in=-90, out=30] (19) to (16.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
@@ -8922,7 +9249,7 @@ $\CPM(\FHilb, \dag)$ is the dagger compact closed category of density matrices b
 
 
 Or equivalently 
-$\CPM(\Mat_\C, \bar{(\_)})$
+$\CPM(\Mat_\C, \bar{(-)})$
 is the skeleton of density matrices.
 \end{example}
 
@@ -10047,14 +10374,14 @@ $$
 Actually, we only needed the Hopf algebra part of the bialgebra for these two bases to have this property.  However, we ask for both because the following two very important bases have this property:
 
 \begin{example}
-Given fixed dimension $d$, recall that the standard basis, or Z basis,  is denoted as follows:
+Given fixed dimension $d$, recall that the standard basis, or $Z$-basis,  is denoted as follows:
 $$\{ |0\rangle, \ldots, |d-1\rangle \}$$
-The Fourier basis, or $X$ basis, is denoted as follows:
+The Fourier basis, or $X$-basis, is denoted as follows:
 $$\{\sqrt{d} \mathcal{F}|0\rangle, \ldots, \sqrt{d}\mathcal{F}|d-1\rangle \}$$
 
 Where the qudit quantum Fourier transform is the unitary map:
 
-$$\mathcal{F} := \dfrac{1}{\sqrt{d}} \sum_{j,k=0}^{d-1} e^{2\pi\cdot i \cdot j \cdot k/d} | k\rangle \langle j |:\C^d\to \C^d $$
+$$\mathcal{F} := \dfrac{1}{\sqrt{d}} \sum_{j,k=0}^{d-1} e^{2\pi\cdot i \cdot j \cdot k/d} | k\rangle \langle j | $$
 
 The standard basis and Fourier bases are strongly complementary.
 \end{example}
@@ -10188,11 +10515,11 @@ We almost have all of the essential ingredients of categorical quantum mechanics
 
 \begin{definition}
 \label{def:phases}
-Given a $\dag$-Frobenius algebra on an object $X$, a {\bf phase} for the Frobenius algebra is a unitary endomorphism $\theta:X\to X$ which commutes with the multiplication and comultiplication, so that:
+Given a $\dag$-Frobenius algebra $\xcirc$ on an object $X$, a {\bf phase} for the Frobenius algebra is a unitary endomorphism $\theta:X\to X$ which commutes with the multiplication and comultiplication, so that:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (14) at (-1.75, 12) {};
+		\node [style=X] (14) at (-1.75, 12) {};
 		\node [style=none] (15) at (-1.25, 11.25) {};
 		\node [style=none] (16) at (-2.25, 11.25) {};
 		\node [style=none] (17) at (-1.75, 12.75) {};
@@ -10211,7 +10538,7 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (0, 11.25) {};
+		\node [style=X] (0) at (0, 11.25) {};
 		\node [style=map] (1) at (0, 12) {$\theta$};
 		\node [style=none] (2) at (-0.5, 10.5) {};
 		\node [style=none] (3) at (0.5, 10.5) {};
@@ -10227,7 +10554,7 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (5) at (2, 12) {};
+		\node [style=X] (5) at (2, 12) {};
 		\node [style=none] (7) at (1.5, 11.25) {};
 		\node [style=none] (8) at (2.5, 11.25) {};
 		\node [style=none] (9) at (2, 12.75) {};
@@ -10246,7 +10573,7 @@ $$
 \hspace*{1cm}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (33) at (4, 11.25) {};
+		\node [style=X] (33) at (4, 11.25) {};
 		\node [style=none] (34) at (4.5, 12) {};
 		\node [style=none] (35) at (3.5, 12) {};
 		\node [style=none] (36) at (4, 10.5) {};
@@ -10265,7 +10592,7 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (21) at (5.75, 12) {};
+		\node [style=X] (21) at (5.75, 12) {};
 		\node [style=map] (22) at (5.75, 11.25) {$\theta$};
 		\node [style=none] (23) at (5.25, 12.75) {};
 		\node [style=none] (24) at (6.25, 12.75) {};
@@ -10281,7 +10608,7 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (26) at (7.75, 11.25) {};
+		\node [style=X] (26) at (7.75, 11.25) {};
 		\node [style=none] (27) at (7.25, 12) {};
 		\node [style=none] (28) at (8.25, 12) {};
 		\node [style=none] (29) at (7.75, 10.5) {};
@@ -10304,9 +10631,9 @@ Phases for Frobenius algebras are preserved by composition; and they form a grou
 
 The motivating example is again  $\FHilb$:
 \begin{example}
-Given an orthonormal basis $\{| j \rangle \}_{j \in I}$ in $\FHilb$, of dimension $d$, the phases are generated by the following unitaries, for all $\{\theta_0,\ldots, \theta_{d-1}\} \in [0, 1)^d$:
+Given an ordered orthonormal basis $\{| b_j \}_{j \in [0,d)}$ in $\FHilb$, the phases are generated by the following unitaries, for all $\{\theta_0,\ldots, \theta_{d-1}\} \in [0, 1)^d$:
 
-$$\sum_{j=0}^{d-1} e^{  2\pi \cdot i \cdot j \cdot \theta_j/d }|  j \rangle\langle j|$$
+$$\sum_{j=0}^{d-1} e^{  2\pi \cdot i \cdot b_j \cdot \theta_j/d }|  b_j \rangle\langle b_j|$$
 
 
 \end{example}
@@ -10319,15 +10646,15 @@ Therefore, working up to global phase, fix $\theta_0=0$.
 The normal form for spiders extends to spiders with phases:
 
 \begin{lemma}[Phased spider theorem]
-The connected components of a commutative \dag-Frobenius algebra and its phase group can be factorized into the following form; which we will call a phased-spider:
+The connected components of a commutative \dag-Frobenius algebra $\xcirc$ and its phase group can be factorized into the following form; which we will call a phased-spider:
 
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (4.75, 3.25) {};
-		\node [style=Z] (1) at (4, 4.25) {};
-		\node [style=Z] (2) at (4.75, 1.75) {};
-		\node [style=Z] (3) at (4, 0.75) {};
+		\node [style=X] (0) at (4.75, 3.25) {};
+		\node [style=X] (1) at (4, 4.25) {};
+		\node [style=X] (2) at (4.75, 1.75) {};
+		\node [style=X] (3) at (4, 0.75) {};
 		\node [style=none] (4) at (5, 4.25) {};
 		\node [style=none] (5) at (5, 0.75) {};
 		\node [style=none] (6) at (3.75, 0) {};
@@ -10373,7 +10700,7 @@ $$
 		\node [style=none] (5) at (2, 3.25) {};
 		\node [style=none] (6) at (1.5, 3.25) {};
 		\node [style=none] (7) at (2.45, 3.25) {$\cdots$};
-		\node [style=Z] (8) at (2, 2.5) {$\ \theta\ $};
+		\node [style=X] (8) at (2, 2.5) {$\theta$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [in=-90, out=45] (8) to (4.center);
@@ -10395,11 +10722,11 @@ $$
 		\node [style=none] (1) at (0.5, -0.5) {};
 		\node [style=none] (2) at (1, -0.5) {$\cdots$};
 		\node [style=none] (3) at (0.5, -2.75) {};
-		\node [style=Z] (4) at (1, -1.25) {$\ \theta\ $};
+		\node [style=X] (4) at (1, -1.25) {$\theta$};
 		\node [style=none] (5) at (2, -0.5) {};
 		\node [style=none] (6) at (1.5, -2.75) {$\cdots$};
 		\node [style=none] (7) at (1, -2.75) {};
-		\node [style=Z] (8) at (1.5, -2) {$\ \phi\ $};
+		\node [style=X] (8) at (1.5, -2) {$\phi$};
 		\node [style=none] (9) at (2, -2.75) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
@@ -10423,7 +10750,7 @@ $$
 		\node [style=none] (16) at (4.5, -0.5) {};
 		\node [style=none] (17) at (3.5, -2) {};
 		\node [style=none] (18) at (3, -2) {};
-		\node [style=Z] (19) at (3.5, -1.25) {$\ \theta+\phi\ $};
+		\node [style=X] (19) at (3.5, -1.25) {$\theta+\phi$};
 		\node [style=none] (20) at (4, -2) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
@@ -10437,7 +10764,7 @@ $$
 \end{tikzpicture}
 $$
 
-Or in the case when the Frobenius algebra is moreover special:
+Or in the case when the Frobenius algebra $\zcirc$ is moreover special:
 
 $$
 \begin{tikzpicture}
@@ -10446,11 +10773,11 @@ $$
 		\node [style=none] (33) at (19.25, -0.5) {};
 		\node [style=none] (34) at (19.75, -0.5) {$\cdots$};
 		\node [style=none] (35) at (19.25, -2.75) {};
-		\node [style=Z] (36) at (19.75, -1.25) {$\ \theta\ $};
+		\node [style=Z] (36) at (19.75, -1.25) {$\theta$};
 		\node [style=none] (37) at (20.75, -0.5) {};
 		\node [style=none] (38) at (20.25, -2.75) {$\cdots$};
 		\node [style=none] (39) at (19.75, -2.75) {};
-		\node [style=Z] (40) at (20.25, -2) {$\ \phi\ $};
+		\node [style=Z] (40) at (20.25, -2) {$\phi$};
 		\node [style=none] (41) at (20.75, -2.75) {};
 		\node [style=none] (42) at (20, -1.5) {\reflectbox{$\ddots$}};
 	\end{pgfonlayer}
@@ -10476,7 +10803,7 @@ $$
 		\node [style=none] (16) at (4.5, -0.5) {};
 		\node [style=none] (17) at (3.5, -2) {$\cdots$};
 		\node [style=none] (18) at (3, -2) {};
-		\node [style=Z] (19) at (3.5, -1.25) {$\ \theta+\phi\ $};
+		\node [style=Z] (19) at (3.5, -1.25) {$\theta+\phi$};
 		\node [style=none] (20) at (4, -2) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
@@ -10520,7 +10847,7 @@ $$
 		\node [style=none] (4) at (3.5, -1.25) {};
 		\node [style=none] (6) at (3.5, -2) {$\cdots$};
 		\node [style=none] (7) at (3, -2) {};
-		\node [style=Z] (8) at (3.5, -1.25) { $\ 0\ $ };
+		\node [style=Z] (8) at (3.5, -1.25) { $0$ };
 		\node [style=none] (9) at (4, -2) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
@@ -10549,7 +10876,7 @@ $$
 		\node [style=none] (0) at (4, -0.5) {};
 		\node [style=none] (1) at (3, -0.5) {};
 		\node [style=none] (2) at (3.5, -0.75) {$\cdots$};
-		\node [style=Z] (4) at (3.5, -1.25) {$\ \phi \ $};
+		\node [style=Z] (4) at (3.5, -1.25) {$\phi$};
 		\node [style=none] (6) at (3.5, -1.75) {$\cdots$};
 		\node [style=none] (7) at (3, -2) {};
 		\node [style=none] (8) at (3.5, -1.25) {};
@@ -10575,7 +10902,7 @@ $$
 		\node [style=none] (0) at (4, -0.5) {};
 		\node [style=none] (1) at (3, -0.5) {};
 		\node [style=none] (2) at (3.5, -0.75) {$\cdots$};
-		\node [style=X] (4) at (3.5, -1.25) {$\ \psi\ $};
+		\node [style=X] (4) at (3.5, -1.25) {$\psi$};
 		\node [style=none] (6) at (3.5, -1.75) {$\cdots$};
 		\node [style=none] (7) at (3, -2) {};
 		\node [style=none] (8) at (3.5, -1.25) {};
@@ -10599,7 +10926,7 @@ $$
 A fragment of the ZX-calculus, is {\bf complete} when this interpretation is faithful. 
 \end{definition}
 
-Notice how we have normalized the $X$ spider, but not the $X$ spider, so that they interact to form Hopf algebras on the nose.  This choice of normalization will be useful for our purposes. However, in the literature other scaling factors are used; notably the flexsymmetric scaling of \cite[\S 5]{flexsymmetric}.  Also, in the ZX-calculus literature it is commonplace to index the phases over $[0,2\pi)^d$ rather than over $[0,1)$.  We chose the latter  because it is much more amenable to generalization away from quantum mechanics. 
+Notice how we have normalized the $Z$-spider, but not the $X$-spider, so that they interact to form Hopf algebras on the nose.  This choice of normalization will be useful for our purposes. However, in the literature other scaling factors are used; notably the flexsymmetric scaling of \cite[\S 5]{flexsymmetric}.  Also, in the ZX-calculus literature it is commonplace to index the phases over $[0,2\pi)^d$ rather than over $[0,1)$.  We chose the latter  because it is much more amenable to generalization away from quantum mechanics. 
 
 The {\bf scalable ZX-calculus} \cite{szx} refers to the proof nets for fragments of the ZX-calculus Frobenius algebras on wires of composite dimension are denoted as follows:
 
@@ -10610,8 +10937,8 @@ $$
 		\node [style=none] (23) at (-1.5, 3.5) {};
 		\node [style=none] (24) at (-0.5, 3.5) {};
 		\node [style=none] (29) at (-1, 3.3) {$\cdots$};
-		\node [style=none] (30) at (-1, 2.5) {$\ \theta_L, \theta_R \ $};
-		\node [style=Z] (300) at (-1, 2.5) {$\ \theta_L, \theta_R \ $};
+		\node [style=none] (30) at (-1, 2.5) {};
+		\node [style=Z] (300) at (-1, 2.5) {$\theta_L, \theta_R$};
 		\node [style=none] (32) at (-1.5, 1.5) {};
 		\node [style=none] (33) at (-0.5, 1.5) {};
 		\node [style=none] (38) at (-1, 1.7) {$\cdots$};
@@ -10635,8 +10962,8 @@ $$
 		\node [style=otimes] (9) at (1.5, 3.25) {};
 		\node [style=otimes] (10) at (0.5, 3.25) {};
 		\node [style=none] (11) at (1, 3.5) {$\cdots$};
-		\node [style=Z] (12) at (0.5, 2.5) {$\ \theta_L \ $};
-		\node [style=Z] (13) at (1.5, 2.5) {$\ \theta_R \ $};
+		\node [style=Z] (12) at (0.5, 2.5) {$\theta_L$};
+		\node [style=Z] (13) at (1.5, 2.5) {$\theta_R$};
 		\node [style=none] (14) at (0.5, 1.75) {};
 		\node [style=none] (15) at (1.5, 1.75) {};
 		\node [style=none] (16) at (0.5, 1.25) {};
@@ -10668,7 +10995,7 @@ $$
 		\node [style=none] (24) at (-0.5, 3.5) {};
 		\node [style=none] (29) at (-1, 3.3) {$\cdots$};
 		\node [style=none] (30) at (-1, 2.5) {};
-		\node [style=X] (300) at (-1, 2.5) {$\ \theta_L,\theta_R\ $};
+		\node [style=X] (300) at (-1, 2.5) {$\theta_L,\theta_R$};
 		\node [style=none] (32) at (-1.5, 1.5) {};
 		\node [style=none] (33) at (-0.5, 1.5) {};
 		\node [style=none] (38) at (-1, 1.7) {$\cdots$};
@@ -10692,8 +11019,8 @@ $$
 		\node [style=otimes] (9) at (1.5, 3.25) {};
 		\node [style=otimes] (10) at (0.5, 3.25) {};
 		\node [style=none] (11) at (1, 3.5) {$\cdots$};
-		\node [style=X] (12) at (0.5, 2.5) {$\ \theta_L \ $};
-		\node [style=X] (13) at (1.5, 2.5) {$\ \theta_R \ $};
+		\node [style=X] (12) at (0.5, 2.5) {$\theta_L$};
+		\node [style=X] (13) at (1.5, 2.5) {$\theta_R$};
 		\node [style=none] (14) at (0.5, 1.75) {};
 		\node [style=none] (15) at (1.5, 1.75) {};
 		\node [style=none] (16) at (0.5, 1.25) {};
@@ -11143,7 +11470,7 @@ $$
 		\node [style=none] (0) at (4, -0.5) {};
 		\node [style=none] (1) at (3, -0.5) {};
 		\node [style=none] (2) at (3.5, -0.75) {$\cdots$};
-		\node [style=X] (4) at (3.5, -1.25) {$\ a\ $};
+		\node [style=X] (4) at (3.5, -1.25) {$a$};
 		\node [style=none] (6) at (3.5, -1.75) {$\cdots$};
 		\node [style=none] (7) at (3, -2) {};
 		\node [style=none] (8) at (3.5, -1.25) {};
@@ -11284,7 +11611,7 @@ $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (0) at (42.75, 0) {};
-		\node [style=X] (1) at (43.75, 0.25) {$\ c\ $};
+		\node [style=X] (1) at (43.75, 0.25) {$c$};
 		\node [style=none] (2) at (42.25, -0.75) {};
 		\node [style=none] (3) at (43.25, -0.75) {};
 		\node [style=none] (4) at (44.25, -0.75) {};
@@ -11297,12 +11624,12 @@ $$
 		\node [style=none] (11) at (42.25, -1.5) {};
 		\node [style=none] (12) at (43.25, -1.5) {};
 		\node [style=none] (13) at (44.25, -1.5) {};
-		\node [style=X] (14) at (42.25, -0.75) {$\ a_1\ $};
-		\node [style=X] (15) at (43.25, -0.75) {$\ a_2\ $};
-		\node [style=X] (16) at (44.25, -0.75) {$\ a_3\ $};
-		\node [style=X] (17) at (42.25, 1) {$\ b_1\ $};
-		\node [style=X] (18) at (43.25, 1) {$\ b_2\ $};
-		\node [style=X] (19) at (44.25, 1) {$\ b_3\ $};
+		\node [style=X] (14) at (42.25, -0.75) {$a_1$};
+		\node [style=X] (15) at (43.25, -0.75) {$a_2$};
+		\node [style=X] (16) at (44.25, -0.75) {$a_3$};
+		\node [style=X] (17) at (42.25, 1) {$b_1$};
+		\node [style=X] (18) at (43.25, 1) {$b_2$};
+		\node [style=X] (19) at (44.25, 1) {$b_3$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [in=-135, out=90] (2.center) to (0);
@@ -11549,9 +11876,9 @@ $$
 As we will discuss in much further detail in Chapter \ref{chap:stab}, the ZX-calculus is naturally suited for stabilizer circuits:
 
 \begin{definition}
-The {\bf qubit stabilizer fragment of the ZX-calculus} is generated by two spiders with phases in the group $\Z/4\Z$ where
+The {\bf qubit stabilizer fragment of the ZX-calculus} is generated by two spiders with phases in the group $\Z/4\Z$ where:
 $$
-\Z/4\Z \to [0,1)^2; n \mapsto (0,n/4)
+\Z/4\Z \to [0,1)^2;\ n \mapsto (0,n/4)
 $$
 
 The generators of qubit stabilizer circuits are interpreted as follows:
@@ -11643,10 +11970,10 @@ $$
 \end{tikzpicture}
 $$
 
-The {\bf quopit stabilizer fragment of the ZX-calculus} is generated by two spiders with phases in the group $(\Z/p\Z)^2$ where
+The {\bf quopit stabilizer fragment of the ZX-calculus} is generated by two spiders with phases in the group $(\Z/p\Z)^2$ where:
 
 $$
-(\Z/p\Z)^2 \to [0,1)^p; (n,m)\mapsto  \prod_{j=0}^{p-1} (n j +m j^2)/(2p) \mod 1
+(\Z/p\Z)^2 \to [0,1)^p; \ (n,m)\mapsto  \prod_{j=0}^{p-1} (n j +m j^2)/(2p) \mod 1
 $$
 
 The generators of quopit stabilizer circuits are interpreted as follows:
