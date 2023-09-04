@@ -1003,8 +1003,9 @@ $$
 I will refer to the string diagrams in this category as proof nets for monoidal categories because of their close relation to proof nets for linearly distributive categories.  Even in the case when we are already working in a strict monoidal category, it will still often be useful to use proof nets; for example, we can bundle up wires together so that we can make induction arguments using pictures.  Indeed, proof nets have been rediscovered in the setting of quantum circuits as the scalable ZX-calculus for precisely this reason \cite{szx} (although they have not discovered the units and counits).  We will discuss this further in Section \ref{sec:cqm}.
 
 
-These proof nets are closely related to proof nets for linearly-distributive categories; so much so, that this monoidal counterpart was considered folklore by some.  I will discuss the relation to proof nets in linear logic in Chapter \ref{chap:grothendieck}, as well as an attempt to connect them to other categorical constructions.  This proved to be much more difficult than expected.
-
+\begin{aside}
+These proof nets are closely related to proof nets for linearly-distributive categories; so much so, that this monoidal counterpart was considered folklore by some.  If one regards monoidal categories as linearly distributive categories, then these two notions are almost the same; the only difference being the combinatorial condition involving units, called thinning links.  Although it was widely known as folklore that these thinning links were not needed, I could not find any previous published  work that explicitly proved you don't need them for monoidal categories.  I will discuss the relation to proof nets in linear logic in Chapter \ref{chap:grothendieck}, as well as an attempt to connect them to other categorical constructions.  This proved to be much more difficult than expected.
+\end{aside}
 
 
 Some monoidal categories are equivalent to {\bf skeletal}, strict monoidal categories, so that every two isomorphic objects are equal.  These are very nice to work with because if we want, we can forgo having to use proof net notation entirely:

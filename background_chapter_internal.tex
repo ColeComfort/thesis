@@ -24,7 +24,7 @@
 
 
 
-In this section we review some aspects of internal category theory so that we can compose props via distributive law.
+In this subsection we review some aspects of internal category theory so that we can compose props via distributive law.  It is not necessary to read this section to understand most of this thesis.
 
 % basic results regarding internal categories.  Unless explicitly referenced, the results and definitions of internal category theory contained within this chapter can be found within a standard textbook in category theory (eg. \cite{maclane}). 
 
@@ -58,10 +58,15 @@ However, there is a more refined notion of composition of pro(p)s; to expose whi
 
 \subsubsection{Internal categories and strict factorization systems}
 
+String diagrams for bicategories:
+
+TODO
+
+First we introduce the bicategory of monads:
 
 
 
-\begin{definition}
+\begin{definition}[{\cite[\S 1]{monadsi}}]
 \label{def:monad}
 Given a bicategory $\mathcal B$, there is a bicategory of monads in $\mathcal B$, $\Mnd({\mathcal B})$ with:
 
@@ -84,6 +89,96 @@ T^2 \ar[r]_{\mu} & T
 }
 $
 
+Graphically:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (0) at (12, 2) {};
+		\node [style=none] (1) at (12.5, 1.25) {};
+		\node [style=none] (2) at (11.5, 1.25) {};
+		\node [style=none] (3) at (12, 2.75) {};
+		\node [style=X] (4) at (12.5, 1.25) {};
+		\node [style=none] (5) at (13, 0.5) {};
+		\node [style=none] (6) at (12, 0.5) {};
+		\node [style=none] (7) at (11.5, 0.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=90, out=-30] (0) to (1.center);
+		\draw (3.center) to (0);
+		\draw [in=90, out=-150] (0) to (2.center);
+		\draw [in=90, out=-30] (4) to (5.center);
+		\draw [in=90, out=-150] (4) to (6.center);
+		\draw (7.center) to (2.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}[xscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (0) at (12, 2) {};
+		\node [style=none] (1) at (12.5, 1.25) {};
+		\node [style=none] (2) at (11.5, 1.25) {};
+		\node [style=none] (3) at (12, 2.75) {};
+		\node [style=X] (4) at (12.5, 1.25) {};
+		\node [style=none] (5) at (13, 0.5) {};
+		\node [style=none] (6) at (12, 0.5) {};
+		\node [style=none] (7) at (11.5, 0.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=90, out=-30] (0) to (1.center);
+		\draw (3.center) to (0);
+		\draw [in=90, out=-150] (0) to (2.center);
+		\draw [in=90, out=-30] (4) to (5.center);
+		\draw [in=90, out=-150] (4) to (6.center);
+		\draw (7.center) to (2.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ ,
+\hspace*{.2cm}
+\begin{tikzpicture}[yscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (10) at (8, 2) {};
+		\node [style=none] (11) at (8.5, 2.75) {};
+		\node [style=none] (12) at (7.5, 2.75) {};
+		\node [style=none] (13) at (8, 1.25) {};
+		\node [style=none] (14) at (8.5, 3.25) {};
+		\node [style=X] (15) at (7.5, 2.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=30] (10) to (11.center);
+		\draw (13.center) to (10);
+		\draw [in=-90, out=150] (10) to (12.center);
+		\draw (11.center) to (14.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}[yscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (16) at (6.5, 1.25) {};
+		\node [style=none] (17) at (6.5, 3.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (16.center) to (17.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}[yscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (4) at (5, 2) {};
+		\node [style=none] (5) at (4.5, 2.75) {};
+		\node [style=none] (6) at (5.5, 2.75) {};
+		\node [style=none] (7) at (5, 1.25) {};
+		\node [style=none] (8) at (4.5, 3.25) {};
+		\node [style=X] (9) at (5.5, 2.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=150] (4) to (5.center);
+		\draw (7.center) to (4);
+		\draw [in=-90, out=30] (4) to (6.center);
+		\draw (5.center) to (8.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
 
 \item[1-cells:] {\bf Monad maps}   $(F,\lambda):(X,T,\mu^T, \eta^T)\to (Y,S,\mu^S, \eta^S)$.  Where  $F:X\to Y$ is a $1$-cell and $\lambda:F;S\to T;F$ is a 2-cell preserving the unit and multiplication as follows:
 
@@ -633,8 +728,8 @@ Given a bicategory $\mathcal B$ with coequalizers,
 the bicategory of bimodules in $\mathcal B$, $\Mod(\mathcal{B})$ has:
 
 \begin{description}
-\item[\ \ 0-cells:] Monads in $\mathcal B$.
-\item[\ \ 1-cells:] A $1$-cell between monads $\mathbb{T}=(X,T,\mu^T,\eta^T)\to \mathbb{S}=(Y,S,\mu^S,\eta^S)$ is a $(\mathbb{T},\mathbb{S})$-{\bf bimodule}.  That is a triple $(F,\tau,\rho)$ where  $F:X\to Y$ is a 1-cell in $\mathcal B$ and $\tau:S;F\to F$ and $\rho:F;T\to F$ are  2-cells (the left and right {\bf actions}, respectively) satisfying the following coherence equations: 
+\item[0-cells:] Monads in $\mathcal B$.
+\item[1-cells:] A $1$-cell between monads $\mathbb{T}=(X,T,\mu^T,\eta^T)\to \mathbb{S}=(Y,S,\mu^S,\eta^S)$ is a $(\mathbb{T},\mathbb{S})$-{\bf bimodule}.  That is a triple $(F,\tau,\rho)$ where  $F:X\to Y$ is a 1-cell in $\mathcal B$ and $\tau:S;F\to F$ and $\rho:F;T\to F$ are  2-cells (the left and right {\bf actions}, respectively) satisfying the following coherence equations: 
 
 \begin{description}
 
@@ -694,7 +789,7 @@ with left and right actions induced by $\tau$ and $\rho'$.
 
 The identity 1-cell on a monad is the monad itself considered as a bimodule over itself.
 
-\item[\ \ 2-cells:] A 2-cell between $(\mathbb{S},\mathbb{T})$-bimodules $(F,\rho,\tau)\to (G,\rho',\tau')$ is a 2-cell $\phi:F\to G$ in $\mathcal{B}$ satisfying the following coherence conditions:
+\item[2-cells:] A 2-cell between $(\mathbb{S},\mathbb{T})$-bimodules $(F,\rho,\tau)\to (G,\rho',\tau')$ is a 2-cell $\phi:F\to G$ in $\mathcal{B}$ satisfying the following coherence conditions:
 
 $$
 \xymatrix{
@@ -785,8 +880,11 @@ We have already discussed two examples of orthogonal factorization systems in or
 \begin{example}
 Given a finitely complete category $\X$, the category $\Span^\sim(\X)$ has an orthogonal factorization system where:
 
-$$\mathbb{L}:=\{ \xymatrix{X & X \ar@{=}[l] \ar[r]^{f } & Y}    \  | \ \forall f \in \X(X,Y) \}\, \hspace*{.2cm}
-\mathbb{R}:=\{\xymatrix{Y & X \ar@{=}[r] \ar[l]_{f } & X}    \  | \ \forall f \in \X(X,Y)  \}$$
+$$\mathbb{L}:=
+\{\xymatrix{Y & X \ar@{=}[r] \ar[l]_{f } & X}    \  | \ \forall f \in \X(X,Y)  \}\ , \hspace*{.2cm}
+\mathbb{R}:=
+\{ \xymatrix{X & X \ar@{=}[l] \ar[r]^{f } & Y}    \  | \ \forall f \in \X(X,Y) \}
+$$
 
 \end{example}
 
@@ -1354,13 +1452,13 @@ Where this distributive law also arizes from a category of spans.
 
 
 \begin{remark}
-The (special) spider theorem also holds for (special) commutative Frobenius algebras, where now components can be connected together using the braids.
+The spider normal form also holds for special commutative Frobenius algebras, where now components can be connected together using the braids.
 
 
-In analogy to the noncommutative case, the spider theorem for non-special commutative Frobenius algebras, although this should from a distributive law of {\em symmetric polycategories}, rather than of monoidal categories.
+In analogy to the noncommutative case, the spider normal form  for non-special commutative Frobenius algebras also holds, although this should from a distributive law of {\em symmetric} polycategories, rather than of monoidal categories.  Again, we shall not discuss the details further.
 
 
-Actually, the original spider theorem was the spider theorem for non-special symmetric Frobenius algebras, first published in the PhD thesis of \cite{spider}; wherein it was proved by topological methods rather than using the machinery of distributive laws.
+The original spider normal form was first proven for non-special symmetric Frobenius algebras, first published in the PhD thesis of \cite{spider}; wherein it was proved by topological methods rather than using the machinery of distributive laws.
 
 \end{remark}
 
@@ -1858,8 +1956,11 @@ $$
 
 Models of the Lawvere theory of monoids in $\Set$ are monoids.
 
+
+Similarly:
+
 \begin{example}
-And the Lawvere theory of commutative monoids is generated by a binary operation $(-)+ (=):2\to 1$ and a nullary operation $0:0\to 1$ modulo:
+The Lawvere theory of commutative monoids is generated by a binary operation $(-)+ (=):2\to 1$ and a nullary operation $0:0\to 1$ modulo:
 
 \begin{description}
 \item[Unit laws:] $x+0 = x = 0+x$
@@ -1871,7 +1972,7 @@ And the Lawvere theory of commutative monoids is generated by a binary operation
 Models of the Lawvere theory of commutative monoids in $\Set$ are commutative monoids.
 
 
-Notice that $\cb$ is the Lawvere theory of commutative monoids.
+Notice that $\cb$ is the Lawvere theory of commutative monoids  regarded as a prop.
 
 The most basic way to compose Lawvere theories $\mathbb L$ and $\mathbb R$ generated by the same object set ${\sf Ob}$ by distributive law identifying only their Cartesian structure.  Following \cite[???]{lawvere}, that is to say, via distributive laws $\mathbb{L} \otimes_{\cm^{\sf Ob}} \mathbb{R}$ in $\Mon$-$\Prof$ such that $\cm^{\sf Ob}$ picks out the Cartesian structure of both $\mathbb L$ and $\mathbb R$.  For example:
 
@@ -2051,7 +2152,10 @@ $$
 Unsurprisingly, models of semirings in $\Set$ are semirings.
 
 
+\begin{aside}
 There is one other way to decompose props which we have not defined, because we will not make use of it.  Although I will make mention of it here for the interested reader. Since distributive laws are themselves monads, one can take distributive laws of distributive laws themselves. In the case of distributive laws of categories, that is to say a monad in $\Mnd(\Mnd(\Span(\Set)))$.  This corresponds to a ternary strict factorization system.  As remarked by \cite{????} construction can be interated finitely many times, yielding a correspondence between $n$-ary factorization systems and $n$-fold iterated distributive laws.  The coherence conditions can be boiled down into asking that the appropriate distributive laws must interact to satisfy the Yang-Baxter equation \cite{iterdist}. Indeed, this is nothing special about strict factorization systems of categories.  The way to decompose props in this setting would be in terms of monads in $\Mnd(\Mnd(\Mod(\Span(\Mon))))$.  Indeed, this was used in \cite[????]{ih}.
+
+\end{aside}
 
 %
 %\begin{example}

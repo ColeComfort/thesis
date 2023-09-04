@@ -16,14 +16,14 @@ See \cite{Weinstein2017} or  \cite{weinsteinsymplectic} for generalizations of t
 \begin{definition}
   Given a field  $k$ and a $k$-vector space $V$, a {\bf symplectic form} on $V$ is a bilinear map $\omega:V\times V\to k$ which is:
 \begin{description}
- \item[\ \ Alternating:] $\forall v \in V$, $\omega(v,v)=0$.
- \item[\ \ Non-degenerate:] if $\exists v \in V: \forall w \in V: \omega(v,w)=0$, then $v=0$.
+ \item[Alternating:] $\forall v \in V$, $\omega(v,v)=0$.
+ \item[Non-degenerate:] if $\exists v \in V: \forall w \in V: \omega(v,w)=0$, then $v=0$.
 \end{description}
   A {\bf symplectic vector space} is a vector space equipped with a symplectic form. A (linear) {\bf symplectomorphism} is a linear isomorphism between symplectic vector spaces that preserves the symplectic form.
 \end{definition}
 
 
-\begin{lemma}[Darboux theorem]
+\begin{lemma}[Darboux's theorem]
 \label{lemma:sform}
 Every vector space $k^{2n}$ with a chosen basis is equipped with a symplectic form,given by the following block matrix:
 $$
@@ -1790,6 +1790,10 @@ F
 
 
 A variant of this decomposition is given in \cite[p.6]{control}; although in the context of plain old linear relations instead of Lagrangian relations, so an antipode is missing in their case.  A similar observation was made in \cite[Equation 34]{ranchin2014depicting} in terms of qudit controlled-{\cal X} gates.
+
+\begin{remark}
+This characterization of the generators way almost found in \cite[Theorem 4.3.3]{coya}, although he does not attempt to find a universal set of generators.  In fact he is missing the generators $S_a$ and the doubled scalars.  One should also be careful because the diagram in the Theorem which is cited fails to commute.
+\end{remark}
 
 From Corollary \ref{theorem:unbiased}, we know that we can build any Lagrangian relation using pure Lagrangian relations and discard maps. Since the former is closed under composition and monoidal product, the following can be shown immediately from string diagram deformation.
 
@@ -5982,6 +5986,11 @@ $$
 \end{example}
 
 Because $\Aff\Co\Isot\Rel_{\F_p}^M$ is a subcategory of relations, composable maps are ordered by subspace inclusion (ie, it is poset-enriched). Moreover, since all possible outcomes are equally likely we can identify when the measurement statistics of one process arise from the marginalization of the measurement statistics of another process:
+
+
+
+TODO TALK ABOUT WIGNER FUNCTION
+
 
 \begin{remark}
 Take two quopit stabilizer circuits with state preparations and measurement $f,g$ interpreted as parallel maps in  $\Aff\Co\Isot\Rel_{\F_p}^M$.

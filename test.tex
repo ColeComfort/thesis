@@ -48,9 +48,284 @@
 %\input{decomposing_zx_chapter}
 %\input{grothendieck_chapter}
 
-\input{background_chapter_internal}
+%\input{background_chapter_internal}
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (14) at (8.25, -1.25) {};
+		\node [style=none] (15) at (8.75, -2) {};
+		\node [style=none] (16) at (7.75, -2) {};
+		\node [style=none] (17) at (8.25, -0.5) {};
+		\node [style=X] (18) at (8.75, -2) {};
+		\node [style=none] (19) at (9.25, -2.75) {};
+		\node [style=none] (20) at (8.25, -2.75) {};
+		\node [style=none] (21) at (7.75, -2.75) {};
+		\node [style=none] (42) at (7.5, -0.5) {A};
+		\node [style=none] (43) at (9.5, -0.5) {B};
+		\node [style=none] (44) at (9.5, -2.75) {D};
+		\node [style=none] (45) at (7.5, -2.75) {C};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill[fill=green] (42.center) to (43.center) to (44.center) to (45.center) to cycle;
+		\draw [in=90, out=-30] (14) to (15.center);
+		\draw (17.center) to (14);
+		\draw [in=90, out=-150] (14) to (16.center);
+		\draw [in=90, out=-30] (18) to (19.center);
+		\draw [in=90, out=-150] (18) to (20.center);
+		\draw (21.center) to (16.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}[xscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (14) at (8.25, -1.25) {};
+		\node [style=none] (15) at (8.75, -2) {};
+		\node [style=none] (16) at (7.75, -2) {};
+		\node [style=none] (17) at (8.25, -0.5) {};
+		\node [style=X] (18) at (8.75, -2) {};
+		\node [style=none] (19) at (9.25, -2.75) {};
+		\node [style=none] (20) at (8.25, -2.75) {};
+		\node [style=none] (21) at (7.75, -2.75) {};
+		\node [style=none] (42) at (7.5, -0.5) {A};
+		\node [style=none] (43) at (9.5, -0.5) {B};
+		\node [style=none] (44) at (9.5, -2.75) {D};
+		\node [style=none] (45) at (7.5, -2.75) {C};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [fill=green] (42.center) to (43.center) to (44.center) to (45.center) to cycle;
+		\draw [in=90, out=-30] (14) to (15.center);
+		\draw (17.center) to (14);
+		\draw [in=90, out=-150] (14) to (16.center);
+		\draw [in=90, out=-30] (18) to (19.center);
+		\draw [in=90, out=-150] (18) to (20.center);
+		\draw (21.center) to (16.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (0) at (8, 2.5) {};
+		\node [style=none] (1) at (8.5, 1.75) {};
+		\node [style=none] (2) at (7.5, 1.75) {};
+		\node [style=none] (3) at (8, 3.25) {};
+		\node [style=none] (4) at (8.5, 1.25) {};
+		\node [style=X] (5) at (7.5, 1.75) {};
+		\node [style=none] (30) at (7, 3.25) {A};
+		\node [style=none] (31) at (9, 3.25) {B};
+		\node [style=none] (32) at (9, 1.25) {D};
+		\node [style=none] (33) at (7, 1.25) {C};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [fill=green] (30.center) to (31.center) to (32.center) to (33.center) to cycle;
+		\draw [in=90, out=-30] (0) to (1.center);
+		\draw (3.center) to (0);
+		\draw [in=90, out=-150] (0) to (2.center);
+		\draw (1.center) to (4.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (6) at (11.5, 1.25) {};
+		\node [style=none] (7) at (11.5, 3.25) {};
+		\node [style=none] (38) at (10.5, 3.25) {A};
+		\node [style=none] (39) at (12.5, 3.25) {B};
+		\node [style=none] (40) at (12.5, 1.25) {D};
+		\node [style=none] (41) at (10.5, 1.25) {C};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [fill=green] (38.center) to (39.center) to (40.center) to (41.center) to cycle;
+		\draw (6.center) to (7.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}[xscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (0) at (8, 2.5) {};
+		\node [style=none] (1) at (8.5, 1.75) {};
+		\node [style=none] (2) at (7.5, 1.75) {};
+		\node [style=none] (3) at (8, 3.25) {};
+		\node [style=none] (4) at (8.5, 1.25) {};
+		\node [style=X] (5) at (7.5, 1.75) {};
+		\node [style=none] (30) at (7, 3.25) {A};
+		\node [style=none] (31) at (9, 3.25) {B};
+		\node [style=none] (32) at (9, 1.25) {D};
+		\node [style=none] (33) at (7, 1.25) {C};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [fill=green] (30.center) to (31.center) to (32.center) to (33.center) to cycle;
+		\draw [in=90, out=-30] (0) to (1.center);
+		\draw (3.center) to (0);
+		\draw [in=90, out=-150] (0) to (2.center);
+		\draw (1.center) to (4.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
 
 
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (F) at (14, 0) {F};
+		\node [style=none] (E) at (13, 0) {E};
+		\node [style=map] (lambda) at (13.5, 1) {$\lambda$};
+		\node [style=none] (B) at (13, 2) {B};
+		\node [style=none] (C) at (14, 2) {C};
+		\node [style=none] (H) at (13, -1) {H};
+		\node [style=none] (K) at (15, -1) {K};
+		\node [style=none] (D) at (15, 2) {D};
+		\node [style=none] (A) at (12, 2) {A};
+		\node [style=none] (G) at (12, -1) {G};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [fill=red] (A.center) to (B.center)  to [out=-90, in=135] (lambda.center)  to [out=-135, in=90] (E.center) to (H.center) to (G.center) to cycle;
+		\fill [fill=red]  (B.center)  to [out=-90, in=135] (lambda.center) to [in=-90, out=45]  (C.center) to cycle;
+		\fill [fill=green]  (lambda.center)  to [out=-135, in=90] (E.center) to (H.center) to (K.center) to (D.center) to (C.center) to  [out=-90, in=45] cycle;
+		\draw (H.center) to (E.center);
+		\draw [in=-135, out=90] (E.center) to (lambda.center);
+		\draw [in=-90, out=45] (lambda.center) to (C.center);
+		\draw [in=90, out=-45] (lambda.center) to (F.center);
+		\draw [in=-90, out=135] (lambda.center) to (B.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (F) at (12.75, 1) {F};
+		\node [style=none] (E) at (13.5, 0) {E};
+		\node [style=none] (B) at (12.75, 2) {B};
+		\node [style=none] (C) at (13.5, 2) {C};
+		\node [style=none] (D) at (14.25, 2) {D};
+		\node [style=none] (A) at (12, 2) {A};
+		\node [style=none] (G) at (12, 0) {G};
+		\node [style=none] (H) at (14.25, 0) {H};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [fill=red] (A.center) to (C.center) to (E.center) to (G.center) to cycle;
+		\fill [fill=green] (C.center) to (D.center) to (H.center) to (E.center) to cycle;
+		\draw (C.center) to (E.center);
+		\draw (B.center) to (F.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (F) at (14, 0) {F};
+		\node [style=none] (E) at (13, 0) {E};
+		\node [style=map] (lambda) at (13.5, 1) {$\lambda$};
+		\node [style=none] (B) at (13, 2) {B};
+		\node [style=none] (C) at (14, 2) {C};
+		\node [style=none] (H) at (13, -1) {H};
+		\node [style=none] (K) at (15, -1) {K};
+		\node [style=none] (D) at (15, 2) {D};
+		\node [style=none] (A) at (12, 2) {A};
+		\node [style=none] (G) at (12, -1) {G};
+		\node [style=none] (L) at (13.5, -1) {L};
+		\node [style=none] (M) at (14.5, -1) {M};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [fill=red] (A.center) to (B.center)  to [out=-90, in=135] (lambda.center)  to [out=-135, in=90] (E.center) to (H.center) to (G.center) to cycle;
+		\fill [fill=red]  (B.center)  to [out=-90, in=135] (lambda.center) to [in=-90, out=45]  (C.center) to cycle;
+		\fill [fill=green]  (lambda.center)  to [out=-135, in=90] (E.center) to (H.center) to (K.center) to (D.center) to (C.center) to  [out=-90, in=45] cycle;
+		\draw (H.center) to (E.center);
+		\draw [in=-135, out=90] (E.center) to (lambda.center);
+		\draw [in=-90, out=45] (lambda.center) to (C.center);
+		\draw [in=90, out=-45] (lambda.center) to (F.center);
+		\draw [in=-90, out=135] (lambda.center) to (B.center);
+		\draw [in=-150, out=90] (L.center) to (F.center);
+		\draw [in=90, out=-30] (F.center) to (M.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (lambda) at (13.5, 1) {$\lambda$};
+		\node [style=none] (C) at (14, 2.5) {C};
+		\node [style=none] (H) at (12.75, -1.25) {H};
+		\node [style=none] (K) at (15.25, -1.25) {K};
+		\node [style=none] (D) at (15.25, 2.5) {D};
+		\node [style=none] (A) at (12, 2.5) {A};
+		\node [style=none] (G) at (12, -1.25) {G};
+		\node [style=none] (L) at (13.5, -1.25) {L};
+		\node [style=none] (M) at (14.75, -1.25) {M};
+		\node [style=map] (lambda1) at (13, -0.25) {$\lambda1$};
+		\node [style=Z] (E) at (12.75, 1.75) {E};
+		\node [style=none] (B) at (12.75, 2.5) {B};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [fill=red] (A.center) to (B.center)  to (C.center) to [out=-90, in=60]   (lambda.center) to (lambda1.center) to [out=-120, in=90] (H.center) to (G.center) to cycle;
+		\fill [fill=green]  (C.center) to [out=-90, in=60]   (lambda.center) to (lambda1.center) to [out=-120, in=90] (H.center) to (K.center) to (D.center) to cycle;
+		\draw [in=-90, out=60] (lambda.center) to (C.center);
+		\draw [in=-45, out=90, looseness=0.75] (M.center) to (lambda.center);
+		\draw [in=-120, out=90] (H.center) to (lambda1.center);
+		\draw (lambda1.center) to (lambda.center);
+		\draw [in=-45, out=90] (L.center) to (lambda1.center);
+		\draw (lambda.center) to (E.center);
+		\draw [in=135, out=-135] (E.center) to (lambda1.center);
+		\draw (E.center) to (B.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (lambda) at (11, 0) {$\lambda$};
+		\node [style=map] (psi) at (11.5, -1) {$\psi$};
+		\node [style=none] (E) at (10.5, -1) {E};
+		\node [style=none] (G) at (10.5, -2) {G};
+		\node [style=none] (H) at (11.5, -2) {H};
+		\node [style=none] (C) at (11.5, 1) {C};
+		\node [style=none] (B) at (10.5, 1) {B};
+		\node [style=none] (A) at (10, 1) {A};
+		\node [style=none] (F) at (10, -2) {F};
+		\node [style=none] (K) at (12, -2) {K};
+		\node [style=none] (D) at (12, 1) {D};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [fill=red] (A.center) to (B.center)  to (C.center) to  [in=45, out=-90]   (lambda.center) to  [in=90, out=-135] (E.center)  to (G.center) to (F.center) to cycle;
+		\fill [fill=green] (C.center) to  [in=45, out=-90]   (lambda.center) to  [in=90, out=-135] (E.center)  to (G.center) to (K.center) to (D.center) to cycle;
+		\draw (H.center) to (psi.center);
+		\draw [in=-45, out=90] (psi.center) to (lambda.center);
+		\draw [in=-90, out=135] (lambda.center) to (B.center);
+		\draw [in=45, out=-90] (C.center) to (lambda.center);
+		\draw [in=90, out=-135] (lambda.center) to (E.center);
+		\draw (E.center) to (G.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (chi) at (14, -1) {$\chi$};
+		\node [style=map] (psi) at (13.5, 0) {$\psi$};
+		\node [style=none] (E) at (14.5, 0) {E};
+		\node [style=none] (G) at (14.5, 1) {G};
+		\node [style=none] (H) at (13.5, 1) {H};
+		\node [style=none] (C) at (13.5, -2) {C};
+		\node [style=none] (B) at (14.5, -2) {B};
+		\node [style=none] (A) at (15, -2) {A};
+		\node [style=none] (F) at (15, 1) {F};
+		\node [style=none] (K) at (13, 1) {K};
+		\node [style=none] (D) at (13, -2) {D};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [fill=red] (G.center) to (E.center) to [out=-90, in=45] (chi.center) to  [out=-135, in=90]  (C.center) to (D.center) to (K.center) to cycle;
+		\fill [fill=green] (G.center) to (E.center) to [out=-90, in=45] (chi.center) to  [out=-135, in=90]  (C.center) to (A.center) to (F.center) to cycle;
+		\draw (H.center) to (psi.center);
+		\draw [in=135, out=-90] (psi.center) to (chi.center);
+		\draw [in=90, out=-45] (chi.center) to (B.center);
+		\draw [in=-135, out=90] (C.center) to (chi.center);
+		\draw [in=-90, out=45] (chi.center) to (E.center);
+		\draw (E.center) to (G.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
 
 
 

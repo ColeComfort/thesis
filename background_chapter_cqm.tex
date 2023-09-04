@@ -1547,64 +1547,8 @@ $$\mathcal{F} := \dfrac{1}{\sqrt{d}} \sum_{j,k=0}^{d-1} e^{2\pi\cdot i \cdot j \
 The standard basis and Fourier bases are strongly complementary.
 \end{example}
 
-For qubits, the  state $|+\rangle:=\mathcal{F}|0\rangle$ is called the {\bf plus state}; and  $|-\rangle:=\mathcal{F}|1\rangle$ is called the {\bf minus state}.  Although, this notation obviously does not generalize well to qudits.  Also, in this setting, the antipode is the identity, so that it doesn't matter if the wires are inputs or outputs of spiders .  For example:
-
-$$
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=X] (14) at (9.5, -1.75) {};
-		\node [style=Z] (15) at (8.75, -1.75) {};
-		\node [style=none] (16) at (9.5, -1) {};
-		\node [style=none] (17) at (8.75, -1) {};
-		\node [style=none] (18) at (9.5, -2.5) {};
-		\node [style=none] (19) at (8.75, -2.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (17.center) to (15);
-		\draw (15) to (14);
-		\draw (14) to (16.center);
-		\draw (14) to (18.center);
-		\draw (19.center) to (15);
-	\end{pgfonlayer}
-\end{tikzpicture}
-:=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=X] (20) at (11.25, -1.75) {};
-		\node [style=Z] (21) at (10.5, -2) {};
-		\node [style=none] (22) at (11.25, -1) {};
-		\node [style=none] (23) at (10.5, -1) {};
-		\node [style=none] (24) at (11.25, -2.75) {};
-		\node [style=none] (25) at (10.5, -2.75) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (23.center) to (21);
-		\draw (21) to (20);
-		\draw (20) to (22.center);
-		\draw (20) to (24.center);
-		\draw (25.center) to (21);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=X] (8) at (12.75, -2) {};
-		\node [style=Z] (9) at (12, -1.75) {};
-		\node [style=none] (10) at (12.75, -1) {};
-		\node [style=none] (11) at (12, -1) {};
-		\node [style=none] (12) at (12.75, -2.75) {};
-		\node [style=none] (13) at (12, -2.75) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (11.center) to (9);
-		\draw (9) to (8);
-		\draw (8) to (10.center);
-		\draw (8) to (12.center);
-		\draw (13.center) to (9);
-	\end{pgfonlayer}
-\end{tikzpicture}
-$$
-Notice how we had to multiply the basis elements by a factor of $\sqrt d$ so that these two Frobenius algebras interact to form a Hopf algebra on the nose.  This means that the Fourier basis we have chosen is not normalized, and thus the corresponding Frobenius algebra is not special.  However, this isn't a problem, because it is special up to the invertible  scalar $1/\sqrt{d}$.
+For qubits, the  state $|+\rangle:=\mathcal{F}|0\rangle$ is called the {\bf plus state}; and  $|-\rangle:=\mathcal{F}|1\rangle$ is called the {\bf minus state}.  Although, this notation obviously does not generalize well to qudits.  
+Notice how we multiply the $X$-basis elements by a factor of $\sqrt d$ so that these two Frobenius algebras interact to form a Hopf algebra on the nose (as upposed to up to scaling factors).  This means that the Fourier basis we have chosen is not normalized, and thus the corresponding Frobenius algebra is not special.  However, this isn't a problem, because it is special up to the invertible  scalar $1/\sqrt{d}$.
 
 This pair of complementary bases will occur throughout this thesis.  As a matter of notation, as mentioned earlier we draw the ``$Z$-spiders'' for the standard basis in white,
 and ``$X$-spiders'' for the Fourier basis in  grey as follows:
@@ -1663,6 +1607,65 @@ and ``$X$-spiders'' for the Fourier basis in  grey as follows:
 \end{align*}
 
 
+When $d=2$, the antipode is the identity, so that it doesn't matter if the wires are inputs or outputs of spiders .  For example, we can draw the {\bf controlled-not gate} by connecting together $Z$ and $X$ spiders, only having to worry about the connectivity:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (14) at (9.5, -1.75) {};
+		\node [style=Z] (15) at (8.75, -1.75) {};
+		\node [style=none] (16) at (9.5, -1) {};
+		\node [style=none] (17) at (8.75, -1) {};
+		\node [style=none] (18) at (9.5, -2.5) {};
+		\node [style=none] (19) at (8.75, -2.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (17.center) to (15);
+		\draw (15) to (14);
+		\draw (14) to (16.center);
+		\draw (14) to (18.center);
+		\draw (19.center) to (15);
+	\end{pgfonlayer}
+\end{tikzpicture}
+:=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (20) at (11.25, -1.75) {};
+		\node [style=Z] (21) at (10.5, -2) {};
+		\node [style=none] (22) at (11.25, -1) {};
+		\node [style=none] (23) at (10.5, -1) {};
+		\node [style=none] (24) at (11.25, -2.75) {};
+		\node [style=none] (25) at (10.5, -2.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (23.center) to (21);
+		\draw (21) to (20);
+		\draw (20) to (22.center);
+		\draw (20) to (24.center);
+		\draw (25.center) to (21);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (8) at (12.75, -2) {};
+		\node [style=Z] (9) at (12, -1.75) {};
+		\node [style=none] (10) at (12.75, -1) {};
+		\node [style=none] (11) at (12, -1) {};
+		\node [style=none] (12) at (12.75, -2.75) {};
+		\node [style=none] (13) at (12, -2.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (11.center) to (9);
+		\draw (9) to (8);
+		\draw (8) to (10.center);
+		\draw (8) to (12.center);
+		\draw (13.center) to (9);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+In orther terms, the $Z$ and $X$-spiders are {\bf flexsymmetric}   \cite[\S 5]{flexsymmetric}).
 
 %The following pair of strongly complementary observables will come up often throughout this thesis:
 %
@@ -2026,9 +2029,9 @@ $$
 
 \begin{definition}
 \label{def:zx}
-Given some fixed dimension $d$, a fragment of the qudit {\bf ZX-calculus} is a single-sorted symmetric monoidal theory generated by two strongly complementary spiders, each of which is parameterized by phase group.  We also require that this comes equipped with a faithful $\dag$-symmetric monoidal functor into $\Mat_\C$, sending one spider to the $X$-spider and the other to the $Z$-spider, in a way that preserves the phase group structure.
+Given some fixed dimension $d$, a fragment of the qudit {\bf ZX-calculus} is a prop generated by two strongly complementary spiders, each of which is parameterized by phase groups.  We also require that this comes equipped with a faithful $\dag$-symmetric monoidal functor into $\Mat_\C$, sending one spider to the $X$-spider and the other to the $Z$-spider, in a way that preserves the phase group structure.
 
-That is to say, a monoidal theory two spiders decorated phase groups $G$ and $H$ and group homomorphisms $g:G\to [0,1)^d$ and $h:H\to [0,1)^d$, respectively such that:
+That is to say, we have spiders decorated by phase groups $G$ and $H$ and group homomorphisms $g:G\to [0,1)^d$ and $h:H\to [0,1)^d$, respectively such that:
 
 $$
 \left\llbracket\ 
@@ -2084,10 +2087,10 @@ $$
 \sum_{j=0}^{d-1} e^{2\cdot \pi \cdot i \cdot j\cdot h_j(\psi)/d} \mathcal{F} | j, \ldots, j\rangle \langle j,\ldots, j| \mathcal{F}^\dag
 $$
 
-A fragment of the ZX-calculus, is {\bf complete} when this interpretation is faithful. 
+A fragment of the ZX-calculus, is {\bf universal} when this interpretation is full and   {\bf complete} when this interpretation is faithful.
 \end{definition}
 
-Notice how we have normalized the $Z$-spider, but not the $X$-spider, so that they interact to form Hopf algebras on the nose.  This choice of normalization will be useful for our purposes. However, in the literature other scaling factors are used; notably the flexsymmetric scaling of \cite[\S 5]{flexsymmetric}.  Also, in the ZX-calculus literature it is commonplace to index the phases over $[0,2\pi)^d$ rather than over $[0,1)$.  We chose the latter  because it is much more amenable to generalization away from quantum mechanics. 
+In the ZX-calculus literature it is commonplace to index the phases over $[0,2\pi)^d$ rather than over $[0,1)^d$.  We chose the latter  because it is much more amenable to generalization away from quantum mechanics. 
 
 The {\bf scalable ZX-calculus} \cite{szx} refers to the proof nets for fragments of the ZX-calculus Frobenius algebras on wires of composite dimension are denoted as follows:
 
@@ -2579,7 +2582,7 @@ $$
 {\cal X} =
  \sum_{b=0}^{p-1} | b+1\rangle \langle b|
 =
- \sum_{j=0}^{p-1} e^{2 \pi\cdot i\cdot j/p} {\mathcal F}^\dag | j \rangle \langle j|  {\mathcal F}
+ \sum_{j=0}^{p-1} e^{2 \pi\cdot i\cdot j/p} {\mathcal F} | j \rangle \langle j|  {\mathcal F}^\dag
 $$
 
 Therefore, natural number powers of the ${\cal X}$-gate are also phases for the $X$-spider as:
@@ -2589,7 +2592,7 @@ $$
 = 
  \sum_{bj=0}^{p-1} | j+n\rangle \langle j|
 =
-\sum_{j=0}^{p-1} e^{2 \pi\cdot i\cdot n\cdot j/p} {\mathcal F}^\dag | j \rangle \langle j|  {\mathcal F}
+\sum_{j=0}^{p-1} e^{2 \pi\cdot i\cdot n\cdot j/p} {\mathcal F}| j \rangle \langle j|  {\mathcal F}^\dag
 $$
 
 So one can ask if the the fragment of the odd prime qudit ZX-calculus with these $\cal X$-gate phases has a similar relational semantics to the phase-free ZX-calculus.  The answer is yes, and this result is not contained in the literature to my knowledge:
