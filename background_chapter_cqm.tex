@@ -1925,7 +1925,7 @@ $$
 \end{tikzpicture}
 $$
 
-Or in the case when the Frobenius algebra $\zcirc$ is moreover special:
+Or in the case of a special Frobenius algebra $\zcirc$:
 
 $$
 \begin{tikzpicture}
@@ -3228,7 +3228,7 @@ $$
 The scaling gate is derived in stabilizer circuits, so it need not be stated. However it it corresponds to the multiplication of a scalar under the embdedding:
 
 $$
-(\Mat_{\F_p},+) \to (\LinRel_{\F_p},+) \to (\Mat_\C,\otimes)
+(\Mat_{\F_p},+) \to (\LinRel_{\F_p},+) \to (\Mat_\C/\sim,\otimes)
 $$
 
 The qubit \cite{backensstab,backens2015} and qutrit \cite{qutrit} stabilizer ZX-calculus both have complete presentations.  However, during the process of writing this thesis, an axiomatization was provided for the quopit ZX-calculus \cite{booth}, followed shortly by an even simpler presentation \cite{poor}.  It is worth noting that the scaling in the interpretations of the generators in \cite{poor,booth} differ slightly for techinical reasons (specifically they designed their presentations to be flexsymmetric following \cite[\S 5]{flexsymmetric}).
@@ -3353,20 +3353,21 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=H] (0) at (1, 11.25) {$c$};
-		\node [style=none] (1) at (1.5, 10.5) {};
-		\node [style=none] (2) at (1.5, 12) {};
-		\node [style=none] (3) at (0.5, 10.5) {};
-		\node [style=none] (4) at (0.5, 12) {};
-		\node [style=none] (5) at (1, 12) {$\cdots$};
-		\node [style=none] (6) at (1, 10.5) {$\cdots$};
-		\node [style=H] (7) at (0, 11.25) {$2$};
+		\node [style=none] (16) at (4.5, -0.75) {};
+		\node [style=none] (17) at (4.5, 0.75) {};
+		\node [style=none] (18) at (3.5, -0.75) {};
+		\node [style=none] (19) at (3.5, 0.75) {};
+		\node [style=none] (20) at (4, 0.75) {$\cdots$};
+		\node [style=none] (21) at (4, -0.75) {$\cdots$};
+		\node [style=none] (22) at (4, 0) {};
+		\node [style=H] (23) at (4, 0) {$c$};
+		\node [style=H] (24) at (3, 0) {$2$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=30, out=-90] (2.center) to (0);
-		\draw [in=90, out=-30] (0) to (1.center);
-		\draw [in=-150, out=90] (3.center) to (0);
-		\draw [in=-90, out=150] (0) to (4.center);
+		\draw [in=-90, out=120] (22.center) to (19.center);
+		\draw [in=-90, out=60] (22.center) to (17.center);
+		\draw [in=90, out=-120] (22.center) to (18.center);
+		\draw [in=90, out=-60] (22.center) to (16.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$

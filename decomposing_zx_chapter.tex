@@ -1888,7 +1888,7 @@ $$
 $$
 
 
-There is a distributive law of props:
+There is a distributive law of Lawvere theories:
 $$
 \f_2:=\cb_\B \otimes_{\cm^\op} \cb_{\F_2};
 \begin{tikzpicture}
@@ -1909,7 +1909,7 @@ $$
 		\draw (9.center) to (10.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\eqzxa{ring.mul}
+\eref{semiring.mult.r}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (1, 0) {};
@@ -1956,7 +1956,7 @@ $$
 		\draw [in=-135, out=90] (1.center) to (0.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\eqzxa{ring.unit}
+\eref{semiring.unit.l}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (12) at (2, 0.5) {};
@@ -1975,13 +1975,11 @@ Where $\cm^\op$ picks out the comonoid $\zcirc$ of $\cb_\B$ and $\cb_{\F_2}$.
 \end{definition}
 
 
+From this way of looking at $f_2$, we see that it is the Lawvere theory for ?????
+
 \begin{lemma}[{\cite[Theorem 10]{lafont}}]
 $\f_2$ is a presentation for full subcategory of finite ordinals and functions whose objects are powers of 2, $(\FinOrd_2,\times)$, regarded as a prop with respect to the product.
 \end{lemma}
-
-Note that in particular, this kind of distributive law of props is actually a distributive law of Lawvere theories in the sense of \cite{lawvere}.
-
-From this presentation it is clear that $(\FinOrd_2,\times)$ is equivalent to the prop of Boolean polynomials functions; where polynomials are composed by substitution and two polynomials are equal when they have the same solutions in $\F_2$.
 
 
 To find larger fragments, it will be useful to first identify the isomorphisms and the monics of $\f_2$.
@@ -5113,3 +5111,16 @@ Since we know that $\sfpariso_2\cong \TOF$, adding a unit and counit to $\TOF$ y
 %	\label{fig:CNOT}
 %\end{figure}
 
+\section{Discussion}
+
+
+A  direction to extend this work on $\ZXA$ would be to prove completeness for the natural number fragments of the qudit ZH-calculus/full subcategories $d^n$ of $\Mat_\N$.  There is a universal presentation of the qudit ZH-calculus \cite{roy}; however, completeness has not been proven.  The difficulty with generalizing our work in this chapter to higher dimensions is that finding normal forms for systems of Boolean equations is particularly easy.  For example, the rule \ref{ZXA.13} allows us to make the following deduction about Boolean formulae:
+
+$$
+\dfrac{P(X)\cdot P(Y)=1}{P(x)=1,\hspace*{1cm}Q(y)=1}
+$$
+
+So that an $n$ variable system of Boolean equations is equivalent to a single $n$-variable Boolean equation; wich can be represented as a linear subspace over $\F_2^n$. Therefore, in some sense \ref{ZXA.13} allows us to perform Gaussian elimination of the matrices representing these subspaces.
+ 
+In the qudit setting, the $n$-variable $d$-valued formulae have the structure of elements of the ring of polynomial functions $\Z/d\Z[x_1,\cdots, x_{n}]/\langle x_1^d-x_1,\cdots, x_n^d-x_n\rangle$; finding normal forms for the induced algebraic varieties being much trickier. 
+However systems of polynomial equations over fields admit normal forms called Gr\"obner bases.  Therefore,  when the dimension $d$ is a prime $p$, one could potentially use  Gr\"obner bases to find normal forms for these systems of polynomial equations over fields  modulo the  ideals $\langle x_1^d-x_1,\cdots, x_n^d-x_n\rangle$.   This is considerably more tricky than reducing Boolean circuits to a normal form and we leave it as an open problem.

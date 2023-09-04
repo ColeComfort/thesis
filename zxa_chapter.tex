@@ -3533,14 +3533,15 @@ Therefore $\FSpan_2 \cong \X$.
 To show that $\hat \TOF \cong \FSpan_2$, consider the following diagram where each horizontal face is a pushout:
 
 
+
 $$
-\xymatrixrowsep{6mm}\xymatrixcolsep{4mm}
+\xymatrixrowsep{10mm}\xymatrixcolsep{10mm}
 \xymatrix{
                                        & {(\FPinj_2,\times)} \ar[dl] \ar@/^.5pc/[rr] \ar@{=}[d]  &                                                  & (\FPar_2,\times) \ar[d]^{\cong} \ar[dl] \\
- (\FPar_2,\times)^\op \ar@/_1pc/[rr]  \ar[d]_{\cong}           &                   {(\FPinj_2,\times)}\ar[dl] \ar@/^.5pc/[rr]    \ar[d]^\cong                                                                       & (\FSpan_2,\times)    \ar@{-->}[d]^(.35){\cong}    & \tilde{(\FPinj_2,\times)} \ar[dl]       \ar[d]^\cong       \\
-\tilde{(\FPinj_2,\times)}^\op \ar@/_1pc/[rr]            \ar[d]_{\cong}                               &      \TOF \ar[dl] \ar@/^.5pc/[rr]  \ar@{=}[d]       &                                  \ar@{-->}[d]^(.35){\cong}             & \tilde \TOF  \ar[d]_{\cong} \ar[dl]\\
-\tilde{\TOF}^\op \ar@/_1pc/[rr]   \ar[d]_{\cong}   &                  \TOF \ar[dl] \ar@/^.5pc/[rr]                                                                      &  \ar@{-->}[d]^(.35){\cong}  & c(\TOF)  \ar[dl]\\
-c(\TOF)^\op        \ar@/_1pc/[rr]                          &                                                                                             &          \hat\TOF &                        &            \\
+ (\FPar_2,\times)^\op \ar@/_1pc/[rr]  \ar[d]_{\cong}           &                   {(\FPinj_2,\times)}\ar[dl] \ar@/^.5pc/[rr]    \ar[d]^\cong                                                                       & (\FSpan_2,\times)   \skewpullbackcorner[ul]    \ar@{-->}[d]^(.35){\cong}    & \tilde{(\FPinj_2,\times)} \ar[dl]       \ar[d]^\cong       \\
+\tilde{(\FPinj_2,\times)}^\op \ar@/_1pc/[rr]            \ar[d]_{\cong}                               &      \TOF \ar[dl] \ar@/^.5pc/[rr]  \ar@{=}[d]       &            \skewpullbackcorner[ul]                         \ar@{-->}[d]^(.35){\cong}             & \tilde \TOF  \ar[d]_{\cong} \ar[dl]\\
+\tilde{\TOF}^\op \ar@/_1pc/[rr]   \ar[d]_{\cong}   &                  \TOF \ar[dl] \ar@/^.5pc/[rr]                                                                      &  \skewpullbackcorner[ul]    \ar@{-->}[d]^(.35){\cong}  & c(\TOF)  \ar[dl]\\
+c(\TOF)^\op        \ar@/_1pc/[rr]                          &                                                                                             &          \hat\TOF  \skewpullbackcorner[ul]    &                        &            \\
 }
 $$
 
@@ -14001,19 +14002,20 @@ $$
 \hspace*{1cm}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=H] (0) at (1, 11.25) {$n$};
-		\node [style=none] (1) at (1.5, 10.5) {};
-		\node [style=none] (2) at (1.5, 12) {};
-		\node [style=none] (3) at (0.5, 10.5) {};
-		\node [style=none] (4) at (0.5, 12) {};
-		\node [style=none] (5) at (1, 12) {$\cdots$};
-		\node [style=none] (6) at (1, 10.5) {$\cdots$};
+		\node [style=none] (1) at (0.5, -0.75) {};
+		\node [style=none] (2) at (0.5, 0.75) {};
+		\node [style=none] (3) at (-0.5, -0.75) {};
+		\node [style=none] (4) at (-0.5, 0.75) {};
+		\node [style=none] (5) at (0, 0.75) {$\cdots$};
+		\node [style=none] (6) at (0, -0.75) {$\cdots$};
+		\node [style=none] (14) at (0, 0) {};
+		\node [style=H] (15) at (0, 0) {$n$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=30, out=-90] (2.center) to (0);
-		\draw [in=90, out=-30] (0) to (1.center);
-		\draw [in=-150, out=90] (3.center) to (0);
-		\draw [in=-90, out=150] (0) to (4.center);
+		\draw [in=-90, out=120] (14.center) to (4.center);
+		\draw [in=-90, out=60] (14.center) to (2.center);
+		\draw [in=90, out=-120] (14.center) to (3.center);
+		\draw [in=90, out=-60] (14.center) to (1.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 :=
@@ -14135,37 +14137,39 @@ $$
 \hspace*{.5cm}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=H] (0) at (1, 11.25) {$2$};
-		\node [style=none] (1) at (1.5, 10.5) {};
-		\node [style=none] (2) at (1.5, 12) {};
-		\node [style=none] (3) at (0.5, 10.5) {};
-		\node [style=none] (4) at (0.5, 12) {};
-		\node [style=none] (5) at (1, 12) {$\cdots$};
-		\node [style=none] (6) at (1, 10.5) {$\cdots$};
+		\node [style=none] (1) at (0.5, -0.75) {};
+		\node [style=none] (2) at (0.5, 0.75) {};
+		\node [style=none] (3) at (-0.5, -0.75) {};
+		\node [style=none] (4) at (-0.5, 0.75) {};
+		\node [style=none] (5) at (0, 0.75) {$\cdots$};
+		\node [style=none] (6) at (0, -0.75) {$\cdots$};
+		\node [style=none] (14) at (0, 0) {};
+		\node [style=H] (15) at (0, 0) {$2$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=30, out=-90] (2.center) to (0);
-		\draw [in=90, out=-30] (0) to (1.center);
-		\draw [in=-150, out=90] (3.center) to (0);
-		\draw [in=-90, out=150] (0) to (4.center);
+		\draw [in=-90, out=120] (14.center) to (4.center);
+		\draw [in=-90, out=60] (14.center) to (2.center);
+		\draw [in=90, out=-120] (14.center) to (3.center);
+		\draw [in=90, out=-60] (14.center) to (1.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=H] (0) at (1, 11.25) {$1$};
-		\node [style=none] (1) at (1.5, 10.5) {};
-		\node [style=none] (2) at (1.5, 12) {};
-		\node [style=none] (3) at (0.5, 10.5) {};
-		\node [style=none] (4) at (0.5, 12) {};
-		\node [style=none] (5) at (1, 12) {$\cdots$};
-		\node [style=none] (6) at (1, 10.5) {$\cdots$};
+		\node [style=none] (1) at (0.5, -0.75) {};
+		\node [style=none] (2) at (0.5, 0.75) {};
+		\node [style=none] (3) at (-0.5, -0.75) {};
+		\node [style=none] (4) at (-0.5, 0.75) {};
+		\node [style=none] (5) at (0, 0.75) {$\cdots$};
+		\node [style=none] (6) at (0, -0.75) {$\cdots$};
+		\node [style=none] (14) at (0, 0) {};
+		\node [style=H] (15) at (0, 0) {$1$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=30, out=-90] (2.center) to (0);
-		\draw [in=90, out=-30] (0) to (1.center);
-		\draw [in=-150, out=90] (3.center) to (0);
-		\draw [in=-90, out=150] (0) to (4.center);
+		\draw [in=-90, out=120] (14.center) to (4.center);
+		\draw [in=-90, out=60] (14.center) to (2.center);
+		\draw [in=90, out=-120] (14.center) to (3.center);
+		\draw [in=90, out=-60] (14.center) to (1.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
@@ -14602,17 +14606,6 @@ is isomorphic to the phase-free ZH-calculus.
 These two equations express the fact that $1/\sqrt 2$ is invertible and that the two spiders are related via Fourier transform.  The phase free ZH-calculus is already known to be approximately universal for qubits, so it is quite remarkable that our classical presentation of $\ZXA$ needs so little to be so quantum.  Because of the way we proved completeness for natural number qubit matrices; perhaps there is a more direct way to get around adding the scalar $1/\sqrt 2$ to get a presentation for qubit matrices over $\Z$, however we leave this for future work.
 
 
-
-Also, another direction to extend this work on $\ZXA$ would be to prove completeness for the natural number fragments of the qudit ZH-calculus/full subcategories $d^n$ of $\Mat_\N$.  There is a universal presentation of the qudit ZH-calculus \cite{roy}; however, completeness has not been proven.  The difficulty with generalizing our work in this chapter to higher dimensions is that finding normal forms for systems of Boolean equations is particularly easy.  For example, the rule \ref{ZXA.13} allows us to make the following deduction about Boolean formulae:
-
-$$
-\dfrac{P(X)\cdot P(Y)=1}{P(x)=1,\hspace*{1cm}Q(y)=1}
-$$
-
-So that an $n$ variable system of Boolean equations is equivalent to a single $n$-variable Boolean equation; wich can be represented as a linear subspace over $\F_2^n$. Therefore, in some sense \ref{ZXA.13} allows us to perform Gaussian elimination of the matrices representing these subspaces.
- 
-In the qudit setting, the $n$-variable $d$-valued formulae have the structure of elements of the ring of polynomial functions $\Z/d\Z[x_1,\cdots, x_{n}]/\langle x_1^d-x_1,\cdots, x_n^d-x_n\rangle$; finding normal forms for the induced algebraic varieties being much trickier. 
-However systems of polynomial equations over fields admit normal forms called Gr\"obner bases.  Therefore,  when the dimension $d$ is a prime $p$, one could potentially use  Gr\"obner bases to find normal forms for these systems of polynomial equations over fields  modulo the  ideals $\langle x_1^d-x_1,\cdots, x_n^d-x_n\rangle$.   This is considerably more tricky than reducing Boolean circuits to a normal form and we leave it as an open problem.
 
 %
 %\nocite{coecke2008classical}

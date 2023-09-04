@@ -46,22 +46,50 @@ $$
 $$
 
 
-A terminal object in a category (if it exists) is an object $\one$ equipped with a unique map $!:X\to \one$ for every object $X$ called the {\bf discard map}.
+A {\bf terminal} object in a category (if it exists) is an object $\one$ equipped with a unique map $!_X:X\to \one$ for every object $X$ called the {\bf discard map}.
 
 
 
 A category is  {\bf Cartesian} when it has all finite products and a terminal object. In a Cartesian category, the discard maps and {\bf diagonals} $\Delta:=\langle 1, 1 \rangle$ yield a natural family of commutative monoids.
 
 
-The products/projections/pairing maps/terminal objects/diagonal maps in $\X$ are respectively called {\bf coproducts}/{\bf injections}/{\bf copairing maps}/{\bf initial objects}/{\bf codiagonal maps} in $\X^\op$.
+%A category $\X$ is {\bf coCartesian} when $\X^\op$ is Cartesian.
 
-Moreover, $\X$ is Cartesian iff $\X^\op$ is coCartesian.
+%The products/projections/pairing maps/terminal objects/diagonal maps in $\X$ are respectively called {\bf coproducts}/{\bf injections}/{\bf copairing maps}/{\bf initial objects}/{\bf codiagonal maps} in $\X^\op$.
+
+
+Let us spell out the dual notion in order to establish the dual notations.
+The {\bf coproduct} in $\X$ is the product in $\X^\op$:
+
+$$
+\xymatrix{
+    &
+    & A
+    &
+    &
+  \\X \ar[urr]^{f} \ar[rr]_{\iota_0}
+    &
+    & X+  Y \ar@{-->}[u]^{[f,g]} 
+    &
+    & Y\ar[ull]_{g}  \ar[ll]_{\iota_1}
+}
+$$ 
+
+Where $ X+  Y $ is the product object,  $\iota_0,\iota_1$ are the injections,   $[f,g]$ is the copairing map.
+
+
+A {\bf initial} object in a category (if it exists) is an object $\emptyset$ equipped with a unique map $?_X: \emptyset\to  X$ for every object $X$ called the {\bf codiscard map}.
+
+A category is  {\bf coCartesian} when it has all finiteco products and an initial object. In aco Cartesian category, the codiscard maps and {\bf codiagonals} $[ 1, 1 ]$ yield a natural family of cocommutative comonoids.
 \end{definition}
 
 
 
 \begin{example}
-$\Sets$ and  $\FSets$ are Cartesian with respect to the Cartesian product $X\times Y = \{(x,y) \ | \ \forall x\in X, y \in Y\}$.  They are cocartesian with respect to the disjoint union $X+Y = \{ (x,1) \ | \ \forall x \in X \} \cup  \{ (y,2) \ | \ \forall y \in Y \}$.
+$\Sets$ and  $\FSets$ are Cartesian with respect to the Cartesian product:
+$$X\times Y := \{(x,y) \ | \ \forall x\in X, y \in Y\}$$
+They are cocartesian with respect to the disjoint union
+$$X+Y := \{ (x,1) \ | \ \forall x \in X \} \cup  \{ (y,2) \ | \ \forall y \in Y \}$$
 
 
 Similarly, $\FVect_k$ and $\Mat_S$ is complete and cocomplete both with respect to the direct sum.
@@ -329,11 +357,11 @@ $$
 $$
 \end{lemma}
 
-Therefore, when we gave presentations for $\FinOrd$ and $\Mat_S$; the natural white commutative comonoid is precisely the one coming from the Cartesian structure.
+Therefore, when we gave presentations for $\FinOrd$ and $\Mat_S$; the natural white commutative comonoid is precisely the one coming from the Cartesian structure.  The naturality of the diagonal map corresponds to determinism, and the naturality of the discard corresponds to totality.  We will come back to this shortly.
 
 
 
-As we alluded to in the introduction of this subsection, the Cartesian notion of copying biases inputs over outputs, and the coCartesian notion of comparison biases outputs over inputs.  We are interested in a more permissive, symmetric notion of copying, which is compatible with \dag-structure. The following construction allows us to develop such a structure; generalizing the product modulo shared structure:
+As we alluded to in the introduction of this subsection, the Cartesian notion of copying biases inputs over outputs, and the coCartesian notion of comparison biases outputs over inputs.  We are interested in a more permissive (partial and nondeterministic), symmetric notion of copying, which is compatible with \dag-structure. The following construction allows us to develop such a structure; generalizing the product modulo shared structure:
 
 
 \begin{definition}
@@ -421,11 +449,12 @@ $$
 \end{definition}
 
 \begin{example} 
-In $\Sets$ the pullback of a cospan $X \xrightarrow{f} A \xleftarrow{g} Y$ is (up to unique isomorphism) the set $\{(x,y) \in X\times Y : f(x) = g(y)\}$.
+In $\Sets$ the pullback of a cospan $X \xrightarrow{f} A \xleftarrow{g} Y$ is (up to unique isomorphism) the set:
+$$\{(x,y) \in X\times Y : f(x) = g(y)\}$$
 
 
-The pushout of a  span $X \xleftarrow{f} A \xrightarrow{g} Y$ is likewise:
-the quotient of the set $X+Y$ by $f(a)\sim g(a)$ for all $a \in A$.
+The pushout of a  span $X \xleftarrow{f} A \xrightarrow{g} Y$ is likewise the quotient of the set $X+Y$ by:
+$$f(a)\sim g(a) \text{ \ \ for all } a \in A$$
 
 The concrete pullback/pushout of matrices is essentially the same with the direct sum instead of the Cartesian product/disjoint union.
 \end{example}
@@ -549,7 +578,7 @@ $
 
 
 
-For the interested reader, he monoidal structures (or lack thereof) of categories of cospans and and spans of sets is elaborated on in great detail in \cite{bruni}.
+For the interested reader, the monoidal structures (or lack thereof) of categories of cospans and and spans of sets is elaborated on in great detail in \cite{bruni}.
 
 Categories of spans give mathematical semantics for nondeterminstic processes where inputs are associated to possible outputs with multiplicity. 
 A 2-cell between two processes thus describes a method to transform one process into another in a way that preserves the relationships between inputs and outputs.  For example, consider the following well-known result:
@@ -733,7 +762,7 @@ $$
 
 The identity for composition is the same as for spans.
 
-\item[2-cells:] The 2-cells and their composition and identity is the same as for spans.
+\item[2-cells:] The 2-cells are the same as for spans.
 
 \end{description}
 
@@ -742,11 +771,9 @@ The identity for composition is the same as for spans.
 Relations have the special property, unlike spans, that they are poset-enriched; that is to say, either there exists a single 2-cell between 1-cells or there doesn't. This makes things much simpler than the spans picture, because one never has to deal with coherence equations.  This also justifies the interpretation of nondeterministic processes in this setting: possibility amounts to the mere existence of a 2-cell.  Any two ways to arrive at the same result must be the same.
 
 
-The fact that internal relations is a strict bicategory means that we can regard is a an ordinary category; as, unlike it the case of spans, composition is strictly associative. Therefore, we don't have to quotient to obtain an ordinary category of relations.
+The is why, unlike spans, internal relations are  strict 2-categories; as  composition is strictly associative. Therefore, we don't have to quotient to obtain an ordinary category of relations we just need to forget about the 2-cells.
 
-Just as in the case of spans, relations is a \dag-compact closed category with respect to the Cartesian product where the \dag-functor is given by the converse.
-
-
+Note that just as in the case of spans, relations is a \dag-compact closed category with respect to the Cartesian product where the \dag-functor is given by the converse.
 
 
 
@@ -754,7 +781,9 @@ Just as in the case of spans, relations is a \dag-compact closed category with r
 
 
 
-Consider the following concrete examples which we will use in this thesis:
+
+
+Consider the following concrete example:
 \begin{example}
 $\Rel:=\Rel(\Set)$ has:
 
@@ -785,7 +814,7 @@ $\Rel(\FSets)$ is symmetric monoidally equivalent to $\Mat(\B)$ under both tenso
 
 This quotient of multiplicity from spans to relations in the case of finite sets, corresponds to applying the commutative semiring homorphism $\N\to \B$, where $\B$ is the Boolean semiring, making $2=1$.
 
-Therefore when working in in the prop whose tensor product is given by the disjoint union/coproduct; this quotient can be stated as the following equation between string diagrams, meaning that we don't care which path we take, we care merely of the existence of a path:
+Therefore the quotient from $\cb_\N\to\cb_\B$ can be stated as the following equation between string diagrams; meaning that we don't care which path we take, merely of the existence of a path:
 
 $$
 \begin{tikzpicture}
@@ -905,19 +934,19 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (11) at (2.25, 1.5) {};
-		\node [style=none] (12) at (3.25, 1.5) {};
-		\node [style=none] (13) at (2.25, 0) {};
-		\node [style=none] (14) at (3.25, 0) {};
-		\node [style=Z] (15) at (2.75, 1) {};
-		\node [style=Z] (16) at (2.75, 0.5) {};
+		\node [style=none] (98) at (50.75, 0) {};
+		\node [style=none] (99) at (51.75, 0) {};
+		\node [style=Z] (101) at (51.25, 0.5) {};
+		\node [style=none] (102) at (50.75, 1.5) {};
+		\node [style=none] (103) at (51.75, 1.5) {};
+		\node [style=Z] (104) at (51.25, 1) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (15) to (11.center);
-		\draw (15) to (12.center);
-		\draw (15) to (16);
-		\draw (16) to (13.center);
-		\draw (14.center) to (16);
+		\draw [in=90, out=-165, looseness=0.75] (101) to (98.center);
+		\draw [in=-15, out=90, looseness=0.75] (99.center) to (101);
+		\draw [in=-90, out=165, looseness=0.75] (104) to (102.center);
+		\draw [in=15, out=-90, looseness=0.75] (103.center) to (104);
+		\draw (101) to (104);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
@@ -984,19 +1013,19 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (11) at (2.25, 1.5) {};
-		\node [style=none] (12) at (3.25, 1.5) {};
-		\node [style=none] (13) at (2.25, 0) {};
-		\node [style=none] (14) at (3.25, 0) {};
-		\node [style=X] (15) at (2.75, 1) {};
-		\node [style=X] (16) at (2.75, 0.5) {};
+		\node [style=none] (98) at (50.75, 0) {};
+		\node [style=none] (99) at (51.75, 0) {};
+		\node [style=X] (101) at (51.25, 0.5) {};
+		\node [style=none] (102) at (50.75, 1.5) {};
+		\node [style=none] (103) at (51.75, 1.5) {};
+		\node [style=X] (104) at (51.25, 1) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (15) to (11.center);
-		\draw (15) to (12.center);
-		\draw (15) to (16);
-		\draw (16) to (13.center);
-		\draw (14.center) to (16);
+		\draw [in=90, out=-165, looseness=0.75] (101) to (98.center);
+		\draw [in=-15, out=90, looseness=0.75] (99.center) to (101);
+		\draw [in=-90, out=165, looseness=0.75] (104) to (102.center);
+		\draw [in=15, out=-90, looseness=0.75] (103.center) to (104);
+		\draw (101) to (104);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
@@ -1132,7 +1161,7 @@ However, the category $\Aff\Mat_k$ is not a regular category, in fact it isn't e
 The empty set can not be regarded as a vector space because it has no origin; however, because affine transformations are not required to preserve the origin, it is perfectly fine to ask for an affine transformation from an empty space.
 
 
-By shifting to the category $\Aff\Mat_k+1$ where one freely adds the empty set as the initial object, so that there is a unique map $\emptyset \xrightarrow{?} k^n$, for all $n$,  we obtain an algebraic theory, and thus a regular category.  Therefore, we can take the category of internal relations:
+By shifting to the category $\Aff\Mat_k+1$ where one freely adds the empty set as the initial object, so that there is a unique map $\emptyset \xrightarrow{?_n} k^n$, for all $n$,  we obtain an algebraic theory, and thus a regular category.  Notice that $\Aff\Mat_k$ is the full subcategory of $\Aff\Mat_k+1$ with nonempty objects.  Therefore, we can take the category of internal relations:
 
 
 
@@ -1146,7 +1175,7 @@ The prop of {\bf affine relations} over $k$, $\Aff\Rel_{k}$ is the full subcateg
 Concretely, this is constructed in the same way as $\LinRel_k$ except map $n\to m$ are instead (possibly empty) affine subspaces $S \subseteq k^n\oplus k^m$. That is to say, $S$ is a subset of $k^n\oplus k^m$ such that for any $a \in S$, the set $\{v+a\ |\ \forall v \in S\}$ is a linear subspace of  $k^n\oplus k^m$.  Note that the empty set vacuously satisfies this condition.
 
 
-We chose to forget the empty set as an object and retain it merely as a subobject so that we can present it as a (single sorted prop):
+We chose to forget the empty set as an object and retain it merely as a subobject so that we can present it as a (single sorted) prop as follows:
 
 \begin{lemma}[{\cite[\S A]{affine}}]
 $\Aff\Rel_{k}$ is presented by the prop $\aih_k$ given adding the following generators and equations to the presentation of $\ih_k$:
@@ -1631,19 +1660,19 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (11) at (2.25, 1.5) {};
-		\node [style=none] (12) at (3.25, 1.5) {};
-		\node [style=none] (13) at (2.25, 0) {};
-		\node [style=none] (14) at (3.25, 0) {};
-		\node [style=Z] (15) at (2.75, 1) {};
-		\node [style=Z] (16) at (2.75, 0.5) {};
+		\node [style=none] (98) at (50.75, 0) {};
+		\node [style=none] (99) at (51.75, 0) {};
+		\node [style=Z] (101) at (51.25, 0.5) {};
+		\node [style=none] (102) at (50.75, 1.5) {};
+		\node [style=none] (103) at (51.75, 1.5) {};
+		\node [style=Z] (104) at (51.25, 1) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (15) to (11.center);
-		\draw (15) to (12.center);
-		\draw (15) to (16);
-		\draw (16) to (13.center);
-		\draw (14.center) to (16);
+		\draw [in=90, out=-165, looseness=0.75] (101) to (98.center);
+		\draw [in=-15, out=90, looseness=0.75] (99.center) to (101);
+		\draw [in=-90, out=165, looseness=0.75] (104) to (102.center);
+		\draw [in=15, out=-90, looseness=0.75] (103.center) to (104);
+		\draw (101) to (104);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
@@ -2523,19 +2552,19 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (11) at (2.25, 1.5) {};
-		\node [style=none] (12) at (3.25, 1.5) {};
-		\node [style=none] (13) at (2.25, 0) {};
-		\node [style=none] (14) at (3.25, 0) {};
-		\node [style=Z] (15) at (2.75, 1) {};
-		\node [style=Z] (16) at (2.75, 0.5) {};
+		\node [style=none] (98) at (50.75, 0) {};
+		\node [style=none] (99) at (51.75, 0) {};
+		\node [style=Z] (101) at (51.25, 0.5) {};
+		\node [style=none] (102) at (50.75, 1.5) {};
+		\node [style=none] (103) at (51.75, 1.5) {};
+		\node [style=Z] (104) at (51.25, 1) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (15) to (11.center);
-		\draw (15) to (12.center);
-		\draw (15) to (16);
-		\draw (16) to (13.center);
-		\draw (14.center) to (16);
+		\draw [in=90, out=-165, looseness=0.75] (101) to (98.center);
+		\draw [in=-15, out=90, looseness=0.75] (99.center) to (101);
+		\draw [in=-90, out=165, looseness=0.75] (104) to (102.center);
+		\draw [in=15, out=-90, looseness=0.75] (103.center) to (104);
+		\draw (101) to (104);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
@@ -2616,6 +2645,8 @@ $$
 \ell^2(X):=\left\{\phi:X\to \C  \ \bigl\vert \sum_{x\in X} \ \left|\phi(x)\right|^2 < \infty \right\}
 $$
 
+
+
 \item[Maps:] Given a partial injection $f=X \xleftarrowtail{f_0} \ A \  \xrightarrowtail{f_1} Z$ and some $\phi:X\to \C$ in $\ell^2(X)$
 
 $$
@@ -2625,10 +2656,22 @@ $$
 \end{description}
 
 The partial inverse is mapped to the Hermetian adjoint.
+
+In particular, $\ell^2(X)$ has a distinguished orthonormal basis given by  $\{\delta_{x}:X\to \C\ | \ \forall x \in X \}$, where $\delta_x$ is the Dirac delta at $X$:
+
+$$
+\delta_x(y) \mapsto
+\begin{cases}
+1 & \text{if } $x=y$\\
+0 & \text{otherwise}
+\end{cases}
+$$
 \end{definition}
 
 
-The category of partial injections is special in the sense that there is an embedding into $\ell^2$. This does not generalize to sets and functions.  However, it can be modified to yield a functor from finite sets and functions/finite sets and spans into $\FHilb$, where all maps are bounded.  We will extensively use such embeddings throughout this thesis.
+The category of partial injections is unusual in the sense that there is an embedding into $\ell^2$. This does not generalize to sets and functions, for example: the maps are no longer send to bounded linear maps.
+
+However, if the domain is changed to the category of spans of finite sets this induces an embedding into $\FHilb$.  This is actually the version we will use throughout this thesis, but we give the general definition to highlight the importance of inverse categories in the categorical semantics of quantum mechanics.
 
 
 We also have a deterministic partially invertible notion of copying:
@@ -2775,7 +2818,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
-\begin{tikzpicture}[scale=-1]
+\begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (0) at (12, 2) {};
 		\node [style=none] (1) at (12.5, 1.25) {};
@@ -2980,19 +3023,19 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (11) at (2.25, 1.5) {};
-		\node [style=none] (12) at (3.25, 1.5) {};
-		\node [style=none] (13) at (2.25, 0) {};
-		\node [style=none] (14) at (3.25, 0) {};
-		\node [style=Z] (15) at (2.75, 1) {};
-		\node [style=Z] (16) at (2.75, 0.5) {};
+		\node [style=none] (98) at (50.75, 0) {};
+		\node [style=none] (99) at (51.75, 0) {};
+		\node [style=Z] (101) at (51.25, 0.5) {};
+		\node [style=none] (102) at (50.75, 1.5) {};
+		\node [style=none] (103) at (51.75, 1.5) {};
+		\node [style=Z] (104) at (51.25, 1) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (15) to (11.center);
-		\draw (15) to (12.center);
-		\draw (15) to (16);
-		\draw (16) to (13.center);
-		\draw (14.center) to (16);
+		\draw [in=90, out=-165, looseness=0.75] (101) to (98.center);
+		\draw [in=-15, out=90, looseness=0.75] (99.center) to (101);
+		\draw [in=-90, out=165, looseness=0.75] (104) to (102.center);
+		\draw [in=15, out=-90, looseness=0.75] (103.center) to (104);
+		\draw (101) to (104);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
