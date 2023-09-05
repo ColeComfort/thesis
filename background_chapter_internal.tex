@@ -58,11 +58,108 @@ However, there is a more refined notion of composition of pro(p)s; to expose whi
 
 \subsubsection{Internal categories and strict factorization systems}
 
-String diagrams for bicategories:
+In this section we will make extensive use of bicategories.  Just like monoidal categories, every bicategory is equivalent to a strict 2-category where the unitors and associators are identities.  We have already been working with a strict 2-category throughout this thesis: the 2-category of categories, functors and natural transformations (as well as its various monoidal cousins).   We have also already encountered a (nonstrict) bicategory: namely, the 2-category of spans internal to a category.  
 
-TODO
+2-categories have a graphical calculus much like strict monoidal categories, except for the fact that now the empty space between wires is now coloured by the 0-cells.  For example a 0-cell is drawn as a surface:
 
-First we introduce the bicategory of monads:
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (5) at (13, -2) {};
+		\node [style=none] (10) at (14, -2) {};
+		\node [style=none] (11) at (13, -3) {};
+		\node [style=none] (12) at (14, -3) {};
+		\node [style=none] (15) at (13.5, -2.5) {$X$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill[style=cellone] (5.center) to (10.center) to (12.center) to (11.center) to cycle;
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+
+A 1-cell $F:X\to Y$ is drawn as a wire separating two surfaces:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (5) at (13, -2) {};
+		\node [style=none] (10) at (14, -2) {};
+		\node [style=none] (11) at (13, -3) {};
+		\node [style=none] (12) at (14, -3) {};
+		\node [style=none] (13) at (15, -2) {};
+		\node [style=none] (14) at (15, -3) {};
+		\node [style=none] (15) at (14, -1.75) {$F$};
+		\node [style=none] (16) at (14, -3.25) {$F$};
+		\node [style=none] (8) at (13.5, -2.5) {$X$};
+		\node [style=none] (9) at (14.5, -2.5) {$Y$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill[style=cellone] (5.center) to (10.center) to (12.center) to (11.center) to cycle;
+		\fill[style=celltwo] (10.center) to (13.center) to (14.center) to (12.center) to cycle;
+		\draw (10.center) to (12.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+The composition of two $1$-cells $X\xrightarrow{F} Y\xrightarrow{G}Z $ is drawn as follows:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (13, -2) {};
+		\node [style=none] (1) at (14, -2) {};
+		\node [style=none] (2) at (13, -3) {};
+		\node [style=none] (3) at (14, -3) {};
+		\node [style=none] (4) at (15, -2) {};
+		\node [style=none] (5) at (15, -3) {};
+		\node [style=none] (6) at (14, -1.75) {$F$};
+		\node [style=none] (7) at (14, -3.25) {$F$};
+		\node [style=none] (8) at (13.5, -2.5) {$X$};
+		\node [style=none] (9) at (14.5, -2.5) {$Y$};
+		\node [style=none] (12) at (15, -1.75) {$G$};
+		\node [style=none] (13) at (15, -3.25) {$G$};
+		\node [style=none] (14) at (15.5, -2.5) {$Z$};
+		\node [style=none] (15) at (16, -2) {};
+		\node [style=none] (16) at (16, -3) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill[style=cellone] (0.center) to (1.center) to (3.center) to (2.center) to cycle;
+		\fill[style=celltwo] (1.center) to (4.center) to (5.center) to (3.center) to cycle;
+		\fill[style=cellthree] (4.center) to (15.center) to (16.center) to (5.center) to cycle;
+		\draw (1.center) to (3.center);
+		\draw (5.center) to (4.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+And a 2-cell $\phi:F\Rightarrow G$ as a node between wires:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (5) at (13, -2) {};
+		\node [style=none] (10) at (14, -2) {};
+		\node [style=none] (11) at (13, -5) {};
+		\node [style=none] (12) at (14, -5) {};
+		\node [style=none] (13) at (15, -2) {};
+		\node [style=none] (14) at (15, -5) {};
+		\node [style=none] (15) at (14, -1.75) {$G$};
+		\node [style=none] (16) at (14, -5.25) {$F$};
+		\node [style=none] (8) at (13.25, -3.5) {$X$};
+		\node [style=none] (9) at (14.75, -3.5) {$Y$};
+		\node [style=map] (100) at (14, -3.5) {$\phi$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill[style=cellone] (5.center) to (10.center) to (12.center) to (11.center) to cycle;
+		\fill[style=celltwo] (10.center) to (13.center) to (14.center) to (12.center) to cycle;
+		\draw (10.center) to (100.center) to (12.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+
+I won't go into full detail, but you can imagine how the to compose two cells in both directions as in the monoidal setting; moreover, I will omit the labels when they are clear from context, as I have done for monoidal categories. For the rest of this section I will work exploit the coherence theory and work in the setting of strict 2-categories.  This notation shows how the following constructions are canonical:
 
 
 
@@ -89,98 +186,124 @@ T^2 \ar[r]_{\mu} & T
 }
 $
 
-Graphically:
+Graphically if we draw $T$ as $\xcirc$:
+
 
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=X] (0) at (12, 2) {};
-		\node [style=none] (1) at (12.5, 1.25) {};
-		\node [style=none] (2) at (11.5, 1.25) {};
-		\node [style=none] (3) at (12, 2.75) {};
-		\node [style=X] (4) at (12.5, 1.25) {};
-		\node [style=none] (5) at (13, 0.5) {};
-		\node [style=none] (6) at (12, 0.5) {};
-		\node [style=none] (7) at (11.5, 0.5) {};
+		\node [style=X] (14) at (8.25, -1.25) {};
+		\node [style=none] (15) at (8.75, -2) {};
+		\node [style=none] (16) at (7.75, -2) {};
+		\node [style=none] (17) at (8.25, -0.5) {};
+		\node [style=X] (18) at (8.75, -2) {};
+		\node [style=none] (19) at (9.25, -2.75) {};
+		\node [style=none] (20) at (8.25, -2.75) {};
+		\node [style=none] (21) at (7.75, -2.75) {};
+		\node [style=none] (42) at (7.5, -0.5) {};
+		\node [style=none] (43) at (9.5, -0.5) {};
+		\node [style=none] (44) at (9.5, -2.75) {};
+		\node [style=none] (45) at (7.5, -2.75) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=-30] (0) to (1.center);
-		\draw (3.center) to (0);
-		\draw [in=90, out=-150] (0) to (2.center);
-		\draw [in=90, out=-30] (4) to (5.center);
-		\draw [in=90, out=-150] (4) to (6.center);
-		\draw (7.center) to (2.center);
+		\fill[style=cellone] (42.center) to (43.center) to (44.center) to (45.center) to cycle;
+		\draw [in=90, out=-30] (14) to (15.center);
+		\draw (17.center) to (14);
+		\draw [in=90, out=-150] (14) to (16.center);
+		\draw [in=90, out=-30] (18) to (19.center);
+		\draw [in=90, out=-150] (18) to (20.center);
+		\draw (21.center) to (16.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
 \begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=X] (0) at (12, 2) {};
-		\node [style=none] (1) at (12.5, 1.25) {};
-		\node [style=none] (2) at (11.5, 1.25) {};
-		\node [style=none] (3) at (12, 2.75) {};
-		\node [style=X] (4) at (12.5, 1.25) {};
-		\node [style=none] (5) at (13, 0.5) {};
-		\node [style=none] (6) at (12, 0.5) {};
-		\node [style=none] (7) at (11.5, 0.5) {};
+		\node [style=X] (14) at (8.25, -1.25) {};
+		\node [style=none] (15) at (8.75, -2) {};
+		\node [style=none] (16) at (7.75, -2) {};
+		\node [style=none] (17) at (8.25, -0.5) {};
+		\node [style=X] (18) at (8.75, -2) {};
+		\node [style=none] (19) at (9.25, -2.75) {};
+		\node [style=none] (20) at (8.25, -2.75) {};
+		\node [style=none] (21) at (7.75, -2.75) {};
+		\node [style=none] (42) at (7.5, -0.5) {};
+		\node [style=none] (43) at (9.5, -0.5) {};
+		\node [style=none] (44) at (9.5, -2.75) {};
+		\node [style=none] (45) at (7.5, -2.75) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
+		\fill [style=cellone] (42.center) to (43.center) to (44.center) to (45.center) to cycle;
+		\draw [in=90, out=-30] (14) to (15.center);
+		\draw (17.center) to (14);
+		\draw [in=90, out=-150] (14) to (16.center);
+		\draw [in=90, out=-30] (18) to (19.center);
+		\draw [in=90, out=-150] (18) to (20.center);
+		\draw (21.center) to (16.center);
+	\end{pgfonlayer}
+\end{tikzpicture}\ , \hspace*{.2cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (0) at (8, 2.5) {};
+		\node [style=none] (1) at (8.5, 1.75) {};
+		\node [style=none] (2) at (7.5, 1.75) {};
+		\node [style=none] (3) at (8, 3.25) {};
+		\node [style=none] (4) at (8.5, 1.25) {};
+		\node [style=X] (5) at (7.5, 1.75) {};
+		\node [style=none] (30) at (7, 3.25) {};
+		\node [style=none] (31) at (9, 3.25) {};
+		\node [style=none] (32) at (9, 1.25) {};
+		\node [style=none] (33) at (7, 1.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=cellone] (30.center) to (31.center) to (32.center) to (33.center) to cycle;
 		\draw [in=90, out=-30] (0) to (1.center);
 		\draw (3.center) to (0);
 		\draw [in=90, out=-150] (0) to (2.center);
-		\draw [in=90, out=-30] (4) to (5.center);
-		\draw [in=90, out=-150] (4) to (6.center);
-		\draw (7.center) to (2.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-\ ,
-\hspace*{.2cm}
-\begin{tikzpicture}[yscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=X] (10) at (8, 2) {};
-		\node [style=none] (11) at (8.5, 2.75) {};
-		\node [style=none] (12) at (7.5, 2.75) {};
-		\node [style=none] (13) at (8, 1.25) {};
-		\node [style=none] (14) at (8.5, 3.25) {};
-		\node [style=X] (15) at (7.5, 2.75) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [in=-90, out=30] (10) to (11.center);
-		\draw (13.center) to (10);
-		\draw [in=-90, out=150] (10) to (12.center);
-		\draw (11.center) to (14.center);
+		\draw (1.center) to (4.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
-\begin{tikzpicture}[yscale=-1]
+\begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (16) at (6.5, 1.25) {};
-		\node [style=none] (17) at (6.5, 3.25) {};
+		\node [style=none] (6) at (11.5, 1.25) {};
+		\node [style=none] (7) at (11.5, 3.25) {};
+		\node [style=none] (38) at (10.5, 3.25) {};
+		\node [style=none] (39) at (12.5, 3.25) {};
+		\node [style=none] (40) at (12.5, 1.25) {};
+		\node [style=none] (41) at (10.5, 1.25) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (16.center) to (17.center);
+		\fill [style=cellone] (38.center) to (39.center) to (40.center) to (41.center) to cycle;
+		\draw (6.center) to (7.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
-\begin{tikzpicture}[yscale=-1]
+\begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=X] (4) at (5, 2) {};
-		\node [style=none] (5) at (4.5, 2.75) {};
-		\node [style=none] (6) at (5.5, 2.75) {};
-		\node [style=none] (7) at (5, 1.25) {};
-		\node [style=none] (8) at (4.5, 3.25) {};
-		\node [style=X] (9) at (5.5, 2.75) {};
+		\node [style=X] (0) at (8, 2.5) {};
+		\node [style=none] (1) at (8.5, 1.75) {};
+		\node [style=none] (2) at (7.5, 1.75) {};
+		\node [style=none] (3) at (8, 3.25) {};
+		\node [style=none] (4) at (8.5, 1.25) {};
+		\node [style=X] (5) at (7.5, 1.75) {};
+		\node [style=none] (30) at (7, 3.25) {};
+		\node [style=none] (31) at (9, 3.25) {};
+		\node [style=none] (32) at (9, 1.25) {};
+		\node [style=none] (33) at (7, 1.25) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=-90, out=150] (4) to (5.center);
-		\draw (7.center) to (4);
-		\draw [in=-90, out=30] (4) to (6.center);
-		\draw (5.center) to (8.center);
+		\fill [style=cellone] (30.center) to (31.center) to (32.center) to (33.center) to cycle;
+		\draw [in=90, out=-30] (0) to (1.center);
+		\draw (3.center) to (0);
+		\draw [in=90, out=-150] (0) to (2.center);
+		\draw (1.center) to (4.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
 
-\item[1-cells:] {\bf Monad maps}   $(F,\lambda):(X,T,\mu^T, \eta^T)\to (Y,S,\mu^S, \eta^S)$.  Where  $F:X\to Y$ is a $1$-cell and $\lambda:F;S\to T;F$ is a 2-cell preserving the unit and multiplication as follows:
+
+
+\item[1-cells:] {\bf Monad maps}   $(F,\lambda):(X,T,\mu^T, \eta^T)\to (Y,S,\mu^S, \eta^S)$.  Where  $F:X\to Y$ is a $1$-cell and $\lambda:S;F\to F;T$ is a 2-cell preserving the unit and multiplication as follows:
 
 \hfil$
 \xymatrix{
@@ -198,6 +321,110 @@ S;F \ar[rr]_{\lambda}
  & F;T
 }
 $
+
+Graphically if we draw $S$ as $\zcirc$ and $T$ as $\xcirc$ and $\lambda$ as a crossing:
+
+$$
+\begin{tikzpicture}[xscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (F) at (14, 0) {};
+		\node [style=none] (E) at (13, 0) {};
+		\node [style=none] (lambda) at (13.5, 1) {};
+		\node [style=none] (B) at (13, 2) {};
+		\node [style=none] (C) at (14, 2) {};
+		\node [style=none] (H) at (13, -1) {};
+		\node [style=none] (K) at (15, -1) {};
+		\node [style=none] (D) at (15, 2) {};
+		\node [style=none] (A) at (12, 2) {};
+		\node [style=none] (G) at (12, -1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=cellone] (A.center) to (B.center)  to [out=-90, in=135] (lambda.center)  to [out=-135, in=90] (E.center) to (H.center) to (G.center) to cycle;
+		\fill [style=cellone]  (B.center)  to [out=-90, in=135] (lambda.center) to [in=-90, out=45]  (C.center) to cycle;
+		\fill [style=celltwo]  (lambda.center)  to [out=-135, in=90] (E.center) to (H.center) to (K.center) to (D.center) to (C.center) to  [out=-90, in=45] cycle;
+		\draw (H.center) to (E.center);
+		\draw [in=-135, out=90] (E.center) to (lambda.center);
+		\draw [in=-90, out=45] (lambda.center) to (C.center);
+		\draw [in=90, out=-45] (lambda.center) to (F.center);
+		\draw [in=-90, out=135] (lambda.center) to (B.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}[xscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (F) at (12.75, 1) {};
+		\node [style=none] (E) at (13.5, 0) {};
+		\node [style=none] (B) at (12.75, 2) {};
+		\node [style=none] (C) at (13.5, 2) {};
+		\node [style=none] (D) at (14.25, 2) {};
+		\node [style=none] (A) at (12, 2) {};
+		\node [style=none] (G) at (12, 0) {};
+		\node [style=none] (H) at (14.25, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=cellone] (A.center) to (C.center) to (E.center) to (G.center) to cycle;
+		\fill [style=celltwo] (C.center) to (D.center) to (H.center) to (E.center) to cycle;
+		\draw (C.center) to (E.center);
+		\draw (B.center) to (F.center);
+	\end{pgfonlayer}
+\end{tikzpicture} \ , \hspace*{.2cm}
+\begin{tikzpicture}[xscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (F) at (14, 0) {};
+		\node [style=none] (E) at (13, 0) {};
+		\node [style=none] (lambda) at (13.5, 1) {};
+		\node [style=none] (B) at (13, 2) {};
+		\node [style=none] (C) at (14, 2) {};
+		\node [style=none] (H) at (13, -1) {};
+		\node [style=none] (K) at (15, -1) {};
+		\node [style=none] (D) at (15, 2) {};
+		\node [style=none] (A) at (12, 2) {};
+		\node [style=none] (G) at (12, -1) {};
+		\node [style=none] (L) at (13.5, -1) {};
+		\node [style=none] (M) at (14.5, -1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=cellone] (A.center) to (B.center)  to [out=-90, in=135] (lambda.center)  to [out=-135, in=90] (E.center) to (H.center) to (G.center) to cycle;
+		\fill [style=cellone]  (B.center)  to [out=-90, in=135] (lambda.center) to [in=-90, out=45]  (C.center) to cycle;
+		\fill [style=celltwo]  (lambda.center)  to [out=-135, in=90] (E.center) to (H.center) to (K.center) to (D.center) to (C.center) to  [out=-90, in=45] cycle;
+		\draw (H.center) to (E.center);
+		\draw [in=-135, out=90] (E.center) to (lambda.center);
+		\draw [in=-90, out=45] (lambda.center) to (C.center);
+		\draw [in=90, out=-45] (lambda.center) to (F.center);
+		\draw [in=-90, out=135] (lambda.center) to (B.center);
+		\draw [in=-150, out=90] (L.center) to (F.center);
+		\draw [in=90, out=-30] (F.center) to (M.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}[xscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (lambda) at (13.5, 1) {};
+		\node [style=none] (C) at (14, 2.5) {};
+		\node [style=none] (H) at (12.75, -1.25) {};
+		\node [style=none] (K) at (15.25, -1.25) {};
+		\node [style=none] (D) at (15.25, 2.5) {};
+		\node [style=none] (A) at (12, 2.5) {};
+		\node [style=none] (G) at (12, -1.25) {};
+		\node [style=none] (L) at (13.5, -1.25) {};
+		\node [style=none] (M) at (14.75, -1.25) {};
+		\node [style=none] (lambda1) at (13, -0.25) {};
+		\node [style=X] (E) at (12.75, 1.75) {};
+		\node [style=none] (B) at (12.75, 2.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=cellone] (A.center) to (B.center)  to (C.center) to [out=-90, in=90]  (H.center) to (G.center) to cycle;
+		\fill [style=celltwo]  (C.center) to [out=-90, in=90] (H.center) to (K.center) to (D.center) to cycle;
+		\draw [in=-90, out=90] (H.center) to (C.center);
+		\draw [in=-45, out=90, looseness=0.75] (M.center) to (lambda.center);
+		\draw [in=-45, out=90] (L.center) to (lambda1.center);
+		\draw (lambda.center) to (E.center);
+		\draw [in=135, out=-135] (E.center) to (lambda1.center);
+		\draw (E.center) to (B.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
 \item[2-cells:] {\bf Intertwiners} between monad maps $(F,\lambda) \to (G;\chi)$ are 2-cells $\phi: F\to G$ such that:
 
 $$
@@ -208,6 +435,62 @@ F;T \ar[r]_{\phi;T}
  & G;T
 }
 $$
+
+Graphically:
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (11.5, 0) {};
+		\node [style=none] (1) at (11.5, -3) {};
+		\node [style=none] (2) at (12.5, 0) {};
+		\node [style=map] (3) at (12.5, -2) {$\phi$};
+		\node [style=map] (4) at (12, -1) {$\lambda$};
+		\node [style=none] (5) at (11.5, -2) {};
+		\node [style=none] (6) at (12.5, -3) {};
+		\node [style=none] (7) at (11, 0) {};
+		\node [style=none] (8) at (11, -3) {};
+		\node [style=none] (9) at (13, -3) {};
+		\node [style=none] (10) at (13, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill[style=cellone] (6.center) to (3.center) to [in=-45, out=90]  (4.center) to [in=-90, out=135] (0.center) to (10.center) to (9.center) to cycle;
+		\fill[style=celltwo] (6.center) to (3.center) to [in=-45, out=90]  (4.center) to [in=-90, out=135] (0.center) to (7.center) to (8.center) to cycle;
+		\draw (1.center) to (5.center);
+		\draw [in=-135, out=90] (5.center) to (4.center);
+		\draw [in=-90, out=45] (4.center) to (2.center);
+		\draw [in=-45, out=90] (3.center) to (4.center);
+		\draw [in=-90, out=135] (4.center) to (0.center);
+		\draw (6.center) to (3.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (11) at (15.5, -3) {};
+		\node [style=none] (12) at (15.5, 0) {};
+		\node [style=none] (13) at (14.5, -3) {};
+		\node [style=map] (14) at (14.5, -1) {$\phi$};
+		\node [style=map] (15) at (15, -2) {$\chi$};
+		\node [style=none] (16) at (15.5, -1) {};
+		\node [style=none] (17) at (14.5, 0) {};
+		\node [style=none] (18) at (16, -3) {};
+		\node [style=none] (19) at (16, 0) {};
+		\node [style=none] (20) at (14, 0) {};
+		\node [style=none] (21) at (14, -3) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill[style=cellone] (11.center) to  [out=90, in=-45] (15.center) to [out=135, in=-90] (14.center) to (17.center) to (19.center) to (18.center) to cycle;
+		\fill[style=celltwo] (11.center) to  [out=90, in=-45] (15.center) to [out=135, in=-90] (14.center) to (17.center)to (20.center) to (21.center) to cycle;
+		\draw (12.center) to (16.center);
+		\draw [in=45, out=-90] (16.center) to (15.center);
+		\draw [in=90, out=-135] (15.center) to (13.center);
+		\draw [in=135, out=-90] (14.center) to (15.center);
+		\draw [in=90, out=-45] (15.center) to (11.center);
+		\draw (17.center) to (14.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
 \end{description}
 \end{definition}
 
@@ -281,6 +564,211 @@ L;R \ar[rr]_{\lambda}
   &R;L
 }
 $
+
+This is represented graphically where we draw $\lambda$ as two wires crossing:
+
+$$
+\begin{tikzpicture}[xscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (F) at (14, 0) {};
+		\node [style=none] (E) at (13, 0) {};
+		\node [style=none] (lambda) at (13.5, 1) {};
+		\node [style=none] (B) at (13, 2) {};
+		\node [style=none] (C) at (14, 2) {};
+		\node [style=none] (H) at (13, -1) {};
+		\node [style=none] (K) at (15, -1) {};
+		\node [style=none] (D) at (15, 2) {};
+		\node [style=none] (A) at (12, 2) {};
+		\node [style=none] (G) at (12, -1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=cellone] (A.center) to (B.center)  to [out=-90, in=135] (lambda.center)  to [out=-135, in=90] (E.center) to (H.center) to (G.center) to cycle;
+		\fill [style=cellone]  (B.center)  to [out=-90, in=135] (lambda.center) to [in=-90, out=45]  (C.center) to cycle;
+		\fill [style=cellone]  (lambda.center)  to [out=-135, in=90] (E.center) to (H.center) to (K.center) to (D.center) to (C.center) to  [out=-90, in=45] cycle;
+		\draw (H.center) to (E.center);
+		\draw [in=-135, out=90] (E.center) to (lambda.center);
+		\draw [in=-90, out=45] (lambda.center) to (C.center);
+		\draw [in=90, out=-45] (lambda.center) to (F.center);
+		\draw [in=-90, out=135] (lambda.center) to (B.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}[xscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (F) at (12.75, 1) {};
+		\node [style=none] (E) at (13.5, 0) {};
+		\node [style=none] (B) at (12.75, 2) {};
+		\node [style=none] (C) at (13.5, 2) {};
+		\node [style=none] (D) at (14.25, 2) {};
+		\node [style=none] (A) at (12, 2) {};
+		\node [style=none] (G) at (12, 0) {};
+		\node [style=none] (H) at (14.25, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=cellone] (A.center) to (C.center) to (E.center) to (G.center) to cycle;
+		\fill [style=cellone] (C.center) to (D.center) to (H.center) to (E.center) to cycle;
+		\draw (C.center) to (E.center);
+		\draw (B.center) to (F.center);
+	\end{pgfonlayer}
+\end{tikzpicture}\ , \hspace*{.2cm}
+\begin{tikzpicture}[xscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (F) at (14, 0) {};
+		\node [style=none] (E) at (13, 0) {};
+		\node [style=none] (lambda) at (13.5, 1) {};
+		\node [style=none] (B) at (13, 2) {};
+		\node [style=none] (C) at (14, 2) {};
+		\node [style=none] (H) at (13, -1) {};
+		\node [style=none] (K) at (15, -1) {};
+		\node [style=none] (D) at (15, 2) {};
+		\node [style=none] (A) at (12, 2) {};
+		\node [style=none] (G) at (12, -1) {};
+		\node [style=none] (L) at (13.5, -1) {};
+		\node [style=none] (M) at (14.5, -1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=cellone] (A.center) to (B.center)  to [out=-90, in=135] (lambda.center)  to [out=-135, in=90] (E.center) to (H.center) to (G.center) to cycle;
+		\fill [style=cellone]  (B.center)  to [out=-90, in=135] (lambda.center) to [in=-90, out=45]  (C.center) to cycle;
+		\fill [style=cellone]  (lambda.center)  to [out=-135, in=90] (E.center) to (H.center) to (K.center) to (D.center) to (C.center) to  [out=-90, in=45] cycle;
+		\draw (H.center) to (E.center);
+		\draw [in=-135, out=90] (E.center) to (lambda.center);
+		\draw [in=-90, out=45] (lambda.center) to (C.center);
+		\draw [in=90, out=-45] (lambda.center) to (F.center);
+		\draw [in=-90, out=135] (lambda.center) to (B.center);
+		\draw [in=-150, out=90] (L.center) to (F.center);
+		\draw [in=90, out=-30] (F.center) to (M.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}[xscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (lambda) at (13.5, 1) {};
+		\node [style=none] (C) at (14, 2.5) {};
+		\node [style=none] (H) at (12.75, -1.25) {};
+		\node [style=none] (K) at (15.25, -1.25) {};
+		\node [style=none] (D) at (15.25, 2.5) {};
+		\node [style=none] (A) at (12, 2.5) {};
+		\node [style=none] (G) at (12, -1.25) {};
+		\node [style=none] (L) at (13.5, -1.25) {};
+		\node [style=none] (M) at (14.75, -1.25) {};
+		\node [style=none] (lambda1) at (13, -0.25) {};
+		\node [style=Z] (E) at (12.75, 1.75) {};
+		\node [style=none] (B) at (12.75, 2.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=cellone] (A.center) to (B.center)  to (C.center) to [out=-90, in=60]   (lambda.center) to (lambda1.center) to [out=-120, in=90] (H.center) to (G.center) to cycle;
+		\fill [style=cellone]  (C.center) to [out=-90, in=60]   (lambda.center) to (lambda1.center) to [out=-120, in=90] (H.center) to (K.center) to (D.center) to cycle;
+		\draw [in=-45, out=90, looseness=0.75] (M.center) to (lambda.center);
+		\draw [in=-45, out=90] (L.center) to (lambda1.center);
+		\draw (lambda.center) to (E.center);
+		\draw [in=135, out=-135] (E.center) to (lambda1.center);
+		\draw (E.center) to (B.center);
+		\draw [in=-90, out=90] (H.center) to (C.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (F) at (14, 0) {};
+		\node [style=none] (E) at (13, 0) {};
+		\node [style=none] (lambda) at (13.5, 1) {};
+		\node [style=none] (B) at (13, 2) {};
+		\node [style=none] (C) at (14, 2) {};
+		\node [style=none] (H) at (13, -1) {};
+		\node [style=none] (K) at (15, -1) {};
+		\node [style=none] (D) at (15, 2) {};
+		\node [style=none] (A) at (12, 2) {};
+		\node [style=none] (G) at (12, -1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=cellone] (A.center) to (B.center)  to [out=-90, in=135] (lambda.center)  to [out=-135, in=90] (E.center) to (H.center) to (G.center) to cycle;
+		\fill [style=cellone]  (B.center)  to [out=-90, in=135] (lambda.center) to [in=-90, out=45]  (C.center) to cycle;
+		\fill [style=cellone]  (lambda.center)  to [out=-135, in=90] (E.center) to (H.center) to (K.center) to (D.center) to (C.center) to  [out=-90, in=45] cycle;
+		\draw (H.center) to (E.center);
+		\draw [in=-135, out=90] (E.center) to (lambda.center);
+		\draw [in=-90, out=45] (lambda.center) to (C.center);
+		\draw [in=90, out=-45] (lambda.center) to (F.center);
+		\draw [in=-90, out=135] (lambda.center) to (B.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (F) at (12.75, 1) {};
+		\node [style=none] (E) at (13.5, 0) {};
+		\node [style=none] (B) at (12.75, 2) {};
+		\node [style=none] (C) at (13.5, 2) {};
+		\node [style=none] (D) at (14.25, 2) {};
+		\node [style=none] (A) at (12, 2) {};
+		\node [style=none] (G) at (12, 0) {};
+		\node [style=none] (H) at (14.25, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=cellone] (A.center) to (C.center) to (E.center) to (G.center) to cycle;
+		\fill [style=cellone] (C.center) to (D.center) to (H.center) to (E.center) to cycle;
+		\draw (C.center) to (E.center);
+		\draw (B.center) to (F.center);
+	\end{pgfonlayer}
+\end{tikzpicture}\ , \hspace*{.2cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (F) at (14, 0) {};
+		\node [style=none] (E) at (13, 0) {};
+		\node [style=none] (lambda) at (13.5, 1) {};
+		\node [style=none] (B) at (13, 2) {};
+		\node [style=none] (C) at (14, 2) {};
+		\node [style=none] (H) at (13, -1) {};
+		\node [style=none] (K) at (15, -1) {};
+		\node [style=none] (D) at (15, 2) {};
+		\node [style=none] (A) at (12, 2) {};
+		\node [style=none] (G) at (12, -1) {};
+		\node [style=none] (L) at (13.5, -1) {};
+		\node [style=none] (M) at (14.5, -1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=cellone] (A.center) to (B.center)  to [out=-90, in=135] (lambda.center)  to [out=-135, in=90] (E.center) to (H.center) to (G.center) to cycle;
+		\fill [style=cellone]  (B.center)  to [out=-90, in=135] (lambda.center) to [in=-90, out=45]  (C.center) to cycle;
+		\fill [style=cellone]  (lambda.center)  to [out=-135, in=90] (E.center) to (H.center) to (K.center) to (D.center) to (C.center) to  [out=-90, in=45] cycle;
+		\draw (H.center) to (E.center);
+		\draw [in=-135, out=90] (E.center) to (lambda.center);
+		\draw [in=-90, out=45] (lambda.center) to (C.center);
+		\draw [in=90, out=-45] (lambda.center) to (F.center);
+		\draw [in=-90, out=135] (lambda.center) to (B.center);
+		\draw [in=-150, out=90] (L.center) to (F.center);
+		\draw [in=90, out=-30] (F.center) to (M.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (lambda) at (13.5, 1) {};
+		\node [style=none] (C) at (14, 2.5) {};
+		\node [style=none] (H) at (12.75, -1.25) {};
+		\node [style=none] (K) at (15.25, -1.25) {};
+		\node [style=none] (D) at (15.25, 2.5) {};
+		\node [style=none] (A) at (12, 2.5) {};
+		\node [style=none] (G) at (12, -1.25) {};
+		\node [style=none] (L) at (13.5, -1.25) {};
+		\node [style=none] (M) at (14.75, -1.25) {};
+		\node [style=none] (lambda1) at (13, -0.25) {};
+		\node [style=Z] (E) at (12.75, 1.75) {};
+		\node [style=none] (B) at (12.75, 2.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=cellone] (A.center) to (B.center)  to (C.center) to [out=-90, in=60]   (lambda.center) to (lambda1.center) to [out=-120, in=90] (H.center) to (G.center) to cycle;
+		\fill [style=cellone]  (C.center) to [out=-90, in=60]   (lambda.center) to (lambda1.center) to [out=-120, in=90] (H.center) to (K.center) to (D.center) to cycle;
+		\draw [in=-45, out=90, looseness=0.75] (M.center) to (lambda.center);
+		\draw [in=-45, out=90] (L.center) to (lambda1.center);
+		\draw (lambda.center) to (E.center);
+		\draw [in=135, out=-135] (E.center) to (lambda1.center);
+		\draw (E.center) to (B.center);
+		\draw [in=-90, out=90] (H.center) to (C.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
 \end{definition}
 
 
@@ -294,6 +782,62 @@ $L;R$ has a monad structure with:
 {\bf unit:} & $\eta^{L;R}:=1_{X} \xrightarrow{\eta^L;\eta^R} L;R $\\
 {\bf multiplication:} & $\mu^{L;R}:=(L;R)^2 \xrightarrow{1_X; \lambda ; 1_X} L;L;R;R \xrightarrow{\mu^L;\mu^R} L;R$
 \end{tabular}
+
+
+Graphically:
+
+
+$$
+\eta^{L;R}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (0) at (11, 0) {};
+		\node [style=Z] (1) at (12, 0) {};
+		\node [style=none] (2) at (10.25, -1.25) {};
+		\node [style=none] (3) at (12.75, -1.25) {};
+		\node [style=none] (4) at (11, -1.25) {};
+		\node [style=none] (5) at (12, -1.25) {};
+		\node [style=none] (6) at (11, 1) {};
+		\node [style=none] (7) at (12, 1) {};
+		\node [style=none] (8) at (10, -1.25) {};
+		\node [style=none] (9) at (13, -1.25) {};
+		\node [style=none] (10) at (13, 1) {};
+		\node [style=none] (11) at (10, 1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=cellone] (11.center) to (10.center)  to (9.center) to (8.center) to  cycle;
+		\draw (7.center) to (1);
+		\draw (6.center) to (0);
+	\end{pgfonlayer}
+\end{tikzpicture}\ , \hspace*{.2cm}
+\mu^{L;R}=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (0) at (11, 0) {};
+		\node [style=Z] (1) at (12, 0) {};
+		\node [style=none] (2) at (10.25, -1.25) {};
+		\node [style=none] (3) at (12.75, -1.25) {};
+		\node [style=none] (4) at (11, -1.25) {};
+		\node [style=none] (5) at (12, -1.25) {};
+		\node [style=none] (6) at (11, 1) {};
+		\node [style=none] (7) at (12, 1) {};
+		\node [style=none] (8) at (10, -1.25) {};
+		\node [style=none] (9) at (13, -1.25) {};
+		\node [style=none] (10) at (13, 1) {};
+		\node [style=none] (11) at (10, 1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=cellone] (11.center) to (10.center)  to (9.center) to (8.center) to cycle;
+		\draw (7.center) to (1);
+		\draw (6.center) to (0);
+		\draw [in=90, out=-150, looseness=0.75] (1) to (4.center);
+		\draw [in=90, out=-150] (0) to (2.center);
+		\draw [in=90, out=-30, looseness=0.75] (0) to (5.center);
+		\draw [in=-30, out=90] (3.center) to (1);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
 
 \end{lemma}
 
@@ -354,7 +898,77 @@ By changing $\Set$ to the category of monoids, \cite{lack} observed that one can
 
 \begin{definition}
 \label{def:monoid}
-Let $\Mon$ denote the category with set-monoids as objects and monoid homorphisms as morphisms.
+Let $\Mon$ denote the category with set-monoids as objects and monoid homorphisms as morphisms.  Where recall:
+
+\begin{description}
+\item[A set monoid] is a monoid $(X,m,e)$ in $\Sets$ under the Cartesian product.
+
+\item[A monoid homorphism:] $(X,m,e)\to (Y,m',e')$ is a function $f:X\to Y$ such that  $f(m(x,y)) = m'(f(x),f(y))$ and $f(e)=e'$.
+
+Drawing $(X,m,e)$ as $\zcirc$ and  $(Y,m',e')$ as $\xcirc$ that is:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (0) at (13, -3) {};
+		\node [style=map] (1) at (12.5, -3.75) {$f$};
+		\node [style=map] (2) at (13.5, -3.75) {$f$};
+		\node [style=none] (3) at (12.5, -4.5) {};
+		\node [style=none] (4) at (13.5, -4.5) {};
+		\node [style=none] (5) at (13, -2.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (3.center) to (1);
+		\draw [in=-150, out=90] (1) to (0);
+		\draw (4.center) to (2);
+		\draw [in=-30, out=90] (2) to (0);
+		\draw (0) to (5.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (6) at (15, -3.75) {};
+		\node [style=none] (9) at (14.5, -4.5) {};
+		\node [style=none] (10) at (15.5, -4.5) {};
+		\node [style=map] (12) at (15, -3) {$f$};
+		\node [style=none] (13) at (15, -2.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-30, out=90] (10.center) to (6);
+		\draw [in=90, out=-150] (6) to (9.center);
+		\draw (6) to (12);
+		\draw (12) to (13.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+ \ , \hspace*{.2cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (0) at (13, -3) {};
+		\node [style=none] (5) at (13, -2.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (0) to (5.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (6) at (15, -3.75) {};
+		\node [style=map] (9) at (15, -3) {$f$};
+		\node [style=none] (10) at (15, -2.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (6) to (9);
+		\draw (9) to (10.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+\end{description}
+
+
+
 \end{definition}
 
 $\Mon$ has finite pullbacks, so one can define categories within it.  We already have introduced these categories in other terms:
@@ -397,9 +1011,175 @@ where $\lambda$ is the set of equations dictating the unique ways in which the m
 \end{lemma}
 
 
-Now we can see, for example, how the pro $\sfa$ arizes in this manner:
 
-\begin{definition}
+
+
+\begin{example}[{\cite[Example 3.13]{lack}}]
+Let ${\sf injmonot}$ be the pro generated by a single generator $0\to 1$ and no equations:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (57) at (8, -5) {};
+		\node [style=none] (58) at (8, -4.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (57) to (58.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+And let ${\sf surjmonot}$ denote the pro generated by a semigroup:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (0) at (12, 2) {};
+		\node [style=none] (1) at (12.5, 1.25) {};
+		\node [style=none] (2) at (11.5, 1.25) {};
+		\node [style=none] (3) at (12, 2.75) {};
+		\node [style=X] (4) at (12.5, 1.25) {};
+		\node [style=none] (5) at (13, 0.5) {};
+		\node [style=none] (6) at (12, 0.5) {};
+		\node [style=none] (7) at (11.5, 0.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=90, out=-30] (0) to (1.center);
+		\draw (3.center) to (0);
+		\draw [in=90, out=-150] (0) to (2.center);
+		\draw [in=90, out=-30] (4) to (5.center);
+		\draw [in=90, out=-150] (4) to (6.center);
+		\draw (7.center) to (2.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\eref{assoc}
+\begin{tikzpicture}[xscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (0) at (12, 2) {};
+		\node [style=none] (1) at (12.5, 1.25) {};
+		\node [style=none] (2) at (11.5, 1.25) {};
+		\node [style=none] (3) at (12, 2.75) {};
+		\node [style=X] (4) at (12.5, 1.25) {};
+		\node [style=none] (5) at (13, 0.5) {};
+		\node [style=none] (6) at (12, 0.5) {};
+		\node [style=none] (7) at (11.5, 0.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=90, out=-30] (0) to (1.center);
+		\draw (3.center) to (0);
+		\draw [in=90, out=-150] (0) to (2.center);
+		\draw [in=90, out=-30] (4) to (5.center);
+		\draw [in=90, out=-150] (4) to (6.center);
+		\draw (7.center) to (2.center);
+	\end{pgfonlayer}
+\end{tikzpicture}$$
+
+
+${\sf injmonot}$ is a presentation for the monotone injections  and $\sf surjmonot$  the monotone surjections in $\FinOrdMonot$ under the coproduct.  Moreover, distributive law:
+
+$$
+{\sf injmonot}; {\sf surjmonot};\
+\begin{tikzpicture}[xscale=-1,yscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (0) at (5.75, -0.75) {};
+		\node [style=none] (1) at (6.25, 0) {};
+		\node [style=none] (2) at (5.75, -1.5) {};
+		\node [style=none] (3) at (5.25, 0) {};
+		\node [style=none] (5) at (5.25, 0.75) {};
+		\node [style=X] (6) at (6.25, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (2.center) to (0);
+		\draw [in=-90, out=30] (0) to (1.center);
+		\draw [in=150, out=-90] (3.center) to (0);
+		\draw [in=270, out=90] (3.center) to (5.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\eref{unitl}
+\begin{tikzpicture}[yscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (9) at (7.25, -1.5) {};
+		\node [style=none] (11) at (7.25, 0.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (11.center) to (9.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\eref{unitr}
+\begin{tikzpicture}[yscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (0) at (5.75, -0.75) {};
+		\node [style=none] (1) at (6.25, 0) {};
+		\node [style=none] (2) at (5.75, -1.5) {};
+		\node [style=none] (3) at (5.25, 0) {};
+		\node [style=none] (5) at (5.25, 0.75) {};
+		\node [style=X] (6) at (6.25, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (2.center) to (0);
+		\draw [in=-90, out=30] (0) to (1.center);
+		\draw [in=150, out=-90] (3.center) to (0);
+		\draw [in=270, out=90] (3.center) to (5.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+In other words, this is the strict factorization system coming from the epi-mono factorization of $\FinOrdMonot\cong \m$.
+
+\end{example}
+
+
+The strict factorization system gives us a unique normal form.  We can therefore draw the unique connected components of the same arity as follows:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (41) at (15, 0.25) {};
+		\node [style=X] (42) at (14.25, -0.75) {};
+		\node [style=none] (43) at (15.25, -0.75) {};
+		\node [style=none] (44) at (14, -1.5) {};
+		\node [style=none] (45) at (15.25, -1.5) {};
+		\node [style=none] (46) at (14.5, -1.5) {};
+		\node [style=none] (47) at (14.25, -0.5) {};
+		\node [style=none] (48) at (14.75, 0) {};
+		\node [style=none] (49) at (14.5, -0.2) {$\reflectbox{$\ddots$}$};
+		\node [style=none] (50) at (14.95, -1.5) {$\cdots$};
+		\node [style=none] (51) at (15, 1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=300, out=90] (43.center) to (41);
+		\draw [in=90, out=-120] (42) to (44.center);
+		\draw [in=90, out=-60] (42) to (46.center);
+		\draw (45.center) to (43.center);
+		\draw (42) to (47.center);
+		\draw (48.center) to (41);
+		\draw (41) to (51.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=:
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (1) at (12.5, 0) {};
+		\node [style=none] (3) at (11.5, -1.5) {};
+		\node [style=none] (4) at (12.5, -0.75) {};
+		\node [style=none] (7) at (12, -1.5) {};
+		\node [style=X] (8) at (12.5, -0.75) {};
+		\node [style=none] (9) at (13, -1.5) {};
+		\node [style=none] (40) at (12.5, -1.5) {$\cdots$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-150, out=90] (3.center) to (4.center);
+		\draw (1.center) to (4.center);
+		\draw [in=-124, out=90] (7.center) to (8);
+		\draw [in=90, out=-56] (8) to (9.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+
+The prop $\sfa$ also arizes in terms of a distributive law of pros:
+
+\begin{example}
 Consider the distributive law of pros of a comonoid $\zcirc$ over a monoid $\zcirc$:
 \begin{align*}
 \m; \m^\op;&
@@ -511,7 +1291,7 @@ Consider the distributive law of pros of a comonoid $\zcirc$ over a monoid $\zci
 
 Which we recall is the  pro {\sf sfa} for the free  special  Frobenius algebra.
 
-\end{definition}
+\end{example}
 
 
 
@@ -695,7 +1475,7 @@ $$
 		\node [style=none] (14) at (2.5, -2) {};
 		\node [style=none] (15) at (3.5, -1.25) {};
 		\node [style=none] (16) at (4.5, -0.5) {};
-		\node [style=none] (17) at (3.5, -2) {};
+		\node [style=none] (17) at (3.5, -2) {$\cdots$};
 		\node [style=none] (18) at (3, -2) {};
 		\node [style=X] (19) at (3.5, -1.25) {};
 		\node [style=none] (20) at (4, -2) {};
@@ -733,37 +1513,228 @@ the bicategory of bimodules in $\mathcal B$, $\Mod(\mathcal{B})$ has:
 
 \begin{description}
 
-\item[$(F,\tau,\rho)$ is a left $\mathbb{S}$-module:]
+\item[$(F,\tau)$ is a left $\mathbb{S}$-module:]
 $$
+\xymatrix{
+  F \ar@{=}[dr] \ar[d]_{\eta^S;F} 
+\\S;F \ar[r]_{\tau}
+   & F
+}\ ,
+\hspace{.5cm}
 \xymatrix{
  S;S;F \ar[r]^{\ \mu^S;F} \ar[d]_{S;\tau}
   & S;F \ar[d]^{\tau}
 \\S;F \ar[r]_{\tau}
   &F
-}\ ,
-\hspace{.5cm}
-\xymatrix{
-  F \ar@{=}[dr] \ar[d]_{\eta^S;F} 
-\\S;F \ar[r]_{\tau}
-   & F
 }
 $$
 
-\item[$(F,\tau,\rho)$ is a right $\mathbb{S}$-module:]
+Graphically:
+
+
 $$
-\xymatrix{
- F;T;T \ar[r]^{\ F;\mu^T} \ar[d]_{\rho;T}
-  & F;T \ar[d]^{\rho}
-\\F;T \ar[r]_{\rho}
-  &F
-}\ ,
-\hspace{.5cm}
+\begin{tikzpicture}[xscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (F) at (14, 0) {};
+		\node [style=none] (E) at (13, 0) {};
+		\node [style=none] (lambda) at (13, 1) {};
+		\node [style=none] (B) at (13, 2) {};
+		\node [style=none] (C) at (13, 2) {};
+		\node [style=none] (H) at (13, -1) {};
+		\node [style=none] (K) at (15, -1) {};
+		\node [style=none] (D) at (15, 2) {};
+		\node [style=none] (A) at (12, 2) {};
+		\node [style=none] (G) at (12, -1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=cellone] (A.center) to (C.center)  to (lambda.center)  to (E.center) to (H.center) to (G.center) to cycle;
+		\fill [style=celltwo]  (lambda.center)  to  (E.center) to (H.center) to (K.center) to (D.center) to (C.center) to cycle;
+		\draw (H.center) to (E.center);
+		\draw (E.center) to (lambda.center);
+		\draw  (lambda.center) to (C.center);
+		\draw [in=90, out=0] (lambda.center) to (F.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}[xscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (E) at (13.5, 0) {};
+		\node [style=none] (C) at (13.5, 2) {};
+		\node [style=none] (D) at (14.25, 2) {};
+		\node [style=none] (A) at (12.75, 2) {};
+		\node [style=none] (G) at (12.75, 0) {};
+		\node [style=none] (H) at (14.25, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=cellone] (A.center) to (C.center) to (E.center) to (G.center) to cycle;
+		\fill [style=celltwo] (C.center) to (D.center) to (H.center) to (E.center) to cycle;
+		\draw (C.center) to (E.center);
+	\end{pgfonlayer}
+\end{tikzpicture}\ , \hspace*{.2cm}
+\begin{tikzpicture}[xscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (F) at (14, 0) {};
+		\node [style=none] (E) at (13, 0) {};
+		\node [style=none] (lambda) at (13, 1) {};
+		\node [style=none] (B) at (13, 2) {};
+		\node [style=none] (H) at (13, -1) {};
+		\node [style=none] (K) at (15, -1) {};
+		\node [style=none] (D) at (15, 2) {};
+		\node [style=none] (A) at (12, 2) {};
+		\node [style=none] (G) at (12, -1) {};
+		\node [style=none] (L) at (13.5, -1) {};
+		\node [style=none] (M) at (14.5, -1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=celltwo]  (lambda.center)  to (E.center) to (H.center) to (K.center) to (D.center) to (B.center) to  cycle;
+		\fill [style=cellone]  (A.center)  to (B.center) to (H.center) to (G.center) to cycle;
+		\draw (H.center) to (E.center);
+		\draw (E.center) to (lambda.center);
+		\draw [in=90, out=0] (lambda.center) to (F.center);
+		\draw (lambda.center) to (B.center);
+		\draw [in=-150, out=90] (L.center) to (F.center);
+		\draw [in=90, out=-30] (F.center) to (M.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}[xscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (lambda) at (12.75, 1) {};
+		\node [style=none] (C) at (12.75, 2.5) {};
+		\node [style=none] (H) at (12.75, -1.25) {};
+		\node [style=none] (K) at (15.25, -1.25) {};
+		\node [style=none] (D) at (15.25, 2.5) {};
+		\node [style=none] (A) at (12, 2.5) {};
+		\node [style=none] (G) at (12, -1.25) {};
+		\node [style=none] (L) at (13.5, -1.25) {};
+		\node [style=none] (M) at (14.75, -1.25) {};
+		\node [style=none] (lambda1) at (12.75, -0.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=cellone] (A.center) to (C.center) to  (lambda.center) to (lambda1.center) to(H.center) to (G.center) to cycle;
+		\fill [style=celltwo]  (C.center) to (lambda.center) to (lambda1.center) to (H.center) to (K.center) to (D.center) to cycle;
+		\draw  (lambda.center) to (C.center);
+		\draw [in=0, out=90, looseness=0.75] (M.center) to (lambda.center);
+		\draw (H.center) to (lambda1.center);
+		\draw (lambda1.center) to (lambda.center);
+		\draw [in=0, out=90] (L.center) to (lambda1.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+
+
+\item[$(F,\rho)$ is a right $\mathbb{S}$-module:]
+$$
 \xymatrix{
   F \ar@{=}[dr] \ar[d]_{F;\eta^T} 
 \\F;T \ar[r]_{\rho}
    & F
 }
+\ ,
+\hspace{.5cm}
+\xymatrix{
+ F;T;T \ar[r]^{\ F;\mu^T} \ar[d]_{\rho;T}
+  & F;T \ar[d]^{\rho}
+\\F;T \ar[r]_{\rho}
+  &F
+}
 $$
+
+Graphically:
+
+
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (F) at (14, 0) {};
+		\node [style=none] (E) at (13, 0) {};
+		\node [style=none] (lambda) at (13, 1) {};
+		\node [style=none] (B) at (13, 2) {};
+		\node [style=none] (C) at (13, 2) {};
+		\node [style=none] (H) at (13, -1) {};
+		\node [style=none] (K) at (15, -1) {};
+		\node [style=none] (D) at (15, 2) {};
+		\node [style=none] (A) at (12, 2) {};
+		\node [style=none] (G) at (12, -1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=celltwo] (A.center) to (C.center)  to (lambda.center)  to (E.center) to (H.center) to (G.center) to cycle;
+		\fill [style=cellone]  (lambda.center)  to  (E.center) to (H.center) to (K.center) to (D.center) to (C.center) to cycle;
+		\draw (H.center) to (E.center);
+		\draw (E.center) to (lambda.center);
+		\draw  (lambda.center) to (C.center);
+		\draw [in=90, out=0] (lambda.center) to (F.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (E) at (13.5, 0) {};
+		\node [style=none] (C) at (13.5, 2) {};
+		\node [style=none] (D) at (14.25, 2) {};
+		\node [style=none] (A) at (12.75, 2) {};
+		\node [style=none] (G) at (12.75, 0) {};
+		\node [style=none] (H) at (14.25, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=celltwo] (A.center) to (C.center) to (E.center) to (G.center) to cycle;
+		\fill [style=cellone] (C.center) to (D.center) to (H.center) to (E.center) to cycle;
+		\draw (C.center) to (E.center);
+	\end{pgfonlayer}
+\end{tikzpicture}\ , \hspace*{.2cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (F) at (14, 0) {};
+		\node [style=none] (E) at (13, 0) {};
+		\node [style=none] (lambda) at (13, 1) {};
+		\node [style=none] (B) at (13, 2) {};
+		\node [style=none] (H) at (13, -1) {};
+		\node [style=none] (K) at (15, -1) {};
+		\node [style=none] (D) at (15, 2) {};
+		\node [style=none] (A) at (12, 2) {};
+		\node [style=none] (G) at (12, -1) {};
+		\node [style=none] (L) at (13.5, -1) {};
+		\node [style=none] (M) at (14.5, -1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=cellone]  (lambda.center)  to (E.center) to (H.center) to (K.center) to (D.center) to (B.center) to  cycle;
+		\fill [style=celltwo]  (A.center)  to (B.center) to (H.center) to (G.center) to cycle;
+		\draw (H.center) to (E.center);
+		\draw (E.center) to (lambda.center);
+		\draw [in=90, out=0] (lambda.center) to (F.center);
+		\draw (lambda.center) to (B.center);
+		\draw [in=-150, out=90] (L.center) to (F.center);
+		\draw [in=90, out=-30] (F.center) to (M.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (lambda) at (12.75, 1) {};
+		\node [style=none] (C) at (12.75, 2.5) {};
+		\node [style=none] (H) at (12.75, -1.25) {};
+		\node [style=none] (K) at (15.25, -1.25) {};
+		\node [style=none] (D) at (15.25, 2.5) {};
+		\node [style=none] (A) at (12, 2.5) {};
+		\node [style=none] (G) at (12, -1.25) {};
+		\node [style=none] (L) at (13.5, -1.25) {};
+		\node [style=none] (M) at (14.75, -1.25) {};
+		\node [style=none] (lambda1) at (12.75, -0.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=celltwo] (A.center) to (C.center) to  (lambda.center) to (lambda1.center) to(H.center) to (G.center) to cycle;
+		\fill [style=cellone]  (C.center) to (lambda.center) to (lambda1.center) to (H.center) to (K.center) to (D.center) to cycle;
+		\draw  (lambda.center) to (C.center);
+		\draw [in=0, out=90, looseness=0.75] (M.center) to (lambda.center);
+		\draw (H.center) to (lambda1.center);
+		\draw (lambda1.center) to (lambda.center);
+		\draw [in=0, out=90] (L.center) to (lambda1.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
 
 \item[Module compatibility:]
 $$
@@ -775,21 +1746,108 @@ F;T \ar[r]_{\rho}
 }
 $$
 
+Graphically:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (7) at (11, 0) {};
+		\node [style=none] (8) at (11, -3) {};
+		\node [style=none] (9) at (13, -3) {};
+		\node [style=none] (10) at (13, 0) {};
+		\node [style=none] (22) at (12, 0) {};
+		\node [style=none] (23) at (12, -3) {};
+		\node [style=none] (24) at (11.5, -3) {};
+		\node [style=none] (25) at (12.5, -3) {};
+		\node [style=none] (26) at (12, -2) {};
+		\node [style=none] (27) at (12, -1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=celltwo] (7.center) to (22.center) to  (23.center) to (8.center) to cycle;
+		\fill [style=cellone] (22.center) to (10.center) to (9.center) to (23.center) to cycle;
+		\draw [in=180, out=90, looseness=0.75] (24.center) to (27.center);
+		\draw (23.center) to (26.center);
+		\draw (26.center) to (27.center);
+		\draw (27.center) to (22.center);
+		\draw [in=0, out=90] (25.center) to (26.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}[xscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (7) at (11, 0) {};
+		\node [style=none] (8) at (11, -3) {};
+		\node [style=none] (9) at (13, -3) {};
+		\node [style=none] (10) at (13, 0) {};
+		\node [style=none] (22) at (12, 0) {};
+		\node [style=none] (23) at (12, -3) {};
+		\node [style=none] (24) at (11.5, -3) {};
+		\node [style=none] (25) at (12.5, -3) {};
+		\node [style=none] (26) at (12, -2) {};
+		\node [style=none] (27) at (12, -1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=cellone] (7.center) to (22.center) to  (23.center) to (8.center) to cycle;
+		\fill [style=celltwo] (22.center) to (10.center) to (9.center) to (23.center) to cycle;
+		\draw [in=180, out=90, looseness=0.75] (24.center) to (27.center);
+		\draw (23.center) to (26.center);
+		\draw (26.center) to (27.center);
+		\draw (27.center) to (22.center);
+		\draw [in=0, out=90] (25.center) to (26.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+
 \end{description}
 
-Given a $(\mathbb{S},\mathbb{T})$-bimodule $(F,\tau,\rho)$ and a  $(\mathbb{T},\mathbb{U})$-bimodule $(G,\tau,\rho')$, the composite has 1-cell given by the coequalizer:
+Given a $(\mathbb{S},\mathbb{T})$-bimodule $(F,\tau,\rho)$ and a  $(\mathbb{T},\mathbb{U})$-bimodule $(G,\tau',\rho')$, the composite has 1-cell given by the coequalizer:
 
 $$
 \xymatrix{
-F;T;G  \ar@<-.5ex>[r]_{T;\rho'} \ar@<.5ex>[r]^{\tau;T} & F;G \ar[r] &F \otimes_T G 
+F;T;G  \ar@<-.5ex>[r]_{F;\rho} \ar@<.5ex>[r]^{\tau';G} & F;G \ar@{->>}[r] &F \otimes_T G 
 }
 $$
+%
+%Graphically:
+%$$
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=none] (23) at (12, -3.5) {};
+%		\node [style=none] (25) at (12.5, -2.5) {};
+%		\node [style=none] (26) at (12, -2) {};
+%		\node [style=none] (27) at (12, -1) {};
+%		\node [style=none] (28) at (14, -3.5) {};
+%		\node [style=none] (29) at (13.5, -2.5) {};
+%		\node [style=none] (30) at (14, -2) {};
+%		\node [style=none] (31) at (14, -1) {};
+%		\node [style=none] (32) at (11, -1) {};
+%		\node [style=none] (33) at (15, -1) {};
+%		\node [style=none] (34) at (11, -3.5) {};
+%		\node [style=none] (35) at (15, -3.5) {};
+%		\node [style=map] (36) at (13, -2.875) {$m$};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\fill[style=celltwo] (32.center) to (27.center) to (23.center) to (34.center) to cycle;
+%		\fill[style=cellone] (27.center) to (31.center) to (28.center) to (23.center) to cycle;
+%		\fill[style=cellthree] (31.center) to (33.center) to (35.center) to (28.center) to cycle;
+%		\draw (23.center) to (26.center);
+%		\draw (26.center) to (27.center);
+%		\draw [in=0, out=90] (25.center) to (26.center);
+%		\draw (28.center) to (30.center);
+%		\draw (30.center) to (31.center);
+%		\draw [in=180, out=90] (29.center) to (30.center);
+%		\draw [in=270, out=-90, looseness=1.25] (25.center) to (29.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%$$
+%
 
 with left and right actions induced by $\tau$ and $\rho'$.
 
 The identity 1-cell on a monad is the monad itself considered as a bimodule over itself.
 
-\item[2-cells:] A 2-cell between $(\mathbb{S},\mathbb{T})$-bimodules $(F,\rho,\tau)\to (G,\rho',\tau')$ is a 2-cell $\phi:F\to G$ in $\mathcal{B}$ satisfying the following coherence conditions:
+\item[2-cells:] A 2-cell between $(\mathbb{S},\mathbb{T})$-bimodules $(F,\tau,\rho)\to (G,\tau',\rho')$ is a 2-cell $\phi:F\to G$ in $\mathcal{B}$ satisfying the following coherence conditions:
 
 $$
 \xymatrix{
@@ -805,6 +1863,98 @@ $$
 \\G;T \ar[r]_{\rho'}
    &G
 }
+$$
+
+Graphically:
+
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (13, -2) {};
+		\node [style=none] (1) at (13, -5) {};
+		\node [style=map] (2) at (13, -3) {$\tau'$};
+		\node [style=map] (3) at (13, -4) {$\phi$};
+		\node [style=none] (4) at (12, -5) {};
+		\node [style=none] (11) at (11.5, -2) {};
+		\node [style=none] (12) at (14, -2) {};
+		\node [style=none] (13) at (14, -5) {};
+		\node [style=none] (14) at (11.5, -5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=celltwo] (11.center) to (0.center) to (1.center) to (14.center) to cycle;
+		\fill [style=cellone] (0.center) to (12.center) to (13.center) to (1.center) to cycle;
+		\draw (1.center) to (3.center);
+		\draw (3.center) to (2.center);
+		\draw (2.center) to (0.center);
+		\draw [in=90, out=-150] (2.center) to (4.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (5) at (16.25, -2) {};
+		\node [style=none] (6) at (16.25, -5) {};
+		\node [style=map] (7) at (16.25, -4) {$\tau$};
+		\node [style=none] (9) at (15.25, -5) {};
+		\node [style=map] (10) at (16.25, -3) {$\phi$};
+		\node [style=none] (15) at (17.25, -2) {};
+		\node [style=none] (16) at (17.25, -5) {};
+		\node [style=none] (17) at (14.75, -2) {};
+		\node [style=none] (18) at (14.75, -5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=celltwo] (17.center) to (5.center) to (6.center) to (18.center) to cycle;
+		\fill [style=cellone] (5.center) to (15.center) to (16.center) to (6.center) to cycle;
+		\draw [in=90, out=-150] (7) to (9.center);
+		\draw (6.center) to (7);
+		\draw (7) to (10);
+		\draw (10) to (5.center);
+	\end{pgfonlayer}
+\end{tikzpicture}\ , \hspace*{.2cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-13, -2) {};
+		\node [style=none] (1) at (-13, -5) {};
+		\node [style=map] (2) at (-13, -3) {$\rho'$};
+		\node [style=map] (3) at (-13, -4) {$\phi$};
+		\node [style=none] (4) at (-12, -5) {};
+		\node [style=none] (11) at (-11.5, -2) {};
+		\node [style=none] (12) at (-14, -2) {};
+		\node [style=none] (13) at (-14, -5) {};
+		\node [style=none] (14) at (-11.5, -5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=cellone] (11.center) to (0.center) to (1.center) to (14.center) to cycle;
+		\fill [style=celltwo] (0.center) to (12.center) to (13.center) to (1.center) to cycle;
+		\draw (1.center) to (3.center);
+		\draw (3.center) to (2.center);
+		\draw (2.center) to (0.center);
+		\draw [in=90, out=-30] (2.center) to (4.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (5) at (-16.25, -2) {};
+		\node [style=none] (6) at (-16.25, -5) {};
+		\node [style=map] (7) at (-16.25, -4) {$\rho$};
+		\node [style=none] (9) at (-15.25, -5) {};
+		\node [style=map] (10) at (-16.25, -3) {$\phi$};
+		\node [style=none] (15) at (-17.25, -2) {};
+		\node [style=none] (16) at (-17.25, -5) {};
+		\node [style=none] (17) at (-14.75, -2) {};
+		\node [style=none] (18) at (-14.75, -5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\fill [style=cellone] (17.center) to (5.center) to (6.center) to (18.center) to cycle;
+		\fill [style=celltwo] (5.center) to (15.center) to (16.center) to (6.center) to cycle;
+		\draw [in=90, out=-30] (7) to (9.center);
+		\draw (6.center) to (7);
+		\draw (7) to (10);
+		\draw (10) to (5.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
 $$
 
 Composition and identities are given pointwise in $\mathcal B$.
@@ -1223,6 +2373,8 @@ $$
 $$
 induces the prop for the commutative comonoid $\cm\cong \FinOrd\cong \FSets$.
 \end{example}
+Just as in the case of the strict epi-mono factorization system of $\FinOrdMonot$; this orthogonal factorization system means that the connected components of a commutative monoid are equal.  We will use the same notation as for $\FinOrdMonot$ to denote connected components of commutative monoids.
+
 
 Bicommutative bialgebras also arise in this way:
 

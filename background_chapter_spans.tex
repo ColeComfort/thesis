@@ -69,9 +69,9 @@ $$
     &
   \\X \ar[urr]^{f} \ar[rr]_{\iota_0}
     &
-    & X+  Y \ar@{-->}[u]^{[f,g]} 
+    & X+  Y \ar@{-->}[u]_{[f,g]} 
     &
-    & Y\ar[ull]_{g}  \ar[ll]_{\iota_1}
+    & Y\ar[ull]_{g}  \ar[ll]^{\iota_1}
 }
 $$ 
 
@@ -596,9 +596,9 @@ This example is quite useful for developing ones intuition.  Take a span of fini
 We seek moreover, to quotient by multiplicity, to obtain a semantics for merely nondeterministic processes: where things can be related at most once.  To do so, we need more assumptions about the category with which we seek to work internal to.
 
 \begin{definition}
-A map $f:X\to Y$ is a {\bf monomorphism} when for all maps $g,h:Z\to X$, $g;f=h;f \implies g=h$.
+A map $f:X\to Y$ is a {\bf monomorphism} when for all maps $g,h:Z\to X$, $g;f=h;f$ implies $ g=h$.
 
-Dually, a map $f:X\to Y$ is an {\bf epimorphism} when for all maps $g,h:Y\to Z$, $f;g=f;h \implies g=h$.
+Dually, a map $f:X\to Y$ is an {\bf epimorphism} when for all maps $g,h:Y\to Z$, $f;g=f;h$ implies $ g=h$.
 
 To add extra information to our commutative diagrams, we denote monomorphisms as arrows with tails $\rightarrowtail$ and epimorphisms as arrows with two heads $\twoheadrightarrow$.  
 \end{definition}
@@ -615,7 +615,7 @@ The {\bf equalizer}, of two parallel maps $f,g:X\to Y$, if it exists, is an obje
 $$
 \xymatrix{
     F \ar@{-->}[dr]^{u} \ar[d]_h
-  \\ E_{f,g} \ar[r]_e
+  \\ E_{f,g} \ar@{>->}[r]_m
     & X \ar@<-.5ex>[r]_g \ar@<.5ex>[r]^f
     & Y
 }
@@ -706,7 +706,7 @@ To compose jointly monic spans $(A,f,g):X\to Y$ and $(B,h,k):Y\to Z$,  first com
 $$
 \xymatrix{
     &
-    & A\ {}_g\times_k B \ar[dl]_{\pi_0} \ar[dr]^{\pi_1} \pullbackcorner[d]
+    & A\ {}_g\times_k B \ar@{->>}[dl]_{\pi_0} \ar@{->>}[dr]^{\pi_1} \pullbackcorner[d]
     &
     &
   \\
@@ -2423,34 +2423,9 @@ $$
 \end{tikzpicture}
 $$
 
-Discrete Cartesian restriction categories therefore have retract to the diagonal map, which is cocommutative due to the commutativity of the diagonal map:
+Discrete Cartesian restriction categories therefore have retracts to the diagonal maps, which is are cocommutative due to the commutativity of the diagonal map:
 
 $$
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (0, 0) {};
-		\node [style=Z] (1) at (0, 1) {};
-		\node [style=none] (2) at (0, 1.5) {};
-		\node [style=none] (3) at (0, -0.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (0) to (3.center);
-		\draw [bend left=45, looseness=1.25] (0) to (1);
-		\draw [bend left=45, looseness=1.25] (1) to (0);
-		\draw (1) to (2.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (6) at (1, 1.5) {};
-		\node [style=none] (7) at (1, -0.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (7.center) to (6.center);
-	\end{pgfonlayer}
-\end{tikzpicture}\ ,
-\hspace*{.2cm}
 \begin{tikzpicture}[yscale=-1]
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (0, 2.5) {};
@@ -2492,6 +2467,31 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}\ ,
 \hspace{.2cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (0) at (0, 0) {};
+		\node [style=Z] (1) at (0, 1) {};
+		\node [style=none] (2) at (0, 1.5) {};
+		\node [style=none] (3) at (0, -0.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (0) to (3.center);
+		\draw [bend left=45, looseness=1.25] (0) to (1);
+		\draw [bend left=45, looseness=1.25] (1) to (0);
+		\draw (1) to (2.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (6) at (1, 1.5) {};
+		\node [style=none] (7) at (1, -0.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (7.center) to (6.center);
+	\end{pgfonlayer}
+\end{tikzpicture}\ ,
+\hspace*{.2cm}
 \begin{tikzpicture}[yscale=-1]
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (21) at (3.75, -0.75) {};

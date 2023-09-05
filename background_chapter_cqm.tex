@@ -26,7 +26,7 @@
 %The first step in introducing this formalism, is a graphical counterpart of the notion of an orthonormal basis:
 
 
-String diagrams have been used in quantum theory for quite some time.  For example in the work of Penrose \cite{penrosei}.  In such settings, string diagrams have been used as (often heuristic) tools for calculation. The more recent programme of ``categorical quantum mechanics,'' following the seminal paper of Abramsky and Coecke \cite{abramsky} has endeavoured to formulate finite dimensional quantum mechanics using category theory.  In this setting,  string diagrams are formal mathematical objects: allowing certain essential features to be abstracted away from the category of finite dimensional Hilbert spaces.
+String diagrams have been used in quantum theory for quite some time.  For example in the work of Penrose \cite{penrosei}.  In such settings, string diagrams have been used as (often heuristic) tools for calculation. The more recent programme of ``categorical quantum mechanics,'' following the seminal paper of Abramsky and Coecke \cite{abramsky} has endeavoured to formulate finite dimensional quantum mechanics using category theory.  In this setting,  string diagrams are formal mathematical objects: allowing certain essential features to be abstracted away from the usual setting of finite dimensional Hilbert spaces.
 
 In this section, we shall briefly review this formalism; however a more in depth mathematical introduction can be found in \cite{heunen}, with a more broadly accessible introduction being found in \cite{pqp}.
 
@@ -47,16 +47,16 @@ Most of the time,  for the state space of a qudit we will not chose an aribitrar
 
 Denote arbitrary vectors $\phi$ in $\mathcal H$ using this ket notation by $|\phi \rangle$; where the adjoint of $|\phi \rangle$ is denoted as a ``bra''  by $|\phi \rangle^\dag =: \langle \phi |$. 
 
-Given two vectors $|\phi \rangle$ and $| \psi \rangle$ on the same space, the inner product is denoted by $\langle \phi | \psi \rangle$ and the outer product by $|\phi \rangle\langle \psi|$.  This notation for vectors and their adjoints is called ``bra-ket'' notation.
+Given two vectors $|\phi \rangle$ and $| \psi \rangle$ on the same space, the inner product ``bra-ket'' is denoted by $\langle \phi | \psi \rangle$ and the outer product by $|\phi \rangle\langle \psi|$. 
 
 
-This notation allows allows us to represent matrices in terms of sums.  For example, a matrix from $A:d^n\to d^m$ with entries $a_{j,k}$ is denoted as follows:
+This notation allows allows us to represent matrices in terms of sums.  For example, a complex matrix from $d^n$ to $d^m$ regarded as an operator $A:\ell^2((\Z/d\Z)^m)\to \ell^2((\Z/d\Z)^m)$ with entries $a_{j,k}$ is denoted as follows:
 
 $$
 A  = \sum_{k=0}^{n-1} \sum_{j=0}^{m-1} a_{j,k}| j \rangle \langle k |
 $$
 
-For example we want to compute the  action of $A$ on $|\ell \rangle$:
+For example to compute the  action of $A$ on $|\ell \rangle$:
 
 $$
 A|\ell\rangle 
@@ -153,7 +153,7 @@ We present this construction in terms of a quotient of the $\CoPara$ constructio
 
 Given a compact closed $\dag$-symmetric monoidal category $\X$, then  $\CPM(\X)$ is the quotient of ${\CoPara}(\X)$ by the congruence relation:
 $$
-(f,S) \sim (g,T) \iff
+\left(X\xrightarrow{(f,S)} Y\right) \sim \left(\xrightarrow{(g,T)} Y\right)  \iff
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (0.75, 11.75) {};
@@ -275,12 +275,49 @@ Making $\CPM(\X)$ a \dag-symmetric monoidal cateory.
 The canonical functor $\X\to \CoPara(\X)\to\CPM(\X,\dag)$ taking $f \mapsto (f,I)$ is called {\bf doubling}. The maps in the image of this functor are {\bf pure}, and those which aren't are {\bf mixed}.
 
 
-The map $d_X=((u^L_X)^{-1}, X)$ is called the {\bf discarding map} on $X$.  A map $f:X\to Y$ in $\CPM(\X)$ is called {\bf trace-preserving} when $f;d_Y = d_X$.
+The map $d_X=((u^L_X)^{-1}, X)$ is called the {\bf discarding map} on $X$:
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (5) at (54.55, -0.5) {};
+		\node [style=ground, scale=-1] (6) at (54.55, 0.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (5.center) to (6);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
 
-All maps can be obtained by composing pure maps with discard maps.  Any such factorization is called a {\bf dilation}.
+A map $f:X\to Y$ in $\CPM(\X)$ is called {\bf trace-preserving} when $f;d_Y = d_X$:
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (53.55, -0.5) {};
+		\node [style=ground, scale=-1] (1) at (53.55, 0.5) {};
+		\node [style=map] (3) at (53.55, -0.5) {$f$};
+		\node [style=none] (4) at (53.55, -1.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (0.center) to (1);
+		\draw (4.center) to (0.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (5) at (54.55, -0.5) {};
+		\node [style=ground, scale=-1] (6) at (54.55, 0.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (5.center) to (6);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+All maps can be obtained by composing pure maps with discard maps, although not uniquely.  Any such factorization is called a {\bf dilation}.
 
 
-The compact closed structure of $\CPM(\X)$ is inhereted from the doubling of the compact closed structure of $\X$.  If the \dag-symmetric monoidal structure of $\X$ is compatible with it's compact closed structure, so that $\X$ is \dag-compact closed, then $\CPM(\X)$ is \dag-compact closed as well.
+The compact closed structure of $\CPM(\X)$ is inhereted from the doubling of the compact closed structure of $\X$.  If the \dag-symmetric monoidal structure of $\X$ is compatible with its compact closed structure, so that $\X$ is \dag-compact closed, then $\CPM(\X)$ is \dag-compact closed as well.
 \end{definition}
 
 Oftentimes, we will bend the ``doubled picture" so that the inputs are on the bottom and the outputs are on the top:
@@ -1260,19 +1297,21 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (9) at (37.9, 0.75) {};
-		\node [style=none] (12) at (36.75, 0) {};
-		\node [style=none] (13) at (37.25, 0.75) {};
-		\node [style=none] (14) at (37.25, 1.25) {};
-		\node [style=none] (16) at (37.9, 1.25) {};
-		\node [style=map] (17) at (37.875, 0.725) {$|b_j\rangle$};
-		\node [style=map] (18) at (36.25, 0.725) {$\langle b_j|$};
+		\node [style=none] (0) at (38.15, 0) {};
+		\node [style=none] (1) at (38.625, -1.75) {};
+		\node [style=none] (2) at (39.125, -1) {};
+		\node [style=none] (3) at (39.125, 0) {};
+		\node [style=none] (4) at (39.15, 1.25) {};
+		\node [style=map] (5) at (38.125, -0.025) {$|b_j\rangle$};
+		\node [style=map] (6) at (38.125, -1.025) {$\langle b_j|$};
+		\node [style=none] (7) at (38.15, 1.25) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=0, out=-90] (13.center) to (12.center);
-		\draw [in=-90, out=90] (13.center) to (14.center);
-		\draw (9.center) to (16.center);
-		\draw [in=-180, out=-90] (18) to (12.center);
+		\draw [in=0, out=-90] (2.center) to (1.center);
+		\draw [in=270, out=90] (2.center) to (3.center);
+		\draw [in=270, out=90] (0.center) to (4.center);
+		\draw [in=-180, out=-90] (6) to (1.center);
+		\draw [in=-90, out=90] (3.center) to (7.center);
 	\end{pgfonlayer}
 \end{tikzpicture}\
 ,\hspace*{1cm}
@@ -1544,10 +1583,10 @@ Where the qudit quantum Fourier transform is the unitary map:
 
 $$\mathcal{F} := \dfrac{1}{\sqrt{d}} \sum_{j,k=0}^{d-1} e^{2\pi\cdot i \cdot j \cdot k/d} | k\rangle \langle j | $$
 
-The standard basis and Fourier bases are strongly complementary.
+The $Z$ and $X$ bases are strongly complementary.
 \end{example}
 
-For qubits, the  state $|+\rangle:=\mathcal{F}|0\rangle$ is called the {\bf plus state}; and  $|-\rangle:=\mathcal{F}|1\rangle$ is called the {\bf minus state}.  Although, this notation obviously does not generalize well to qudits.  
+For qubits, the  state $|+\rangle:=\mathcal{F}|0\rangle$ is called the {\bf plus state}; and  $|-\rangle:=\mathcal{F}|1\rangle$ is called the {\bf minus state}.
 Notice how we multiply the $X$-basis elements by a factor of $\sqrt d$ so that these two Frobenius algebras interact to form a Hopf algebra on the nose (as upposed to up to scaling factors).  This means that the Fourier basis we have chosen is not normalized, and thus the corresponding Frobenius algebra is not special.  However, this isn't a problem, because it is special up to the invertible  scalar $1/\sqrt{d}$.
 
 This pair of complementary bases will occur throughout this thesis.  As a matter of notation, as mentioned earlier we draw the ``$Z$-spiders'' for the standard basis in white,
@@ -1601,11 +1640,16 @@ and ``$X$-spiders'' for the Fourier basis in  grey as follows:
 \end{tikzpicture}
 \ \right\rrbracket
 &=
-\sqrt{d}\sum_{j=0}^{d-1}  \mathcal{F} | j, \ldots, j\rangle \langle j,\ldots, j| \mathcal{F}^\dag\\
-&=
-\sum_{\forall x \in (\Z/d\Z)^n,  y  \in (\Z/d\Z)^m: \sum  x_j= \sum y _k \mod d} | y_1 ,\ldots, y_n \rangle \langle  x_1,\ldots, x_n|
+\sqrt{d}\sum_{j=0}^{d-1}  \mathcal{F} | j, \ldots, j\rangle \langle j,\ldots, j| \mathcal{F}^\dag
 \end{align*}
 
+Notice how the $Z$-spiders compare standard basis elements and the $X$-spiders compare their sums:
+
+$$
+\sqrt{d}\sum_{j=0}^{d-1}  \mathcal{F} | j, \ldots, j\rangle \langle j,\ldots, j| \mathcal{F}^\dag\\
+=
+\sum_{\forall x \in (\Z/d\Z)^n,  y  \in (\Z/d\Z)^m: \sum  x_j= \sum y _k} | y_1 ,\ldots, y_n \rangle \langle  x_1,\ldots, x_n|
+$$
 
 When $d=2$, the antipode is the identity, so that it doesn't matter if the wires are inputs or outputs of spiders .  For example, we can draw the {\bf controlled-not gate} by connecting together $Z$ and $X$ spiders, only having to worry about the connectivity:
 
@@ -1675,7 +1719,7 @@ In orther terms, the $Z$ and $X$-spiders are {\bf flexsymmetric}   \cite[\S 5]{f
 %tODO
 %\end{example}
 
-We almost have all of the essential ingredients of categorical quantum mechanics: we have density matrices and strongly complementary observables.  The next essential thing to do is to decorate spiders with a phase-angle:
+We almost have all of the essential ingredients of categorical quantum mechanics: we have density matrices and strongly complementary observables.  The next thing to do is to decorate spiders with phase-angles:
 
 \begin{definition}
 \label{def:phases}
@@ -1793,7 +1837,7 @@ $$
 Phases for Frobenius algebras are preserved by composition; and they form a group called the {\bf phase group} for the Frobenius algebra.  The phase group associated with a commutative Frobenius algebra is therefore Abelian.
 \end{definition}
 
-The motivating example is again  $\FHilb$:
+The motivating example is again  $\FHilb$, which makes sense of he name:
 \begin{example}
 Given an ordered orthonormal basis $\{| b_j \}_{j \in [0,d)}$ in $\FHilb$, the phases are generated by the following unitaries, for all $\{\theta_0,\ldots, \theta_{d-1}\} \in [0, 1)^d$:
 
@@ -1802,7 +1846,12 @@ $$\sum_{j=0}^{d-1} e^{  2\pi \cdot i \cdot b_j \cdot \theta_j/d }|  b_j \rangle\
 
 \end{example}
 
-Therefore, working up to global phase, fix $\theta_0=0$.
+In $\CPM(\FHilb)$ the scalars are the real numbers so that:
+
+$$ e^{  2\pi \cdot i  \cdot a }f=f$$
+
+
+Therefore, when specifying phases, we fix $\theta_0=0$ to avoid having extra degrees of freedom.
 
 %The curve  $\{e^{2 \pi \cdot i \cdot \theta}\ | \ \theta \in [0, 1)\}$ carves out the unit circle in the complex plane so the phase group is isomorphic to the circle (hence the name).
 
@@ -2216,7 +2265,7 @@ Consider the simplest fragment of the ZX-calculus:
 
 \begin{definition}
 The {\bf phase-free} qudit ZX-calculus
-is the fragment of the ZX-calculus generated by both Frobenius algebras with no phases.
+is the fragment of the ZX-calculus generated by the $Z$ and $X$ spiders with no phases.
 %
 %\begin{align*}
 %\left\llbracket\ 
@@ -2281,7 +2330,7 @@ This has a relational semantics; to expose which we need the following definitio
 A unitary map $f:\mathcal{H}\to \mathcal{H}$ is a {\bf stabilizer} of a state $|\phi\rangle$ on $\mathcal H$ in case $\phi$ is a +1-eigenvector of $g$ so that $g| \phi\rangle = |\phi \rangle$.
 
 
-The qudit ${\cal X}$-gate  shifts the computational basis vectors by $a$ modulo $p$:
+The qudit ${\cal X}$-gate (qubit $\not$-gate)  shifts the computational basis vectors by $a$ modulo $p$:
 
 $${\cal X} := \sum_{b=0}^{p-1} | b+1\rangle \langle b|$$
 
@@ -2370,7 +2419,7 @@ D
  \right\}
 $$
 
-Conversely, given an $\F_p$-linear subspace, take the joint $+1$-eigenspace on the space spanned by the corresponding $X$-stabilizers.  If we partition the codomain of the state into an input and output, bending the input wires down with the white spider yields an inverse to the previous mapping.
+Conversely, given an $\F_p$-linear subspace, take the projector onto the  joint $+1$-eigenspace spanned by the corresponding $X$-stabilizers.  If we partition the codomain of the state into an input and output, bending the input wires down with the white spider yields an inverse to the previous mapping.
 \end{proof}
 
 \begin{example}
@@ -2399,7 +2448,7 @@ $$
 \end{tikzpicture}
 $$
 
-Its $X$ stabilizers are parameterized by all the  $a_1,a_2,a_3,b_1,b_2,b_3 \in \F_p$ such that:
+Its $X$-stabilizers are parameterized by all the  $a_1,a_2,a_3,b_1,b_2,b_3 \in \F_p$ such that:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3234,19 +3283,32 @@ $$
 (\Mat_{\F_p},+) \to (\LinRel_{\F_p},+) \to (\Mat_\C/\sim,\otimes)
 $$
 
-The qubit \cite{backensstab,backens2015} and qutrit \cite{qutrit} stabilizer ZX-calculus both have complete presentations.  However, during the process of writing this thesis, an axiomatization was provided for the quopit ZX-calculus \cite{booth}, followed shortly by an even simpler presentation \cite{poor}.  It is worth noting that the scaling in the interpretations of the generators in \cite{poor,booth} differ slightly for techinical reasons (specifically they designed their presentations to be flexsymmetric following \cite[\S 5]{flexsymmetric}).
+The qubit \cite{backensstab,backens2015} and qutrit \cite{qutrit} stabilizer ZX-calculus both have complete presentations.  However, during the process of writing this thesis, an axiomatization was provided for the quopit stabilizer ZX-calculus \cite{booth}, followed shortly by an even simpler presentation \cite{poor}.  It is worth noting that the scaling in the interpretations of the generators in \cite{poor,booth} differ slightly for techinical reasons (specifically they designed their presentations to be flexsymmetric following \cite[\S 5]{flexsymmetric}).
 
 
 
+Despite being used extensively in quantum error correction, as well will touch on in  \ref{chap:stab}:
+
+\begin{theorem}[Gottesman-Knill]
+Stabilizer circuits can be classically probabilistically  simulated in polynomial time
+\end{theorem}
+
+The original proof for qudits is found in  \cite{gottesmanknill}; however, it follows immediately for qudits.  Later on, we will effectively prove the quopit Gottesman-Knill theorem as a corollary when we give a relational characterization of quopit stabilizer circuits.  This is the largest classically simulatable fragment containing the Clifford group:
+
+\begin{proposition}[{\cite[Appendix D]{campbell}}]
+\label{prop:campbell}
+Adding any non-clifford unitary to stabilizer circuits is an approximately universal set of generators for qupit  circuits.
+\end{proposition}
+
+By approximately universal, this means that such a set of generators is dense in the appropriate sense.
 
 
-It is worth mentioning that stabilizer circuits can be classically simulated probabilistically in polynomial time \cite{gottesmanknill}.  Therefore, all of the fragments that we have discussed so far are not computationally very powerful.  However, stabilizer circuits are very important for quantum error correction, as we will discuss in Chapter \ref{chap:stab}.  In the same Chapter we will also give a relational semantics for quopit stabilizer circuits.
+Therefore, by adding any other phases to qupit stabilizer circuits is maximally expressive in some sense.  The first approxiately universal axiomatization of the qudit ZX-calculus, was obtained by adding the $1/8$ phase: yielding a complete axiomatization for the qubit  Clifford+T quantum circuits \cite{Jeandel}.
 
-It is also worth mentioning that, at least in the qubit case, there are complete presentations for the ZX-calculus where all phases are allowed \cite{zxcompleteb,zxcompletea}.  This gives a graphical presentation for the full subcategory of $\Mat_\C$ whose objects are powers of $2$; which is of course not classically simulatable in polynomial time.
+Later complete presentations for the qubit ZX-calculus where all phases are allowed, so that it is universal on the nose \cite{zxcompleteb,zxcompletea}.  This gives a graphical presentation for the full subcategory of $\Mat_\C$ whose objects are powers of $2$.
 
 
 Up until this point, we have discussed quantum circuits as being generated by spiders. Although spiders are good for copying and adding standard basis elements; it is hard to construct nonlinear behaviour using these generators.
-
 
 To accommodate for this, {\bf $H$-boxes} were devised in the qubit case by \cite{zh}:
 

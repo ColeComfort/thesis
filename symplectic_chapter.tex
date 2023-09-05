@@ -2841,19 +2841,19 @@ We extend this isomorphism of states to an isomorphism of props using a symplect
 
 
 \begin{definition}
-Given a field $k$  the  $1$-fold symplectic Weyl operators are the symplectomorphisms of the following form,  for $a,b \in k$:
+Given a field $k$  the  $n$-fold symplectic Weyl operators are the symplectomorphisms of the following form,  for $\vec a, \vec b \in k^(2n)$:
 
 
 $$
 W(a,b):=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=X] (0) at (0, 1) {$a$};
+		\node [style=X] (0) at (0, 1) {$\vec a$};
 		\node [style=none] (1) at (0, 2) {};
 		\node [style=none] (2) at (0, 0) {};
 		\node [style=none] (3) at (1, 2) {};
 		\node [style=none] (4) at (1, 0) {};
-		\node [style=X] (5) at (1, 1) {$b$};
+		\node [style=X] (5) at (1, 1) {$\vec b$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw (4.center) to (5.center);
@@ -2863,9 +2863,6 @@ W(a,b):=
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-Given a tuple $$((z_1,\cdots, z_n),(x_1,\cdots, x_n)) \in k^{2n}$$ define the $n$-fold  symplectic Weyl operator $$W((z_1,\cdots, z_n),(x_1,\cdots, x_n) )= W(z_1,x_1)+ \cdots + W(z_n,x_n)$$
-
 
 
 
