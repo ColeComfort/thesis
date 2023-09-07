@@ -296,8 +296,6 @@ $$
 $$
 Making $\CPM(\X)$ a \dag-symmetric monoidal cateory.
 
-The canonical functor $\X\to \CoPara(\X)\to\CPM(\X,\dag)$ taking $f \mapsto (f,I)$ is called {\bf doubling}. The maps in the image of this functor are {\bf pure}, and those which aren't are {\bf mixed}.
-
 
 The map $d_X=((u^L_X)^{-1}, X)$ is called the {\bf discarding map} on $X$:
 $$
@@ -311,6 +309,9 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
+
+The canonical functor $\X\to \CoPara(\X)\to\CPM(\X,\dag)$ taking $f \mapsto (f,I)$ is called {\bf doubling}. The maps in the image of this functor are {\bf pure}, and those which aren't are {\bf mixed}.
+
 
 A map $f:X\to Y$ in $\CPM(\X)$ is called {\bf trace-preserving} when $f;d_Y = d_X$:
 $$
@@ -387,6 +388,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
+We could have chosen a different, equivalent congruence relation to quotient by to avoid the braid on the cap, but this would be incompatible with notation for stabilizer tableaux which we use much later in this thesis.
 
 In this picture, the composition of equivalence classes is  composition in $\X$:
 
@@ -500,7 +502,7 @@ $$
 \end{tikzpicture}
 $$
 
-This perspective will often make indexing the wires easier; especially when the conjugation is more natural to use than the dagger.  Therefore, we shall invoke the $\CPM$ construction for both dagger structures and conjugation functors depending on which setting is most natural.
+Therefore, we shall invoke the $\CPM$ construction for both dagger structures and conjugation functors depending on which setting is most natural.
 
 
 As mentioned before, the following example motivated this categorical construction:
@@ -514,7 +516,7 @@ $\CPM(\Mat_\C, \bar{(-)})$
 is the skeleton of density matrices.
 \end{example}
 
-Density matrices model mixed quantum circuits. The discarding map is interpreted as exposing the quantum system to the classical world. A (mixed) {\bf quantum state}, is a trace-preserving state in $\CPM(\FHilb)$.  Quantum states model the possible physical states which are not-necessarily pure quantum states. Note that in $\CPM(\FHilb)$, the doubling acts on scalars by complex conjugation, so that the canonical map $\Hilb\to \CPM(\FHilb)$ is not injective.  The trace-preserving maps in $\CPM(\FHilb)$ model the mixed quantum-classical evolution of quantum states; as they are precisely the maps in $\CPM(\FHilb)$ which preserve quantum states.
+Density matrices model mixed quantum circuits. The discarding map is interpreted as exposing the quantum system to the classical world. A (mixed) {\bf quantum state}, is a trace-preserving state in $\CPM(\FHilb)$.  Quantum states model the possible physical states which are not-necessarily pure quantum states.  The trace-preserving maps in $\CPM(\FHilb)$ model the mixed quantum-classical evolution of quantum states; as they are precisely the maps in $\CPM(\FHilb)$ which preserve quantum states.
 
 
 %
@@ -526,14 +528,19 @@ Density matrices model mixed quantum circuits. The discarding map is interpreted
 %As hinted at earlier, density matrices allow us to talk about quantum measurement.  We first show how to graphically project onto a basis in density matrices:
 
 
-In quantum mechanics, measurement on a system $\mathcal H$ is performed with respect to an orthonormal basis.  Fix an orthonormal basis $B=\{ |b_0\rangle,\ldots, |b_{n-1}\rangle \}$ of $\mathcal H$.  Suppose one is measuring a quantum state $|\psi\rangle$, then probability of measuring basis vector $| b_j\rangle $ is given by $| \langle b_j | \psi \rangle |^2$.  This probabilistic interpretation of quantum measurement is called the {\bf Born rule}.
-
-
-Now the question is, what does this have to do with the $\CPM$ construction?
+In quantum mechanics, measurement on a system $\mathcal H$ is performed with respect to an orthonormal basis.  Fix an orthonormal basis $B=\{ |b_0\rangle,\ldots, |b_{n-1}\rangle \}$ of $\mathcal H$.   Given a quantum state state $|\phi\rangle$ then
+$$
+\sum_{j=0}^{n-1}
+ |\langle b_j|\psi \rangle|^2
+=1
+$$ 
+Therefore this gives a probability distribution over $B$.  That is, the probability of measuring basis vector $| b_j\rangle $ is given by $| \langle b_j | \psi \rangle |^2$. 
+This probabilistic interpretation of quantum measurement is called the {\bf Born rule}.
+Now the question is, what does the born rule have to do with the $\CPM$ construction?
 
 
 \begin{definition}
-Given a special \dag-commutative Fsrobenius algebra $B$ on a \dag-compact closed category $\X$,
+Given a special \dag-commutative Frobenius algebra $B$ on a \dag-compact closed category $\X$,
 $$
 p_B=
 \begin{tikzpicture}[scale=-1]
@@ -1076,7 +1083,7 @@ Given a quantum state $| \psi \rangle$ and an orthonormal basis  $B$, a  {\bf de
 
 
 
-To promote these classical mixtures to their own systems,  we regard the projectors onto quantum observables themselves as objects. First, we recall the Karoubi envelope:
+To promote these classical mixtures to their own systems,  we regard the projectors onto quantum observables themselves as objects:
 
 \begin{definition}
 Given a category $\X$ and a class of idempotents $\mathcal I$ (so that $\forall e\in \mathcal I$, $e^2=e$), the {\bf Karoubi envelope of $\X$ at $\mathcal{I}$}, ${\sf Split}_{\mathcal I}(\X)$ is the category with:
@@ -1101,7 +1108,7 @@ Moreover, when $\X$ is monoidal, symmetric monoidal or compact closed, so is ${\
 
 ${\sf Split}_{{\mathcal I }\cup \{ 1_X | X \in \X\}}(\X)$ is said to be the category obtained by {\bf splitting the idempotents in $\mathcal I$}.
 
-Note that when one splits an idempotent $e:X\to X$, then $(X,e)$ is the retract of $(X, 1_X)$ so that:
+When one splits an idempotent $e:X\to X$, then $(X,e)$ is the retract of $(X, 1_X)$:
 
 $$
 \xymatrix{
@@ -1119,8 +1126,7 @@ $$
 
 \end{definition}
 Morally, the Karoubi envelope promotes subobjects to objects.
-
-This generalizes to $\dag$-compact closed categories:
+This generalizes to $\dag$-compact closed categories, so that projectors get promoted to objects:
 
 \begin{definition}[{\cite{idempotent}}]
 Given a $\dag$-category $\X$ and class of projectors $\mathcal I$ in $\X$, then  ${\sf Split}_{\mathcal I}(\X)$ is a $\dag$ category.
@@ -1141,7 +1147,7 @@ Let us unpack this a bit.
 %
 %Going in the opposite direction, suppose we want to find the probability of measuring the state $|b_j\rangle$.  By precomposing the map $(p_B, \langle b_j|, 1_I):(\mathcal H, p_B)\to (I,1_I)$ with the measurement map $(1_\mathcal{H},1_\mathcal{H}, p_B) :(\mathcal{H},1_\mathcal{H})\to (\mathcal{H},p_B)$ we regard $\langle b_j|$ as a pure quantum effect.
 %Therefore, if we were to precompose this composite with a quantum state $|\psi\rangle$, we would obtain the probability $|\langle \psi| b_j\rangle|^2$.
-Take an orthonotal basis $B$ for $\mathcal H$ and $B'$ for $\mathcal{H}'$ correspond to a special commutative \dag-Frobenius algebras $\zcirc$ and $\xcirc$, respectively.  Then maps $(\mathcal{H},p_B)\to (\mathcal{H}',p_{B'})$ corresponds to a map $p_B;f;p_{B'}$ for some $f:\mathcal{H}\to \mathcal{H}'$  in $\CPM(\FHilb)$:
+Take an orthonormal basis $B$ for $\mathcal H$ and $B'$ for $\mathcal{H}'$ correspond to a special commutative \dag-Frobenius algebras $\zcirc$ and $\xcirc$, respectively.  Then maps $(\mathcal{H},p_B)\to (\mathcal{H}',p_{B'})$ corresponds to a map $p_B;f;p_{B'}$ for some $f:\mathcal{H}\to \mathcal{H}'$  in $\CPM(\FHilb)$:
 
 $$
 \begin{tikzpicture}
@@ -1278,7 +1284,7 @@ $$
 \end{tikzpicture}
 $$
 
-Because equivalence classes in $\CPM(\FHilb)$ are up to complex conjugation, such maps $g$ are unique up to a scalar factor $e^{2\pi\cdot i\cdot \theta}$ for some $\theta \in [0,1)$.  That is to say, these maps are unique {\bf up to global phase}.
+Because the equivalence classes of $\CPM(\FHilb)$ are defined in terms of the complex conjugation of maps in $\FHilb$;  $g$ unique up to a scalar factor $e^{2\pi\cdot i\cdot \theta}$ for some $\theta \in [0,1)$.  That is to say, these maps are unique {\bf up to global phase}.
 
 
 
@@ -1325,9 +1331,6 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
-
 
 We can see how the state preparation map and measurement maps for $\zcirc$ double the basis elements $|b_j\rangle$ and $\langle b_j|$ of $B$ and $B^*$:
 $$
@@ -1411,7 +1414,77 @@ $$
 \end{tikzpicture}
 $$
 
-There is a graphical calculus for this two sorted prop of classical and quantum types.  The classical wires are drawn thin and the quantum wires are drawn thick.  Similarly, the classical spiders are drawn with a thin border and the quantum spiders are drawn with a thick border:
+
+
+Given a quantum state  $|\phi\rangle$ on $\mathcal H$ with an elelement $\psi$ in its equivalence class, measuring in the $B$-basis has the following effect:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (72.775, -0.725) {};
+		\node [style=none] (1) at (71.75, 1.25) {};
+		\node [style=Z] (2) at (72.125, 0.025) {};
+		\node [style=none] (3) at (72.475, 0.55) {};
+		\node [style=none] (4) at (72.875, 0.275) {};
+		\node [style=none] (5) at (72.375, -0.725) {};
+		\node [style=none] (6) at (72.375, -1.225) {};
+		\node [style=none] (7) at (72.775, -1.225) {};
+		\node [style=map] (8) at (72.6, -1.25) {$\psi$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=90, out=180] (3.center) to (2);
+		\draw [in=0, out=90] (4.center) to (3.center);
+		\draw [in=90, out=-90] (4.center) to (5.center);
+		\draw (6.center) to (5.center);
+		\draw (0.center) to (7.center);
+		\draw [in=-45, out=90] (0.center) to (2);
+		\draw [in=-90, out=150, looseness=0.75] (2) to (1.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\sum_{j=0}^{d-1}\left(
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (43) at (90.2, 1) {};
+		\node [style=map] (44) at (89.725, -2) {$\psi$};
+		\node [style=map] (45) at (90.2, 0.25) {$|b_j\rangle$};
+		\node [style=none] (46) at (89.225, -1.25) {};
+		\node [style=map] (47) at (90.2, -0.75) {$\langle b_j|$};
+		\node [style=none] (48) at (90.2, -1.25) {};
+		\node [style=map] (49) at (88.2, -1.25) {$|b_j\rangle$};
+		\node [style=none] (50) at (88.25, -1.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=150] (44) to (46.center);
+		\draw (45) to (43.center);
+		\draw [in=-90, out=30] (44) to (48.center);
+		\draw (48.center) to (47);
+		\draw [in=90, out=90, looseness=2.00] (46.center) to (50.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\right)
+=
+\sum_{j=0}^{d-1}
+|\langle b_j|\phi\rangle|^2\cdot 
+\left(\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (25) at (82.2, 1.5) {};
+		\node [style=map] (28) at (82.2, 0.75) {$| b_j\rangle$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (28) to (25.center);
+	\end{pgfonlayer}
+\end{tikzpicture}\
+\right)
+=
+\sum_{j=0}^{d-1}
+|\langle b_j|\phi\rangle|^2 |b_j\rangle
+$$
+
+Therefore, measuring $|b_j\rangle $ yields the scalar $|\langle b_j|\phi\rangle|^2$, which is the correct probability via the Born rule.
+
+There is a graphical calculus for this two-sorted prop of classical and quantum types.  The classical wires are drawn thin and the quantum wires are drawn thick.  Similarly, the classical spiders are drawn with a thin border and the quantum spiders are drawn with a thick border:
 
 $$
 \begin{tikzpicture}
@@ -1476,7 +1549,7 @@ $$
 		\draw (1.center) to (0);
 		\draw[thick]  (0) to (2.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}\
 ,
 \hspace*{1cm}
 \begin{tikzpicture}
@@ -1494,7 +1567,7 @@ $$
 
 
 
-So that now clsasical spiders can have classical and quantum inputs and outputs by conjugation with the state preparation and measurement maps.  For example:
+Classical spiders can have classical and quantum inputs and outputs by conjugation with the state preparation and measurement maps, called {\bf bastard spiders} following \cite{pqp}.  For example:
 
 $$
 \begin{tikzpicture}
@@ -1564,7 +1637,7 @@ $$
 \end{tikzpicture}
 $$
 
-However, when a classical spider is connected to a quantum spider, they fuse into a classical spider:
+When a classical spider is connected to a quantum spider, they decohere and fuse into a classical spider:
 
 $$
 \begin{tikzpicture}
@@ -1943,7 +2016,7 @@ $$
 \end{tikzpicture}
 $$
 
-Or in the thick-think spider notation:
+Or in the bastard spider notation:
 
 $$
 \begin{tikzpicture}
@@ -2252,7 +2325,7 @@ $$
 		\draw [in=90, out=-105] (21) to (13);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\cong
+\approx
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (37) at (392.25, 9) {};
@@ -2407,7 +2480,7 @@ $$
 \end{tikzpicture}
 $$
 
-In orther terms, the $Z$ and $X$-spiders are {\bf flexsymmetric}   \cite[\S 5]{flexsymmetric}).
+In orther terms, the $Z$ and $X$-spiders are {\bf flexsymmetric}   \cite[\S 5]{flexsymmetric}.
 
 %The following pair of strongly complementary observables will come up often throughout this thesis:
 %
@@ -2417,7 +2490,7 @@ In orther terms, the $Z$ and $X$-spiders are {\bf flexsymmetric}   \cite[\S 5]{f
 %tODO
 %\end{example}
 
-We almost have all of the essential ingredients of categorical quantum mechanics: we have density matrices and strongly complementary observables.  The next thing to do is to decorate spiders with phase-angles:
+We almost have all of the essential ingredients of categorical quantum mechanics.  Bastard spiders alone are not very expressive.  The following bridges this gap:
 
 \begin{definition}
 \label{def:phases}
@@ -2537,14 +2610,14 @@ Phases for Frobenius algebras are preserved by composition; and they form a grou
 
 The motivating example is again  $\FHilb$, which makes sense of he name:
 \begin{example}
-Given an ordered orthonormal basis $\{| b_j \}_{j \in [0,d)}$ in $\FHilb$, the phases are generated by the following unitaries, for all $\{\theta_0,\ldots, \theta_{d-1}\} \in [0, 1)^d$:
+Given an ordered orthonormal basis $\{| b_j \rangle \}_{j \in [0,d)}$ in $\FHilb$, the phases are generated by the following unitaries, for all $\{\theta_0,\ldots, \theta_{d-1}\} \in [0, 1)^d$:
 
 $$\sum_{j=0}^{d-1} e^{  2\pi \cdot i \cdot b_j \cdot \theta_j/d }|  b_j \rangle\langle b_j|$$
 
 
 \end{example}
 
-Recall that maps in $\FHilb$ are unique up to global phase, therefore, when specifying phases, we fix $\theta_0=0$ to avoid having an extra degree of freedom.
+Recall that maps in $\CPM(\FHilb)$ are unique up to global phase, therefore when specifying phases we fix $\theta_0=0$.  This means that the phases $\CPM(\FHilb)$ for an orthonormal basis of dimension $d$ are uniquely parametrized by the group $[0, 1)^{d-1}$. In the literature it is commonplace to index the phases over $[0,2\pi)^d$ rather than over $[0,1)^d$.  We chose the latter  because it is much more amenable to generalization away from quantum mechanics. 
 
 %The curve  $\{e^{2 \pi \cdot i \cdot \theta}\ | \ \theta \in [0, 1)\}$ carves out the unit circle in the complex plane so the phase group is isomorphic to the circle (hence the name).
 
@@ -2771,7 +2844,9 @@ $$
 
 \begin{definition}
 \label{def:zx}
-Given some fixed dimension $d$, a fragment of the qudit {\bf ZX-calculus} is a prop generated by two strongly complementary spiders, each of which is parameterized by phase groups.  We also require that this comes equipped with a faithful $\dag$-symmetric monoidal functor into $\Mat_\C$, sending one spider to the $X$-spider and the other to the $Z$-spider, in a way that preserves the phase group structure.
+Given some fixed dimension $d$, a fragment of the qudit {\bf ZX-calculus} is a prop generated by two strongly complementary spiders, each of which is parameterized by phase groups. 
+
+We also require that this comes equipped with a faithful $\dag$-symmetric monoidal functor into $\FHilb$, sending the objects $n\mapsto \ell^2((\Z/d\Z)^n)$ and sending the two phased spiders to the $Z$ and $X$-phased spiders in a way that preserves the phase-group structure.
 
 That is to say, we have spiders decorated by phase groups $G$ and $H$ and group homomorphisms $g:G\to [0,1)^d$ and $h:H\to [0,1)^d$, respectively such that:
 
@@ -2829,10 +2904,12 @@ $$
 \sum_{j=0}^{d-1} e^{2\cdot \pi \cdot i \cdot j\cdot h_j(\psi)/d} \mathcal{F} | j, \ldots, j\rangle \langle j,\ldots, j| \mathcal{F}^\dag
 $$
 
-A fragment of the ZX-calculus, is {\bf universal} when this interpretation is full and   {\bf complete} when this interpretation is faithful.
-\end{definition}
 
-In the ZX-calculus literature it is commonplace to index the phases over $[0,2\pi)^d$ rather than over $[0,1)^d$.  We chose the latter  because it is much more amenable to generalization away from quantum mechanics. 
+
+Take a fragment $\llbracket-\rrbracket:{\sf ZX}\to \Hilb$ of the ZX-calculus and a \dag-compact closed subcategory of $\X\hookrightarrow\FHilb$, essentially-surjectively factoring through this interpretation (so that it contains all the objects of $\llbracket{\sf ZX}\rrbracket$ up to isomorphism).
+The fragment is {\bf universal} for $\X$ when the map ${\sf ZX}\to \X$ is full and {\bf complete} when it is faithful.
+
+\end{definition}
 
 The {\bf scalable ZX-calculus} \cite{szx} refers to the proof nets for fragments of the ZX-calculus Frobenius algebras on wires of composite dimension are denoted as follows:
 
@@ -3030,10 +3107,8 @@ $${\cal X} := \sum_{b=0}^{p-1} | b+1\rangle \langle b|$$
 An $X$-stabilizer of an $n$-qudit state $\phi$ is a stabilizer of the form:
 
 $$
-\bigotimes_{j=0}^{n-1}{\cal X}_{(j)}^{a_j}
+{\cal X}^{a_0}\otimes  {\cal X}^{a_1} \otimes \cdots \otimes {\cal X}^{a_{n-1}}
 $$
-
-Where the subscript $(j)$ denotes that we are applying a gate on wire $(j)$ tensored on both sides with identities.
 
 
 \end{definition}
@@ -3053,17 +3128,17 @@ D
 :=
 \left\{ 
 \left(
-\begin{pmatrix}
+\begin{bmatrix}
            a_{1} \\
            \vdots \\
            a_{n}
-\end{pmatrix}
+\end{bmatrix}
 ,
-\begin{pmatrix}
+\begin{bmatrix}
            b_{1} \\
            \vdots \\
            b_{m}
-\end{pmatrix}
+\end{bmatrix}
 \right) \in \F_p^{n}\oplus\F_p^m
 \ : \
 \begin{tikzpicture}
@@ -3290,17 +3365,17 @@ Which gives us a linear subspace of $\F_p^{3} \oplus \F_p^3$:
 =
 \left\{
 \left(
-\begin{pmatrix}
+\begin{bmatrix}
            a_{1} \\
            a_{2} \\
            a_{3}
-\end{pmatrix}
+\end{bmatrix}
 ,
-\begin{pmatrix}
+\begin{bmatrix}
            b_{1} \\
            b_{2} \\
            b_{3}
-\end{pmatrix}
+\end{bmatrix}
 \right)
 : a_1,a_2,a_3,b_1,b_2,b_3 \in \F_p,
 a_1=a_2=b_1\wedge
@@ -3666,17 +3741,17 @@ $$
 =
 \left\{
 \left(
-\begin{pmatrix}
+\begin{bmatrix}
            a_{1} \\
            a_{2} \\
            a_{3}
-\end{pmatrix}
+\end{bmatrix}
 ,
-\begin{pmatrix}
+\begin{bmatrix}
            b_{1} \\
            b_{2} \\
            b_{3}
-\end{pmatrix}
+\end{bmatrix}
 \right)
 :
 a_1=a_2=a_3\wedge
@@ -3990,13 +4065,13 @@ The original proof for qudits is found in  \cite{gottesmanknill}; however, it fo
 
 \begin{proposition}[{\cite[Appendix D]{campbell}}]
 \label{prop:campbell}
-Adding any non-clifford unitary to stabilizer circuits is an approximately universal set of generators for qupit  circuits.
+Adding any non-Clifford unitary to stabilizer circuits is an approximately universal set of generators for qupit  circuits.
 \end{proposition}
 
 By approximately universal, this means that such a set of generators is dense in the appropriate sense.
+The qubit case seems to be folklore; the reference I provided was for qupits.  Surely this also holds for all dimensions, but the group theory becomes harder.  It is dense in an efficient way, by the Solvay -Kiataev theorem, proved initially for qubits  \cite{Kitaev1997}, and later for qudits \cite[\S 5]{Dawson2006}.
 
-
-Therefore, by adding any other phases to qupit stabilizer circuits is maximally expressive in some sense.  The first approxiately universal axiomatization of the qudit ZX-calculus, was obtained by adding the $1/8$ phase: yielding a complete axiomatization for the qubit  Clifford+T quantum circuits \cite{Jeandel}.
+Therefore, by adding any other phases to qupit stabilizer circuits is maximally expressive.  The first approxiately universal axiomatization of the qudit ZX-calculus, was obtained by adding the $1/8$ phase: yielding a complete axiomatization for the qubit  Clifford+T quantum circuits \cite{Jeandel}.
 
 Later complete presentations for the qubit ZX-calculus where all phases are allowed, so that it is universal on the nose \cite{zxcompleteb,zxcompletea}.  This gives a graphical presentation for the full subcategory of $\Mat_\C$ whose objects are powers of $2$.
 

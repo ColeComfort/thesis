@@ -2162,7 +2162,7 @@ They recall the following physical laws due to Ohm \cite{ohm} followed by Kirchh
 
 
 
-This allows us to capture an (ideal) junction with no resistance with $n$ incoming wires and $m$ outcoming wires as a Lagrangian relation.  By Kirchhoff's current law, the sum of the $n$ ingoing wires is equal to the sum of the $m$ outgoing wires.  Moreover, by Ohm's law, because resistance is zero, the $n$ incoming and $m$ outgoing potentials are all made to be equal.  That is to say that the junction is interpreted as the following Lagrangian relation:
+This allows us to capture an (ideal) junction with no resistance with $n$ incoming wires and $m$ outcoming wires as a Lagrangian relation.  By Kirchhoff's current law, the sum of the $n$ incoming wires is equal to the sum of the $m$ outgoing wires.  Moreover, by Ohm's law, because resistance is zero, the $n$ incoming and $m$ outgoing potentials are all made to be equal.  That is to say that the junction is interpreted as the following Lagrangian relation:
 
 $$
 \left\llbracket\
@@ -2841,11 +2841,11 @@ We extend this isomorphism of states to an isomorphism of props using a symplect
 
 
 \begin{definition}
-Given a field $k$  the  $n$-fold symplectic Weyl operators are the symplectomorphisms of the following form,  for $\vec a, \vec b \in k^(2n)$:
+Given a field $k$  the  $n$-fold symplectic Weyl operators are the symplectomorphisms of the following form,  for $\vec a, \vec b \in k^{2n}$:
 
 
 $$
-W(a,b):=
+W(\vec a, \vec b):=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=X] (0) at (0, 1) {$\vec a$};
@@ -4306,7 +4306,8 @@ $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (0, 2) {};
-		\node [style=isourceAMshape,rotate=90] (1) at (0, 1) {};
+		\node [style=vsourceAMshape,rotate=-90,fill=white] (10) at (0, 1) {};
+		\node [style=none] (1) at (0, 1) {};
 		\node [style=none] (2) at (0, 0) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
@@ -4353,7 +4354,8 @@ $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (0, 2) {};
-		\node [style=vsourceAMshape,rotate=-90] (1) at (0, 1) {};
+		\node [style=isourceAMshape,rotate=-90,fill=white] (10) at (0, 1) {};
+		\node [style=none] (1) at (0, 1) {};
 		\node [style=none] (2) at (0, 0) {};
 		\node [style=none] (3) at (-.7, 1) {$I$};
 	\end{pgfonlayer}
@@ -4367,8 +4369,8 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (13) at (26.5, 4.25) {$0,I$};
-		\node [style=Z] (14) at (26.5, 2.75) {$0,1/I$};
+		\node [style=Z] (13) at (26.5, 4.25) {$1/I,0$};
+		\node [style=Z] (14) at (26.5, 2.75) {$I,0$};
 		\node [style=none] (15) at (26.5, 5.2) {};
 		\node [style=none] (16) at (26.5, 1.8) {};
 	\end{pgfonlayer}
@@ -5379,18 +5381,17 @@ $$
 \begin{tikzpicture}[yscale=-1]
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (0.25, 0) {};
-		\node [style=Xthick] (1) at (0.25, -0.5) {};
+		\node [style=X] (1) at (0.25, -1) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw[thick] (1) to (0.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
-=
 \begin{tikzpicture}[yscale=-1]
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (0.25, 0) {};
-		\node [style=Zthick] (1) at (0.25, -0.5) {};
+		\node [style=Z] (1) at (0.25, -1) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw[thick] (1) to (0.center);
@@ -5398,6 +5399,17 @@ $$
 \end{tikzpicture}
 \ \right\rrbracket
 =
+\left\{ 
+\left(
+\begin{pmatrix}
+z\\x
+\end{pmatrix},
+*
+\right)
+:\forall z,x \in \F_p
+\right\}
+=
+\left\llbracket \
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (2) at (4, 0) {};
@@ -5410,19 +5422,11 @@ $$
 		\draw (3) to (5.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
-=
-\left\{ 
-\left(
-\begin{pmatrix}
-z\\x
-\end{pmatrix},
-*
-\right)
-:\forall z,x \in \F_p
-\right\}
+\ \right\rrbracket
 $$
 \end{corollary}
 
+Where we on the left we have the discard map, as well as its representation in terms of the bastard spider notation for stabilizer circuits.
 
 
 This is conceptually very close to the result of \cite{huot} where they show that the affine completion of isometries between finite dimensional Hilbert spaces, which freely adds a discard map, yields completely positive trace-preserving maps.  And even more similar, to the more refined result of   \cite{disc}, where they show that various fragments of the ZX-calculus can be augmented with quantum discarding by freely adding discarding. 
@@ -5449,7 +5453,7 @@ We can add mixed states to Spekkens' toy model in the same way:
 $\Aff\Co\Isot\Rel_{\F_2}\cong \CPM(\Aff\Lag\Rel_{\F_2})$ is Spekkens' toy model with mixed states.
 \end{corollary}
 
-Just as Spekkens' toy model is an epistemic restricted toy theory of quantum circuits; by dualizing things, we also have that $\Aff\Co\Isot\Rel_{\F_p}$ is an empistemically restricted toy theory of quantum circuits; albeit the epistemic restriction is going in the wrong direction.
+
 
 
 {\em Absolutely remarkably}, and seemingly out of nowhere, the quopit stabilizer codes with trivial affine phase (no Pauli gates) can be expressed, modulo invertible phase, in terms of an iterated $\CPM$ construction with respect to the orthogonal complement at the inner level, and the complex conjugation at the outer level:
@@ -5691,7 +5695,7 @@ $$
 		\node [style=Z] (0) at (28, -4) {};
 		\node [style=none] (1) at (28, -5) {};
 		\node [style=none] (2) at (28, -3) {};
-		\node [style=X] (3) at (28, -5) {$x$};
+		\node [style=X] (3) at (28, -5) {$x,0$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw (1.center) to (0);
@@ -5734,7 +5738,7 @@ $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (6) at (29, -3) {};
-		\node [style=Xthick] (7) at (29, -4) {$x$};
+		\node [style=Xthick] (7) at (29, -4) {$x,0$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw[thick] (7) to (6.center);
@@ -5773,6 +5777,21 @@ $$
 \end{tikzpicture}
 \
 \right\rrbracket 
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (3) at (24, 0.5) {};
+		\node [style=Z] (4) at (24.75, 0) {};
+		\node [style=none] (5) at (24, 0) {};
+		\node [style=none] (6) at (24.75, 0.5) {};
+		\node [style=none] (7) at (24, -0.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (5.center) to (3.center);
+		\draw (6.center) to (4);
+		\draw [style=red] (7.center) to (5.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
 \ ,
 \hspace*{.8cm}
 \left\llbracket \
@@ -6090,7 +6109,7 @@ This is because, given any input state, the circuit on the right hand side can p
 
 
 \begin{example}
-Similarly, the identity on a quantum wire is a coarse graining of the decoherence map:
+Similarly,  the decoherence map is a coarse graining of  the identity on a quantum wire :
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -6127,15 +6146,429 @@ $$
 $$
 \end{example}
 
-This two coloured prop also has a semantics in terms of electrical circuits, when changing the field from $\F_p$ to the field of fractions of real polynomials $\R(x)$.  It gives a well-structured semantics for a large fragment (although not all) of the impedance calculus \cite{impedence}:
+Back to the parallel example of electrical circuits.  This multicoloured view of things recaptures the  semantics for controlled voltage and current sources as well as ammeters and voltmenters given in \cite{impedence}:
 
 \begin{remark}
 \label{rem:electrical}
-$\Aff\Co\Isot\Rel_{\R(x)}^M$ is a semantics for the fragment of the impedance calculus generated by resistors, inductors, capacitors, controlled and uncontrolled voltage/current sources.
+$\Aff\Co\Isot\Rel_{\R(x)}^M$ gives a semantics for all of the electrical circuit components we have discused so far in addition to the controlled voltage and current sources:
+
+$$
+\left\llbracket\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (0.5, 2) {};
+		\node [style=vsourceAMshape, rotate=-90,fill=white] (10) at (0.5, 1) {};
+		\node [style=none] (1) at (0.5, 1) {};
+		\node [style=none] (2) at (0.5, 0) {};
+		\node [style=none] (3) at (1.2, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (2.center) to (1);
+		\draw (1) to (0.center);
+		\draw [style=red, in=-15, out=90] (3.center) to (1);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket
+:=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (6, 0.5) {};
+		\node [style=none] (1) at (6, -1.25) {};
+		\node [style=none] (2) at (6.75, -1.25) {};
+		\node [style=none] (3) at (6.75, 0.5) {};
+		\node [style=none] (4) at (7.75, -1.25) {};
+		\node [style=X] (5) at (6.75, -0.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=red, in=-15, out=90, looseness=1.25] (4.center) to (5);
+		\draw (5) to (3.center);
+		\draw (0.center) to (1.center);
+		\draw (2.center) to (5);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (6) at (2.5, 0.75) {};
+		\node [style=none] (7) at (2, -0.75) {};
+		\node [style=none] (8) at (3.5, -0.75) {};
+		\node [style=none] (9) at (4, 0.75) {};
+		\node [style=none] (10) at (4.5, -1.5) {};
+		\node [style=X] (11) at (4, 0) {};
+		\node [style=Z] (12) at (2.5, 0) {};
+		\node [style=Z] (13) at (3, -0.75) {};
+		\node [style=none] (14) at (4.5, -0.75) {};
+		\node [style=none] (15) at (2, -1.5) {};
+		\node [style=none] (17) at (3.5, -1.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (11) to (9.center);
+		\draw [in=-150, out=90] (8.center) to (11);
+		\draw [in=-150, out=90] (7.center) to (12);
+		\draw (12) to (6.center);
+		\draw (15.center) to (7.center);
+		\draw [in=-30, out=90] (13) to (12);
+		\draw (8.center) to (17.center);
+		\draw [in=-30, out=90] (14.center) to (11);
+		\draw [style=red] (10.center) to (14.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+ \ ,
+\hspace*{.5cm}
+\left\llbracket\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (4) at (2.9, 2) {};
+		\node [style=isourceAMshape, rotate=-90,fill=white] (50) at (2.9, 1) {};
+		\node [style=none] (5) at (2.9, 1) {};
+		\node [style=none] (6) at (2.9, 0) {};
+		\node [style=none] (7) at (2.25, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (6.center) to (5);
+		\draw (5) to (4.center);
+		\draw [style=red, in=-165, out=90] (7.center) to (5);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket
+:=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (33) at (6.5, -2.75) {};
+		\node [style=none] (34) at (7, -4.25) {};
+		\node [style=none] (36) at (8, -2.75) {};
+		\node [style=Z] (38) at (6.5, -3.5) {};
+		\node [style=none] (40) at (7, -5) {};
+		\node [style=none] (41) at (8, -5) {};
+		\node [style=Z] (42) at (8, -4.25) {};
+		\node [style=none] (43) at (6, -4.25) {};
+		\node [style=none] (44) at (6, -5) {};
+		\node [style=Z] (45) at (8, -3.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-30, out=90] (34.center) to (38);
+		\draw (38) to (33.center);
+		\draw (40.center) to (34.center);
+		\draw [in=-150, out=90] (43.center) to (38);
+		\draw [style=red] (44.center) to (43.center);
+		\draw (45) to (36.center);
+		\draw (41.center) to (42);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (19) at (2.75, -2.75) {};
+		\node [style=none] (20) at (3.25, -4.25) {};
+		\node [style=none] (21) at (4.75, -4.25) {};
+		\node [style=none] (22) at (4.25, -2.75) {};
+		\node [style=X] (24) at (4.25, -3.5) {};
+		\node [style=Z] (25) at (2.75, -3.5) {};
+		\node [style=none] (27) at (3.75, -4.25) {};
+		\node [style=none] (28) at (3.25, -5) {};
+		\node [style=none] (29) at (4.75, -5) {};
+		\node [style=Z] (30) at (3.75, -4.25) {};
+		\node [style=none] (31) at (2.25, -4.25) {};
+		\node [style=none] (32) at (2.25, -5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (24) to (22.center);
+		\draw [in=-30, out=90] (21.center) to (24);
+		\draw [in=-30, out=90] (20.center) to (25);
+		\draw (25) to (19.center);
+		\draw (28.center) to (20.center);
+		\draw (21.center) to (29.center);
+		\draw [in=-150, out=90] (27.center) to (24);
+		\draw [in=-150, out=90] (31.center) to (25);
+		\draw [style=red] (32.center) to (31.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+
+Or in bastard spider notation, the controlled voltage and current sources have the following form:
+
+$$
+\left\llbracket\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (0.5, 2) {};
+		\node [style=vsourceAMshape, rotate=-90,fill=white] (10) at (0.5, 1) {};
+		\node [style=none] (1) at (0.5, 1) {};
+		\node [style=none] (2) at (0.5, 0) {};
+		\node [style=none] (3) at (1.2, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (2.center) to (1);
+		\draw (1) to (0.center);
+		\draw [style=red, in=-15, out=90] (3.center) to (1);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket
+=
+\left\llbracket\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Xthick] (47) at (3, 3) {};
+		\node [style=none] (48) at (3, 1.25) {};
+		\node [style=none] (49) at (3, 4) {};
+		\node [style=none] (50) at (3.75, 1.25) {};
+		\node [style=none] (51) at (3, 4) {};
+		\node [style=Z] (52) at (3.75, 2) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [thick] (47) to (51.center);
+		\draw [thick] (47) to (48.center);
+		\draw [thick, in=345, out=90] (52) to (47);
+		\draw (50.center) to (52);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket\ ,
+\hspace*{.5cm}
+\left\llbracket\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (4) at (2.9, 2) {};
+		\node [style=isourceAMshape, rotate=-90,fill=white] (50) at (2.9, 1) {};
+		\node [style=none] (5) at (2.9, 1) {};
+		\node [style=none] (6) at (2.9, 0) {};
+		\node [style=none] (7) at (2.25, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (6.center) to (5);
+		\draw (5) to (4.center);
+		\draw [style=red, in=-165, out=90] (7.center) to (5);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket
+=
+\left\llbracket\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (53) at (6, 3) {};
+		\node [style=none] (54) at (6, 1.25) {};
+		\node [style=none] (55) at (6, 4) {};
+		\node [style=none] (56) at (5.25, 1.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [thick] (54.center) to (53);
+		\draw [thick] (53) to (55.center);
+		\draw [in=-135, out=90] (56.center) to (53);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket
+$$
+
+On the other hand the dual multicoloured prop $\Aff\Isot\Rel_{\R(x)}^M$ gives a semantics for all of the uncontrolled components we have discussed so far as well as voltmeters and ammeters:
+
+$$
+\left\llbracket\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (58) at (9.25, 1) {};
+		\node [style=none] (59) at (9.25, -1) {};
+		\node [style=none] (60) at (10, 1) {};
+		\node [style=map] (61) at (9.25, 0) {$V$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=red, in=-90, out=45, looseness=0.75] (61) to (60.center);
+		\draw (59.center) to (61);
+		\draw (61) to (58.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (62) at (12.25, 0) {};
+		\node [style=X] (63) at (11.5, -0.5) {};
+		\node [style=X] (64) at (11.5, 0.5) {};
+		\node [style=s] (65) at (13, 1) {};
+		\node [style=none] (66) at (13, 1.75) {};
+		\node [style=none] (67) at (11.5, 1.75) {};
+		\node [style=none] (68) at (11.5, -1.5) {};
+		\node [style=none] (69) at (12.25, -1.5) {};
+		\node [style=none] (70) at (12.25, 1.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (67.center) to (64);
+		\draw (68.center) to (63);
+		\draw (69.center) to (62);
+		\draw (70.center) to (62);
+		\draw [style=red, in=-90, out=30] (62) to (65);
+		\draw [style=red] (65) to (66.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=s] (107) at (27, 1.75) {};
+		\node [style=none] (108) at (27, 2.5) {};
+		\node [style=none] (109) at (24.5, 1) {};
+		\node [style=none] (110) at (25, -0.75) {};
+		\node [style=none] (111) at (26.5, -0.75) {};
+		\node [style=none] (112) at (26, 1) {};
+		\node [style=Z] (113) at (25, 0) {};
+		\node [style=X] (114) at (26.5, 0) {};
+		\node [style=X] (115) at (25.5, 1) {};
+		\node [style=none] (116) at (27, 1) {};
+		\node [style=none] (117) at (26, 2.5) {};
+		\node [style=none] (118) at (24.5, 2.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=red] (107) to (108.center);
+		\draw [style=red] (116.center) to (107);
+		\draw [in=-90, out=30] (114) to (116.center);
+		\draw [in=-90, out=30] (113) to (115);
+		\draw (114) to (111.center);
+		\draw (113) to (110.center);
+		\draw [in=-90, out=150] (114) to (112.center);
+		\draw [in=-90, out=150] (113) to (109.center);
+		\draw (112.center) to (117.center);
+		\draw (109.center) to (118.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ ,
+\hspace*{.5cm}
+\left\llbracket\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (84) at (17.5, 1) {};
+		\node [style=none] (85) at (17.5, -1) {};
+		\node [style=none] (86) at (16.75, 1) {};
+		\node [style=map] (87) at (17.5, 0) {$A$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=red, in=-90, out=135, looseness=0.75] (87) to (86.center);
+		\draw (85.center) to (87);
+		\draw (87) to (84.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (13) at (26.75, -0.25) {};
+		\node [style=none] (15) at (26, 0.75) {};
+		\node [style=none] (16) at (26.75, 0.75) {};
+		\node [style=none] (18) at (27.5, 0.75) {};
+		\node [style=none] (19) at (26.75, -1.25) {};
+		\node [style=none] (20) at (27.5, -1.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (19.center) to (13);
+		\draw (13) to (16.center);
+		\draw [style=red, in=-90, out=150] (13) to (15.center);
+		\draw (18.center) to (20.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (0) at (22.5, -0.25) {};
+		\node [style=X] (1) at (24.5, -0.25) {};
+		\node [style=none] (2) at (22, 0.75) {};
+		\node [style=none] (3) at (23, 0.75) {};
+		\node [style=none] (4) at (24, 0.75) {};
+		\node [style=none] (5) at (25, 0.75) {};
+		\node [style=none] (6) at (22.5, -1.25) {};
+		\node [style=none] (7) at (24.5, -1.25) {};
+		\node [style=X] (8) at (24, 0.75) {};
+		\node [style=none] (9) at (22, 1.5) {};
+		\node [style=none] (10) at (22, 1.5) {};
+		\node [style=none] (11) at (23, 1.5) {};
+		\node [style=none] (12) at (25, 1.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (6.center) to (0);
+		\draw [in=-90, out=30] (0) to (3.center);
+		\draw (7.center) to (1);
+		\draw [in=-90, out=30] (1) to (5.center);
+		\draw [in=-90, out=150] (1) to (4.center);
+		\draw [in=-90, out=150] (0) to (2.center);
+		\draw [style=red] (2.center) to (10.center);
+		\draw (3.center) to (11.center);
+		\draw (5.center) to (12.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+These are the orthogonal complement of the interpretation of stabilizer bastard spiders in terms of linear relations:
+$$
+\left\llbracket\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (58) at (9.25, 1) {};
+		\node [style=none] (59) at (9.25, -1) {};
+		\node [style=none] (60) at (10, 1) {};
+		\node [style=map] (61) at (9.25, 0) {$V$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=red, in=-90, out=45, looseness=0.75] (61) to (60.center);
+		\draw (59.center) to (61);
+		\draw (61) to (58.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket
+=
+\left\llbracket\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (21) at (28.5, 2.25) {};
+		\node [style=none] (22) at (28.5, 4) {};
+		\node [style=none] (23) at (28.5, 1.25) {};
+		\node [style=none] (24) at (29.25, 4) {};
+		\node [style=s] (25) at (29.25, 3) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [thick] (22.center) to (21);
+		\draw [thick] (21) to (23.center);
+		\draw [in=-90, out=30] (21) to (25);
+		\draw (25) to (24.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket^\perp
+\ ,
+\hspace*{.5cm}
+\left\llbracket\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (84) at (17.5, 1) {};
+		\node [style=none] (85) at (17.5, -1) {};
+		\node [style=none] (86) at (16.75, 1) {};
+		\node [style=map] (87) at (17.5, 0) {$A$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=red, in=-90, out=135, looseness=0.75] (87) to (86.center);
+		\draw (85.center) to (87);
+		\draw (87) to (84.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket
+=
+\left\llbracket\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Zthick] (26) at (31, 2.25) {};
+		\node [style=none] (27) at (31, 4) {};
+		\node [style=none] (28) at (31, 1.25) {};
+		\node [style=none] (29) at (30.25, 4) {};
+		\node [style=none] (30) at (31, 1.25) {};
+		\node [style=X] (31) at (30.25, 3.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [thick] (26) to (30.center);
+		\draw [thick] (26) to (27.center);
+		\draw [thick, in=165, out=-90] (31) to (26);
+		\draw (29.center) to (31);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket^\perp
+$$
 \end{remark}
+The controlled voltage source is the electrical circuit analogue of a $X$-phase correction in quantum circuits.  Similarly, the controlled current source is the transpose of a nondestructive measurement in the $Z$-basis. 
 
-This can be verified by factoring the generators in \cite{impedence} into the appropriate form. DO THIS!!!!!
-
+It is strange that affine isotropic relations (of non-maximal dimension) show up in electrical circuits, but not in stabilizer circuits.
+Just as Spekkens' toy model is an epistemically restricted toy theory of quantum circuits; by dualizing things, we could also ask what properties of quantum mechanics hold the dual picture $\Aff\Co\Isot\Rel_{\F_p}$.  This  is an empistemically restricted toy theory of quantum circuits; albeit the epistemic restriction is going in the wrong direction.
 
 \section{Error correction}
 \label{sec:qec}
@@ -6148,7 +6581,8 @@ In this section, we show how to implement quantum error correction protocols for
 
 Fix an odd prime $p$.
 Consider an affine coisotropic subspace $S=L+a \subseteq \F_p^{2n}$ where $L$ has dimension $n+k$.  Then the associated projector on $n$-qudits is called a $[n,k]$-stabilizer code, as it encodes $k$ logical qudits into $n$ physical qudits. 
-The relationship between logical and physical qubits can be understood in terms of pictures.
+The relationship between logical and physical qubits can be understood in terms of pictures.  We will draw the doubled string diagrams for calculation and bastard spider diagrams because the presentation is cleaner.
+
 Fix a unitary purification $U$ of $S$:
 $$
 \begin{tikzpicture}
@@ -6694,7 +7128,7 @@ Suppose that Alice encodes a state and sends it to Bob on a noisy quantum channe
 
 Where $W((a,b),(c,d)) = U;W(e);U^\dag$.
 
-In the classical-quantum spider picture, that is:
+In the bastard spider picture, that is:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -6734,7 +7168,7 @@ $$
 		\draw [style=dotted, in=90, out=-90] (16.center) to (15.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
-=
+= \ \
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=map, thick] (64) at (11, 0) {$H(U)$};
@@ -6998,7 +7432,7 @@ $$
 \end{tikzpicture}
 $$
 
-Or in the classical-quantum spider picture:
+Or in the bastard spider picture:
 
 
 $$
@@ -7191,7 +7625,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-Or in the quantum-classical spider picture:
+Or in the bastard spider picture:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -8010,7 +8444,7 @@ Suppose we want to correct for single Pauli $X$ errors, then we find that:
 \item Pauli $X$ error$(d,e,f) = (0,0,1)$ yields syndrome $(e+d,f+d) = (0,1)$
 \item Pauli $X$ error $(d,e,f) = (0,0,0)$ yields syndrome $(e+d,f+d) = (0,0)$
 \end{itemize}
-Therefore, we want to apply the correction $(s,t) \mapsto (s t, s (t+1),(s+1) t)$. The error correction protocol then has the following form:
+Therefore, we want to apply the correction $(s,t) \mapsto (s t, s (t+1),(s+1) t)$. Notice how this is a nonlinear, function, so we have to leave category $\Aff\Co\Isot\Rel_{\F_p}^M$.  The error correction protocol then has the following form:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}

@@ -92,7 +92,7 @@ They are cocartesian with respect to the disjoint union
 $$X+Y := \{ (x,1) \ | \ \forall x \in X \} \cup  \{ (y,2) \ | \ \forall y \in Y \}$$
 
 
-Similarly, $\FVect_k$ and $\Mat_S$ is complete and cocomplete both with respect to the direct sum.
+Similarly, $\FVect_k$ and $\Mat_S$ are complete and cocomplete both with respect to the direct sum.
 \end{example}
 
 A Cartesian category is precisely a monoidal category which allows one to copy and delete things in a manner which is deterministic and total:
@@ -2621,12 +2621,16 @@ Inverse categories are particular kinds of \dag-categories:
 
 \begin{theorem}[{\cite[Theorem 2.20]{cockett}}]
 A restriction category $\X$ is an inverse category if and only if there is a dagger functor $(-)^\circ:\X^\op\to\X$ such that for all $X\xleftarrow{f} Z \xrightarrow{g} Y$:
-\begin{center}
-\begin{tabular}{cc}
- $f; f^\circ ; f = f$ & 
- $f ; f ^\circ ;g; g^\circ = g;g^\circ ; f; f ^\circ $
-\end{tabular}
-\end{center}
+
+\begin{multicols}{2}
+\begin{enumerate}[label={\bf [INV.\arabic*]}, ref={\bf [INV.\arabic*]}]
+\item $f; f^\circ ; f = f$
+\label{INV.1}
+\item $f ; f ^\circ ;g; g^\circ = g;g^\circ ; f; f ^\circ $
+\label{INV.2}
+\end{enumerate}
+\end{multicols}
+
 \end{theorem}
 
 The dagger functor takes maps to their partial inverse.
@@ -3228,8 +3232,10 @@ $
 
 \item[Composition:]
 \hfil $
-\dfrac{X\xrightarrow{(f,S)} Y , \hspace*{.5cm} Y\xrightarrow{(g,T)} Z }
-         {(f,S);(g;T) := (f;(1_S \otimes g);\alpha^{-1}_{S,T,Z} ,S\otimes T) } 
+\dfrac{
+	X\xrightarrow{(f,S)} Y , \hspace*{.5cm} Y\xrightarrow{(g,T)} Z }
+         {X\xrightarrow{
+		(f,S);(g;T) := (f;(1_S \otimes g);\alpha^{-1}_{S,T,Z} ,S\otimes T)}Z} 
 $
 
 
@@ -3315,21 +3321,24 @@ $
 \end{tikzpicture}
 $
 
-\item[Tensor product:]\
+\item[Tensor product:]
 
-\hspace*{-2cm}
-$
-\dfrac{X\xrightarrow{(f,S)} Y\ , \hspace*{1cm} Z\xrightarrow{(g,T)} W}
+$$
+\dfrac{
+	X\xrightarrow{(f,S)} Y\ , \hspace*{1cm} Z\xrightarrow{(g,T)} W }
 {
-(f,S)\otimes (g;T) :=  
-(f\otimes g);
-\alpha_{S\otimes Y, T,W}^{-1};
-\alpha_{S,Y, T} \otimes 1_W;
-(1_S\otimes \sigma_{Y,T})\otimes 1_W;
-\alpha_{S,T,Y}^{-1}\otimes 1_W;
-\alpha_{S\otimes T,Y,W}
+	X\otimes Z 
+		\xrightarrow{
+		(f,S)\otimes (g;T) :=  
+		(f\otimes g);
+		\alpha_{S\otimes Y, T,W}^{-1};
+		\alpha_{S,Y, T} \otimes 1_W;
+		(1_S\otimes \sigma_{Y,T})\otimes 1_W;
+		\alpha_{S,T,Y}^{-1}\otimes 1_W;
+		\alpha_{S\otimes T,Y,W}}
+	Y\otimes W
 } 
-$
+$$
 
 
 
@@ -3423,7 +3432,7 @@ $
 \end{description}
 \end{definition}
 
-The coherence data for the monoidal structure is inherited in a straightforward way from $\X$. Moreover, if $\X$ is symmetric monoidal, then it is easy to see how ${\CoPara}(\X)$ is as well.  Indeed ${\CoPara}(\X)$ is merely freely adding generators to the monoidal theory of $\X$.  However, variations on this theme will occur throughout this thesis, so we have promoted it to its own construction; for example: 
+The coherence data for the monoidal structure is inherited in a straightforward way from $\X$. Moreover, if $\X$ is symmetric monoidal, then it is easy to see how ${\CoPara}(\X)$ is as well.  Indeed ${\CoPara}(\X)$ is merely freely adding generators to the monoidal theory of  the strictification of $\X$.  However, variations on this theme will occur throughout this thesis, so we have promoted it to its own construction; for example: 
 
 \begin{definition}\cite[Definition 5.1.1]{giles}
 Given a discrete inverse category $\X$,  its {\bf Cartesian completion} $\tilde \X$ is the quotient of ${\CoPara}(\X)$ by either of the following equivalent symmetric monoidal congruence relations:
@@ -3584,7 +3593,7 @@ $\tilde \Pinj$ is $\Par$.
 For a partial function $f:X\to Y$, $\{(x,(x,y)) | (x,y) \in f \}/\sim$ is a partial isomorphism.
 \end{proof}
 
-
+The Cartesian completion is itself an embedding:
 
 \begin{lemma}
 \label{lemma:xtildefaithful}
