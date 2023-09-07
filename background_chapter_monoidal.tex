@@ -1000,7 +1000,7 @@ $$
 
 
 
-I will refer to the string diagrams in this category as proof nets for monoidal categories because of their close relation to proof nets for linearly distributive categories.  Even in the case when we are already working in a strict monoidal category, it will still often be useful to use proof nets; for example, we can bundle up wires together so that we can make induction arguments using pictures.  Indeed, proof nets have been rediscovered in the setting of quantum circuits as the scalable ZX-calculus for precisely this reason \cite{szx} (although they have not discovered the units and counits).  We will discuss this further in Section \ref{sec:cqm}.
+I will refer to the string diagrams in this category as proof nets for monoidal categories because of their close relation to proof nets for linearly distributive categories.  Even in the case when we are already working in a strict monoidal category, it will still often be useful to use proof nets; for example, we can bundle up wires together so that we can make induction arguments using pictures.  Indeed, proof nets have been rediscovered in the setting of quantum circuits as the scalable ZX-calculus for precisely this reason \cite{szx} (although they have not made use of the units and counits).  We will discuss this further in Section \ref{sec:cqm}.
 
 
 \begin{aside}
@@ -1008,16 +1008,16 @@ These proof nets are closely related to proof nets for linearly-distributive cat
 \end{aside}
 
 
-Some monoidal categories are equivalent to {\bf skeletal}, strict monoidal categories, so that every two isomorphic objects are equal.  These are very nice to work with because if we want, we can forgo having to use proof net notation entirely:
+Some monoidal categories are monoidally equivalent to {\bf skeletal}, strict monoidal categories, where the adjective skeletal means that every two isomorphic objects are equal.  These are very nice to work with because if we want, we can forgo having to use proof net notation entirely:
 \begin{example}
-$\FinOrd$ is a skeletal category and strict monoidal. It is monoidally equivalent to $\FSets$ under the product and coproduct.
+$\FinOrd$ is a skeletal and strict monoidal. It is monoidally equivalent to $\FSets$ under the product and coproduct.
 
 
 Given a commutative semiring $R$, $\Mat_R$ is a skeletal category and is strict monoidal. Moreover for a field $k$, $\Mat_k$ is monoidally equivalent to $\FVect_k$ under the bilinear tensor product and the direct sum.
 
 In particular, because $\FVect_\C$ and $\FHilb$ are monoidally equivalent under both the bilinear tensor product and the direct sum, then $\FHilb$ is monoidally equivalent to the skeletal strict monoidal category $\Mat_C$ under both tensor products.
 \end{example}
-Note that the strictification of a monoidal category need not be skeletal, for example there is no skeletal category for which $\Set$ is monoidally equivalent to.  Indeed, the strictification which we described when applied to $\FSets$ is not $\FinOrd$ on the nose.
+Note that the strictification of a monoidal category need not be skeletal, for example there is no skeletal strict monoidal  category for which $\Set$ is monoidally equivalent to.  Indeed, the strictification which we described when applied to $\FSets$ is not skeletal and thus not $\FinOrd$ on the nose.
 
 
 There is a more refined notion of monoidal category where one can pass wires through each other:
@@ -3005,7 +3005,7 @@ $$
 
 
 
-In \cite[\S 3.2]{ih}, they show how can pull all of the white generators to the bottom and black generators to the top so that the elements of the commutative semiring live in the middle.  Consider the following example:
+In \cite[\S 3.2]{ih}, they show how can pull all of the white generators to the bottom and grey generators to the top so that the elements of the commutative semiring live in the middle.  Consider the following example:
 
 
 $$
@@ -3192,7 +3192,7 @@ $$
 \end{tikzpicture}
 $$
 
-This makes it clear how to interpret this as a matrix. Follow the wires from the bottom and chase their paths to the top, copying them when they meet white nodes, adding them when they meet black ones, and multiplying them when they meet scalars:
+This makes it clear how to interpret this as a matrix. Follow the wires from the bottom and chase their paths to the top, copying them when they meet white nodes, adding them when they meet grey ones, and multiplying them when they meet scalars:
 
 $$
 \left\llbracket \

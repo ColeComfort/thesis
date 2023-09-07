@@ -565,7 +565,7 @@ L;R \ar[rr]_{\lambda}
 }
 $
 
-This is represented graphically where we draw $\lambda$ as two wires crossing:
+Graphically where we draw $\lambda$ as a crossing, $R$ as $\xcirc$ and $L$ as $\zcirc$:
 
 $$
 \begin{tikzpicture}[xscale=-1]
@@ -2072,8 +2072,17 @@ X  \ar[rr]^{f} \ar[dr]_{\ell' \in {\mathbb L}} &       & Y\\
 }
 $$
 
-there exists a smallest natural number $n$, such that  for $j \in [0,n)$, there are $n$ factorizations:
-
+%
+%there exists a smallest natural number $n$, such that  for $j \in [0,n)$, there are $n$ factorizations:
+%
+%
+%$$
+%\xymatrix{
+%X  \ar[rr]^{f} \ar[dr]_{\ell_j\in {\mathbb L}} &       & Y\\
+%   & A_j \ar[ur]_{r_j \in {\mathbb R}}
+%}
+%$$
+then there exists factorizations:
 
 $$
 \xymatrix{
@@ -2082,7 +2091,8 @@ X  \ar[rr]^{f} \ar[dr]_{\ell_j\in {\mathbb L}} &       & Y\\
 }
 $$
 
-such that there exists $\mathbb J$
+
+and  maps in $\mathbb J$:
 
 $$
 \xymatrix{
@@ -2097,7 +2107,8 @@ A \ar[r]^{\phi_0}
 }
 $$
 
-which uniquely make the following diagram commute:
+
+uniquely making following diagram commute:
 
 
 $$
@@ -2618,7 +2629,7 @@ The original spider normal form was first proven for non-special symmetric Frobe
 %
 %All of the examples of distributive laws of props which we have introduced so far also happen to correspond to strict factorization systems of small strict symmetric monoidal categories.  This is only because $\Iso(\FinOrd) = \P$.
 
-Note that all of these examples of distributive laws of props are actually strict monoidal orthogonal factorization systems.  Indeed, they are both special cases two two examples of orthogonal factorization systems which we provided earlier.   However, not all distributive laws of props arize in this manner.
+Note that all of these examples of distributive laws of props are actually  monoidal orthogonal factorization systems.  Indeed, they are both special cases of the two examples of orthogonal factorization systems which we provided earlier.   However, not all distributive laws of props arize in this manner.
 
 We define a variation of a symmetric monoidal theory which generates strict Cartesian monoidal categories.  We express this is the manner of \cite{????}:
 
@@ -3305,8 +3316,12 @@ Unsurprisingly, models of semirings in $\Set$ are semirings.
 
 
 \begin{aside}
-There is one other way to decompose props which we have not defined, because we will not make use of it.  Although I will make mention of it here for the interested reader. Since distributive laws are themselves monads, one can take distributive laws of distributive laws themselves. In the case of distributive laws of categories, that is to say a monad in $\Mnd(\Mnd(\Span(\Set)))$.  This corresponds to a ternary strict factorization system.  As remarked by \cite{????} construction can be interated finitely many times, yielding a correspondence between $n$-ary factorization systems and $n$-fold iterated distributive laws.  The coherence conditions can be boiled down into asking that the appropriate distributive laws must interact to satisfy the Yang-Baxter equation \cite{iterdist}. Indeed, this is nothing special about strict factorization systems of categories.  The way to decompose props in this setting would be in terms of monads in $\Mnd(\Mnd(\Mod(\Span(\Mon))))$.  Indeed, this was used in \cite[????]{ih}.
+There is another way to decompose props which we have not defined, because we will not make use of it.    Since distributive laws are themselves monads, one can take distributive laws of distributive laws themselves. 
 
+
+In the case of distributive laws of categories, that is to say a monad in $\Mnd(\Mnd(\Span(\Set)))$.  This corresponds to a ``ternary strict factorization system''.  As remarked by \cite{????} taking the category of monads can be iterated finitely many times, yielding a correspondence between $n$-ary factorization systems and $n$-fold iterated distributive laws.  The coherence conditions can be boiled down into asking that the appropriate distributive laws must interact to satisfy the Yang-Baxter equation \cite{iterdist}.
+
+This is nothing special about strict factorization systems of categories.  The way to decompose props in this setting would be in terms of monads in $\Mnd(\Mnd(\Mod(\Span(\Mon))))$.  Indeed, this was used in \cite[????]{ih} to give a ternary monoidal factorization system for matrices.
 \end{aside}
 
 %

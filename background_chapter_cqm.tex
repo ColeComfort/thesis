@@ -43,27 +43,33 @@ $$
 $$
 
 
-Most of the time,  for the state space of a qudit we will not chose an aribitrary $d$-dimensional Hilbert space.  Instead, we will work in the Hilbert space of square integrable functions on $\Z/d\Z$, $\ell^2(\Z/d\Z)$.  Here, the elements of $\Z/d\Z$ induce a basis for  $\ell^2(\Z/d\Z)$ called the {\bf standard basis} or $Z$-basis.  We will denote the elements of the basis  as  $\{| 0\rangle , \ldots, |d-1\rangle \}$.  The structure of a ring is therefore transported onto the standard basis elements (or a field when $d$ is prime).  These are regarded as the $d$-level quantum analogue of classical dits.    Similarly, the $n$-qudit state space is regarded as the Hilbert space $\ell^2((\Z/d\Z)^n)$, so that the $n$-standard basis elements have the structure of an $n$-dimensional $\Z/d\Z$-bimodule (or vector space, when $d$ is prime).
+Most of the time,  for the state space of a qudit we will not chose an aribitrary $d$-dimensional Hilbert space.  Instead, we will work in the Hilbert space of square summable functions on $\Z/d\Z$, $\ell^2(\Z/d\Z)$.  Here, the elements of $\Z/d\Z$ induce a basis for  $\ell^2(\Z/d\Z)$ called the {\bf standard basis} or $Z$-basis.  We will denote the elements of the basis  as  $\{| 0\rangle , \ldots, |d-1\rangle \}$.  The structure of a ring is therefore transported onto the standard basis elements (or a field when $d$ is prime).  These are regarded as the $d$-level quantum analogue of classical dits.    Similarly, the $n$-qudit state space is regarded as the Hilbert space $\ell^2((\Z/d\Z)^n)$, so that the $n$-standard basis elements have the structure of an $n$-dimensional $\Z/d\Z$-bimodule (or vector space, when $d$ is prime).
 
 Denote arbitrary vectors $\phi$ in $\mathcal H$ using this ket notation by $|\phi \rangle$; where the adjoint of $|\phi \rangle$ is denoted as a ``bra''  by $|\phi \rangle^\dag =: \langle \phi |$. 
 
 Given two vectors $|\phi \rangle$ and $| \psi \rangle$ on the same space, the inner product ``bra-ket'' is denoted by $\langle \phi | \psi \rangle$ and the outer product by $|\phi \rangle\langle \psi|$. 
 
 
-This notation allows allows us to represent matrices in terms of sums.  For example, a complex matrix from $d^n$ to $d^m$ regarded as an operator $A:\ell^2((\Z/d\Z)^m)\to \ell^2((\Z/d\Z)^m)$ with entries $a_{j,k}$ is denoted as follows:
+This notation allows allows us to represent matrices in terms of sums.  For example, a complex matrix from $d^n$ to $d^m$ regarded as an operator $A:\ell^2((\Z/d\Z)^n)\to \ell^2((\Z/d\Z)^m)$ with entries $a_{j,k}$ is denoted as follows:
 
 $$
 A  = \sum_{k=0}^{n-1} \sum_{j=0}^{m-1} a_{j,k}| j \rangle \langle k |
 $$
 
-For example to compute the  action of $A$ on $|\ell \rangle$:
+For example given another matrix $B:\ell^2((\Z/d\Z)^m)\to \ell^2((\Z/d\Z)^\ell)$ with entries $b_{k',j'}$:
 
 $$
-A|\ell\rangle 
-  =  \sum_{k=0}^{n-1} \sum_{j=0}^{m-1} a_{j,k}| j \rangle \langle k | \ell \rangle
-= 
- \sum_{j=0}^{m-1} a_{j,\ell}| j \rangle
+B  = \sum_{j'=0}^{m-1}\sum_{k'=0}^{\ell-1}  b_{k',j'}| k' \rangle \langle j' |
 $$
+
+Their composite is computed by matrix multiplication:
+
+\begin{align*}
+BA
+  &=  \sum_{j'=0}^{m-1}\sum_{k'=0}^{\ell-1}  b_{k',j'}| k' \rangle \langle j' | \sum_{k=0}^{n-1} \sum_{j=0}^{m-1} a_{j,k}| j \rangle \langle k |\\
+&= \sum_{k=0}^{n-1} \sum_{j,j'=0}^{m-1}\sum_{k'=0}^{\ell-1}  b_{k',j'}a_{j,k}| k' \rangle \langle j' | j \rangle \langle k |\\
+&= \sum_{k=0}^{n-1} \sum_{k'=0}^{\ell-1} \left(\sum_{j=0}^{m-1} b_{k',j}a_{j,k}\right)| k' \rangle \langle k |\\
+\end{align*}
 
 
 Now that this basic notation is established, we will move onto more specifically quantum notions.
@@ -75,18 +81,214 @@ There is a graphical way to represent orthonormal bases:
 
 \begin{lemma}[{\cite{coecke2013new}}]
 \label{lem:specialdagfa}
-Commutative \dag-Frobenius algebras in $\FHilb$ are in bijection with orthogonal bases.  Moreover, special commutative \dag-Frobenius algebras are in bijection with orthonormal bases.
+Orthgonal bases $\{ |b_j\rangle \}_{j\in \mathcal J}$ in $\FHilb$ are in bijection with commutative \dag-Frobenius algebras.  The $\dag$-Frobenius algebras $\xcirc$ are of the form:
 
-
-An orthonormal basis $\{ |b_j\rangle \}_{j=0,\ldots, d-1}$ yields a Frobenius algebra where the spiders are of the form:
 $$
-\sum_{j=0}^{d-1} |b_j, \ldots, b_j \rangle\langle b_j,\ldots, b_j|
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (40) at (18, 6.25) {};
+		\node [style=none] (41) at (18, 7) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (40) to (41.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+:=
+\sum_{j \in \mathcal J}
+\dfrac{1}{\langle b_j |b_j\rangle}  \left(
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (17) at (19.25, 6.25) {$|b_j\rangle$};
+		\node [style=none] (27) at (19.25, 7) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (17) to (27.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\right)
+\ , \hspace*{.2cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (40) at (21.75, 9.25) {};
+		\node [style=none] (41) at (21.75, 10) {};
+		\node [style=none] (42) at (21.25, 8.5) {};
+		\node [style=none] (43) at (22.25, 8.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (40) to (41.center);
+		\draw [in=-30, out=90] (43.center) to (40);
+		\draw [in=90, out=-150] (40) to (42.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+:=
+\sum_{j \in \mathcal J}
+\dfrac{1}{\langle b_j |b_j\rangle}  \left(
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (52) at (32, 8) {};
+		\node [style=map] (53) at (31.25, 6.25) {$\langle b_j|$};
+		\node [style=map] (54) at (32.75, 6.25) {$\langle b_j|$};
+		\node [style=map] (55) at (32, 7.25) {$|b_j\rangle$};
+		\node [style=none] (56) at (31.25, 5.5) {};
+		\node [style=none] (57) at (32.75, 5.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (55) to (52.center);
+		\draw (56.center) to (53);
+		\draw (57.center) to (54);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\right)
+$$
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (44) at (25.75, 9.25) {};
+		\node [style=none] (45) at (25.75, 8.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (44) to (45.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+:=
+\sum_{j \in \mathcal J}
+\dfrac{1}{\langle b_j |b_j\rangle}  \left(
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (30) at (25.75, 7) {$\langle b_j|$};
+		\node [style=none] (39) at (25.75, 6.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (30) to (39.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\right)
+ \ , \hspace*{.2cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (48) at (28, 9.25) {};
+		\node [style=none] (49) at (28, 8.5) {};
+		\node [style=none] (50) at (27.5, 10) {};
+		\node [style=none] (51) at (28.5, 10) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (48) to (49.center);
+		\draw [in=30, out=-90] (51.center) to (48);
+		\draw [in=-90, out=150] (48) to (50.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+:=
+\sum_{j \in \mathcal J}
+\dfrac{1}{\langle b_j |b_j\rangle}  \left(
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (58) at (35, 5.5) {};
+		\node [style=map] (59) at (34.25, 7.25) {$|b_j\rangle$};
+		\node [style=map] (60) at (35.75, 7.25) {$|b_j\rangle$};
+		\node [style=map] (61) at (35, 6.25) {$\langle b_j|$};
+		\node [style=none] (62) at (34.25, 8) {};
+		\node [style=none] (63) at (35.75, 8) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (61) to (58.center);
+		\draw (62.center) to (59);
+		\draw (63.center) to (60);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\right)
+$$
+
+It is easy to see how the laws of a commutative \dag-Frobenius algebra hold; however, the proof of the converse direction is quite a bit trickier.
+
+Moreover, {\em special} commutative \dag-Frobenius algebras $\zcirc$ are in bijection with orthonormal bases as:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (0) at (13, 7) {};
+		\node [style=Z] (1) at (13, 8) {};
+		\node [style=none] (2) at (13, 9) {};
+		\node [style=none] (3) at (13, 6) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (3.center) to (0);
+		\draw [bend left=45] (0) to (1);
+		\draw [bend left=45] (1) to (0);
+		\draw (1) to (2.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\sum_{j,k\in \mathcal J}
+\dfrac{1}{\langle b_j |b_j\rangle \langle b_k |b_k\rangle  }
+\left(
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (64) at (39.25, 10) {};
+		\node [style=none] (65) at (39.25, 5.25) {};
+		\node [style=map] (66) at (38.5, 8.25) {$\langle b_k|$};
+		\node [style=map] (67) at (38.5, 7.25) {$|b_j\rangle$};
+		\node [style=map] (68) at (40, 8.25) {$\langle b_k|$};
+		\node [style=map] (69) at (40, 7.25) {$|b_j\rangle$};
+		\node [style=map] (70) at (39.25, 6.25) {$\langle b_j|$};
+		\node [style=map] (71) at (39.25, 9.25) {$|b_k\rangle$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (67) to (66);
+		\draw (69) to (68);
+		\draw (65.center) to (70);
+		\draw (71) to (64.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\right)
+=
+\sum_{j,k\in \mathcal J}
+\dfrac{\langle b_j|b_k \rangle^2}{\langle b_j |b_j\rangle \langle b_k |b_k\rangle  }
+\left(
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (6) at (14.5, 8) {};
+		\node [style=none] (7) at (14.5, 5.5) {};
+		\node [style=map] (12) at (14.5, 6.25) {$\langle b_j|$};
+		\node [style=map] (13) at (14.5, 7.25) {$|b_k\rangle$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (7.center) to (12);
+		\draw (13) to (6.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\right)
+$$
+
+is equal to the the identity if and only if the basis is orthonormal:
+
+$$
+\sum_{j\in \mathcal J}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (6) at (14.5, 8) {};
+		\node [style=none] (7) at (14.5, 5.5) {};
+		\node [style=map] (12) at (14.5, 6.25) {$\langle b_j|$};
+		\node [style=map] (13) at (14.5, 7.25) {$|b_j\rangle$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (7.center) to (12);
+		\draw (13) to (6.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (2) at (13, 9) {};
+		\node [style=none] (3) at (13, 6) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (3.center) to (2.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
 $$
 \end{lemma}
-The idea is that these structures are in bijection with dirac deltas for orthonormal bases.  
 
-
-As a matter of notation: given some fixed dimension $d$, and a distinguished standard basis, we will call the  connected components of the special commutative $\dag$-Frobenius algebra corresponding the standard basis qudit {\bf $Z$-spiders}.  We will draw them in white, as follows:
+As a matter of notation we will colour the special commutative \dag-Frobenius algebra $\zcirc$.  We will colour the commutative \dag-Frobenius algebra for other, orthogonal bases $\xcirc$.  Recall the two variations of the normal form for special and non-special commutative \dag-Frobenius algebras:
 
 $$
 \begin{tikzpicture}
@@ -126,6 +328,53 @@ $$
 		\node [style=none] (17) at (3.5, -2) {$\cdots$};
 		\node [style=none] (18) at (3, -2) {};
 		\node [style=Z] (19) at (3.5, -1.25) {};
+		\node [style=none] (20) at (4, -2) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-150, out=90] (14.center) to (15);
+		\draw [in=-90, out=56] (15) to (11.center);
+		\draw [in=124, out=-90] (12.center) to (15);
+		\draw [in=-124, out=90] (18.center) to (19);
+		\draw [in=90, out=-56] (19) to (20.center);
+		\draw [in=-90, out=30] (19) to (16.center);
+	\end{pgfonlayer}
+\end{tikzpicture}\ ,
+\hspace*{.5cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (1.5, -0.5) {};
+		\node [style=none] (1) at (0.5, -0.5) {};
+		\node [style=none] (2) at (1, -0.5) {$\cdots$};
+		\node [style=none] (3) at (0.5, -2.75) {};
+		\node [style=X] (4) at (1, -1.25) {};
+		\node [style=none] (5) at (2, -0.5) {};
+		\node [style=none] (6) at (1.5, -2.75) {$\cdots$};
+		\node [style=none] (7) at (1, -2.75) {};
+		\node [style=X] (8) at (1.5, -2) {};
+		\node [style=none] (9) at (2, -2.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-124, out=90] (3.center) to (4);
+		\draw [in=-90, out=56] (4) to (0.center);
+		\draw [in=124, out=-90] (1.center) to (4);
+		\draw [in=-124, out=90] (7.center) to (8);
+		\draw [in=90, out=-56] (8) to (9.center);
+		\draw [in=-90, out=56] (8) to (5.center);
+		\draw (8) to (4);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (11) at (4, -0.5) {};
+		\node [style=none] (12) at (3, -0.5) {};
+		\node [style=none] (13) at (3.5, -0.5) {$\cdots$};
+		\node [style=none] (14) at (2.5, -2) {};
+		\node [style=none] (15) at (3.5, -1.25) {};
+		\node [style=none] (16) at (4.5, -0.5) {};
+		\node [style=none] (17) at (3.5, -2) {$\cdots$};
+		\node [style=none] (18) at (3, -2) {};
+		\node [style=X] (19) at (3.5, -1.25) {};
 		\node [style=none] (20) at (4, -2) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
@@ -295,8 +544,6 @@ $$
 \end{tikzpicture}
 $$
 Making $\CPM(\X)$ a \dag-symmetric monoidal cateory.
-
-
 The map $d_X=((u^L_X)^{-1}, X)$ is called the {\bf discarding map} on $X$:
 $$
 \begin{tikzpicture}
@@ -470,6 +717,38 @@ $$
 		\draw [in=-90, out=150, looseness=0.75] (34.center) to (49.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (38) at (57.725, 8.25) {$((f;(1\otimes g))^*)^\dag$};
+		\node [style=map] (39) at (60.5, 8.25) {$f;(1\otimes g)$};
+		\node [style=none] (40) at (58, 10.5) {};
+		\node [style=none] (41) at (60.75, 10.5) {};
+		\node [style=none] (42) at (57.75, 8.25) {};
+		\node [style=none] (43) at (60.5, 8.25) {};
+		\node [style=none] (44) at (57.75, 7.25) {};
+		\node [style=none] (45) at (60.5, 7.25) {};
+		\node [style=none] (46) at (59, 10) {};
+		\node [style=none] (47) at (58.5, 10) {};
+		\node [style=none] (48) at (57.5, 9.25) {};
+		\node [style=none] (49) at (60.25, 9.25) {};
+		\node [style=otimes] (50) at (57.5, 9.25) {};
+		\node [style=otimes] (51) at (60.25, 9.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=45, looseness=1.25] (42.center) to (40.center);
+		\draw [in=45, out=-90, looseness=1.25] (41.center) to (43.center);
+		\draw (44.center) to (42.center);
+		\draw (43.center) to (45.center);
+		\draw [in=90, out=450, looseness=1.50] (47.center) to (46.center);
+		\draw [in=-120, out=135, looseness=1.25] (43.center) to (49.center);
+		\draw [in=90, out=-30, looseness=1.25] (49.center) to (43.center);
+		\draw [in=-120, out=135, looseness=1.25] (42.center) to (48.center);
+		\draw [in=90, out=-30, looseness=1.25] (48.center) to (42.center);
+		\draw [in=-90, out=90] (49.center) to (47.center);
+		\draw [in=-90, out=90, looseness=0.75] (48.center) to (46.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
 $$
 
 This different perspective will prove useful for the purposes of calculation.  
@@ -511,7 +790,7 @@ As mentioned before, the following example motivated this categorical constructi
 $\CPM(\FHilb, \dag)$ is the dagger compact closed category of density matrices between finite dimensional Hilbert spaces.
 
 
-Or equivalently 
+Or equivalently, preserving the  \dag-compact closed structure, 
 $\CPM(\Mat_\C, \bar{(-)})$
 is the skeleton of density matrices.
 \end{example}
@@ -528,21 +807,21 @@ Density matrices model mixed quantum circuits. The discarding map is interpreted
 %As hinted at earlier, density matrices allow us to talk about quantum measurement.  We first show how to graphically project onto a basis in density matrices:
 
 
-In quantum mechanics, measurement on a system $\mathcal H$ is performed with respect to an orthonormal basis.  Fix an orthonormal basis $B=\{ |b_0\rangle,\ldots, |b_{n-1}\rangle \}$ of $\mathcal H$.   Given a quantum state state $|\phi\rangle$ then
+In quantum mechanics, measurement on a system $\mathcal H$ is performed with respect to an orthonormal basis.  Fix an orthonormal basis $B=\{ |b_j\rangle \}_{j \in \mathcal J}$ of $\mathcal H$.   Given a quantum state state $|\phi\rangle$ then
 $$
-\sum_{j=0}^{n-1}
+\sum_{j\in \mathcal J}
  |\langle b_j|\psi \rangle|^2
 =1
 $$ 
-Therefore this gives a probability distribution over $B$.  That is, the probability of measuring basis vector $| b_j\rangle $ is given by $| \langle b_j | \psi \rangle |^2$. 
-This probabilistic interpretation of quantum measurement is called the {\bf Born rule}.
-Now the question is, what does the born rule have to do with the $\CPM$ construction?
+Therefore this gives a probability distribution over $\mathcal J$.  That is, the probability of measuring basis vector $| b_j\rangle $ is given by $| \langle b_j | \psi \rangle |^2$. 
+This probabilistic interpretation of quantum measurement is called the {\bf Born rule}, although it is usually stated slightly differently.
+This begs the question:  what does the Born rule have to do with the $\CPM$ construction?
 
 
 \begin{definition}
 Given a special \dag-commutative Frobenius algebra $B$ on a \dag-compact closed category $\X$,
 $$
-p_B=
+p_B:=
 \begin{tikzpicture}[scale=-1]
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (10) at (0, 0.75) {};
@@ -1102,12 +1381,11 @@ $$
 \mapsto 
 \left((X,1_X)\xrightarrow{(1_X,f,1_Y)}(Y,1_Y)\right)
 $$
-Where $\X$ is {\bf Cauchy-complete} when this embedding is an equivalence. 
+$\X$ is {\bf Cauchy-complete} when this embedding is an equivalence. 
 Moreover, when $\X$ is monoidal, symmetric monoidal or compact closed, so is ${\sf Split}(\X)$ with the embedding preserving this structure.
 
 
 ${\sf Split}_{{\mathcal I }\cup \{ 1_X | X \in \X\}}(\X)$ is said to be the category obtained by {\bf splitting the idempotents in $\mathcal I$}.
-
 When one splits an idempotent $e:X\to X$, then $(X,e)$ is the retract of $(X, 1_X)$:
 
 $$
@@ -1139,7 +1417,8 @@ In particular, when $\X$ is $\dag$-compact closed then so is ${\sf Split}^\dag(\
 In \cite{idempotent}, they show that splitting projectors in $\CPM(\FHilb)$ yields a category where the the split projectors can be interpreted as classical types:
 
 \begin{remark}
-Given a basis $B = \{|b_0\rangle,\ldots,|b_{n-1}\rangle\}$ for $\mathcal{H}$, the isometry  $(p_B,1_\mathcal{H}, 1_\mathcal{H}) :(\mathcal{H},p_B)\to (\mathcal{H},1_\mathcal{H})$ is regarded as the {\bf state preparation map} and its adjoint $(1_\mathcal{H},1_\mathcal{H}, p_B) :(\mathcal{H},1_\mathcal{H})\to (\mathcal{H},p_B)$  a {\bf nondestructive measurement}, with respect to the basis $B$.  The maps between these idempotents are (un-normalized) stochastic processes.
+\label{rem:stoch}
+Given a basis $B = \{|b_j\rangle \}_{j \in {\mathcal J}}$ for $\mathcal{H}$, the isometry  $(p_B,1_\mathcal{H}, 1_\mathcal{H}) :(\mathcal{H},p_B)\to (\mathcal{H},1_\mathcal{H})$ is regarded as the {\bf state preparation map} and its adjoint $(1_\mathcal{H},1_\mathcal{H}, p_B) :(\mathcal{H},1_\mathcal{H})\to (\mathcal{H},p_B)$  a {\bf nondestructive measurement}, with respect to the basis $B$.  The maps between these idempotents are (un-normalized) stochastic processes.
 \end{remark}
 
 Let us unpack this a bit. 
@@ -1147,7 +1426,7 @@ Let us unpack this a bit.
 %
 %Going in the opposite direction, suppose we want to find the probability of measuring the state $|b_j\rangle$.  By precomposing the map $(p_B, \langle b_j|, 1_I):(\mathcal H, p_B)\to (I,1_I)$ with the measurement map $(1_\mathcal{H},1_\mathcal{H}, p_B) :(\mathcal{H},1_\mathcal{H})\to (\mathcal{H},p_B)$ we regard $\langle b_j|$ as a pure quantum effect.
 %Therefore, if we were to precompose this composite with a quantum state $|\psi\rangle$, we would obtain the probability $|\langle \psi| b_j\rangle|^2$.
-Take an orthonormal basis $B$ for $\mathcal H$ and $B'$ for $\mathcal{H}'$ correspond to a special commutative \dag-Frobenius algebras $\zcirc$ and $\xcirc$, respectively.  Then maps $(\mathcal{H},p_B)\to (\mathcal{H}',p_{B'})$ corresponds to a map $p_B;f;p_{B'}$ for some $f:\mathcal{H}\to \mathcal{H}'$  in $\CPM(\FHilb)$:
+Take an orthonormal basis $B$ for $\mathcal H$ and $B'$ for $\mathcal{H}'$ corresponding to a special commutative \dag-Frobenius algebras $\zcirc$ and $\xcirc$, respectively.  Then maps $(\mathcal{H},p_B)\to (\mathcal{H}',p_{B'})$ corresponds to maps $p_B;f;p_{B'}$ for some $f:\mathcal{H}\to \mathcal{H}'$  in $\CPM(\FHilb)$:
 
 $$
 \begin{tikzpicture}
@@ -1442,7 +1721,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
-\sum_{j=0}^{d-1}\left(
+\sum_{j \in \mathcal{J}}\left(
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (43) at (90.2, 1) {};
@@ -1464,7 +1743,7 @@ $$
 \end{tikzpicture}
 \right)
 =
-\sum_{j=0}^{d-1}
+\sum_{j \in \mathcal{J}}
 |\langle b_j|\phi\rangle|^2\cdot 
 \left(\
 \begin{tikzpicture}
@@ -1478,7 +1757,7 @@ $$
 \end{tikzpicture}\
 \right)
 =
-\sum_{j=0}^{d-1}
+\sum_{j \in \mathcal{J}}
 |\langle b_j|\phi\rangle|^2 |b_j\rangle
 $$
 
@@ -1678,10 +1957,10 @@ $$
 		\node [style=none] (20) at (4, -2) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [thick, in=-150, out=90] (14.center) to (15);
-		\draw [thick, in=-90, out=56] (15) to (11.center);
-		\draw [thick, in=124, out=-90] (12.center) to (15);
-		\draw [thick, in=-124, out=90] (18.center) to (19);
+		\draw [thick,in=-150, out=90] (14.center) to (15);
+		\draw [thick,in=-90, out=56] (15) to (11.center);
+		\draw [thick,in=124, out=-90] (12.center) to (15);
+		\draw [thick,in=-124, out=90] (18.center) to (19);
 		\draw [thick,in=90, out=-56] (19) to (20.center);
 		\draw [thick, in=-90, out=30] (19) to (16.center);
 	\end{pgfonlayer}
@@ -1830,19 +2109,19 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (232) at (87.025, -0.5) {};
-		\node [style=none] (233) at (86.5, -0.5) {};
-		\node [style=none] (234) at (87.025, -2) {};
-		\node [style=none] (235) at (86.375, 0.5) {};
-		\node [style=none] (237) at (87.05, 0.5) {};
-		\node [style=none] (238) at (86.525, -2) {};
+		\node [style=none] (52) at (87.025, -0.5) {};
+		\node [style=none] (53) at (86.5, -0.5) {};
+		\node [style=none] (54) at (87.025, -2) {};
+		\node [style=none] (55) at (86.375, 0.5) {};
+		\node [style=none] (56) at (87.05, 0.5) {};
+		\node [style=none] (57) at (86.5, -2) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (232.center) to (234.center);
-		\draw [in=-90, out=90, looseness=1.25] (233.center) to (237.center);
-		\draw [in=-90, out=90, looseness=1.25] (232.center) to (235.center);
-		\draw [in=90, out=90, looseness=1.25] (235.center) to (237.center);
-		\draw (238.center) to (233.center);
+		\draw (52.center) to (54.center);
+		\draw [in=-90, out=90, looseness=1.25] (53.center) to (56.center);
+		\draw [in=-90, out=90, looseness=1.25] (52.center) to (55.center);
+		\draw [in=90, out=90, looseness=1.25] (55.center) to (56.center);
+		\draw (57.center) to (53.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
@@ -2133,32 +2412,32 @@ The algorithm is as follows: Alice and Bob first prepare a Bell state together a
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=Xthick] (142) at (408.75, 5.5) {};
-		\node [style=Zthick] (143) at (409.25, 6.25) {};
-		\node [style=Z] (144) at (407.5, 7.75) {};
-		\node [style=none] (145) at (408.75, 5) {};
-		\node [style=none] (146) at (408.75, 10) {};
-		\node [style=Zthick] (147) at (408.75, 6.75) {};
-		\node [style=Xthick] (148) at (408.75, 9.5) {};
-		\node [style=Z] (149) at (407.5, 7.75) {};
-		\node [style=Zthick] (150) at (409, 8) {};
-		\node [style=X] (151) at (408.25, 8.75) {};
-		\node [style=Xthick] (152) at (408.25, 8.25) {};
-		\node [style=Xthick] (153) at (408.5, 7.5) {};
+		\node [style=Xthick] (0) at (408.75, 5.5) {};
+		\node [style=Zthick] (1) at (409.25, 6.25) {};
+		\node [style=Z] (2) at (407.25, 7.75) {};
+		\node [style=none] (3) at (408.75, 5) {};
+		\node [style=none] (4) at (408.75, 10) {};
+		\node [style=Zthick] (5) at (408.75, 6.75) {};
+		\node [style=Xthick] (6) at (408.75, 9.5) {};
+		\node [style=Z] (7) at (407.25, 7.75) {};
+		\node [style=Zthick] (8) at (409, 8) {};
+		\node [style=X] (9) at (408.25, 8.75) {};
+		\node [style=Xthick] (10) at (408.25, 8.25) {};
+		\node [style=Xthick] (11) at (408.5, 7.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [style=thick] (145.center) to (142);
-		\draw [style=thick, in=-90, out=30] (142) to (143);
-		\draw [style=thick, in=-90, out=150] (142) to (144);
-		\draw [style=thick] (146.center) to (148);
-		\draw [style=thick, in=90, out=-165] (148) to (149);
-		\draw [style=thick, in=-60, out=45] (147) to (150);
-		\draw [style=thick] (152) to (151);
-		\draw [style=thick, in=165, out=-135, looseness=1.25] (152) to (147);
-		\draw [style=thick, in=105, out=-45] (152) to (153);
-		\draw [style=thick] (153) to (150);
-		\draw [style=thick] (143) to (147);
-		\draw [style=thick, in=315, out=75] (143) to (148);
+		\draw [style=thick] (3.center) to (0);
+		\draw [style=thick, in=-90, out=30] (0) to (1);
+		\draw [style=thick, in=-90, out=150] (0) to (2);
+		\draw [style=thick] (4.center) to (6);
+		\draw [style=thick, in=90, out=-165] (6) to (7);
+		\draw [style=thick] (10) to (9);
+		\draw [style=thick, in=165, out=-135, looseness=1.25] (10) to (5);
+		\draw [style=thick, in=105, out=-45] (10) to (11);
+		\draw [style=thick] (11) to (8);
+		\draw [style=thick] (1) to (5);
+		\draw [style=thick, in=315, out=60] (1) to (6);
+		\draw [style=thick,in=-45, out=30] (5) to (8);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
@@ -2248,7 +2527,7 @@ The algorithm is as follows: Alice and Bob first prepare a Bell state together a
 		\draw [style=thick, bend left=45] (154) to (161);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\approx
+=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Xthick] (166) at (413.35, 7.75) {};
@@ -2265,7 +2544,7 @@ The algorithm is as follows: Alice and Bob first prepare a Bell state together a
 		\draw [style=thick, in=270, out=30, looseness=0.75] (173) to (167.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
-=
+\approx
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (167) at (414.1, 10) {};
@@ -2610,21 +2889,21 @@ Phases for Frobenius algebras are preserved by composition; and they form a grou
 
 The motivating example is again  $\FHilb$, which makes sense of he name:
 \begin{example}
-Given an ordered orthonormal basis $\{| b_j \rangle \}_{j \in [0,d)}$ in $\FHilb$, the phases are generated by the following unitaries, for all $\{\theta_0,\ldots, \theta_{d-1}\} \in [0, 1)^d$:
+Given an orthonormal basis $\{| b_j \rangle \}_{j \in \mathcal J}$ of $\mathcal H$ , the phases are generated by the following unitaries, for all $\{\theta_j \} \in [0, 1)^{\mathcal J}$:
 
-$$\sum_{j=0}^{d-1} e^{  2\pi \cdot i \cdot b_j \cdot \theta_j/d }|  b_j \rangle\langle b_j|$$
+$$\sum_{j \in \mathcal J} e^{  2\pi \cdot i \cdot b_j \cdot \theta_j/d }|  b_j \rangle\langle b_j|$$
 
 
 \end{example}
 
-Recall that maps in $\CPM(\FHilb)$ are unique up to global phase, therefore when specifying phases we fix $\theta_0=0$.  This means that the phases $\CPM(\FHilb)$ for an orthonormal basis of dimension $d$ are uniquely parametrized by the group $[0, 1)^{d-1}$. In the literature it is commonplace to index the phases over $[0,2\pi)^d$ rather than over $[0,1)^d$.  We chose the latter  because it is much more amenable to generalization away from quantum mechanics. 
+Recall that maps in $\CPM(\FHilb)$ are unique up to global phase, therefore when the basis has a chosen order $\{ |b_0\rangle,\cdots, |b_{d-1}\rangle \}$, as a matter of convention,  we fix $\theta_0=0$.  This means that the phases of that basis in $\CPM(\FHilb)$ are uniquely parametrized by the group $[0, 1)^{d-1}$. In the literature it is commonplace to index the phases over $[0,2\pi)^{d-1}$ rather than over $[0,1)^{d-1}$.  We chose the latter  because it is much more amenable to generalization away from quantum mechanics. 
 
 %The curve  $\{e^{2 \pi \cdot i \cdot \theta}\ | \ \theta \in [0, 1)\}$ carves out the unit circle in the complex plane so the phase group is isomorphic to the circle (hence the name).
 
 
 The normal form for spiders extends to spiders with phases:
 
-\begin{lemma}[Phased spider theorem]
+\begin{lemma}[Phased spider normal form]
 The connected components of a commutative \dag-Frobenius algebra $\xcirc$ and its phase group can be factorized into the following form; which we will call a phased-spider:
 
 $$
@@ -2906,7 +3185,7 @@ $$
 
 
 
-Take a fragment $\llbracket-\rrbracket:{\sf ZX}\to \Hilb$ of the ZX-calculus and a \dag-compact closed subcategory of $\X\hookrightarrow\FHilb$, essentially-surjectively factoring through this interpretation (so that it contains all the objects of $\llbracket{\sf ZX}\rrbracket$ up to isomorphism).
+Take a fragment $\llbracket-\rrbracket:{\sf ZX}\to \Hilb$ of the ZX-calculus and a \dag-compact closed subcategory of $\X\hookrightarrow\FHilb$, such that this interpretation essentially-surjectively factoring through $\X$ (so that $\X$ contains all the objects of $\llbracket{\sf ZX}\rrbracket$ up to isomorphism).
 The fragment is {\bf universal} for $\X$ when the map ${\sf ZX}\to \X$ is full and {\bf complete} when it is faithful.
 
 \end{definition}
@@ -3100,9 +3379,13 @@ This has a relational semantics; to expose which we need the following definitio
 A unitary map $f:\mathcal{H}\to \mathcal{H}$ is a {\bf stabilizer} of a state $|\phi\rangle$ on $\mathcal H$ in case $\phi$ is a +1-eigenvector of $g$ so that $g| \phi\rangle = |\phi \rangle$.
 
 
-The qudit ${\cal X}$-gate (qubit $\not$-gate)  shifts the computational basis vectors by $a$ modulo $p$:
+The qudit ${\cal X}$-gate (qubit $\not$-gate)  shifts the computational basis vectors by $a$ modulo $d$:
 
-$${\cal X} := \sum_{b=0}^{p-1} | b+1\rangle \langle b|$$
+$$
+{\cal X} := \sum_{b=0}^{d-1} | b+1\rangle \langle b|
+\ , \hspace*{.2cm} \text{where \ \ }
+{\cal X}^a = \sum_{b=0}^{d-1} | b+a\rangle \langle b|
+$$
 
 An $X$-stabilizer of an $n$-qudit state $\phi$ is a stabilizer of the form:
 
@@ -3113,7 +3396,7 @@ $$
 
 \end{definition}
 
-The $X$ stabilizers characterize the phase-free ZX-calculus (this has been known for quite some time to both the Italian and Oxford groups in the qubit case, see for example \cite[p. 8]{ih}):
+The $X$ stabilizers characterize the phase-free ZX-calculus (this has been known for quite some time to both the categorical concurrency and quantum communities in the qubit case, see for example \cite[Page 8]{ih}):
 
 \begin{lemma}
 Given an odd prime $p$, $\LinRel_{\F_p}$ is isomorphic to the qupit phase-free ZX-calculus modulo invertible scalars.
@@ -3392,14 +3675,14 @@ The $\cal X$-gate fragment of the ZX-calculus is given by adjoining the $\cal X$
 \end{definition}
 
 
-For any prime qudit dimension $d$, the qudit $\cal X$-gate is a phase for the 
+The qudit $\cal X$-gate is a phase for the 
 $X$-spider as:
 
 $$
 {\cal X} =
- \sum_{b=0}^{p-1} | b+1\rangle \langle b|
+ \sum_{b=0}^{d-1} | b+1\rangle \langle b|
 =
- \sum_{j=0}^{p-1} e^{2 \pi\cdot i\cdot j/p} {\mathcal F} | j \rangle \langle j|  {\mathcal F}^\dag
+ \sum_{j=0}^{d-1} e^{2 \pi\cdot i\cdot j/d} {\mathcal F} | j \rangle \langle j|  {\mathcal F}^\dag
 $$
 
 Therefore, natural number powers of the ${\cal X}$-gate are also phases for the $X$-spider as:
@@ -3407,15 +3690,15 @@ Therefore, natural number powers of the ${\cal X}$-gate are also phases for the 
 $$
 {\cal X}^n
 = 
- \sum_{bj=0}^{p-1} | j+n\rangle \langle j|
+ \sum_{bj=0}^{d-1} | j+n\rangle \langle j|
 =
-\sum_{j=0}^{p-1} e^{2 \pi\cdot i\cdot n\cdot j/p} {\mathcal F}| j \rangle \langle j|  {\mathcal F}^\dag
+\sum_{j=0}^{d-1} e^{2 \pi\cdot i\cdot n\cdot j/d} {\mathcal F}| j \rangle \langle j|  {\mathcal F}^\dag
 $$
 
 So one can ask if the the fragment of the odd prime qudit ZX-calculus with these $\cal X$-gate phases has a similar relational semantics to the phase-free ZX-calculus.  The answer is yes, and this result is not contained in the literature to my knowledge:
 
 \begin{lemma}
-$\Aff\Rel_{\F_p}$ is isomorphic to the qupit fragment of the ZX-calculus with Pauli $\cal X$-gates as phases modulo invertible scalars.
+$\Aff\Rel_{\F_p}$ is isomorphic to the qupit fragment of the ZX-calculus with $\cal X$-gates as phases modulo invertible scalars.
 \end{lemma}
 This is given by the interpretation:
 $$
@@ -3762,6 +4045,30 @@ $$
 \end{example}
 
 
+We could have done the same with $Z$-stabilizers, where the $\mathcal Z$-gate is given by the Fourier transform of the $\mathcal X$-gate:
+$$
+{\cal Z}
+:=
+{\cal F}
+{\cal X}
+{\cal F}^\dag
+=
+\sum_{b=0}^{d-1}
+e^{2\cdot\pi \cdot b/d} | b\rangle \langle b|
+\ , \hspace*{.2cm} \text{where \ \ }
+{\cal Z}^z
+=
+{\cal F}
+{\cal X}^z
+{\cal F}^\dag
+=
+\sum_{b=0}^{d-1}
+e^{2\cdot\pi \cdot z\cdot b/d} | b\rangle \langle b|
+$$
+
+Notice how the $Z$-basis is generated by $\mathcal{X}^n|0\rangle $ and the $X$-basis is generated by $\mathcal{F} \mathcal{X}^n |0\rangle =\mathcal{Z}^n \mathcal{F} |0\rangle$.
+
+
 
 So far, the two fragments of the ZX-calculus we have described are relatively simple; they are actually fragments of stabilizer circuits.  We proceed to overview the qudit stabilizer formalism.  The qubit stabilizer formalism was first introduced in \cite{gottesman} and later generalized to qudits in various ways.  We follow the qudit generalization provided in \cite{gota}:
 
@@ -3770,21 +4077,7 @@ So far, the two fragments of the ZX-calculus we have described are relatively si
 \begin{definition}
 \label{definition:begin}
 Fix some dimension $d$.
-A single qudit {\bf Weyl operator} an $p$-dimensional unitary generated by the qudit $\mathcal Z$ and $\mathcal X$ operators under matrix multiplication.  
-Where:
-
-$$
-{\cal Z}^z
-:=
-{\cal F}
-{\cal X}^z
-{\cal F}^\dag
-=
-\sum_{b=0}^{p-1}
-e^{2\cdot\pi \cdot z\cdot b/p} | b\rangle \langle b|
-$$
-
-
+A single qudit {\bf Weyl operator} an $d$-dimensional unitary generated by the qudit $\mathcal Z$ and $\mathcal X$ operators under tensor product and composition.
 The $n$-qudit {\bf Weyl group} is generated by Weyl operators under matrix multiplication and tensor product.
 
 
@@ -3807,7 +4100,7 @@ Stabilizer states are determined, up to global phase, by their stabilizer groups
 
 
 \begin{definition}
-The prop of qudit {\bf stabilizer circuits}, is the subcategory of $\Mat_\C$ generated by qudit Clifford operators as well as the state $|0\rangle$ and effect $\langle 0|$.
+The prop of qudit {\bf stabilizer circuits}, generated by qudit Clifford operators as well as the state $|0\rangle$ and effect $\langle 0|$.
 \end{definition}
 
 
@@ -3821,17 +4114,17 @@ $$
 e^{2\pi \cdot i\cdot a /p} {\cal Z}^z{\cal X}^x
 $$
 
-Whereas single qudit Weyl operators can be factored into the following form for $z,x \in \F_2$ and $a \in \Z/4\Z$:
+Whereas single qubit Weyl operators can be factored into the following form for $z,x \in \F_2$ and $a \in \Z/4\Z$:
 
 $$
-i^a {\cal Z}^z{\cal X}^x
+ i^a {\cal Z}^z{\cal X}^x
 $$
 
 \end{lemma}
 
 This difference between qubits and quopits  is also reflected in the structure of the Clifford groupoid:
 
-\begin{lemma}[{\cite[Pg. 5]{gota}}]
+\begin{lemma}[{\cite[Page 5]{gota}}]
 Up to nonzero scalars, the qupit Clifford groupoid is generated by the Fourier transform $\mathcal F$, the  phase-shift gate $\mathcal S$, controlled-$\mathcal X$ gate $\mathcal{C}_{\mathcal X}$, and scaling gates $\mathcal{M}_a$ for every $a \in \F_p^*$ where:
 
 
@@ -4048,7 +4341,7 @@ $$
 The scaling gate is derived in stabilizer circuits, so it need not be stated. However it it corresponds to the multiplication of a scalar under the embdedding:
 
 $$
-(\Mat_{\F_p},+) \to (\LinRel_{\F_p},+) \to (\Mat_\C/\sim,\otimes)
+(\Mat_{\F_p},+) \to (\LinRel_{\F_p},+) \to (\FHilb/\sim,\otimes)
 $$
 
 The qubit \cite{backensstab,backens2015} and qutrit \cite{qutrit} stabilizer ZX-calculus both have complete presentations.  However, during the process of writing this thesis, an axiomatization was provided for the quopit stabilizer ZX-calculus \cite{booth}, followed shortly by an even simpler presentation \cite{poor}.  It is worth noting that the scaling in the interpretations of the generators in \cite{poor,booth} differ slightly for techinical reasons (specifically they designed their presentations to be flexsymmetric following \cite[\S 5]{flexsymmetric}).
@@ -4073,7 +4366,7 @@ The qubit case seems to be folklore; the reference I provided was for qupits.  S
 
 Therefore, by adding any other phases to qupit stabilizer circuits is maximally expressive.  The first approxiately universal axiomatization of the qudit ZX-calculus, was obtained by adding the $1/8$ phase: yielding a complete axiomatization for the qubit  Clifford+T quantum circuits \cite{Jeandel}.
 
-Later complete presentations for the qubit ZX-calculus where all phases are allowed, so that it is universal on the nose \cite{zxcompleteb,zxcompletea}.  This gives a graphical presentation for the full subcategory of $\Mat_\C$ whose objects are powers of $2$.
+Later complete presentations for the full qubit ZX-calculus followed,  where all phases are allowed; where this fragment is universal on the nose \cite{zxcompleteb,zxcompletea}.  This gives a graphical presentation for the full subcategory of $\Mat_\C$ whose objects are powers of $2$.
 
 
 Up until this point, we have discussed quantum circuits as being generated by spiders. Although spiders are good for copying and adding standard basis elements; it is hard to construct nonlinear behaviour using these generators.

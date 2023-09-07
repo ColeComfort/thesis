@@ -6,14 +6,14 @@ $$
 \X \leftarrow  \surj^\op \rightarrow \cm^\op
 $$
 
-That is to say, it picks out the diagonal map of $\X$ and adds a unit.  As a matter of notation, as we have been doing throughout this thesis, we will colour this comonoid and its components $\zcirc$. Moreover, denote the  category of monomorphisms by $\sfmono(\X)$.
+That is to say, it picks out the diagonal map of $\X$ and adds a counit.  As a matter of notation, as we have been doing throughout this thesis, we will colour this comonoid and its components $\zcirc$. Moreover, denote the  category of monomorphisms by $\sfmono(\X)$.
 
 
 
 \subsection{The phase-free fragment}
 \label{sec:one}
 
-In this section we build up to giving a presentation for $(\Span^\sim(\Mat_{\F_2}),\oplus)$ in a modular way. This category is shown to be the same as the phase-free of the ZX-calculus on the nose (not just up to invertible scalars). Note that this presentation of linear spans has already been discussed in great detail  for arbitrary PIDs \cite{ih}.
+In this subsection we build up to giving a presentation for $(\Span^\sim(\Mat_{\F_2}),\oplus)$ in a modular way. This category is shown to be the same as the phase-free of the ZX-calculus on the nose (not just up to invertible scalars). Note that a presentation for the full category of linear spans has already been discussed in great detail  for arbitrary PIDs \cite{ih}.
 
 
 First, we construct the linear isomorphisms:
@@ -425,13 +425,15 @@ $$
 $$
 \end{lemma}
 \begin{proof}
-We can always slide things past each other, except for the critical pair  when controlled not gates are sandwiched by black unit and counit on their target wires.
+We can always slide things past each other, except for the critical pair  when controlled not gates are sandwiched by grey unit and counit on their target wires.
 
-Take $n$ to be the number of controlled not gates targetting the same wire, sandwiched by a black unit and counit
+Take $n$ to be the number of controlled not gates targetting the same wire, sandwiched by a grey unit and counit
 
 For the base case of $n=0$, this follows from the bone law which we imposed.
 
-Suppose that the claim holds for some $n \in \N$.  Because $\cnot$ gates are self-inverse, if $n+1$-cnot gates have their targets sandwiched between a black unit and counit without loss of generality, we can assume they are controlled from different wires.  Then:
+Suppose that the claim holds for some $n \in \N$. If $n+1$-cnot gates have their targets sandwiched between a grey unit and counit without loss of generality, we can assume they are controlled from different wires.  This is because  $\cnot$ gates are self-inverse, so that they can be slid together and cancel out.
+
+So given $n+1$ $\cnot$ gates controlled on different wires and targetting the final wire:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -632,6 +634,10 @@ $$
 \label{lem:parisocb}
 $\sfpariso\cb_{\F_2}$ is a presentation for the prop $(\Par\Iso(\Mat_{\F_2}),\oplus)$.
 \end{lemma}
+\begin{proof}
+$\Par\Iso(\Mat_{\F_2}$ is the category of spans of monorphisms in $\Mat_{\F_2}$.  This equation is precisely the one needed to compute the pullback.
+\end{proof}
+
 
 %This follows from \cite[??]{ih}.
 
@@ -704,9 +710,8 @@ $$
 }
 $$
 
-Because $\Mat_{\F_2}$ is cartesian,  $\sfpariso\cb_{\F_2}\cong\ParIso(\Mat_{\F_2})$ is a discrete inverse category.
-We know that the counital completion of a discrete inverse category is the same as its Cartesian completion from \cite[Lem. 3.5]{zxa}; moreover, the Cartesian completion of  $\ParIso(\Mat_{\F_2})$ is $\Par(\Mat_{\F_2})$.  So this diagram commutes as a consequence.
-
+Because $\Mat_{\F_2}$ is Cartesian,  $\sfpariso\cb_{\F_2}\cong\ParIso(\Mat_{\F_2})$ is a discrete inverse category.
+We know that the counital completion of a discrete inverse category is the same as its Cartesian completion from  Proposition \ref{cor:copy} moreover, the Cartesian completion of  $\ParIso(\Mat_{\F_2})$ is $\Par(\Mat_{\F_2})$.  So this diagram commutes as a consequence.
 \end{proof}
 
 
@@ -832,7 +837,7 @@ k &                                                         & k                 
 \end{proof}
 
 
-Given a PID $k$, the prop $(\Span^\sim(\Mat_k), \oplus)$ is already known to have a presentation given in terms of ``interacting Hopf algebras" \cite[Definition 3.13]{ih}. 
+Given a PID $k$, the prop $(\Span^\sim(\Mat_k), \oplus)$ is already known to have a much nicer given in terms of ``interacting Hopf algebras" \cite[Definition 3.13]{ih}. 
 
 
 
@@ -840,7 +845,7 @@ Given a PID $k$, the prop $(\Span^\sim(\Mat_k), \oplus)$ is already known to hav
 \subsection{Adding the \texorpdfstring{$\Not$}{not}-gate}
 \label{sec:two}
 
-In this section we perform the same analysis for the affine fragment as we did in the previous section for the linear fragment.  First, consider the affine isomorphisms:
+In this subsection we perform the same analysis for the affine fragment as we did in the previous subsection for the linear fragment.  First, consider the affine isomorphisms:
 
 First, for the $\Not$ gate:
 
@@ -1373,7 +1378,8 @@ $$
 
 \begin{proof}
 \label{rem:parisoaffcb}
-The only nontrivial critical pair arises when controlled-not gates are sandwiched between black, or black $1$ units/counits on their target wires.  The case where there are no controlled not gates in between is resolved by the new axiom we have added.  When there are more controlled-not gates, they can be pushed past each other as follows:
+
+The only nontrivial critical pair arises when controlled-not gates are sandwiched between grey, or grey $1$ units/counits on their target wires.  The case where there are no controlled not gates in between is resolved by the new axiom we have added.  When there are more controlled-not gates, they can be pushed past each other as follows:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1847,12 +1853,13 @@ The case for spans with empty apex follows immediately as the only endomorphism 
 
 \end{proof}
 
+This gives a recipe for constructing the props of affine spans over arbitrary fields.  To my knowledge there is no presentation for affine isomorphisms, affine monororphisms for arbitrary fields; however, one doesn't need to have presentations for all the intermediary categories in order to build a presentation for affine spans.  In \cite[??]{ih}, the category of linear spans over a PID is constructed similarly without ever giving a presentation for the linear isomorphisms, so the situation should be completely analagous.  We won't give the presentation here, because it doesn't bring much insight to this subject; there are already presentatations for affine relations and affine spans which we already have discussed.
 
 
 \subsection{Adding the  \texorpdfstring{$\AND$}{and}-gate}
 \label{sec:three}
 
-In this section we do the same thing as in the previous two sections but  in the nonlinear setting.
+In this ssubsection we do the same thing as in the previous two subsections but  in the nonlinear setting.
 
 
 \begin{definition}
@@ -1974,13 +1981,11 @@ $$
 Where $\cm^\op$ picks out the comonoid $\zcirc$ of $\cb_\B$ and $\cb_{\F_2}$.
 \end{definition}
 
-
-From this way of looking at $f_2$, we see that it is the Lawvere theory for ?????
-
 \begin{lemma}[{\cite[Theorem 10]{lafont}}]
 $\f_2$ is a presentation for full subcategory of finite ordinals and functions whose objects are powers of 2, $(\FinOrd_2,\times)$, regarded as a prop with respect to the product.
 \end{lemma}
 
+By Stone duality, we see that this is also a presentation for the Lawvere theory of polynomial functions over $\F_2$.  We will come back to this alternative view slightly later.
 
 To find larger fragments, it will be useful to first identify the isomorphisms and the monics of $\f_2$.
 
@@ -2020,9 +2025,24 @@ $$
 These are called oracles, because these correspond to the reversible implementations of Boolean functions.  In quantum algorithms these Boolean functions are queried by on the first $n$ inputs and produce the answer on the final wire.
 \end{definition}
 
+
 \begin{lemma}
 The oracles in $f_2$ are generated by the generalized controlled-not gates:
 $$
+\left\llbracket\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=oplus] (0) at (0, 1.5) {};
+		\node [style=none] (1) at (0, 2) {};
+		\node [style=none] (2) at (0, 1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (0) to (1.center);
+		\draw (0) to (2.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket
+=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (1, -0.75) {};
@@ -2039,6 +2059,26 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture},
 \hspace*{.5cm}
+\left\llbracket\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=oplus] (0) at (0, 1.5) {};
+		\node [style=none] (1) at (0, 2) {};
+		\node [style=none] (2) at (0, 1) {};
+		\node [style=none] (4) at (-0.5, 2) {};
+		\node [style=none] (5) at (-0.5, 1) {};
+		\node [style=dot] (6) at (-0.5, 1.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (0) to (1.center);
+		\draw (0) to (2.center);
+		\draw (0) to (6);
+		\draw (6) to (4.center);
+		\draw (6) to (5.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket
+=
 \begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=X] (0) at (0.75, 0) {};
@@ -2057,6 +2097,37 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture},
 \hspace*{.5cm}
+\left\llbracket\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=oplus] (0) at (-0.25, 1.5) {};
+		\node [style=none] (1) at (-0.25, 2) {};
+		\node [style=none] (2) at (-0.25, 1) {};
+		\node [style=none] (4) at (-0.75, 2) {};
+		\node [style=none] (5) at (-0.75, 1) {};
+		\node [style=dot] (6) at (-0.75, 1.5) {};
+		\node [style=none] (7) at (-1.75, 2) {};
+		\node [style=none] (8) at (-1.75, 1) {};
+		\node [style=dot] (9) at (-1.75, 1.5) {};
+		\node [style=none] (10) at (-1, 1.5) {};
+		\node [style=none] (11) at (-1.5, 1.5) {};
+		\node [style=none] (12) at (-1.25, 1.5) {$\cdots$};
+		\node [style=none] (13) at (-1.25, 1.75) {$n$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (0) to (1.center);
+		\draw (0) to (2.center);
+		\draw (0) to (6);
+		\draw (6) to (4.center);
+		\draw (6) to (5.center);
+		\draw (9) to (7.center);
+		\draw (9) to (8.center);
+		\draw (11.center) to (9);
+		\draw (10.center) to (6);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket
+=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (0) at (-10.25, 0.25) {};
@@ -2116,69 +2187,6 @@ Any  Boolean function of $n$ arguments can be represented by a polynomial in\\
  $\F_2[x_1,\ldots, x_n]/\langle x_1^2-x_1,\ldots x_n^2-x_n\rangle$.  Every polynomial in this quotient ring has a unique normal form given by sums of products (which is not true for arbitrary finite fields).  Each product corresponds to a generalized controlled-not gate, and the sum corresponds to composing these generalized controlled-not gates in sequence.
 \end{proof}
 
-In the quantum circuit notation, the generalized controlled-not gates are drawn as follows (the first being the not gate, and the second being the controlled-not gate):
-$$
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=oplus] (0) at (0, 1.5) {};
-		\node [style=none] (1) at (0, 2) {};
-		\node [style=none] (2) at (0, 1) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (0) to (1.center);
-		\draw (0) to (2.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-,
-\hspace*{.5cm}
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=oplus] (0) at (0, 1.5) {};
-		\node [style=none] (1) at (0, 2) {};
-		\node [style=none] (2) at (0, 1) {};
-		\node [style=none] (4) at (-0.5, 2) {};
-		\node [style=none] (5) at (-0.5, 1) {};
-		\node [style=dot] (6) at (-0.5, 1.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (0) to (1.center);
-		\draw (0) to (2.center);
-		\draw (0) to (6);
-		\draw (6) to (4.center);
-		\draw (6) to (5.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-,
-\hspace*{.5cm}
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=oplus] (0) at (-0.25, 1.5) {};
-		\node [style=none] (1) at (-0.25, 2) {};
-		\node [style=none] (2) at (-0.25, 1) {};
-		\node [style=none] (4) at (-0.75, 2) {};
-		\node [style=none] (5) at (-0.75, 1) {};
-		\node [style=dot] (6) at (-0.75, 1.5) {};
-		\node [style=none] (7) at (-1.75, 2) {};
-		\node [style=none] (8) at (-1.75, 1) {};
-		\node [style=dot] (9) at (-1.75, 1.5) {};
-		\node [style=none] (10) at (-1, 1.5) {};
-		\node [style=none] (11) at (-1.5, 1.5) {};
-		\node [style=none] (12) at (-1.25, 1.5) {$\cdots$};
-		\node [style=none] (13) at (-1.25, 1.75) {$n$};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (0) to (1.center);
-		\draw (0) to (2.center);
-		\draw (0) to (6);
-		\draw (6) to (4.center);
-		\draw (6) to (5.center);
-		\draw (9) to (7.center);
-		\draw (9) to (8.center);
-		\draw (11.center) to (9);
-		\draw (10.center) to (6);
-	\end{pgfonlayer}
-\end{tikzpicture}
-$$
 
 
 %We will also allow generalized controlled not gates controlled and targetting arbitrary wires, possibly with gaps in the middle.
@@ -2253,7 +2261,7 @@ Recall the notation of a generalized controlled not gate controlled by wires ind
 
 
 
-Iwama et al \cite{iwama} originally gave a complete set of identities for circuits generated by generalized controlled not gates where the value of all-but-one output wires are fixed.  It is worth mentioning that Shende et al. later used the commutator to generalize some of these identities \cite[Corollary 26]{shende}.  We conjecture that a very similar set of identities is complete for Boolean isomorphisms: 
+Iwama et al \cite{iwama} originally gave a complete set of identities for circuits generated by generalized controlled not gates with one extra ancillary bit.  It is worth mentioning that Shende et al. later used the commutator to generalize some of these identities \cite[Corollary 26]{shende}.  We conjecture that a very similar set of identities is complete for Boolean isomorphisms: 
 %Recall that the {\bf commutator} of two group elements $f,g$ is the element $[f,g]:=fgf^{-1}g^{-1}$; therefore $fg=[f,g]gf$.
 
 
@@ -2307,14 +2315,14 @@ $.
 
 \end{conjecture}
 
-Although we aren't sure if these identities are complete, it doesn't matter in the end.  Eventually once we add enough generators and identities, we get a finite, complete presentations.  Therefore take $\Iso(\f_2)$ to be the prop generated by the generalized controlled-not gates of which no complete set of equations is known.  
+Although we aren't sure if these identities are complete, it doesn't matter in the end.  Eventually once we add enough generators and identities, we get a finite, complete presentation $\ZXA$.  Therefore take $\Iso(\f_2)$ to be the prop generated by the generalized controlled-not gates of which no complete set of equations is known.  
 
 
 
 Modulo a complete axiomatization of $\Iso(\f_2)$, by adding the state $|0\rangle$, we get a complete axiomatization of the injections in $\FinOrd_2$.
 
 \begin{definition}
-Let $\sfinj\f_2$ be the prop given by adjoining the black unit to $\Iso(\f_2)$ modulo:
+Let $\sfinj\f_2$ be the prop given by adjoining the grey unit to $\Iso(\f_2)$ modulo:
 
 $$
 \begin{tikzpicture}
@@ -2406,7 +2414,7 @@ $$
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (3, 2.25) {};
 		\node [style=none] (1) at (3, 3.25) {};
-		\node [style=map] (2) at (3, 2.75) {$1$};
+		\node [style=map] (2) at (3, 2.75) {$0$};
 		\node [style=none] (6) at (3, 3.5) {$n$};
 		\node [style=none] (8) at (3, 2) {$n$};
 	\end{pgfonlayer}
@@ -2445,7 +2453,7 @@ $$
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (5, 2.25) {};
 		\node [style=none] (1) at (5, 4.25) {};
-		\node [style=map] (2) at (5, 3.25) {$p+r+pr$};
+		\node [style=map] (2) at (5, 3.25) {$p\cdot r$};
 		\node [style=none] (4) at (5, 4.5) {$n$};
 		\node [style=none] (5) at (5, 2) {$n$};
 	\end{pgfonlayer}
@@ -2477,7 +2485,7 @@ $$
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (2.5, 2.25) {};
 		\node [style=none] (1) at (2.5, 3.25) {};
-		\node [style=map] (2) at (2.75, 2.75) {$p\cdot q$};
+		\node [style=map] (2) at (2.75, 2.75) {$p+q+p\cdot q$};
 		\node [style=none] (3) at (3, 3.25) {};
 		\node [style=none] (4) at (3, 2.25) {};
 		\node [style=none] (6) at (2.5, 3.5) {$n$};
@@ -2502,11 +2510,12 @@ $\sub_{\F_2}$ is a presentation for the pro of symmetric spans of monic function
 
 
 \begin{proof}
-First note that the polynomials $p \in \F_2[x_1,\ldots, x_n]/\langle x_1^2-x_1,\ldots, x_n^2-x_n \rangle$ are in bijection with functions $\ev_p:\Z_2^n \to \Z_2$ given by polynomial evaluation.  Let $k = |\ev^{-1}(1)|$, then chose a function $f_p:k \rightarrowtail 2^n$ picking out all the solutions to the polynomial equation $p(x_1,\cdots, x_n)=1$. The functor from $\sub_{\F_2}$ to this subcategory spans takes polynomials $p \mapsto (2^n \xleftarrowtail{f_p} \ k \ \xrightarrowtail {f_p} 2^n)$.  Any two spans induced by the same polynomial are isomorphic, so this is actually well defined.  It is clearly an isomorphism on objects, and it can easily be shown to be a monoidal functor.
+First note that the polynomials $p \in \F_2[x_1,\ldots, x_n]/\langle x_1^2-x_1,\ldots, x_n^2-x_n \rangle$ are in bijection with functions $\ev_p:\Z_2^n \to \Z_2$ given by polynomial evaluation.  Let $k = |\ev^{-1}(1)|$, then chose a function $f_p:k \rightarrowtail 2^n$ picking out all the solutions to the polynomial equation $p(x_1,\cdots, x_n)=0$. The functor from $\sub_{\F_2}$ to this subcategory spans takes polynomials $p \mapsto (2^n \xleftarrowtail{f_p} \ k \ \xrightarrowtail {f_p} 2^n)$.  Any two spans induced by the same polynomial are isomorphic, so this is actually well defined.  It is clearly an isomorphism on objects, and it can easily be shown to be a monoidal functor.
 
 The fullness is easy and the faithfulness comes from the fact that we can reduce every map to a polynomial and then reduce the polynomial to algebraic normal form.
-
 \end{proof}
+
+The axioms \ref{sub.two}, \ref{sub.three} are reflected in \ref{ZXA.14};  all of these axioms allow one to compose literals.  This is essential to reduce the subobjects to a normal form.
 
 
 %
@@ -2776,9 +2785,14 @@ $$
 \label{lem:parisof}
 $\sfpar\iso \f_2$ is a presentation for the full subcategory $(\FPinj_2,\times)$ of $(\ParIso(\FinOrd),\times)$ with objects powers of two.
 \end{lemma}
+\begin{proof}
+We have shown how to push all of the generators of $ \subinj\f_2$  past those of $\subinj\f_2^\op$ up to ${\subiso\f_2}$.
+
+The uniqueness up to zig-zags becomes  trivial in this case. 
+The invertible maps in $\subinj\f_2^\op$ act the same both on the left and on the right as in the case of an orthogonal factorization system. Similarly, the non-invertible subobjects  corresponding to spans $2^n \xleftarrowtail{e} k\ \xrightarrowtail{e} 2^n $ act the same both on the left and the right.
+\end{proof}
 
 This is equivalent to the prop $\TOF$ of \cite{tof} whose identities we have included in Figure \ref{fig:TOF}.
-
 By adding the effect $\sqrt{2}\langle +|$ we get partial functions:
 
 \begin{definition}

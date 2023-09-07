@@ -1977,7 +1977,7 @@ Given a regular category $\X$, $\Rel(\X)$ is a Cartesian bicategory of relations
 \end{example}
 
 
-We see that either the white and black Frobenius algebras of our presentations for $\LinRel_k$ can be regarded as the Frobenius algebra structure coming from viewing it as a bicategory of relations.  Similarly, for the white Frobenius algebra of  $\Aff\Rel$, but {\em not} the black one because addition and copying are no longer dual to each other.
+We see that either the white and grey Frobenius algebras of our presentations for $\LinRel_k$ can be regarded as the Frobenius algebra structure coming from viewing it as a bicategory of relations.  Similarly, for the white Frobenius algebra of  $\Aff\Rel$, but {\em not} the grey one because addition and copying are no longer dual to each other.
 
 
 
@@ -2643,7 +2643,7 @@ Sets and partial injections are intimately related to Hilbert spaces.  The follo
 There is a \dag-symmetric monoidal embedding $\ell^2:\Pinj\to\Hilb$ taking:
 
 \begin{description}
-\item[Objects:] Sets $X$ are taken to the Hilbert space of square-integrable functions on $X$:
+\item[Objects:] Sets $X$ are taken to the Hilbert space of square-summable functions on $X$:
 
 $$
 \ell^2(X):=\left\{\phi:X\to \C  \ \bigl\vert \sum_{x\in X} \ \left|\phi(x)\right|^2 < \infty \right\}
@@ -2661,7 +2661,9 @@ $$
 
 The partial inverse is mapped to the Hermetian adjoint.
 
-In particular, $\ell^2(X)$ has a distinguished orthonormal basis given by  $\{\delta_{x}:X\to \C\ | \ \forall x \in X \}$, where $\delta_x$ is the Dirac delta at $X$:
+In particular, $\ell^2(X)$ has a distinguished orthonormal basis given by 
+$$\{\delta_{x}:X\to \C\ | \ \forall x \in X \}$$
+where $\delta_x$ is the Dirac delta at $X$:
 
 $$
 \delta_x(y) \mapsto
@@ -3215,7 +3217,7 @@ Similarly the subcategory of  semi-Frobenius algebra homorphisms of a discrete C
 
 
 
-At least as far as the literature is concerned, the other direction is not so trivial.  We will first introduce the more copara construction, which freely adds an effect to every object in a way that is compatible with the tensor product:
+At least as far as the literature is concerned, the other direction is not so trivial.  We will first introduce the more CoPara construction, which freely adds an effect to every object in a way that is compatible with the tensor product.
 
 
 \begin{definition}
@@ -3432,7 +3434,31 @@ $
 \end{description}
 \end{definition}
 
-The coherence data for the monoidal structure is inherited in a straightforward way from $\X$. Moreover, if $\X$ is symmetric monoidal, then it is easy to see how ${\CoPara}(\X)$ is as well.  Indeed ${\CoPara}(\X)$ is merely freely adding generators to the monoidal theory of  the strictification of $\X$.  However, variations on this theme will occur throughout this thesis, so we have promoted it to its own construction; for example: 
+The coherence data for the monoidal structure is inherited in a straightforward way from $\X$. Moreover, if $\X$ is symmetric monoidal, then it is easy to see how ${\CoPara}(\X)$ is as well.  Indeed ${\CoPara}(\X)$ is merely freely adding generators $d_X:X\to I$ to the monoidal theory of  the strictification of $\X$, for every object in $\X$.  In ${\CoPara}(\X)$, that the map $(u_X^L)^{-1}$:
+
+
+$$
+d_X=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (52) at (61.75, -2.25) {};
+		\node [style=none] (53) at (61.75, -1.25) {};
+		\node [style=none] (54) at (62.75, -1.25) {};
+		\node [style=none] (55) at (61.75, -2.5) {$X$};
+		\node [style=unit] (56) at (62.75, -2) {};
+		\node [style=none] (57) at (61.75, -1) {$X$};
+		\node [style=none] (58) at (62.75, -1) {$I$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (53.center) to (52.center);
+		\draw (56) to (54.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+However, variations on this theme will occur throughout this thesis, so we have promoted it to its own construction.  The CoPara construction is dual to the Para construction which is interpreted as freely adding parameters to  a monoidal category (see \cite{??}).
+
+
 
 \begin{definition}\cite[Definition 5.1.1]{giles}
 Given a discrete inverse category $\X$,  its {\bf Cartesian completion} $\tilde \X$ is the quotient of ${\CoPara}(\X)$ by either of the following equivalent symmetric monoidal congruence relations:

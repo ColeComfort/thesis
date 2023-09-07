@@ -1190,7 +1190,7 @@ If we take $\Cat$ to be a monoidal bicategory with respect to the Cartesian prod
 Monoidal categories are pseudomonoids in $\Cat$ and strict monoidal categories are strict pseudomonoids in $\Cat$.
 \end{lemma}
 
-Contrast this with the view of small {\em strict} monoidal categories as categories internal to monoids between sets; in the non-internal setting, the ability to express the pseudoness of the monoid allows the tensor product to not be strict.
+Contrast this with the view of small {\em strict} monoidal categories as categories internal to monoids between spans of sets; in the non-internal setting, the ability to express the pseudoness of the monoid allows the tensor product to not be strict.
 
 By looking at the points inside of $\Cat$, this way of viewing a monoidal category hints at some connection to proof nets:
 
@@ -1215,7 +1215,7 @@ Composition of the 1-cells and 2-cells is given pointwise; and the monoidal stru
 
 \end{definition}
 
-There is a graphical calculus for pointed profunctors, which we will first specialize to pointed categories.  To my knowledge the graphical calculus is not fully worked out in the literature.  Initially called ``internal string diagrams''  by \cite{vicary} when applied to  $\Vect$-enriched Profunctors, these have also been called ``open diagrams'' by \cite{mario} for $\Sets$-enriched profunctors.  We will return to the case of $\Sets$-enriched profunctors shortly.
+There is a graphical calculus for pointed profunctors, which we will first specialize to pointed categories.  To my knowledge the graphical calculus is not fully worked out in the literature.  Initially called ``internal string diagrams''  by \cite{vicary} when applied to  $\Vect$-enriched Profunctors, these have also been called ``open diagrams'' by \cite{mario} for $\Sets$-enriched profunctors. We use the package contained in the paper \cite{vicary} to typeset these diagrams.  We will return to the case of $\Sets$-enriched profunctors shortly.
 
 Given a pointed functor, $(1_\X, f \in \X(1_{\X}(X),Y))$, draw the identity as a cylinder and the map inside the cylinder as follows:
 
@@ -1508,7 +1508,7 @@ Where, recall that $[-]:\Sets\to\Sets $ is the list monad where the unit $\eta_X
 A (small) {\bf multicategory} is a monad is {\sf MultiSpan}.
 \end{definition}
 
-So if we have a monad on the 1-cell $[ {\sf Ob}] \xleftarrow{\sf dom} {\sf Ar} \xrightarrow{\sf codom} {\sf Ob}$.  As opposed to the setting for internal categories, the domain is now a list of objects.  The way that the composition and unit are defined plugs the single object in the codomain into the list of objects in the domain.
+So we have a monad on the 1-cell $[ {\sf Ob}] \xleftarrow{\sf dom} {\sf Ar} \xrightarrow{\sf codom} {\sf Ob}$.  As opposed to the setting for internal categories, the domain is now a list of objects.  The way that the composition and unit are defined plugs the single object in the codomain into the list of objects in the domain.
 
 
 %An equivalent way to define a pseudomonoid in $\Cat$ would be to ask for a monoidal pseudofunctor $\one\to \Cat$ from the terminal monoidal category into $\Cat$.  
@@ -1586,7 +1586,7 @@ There are two classes of profunctors which will be of interest to us:
 A profunctor $\X\proarrow \Y$ is {\bf representable} when it is naturally isomorphic to the profunctor $F_*:=\Y(F-,=)$ for a functor $F: \X\to \Y$.
 
 
-Dually, a profunctor $\Y\proarrow \X$ is {\bf corepresentable} when it is naturally isomorphic to the profunctor $F^*:=\Y(-,F=)$ for a functor $F: \X\to \mathbb{D}$.
+Dually, a profunctor $\Y\proarrow \X$ is {\bf corepresentable} when it is naturally isomorphic to the profunctor $F^*:=\Y(-,F=)$ for a functor $F: \X\to \Y$.
 
 
 \end{definition}
