@@ -26,24 +26,24 @@
 %The first step in introducing this formalism, is a graphical counterpart of the notion of an orthonormal basis:
 
 
-String diagrams have been used in quantum theory for quite some time.  For example in the work of Penrose \cite{penrosei}.  In such settings, string diagrams have been used as (often heuristic) tools for calculation. The more recent programme of ``categorical quantum mechanics,'' following the seminal paper of Abramsky and Coecke \cite{abramsky} has endeavoured to formulate finite dimensional quantum mechanics using category theory.  In this setting,  string diagrams are formal mathematical objects: allowing certain essential features to be abstracted away from the usual setting of finite dimensional Hilbert spaces.
+String diagrams have been used in quantum theory for quite some time.  For example, as early as the work of Penrose \cite{penrosei}.  In such settings, string diagrams have been used as (often heuristic) tools for calculation. The more recent programme of ``categorical quantum mechanics,'' following the seminal paper of Abramsky and Coecke \cite{abramsky} has endeavoured to reformulate finite dimensional quantum mechanics using category theory.  In this setting,  string diagrams are formal mathematical objects: allowing certain essential features to be abstracted away from the usual setting of finite dimensional Hilbert spaces.
 
-In this section, we shall briefly review this formalism; however a more in depth mathematical introduction can be found in \cite{heunen}, with a more broadly accessible introduction being found in \cite{pqp}.
+In this section, we shall briefly review this formalism as well as recent developments which are relevant to this thesis.  A more in depth mathematical introduction can be found in \cite{heunen}, with a more broadly accessible and applied introduction being found in \cite{pqp}.
 
 
 To motivate this graphical treatment of finite dimensional quantum theory, we first establish some basic algebraic notations.
 
 
-Fix a finite dimensional Hilbert space $\mathcal H$ with dimension $d\geq 2$, which we will regard as our local state-space. An element of $\mathcal H$ is called a {\bf qudit}.  A $\mathcal H$ is called a {\bf qubit} when $d=2$, a {\bf qutrit} when $d=3$, a {\bf qupit} when $d$ is any prime and a {\bf quopit} when $d$ any odd prime.
+Fix a finite dimensional Hilbert space $\mathcal H$ with dimension $d\geq 2$, which we will regard as our local state-space. An element of  $\mathcal H$ is called a {\bf qubit} when $d=2$, a {\bf qutrit} when $d=3$, a {\bf qupit} when $d$ is any prime, a {\bf quopit} when $d$ any odd prime and  a {\bf qudit} when there is no restriction on $d$.
 
-Fix such a $d$ and take some ordered orthonormal basis $B$ of $\mathcal H$.  The elements of $B$ are denoted in order, using ``ket notation'' by $\{| b_0\rangle , \ldots, |b_{d-1}\rangle \}$.
+The elements of an orthonormal basis of $\mathcal H$ indexed by a set $\mathcal J$ are drawn in ``ket notation'' by $\{|b_{j}\rangle \}_{j \in \mathcal J}$.
 The tensor product of these vectors is denoted by concatenation, so that for example:
 $$
 | b_x \rangle \otimes | b_y\rangle =: |b_x,b_y \rangle  
 $$
 
 
-Most of the time,  for the state space of a qudit we will not chose an aribitrary $d$-dimensional Hilbert space.  Instead, we will work in the Hilbert space of square summable functions on $\Z/d\Z$, $\ell^2(\Z/d\Z)$.  Here, the elements of $\Z/d\Z$ induce a basis for  $\ell^2(\Z/d\Z)$ called the {\bf standard basis} or $Z$-basis.  We will denote the elements of the basis  as  $\{| 0\rangle , \ldots, |d-1\rangle \}$.  The structure of a ring is therefore transported onto the standard basis elements (or a field when $d$ is prime).  These are regarded as the $d$-level quantum analogue of classical dits.    Similarly, the $n$-qudit state space is regarded as the Hilbert space $\ell^2((\Z/d\Z)^n)$, so that the $n$-standard basis elements have the structure of an $n$-dimensional $\Z/d\Z$-bimodule (or vector space, when $d$ is prime).
+Most of the time,  we will not chose an aribitrary $d$-dimensional Hilbert space for the local state-space.  Instead, we will work in the Hilbert space of square summable functions on $\Z/d\Z$, $\ell^2(\Z/d\Z)$.  Here, the elements of $\Z/d\Z$ induce a basis for  $\ell^2(\Z/d\Z)$ called the {\bf standard basis} or $Z$-basis.  We will denote the elements of the basis  as  $\{| 0\rangle , \ldots, |d-1\rangle \}$.  The structure of a ring is therefore transported onto the standard basis elements (or a field when $d$ is prime).  These are regarded as the $d$-level quantum analogue of classical dits.    Similarly, the $n$-qudit state space is regarded as the Hilbert space $\ell^2((\Z/d\Z)^n)$, so that the $n$-standard basis elements have the structure of an $n$-dimensional $\Z/d\Z$-bimodule (or vector space, when $d$ is prime).
 
 Denote arbitrary vectors $\phi$ in $\mathcal H$ using this ket notation by $|\phi \rangle$; where the adjoint of $|\phi \rangle$ is denoted as a ``bra''  by $|\phi \rangle^\dag =: \langle \phi |$. 
 
@@ -56,7 +56,7 @@ $$
 A  = \sum_{k=0}^{n-1} \sum_{j=0}^{m-1} a_{j,k}| j \rangle \langle k |
 $$
 
-For example given another matrix $B:\ell^2((\Z/d\Z)^m)\to \ell^2((\Z/d\Z)^\ell)$ with entries $b_{k',j'}$:
+Given another matrix $B:\ell^2((\Z/d\Z)^m)\to \ell^2((\Z/d\Z)^\ell)$ with entries $b_{k',j'}$:
 
 $$
 B  = \sum_{j'=0}^{m-1}\sum_{k'=0}^{\ell-1}  b_{k',j'}| k' \rangle \langle j' |
@@ -71,11 +71,6 @@ BA
 &= \sum_{k=0}^{n-1} \sum_{k'=0}^{\ell-1} \left(\sum_{j=0}^{m-1} b_{k',j}a_{j,k}\right)| k' \rangle \langle k |\\
 \end{align*}
 
-
-Now that this basic notation is established, we will move onto more specifically quantum notions.
-
-
-A {\bf pure quantum state} is a vector $|\phi \rangle$ with norm 1, so that $\langle \phi | \phi \rangle =1$. Quantum states are interpreted as the possible physical states of a quantum system which has been unexposed to the classical world.  The quantum evolution of pure quantum states is modeled by their postcomposition with unitary maps.  Unitary maps are precisely the linear automorphisms which preserve quantum states by definition.
 
 There is a graphical way to represent orthonormal bases:
 
@@ -198,7 +193,7 @@ $$
 \right)
 $$
 
-It is easy to see how the laws of a commutative \dag-Frobenius algebra hold; however, the proof of the converse direction is quite a bit trickier.
+It is easy to see how the laws of a commutative \dag-Frobenius algebra hold; however, the proof of the converse direction is quite a bit trickier.  These are precisely the Frobenius algebras that (co)copy the basis elements.
 
 Moreover, {\em special} commutative \dag-Frobenius algebras $\zcirc$ are in bijection with orthonormal bases as:
 
@@ -390,7 +385,12 @@ $$
 
 
 
-To actually do computations on classical systems, one has to measure things. 
+
+A {\bf pure quantum state} is a vector $|\phi \rangle$ with norm 1, so that $\langle \phi | \phi \rangle =1$. Quantum states are interpreted as the possible physical states of a quantum system which has been unexposed to the classical world.  The quantum evolution of pure quantum states is modeled by their postcomposition with unitary maps.  Unitary maps are precisely the linear automorphisms which preserve the norm, and thus, pure quantum states.
+
+
+
+To actually do computations with quantum states, one has to measure things using a classical interface. 
 In \cite{cpm}, Selinger gives a construction to produce categories of quantum channels from general \dag-compact closed categories. When applied to $\FHilb$, this construction adds discarding behavior to quantum systems.  This will provide the necessary machinery to model measurement. 
 
 
@@ -558,8 +558,6 @@ $$
 $$
 
 The canonical functor $\X\to \CoPara(\X)\to\CPM(\X,\dag)$ taking $f \mapsto (f,I)$ is called {\bf doubling}. The maps in the image of this functor are {\bf pure}, and those which aren't are {\bf mixed}.
-
-
 A map $f:X\to Y$ in $\CPM(\X)$ is called {\bf trace-preserving} when $f;d_Y = d_X$:
 $$
 \begin{tikzpicture}
@@ -586,11 +584,10 @@ $$
 \end{tikzpicture}
 $$
 
-All maps can be obtained by composing pure maps with discard maps, although not uniquely.  Any such factorization is called a {\bf dilation}.
-
+All maps can be obtained by composing pure maps with discard maps.  Given a mixed map $f$ in $\CPM(\X)$ such a factorization into a pure map followed by a discard map is a {\bf purification} of $f$.
+\end{definition}
 
 The compact closed structure of $\CPM(\X)$ is inhereted from the doubling of the compact closed structure of $\X$.  If the \dag-symmetric monoidal structure of $\X$ is compatible with its compact closed structure, so that $\X$ is \dag-compact closed, then $\CPM(\X)$ is \dag-compact closed as well.
-\end{definition}
 
 Oftentimes, we will bend the ``doubled picture" so that the inputs are on the bottom and the outputs are on the top:
 $$
@@ -637,7 +634,7 @@ $$
 $$
 We could have chosen a different, equivalent congruence relation to quotient by to avoid the braid on the cap, but this would be incompatible with notation for stabilizer tableaux which we use much later in this thesis.
 
-In this picture, the composition of equivalence classes is  composition in $\X$:
+In the doubled picture, the composition of equivalence classes is  composition in $\X$:
 
 $$
 \begin{tikzpicture}
@@ -792,34 +789,34 @@ $\CPM(\FHilb, \dag)$ is the dagger compact closed category of density matrices b
 
 Or equivalently, preserving the  \dag-compact closed structure, 
 $\CPM(\Mat_\C, \bar{(-)})$
-is the skeleton of density matrices.
+is the strict monoidal skeleton of density matrices.
 \end{example}
 
-Density matrices model mixed quantum circuits. The discarding map is interpreted as exposing the quantum system to the classical world. A (mixed) {\bf quantum state}, is a trace-preserving state in $\CPM(\FHilb)$.  Quantum states model the possible physical states which are not-necessarily pure quantum states.  The trace-preserving maps in $\CPM(\FHilb)$ model the mixed quantum-classical evolution of quantum states; as they are precisely the maps in $\CPM(\FHilb)$ which preserve quantum states.
+
+Density matrices model mixed quantum circuits. The discarding map is interpreted as exposing the quantum system to the classical world. 
 
 
-%
-%There are several variations on the $\CPM$ construction which are defined using different congurence relations on ${\CoPara}(\X)$.  For example, there is an infinite dimensional version which uses a different congruence. The quotient we have given is not a congruence relation for non-compact closed $\dag$-symmetric monoidal categories \cite{coecke2016pictures}.  There is a seperate equivalence relation which is defined in terms of universally quantifying over all of the maps which fit where we have drawn the braiding.
-%Similarly, the discard construction \cite{disc} adds a generator to ones \dag-compact closed category which freely discards isometries. This approach is particularly amenable to adding mixed states to monoidal theories for pure quantum processes.
-%When applied to $\FHilb$, importantly, all of these perspectives reproduce the same result.
+A (mixed) {\bf quantum state}, is a trace-preserving state in $\CPM(\FHilb)$.  Mixed quantum states are the states which can be obtained by discarding pure quantum states, so that they can be regarded as the physical states of a quantum/classical system.
 
 
-%As hinted at earlier, density matrices allow us to talk about quantum measurement.  We first show how to graphically project onto a basis in density matrices:
+The trace-preserving maps in $\CPM(\FHilb)$ model the mixed quantum-classical evolution of quantum states; as they are precisely the maps in $\CPM(\FHilb)$ which preserve quantum states.
 
 
-In quantum mechanics, measurement on a system $\mathcal H$ is performed with respect to an orthonormal basis.  Fix an orthonormal basis $B=\{ |b_j\rangle \}_{j \in \mathcal J}$ of $\mathcal H$.   Given a quantum state state $|\phi\rangle$ then
+
+Given an orthonormal basis $B=\{ |b_j\rangle \}_{j \in \mathcal J}$ of $\mathcal H$ and a quantum state state $|\phi\rangle$ on $\mathcal H$ then:
 $$
 \sum_{j\in \mathcal J}
  |\langle b_j|\psi \rangle|^2
 =1
 $$ 
-Therefore this gives a probability distribution over $\mathcal J$.  That is, the probability of measuring basis vector $| b_j\rangle $ is given by $| \langle b_j | \psi \rangle |^2$. 
-This probabilistic interpretation of quantum measurement is called the {\bf Born rule}, although it is usually stated slightly differently.
-This begs the question:  what does the Born rule have to do with the $\CPM$ construction?
+This gives a probability distribution over $\mathcal J$.  The scalar  $0\leq |\langle b_j|\psi \rangle|^2\leq 1$ is interpreted as the probability of measuring the basis element $|b_j\rangle$ on the state $|\psi\rangle$ with respect to the basis $B$.
+This basis dependent, probabilistic interpretation of quantum measurement is called the {\bf Born rule}, although it is usually stated slightly differently.
+
+The $\CPM$ construction and special commutative $\dag$-Frobenius algebras allow us to perform quantum measurement using only string diagrms.  Some mathematical machinery is needed first:
 
 
 \begin{definition}
-Given a special \dag-commutative Frobenius algebra $B$ on a \dag-compact closed category $\X$,
+Given a special \dag-commutative Frobenius algebra $B$ on a \dag-compact closed category $\X$, define the projector onto the $B$ basis to be the following map in $ \CPM(\X,\dag)$:
 $$
 p_B:=
 \begin{tikzpicture}[scale=-1]
@@ -837,11 +834,11 @@ p_B:=
 		\draw [in=90, out=-45] (10) to (15);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\in \CPM(\X,\dag)
 $$
 
+\end{definition}
 
-In the doubled picture:
+In the doubled picture, we untangle the quantum spaghetti:
 
 $$
 \left\llbracket
@@ -1053,7 +1050,9 @@ $$
 \end{tikzpicture}
 $$
 
-It is idempotent, because:
+
+Recall that a map $e$ is a projector when it is idempotent (so that $e^2=e$) and self-adjoint (so that $e^\dag=e$)
+$p_B$ is idempotent, because:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1353,19 +1352,17 @@ $$
 
 
 
-Therefore it is a projector.  Call this map the $B$-projector.
-\end{definition}
+Therefore it is actually a projector.
+
+
+Given a quantum state $| \psi \rangle$ and an orthonormal basis  $B$, a  {\bf destructive measurement} on $|\psi\rangle$ with respect to $B$ is performed by projecting $|\psi\rangle$ onto $B$ as $p_B|\psi\rangle$.  A destructive measurement with respect to $B$ transforms a quantum state into a stochastic mixture of all of the basis elements of $B$ while discarding the measurement outcome.
 
 
 
-Given a quantum state $| \psi \rangle$ and an orthonormal basis  $B$, a  {\bf destructive measurement} on $|\psi\rangle$ with respect to $B$ is performed by projecting $|\psi\rangle$ onto $B$ as $p_B|\psi\rangle$.  A destructive measurement with respect to $B$ transforms a quantum state into a stochastic mixture of all of the basis elements of $B$.
-
-
-
-To promote these classical mixtures to their own systems,  we regard the projectors onto quantum observables themselves as objects:
+To promote these classical stochastic mixtures to their own systems, we need a way to turn subobjects into objects:
 
 \begin{definition}
-Given a category $\X$ and a class of idempotents $\mathcal I$ (so that $\forall e\in \mathcal I$, $e^2=e$), the {\bf Karoubi envelope of $\X$ at $\mathcal{I}$}, ${\sf Split}_{\mathcal I}(\X)$ is the category with:
+Given a category $\X$ and a class of idempotents $\mathcal I$, the {\bf Karoubi envelope of $\X$ at $\mathcal{I}$}, ${\sf Split}_{\mathcal I}(\X)$ is the category with:
 \begin{description}
 \item[\ \ Objects:] Pairs $(X,e)$ where $X$ is an object of $\X$ and $e:X\to X$ is in $\mathcal I$.
 \item[\ \ Maps:] A map $(e,f,m):(X,e)\to (Y,m)$ is a map $f:X\to Y$ in $\X$ such that $e;f;m=f$.
@@ -1398,13 +1395,9 @@ $$
 & (X,1_X)
 }
 $$
-
-
-
-
 \end{definition}
-Morally, the Karoubi envelope promotes subobjects to objects.
-This generalizes to $\dag$-compact closed categories, so that projectors get promoted to objects:
+
+This specializes to $\dag$-compact closed categories, so that projectors get promoted to objects:
 
 \begin{definition}[{\cite{idempotent}}]
 Given a $\dag$-category $\X$ and class of projectors $\mathcal I$ in $\X$, then  ${\sf Split}_{\mathcal I}(\X)$ is a $\dag$ category.
@@ -1763,32 +1756,11 @@ $$
 
 Therefore, measuring $|b_j\rangle $ yields the scalar $|\langle b_j|\phi\rangle|^2$, which is the correct probability via the Born rule.
 
-There is a graphical calculus for this two-sorted prop of classical and quantum types.  The classical wires are drawn thin and the quantum wires are drawn thick.  Similarly, the classical spiders are drawn with a thin border and the quantum spiders are drawn with a thick border:
+There is a graphical calculus for this two-sorted prop of classical and quantum types.  
+The classical wires are drawn thin and the quantum wires are drawn thick.
+The pure spider we have have been working with so far is drawn with a thick border:
 
 $$
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (11) at (4, -0.5) {};
-		\node [style=none] (12) at (3, -0.5) {};
-		\node [style=none] (13) at (3.5, -0.5) {$\cdots$};
-		\node [style=none] (14) at (2.5, -2) {};
-		\node [style=none] (15) at (3.5, -1.25) {};
-		\node [style=none] (16) at (4.5, -0.5) {};
-		\node [style=none] (17) at (3.5, -2) {$\cdots$};
-		\node [style=none] (18) at (3, -2) {};
-		\node [style=Z] (19) at (3.5, -1.25) {};
-		\node [style=none] (20) at (4, -2) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [in=-150, out=90] (14.center) to (15);
-		\draw [in=-90, out=56] (15) to (11.center);
-		\draw [in=124, out=-90] (12.center) to (15);
-		\draw [in=-124, out=90] (18.center) to (19);
-		\draw [in=90, out=-56] (19) to (20.center);
-		\draw [in=-90, out=30] (19) to (16.center);
-	\end{pgfonlayer}
-\end{tikzpicture},
-\hspace*{1cm}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (11) at (4, -0.5) {};
@@ -1814,7 +1786,7 @@ $$
 $$
 
 
-The state preparation and measurement are drawn as thin spiders mediating thick and thin wires:
+The state preparation and measurement are drawn as thin spiders interfacing between thick and thin wires:
 
 
 $$
@@ -1845,8 +1817,7 @@ $$
 $$
 
 
-
-Classical spiders can have classical and quantum inputs and outputs by conjugation with the state preparation and measurement maps, called {\bf bastard spiders} following \cite{pqp}.  For example:
+The conjugation of pure spiders by state preparation and measurement maps creates {\bf bastard spiders} following \cite{pqp}.  Bastard spiders are drawn with a thin border.  For example:
 
 $$
 \begin{tikzpicture}
@@ -1863,14 +1834,14 @@ $$
 		\node [style=none] (11) at (3.75, -2) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=-150, out=90] (3.center) to (4.center);
-		\draw [in=-90, out=56] (4.center) to (0.center);
-		\draw [in=150, out=-90] (1.center) to (4.center);
-		\draw [in=-124, out=90] (7.center) to (8);
-		\draw [in=90, out=-30] (8) to (9.center);
-		\draw [in=-90, out=30] (8) to (5.center);
-		\draw [thick, in=-90, out=120] (8) to (10.center);
-		\draw [thick, in=-60, out=90] (11.center) to (8);
+		\draw [thick,in=-150, out=90] (3.center) to (4.center);
+		\draw [thick,in=-90, out=56] (4.center) to (0.center);
+		\draw [thick,in=150, out=-90] (1.center) to (4.center);
+		\draw [thick,in=-124, out=90] (7.center) to (8);
+		\draw [thick,in=90, out=-30] (8) to (9.center);
+		\draw [thick,in=-90, out=30] (8) to (5.center);
+		\draw [in=-90, out=120] (8) to (10.center);
+		\draw [in=-60, out=90] (11.center) to (8);
 	\end{pgfonlayer}
 \end{tikzpicture}
 :=
@@ -1882,7 +1853,7 @@ $$
 		\node [style=none] (4) at (3.5, -1.25) {};
 		\node [style=none] (5) at (4.25, -0.5) {};
 		\node [style=none] (7) at (3.25, -2) {};
-		\node [style=Z] (8) at (3.5, -1.25) {};
+		\node [style=Zthick] (8) at (3.5, -1.25) {};
 		\node [style=none] (9) at (4.25, -2) {};
 		\node [style=Z] (10) at (3.75, -2) {};
 		\node [style=Z] (11) at (3.25, -0.5) {};
@@ -1896,27 +1867,28 @@ $$
 		\node [style=none] (19) at (4.25, -2.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=-150, out=90] (3.center) to (4.center);
-		\draw [in=-90, out=56] (4.center) to (0.center);
-		\draw [in=150, out=-90] (1.center) to (4.center);
-		\draw [in=-124, out=90] (7.center) to (8);
-		\draw [in=90, out=-30] (8) to (9.center);
-		\draw [in=-90, out=30] (8) to (5.center);
-		\draw (1.center) to (13.center);
-		\draw (0.center) to (14.center);
-		\draw [in=120, out=-90] (11) to (8);
-		\draw [in=300, out=90] (10) to (8);
-		\draw (17.center) to (7.center);
-		\draw (16.center) to (3.center);
-		\draw (19.center) to (9.center);
-		\draw (5.center) to (15.center);
-		\draw [thick] (18.center) to (10);
-		\draw [thick] (11) to (12.center);
+		\draw [thick,in=-150, out=90] (3.center) to (4.center);
+		\draw [thick,in=-90, out=56] (4.center) to (0.center);
+		\draw [thick,in=150, out=-90] (1.center) to (4.center);
+		\draw [thick,in=-124, out=90] (7.center) to (8);
+		\draw [thick,in=90, out=-30] (8) to (9.center);
+		\draw [thick,in=-90, out=30] (8) to (5.center);
+		\draw [thick] (1.center) to (13.center);
+		\draw [thick] (0.center) to (14.center);
+		\draw [thick] [in=120, out=-90] (11) to (8);
+		\draw [thick] [in=300, out=90] (10) to (8);
+		\draw [thick] (17.center) to (7.center);
+		\draw [thick] (16.center) to (3.center);
+		\draw [thick] (19.center) to (9.center);
+		\draw [thick] (5.center) to (15.center);
+		\draw  (18.center) to (10);
+		\draw  (11) to (12.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
 
-When a classical spider is connected to a quantum spider, they decohere and fuse into a classical spider:
+The thin border indicates that the state has been measured in the basis $\zcirc$, and is no longer pure and is a stochastic mixture of the basis element of $B$.
+When a pure spider is connected to a bastard spider they both fuse into a bastard spider:
 
 $$
 \begin{tikzpicture}
@@ -1949,7 +1921,6 @@ $$
 		\node [style=none] (12) at (3, -0.5) {};
 		\node [style=none] (13) at (3.5, -0.5) {$\cdots$};
 		\node [style=none] (14) at (2.5, -2) {};
-		\node [style=none] (15) at (3.5, -1.25) {};
 		\node [style=none] (16) at (4.5, -0.5) {};
 		\node [style=none] (17) at (3.5, -2) {$\cdots$};
 		\node [style=none] (18) at (3, -2) {};
@@ -1957,12 +1928,12 @@ $$
 		\node [style=none] (20) at (4, -2) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [thick,in=-150, out=90] (14.center) to (15);
-		\draw [thick,in=-90, out=56] (15) to (11.center);
-		\draw [thick,in=124, out=-90] (12.center) to (15);
-		\draw [thick,in=-124, out=90] (18.center) to (19);
-		\draw [thick,in=90, out=-56] (19) to (20.center);
-		\draw [thick, in=-90, out=30] (19) to (16.center);
+		\draw [thick,in=-150, out=90] (14.center) to (19.center);
+		\draw [thick,in=-90, out=56] (19.center) to (11.center);
+		\draw [thick,in=124, out=-90] (12.center) to (19.center);
+		\draw [thick,in=-124, out=90] (18.center) to (19.center);
+		\draw [thick,in=90, out=-56] (19.center) to (20.center);
+		\draw [thick, in=-90, out=30] (19.center) to (16.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
@@ -2137,8 +2108,159 @@ $$
 \end{tikzpicture}
 \ \right\rrbracket
 $$
-
 Notice that this way of describing the discard map is independent of the choice of orthonormal basis.
+
+In general, we will draw thick borders on arbitrary pure maps $U$; and thick borders on mixed maps $V$ as follows:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map, thick] (3) at (0, -0.5) {$U$};
+		\node [style=none] (5) at (0, 1.25) {};
+		\node [style=none] (7) at (0, -2.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [thick] (5.center) to (3.center) to (7.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ , \hspace*{.5cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (3) at (0, -0.5) {$V$};
+		\node [style=none] (5) at (0, 1.25) {};
+		\node [style=none] (7) at (0, -2.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [thick] (5.center) to (3.center) to (7.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+Note that all isometries and unitaries in $\CPM(\FHilb)$ are pure; so we always drawn them with a thick border.
+This notation allows us to state define a very special notion of purification in $\CPM(\FHilb)$:
+\begin{proposition}[Stinespring dilation]
+Given a trace preserving  map  $V$ in $\CPM(\FHilb)$, there exists a unitary $U$ such that:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (3) at (0, -0.5) {$V$};
+		\node [style=none] (5) at (0, 1.25) {};
+		\node [style=none] (7) at (0, -2.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [thick] (5.center) to (3.center) to (7.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (1) at (53.55, 0.5) {};
+		\node [style=none] (2) at (54.55, 0.5) {};
+		\node [style=map, thick] (3) at (54.05, -0.5) {$U$};
+		\node [style=none] (4) at (54.55, -1.5) {};
+		\node [style=none] (5) at (54.55, 1.25) {};
+		\node [style=Zthick] (6) at (53.55, -1.5) {};
+		\node [style=none] (7) at (54.55, -2.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [thick, in=-90, out=150] (3.center) to (1.center);
+		\draw [thick] (3.center) to [in=270, out=30] (2.center) to (5.center);
+		\draw [thick] (7.center) to  (4.center) to [in=-45, out=90] (3.center);
+		\draw [thick, in=-135, out=90] (6.center) to (3.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+For all special \dag-commutative Frobenius algebras $\zcirc$.
+\end{proposition}
+The proof is relatively involved so I will omit it.  See \cite{???} for the original statement, and \cite[????]{pqp} for the graphical proof using bastard spiders.  Essentially, this significance  of this result is that quantum processes can always be produced by first preparing a state, then applying quantum evolution and then discarding part of the state.
+
+There is another closely related result which we will make use of:
+\begin{proposition}[Essential uniqueness of purification]
+Given two purifications $V:\mathcal{H}_1\otimes \mathcal{H}_0$ and $V':\mathcal{H}_1\otimes \mathcal{H}_0$ of a mixed state $W:\mathcal{H}_0$ in $\CPM(\FHilb)$:
+
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map, thick] (0) at (0, 0) {$V$};
+		\node [style=none] (1) at (0.5, 1) {};
+		\node [style=none] (3) at (0.5, 2) {};
+		\node [style=Z] (5) at (-0.5, 1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [thick] (0.center) to  [in=-90, out=45]  (1.center) to (3.center);
+		\draw [thick, in=-90, out=135] (0.center) to (5.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (0) at (0, 0) {$W$};
+		\node [style=none] (1) at (0, 1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [thick] (0.center) to (1.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map, thick] (0) at (0, 0) {$V'$};
+		\node [style=none] (1) at (0.5, 1) {};
+		\node [style=none] (3) at (0.5, 2) {};
+		\node [style=Z] (5) at (-0.5, 1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [thick] (0.center) to  [in=-90, out=45]  (1.center) to (3.center);
+		\draw [thick, in=-90, out=135] (0.center) to (5.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+So that without loss generality $\dim \mathcal{H}_1\leq \dim \mathcal{H}_2$, then there exists an isometry
+$U:\mathcal{H}_1 \to \mathcal{H}_2$ such that:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (0) at (0, 0) {$V$};
+		\node [style=none] (1) at (0.5, 0.75) {};
+		\node [style=map] (5) at (-0.5, 0.75) {$U$};
+		\node [style=none] (6) at (0.5, 1.5) {};
+		\node [style=none] (7) at (-0.5, 1.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=30] (0) to (1.center);
+		\draw [in=-90, out=150] (0) to (5);
+		\draw (5) to (7.center);
+		\draw (6.center) to (1.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (8) at (2.25, 0) {$V'$};
+		\node [style=none] (9) at (2.75, 0.75) {};
+		\node [style=none] (11) at (2.75, 1.5) {};
+		\node [style=none] (12) at (1.75, 1.5) {};
+		\node [style=none] (13) at (1.75, 0.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=30] (8) to (9.center);
+		\draw (11.center) to (9.center);
+		\draw (13.center) to (12.center);
+		\draw [in=150, out=-90] (13.center) to (8);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+Moreover, $U$ is unique up to a unique unitary.
+\end{proposition}
+
+
+
 
 There is a very important relationship which bases can have to each other:
 
@@ -2146,10 +2268,7 @@ There is a very important relationship which bases can have to each other:
 \begin{definition}
 \label{def:complementary}
 %Interacting Hopf-Frobenius algebras/ strongly complementary observables
-Take \dag-commutative Frobenius algebras $\zcirc$ and $\xcirc$; they are  {\bf complementary} when the monoids and comonoids of different colours interact to form bialgebras. 
-
-
-They are moreover {\bf strongly complementary} when the the bialgebras are Hopf algebras whose antipode is equivalently any of the following maps:
+Take \dag-commutative Frobenius algebras $\zcirc$ and $\xcirc$. They are   {\bf strongly complementary} when the the bialgebras are Hopf algebras whose antipode is equivalently any of the following maps:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2330,12 +2449,65 @@ $$
 
 Actually, we only needed the Hopf algebra part of the bialgebra for these two bases to have this property.  However, the bialgebra structure is indespensible for other reasons.
 
+%
+%Given two strongly complementary bases, we can augment the Stinespring dilation with state preparation and measurement:
+%
+%$$
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (1) at (53.55, 0.5) {};
+%		\node [style=none] (2) at (54.55, 0.5) {};
+%		\node [style=map, thick] (3) at (54.05, -0.5) {$U$};
+%		\node [style=none] (4) at (54.55, -1.5) {};
+%		\node [style=none] (5) at (54.55, 1.25) {};
+%		\node [style=Zthick] (6) at (53.55, -1.5) {};
+%		\node [style=none] (7) at (54.55, -2.75) {};
+%		\node [style=none] (8) at (53.55, 1.25) {};
+%		\node [style=X] (9) at (53.55, -2) {};
+%		\node [style=none] (10) at (53.55, -2.75) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [thick, in=-90, out=150] (3.center) to (1.center);
+%		\draw [thick] (3.center) to [in=270, out=30] (2.center) to (5.center);
+%		\draw [thick] (7.center) to  (4.center) to [in=-45, out=90] (3.center);
+%		\draw [thick] (9.center) to (6.center) to [in=-135, out=90] (3.center);
+%		\draw (1.center) to (8.center);
+%		\draw (10.center) to (9.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%$$
+%
+%We feed in the input on the bottom left wire and read out a measurement on the top left wire.
 
-Given two strongly complementary obsevables, we can perform the quantum teleportation algorithm.  
-The quantum teleportation algorithm was originally discovered for qubits by \cite{teleporation?}.
-The abstract description in terms of \dag-compact closed caegories was first introduced in \cite{abramksy}.  The version which we now present is a qudit generalization of the one found in \cite[Page 706]{pqp}.
+Given two strongly complementary obsevables, we can construct the quantum teleportation protocol  (originally discovered for qubits by \cite{teleporation?}).
+The abstract description in terms of quantum teleportation in terms \dag-compact closed categories was first introduced in \cite{abramksy}; however, we present a qudit generalization of the one found in \cite[Page 706]{pqp}:
 
-The algorithm is as follows: Alice and Bob first prepare a Bell state together and then they are separated in space.  Alice has a qudit channel she wants to send to Bob, but she only can communicate classically with Bob. She first applies a unitary operation in between her two qudits.  She measures both of the qudits in the complementary bases and then sends two classical dits to Bob.  Bob uses the two classical dits two perform phase-correction operations using the complementary basis to his half of the Bell state:
+\begin{protocol} \
+\allowdisplaybreaks
+\begin{itemize}
+
+\item
+Alice and Bob first prepare a qudit Bell state together and establish a classical channel with which Alice is able to send two dits to Bob.
+
+\item
+They are separated in space. 
+
+\item
+Alice has a qudit channel she wants to send to Bob, but she only can communicate 2 classical dits to Bob. 
+
+\item
+Alice first applies a unitary operation in between her two qudits. 
+
+
+\item
+Alice  measures both of the qudits in the complementary bases and then sends two classical dits to Bob. 
+
+\item
+ Bob uses the two classical dits two perform phase-correction operations using the complementary basis to his half of the Bell state.
+
+\end{itemize}
+
+Graphically:
 
 \begin{align*}
 \begin{tikzpicture}
@@ -2507,24 +2679,24 @@ The algorithm is as follows: Alice and Bob first prepare a Bell state together a
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=Xthick] (154) at (410.85, 7.75) {};
-		\node [style=none] (157) at (411.6, 10) {};
-		\node [style=Xthick] (160) at (411.1, 9) {};
-		\node [style=Zthick] (161) at (410.1, 9.25) {};
-		\node [style=Z] (162) at (410.1, 10) {};
-		\node [style=Zthick] (163) at (410.6, 8.5) {};
-		\node [style=none] (164) at (410.85, 6.5) {};
-		\node [style=Xthick] (165) at (410.85, 7) {};
+		\node [style=Xthick] (0) at (411.1, 7.75) {};
+		\node [style=none] (1) at (412.1, 10) {};
+		\node [style=Xthick] (2) at (411.35, 9) {};
+		\node [style=Zthick] (3) at (410.35, 9.25) {};
+		\node [style=Z] (4) at (410.35, 10) {};
+		\node [style=Zthick] (5) at (410.85, 8.5) {};
+		\node [style=none] (6) at (411.1, 6.5) {};
+		\node [style=Xthick] (7) at (411.1, 7) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [style=thick, in=-75, out=45] (154) to (160);
-		\draw [style=thick] (160) to (163);
-		\draw [style=thick] (163) to (161);
-		\draw [style=thick] (161) to (162);
-		\draw [style=thick] (165) to (154);
-		\draw [style=thick] (165) to (164.center);
-		\draw [style=thick, in=270, out=30, looseness=0.75] (165) to (157.center);
-		\draw [style=thick, bend left=45] (154) to (161);
+		\draw [style=thick, in=-75, out=45] (0) to (2);
+		\draw [style=thick] (2) to (5);
+		\draw [style=thick] (5) to (3);
+		\draw [style=thick] (3) to (4);
+		\draw [style=thick] (7) to (0);
+		\draw [style=thick] (7) to (6.center);
+		\draw [style=thick, in=270, out=30] (7) to (1.center);
+		\draw [style=thick, bend left=45] (0) to (3);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
@@ -2620,8 +2792,9 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
+\end{protocol}
 
-The reason we ask not only for the Hopf law but also for the Bialgebra law is  because the following two very important bases have this property:
+The reason we ask not only for the Hopf law but also for the bialgebra law is  because the following two very important bases have this property:
 
 \begin{example}
 Given fixed dimension $d$, recall that the standard basis, or $Z$-basis,  is denoted as follows:
@@ -2693,7 +2866,7 @@ and ``$X$-spiders'' for the Fourier basis in  grey as follows:
 \sqrt{d}\sum_{j=0}^{d-1}  \mathcal{F} | j, \ldots, j\rangle \langle j,\ldots, j| \mathcal{F}^\dag
 \end{align*}
 
-Notice how the $Z$-spiders compare standard basis elements and the $X$-spiders compare their sums (which is why we ask for the Bialgebra law on top of the Hopf law):
+The $Z$-spiders compare standard basis elements and the $X$-spiders compare their sums (which is why we ask for the Bialgebra law on top of the Hopf law):
 
 $$
 \sqrt{d}\sum_{j=0}^{d-1}  \mathcal{F} | j, \ldots, j\rangle \langle j,\ldots, j| \mathcal{F}^\dag\\
@@ -2887,7 +3060,7 @@ $$
 Phases for Frobenius algebras are preserved by composition; and they form a group called the {\bf phase group} for the Frobenius algebra.  The phase group associated with a commutative Frobenius algebra is therefore Abelian.
 \end{definition}
 
-The motivating example is again  $\FHilb$, which makes sense of he name:
+The motivating example is again  $\FHilb$, which makes sense of the name:
 \begin{example}
 Given an orthonormal basis $\{| b_j \rangle \}_{j \in \mathcal J}$ of $\mathcal H$ , the phases are generated by the following unitaries, for all $\{\theta_j \} \in [0, 1)^{\mathcal J}$:
 
@@ -4045,7 +4218,7 @@ $$
 \end{example}
 
 
-We could have done the same with $Z$-stabilizers, where the $\mathcal Z$-gate is given by the Fourier transform of the $\mathcal X$-gate:
+The $\mathcal Z$-gate is the Fourier transform of the  $\mathcal X$-gate:
 $$
 {\cal Z}
 :=
@@ -4066,11 +4239,97 @@ e^{2\cdot\pi \cdot b/d} | b\rangle \langle b|
 e^{2\cdot\pi \cdot z\cdot b/d} | b\rangle \langle b|
 $$
 
-Notice how the $Z$-basis is generated by $\mathcal{X}^n|0\rangle $ and the $X$-basis is generated by $\mathcal{F} \mathcal{X}^n |0\rangle =\mathcal{Z}^n \mathcal{F} |0\rangle$.
+So we could have instead characterized the phase-free+$Z$ gate fragment of the ZX-calclus in terms of affine relations, via the $Z$-stabilizers.
 
 
 
-So far, the two fragments of the ZX-calculus we have described are relatively simple; they are actually fragments of stabilizer circuits.  We proceed to overview the qudit stabilizer formalism.  The qubit stabilizer formalism was first introduced in \cite{gottesman} and later generalized to qudits in various ways.  We follow the qudit generalization provided in \cite{gota}:
+
+
+Notice how the $Z$-basis is generated by 
+$$\{ \mathcal{X}^n|0\rangle \}_{n\in \Z/d\Z}$$
+ and the $X$-basis is generated by 
+$$\{\mathcal{F}|n\rangle=\mathcal{F} \mathcal{X}^n |0\rangle =\mathcal{Z}^n \mathcal{F} |0\rangle\}_{n\in \Z/d\Z}$$
+
+
+ This explains why we called the final stage of the quantum teleportation phase correction.  When Bob prepares the quantum state $|n\rangle$ using the white bastard spider and fuses to the quantum channel with the pure grey spider, he is applying the gate $\mathcal{X}^n$.  Dually, when he prepares the state $\mathcal{F}|m\rangle$ and fuses it to the channel with the pure white spider he is applying the gate $\mathcal{Z}^m$.  
+
+
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Zthick] (22) at (223.5, 0) {};
+		\node [style=Xthick] (23) at (223.5, 1) {};
+		\node [style=X] (24) at (222.25, -1) {};
+		\node [style=Z] (25) at (221, -1) {};
+		\node [style=map] (26) at (221, -2) {$|n\rangle$};
+		\node [style=map] (27) at (222.25, -2) {$\mathcal{F}|m\rangle$};
+		\node [style=none] (28) at (223.5, -2.5) {};
+		\node [style=none] (29) at (223.5, 2) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [thick] (28.center) to (22.center) to (23.center)  to (29.center);
+		\draw [thick, in=-165, out=90, looseness=0.75] (25) to (23);
+		\draw [thick, in=-165, out=90] (24) to (22);
+		\draw (27) to (24);
+		\draw (26) to (25);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Zthick] (22) at (223.5, 0) {};
+		\node [style=Xthick] (23) at (223.5, 1) {};
+		\node [style=map, thick] (24) at (222.25, -1) {$\mathcal{F}|m\rangle$};
+		\node [style=map, thick] (25) at (221, -1) {$|n\rangle$};
+		\node [style=none] (28) at (223.5, -2.5) {};
+		\node [style=none] (29) at (223.5, 2) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [thick] (28.center) to (22.center) to (23.center)  to (29.center);
+		\draw [thick, in=-165, out=90, looseness=0.75] (25) to (23);
+		\draw [thick, in=-165, out=90] (24) to (22);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Zthick] (22) at (223.5, 0) {};
+		\node [style=Xthick] (23) at (223.5, 1) {};
+		\node [style=map, thick] (24) at (222.25, -1) {$\mathcal{Z}^m$};
+		\node [style=map, thick] (25) at (221, -1) {$\mathcal{X}^n$};
+		\node [style=none] (28) at (223.5, -2.5) {};
+		\node [style=none] (29) at (223.5, 2) {};
+		\node [style=Zthick] (240) at (222.25, -2) {};
+		\node [style=Xthick] (250) at (221, -2) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [thick] (28.center) to (22.center) to (23.center)  to (29.center);
+		\draw [thick, in=-165, out=90, looseness=0.75] (25.center) to (23.center);
+		\draw [thick, in=-165, out=90] (24.center) to (22.center);
+		\draw [thick] (24.center) to (240.center);
+		\draw [thick] (25.center) to (250.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map, thick] (22) at (223.5, 0) {$\mathcal{Z}^m$};
+		\node [style=map, thick] (23) at (223.5, 1) {$\mathcal{X}^n$};
+		\node [style=none] (28) at (223.5, -2.5) {};
+		\node [style=none] (29) at (223.5, 2) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [thick] (28.center) to (22.center) to (23.center)  to (29.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+Where the final part follows from the fact that $\mathcal{X}^n$ is a phase for the grey spider and $\mathcal{Z}^n$ is a phase for the white spider, followed by spider fusion
+
+
+
+The two fragments of the ZX-calculus we have described so far are fragments of stabilizer circuits.  We proceed to overview the qudit stabilizer formalism.  The qubit stabilizer formalism was first introduced in \cite{gottesman} and later generalized to qudits in various ways.  We follow the qudit generalization provided in \cite{gota}:
 
 
 
@@ -4344,7 +4603,7 @@ $$
 (\Mat_{\F_p},+) \to (\LinRel_{\F_p},+) \to (\FHilb/\sim,\otimes)
 $$
 
-The qubit \cite{backensstab,backens2015} and qutrit \cite{qutrit} stabilizer ZX-calculus both have complete presentations.  However, during the process of writing this thesis, an axiomatization was provided for the quopit stabilizer ZX-calculus \cite{booth}, followed shortly by an even simpler presentation \cite{poor}.  It is worth noting that the scaling in the interpretations of the generators in \cite{poor,booth} differ slightly for techinical reasons (specifically they designed their presentations to be flexsymmetric following \cite[\S 5]{flexsymmetric}).
+The qubit \cite{backensstab,backens2015} and qutrit \cite{qutrit} stabilizer ZX-calculi both have complete presentations.  However, during the process of writing this thesis, an axiomatization was provided for the quopit stabilizer ZX-calculus \cite{booth}, followed shortly by an even simpler presentation \cite{poor}.  It is worth noting that the scaling in the interpretations of the generators in \cite{poor,booth} differ slightly for techinical reasons (specifically they designed their presentations to be flexsymmetric following \cite[\S 5]{flexsymmetric}).
 
 
 

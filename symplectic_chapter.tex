@@ -4182,6 +4182,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
+Such that the phases are unitaries with respect to the dagger $(-)^\dag:=(\bar(-))^*$.
 \end{definition}
 
 In the case of $k=\F_p$ for $p$ an odd prime, this is transported to the complex conjugation along $\Aff\Lag\Rel_{\F_p} \cong \Stab_p$:
@@ -6584,9 +6585,16 @@ Just as Spekkens' toy model can be interpreted as an epistemically restricted to
 \section{Error correction}
 \label{sec:qec}
 
+
+TODO SYMPLECTIC STINESPRING DILATION
+
+TODO Weyl group discretization of errors Nielsen and Chuang
+
 %Recall the observation from Corollary \ref{cor:stabcode} that nonempty states in $\Aff\Co\Isot\Rel_{\F_p}$ correspond to stabilizer codes. Moreover an affine coisotropic subspace of $\F_p^{2n}$ with dimension $m$  interpreted as a state in $\CPM(\Stab_p)$ encodes $m-n$ logical qubits in $n$ physical qubits.  In the literature, these are the $[n,m-n]$ odd prime dimensional qudit stabilizer codes \cite{????}.  In this section we show how to model error correction protocols within this framework.  Starting with stabilizer codes and then extending this interpretation to topological stabilizer codes by looking at the quantized Weinstein category.
 
 Quantum channels are inherently noisy, and it is an active area of study to protect quantum channels against errors.  Quantum error detection/correction protocols are often performed using stabilizer circuits, which is amenable to the symplectic formalism.
+
+
 In this section, we show how to implement quantum error correction protocols for stabilizer codes (see \cite{gottesman}) using the string diagrams we developed in the previous section.   This generalizes the graphical $\F_2$-linear subspace semantics of qubit CSS codes in \cite{grok} to quopit stabilizer codes as well as qubit CSS codes plus Weyl operators.
 
 
