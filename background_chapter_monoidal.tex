@@ -160,24 +160,24 @@ A map from $n\to m$ is a function from $[n]\to [m]$.
 The composition and identity is given by the composition and identity of sets and functions.
 \end{description}
 
-This has two strict monoidal structures.  The first one comes from the disjoint union:
+This is a strict monoidal category with respect to the disjoint union:
 
 \begin{description}
 \item[Tensor unit:] The tensor unit is the natural number 0.
 \item[Monoidal product:]
 On objects this acts as addition.  On maps, $f:n\to m$ and $g:k\to \ell$, the map $f+g$ is corresponds to the chosen disjoint union $f\sqcup g$ $[n+k]\to [k+\ell]$ respecting the chosen order.
 \end{description}
+%
+%The second comes from the cartesian product:
+%
+%\begin{description}
+%\item[Tensor unit:] The tensor unit is the natural number 1.
+%\item[Monoidal product:]
+%On objects this acts as multiplication.  On maps, $f:n\to m$ and $g:k\to \ell$, the map $f\times g$ is corresponds to the chosen product $f\times g:[n\cdot k]\to [k\cdot \ell]$ respecting the chosen order.
+%\end{description}
 
-The second comes from the cartesian product:
 
-\begin{description}
-\item[Tensor unit:] The tensor unit is the natural number 1.
-\item[Monoidal product:]
-On objects this acts as multiplication.  On maps, $f:n\to m$ and $g:k\to \ell$, the map $f\times g$ is corresponds to the chosen product $f\times g:[n\cdot k]\to [k\cdot \ell]$ respecting the chosen order.
-\end{description}
-
-
-Restricting $\FinOrd$ to functions which preserve the chosen order of the ordinals yields the category $\FinOrdMonot$ of finite ordinals and monotone functions.  This is a strict monoidal category with respect to the disjoint union.
+Restricting $\FinOrd$ to functions which preserve the chosen order of the ordinals yields the strict monoidal category $\FinOrdMonot$ of finite ordinals and monotone functions.
 \end{example}
 
 \begin{example}
@@ -1010,7 +1010,7 @@ These proof nets are closely related to proof nets for linearly-distributive cat
 
 Some monoidal categories are monoidally equivalent to {\bf skeletal}, strict monoidal categories, where the adjective skeletal means that every two isomorphic objects are equal.  These are very nice to work with because if we want, we can forgo having to use proof net notation entirely:
 \begin{example}
-$\FinOrd$ is a skeletal and strict monoidal. It is monoidally equivalent to $\FSets$ under the product and coproduct.
+$\FinOrd$ is a skeletal and strict monoidal. It is monoidally equivalent to $\FSets$ under the disjoint union.
 
 
 Given a commutative semiring $R$, $\Mat_R$ is a skeletal category and is strict monoidal. Moreover for a field $k$, $\Mat_k$ is monoidally equivalent to $\FVect_k$ under the bilinear tensor product and the direct sum.
@@ -1881,7 +1881,7 @@ The compact closed and \dag-symmetric monoidal structures of $\Mat_\C$ and $\FHi
 \end{example}
 
 \subsection{Monoidal presentations}
-In this section, we review how monoidal categories can be presented in terms of generators and equations. A more detailed reference can be found in \cite{ih}:
+In this subsection, we review how monoidal categories can be presented in terms of generators and equations. A more detailed reference can be found in \cite{ih}:
 
 
 

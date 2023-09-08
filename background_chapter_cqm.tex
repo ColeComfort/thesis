@@ -283,7 +283,7 @@ $$
 $$
 \end{lemma}
 
-As a matter of notation we will colour the special commutative \dag-Frobenius algebra $\zcirc$.  We will colour the commutative \dag-Frobenius algebra for other, orthogonal bases $\xcirc$.  Recall the two variations of the normal form for special and non-special commutative \dag-Frobenius algebras:
+We will colour special commutative \dag-Frobenius algebras $\zcirc$ and commutative \dag-Frobenius algebra for other, orthogonal bases $\xcirc$.  Recall the two variations of the normal form for special and non-special commutative \dag-Frobenius algebras:
 
 $$
 \begin{tikzpicture}
@@ -634,7 +634,7 @@ $$
 $$
 We could have chosen a different, equivalent congruence relation to quotient by to avoid the braid on the cap, but this would be incompatible with notation for stabilizer tableaux which we use much later in this thesis.
 
-In the doubled picture, the composition of equivalence classes is  composition in $\X$:
+In the doubled picture, the composition of equivalence classes is  in $\CPM(\X)$ is composition in $\X$:
 
 $$
 \begin{tikzpicture}
@@ -1051,8 +1051,8 @@ $$
 $$
 
 
-Recall that a map $e$ is a projector when it is idempotent (so that $e^2=e$) and self-adjoint (so that $e^\dag=e$)
-$p_B$ is idempotent, because:
+Recall that a map $e$ is a projector when it is idempotent (so that $e^2=e$) and self-adjoint (so that $e^\dag=e$).
+$p_B$ is idempotent because:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1887,7 +1887,7 @@ $$
 \end{tikzpicture}
 $$
 
-The thin border indicates that the state has been measured in the basis $\zcirc$, and is no longer pure and is a stochastic mixture of the basis element of $B$.
+The thin border on $\zcirc$ indicates that the state has been measured in the basis $\zcirc$, and is no longer pure and is a stochastic mixture of the basis element of $B$.
 When a pure spider is connected to a bastard spider they both fuse into a bastard spider:
 
 $$
@@ -2172,7 +2172,7 @@ $$
 \end{tikzpicture}
 $$
 
-For all special \dag-commutative Frobenius algebras $\zcirc$.
+For all special commutative  \dag-Frobenius algebras $\zcirc$.
 \end{proposition}
 The proof is relatively involved so I will omit it.  See \cite{???} for the original statement, and \cite[????]{pqp} for the graphical proof using bastard spiders.  Essentially, this significance  of this result is that quantum processes can always be produced by first preparing a state, then applying quantum evolution and then discarding part of the state.
 
@@ -2479,10 +2479,11 @@ Actually, we only needed the Hopf algebra part of the bialgebra for these two ba
 %
 %We feed in the input on the bottom left wire and read out a measurement on the top left wire.
 
-Given two strongly complementary obsevables, we can construct the quantum teleportation protocol  (originally discovered for qubits by \cite{teleporation?}).
+Given two strongly complementary observables, we can construct the quantum teleportation protocol  (originally discovered for qubits by \cite{teleporation?}).
 The abstract description in terms of quantum teleportation in terms \dag-compact closed categories was first introduced in \cite{abramksy}; however, we present a qudit generalization of the one found in \cite[Page 706]{pqp}:
 
 \begin{protocol} \
+\label{proto:tele}
 \allowdisplaybreaks
 \begin{itemize}
 
@@ -2755,7 +2756,7 @@ $$
 		\node [style=Xthick] (19) at (383, 9) {};
 		\node [style=X] (20) at (382.25, 7.5) {};
 		\node [style=Z] (21) at (381.5, 7.5) {};
-		\node [style=map, thick] (22) at (380.5, 3.5) {$\phi$};
+		\node [style=map] (22) at (380.5, 3.5) {$|\phi\rangle$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=dotted, in=-90, out=90, looseness=1.25] (1.center) to (0.center);
@@ -2780,7 +2781,7 @@ $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (37) at (392.25, 9) {};
-		\node [style=map, thick] (45) at (392.25, 7.5) {$\phi$};
+		\node [style=map] (45) at (392.25, 7.5) {$|\phi\rangle$};
 		\node [style=none] (46) at (391.25, 9.5) {};
 		\node [style=none] (47) at (391.25, 3.5) {};
 		\node [style=none] (48) at (390.5, 9.5) {Alice};
@@ -2810,7 +2811,7 @@ The $Z$ and $X$ bases are strongly complementary.
 \end{example}
 
 For qubits, the  state $|+\rangle:=\mathcal{F}|0\rangle$ is called the {\bf plus state}; and  $|-\rangle:=\mathcal{F}|1\rangle$ is called the {\bf minus state}.
-Notice how we multiply the $X$-basis elements by a factor of $\sqrt d$ so that these two Frobenius algebras interact to form a Hopf algebra on the nose (as upposed to up to scaling factors).  This means that the Fourier basis we have chosen is not normalized, and thus the corresponding Frobenius algebra is not special.  However, this isn't a problem, because it is special up to the invertible  scalar $1/\sqrt{d}$.
+Notice how we multiply the $X$-basis elements by a factor of $\sqrt d$ so that these two Frobenius algebras interact to form a Hopf algebra on the nose (as upposed to up to scaling factors).  This means that the Fourier basis we have chosen is only orthogonal, and thus the corresponding Frobenius algebra is not special.  However, this isn't a problem, because it is special up to the invertible  scalar $1/\sqrt{d}$.
 
 This pair of complementary bases will occur throughout this thesis.  As a matter of notation, as mentioned earlier we draw the ``$Z$-spiders'' for the standard basis in white,
 and ``$X$-spiders'' for the Fourier basis in  grey as follows:
@@ -3057,7 +3058,7 @@ $$
 \end{tikzpicture}
 $$
 
-Phases for Frobenius algebras are preserved by composition; and they form a group called the {\bf phase group} for the Frobenius algebra.  The phase group associated with a commutative Frobenius algebra is therefore Abelian.
+Phases for Frobenius algebras are closed under composition; and they form a group called the {\bf phase group} for the Frobenius algebra.  The phase group associated with a commutative Frobenius algebra is therefore Abelian.
 \end{definition}
 
 The motivating example is again  $\FHilb$, which makes sense of the name:
@@ -4251,7 +4252,8 @@ $$\{ \mathcal{X}^n|0\rangle \}_{n\in \Z/d\Z}$$
 $$\{\mathcal{F}|n\rangle=\mathcal{F} \mathcal{X}^n |0\rangle =\mathcal{Z}^n \mathcal{F} |0\rangle\}_{n\in \Z/d\Z}$$
 
 
- This explains why we called the final stage of the quantum teleportation phase correction.  When Bob prepares the quantum state $|n\rangle$ using the white bastard spider and fuses to the quantum channel with the pure grey spider, he is applying the gate $\mathcal{X}^n$.  Dually, when he prepares the state $\mathcal{F}|m\rangle$ and fuses it to the channel with the pure white spider he is applying the gate $\mathcal{Z}^m$.  
+This explains why we called the final stage of the quantum teleportation phase correction.  When Bob prepares the quantum state $|n\rangle$ using the white bastard spider
+and fuses to the quantum channel with the pure grey spider, he is applying the gate $\mathcal{X}^n$.  Dually, when he prepares the state $\mathcal{F}|m\rangle$ and fuses it to the channel with the pure white spider he is applying the gate $\mathcal{Z}^m$.  
 
 
 
@@ -4314,6 +4316,24 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
+		\node [style=Zthick] (22) at (223.5, 0) {};
+		\node [style=Xthick] (23) at (223.5, 1) {};
+		\node [style=Zthick] (24) at (222.25, -1) {};
+		\node [style=Xthick] (25) at (221, -1) {};
+		\node [style=none] (28) at (223.5, -2.5) {};
+		\node [style=none] (29) at (223.5, 3) {};
+		\node [style=map, thick] (240) at (223.5, -1) {$\mathcal{Z}^m$};
+		\node [style=map, thick] (25-) at (223.5, 2) {$\mathcal{X}^n$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [thick] (28.center) to (22.center) to (23.center)  to (29.center);
+		\draw [thick, in=-165, out=90, looseness=0.75] (25.center) to (23.center);
+		\draw [thick, in=-165, out=90] (24.center) to (22.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
 		\node [style=map, thick] (22) at (223.5, 0) {$\mathcal{Z}^m$};
 		\node [style=map, thick] (23) at (223.5, 1) {$\mathcal{X}^n$};
 		\node [style=none] (28) at (223.5, -2.5) {};
@@ -4325,7 +4345,7 @@ $$
 \end{tikzpicture}
 $$
 
-Where the final part follows from the fact that $\mathcal{X}^n$ is a phase for the grey spider and $\mathcal{Z}^n$ is a phase for the white spider, followed by spider fusion
+Where the second last equation follows from the fact that $\mathcal{X}^n$ is a phase for the grey spider and $\mathcal{Z}^n$ is a phase for the white spider, followed by spider fusion
 
 
 

@@ -1,5 +1,5 @@
 
-\subsection{Spans and relations in computation}
+\subsection{Categories of spans and relations}
 
 Categories are defined in a manner which distinguishes the inputs and outputs of morphisms.  \dag-categories are one approach to moving beyond this bias; however, they are evil in the sense that the \dag-structure is not always preserved/reflected by categorical equivalence: the theory of \dag-categories does not play well with the theory of ordinary categories.  
 
@@ -548,7 +548,7 @@ The composition and identity of  2-cells is given by the compostition and identi
 Note that composition of 1-cells is not strict, so that the associativity and unitality of composition hold up to coherent isomorphism.  The coherence isomorphisms are the natural 2-cells induced by the universal property of the pullback.
 
 
-The 1-category of spans of $\X$, $\Span^\sim(\X)$, has maps being equivalence classes of isomorphic spans; so that:
+The ordinary category of spans of $\X$, $\Span^\sim(\X)$, has maps being equivalence classes of isomorphic spans; so that:
 
 \hfil\scalebox{1.4}{
 $
@@ -1178,7 +1178,7 @@ Concretely, this is constructed in the same way as $\LinRel_k$ except map $n\to 
 We chose to forget the empty set as an object and retain it merely as a subobject so that we can present it as a (single sorted) prop as follows:
 
 \begin{lemma}[{\cite[\S A]{affine}}]
-$\Aff\Rel_{k}$ is presented by the prop $\aih_k$ given adding the following generators and equations to the presentation of $\ih_k$:
+$\Aff\Rel_{k}$ is presented by the prop $\aih_k$ given by adding the following generators and equations to the presentation of $\ih_k$:
 
 $$
 \begin{tikzpicture}
@@ -1261,7 +1261,7 @@ $$
 $$
 
 \end{lemma}
-Therefore, we see that the first two equations come from the presentation of affine matrices, and the last equation enforces the initiality of the affine space as a subobject.
+The first two equations come from the presentation of affine matrices, and the last equation enforces the initiality of the affine space as a subobject.
 
 
 The original presentation of $\Aff\Rel_k$ was proven to be equivalent to the concrete category of affine relations; rather than the nonempty full subcategory of internal relations of possibly empty, finite dimensional  affine spaces.  However, as we have discused, both perpsectives are equivalent.
