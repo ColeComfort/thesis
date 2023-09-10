@@ -75,12 +75,12 @@ $$
 }
 $$ 
 
-Where $ X+  Y $ is the product object,  $\iota_0,\iota_1$ are the injections,   $[f,g]$ is the copairing map.
+Where $ X+  Y $ is the product object.%,  $\iota_0,\iota_1$ are the injections,   $[f,g]$ is the copairing map.
 
 
-A {\bf initial} object in a category (if it exists) is an object $\emptyset$ equipped with a unique map $?_X: \emptyset\to  X$ for every object $X$ called the {\bf codiscard map}.
+A {\bf initial} object in a category (if it exists) is an object $\emptyset$ equipped with a unique map $?_X: \emptyset\to  X$. %for every object $X$ called the {\bf codiscard map}.
 
-A category is  {\bf coCartesian} when it has all finiteco products and an initial object. In aco Cartesian category, the codiscard maps and {\bf codiagonals} $[ 1, 1 ]$ yield a natural family of cocommutative comonoids.
+A category is  {\bf coCartesian} when it has all finite coproducts and an initial object.% In aco Cartesian category, the codiscard maps and {\bf codiagonals} $[ 1, 1 ]$ yield a natural family of cocommutative comonoids.
 \end{definition}
 
 
@@ -550,15 +550,14 @@ Note that composition of 1-cells is not strict, so that the associativity and un
 
 The ordinary category of spans of $\X$, $\Span^\sim(\X)$, has maps being equivalence classes of isomorphic spans; so that:
 
-\hfil\scalebox{1.4}{
-$
-\Dfrac{
+$$
 (X\xleftarrow{f} A \xrightarrow{g} Y)
  \sim
 (X\xleftarrow{h} B \xrightarrow{k} Y)
-}{
-\Ifrac{
-{\exists \text{ an isomorphism $A\xrightarrow{\phi} B$ such that the following diagram commutes:}  } }{
+$$
+If and only if there exists an isomorphism $A\xrightarrow{\phi} B$ such that the following diagram commutes:
+
+$$
 \xymatrix{
     & A \ar[dl]_{f} \ar[dr]^{g} \ar[dd]^{\phi}_{\cong}
     &
@@ -568,9 +567,9 @@ $
   \\
     & B \ar[ul]^{h} \ar[ur]_{k}
     &
-}}
-}$
 }
+$$
+
 
 
 \end{definition}
@@ -1147,16 +1146,194 @@ $$
 
 
 
-
-
-\begin{lemma}[{\cite[\S 6]{ihpub}}]
+\begin{lemma}[{\cite[\S 3.4]{ih}}]
 $\ih_k$ is a presentation for $\LinRel_{k}$.
 \end{lemma}
 
 
+The colour-swapping involution $(-)^T:\ih_k^\op\to \ih_k$ corresponds to the transpose of matrices; and the colour-preserving involution  $()^*:\ih_k^\op\to \ih_k$ corresponds transpose coming from the compact closed structure of $\ih_k$.  These should not be confused with each other: the latter is the relational converse.  
 
-Recall that we have a presentation of affine matrices, and one might seek to find a presentation for relations internal to affine matrices.
-However, the category $\Aff\Mat_k$ is not a regular category, in fact it isn't even finitely complete. 
+
+
+Combining these two involutions we have:
+
+\begin{lemma}[{\cite{ortho}}]
+\label{lem:ortho}
+The orthogonal complement corresponds to the colour swapping functor $(-)^\perp:\ih_k\to \ih_k;$
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (17) at (2.5, 0.5) {};
+		\node [style=none] (18) at (3.5, 0.5) {};
+		\node [style=Z] (19) at (3, 1.25) {};
+		\node [style=none] (20) at (3, 0.75) {$\cdots$};
+		\node [style=none] (21) at (3, 1.75) {$\cdots$};
+		\node [style=none] (22) at (3.5, 2) {};
+		\node [style=none] (23) at (3, 1.25) {};
+		\node [style=none] (24) at (2.5, 2) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=simple, in=-56, out=90] (18.center) to (19);
+		\draw [style=simple, in=90, out=-124] (19) to (17.center);
+		\draw [style=simple, in=56, out=-90] (22.center) to (23.center);
+		\draw [style=simple, in=-90, out=124] (23.center) to (24.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\mapsto 
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (17) at (2.5, 0.5) {};
+		\node [style=none] (18) at (3.5, 0.5) {};
+		\node [style=X] (19) at (3, 1.25) {};
+		\node [style=none] (20) at (3, 0.75) {$\cdots$};
+		\node [style=none] (21) at (3, 1.75) {$\cdots$};
+		\node [style=none] (22) at (3.5, 2) {};
+		\node [style=none] (23) at (3, 1.25) {};
+		\node [style=none] (24) at (2.5, 2) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=simple, in=-56, out=90] (18.center) to (19);
+		\draw [style=simple, in=90, out=-124] (19) to (17.center);
+		\draw [style=simple, in=56, out=-90] (22.center) to (23.center);
+		\draw [style=simple, in=-90, out=124] (23.center) to (24.center);
+	\end{pgfonlayer}
+\end{tikzpicture}\ , \hspace*{.2cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (17) at (2.5, 0.5) {};
+		\node [style=none] (18) at (3.5, 0.5) {};
+		\node [style=X] (19) at (3, 1.25) {};
+		\node [style=none] (20) at (3, 0.75) {$\cdots$};
+		\node [style=none] (21) at (3, 1.75) {$\cdots$};
+		\node [style=none] (22) at (3.5, 2) {};
+		\node [style=none] (23) at (3, 1.25) {};
+		\node [style=none] (24) at (2.5, 2) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=simple, in=-56, out=90] (18.center) to (19);
+		\draw [style=simple, in=90, out=-124] (19) to (17.center);
+		\draw [style=simple, in=56, out=-90] (22.center) to (23.center);
+		\draw [style=simple, in=-90, out=124] (23.center) to (24.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\mapsto 
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (17) at (2.5, 0.5) {};
+		\node [style=none] (18) at (3.5, 0.5) {};
+		\node [style=Z] (19) at (3, 1.25) {};
+		\node [style=none] (20) at (3, 0.75) {$\cdots$};
+		\node [style=none] (21) at (3, 1.75) {$\cdots$};
+		\node [style=none] (22) at (3.5, 2) {};
+		\node [style=none] (23) at (3, 1.25) {};
+		\node [style=none] (24) at (2.5, 2) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=simple, in=-56, out=90] (18.center) to (19);
+		\draw [style=simple, in=90, out=-124] (19) to (17.center);
+		\draw [style=simple, in=56, out=-90] (22.center) to (23.center);
+		\draw [style=simple, in=-90, out=124] (23.center) to (24.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ , \hspace*{.2cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=scalar] (54) at (15, -2.5) {$a$};
+		\node [style=none] (55) at (15, -2) {};
+		\node [style=none] (56) at (15, -3) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (56.center) to (54);
+		\draw (54) to (55.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\mapsto 
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=scalarop] (54) at (15, -2.5) {$a$};
+		\node [style=none] (55) at (15, -2) {};
+		\node [style=none] (56) at (15, -3) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (56.center) to (54);
+		\draw (54) to (55.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+\end{lemma}
+
+From this, there is a graphical proof of the rank-nullity theorem:
+\begin{lemma}[{\cite{ortho}}]
+\label{lem:ker}
+Given a matrix $A:n\to m$ in $\cb_k\hookrightarrow \ih_k$, then:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (3) at (21, 6) {$\im A$};
+		\node [style=none] (5) at (21, 7) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (3) to (5.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+:=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (0) at (20, 6) {$A$};
+		\node [style=Z] (1) at (20, 5) {};
+		\node [style=none] (2) at (20, 7) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1) to (0);
+		\draw (0) to (2.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+Therefore
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (3) at (21, 6) {$(\im A)^\perp$};
+		\node [style=none] (5) at (21, 7) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (3) to (5.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (0) at (20, 6) {$(A^T)^*$};
+		\node [style=X] (1) at (20, 5) {};
+		\node [style=none] (2) at (20, 7) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1) to (0);
+		\draw (0) to (2.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (3) at (21, 6) {$\ker (A^T)$};
+		\node [style=none] (5) at (21, 7) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (3) to (5.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+\end{lemma}
+
+The previous two results are almost certainly contained in \cite{ih} because of the importance of images and kernels in the proof that $\ih_k\cong \LinRel_k$, but they are hidden within calculations.
+
+Recall the of affine matrices. One might seek to find a similar presentation for relations internal to affine matrices.
+However, the category $\Aff\Mat_k$ is not a regular category, it doesn't even have all pullbacks.
 
 The empty set can not be regarded as a vector space because it has no origin; however, because affine transformations are not required to preserve the origin, it is perfectly fine to ask for an affine transformation from an empty space.
 
@@ -1959,14 +2136,10 @@ $$
 The category of comonoid homorphisms of a Cartesian bicategory of relations is Cartesian category $\Map(\X)$.
 \end{definition}
 
-Therefore, now we can nondeterministically and partially copy and delete things with the commutative comonoid structure; moreover the commutative monoid structure also allows us to nondeterministically and partially compare and ask for the existence of things.
-
-TODO REGULAR LOGIC
+Therefore, now we can copy and delete things with the commutative comonoid structure in a partial, deterministic manner; moreover the commutative monoid structure also allows us to  compare and ask for the existence of things in a nondeterministic and partial manner.
 
 
 Moreover, because cartesian bicategories of relations are equipped with a chosen compatible family of Frobenius algebras, we see that cartesian bicategories are \dag-compact closed.  The dagger and the transpose coincide.
-
-
 
 Span is not a Cartesian bicategory of relations because it is not poset enriched (there can be more than one 2-cell between 1-cells); however it is a {\em Cartesian bicategory} (see \cite{carbonia}).  All of the equations now only hold up to coherent isomorphism, however the story is essentially the same. This is much more difficult to work with because this notion requires coherence conditions so we will omit this more general definition for the sake of brevity. 
 
@@ -2018,18 +2191,33 @@ such that:
 \end{multicols}
 
 Maps of the form $\bar f$ are called restriction idempotents.
-The canonical example of a restriction category is $\Par$, sets and partial maps.  The restriction in this case, just restricts partial functions to their domain of definition.
-
 
 Restriction categories are poset enriched where $f \leq g \iff \bar f ; g = f$.
 
 
-A map $f$ in a restriction category is called a {\bf partial isomorphism}, in case there exists a map $g$ called the partial inverse of $f$ so that $f;g=\bar f$ and $g;f = \bar g$.  Similarly, a map $f$ in a restriction category is {\bf total} if $\bar f =1$.  Denote the subcategories of partial isomorphisms and total maps of a restriction category $\X$, respectively by $\ParIso(\X)$ and $\Total(\X)$.
+
+
+A map $f$ in a restriction category is {\bf total} if $\bar f =1$.  Denote the subcategory of total maps of $\X$ by $\Total(\X)$.
 
 
 
-%A {\bf split restriction category} is a restriction category in which all restriction idempotents split.
+A map $f$ in a restriction category is called a {\bf partial isomorphism}, in case there exists a {\bf parital inverse} $g$ of $f$ so that $f;g=\bar f$ and $g;f = \bar g$. Denote the category of partial isomorphisms of $\X$ by $\ParIso(\X)$.
+
+
 \end{definition}
+
+\begin{example}
+The category $\Par$ of sets and partial functions is a restriction category.   Given a partial map $f:X\to Y$, the restriction acts as the identity on the domain of definition:
+
+$$
+\bar f (x)=
+\begin{cases}
+x & \text{if }f(x)\text{ is defined}\\
+\text{undefined} & \text{otherwise}
+\end{cases}
+$$
+
+\end{example}
 
 %
 %One can augment partiality with copying:
@@ -2067,49 +2255,8 @@ A map $f$ in a restriction category is called a {\bf partial isomorphism}, in ca
 %$$
 %\end{example}
 
-There is a way to construct restriction categories in terms of a restricted category spans of spans internal to a category.  To do so, we need an abstract notion of domains:
-
-\begin{definition}[{\cite[\S 3.1]{cockett}}]
-A {\bf stable system of monics} $\M$ of $\X$ is a collection of monics in $\X$ containing all isomorphisms; where for any cospan $ X\xrightarrow{f} Z \xleftarrowtail{m} Y$  in $\X$, where $m'$ is in $\M$, the following pullback exists:
-
-%\hfil$
-%\xymatrixrowsep{.005in}
-%\xymatrixcolsep{.13in}
-%  \xymatrix{
-%    W \ar[r]^{f'} \ar@{>->}[d]_{m'} & Y  \ar@{>->}[d]^m \\
-%    X \ar[r]_{f} & Z
-%  }
-%$\\
-
-$$
-\xymatrixrowsep{.005in}
-\xymatrixcolsep{.13in}
-  \xymatrix{
-  	& W \ar@{>->}[dl]_{m'} \ar[dr]^{f'}\\
-  	X \ar[dr]_f &  & Y \ar@{>->}[dl]^m\\
-  	& Z
-  }
-$$
-
-Where $m'$ is in $\M$.
-
-\end{definition}
-
-Stable systems of monics allow one to represent the domains of definition of a partial functions as a subobjects:
-
-\begin{definition}[{\cite[\S 3.1]{cockett}}]
-Given a stable system of monics $\M$ in a category $\X$, the {\bf partial map category} $\Par(\X,\M)$ is given by the same objects as in $\X$ where morphisms $X\to Y$, given by isomorphism classes of spans $X\xleftarrowtail{m} Z \xrightarrow{f} Y$ where $f$ is a map in $\X$ and $m$ is a map in $\M$.  Composition is given by pullback and the identity is given by the trivial span.
-
-
-Partial map categories have a restriction structure given by:  
-$$(X\xleftarrowtail{m} \ Z \xrightarrow{f} Y) \mapsto (X\xleftarrowtail{m} \ Z\ \xrightarrowtail{m} X)$$  Moreover, a partial isomorphism is a span $X\xleftarrowtail{e}\ Z\  \xrightarrowtail{m} Y$ where $e,m \in \M$; the partial inverse given by  $Y\xleftarrowtail{m} \ Z  \ \xrightarrowtail{e} X$.
-\end{definition}
-
-
-$\Par$ is equivalently the partial map category $\Par(\Sets,\M)$ where $\M$ is all monics in $\Sets$.
 
 To augment restriction categories with copying, one must relax the definition of a Cartesian category: 
-
 
 \begin{definition}[{\cite{restiii}}]
 A restriction category has {\bf binary restriction products}, when for all objects  $X,Y$, there exists an object $X\times Y$ and total maps $X \xleftarrow{\pi_0}  X\times Y \xrightarrow{\pi_1} Y$, so that for all objects $Z$ and all maps $X \xleftarrow{f} Z \xrightarrow{g} Y$, there exists a unique $Z\xrightarrow{\langle f,g \rangle} X\times Y$ making the diagram commute:
@@ -2135,7 +2282,7 @@ where additionally $\bar{\langle f, g\rangle} =  \bar f ; \bar g$.
 %\end{tabular}
 %\end{center}
 
-A restriction category has a {\bf restriction terminal object} $\top$ when for all objects $X$, there exists a unique total map $!_X:X\to\top$ such that $f ; !_Y = \bar ;  f !_X$.
+A restriction category has a {\bf restriction terminal object} $\one$ when for all objects $X$, there exists a unique total map $!_X:X\to\one$ such that $f ; !_Y = \bar  f; !_X$.
 
 A restriction category with a restriction terminal object and binary restriction products is a {\bf Cartesian restriction category}.
 
@@ -2145,7 +2292,9 @@ An object $A$ in a restriction category with restriction products is {\bf discre
 
 
 
-$\Par$ is a canonical example of a Cartesian restriction category; the restriction product is given by the Cartesian product on underlying sets and the terminal object is  the singleton set. In fact it is also discrete, because the converse of the diagonal relation is a partial function. We can do the same thing that we did with Cartesian categories and categories of relations:
+\begin{example}
+$\Par$ is a canonical example of a discrete Cartesian restriction category; the restriction product is given by the Cartesian product on underlying sets and the terminal object is  the singleton set.
+\end{example}
 
 
 
@@ -2593,15 +2742,146 @@ $$
 
 
 
+\begin{definition}
+Given a finitely complete category $\X$, then there discrete Cartesian restriction category $\Par(\X)$ of spans $(m,A,f)$, for $m$ a monic and $f$ and aribtrary map, ie spans of the form:
 
-By forcing the looking at the subcategory on which the unit acts naturally,  we obtain a Cartesian category:
+$$
+\xymatrix{
+X 
+&
+\ A \ar@{>->}[l]_m \ar[r]^{f}
+&
+Y
+}
+$$
+
+ $\Par(\X)$ is a discrete Cartesian restriction category where the natural monoid structure is given by spans of the form, 
+
+$$
+\xymatrix{
+X 
+&
+X \ \ar@{=}[l] \ar@{>->}[r]^{\Delta_X \ \ \ }
+&
+X\times X
+}
+$$
+
+
+It's partial inverse is given by the span:
+
+$$
+\xymatrix{
+X \times X
+&
+X \ \ar@{=}[r] \ar@{>->}[l]_{\ \ \ \Delta_X}
+&
+X
+}
+$$
+
+And the counit is given by
+
+$$
+\xymatrix{
+X 
+&
+X \ar@{=}[l] \ar@{->>}[r]^{!_X}
+&
+\one
+}
+$$
+\end{definition}
+
+Unrolling the definition, we see that a map 
+
+$$
+\xymatrix{
+X 
+&
+\ A  \ar@{>->}[l]_m \ar[r]^{f}
+&
+Y
+}
+$$
+
+has a partial inverse precisely when $f$ is a monomorphism; moreover, the restriction idempotents are spans where both legs are the same monomorphism:
+
+$$
+\xymatrix{
+X 
+&
+\ A\  \ar@{>->}[l]_m \ar@{>->}[r]^{m}
+&
+Y
+}
+$$
+
+The basic idea is that the left leg picks out the domain of definition.  This agrees with our running example of a a restriction category:
+
+\begin{example}
+$\Par\cong\Par(\Set)$
+\end{example}
+
+
+Cartesian restriction categories are the partial version of Cartesian categories:
 
 \begin{proposition} 
 \label{prop:cartesian}
-If $\X$ is a  Cartesian restriction category, then $\Total(\X)$ is Cartesian.
+If $\X$ is a  Cartesian restriction category, the  $\Total(\X)$ is Cartesian.
 \end{proposition}
+\begin{proof}
+By definition, the total maps in a Cartesian restriction category are those which are natural with respect to the counits. Moreover, all maps are already natural with respect to the diagonal maps.
+\end{proof}
+%
+%
+%
+%There is a way to construct restriction categories in terms of a category of spans where the left leg is a monomorphism:
+%\begin{definition}[{\cite[\S 3.1]{cockett}}]
+%Given a category $\X$ with finite limits,  the {\bf partial map category} $\Par(\X)$ is the strict 2-category with:
+%
+%\begin{description}
+%\item[0-cells:] are objects in $\X$
+%
+%\item[1-cells:]  A $1$-cell  $(A,m,f):X\toY$ is a span:
+%
+%
+%$$
+%\xymatrix{
+%    & A \ar@{>->}[dl]_{m} \ar[dr]^{f}
+%    &
+%  \\X 
+%    &
+%    & Y
+%}
+%$$
+%
+%Where $m$ is a monomorphism.  The composition and identity is the same as spans.
+%
+%\item[2-cells:] The 2-cell structure is the same as spans.
+%\end{description}
+%
+%Just as for internal relations,  the 2-cells are monics so that $\Par(\X)$ is poset enriched; and it can be treated as an ordinary category by forgetting the 2-cell structure.
+%
+%
+%Partial map categories have a restriction structure given by:  
+%$$(X\xleftarrowtail{m} \ Z \xrightarrow{f} Y) \mapsto (X\xleftarrowtail{m} \ Z\ \xrightarrowtail{m} X)$$  Moreover, a partial isomorphism is a span $X\xleftarrowtail{e}\ Z\  \xrightarrowtail{m} Y$ where $e,m \in \M$; the partial inverse given by  $Y\xleftarrowtail{m} \ Z  \ \xrightarrowtail{e} X$.
+%
+%The idea is that the apex is the domain of definition the partial map; with the monomorphism picking the domain of definition out of the domain.
+%\end{definition}
+%
+%Note that in the cited reference $\X$ is not required to be complete; rather, they ask for the left legs to belong to a class of monorphisms containing all isomorphisms and closed under pullback.
+%
+%
+%
+%\begin{example}
+%$\Par(\Set) = \Par$.
+%\end{example}
+%
+%
 
-Discrete Cartesian restriction categories are a deterministic, yet partial version of relations:
+
+Similarly, discrete Cartesian restriction categories are a deterministic, yet partial version of relations:
 
 \begin{lemma}
 The category of comultiplication homorphisms of a Cartesian bicategory of relations is a discrete Cartesian restriction category.
@@ -2640,6 +2920,7 @@ The unitary maps in an inverse category are the total maps.
 Sets and partial injections are intimately related to Hilbert spaces.  The following functor was first discovered by \cite{barr}; later studied in much more detail in \cite{elltwo}:
 
 \begin{definition}
+\label{def:elltwo}
 There is a \dag-symmetric monoidal embedding $\ell^2:\Pinj\to\Hilb$ taking:
 
 \begin{description}
@@ -2681,8 +2962,6 @@ However, if the domain is changed to the category of spans of finite sets this i
 
 
 We also have a deterministic partially invertible notion of copying:
-
-
 
 \begin{definition}[{\cite[Definition 4.3.1]{giles}}]
 A symmetric monoidal inverse category $\X$ is a {\bf discrete inverse category} when it is a dagger symmetric monoidal  category, 
@@ -3212,12 +3491,12 @@ $$
 Discrete inverse categories are the canonical notion of weakened products for monoidal inverse categories:
 
 \begin{lemma}[{\cite[Proposition 4.3.7]{giles}}]
-Similarly the subcategory of  semi-Frobenius algebra homorphisms of a discrete Cartesian restriction category (the partial isomorphisms) is a discrete inverse category.
+Given a discrete Cartesian restriction category $\X$, $\ParIso(\X)$ is a discrete inverse category.
 \end{lemma}
 
+To simplify notation, given a finitely complete category $\X$ define $\ParIso(\X)=\ParIso(\Par(\X))$.  That is, the category whose maps are spans of monomorphisms in $\X$.
 
-
-At least as far as the literature is concerned, the other direction is not so trivial.  We will first introduce the more CoPara construction, which freely adds an effect to every object in a way that is compatible with the tensor product.
+At least as far as the literature is concerned, the other direction is not so trivial (we give a simpler characterization in terms of adding counits to the inverse products in Proposition \ref{cor:copy}).  We will first introduce the more CoPara construction, which freely adds an effect to every object in a way that is compatible with the tensor product.
 
 
 \begin{definition}
@@ -3607,9 +3886,8 @@ $
 
 \begin{theorem}[{\cite[Theorem 5.2.6]{giles}}]
 There is an equivalence of categories between the category of discrete inverse categories and the category of discrete Cartesian categories.
-
-
 \end{theorem}
+
  This equivalence is witnessed on the one hand by the Cartesian completion and on the other by taking the wide subcategory of partial isomorphisms.
 
 \begin{example}[{\cite[Example 5.3.3]{giles}}]
@@ -3864,7 +4142,7 @@ Obtaining Cartesian bicategories of relations from discrete inverse categories i
 
 Let us summarize the various notions of weakenings of Cartesian bicategories of relations in a table:
 
-TODO https://arxiv.org/pdf/0708.1925.pdf
+%TODO https://arxiv.org/pdf/0708.1925.pdf
 
 \hfil
 \begin{tabular}{l|cccc}

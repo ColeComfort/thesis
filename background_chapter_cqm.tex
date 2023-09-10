@@ -43,7 +43,7 @@ $$
 $$
 
 
-Most of the time,  we will not chose an aribitrary $d$-dimensional Hilbert space for the local state-space.  Instead, we will work in the Hilbert space of square summable functions on $\Z/d\Z$, $\ell^2(\Z/d\Z)$.  Here, the elements of $\Z/d\Z$ induce a basis for  $\ell^2(\Z/d\Z)$ called the {\bf standard basis} or $Z$-basis.  We will denote the elements of the basis  as  $\{| 0\rangle , \ldots, |d-1\rangle \}$.  The structure of a ring is therefore transported onto the standard basis elements (or a field when $d$ is prime).  These are regarded as the $d$-level quantum analogue of classical dits.    Similarly, the $n$-qudit state space is regarded as the Hilbert space $\ell^2((\Z/d\Z)^n)$, so that the $n$-standard basis elements have the structure of an $n$-dimensional $\Z/d\Z$-bimodule (or vector space, when $d$ is prime).
+Most of the time,  we will not chose an aribitrary $d$-dimensional Hilbert space for the local state-space.  Instead, we will work in the Hilbert space of square summable functions on $\Z/d\Z$, $\ell^2(\Z/d\Z)$ (see Definition \ref{def:elltwo}).  Here, the elements of $\Z/d\Z$ induce a basis for  $\ell^2(\Z/d\Z)$ called the {\bf standard basis} or $Z$-basis.  We will denote the elements of the basis  as  $\{| 0\rangle , \ldots, |d-1\rangle \}$.  The structure of a ring is therefore transported onto the standard basis elements (or a field when $d$ is prime).  These are regarded as the $d$-level quantum analogue of classical dits.    Similarly, the $n$-qudit state space is regarded as the Hilbert space $\ell^2((\Z/d\Z)^n)$, so that the $n$-standard basis elements have the structure of an $n$-dimensional $\Z/d\Z$-bimodule (or vector space, when $d$ is prime).
 
 Denote arbitrary vectors $\phi$ in $\mathcal H$ using this ket notation by $|\phi \rangle$; where the adjoint of $|\phi \rangle$ is denoted as a ``bra''  by $|\phi \rangle^\dag =: \langle \phi |$. 
 
@@ -812,7 +812,7 @@ $$
 This gives a probability distribution over $\mathcal J$.  The scalar  $0\leq |\langle b_j|\psi \rangle|^2\leq 1$ is interpreted as the probability of measuring the basis element $|b_j\rangle$ on the state $|\psi\rangle$ with respect to the basis $B$.
 This basis dependent, probabilistic interpretation of quantum measurement is called the {\bf Born rule}, although it is usually stated slightly differently.
 
-The $\CPM$ construction and special commutative $\dag$-Frobenius algebras allow us to perform quantum measurement using only string diagrms.  Some mathematical machinery is needed first:
+The $\CPM$ construction and special commutative $\dag$-Frobenius algebras allow us to perform quantum measurement using only string diagrams.  Some mathematical machinery is needed first:
 
 
 \begin{definition}
@@ -2268,7 +2268,7 @@ There is a very important relationship which bases can have to each other:
 \begin{definition}
 \label{def:complementary}
 %Interacting Hopf-Frobenius algebras/ strongly complementary observables
-Take \dag-commutative Frobenius algebras $\zcirc$ and $\xcirc$. They are   {\bf strongly complementary} when the the bialgebras are Hopf algebras whose antipode is equivalently any of the following maps:
+Take commutative  \dag-Frobenius algebras $\zcirc$ and $\xcirc$. They are   {\bf strongly complementary} when the the bialgebras are Hopf algebras whose antipode is equivalently any of the following maps:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2794,6 +2794,49 @@ $$
 \end{tikzpicture}
 $$
 \end{protocol}
+
+Notice how all parts of this protocol are physically realizable operations.  The Bell-state is a quantum state and unitary operations are quantum operations.  As we discussed, measurement is realizable, and produces a classical outcome with according to a probabilistic distribution via the Born rule (in fact, in this case each outcome is equally likely).  Finally, for Bob's phase correction operation, he receives the two measurement outcomes of Alice, and conditioned on these outcomes he applies quantum operations to the quantum channel.  
+
+
+This is in contrast to the naive way in which one might hope to teleport a qudit from Alice to Bob using the compact closed structure of $\zcirc$:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (381.25, 7) {};
+		\node [style=none] (1) at (382.25, 3.5) {};
+		\node [style=none] (2) at (380.5, 7) {Alice};
+		\node [style=none] (3) at (382, 7) {Bob};
+		\node [style=none] (14) at (380.5, 3.75) {};
+		\node [style=Zthick] (15) at (382.25, 4.25) {};
+		\node [style=none] (16) at (383, 5.5) {};
+		\node [style=none] (17) at (383, 7) {};
+		\node [style=map] (22) at (380.5, 3.75) {$|\phi\rangle$};
+		\node [style=Zthick] (25) at (381, 5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=dotted, in=-90, out=90, looseness=1.25] (1.center) to (0.center);
+		\draw [thick] (22.center) to  [in=-135, out=90] (25.center)  to [in=165, out=-15, looseness=0.75]   (15.center)  to [in=-90, out=30]  (16.center)  to (17.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (26) at (384.75, 7) {};
+		\node [style=none] (27) at (384.75, 3.5) {};
+		\node [style=none] (28) at (384, 7) {Alice};
+		\node [style=none] (29) at (385.5, 7) {Bob};
+		\node [style=none] (32) at (386.5, 5.5) {};
+		\node [style=none] (33) at (386.5, 7) {};
+		\node [style=map] (34) at (386.5, 5.5) {$|\phi\rangle$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=dotted] (27.center) to (26.center);
+		\draw [thick] (34) to (33.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+The cap not a quantum operation, nor is it a measurement, or a classical operation,  therefore it does not specify a physically realizable quantum protocol.
 
 The reason we ask not only for the Hopf law but also for the bialgebra law is  because the following two very important bases have this property:
 
@@ -4219,7 +4262,9 @@ $$
 \end{example}
 
 
-The $\mathcal Z$-gate is the Fourier transform of the  $\mathcal X$-gate:
+Consider the $\mathcal Z$-gate:
+
+
 $$
 {\cal Z}
 :=
@@ -4240,22 +4285,59 @@ e^{2\cdot\pi \cdot b/d} | b\rangle \langle b|
 e^{2\cdot\pi \cdot z\cdot b/d} | b\rangle \langle b|
 $$
 
-So we could have instead characterized the phase-free+$Z$ gate fragment of the ZX-calclus in terms of affine relations, via the $Z$-stabilizers.
+
+By regarding circuits in the phase-free+$Z$ gate fragment of the ZX-calculus modulo scalars in terms of their $Z$-stabilizers,  we would have similarly recovered the category of affine relations over $\F_p$.
 
 
+The $\mathcal Z$ and $\mathcal X$ operators are very important in quantum computing:
+
+\begin{definition}
+\label{definition:begin}
+Fix some local dimension $d$.
+A single qudit {\bf Weyl operator} is an $d$-dimensional unitary of the form, $\mathcal{X}^{x}\mathcal{Z}^{z}$, for $x,z \in \Z/d\Z$.
+
+An $n$-qudit Weyl operator is the $n$-fold tensor product of single qudit Weyl operators.
+
+The $n$-qudit Weyl operators form the {\bf Heisenberg-Weyl group} $\mathcal{P}_d^n$ with respect to compostion.\end{definition}
+
+Weyl operators have the following property:
+
+\begin{lemma}
+$n$-qudit Weyl operators are an orthonormal basis for the the operators
+
+$$
+\FHilb(\ell^2((\Z/d\Z)^n), \ell^2((\Z/d\Z)^n))
+\cong \ell^2((\Z/d\Z)^n)^*\otimes \ell^2((\Z/d\Z)^n)
+$$
+
+with respect to the scaled trace inner product:
+
+$$
+\langle  -,= \rangle
+:=
+\dfrac{1}{d^n}\tr((-)^\dag,=)
+$$
+\end{lemma}
 
 
+The obvious choice of operator basis would have been:
 
-Notice how the $Z$-basis is generated by 
-$$\{ \mathcal{X}^n|0\rangle \}_{n\in \Z/d\Z}$$
- and the $X$-basis is generated by 
-$$\{\mathcal{F}|n\rangle=\mathcal{F} \mathcal{X}^n |0\rangle =\mathcal{Z}^n \mathcal{F} |0\rangle\}_{n\in \Z/d\Z}$$
+$$
+\{ |a_0, \cdots, a_{n-1} \rangle \langle  b_0,\cdots, b_{n-1} | \ | \ a_0,\cdots, a_{n-1},b_0,\cdots, b_{n-1} \in \Z/d\Z \}
+$$
+
+However, these basis elements are not unitary, and therefore can not be used to correct for errors.
+On the other hand if at some point a known unitary error occurs on,  because Weyl operators form a unitary basis, the error can be undone by applying controlled Weyl operators.
+
+In fact, the quantum teleportation protocol relies on this fact.
+Let us reexamine the phase-correction step in this protocol in more detail.
+
+Notice how the $Z$-and $X$-bases are respectively: 
+$$\{ \mathcal{X}^n|0\rangle \}_{n\in \Z/d\Z}
+\ , \hspace{,5cm} \{\mathcal{F}|n\rangle=\mathcal{F} \mathcal{X}^n |0\rangle =\mathcal{Z}^n \mathcal{F} |0\rangle\}_{n\in \Z/d\Z}$$
 
 
-This explains why we called the final stage of the quantum teleportation phase correction.  When Bob prepares the quantum state $|n\rangle$ using the white bastard spider
-and fuses to the quantum channel with the pure grey spider, he is applying the gate $\mathcal{X}^n$.  Dually, when he prepares the state $\mathcal{F}|m\rangle$ and fuses it to the channel with the pure white spider he is applying the gate $\mathcal{Z}^m$.  
-
-
+Therefore to correct for the error $\mathcal{Z}^{-z}\mathcal{X}^{-x}$ which was communicated to him by Alice,  Bob applies the following classically controlled operation:
 
 $$
 \begin{tikzpicture}
@@ -4264,8 +4346,8 @@ $$
 		\node [style=Xthick] (23) at (223.5, 1) {};
 		\node [style=X] (24) at (222.25, -1) {};
 		\node [style=Z] (25) at (221, -1) {};
-		\node [style=map] (26) at (221, -2) {$|n\rangle$};
-		\node [style=map] (27) at (222.25, -2) {$\mathcal{F}|m\rangle$};
+		\node [style=map] (26) at (221, -2) {$|x\rangle$};
+		\node [style=map] (27) at (222.25, -2) {$\mathcal{F}|z\rangle$};
 		\node [style=none] (28) at (223.5, -2.5) {};
 		\node [style=none] (29) at (223.5, 2) {};
 	\end{pgfonlayer}
@@ -4282,8 +4364,8 @@ $$
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Zthick] (22) at (223.5, 0) {};
 		\node [style=Xthick] (23) at (223.5, 1) {};
-		\node [style=map, thick] (24) at (222.25, -1) {$\mathcal{F}|m\rangle$};
-		\node [style=map, thick] (25) at (221, -1) {$|n\rangle$};
+		\node [style=map, thick] (24) at (222.25, -1) {$\mathcal{F}|z\rangle$};
+		\node [style=map, thick] (25) at (221, -1) {$|x\rangle$};
 		\node [style=none] (28) at (223.5, -2.5) {};
 		\node [style=none] (29) at (223.5, 2) {};
 	\end{pgfonlayer}
@@ -4298,8 +4380,8 @@ $$
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Zthick] (22) at (223.5, 0) {};
 		\node [style=Xthick] (23) at (223.5, 1) {};
-		\node [style=map, thick] (24) at (222.25, -1) {$\mathcal{Z}^m$};
-		\node [style=map, thick] (25) at (221, -1) {$\mathcal{X}^n$};
+		\node [style=map, thick] (24) at (222.25, -1) {$\mathcal{Z}^z$};
+		\node [style=map, thick] (25) at (221, -1) {$\mathcal{X}^x$};
 		\node [style=none] (28) at (223.5, -2.5) {};
 		\node [style=none] (29) at (223.5, 2) {};
 		\node [style=Zthick] (240) at (222.25, -2) {};
@@ -4322,8 +4404,8 @@ $$
 		\node [style=Xthick] (25) at (221, -1) {};
 		\node [style=none] (28) at (223.5, -2.5) {};
 		\node [style=none] (29) at (223.5, 3) {};
-		\node [style=map, thick] (240) at (223.5, -1) {$\mathcal{Z}^m$};
-		\node [style=map, thick] (25-) at (223.5, 2) {$\mathcal{X}^n$};
+		\node [style=map, thick] (240) at (223.5, -1) {$\mathcal{Z}^z$};
+		\node [style=map, thick] (25-) at (223.5, 2) {$\mathcal{X}^x$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [thick] (28.center) to (22.center) to (23.center)  to (29.center);
@@ -4334,8 +4416,8 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=map, thick] (22) at (223.5, 0) {$\mathcal{Z}^m$};
-		\node [style=map, thick] (23) at (223.5, 1) {$\mathcal{X}^n$};
+		\node [style=map, thick] (22) at (223.5, 0) {$\mathcal{Z}^z$};
+		\node [style=map, thick] (23) at (223.5, 1) {$\mathcal{X}^x$};
 		\node [style=none] (28) at (223.5, -2.5) {};
 		\node [style=none] (29) at (223.5, 2) {};
 	\end{pgfonlayer}
@@ -4345,22 +4427,16 @@ $$
 \end{tikzpicture}
 $$
 
-Where the second last equation follows from the fact that $\mathcal{X}^n$ is a phase for the grey spider and $\mathcal{Z}^n$ is a phase for the white spider, followed by spider fusion
+Where the second last equation follows from the fact that $\mathcal{X}^x$ is a phase for the grey spider and $\mathcal{Z}^z$ is a phase for the white spider.
 
 
 
-The two fragments of the ZX-calculus we have described so far are fragments of stabilizer circuits.  We proceed to overview the qudit stabilizer formalism.  The qubit stabilizer formalism was first introduced in \cite{gottesman} and later generalized to qudits in various ways.  We follow the qudit generalization provided in \cite{gota}:
+The stabilizer formalism is a tractable tool used for correcting Pauli errors. Indeed, everything we have discussed so far, including quantum telportation is encompassed by this formalism.
 
-
+It was first introduced in  \cite{gottesman} and later generalized to qudits in various ways.  We follow the qudit generalization provided in \cite{gota}:
 
 \begin{definition}
-\label{definition:begin}
-Fix some dimension $d$.
-A single qudit {\bf Weyl operator} an $d$-dimensional unitary generated by the qudit $\mathcal Z$ and $\mathcal X$ operators under tensor product and composition.
-The $n$-qudit {\bf Weyl group} is generated by Weyl operators under matrix multiplication and tensor product.
-
-
-An $n$-qudit {\bf Clifford operator} $U$ is an $d^n$-dimensional unitary that preserves the Weyl group, so that $U {\cal P}_d^{ n} U^\dag = {\cal P}_d^{ n}$.  The $n$-qudit Clifford operators form the $n$-qudit {\bf Clifford group } under matrix multiplication.  The qudit Clifford Groupoid (or full Clifford group) is the prop where the maps $n\to n$ are Clifford operators.
+An $n$-qudit {\bf Clifford operator} $U$ is an $d^n$-dimensional unitary that preserves the Heisenberg-Weyl group, so that $U {\cal P}_d^{ n} U^\dag = {\cal P}_d^{ n}$.  The $n$-qudit Clifford operators form the $n$-qudit {\bf Clifford group } under matrix multiplication.  The qudit Clifford Groupoid (or full Clifford group) is the prop where the maps $n\to n$ are Clifford operators.
 
 
 An $n$-qudit (pure) {\bf stabilizer state} is a state $ U |0\rangle^{\otimes n}$ for an $n$-qudit Clifford $U$.
@@ -4384,7 +4460,7 @@ The prop of qudit {\bf stabilizer circuits}, generated by qudit Clifford operato
 
 
 
-There is a crucial difference between the  qubit and quopit Weyl group:
+There is a crucial difference between the  qubit and quopit Heinsenberg-Weyl group:
 
 \begin{lemma}
 Single quopit Weyl operators all can be factored into the following form for $a,z,x \in \F_p$:
@@ -4623,17 +4699,33 @@ $$
 (\Mat_{\F_p},+) \to (\LinRel_{\F_p},+) \to (\FHilb/\sim,\otimes)
 $$
 
+
+Even though the quopit and qubit stabilizer fragments of the ZX-calculus diverge, they coincide when the phases are restricted, as we have seen during our analysis of the phase free and phase free+X/Z gates fragments of the ZX-calculus.
+
+\begin{definition}
+\label{def:biaffine}
+Given any prime $p$, the {\bf biaffine} fragment of the stabilizer ZX-calculus is generated by $Z$ and $X$ spiders with phases in $\Z/p\Z$ where:
+
+$$
+\Z/p\Z \to [0,1)^p; \ n \mapsto  \prod_{j=0}^{p-1} (n j)/(2p)
+$$
+
+
+\end{definition}
+
+
+
 The qubit \cite{backensstab,backens2015} and qutrit \cite{qutrit} stabilizer ZX-calculi both have complete presentations.  However, during the process of writing this thesis, an axiomatization was provided for the quopit stabilizer ZX-calculus \cite{booth}, followed shortly by an even simpler presentation \cite{poor}.  It is worth noting that the scaling in the interpretations of the generators in \cite{poor,booth} differ slightly for techinical reasons (specifically they designed their presentations to be flexsymmetric following \cite[\S 5]{flexsymmetric}).
 
+We will return to the quopit stabilizer fragment of the ZX-calculus as well as the qupit biaffine stabilizer fragment of the ZX-calculus later on in Chapter \ref{chap:stab}.  We will give a relational semantics for both the pure and mixed settings.
 
-
-Despite being used extensively in quantum error correction, as well will touch on in  \ref{chap:stab}:
+Despite being used being used extensively for error correction, unlike general quantum circuits, stabilizer circuits are not any more powerful than classical probabilistic computing \ref{chap:stab}:
 
 \begin{theorem}[Gottesman-Knill]
-Stabilizer circuits can be classically probabilistically  simulated in polynomial time
+Stabilizer circuits can be classically probabilistically  simulated in polynomial time.
 \end{theorem}
 
-The original proof for qudits is found in  \cite{gottesmanknill}; however, it follows immediately for qudits.  Later on, we will effectively prove the quopit Gottesman-Knill theorem as a corollary when we give a relational characterization of quopit stabilizer circuits.  This is the largest classically simulatable fragment containing the Clifford group:
+The original proof for qudits is found in  \cite{gottesmanknill}; however, it follows immediately for qudits.  Later on, we will effectively reprove the quopit Gottesman-Knill theorem when we give a relational characterization of quopit stabilizer circuits.  In fact stabilizer circuits are the largest classically simulatable fragment containing the Clifford group:
 
 \begin{proposition}[{\cite[Appendix D]{campbell}}]
 \label{prop:campbell}
