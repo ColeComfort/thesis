@@ -1421,7 +1421,8 @@ Let us unpack this a bit.
 %Therefore, if we were to precompose this composite with a quantum state $|\psi\rangle$, we would obtain the probability $|\langle \psi| b_j\rangle|^2$.
 Take an orthonormal basis $B$ for $\mathcal H$ and $B'$ for $\mathcal{H}'$ corresponding to a special commutative \dag-Frobenius algebras $\zcirc$ and $\xcirc$, respectively.  Then maps $(\mathcal{H},p_B)\to (\mathcal{H}',p_{B'})$ corresponds to maps $p_B;f;p_{B'}$ for some $f:\mathcal{H}\to \mathcal{H}'$  in $\CPM(\FHilb)$:
 
-$$
+\begin{equation}
+\label{eq:proj}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (114) at (71.025, -3.825) {};
@@ -1519,7 +1520,7 @@ $$
 		\draw [in=-60, out=120] (75.center) to (70);
 	\end{pgfonlayer}
 \end{tikzpicture}
-$$
+\end{equation}
 
 Therefore by inspecting the dimensions, every map $(\mathcal{H},p_B)\to (\mathcal{H}',p_{B'})$ is of the following form, for some  $g:\mathcal H\to \mathcal{H}'$ in $\FHilb$:
 
@@ -2174,7 +2175,7 @@ $$
 
 For all special commutative  \dag-Frobenius algebras $\zcirc$.
 \end{proposition}
-The proof is relatively involved so I will omit it.  See \cite{???} for the original statement, and \cite[????]{pqp} for the graphical proof using bastard spiders.  Essentially, this significance  of this result is that quantum processes can always be produced by first preparing a state, then applying quantum evolution and then discarding part of the state.
+The proof is relatively involved so I will omit it.  See \cite{Stinespring1955} for the original statement, and \cite[Corollary 6.63]{pqp} for the graphical version which we use.  Essentially, this significance  of this result is that quantum processes can always be produced by first preparing a state, then applying quantum evolution and then discarding part of the state.
 
 There is another closely related result which we will make use of:
 \begin{proposition}[Essential uniqueness of purification]
@@ -2479,8 +2480,8 @@ Actually, we only needed the Hopf algebra part of the bialgebra for these two ba
 %
 %We feed in the input on the bottom left wire and read out a measurement on the top left wire.
 
-Given two strongly complementary observables, we can construct the quantum teleportation protocol  (originally discovered for qubits by \cite{teleporation?}).
-The abstract description in terms of quantum teleportation in terms \dag-compact closed categories was first introduced in \cite{abramksy}; however, we present a qudit generalization of the one found in \cite[Page 706]{pqp}:
+Given two strongly complementary observables, we can construct the quantum teleportation protocol  (originally discovered for qubits by \cite{teleportation}).
+The abstract description in terms of quantum teleportation in terms \dag-compact closed categories was first introduced in \cite{abramsky}; however, we present a qudit generalization of the one found in \cite[Page 706]{pqp}:
 
 \begin{protocol} \
 \label{proto:tele}
@@ -2504,7 +2505,7 @@ Alice first applies a unitary operation in between her two qudits.
 Alice  measures both of the qudits in the complementary bases and then sends two classical dits to Bob. 
 
 \item
- Bob uses the two classical dits two perform phase-correction operations using the complementary basis to his half of the Bell state.
+ Bob uses the two classical dits to perform phase-correction to his half of the Bell state in the complementary bases.
 
 \end{itemize}
 
@@ -2795,10 +2796,10 @@ $$
 $$
 \end{protocol}
 
-Notice how all parts of this protocol are physically realizable operations.  The Bell-state is a quantum state and unitary operations are quantum operations.  As we discussed, measurement is realizable, and produces a classical outcome with according to a probabilistic distribution via the Born rule (in fact, in this case each outcome is equally likely).  Finally, for Bob's phase correction operation, he receives the two measurement outcomes of Alice, and conditioned on these outcomes he applies quantum operations to the quantum channel.  
+Notice how all parts of this protocol are physically realizable operations.  The Bell-state is a quantum state and unitary operations are quantum operations.  As we discussed, measurement is realizable, and produces a classical outcome according to a probability distribution via the Born rule (in fact, in this case each outcome is equally likely).  Finally, for Bob's phase correction operation, he receives the two measurement outcomes of Alice, and conditioned on these outcomes he applies quantum operations to the quantum channel.  
 
 
-This is in contrast to the naive way in which one might hope to teleport a qudit from Alice to Bob using the compact closed structure of $\zcirc$:
+This is in contrast to the naive way in which one might hope to teleport a qudit from Alice to Bob using the compact closed structure induced by $\zcirc$:
 
 $$
 \begin{tikzpicture}
@@ -2815,8 +2816,8 @@ $$
 		\node [style=Zthick] (25) at (381, 5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [style=dotted, in=-90, out=90, looseness=1.25] (1.center) to (0.center);
 		\draw [thick] (22.center) to  [in=-135, out=90] (25.center)  to [in=165, out=-15, looseness=0.75]   (15.center)  to [in=-90, out=30]  (16.center)  to (17.center);
+		\draw [style=dotted, in=-90, out=90, looseness=1.25] (1.center) to (0.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
@@ -2831,8 +2832,8 @@ $$
 		\node [style=map] (34) at (386.5, 5.5) {$|\phi\rangle$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [style=dotted] (27.center) to (26.center);
 		\draw [thick] (34) to (33.center);
+		\draw [style=dotted] (27.center) to (26.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
@@ -4303,6 +4304,7 @@ The $n$-qudit Weyl operators form the {\bf Heisenberg-Weyl group} $\mathcal{P}_d
 Weyl operators have the following property:
 
 \begin{lemma}
+\label{lem:ueb}
 $n$-qudit Weyl operators are an orthonormal basis for the the operators
 
 $$
@@ -4337,7 +4339,7 @@ $$\{ \mathcal{X}^n|0\rangle \}_{n\in \Z/d\Z}
 \ , \hspace{,5cm} \{\mathcal{F}|n\rangle=\mathcal{F} \mathcal{X}^n |0\rangle =\mathcal{Z}^n \mathcal{F} |0\rangle\}_{n\in \Z/d\Z}$$
 
 
-Therefore to correct for the error $\mathcal{Z}^{-z}\mathcal{X}^{-x}$ which was communicated to him by Alice,  Bob applies the following classically controlled operation:
+Therefore to correct for the error $\mathcal{Z}^{-z}\mathcal{X}^{-x}$ which was communicated to him by Alice in terms as the pair of classical dits $(x,z)$,  Bob applies the following classically controlled operation:
 
 $$
 \begin{tikzpicture}
@@ -4432,7 +4434,6 @@ Where the second last equation follows from the fact that $\mathcal{X}^x$ is a p
 
 
 The stabilizer formalism is a tractable tool used for correcting Pauli errors. Indeed, everything we have discussed so far, including quantum telportation is encompassed by this formalism.
-
 It was first introduced in  \cite{gottesman} and later generalized to qudits in various ways.  We follow the qudit generalization provided in \cite{gota}:
 
 \begin{definition}

@@ -595,9 +595,9 @@ This example is quite useful for developing ones intuition.  Take a span of fini
 We seek moreover, to quotient by multiplicity, to obtain a semantics for merely nondeterministic processes: where things can be related at most once.  To do so, we need more assumptions about the category with which we seek to work internal to.
 
 \begin{definition}
-A map $f:X\to Y$ is a {\bf monomorphism} when for all maps $g,h:Z\to X$, $g;f=h;f$ implies $ g=h$.
+A map $f:X\to Y$ is a {\bf monomorphism} (monic) when for all maps $g,h:Z\to X$, $g;f=h;f$ implies $ g=h$.
 
-Dually, a map $f:X\to Y$ is an {\bf epimorphism} when for all maps $g,h:Y\to Z$, $f;g=f;h$ implies $ g=h$.
+Dually, a map $f:X\to Y$ is an {\bf epimorphism} (epic) when for all maps $g,h:Y\to Z$, $f;g=f;h$ implies $ g=h$.
 
 To add extra information to our commutative diagrams, we denote monomorphisms as arrows with tails $\rightarrowtail$ and epimorphisms as arrows with two heads $\twoheadrightarrow$.  
 \end{definition}
@@ -651,7 +651,7 @@ Take a finitely complete category.  Construct the pullback of a map $f:X\to Y$ a
  $$\xymatrix{X\ {}_f \times_f X  \ar@<-.5ex>[rr]_{\ \ \pi_1;f}  \ar@<.5ex>[rr]^{\ \ \pi_0;f}&& Y}$$
 Call this diagram a {\bf kernel pair} at $f$, and call the object  the {\bf kernel} of $f$, denoted by $\ker(f):=X\ {}_f \times_f X$.
 
-If the kernel pair at $f$ admits an coequalizer, call this object the {\bf image} of $f$, denoted by $\im(f)$.
+If the kernel pair at $f$ admits a coequalizer, call this object the {\bf image} of $f$, denoted by $\im(f)$.
 
 A {\bf regular category} is a finitely complete category such that:
 \begin{itemize}
@@ -2132,21 +2132,20 @@ $$
 \end{tikzpicture}
 $$
 
-
-The category of comonoid homorphisms of a Cartesian bicategory of relations is Cartesian category $\Map(\X)$.
+Let $\Map(\X)$ denote the category of comonoid homorphisms in $\X$.
 \end{definition}
 
 Therefore, now we can copy and delete things with the commutative comonoid structure in a partial, deterministic manner; moreover the commutative monoid structure also allows us to  compare and ask for the existence of things in a nondeterministic and partial manner.
 
 
-Moreover, because cartesian bicategories of relations are equipped with a chosen compatible family of Frobenius algebras, we see that cartesian bicategories are \dag-compact closed.  The dagger and the transpose coincide.
+Moreover, because Cartesian bicategories of relations are equipped with a chosen compatible family of Frobenius algebras, they are \dag-compact closed. For categories of internal relations, the \dag-structure is given by the transpose/relational converse.
 
 Span is not a Cartesian bicategory of relations because it is not poset enriched (there can be more than one 2-cell between 1-cells); however it is a {\em Cartesian bicategory} (see \cite{carbonia}).  All of the equations now only hold up to coherent isomorphism, however the story is essentially the same. This is much more difficult to work with because this notion requires coherence conditions so we will omit this more general definition for the sake of brevity. 
 
 
-As stated before, bicategories of relations subsume categories of internal relations:
+These subsume categories of internal relations:
 \begin{example}
-Given a regular category $\X$, $\Rel(\X)$ is a Cartesian bicategory of relations under the Cartesian product and $\Map(\Rel(\X))=\X$ is Cartesian.
+Given a regular category $\X$, $\Rel(\X)$ is a Cartesian bicategory of relations under the Cartesian product and $\Map(\Rel(\X))=\X$.
 \end{example}
 
 
@@ -2201,7 +2200,7 @@ A map $f$ in a restriction category is {\bf total} if $\bar f =1$.  Denote the s
 
 
 
-A map $f$ in a restriction category is called a {\bf partial isomorphism}, in case there exists a {\bf parital inverse} $g$ of $f$ so that $f;g=\bar f$ and $g;f = \bar g$. Denote the category of partial isomorphisms of $\X$ by $\ParIso(\X)$.
+A map $f$ in a restriction category is called a {\bf partial isomorphism}, in case there exists a {\bf parital inverse} $g$ of $f$ so that $f;g=\bar f$ and $g;f = \bar g$. Denote the category of partial isomorphisms of $\X$ by $\Inv(\X)$.
 
 
 \end{definition}
@@ -2741,7 +2740,7 @@ $$
 \end{theorem}
 
 
-
+We recall the following definition of \cite[\S 3]{cockett}, which was originally stated in the more general setting of categories with stable systems of monics, rather than finitely complete categories:
 \begin{definition}
 Given a finitely complete category $\X$, then there discrete Cartesian restriction category $\Par(\X)$ of spans $(m,A,f)$, for $m$ a monic and $f$ and aribtrary map, ie spans of the form:
 
@@ -2826,10 +2825,10 @@ $\Par\cong\Par(\Set)$
 
 Cartesian restriction categories are the partial version of Cartesian categories:
 
-\begin{proposition} 
+\begin{lemma} 
 \label{prop:cartesian}
 If $\X$ is a  Cartesian restriction category, the  $\Total(\X)$ is Cartesian.
-\end{proposition}
+\end{lemma}
 \begin{proof}
 By definition, the total maps in a Cartesian restriction category are those which are natural with respect to the counits. Moreover, all maps are already natural with respect to the diagonal maps.
 \end{proof}
@@ -2894,7 +2893,7 @@ An {\bf inverse category} is a restriction category in which all maps are partia
 \end{definition}
 
 \begin{example}
-The subcategory of partial isomorphisms of $\Par$ is  $\Pinj$.
+$\Inv(\Par)\cong\Pinj$
 \end{example}
 
 Inverse categories are particular kinds of \dag-categories:
@@ -2956,9 +2955,9 @@ $$
 \end{definition}
 
 
-The category of partial injections is unusual in the sense that there is an embedding into $\ell^2$. This does not generalize to sets and functions, for example: the maps are no longer send to bounded linear maps.
+The category of partial injections is unusual in the sense that there is an embeds into $\Hilb$. This does not generalize to sets and functions, for example: the maps are no longer send to bounded linear maps.
 
-However, if the domain is changed to the category of spans of finite sets this induces an embedding into $\FHilb$.  This is actually the version we will use throughout this thesis, but we give the general definition to highlight the importance of inverse categories in the categorical semantics of quantum mechanics.
+However, if the domain is changed to the category of spans of {\em finite} sets this induces an embedding into $\FHilb$.  This is actually the version we will use throughout this thesis, but we give the general definition to highlight the importance of inverse categories in the categorical semantics of quantum mechanics.
 
 
 We also have a deterministic partially invertible notion of copying:
@@ -3488,15 +3487,22 @@ $$
 \end{lemma}
 
 
-Discrete inverse categories are the canonical notion of weakened products for monoidal inverse categories:
 
-\begin{lemma}[{\cite[Proposition 4.3.7]{giles}}]
-Given a discrete Cartesian restriction category $\X$, $\ParIso(\X)$ is a discrete inverse category.
+\begin{lemma}
+Given a finitely complete category $\X$, the category  $\ParIso(\X):=\Inv(\Par(\X))$ of spans of monomorphisms in $\X$ is a discrete inverse category.
 \end{lemma}
 
-To simplify notation, given a finitely complete category $\X$ define $\ParIso(\X)=\ParIso(\Par(\X))$.  That is, the category whose maps are spans of monomorphisms in $\X$.
+These weaken the notion of copying even further:
 
-At least as far as the literature is concerned, the other direction is not so trivial (we give a simpler characterization in terms of adding counits to the inverse products in Proposition \ref{cor:copy}).  We will first introduce the more CoPara construction, which freely adds an effect to every object in a way that is compatible with the tensor product.
+\begin{lemma}[{\cite[Proposition 4.3.7]{giles}}]
+Given a discrete Cartesian restriction category $\X$, $\Inv(\X)$ is a discrete inverse category.
+\end{lemma}
+
+
+
+
+
+At least as far as the literature is concerned, the canonical way to obtain a discrete Cartesian restriction category from a discrete category is tricker.  We will first introduce the more CoPara construction, which freely adds an effect to every object in a way that is compatible with the tensor product:
 
 
 \begin{definition}
@@ -3735,10 +3741,10 @@ d_X=
 \end{tikzpicture}
 $$
 
-However, variations on this theme will occur throughout this thesis, so we have promoted it to its own construction.  The CoPara construction is dual to the Para construction which is interpreted as freely adding parameters to  a monoidal category (see \cite{??}).
+However, variations on this theme will occur throughout this thesis, so we have promoted it to its own construction.  The CoPara construction is dual to the Para construction which is interpreted as freely adding parameters to  a monoidal category (see \cite{Fong2019backprop}).
 
 
-
+This allows us to define the following:
 \begin{definition}\cite[Definition 5.1.1]{giles}
 Given a discrete inverse category $\X$,  its {\bf Cartesian completion} $\tilde \X$ is the quotient of ${\CoPara}(\X)$ by either of the following equivalent symmetric monoidal congruence relations:
 $$
@@ -3882,13 +3888,16 @@ $
 
 \end{definition}
 
+We give a simpler characterization of this construction terms of adding counits to the inverse products in Proposition \ref{cor:copy}.
 
 
 \begin{theorem}[{\cite[Theorem 5.2.6]{giles}}]
 There is an equivalence of categories between the category of discrete inverse categories and the category of discrete Cartesian categories.
+%Therefore, given a discrete inverse category $\X$
+%$\Inv(\tilde \X)\cong \X$.
 \end{theorem}
 
- This equivalence is witnessed on the one hand by the Cartesian completion and on the other by taking the wide subcategory of partial isomorphisms.
+ This equivalence is witnessed on the one hand by the Cartesian completion and on the other by taking the wide subcategory of partial isomorphisms.  As a corollary, we see that 
 
 \begin{example}[{\cite[Example 5.3.3]{giles}}]
 $\tilde \Pinj$ is $\Par$.

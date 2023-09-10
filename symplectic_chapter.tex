@@ -1139,7 +1139,8 @@ This base case is trivial.
 
 Suppose we have a $(n+1)$-dimensional Lagrangian subspaces described by a graph state, then:
 
-{\allowdisplaybreaks
+\begingroup
+\allowdisplaybreaks
 \begin{align*}
 &\hspace*{-2cm}\left[
 \begin{array}{*{5}c|*{6}c}
@@ -1221,7 +1222,7 @@ x_{1,1}             & 0         & 0         & \cdots & 0         & -1 & 0       
 \end{array}
 \right]
 \end{align*}
-}
+\endgroup
 
 Therefore all Lagrangian relations can be reduced to the subspace $[I|0]$ by right multiplication by symplectomorphisms.
 In the $n$-dimensional case, this subspace is given by the circuit
@@ -4840,7 +4841,7 @@ $
 
 \begin{remark}
 \label{rem:ranknull}
-From Lemma \ref{cor:copy}, recall that given a matrix $A:n\to m$ in $\cb_k$, then the image and kernel have the following graphical  representation:
+From Lemma \ref{cor:copy}, recall that given a matrix $A:n\to m$ in $\cb_k$, then the image and kernel have the following graphical  representations:
 
 $$
 \begin{tikzpicture}
@@ -4948,7 +4949,7 @@ Therefore, if we ask that $A$ is a Lagrangian relation rather than matrix, we fi
 %\end{tikzpicture}
 %$$
 
-Moreover, as observed in  \cite[\S 3.4.4]{guillemin2013semi}, we have a symplectic version of the rank-nullity theorem for Lagrangian relations
+Moreover, as observed in  \cite[\S 3.4.4]{guillemin2013semi}, we have a symplectic version of the rank-nullity theorem for Lagrangian relations:
 
 
 $$
@@ -5534,6 +5535,7 @@ There is a symplectic analaogue to Stinespring dilation, which we will use in th
 
 
 \begin{proposition}[{Symplectic Stinespring dilation}]
+\label{prop:sympstine}
 Given an affine coisotropic subspace $S \subseteq k^{2n}$ of dimension $m+n$, there exists an affine symplectomorphism $U:n\to n$ such that:
 
 $$
@@ -6608,9 +6610,12 @@ $$
 $$
 \end{example}
 
+
+
+
+\subsection{Electrical circuits with control and measurement}
 Back to the parallel example of electrical circuits.  This multicoloured view of things recaptures the  semantics for controlled voltage and current sources as well as ammeters and voltmenters given in \cite{impedence}:
 
-\begin{remark}
 \label{rem:electrical}
 $\Aff\Co\Isot\Rel_{\R(x)}^M$ gives a semantics for all of the electrical circuit components we have discused so far in addition to the controlled voltage and current sources:
 
@@ -7024,17 +7029,44 @@ $$
 \end{tikzpicture}
 \ \right\rrbracket^\perp
 $$
-\end{remark}
+
+
 The controlled voltage source is the electrical circuit analogue of a $X$-phase correction in quantum circuits.  Similarly, the controlled current source is the transpose of a measurement in the $X$-basis. However the voltmeters and ammeters have no quantum analogue.
 
 
-Just as Spekkens' toy model can be interpreted as an epistemically restricted toy theory of quantum circuits; by dualizing things, we could also ask what properties of quantum mechanics hold in $\Aff\Isot\Rel_{\F_p}^M$.  This  is an ``ontologically restricted'' toy theory of quantum mechanics; or equivalently an epistemically ``co-restricted'' toy theory. In other words, there is a {\em minimum} amount of knowledge the observer has about the ontic state.
+Just as Spekkens' toy model can be interpreted as an epistemically restricted toy theory of quantum circuits; by dualizing things, we could also ask what properties of quantum mechanics hold in $\Aff\Isot\Rel_{\F_p}^M$.  This  is an ``ontologically restricted'' toy theory of quantum mechanics; or equivalently an epistemically ``co-restricted'' toy theory. In other words, where there is a {\em minimum} amount of knowledge the observer has about the ontic state so that discarding a state imposes extra equations.
 
-Because of the incompatibility of isotropic relations with quopit stabilizers; this gives evidence that the epistemic state of the observer acts on the ontic state, rather than the other way around.  On the other hand, in classical mechanics, witnessed by this interpretation of controlled current and voltage sources as well as voltmeters and ammeters, we see that the observer and the physical state live on the same footing.
+
+ However, this shouldn't be too surprising. If we added the quantum analogue of  ammeters to our relational semantics of pure stabilizer circuits, we could compose the ammeter with with another ammeter conjugated by the symplectic Fourier transform as follows:
+
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (0) at (12.75, -9.25) {};
+		\node [style=none] (1) at (11.75, -7.5) {};
+		\node [style=none] (2) at (12.75, -10.25) {};
+		\node [style=none] (3) at (13.5, -10.25) {};
+		\node [style=Z] (4) at (13.5, -9.25) {};
+		\node [style=none] (5) at (12.25, -7.5) {};
+		\node [style=none] (6) at (13.5, -7.5) {};
+		\node [style=none] (7) at (12.75, -7.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (2.center) to (0);
+		\draw [style=classicalwire, in=-90, out=135] (0) to (1.center);
+		\draw (4) to (6.center);
+		\draw [style=classicalwire, in=-90, out=135] (4) to (5.center);
+		\draw (4) to (3.center);
+		\draw (0) to (7.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+This would allow us to simultaneously measure the  $Z$ and $X$ observables wich is not possible in quantum mechanics due to the uncertainty principle.
 
 \section{Error correction}
 \label{sec:qec}
-In this section, we show how to implement quantum error correction protocols for stabilizer codes using the string diagrams we developed in the previous section.  See \cite{gottesman} or \ref{nielsen} for reference on stabilizers codes and error correction.  Nothing in this section is particularly novel from a technical point of view; however, it is conceptually different from the way that stabilizer codes are usually explained.
+In this section, we show how to implement quantum error correction protocols for stabilizer codes using the string diagrams we developed in the previous section.  See \cite{gottesman} or \cite{nielsen} for reference on stabilizers codes and error correction.  Nothing in this section is particularly novel from a technical point of view; however, it is conceptually different from the way that stabilizer codes are usually explained.
 
 
 
@@ -7044,7 +7076,7 @@ Fix an odd prime local dimension  $p$.
 Consider an affine coisotropic subspace $S=L+a \subseteq \F_p^{2n}$ where $L$ has dimension $n+k$.  Then the associated projector on $n$-qudits is called a $[n,k]$-stabilizer code, as it encodes $k$ logical qudits into $n$ physical qudits. 
 The relationship between logical and physical qubits can be understood in terms of pictures.  We will draw the doubled string diagrams for calculation; accompanied by the quopit stabilizer bastard spider diagrams to give a cleaner presentation.
 
-Fix a dilation $U$ of $S$:
+Recalling Proposition \ref{prop:sympstine}, fix a dilation $U$ of $S$:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -7206,7 +7238,7 @@ $$
 $$
 
 Suppose that Alice encodes a state and sends it to Bob on a noisy quantum channel.
-Recall how Weyl operators form a unitary operator basis.  So that given any error on a quantum channel we can decompose it as a linear combination of Weyl operators  $W(e)$.
+Recall from Lemma \ref{lem:ueb} that Weyl operators form a unitary operator basis.  So that given any error on a quantum channel we can decompose it as a linear combination of Weyl operators  ${\mathcal W}(e)$.
 
 To detect the error, Bob apply the non-destructive measurement with respect to our chosen basis on the last $n-k$ wires in the $Z$-basis conjugated by $U$.  Because stabilizers preserve Cliffords under conjugation, in the symplectic picture, we have $W((a,b),(c,d)) = U;W(e);U^\dag$.  Therefore:
 
@@ -9539,7 +9571,7 @@ Therefore this error correction protocol corrects for at most one $X$-error.
 \label{sec:conclagrel}
 It is important to note that the controlled operation we applied for the error correction step requires nonlinear classical processing power, and therefore the diagram we drew doesn't ``live'' within the calculus we have constructed throughout this paper. 
 
-Indeed, in this example, we have secretly been working in the pushout:
+Indeed, in this example, we have secretly been working in the pushout of the diagram of mutlicoloured props:
 
 $$\ZXA/\sim \leftarrow \Aff\Rel_{\F_2} \rightarrow \Aff\Co\Isot\Rel_{\F_2}^M$$
 
@@ -9548,76 +9580,176 @@ Where $\ZXA/\sim$ is the prop of Boolean {\em relations} which we presented by t
 Where moreover  $\Aff\Rel_{\F_2}\to \ZXA/\sim$ sends linear subspaces to subsets; and  $\Aff\Rel_{\F_2} \to \Aff\Co\Isot\Rel_{\F_2}^M$  sends 
 $$(n\xrightarrow{f} m) \mapsto (C^{\otimes n}\xrightarrow{(p_Z^{\otimes n}, f, p_Z^{\otimes m})} C^{\otimes n})$$
 
-So that we can regard the {\em classical wires} as being subsets rather than affine subspaces.
-We can afford to do this because of the presentation of $\ZXA/\sim$ in the previous chapter. However, this is not very satisfying, because we only have a presentation for qubit nonlinear post-processing; and the symplectic formalism only gives a semantics for quantum circuits without phase-shift gates, as discussed in Corollary \ref{cor:nophase}.   This gives more motivation to actually work out a presentation for the quopit version of $\ZXA/\sim$ where there is no such subtlely.
+So that we can regard the classical wires as being arbitrary subsets rather than affine subspaces.
+We can afford to do this because of the presentation of $\ZXA/\sim$ in the previous chapter. However, this is not very satisfying.  We only have a presentation for qubit nonlinear post-processing.   This gives more motivation to actually work out a presentation for the quopit version of $\ZXA/\sim$ .
 
 
-This also begs the following question.  If quopit stabilizer circuits correspond to affine coisotropic subspaces of symplectic vector spaces, is there a succinct characterization of the structure of the subsets of  $\F_p^{2n}$ obtained by applying nonlinear classical processing to stabilizer states?
-The nonlinear processing imposes equations which mean that the subset is no longer affine, for example consider the following stabilizer state which is measured, the measurement outcomes are multiplied and then a phase correction is performed using this value:
+This also begs the following question.  We know that quopit stabilizer circuits correspond to affine coisotropic subspaces of symplectic vector spaces.  However is there a succinct characterization of the structure of the subsets of  $\F_p^{2n}$ obtained by applying nonlinear classical processing to stabilizer states?  For example consider the following state:
+
 $$
+\left\llbracket\
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=X] (358) at (248.5, 10.5) {};
-		\node [style=Z] (359) at (249.75, 10.5) {};
-		\node [style=none] (360) at (248.75, 11) {};
-		\node [style=none] (362) at (248.25, 11) {};
-		\node [style=none] (363) at (249.5, 11) {};
-		\node [style=none] (365) at (250, 11) {};
-		\node [style=X] (369) at (247.5, 10.5) {};
-		\node [style=Z] (370) at (250.75, 10.5) {};
-		\node [style=none] (371) at (247.75, 11) {};
-		\node [style=none] (372) at (247.25, 11) {};
-		\node [style=none] (373) at (250.5, 11) {};
-		\node [style=none] (374) at (251, 11) {};
-		\node [style=Z] (375) at (248.75, 11) {};
-		\node [style=Z] (376) at (247.75, 11) {};
-		\node [style=none] (377) at (251, 11) {};
-		\node [style=none] (378) at (250, 11) {};
-		\node [style=mult] (37wer9) at (250.75, 12) {};
-		\node [style=none] (379) at (250.75, 12) {};
-		\node [style=X] (380) at (250, 13) {};
-		\node [style=Z] (381) at (247.75, 12) {};
-		\node [style=X] (382) at (250, 12) {};
-		\node [style=Z] (383) at (247.75, 13) {};
-		\node [style=Z] (384) at (248.5, 12) {};
-		\node [style=none] (385) at (250, 13.75) {};
-		\node [style=none] (386) at (247.75, 13.75) {};
+		\node [style=none] (1900) at (33, 3) {};
+		\node [style=none] (1870) at (32, 2) {};
+		\node [style=Zthick] (187) at (32, 2) {};
+		\node [style=Zthick] (188) at (33.5, 2) {};
+		\node [style=Xthick] (189) at (34, 3.5) {};
+		\node [style=Zthick] (190) at (33, 3) {};
+		\node [style=none] (191) at (33.5, 5) {};
+		\node [style=none] (192) at (32.25, 7.25) {};
+		\node [style=none] (193) at (31.25, 7.25) {};
+		\node [style=Xthick] (194) at (32.25, 6.75) {};
+		\node [style=X] (195) at (33, 4.25) {};
+		\node [style=Z] (196) at (34, 4.25) {};
+		\node [style=Z] (197) at (33.5, 5.75) {};
+		\node [style=none] (198) at (31.25, 3) {};
+		\node [style=none] (199) at (34, 3) {};
+		\node [style=none] (200) at (32.25, 3) {};
+		\node [style=mult] (201) at (33.5, 5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=45, out=-90] (360.center) to (358);
-		\draw [in=135, out=-90] (362.center) to (358);
-		\draw [in=45, out=-90] (365.center) to (359);
-		\draw [in=135, out=-90] (363.center) to (359);
-		\draw [in=45, out=-90] (371.center) to (369);
-		\draw [in=135, out=-90] (372.center) to (369);
-		\draw [in=45, out=-90] (374.center) to (370);
-		\draw [in=135, out=-90] (373.center) to (370);
-		\draw [style=classicalwire, in=-120, out=90] (378.center) to (379);
-		\draw [style=classicalwire, in=-15, out=90, looseness=0.75] (379) to (380);
-		\draw [style=classicalwire, in=90, out=-60] (379) to (377.center);
-		\draw [in=225, out=90] (372.center) to (381);
-		\draw [in=90, out=-45] (381) to (362.center);
-		\draw [in=-45, out=90] (373.center) to (382);
-		\draw [in=90, out=-135] (382) to (363.center);
-		\draw (383) to (381);
-		\draw [in=-15, out=90, looseness=1.25] (384) to (383);
-		\draw (382) to (380);
-		\draw (383) to (386.center);
-		\draw (380) to (385.center);
+		\draw [in=-30, out=90] (196) to (191.center);
+		\draw [in=90, out=-150] (191.center) to (195);
+		\draw (191.center) to (197);
+		\draw [style=thick] (193.center) to (198.center) to [in=150, out=-90, looseness=0.75]  (187.center);
+		\draw [style=thick] (192.center) to (194.center);
+		\draw [style=thick] (194.center) to (200.center) to [in=165, out=-90] (188.center);
+		\draw [style=thick] (188.center) to [in=-90, out=45]  (199.center) to (199.center) to (189);
+		\draw [style=thick] (189.center) to (196.center);
+		\draw [style=thick] (190.center) to (189.center);
+		\draw [style=thick, in=-15, out=90, looseness=0.75] (197.center) to (194.center);
+		\draw [style=thick] (190.center) to (195.center);
+		\draw [style=thick, bend left, looseness=0.75] (190) to (187);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (89) at (18, 0.25) {};
+		\node [style=X] (90) at (19, 0.25) {};
+		\node [style=Z] (91) at (21, 0.25) {};
+		\node [style=Z] (92) at (22, 0.25) {};
+		\node [style=X] (93) at (22.5, 1.75) {};
+		\node [style=none] (95) at (17.5, 1.25) {};
+		\node [style=none] (96) at (18.25, 1.25) {};
+		\node [style=none] (97) at (18.75, 1.25) {};
+		\node [style=none] (98) at (19.5, 1.25) {};
+		\node [style=Z] (99) at (19.5, 1.75) {};
+		\node [style=X] (100) at (18.75, 1.25) {};
+		\node [style=Z] (101) at (19.5, 2.5) {};
+		\node [style=none] (102) at (18.75, 2.5) {};
+		\node [style=none] (103) at (18.25, 2.5) {};
+		\node [style=none] (104) at (17.5, 2.5) {};
+		\node [style=none] (105) at (20.5, 1.25) {};
+		\node [style=none] (106) at (21.25, 1.25) {};
+		\node [style=none] (107) at (21.75, 1.25) {};
+		\node [style=none] (108) at (22.5, 1.25) {};
+		\node [style=none] (109) at (21.75, 2.5) {};
+		\node [style=none] (110) at (22.5, 2.5) {};
+		\node [style=none] (111) at (20.5, 2.5) {};
+		\node [style=none] (112) at (21.25, 2.5) {};
+		\node [style=Z] (113) at (21.75, 2.5) {};
+		\node [style=none] (114) at (22, 3.5) {};
+		\node [style=X] (115) at (21.25, 4.5) {};
+		\node [style=none] (116) at (18.25, 5.25) {};
+		\node [style=none] (117) at (17.5, 5.25) {};
+		\node [style=none] (118) at (20.5, 5.25) {};
+		\node [style=none] (119) at (21.25, 5.25) {};
+		\node [style=mult] (120) at (22, 3.5) {};
+		\node [style=Z] (121) at (21.75, 1.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=30] (89) to (97.center);
+		\draw [in=-90, out=135] (89) to (95.center);
+		\draw [in=150, out=-90] (96.center) to (90);
+		\draw [in=-90, out=45] (90) to (98.center);
+		\draw (100) to (99);
+		\draw (99) to (98.center);
+		\draw (100) to (102.center);
+		\draw (103.center) to (96.center);
+		\draw (104.center) to (95.center);
+		\draw (99) to (101);
+		\draw [in=-90, out=30] (91) to (107.center);
+		\draw [in=-90, out=150] (92) to (106.center);
+		\draw [in=135, out=-90] (105.center) to (91);
+		\draw [in=-90, out=45] (92) to (108.center);
+		\draw (107.center) to (109.center);
+		\draw (105.center) to (111.center);
+		\draw (106.center) to (112.center);
+		\draw [style=classicalwire, in=-120, out=90, looseness=0.50] (102.center) to (114.center);
+		\draw [style=classicalwire, in=-45, out=90, looseness=0.75] (110.center) to (114.center);
+		\draw [style=classicalwire, in=-30, out=90] (114.center) to (115);
+		\draw (112.center) to (115);
+		\draw (115) to (119.center);
+		\draw (118.center) to (111.center);
+		\draw (103.center) to (116.center);
+		\draw (117.center) to (104.center);
+		\draw (121) to (93);
+		\draw (93) to (110.center);
+		\draw (93) to (108.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (187) at (33.25, 0.25) {};
+		\node [style=Z] (188) at (34.25, 0.25) {};
+		\node [style=X] (189) at (34.75, 1.25) {};
+		\node [style=none] (190) at (31.75, 0.25) {};
+		\node [style=none] (191) at (31.75, 0.25) {};
+		\node [style=X] (192) at (31.75, 0.25) {};
+		\node [style=none] (193) at (31.75, 0.25) {};
+		\node [style=none] (194) at (31, 1.5) {};
+		\node [style=none] (195) at (32.75, 1.25) {};
+		\node [style=none] (196) at (33.5, 1.25) {};
+		\node [style=none] (197) at (34.75, 1.25) {};
+		\node [style=none] (198) at (34.75, 1.25) {};
+		\node [style=none] (199) at (34.25, 2.25) {};
+		\node [style=none] (200) at (34.25, 2.25) {};
+		\node [style=X] (201) at (33.5, 3.25) {};
+		\node [style=none] (202) at (31.75, 4) {};
+		\node [style=none] (203) at (31, 4) {};
+		\node [style=none] (204) at (32.75, 4) {};
+		\node [style=none] (205) at (33.5, 4) {};
+		\node [style=s] (206) at (31.75, 2) {};
+		\node [style=mult] (207) at (34.25, 2.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=150, out=-90] (194.center) to (190.center);
+		\draw [in=-150, out=30, looseness=0.75] (187) to (197.center);
+		\draw [in=-90, out=150] (188) to (196.center);
+		\draw [in=135, out=-90] (195.center) to (187);
+		\draw [in=-90, out=45] (188) to (198.center);
+		\draw [in=-120, out=30, looseness=0.50] (193.center) to (200.center);
+		\draw (201) to (205.center);
+		\draw (203.center) to (194.center);
+		\draw [in=-45, out=90, looseness=0.75] (189) to (199.center);
+		\draw [in=-30, out=90] (200.center) to (201);
+		\draw (202.center) to (206);
+		\draw (206) to (193.center);
+		\draw (195.center) to (204.center);
+		\draw (201) to (196.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
 
 This mixed quantum state is stabilized by Weyl operators of the form:
-$$\{W(z,x_1+x_2+x_1\cdot x_2)\ |\ \forall z,x_1,x_2\in \F_p\}$$
-However, the stabilizers do {\em not} correspond to an affine subspace of $\F_p^2$ because of the nonlinear factor $x_1\cdot x_2$.
+$$
+\{
+\mathcal{W}((z,z'),(x,x')) \ | \ \forall z,z',x,x' ,a \in \F_p, (z'-z)(a+x)+a=x'
+\}
+$$
+
+However, the stabilizers do {\em not} correspond to an affine subspace of $\F_p^2$ because $(z'-z)(a+x)+a=x'$ is not reducible to an affine equation.
 
 
 
-We can't construct circuits stabilized by Weyl operators corresponding to arbitrary {\em subsets} of $\F_p^{2n}$; for example, we can't copy the $Z$ and $X$ variables, because they can not be simultaneously measured.
+%On the other hand, we can't construct circuits stabilized by Weyl operators corresponding to arbitrary subsets of $\F_p^{2n}$; for example, we can't copy the $Z$ and $X$ variables, because they can not be simultaneously measured.
 
 
-Similarly, we can't produce the qudit generalization of the gate which multiplies standard basis elements in $\FHilb$, as we did with the $\AND$ gate in $\ZXA$.  This is because we can only multiply the {\em classical} outcomes.
+%Similarly, we can't produce the qudit generalization of the gate which multiplies standard basis elements in $\FHilb$, as we did with the $\AND$ gate in $\ZXA$.  This is because we can only multiply the outcomes of measurements.
 
 
 What is the structure of this intermediate notion of subspace?
@@ -9625,24 +9757,22 @@ What is the structure of this intermediate notion of subspace?
 
  
 
-We have not given an undoubled completeness proof for $\Aff\Co\Isot\Rel_k$, although the completeness of the quopit stabilizer ZX-calculus \cite{booth} gives a completness result for $\Aff\Co\Isot\Rel_{\F_p}$. The subsequent paper of \cite{poor} which establishes a unique ``AP-normal form'' for quopit circuits greatly simplifies this presentation.  A completness result for arbitrary fields should closely follow their techniques.
+We have not given a proper ``undoubled''  presentation of $\Aff\Co\Isot\Rel_k$.  The recent completeness of the quopit stabilizer ZX-calculus \cite{booth} gives a completeness result for $\Aff\Co\Isot\Rel_{\F_p}$. The subsequent paper of \cite{poor} which establishes a unique ``AP-normal form'' for quopit circuits greatly simplifies this presentation.  A completness result for arbitrary fields would closely follow their techniques.
 
 Even though completeness for the quopit stabilizer fragment of the ZX-calculus is known, there is motivation for generalizing their result.
-Because everything we have developed in this chapter works for all fields, rather than just odd prime fields; this begs the question if this semantics could be used for continuous variable quantum mechanics/quantum photontics, by working over fields with characteristic 0; so that a complete axiomatization of $\Aff\Lag\Rel_k$ would yield continous variable analogues of the ZX-calculus.
+Because everything we have developed in this chapter works for all fields, rather than just odd prime fields; this begs the question if this semantics could be used for continuous variable quantum mechanics by working over fields with characteristic.  A presentation of $\Aff\Lag\Rel_k$ would yield continous variable analogues of the ZX-calculus.
 
- For example, in \cite[Theorem 2]{gross} Gross proves how  Gaussian states on the Hilbert space $\ell^2(\R^n)$ are in bijection with the affine Lagrangian subspaces of the symplectic vector space $\C^{2n}$ given by complex valued graph states, acted on by real valued Weyl operators. 
-Gaussian states are the analogue of stabilizer states for continuous variables, allowing for coherent control.
-However,  $\Aff\Lag\Rel_{\C}$ contains not only these Gaussian states, but also the dirac deltas for the position and momentum observables, providing a path towards exploring continuous variable ZX-calculi.
+ For example, in \cite[Theorem 2]{gross} Gross proves how  Gaussian states on the Hilbert space of square {\em integrable} functions $L^2(\R^n)$ are in bijection with a subset of the  affine Lagrangian subspaces of the symplectic vector space $\C^{2n}$.  More specifically, the  complex valued graph states, acted on by real valued Weyl operators. 
+Gaussian states are the analogue of stabilizer states for continuous variables; where they correspond to volume-preserving Gaussian probability distributions in the phase space $\R^{2n}$.
+However,  $\Aff\Lag\Rel_{\C}$ contains not only these Gaussian states, but also the dirac deltas for the position and momentum observable, regarded as elements of the function space  $L^2(\C^n)$.
 
-These   dirac deltas are ``nonphysical'' in the sense that they can not be interpreted as states in $\Hilb$; which is one way to see why $\Hilb$ not compact closed.  However, they are often used  to perform calculation, as they capture the behaviour of Gaussian quantum mechanics in the limit.  For example, squeezed states are used for continuous variable quantum teleportation \cite{Milburn1999}. 
+As opposed to in the finite dimensional setting of stabilizer states,   these   dirac deltas are ``nonphysical'' in the sense that they can not be interpreted as states in $\Hilb$.  However, they are often used  to perform calculation, as they capture the behaviour of Gaussian quantum mechanics in the ``infinitely squeezed limit''.  For example, infinitely squeezed states are used for continuous variable quantum teleportation \cite{Milburn1999}. Therefore, giving a proper completeness proof for $\Aff\Lag\Rel_{\C}$ would give a continous variable analogue of the ZX-calculus with infinitely squeezed states.
 
-Nonstandard analysis has been used to try to solve the problem of dirac deltas not existing in $\Hilb$/the lack of compact closure in infinite dimensions \cite{Gogioso2017}; however, this approach is considerably more powerful, as well as complicated.  The symplectic approach could potentially provide a simpler path towards expanding categorical quantum mechanics towards continous variables.
+Nonstandard analysis has been used to try to solve the problem of dirac deltas not being states in $\Hilb$  \cite{Gogioso2017}; however, this approach is considerably more powerful, as well as complicated.  The symplectic approach could potentially provide a simpler path towards expanding categorical quantum mechanics towards continous variables.
 
-\nocite{kirch}
+Finding a presentation this fragment of the  continuous variable ZX-calculus is closely related to the question of finding a graphical calculus for passive linear electrical circuits with current and voltage sources.  In \cite{amolak}, they give a complete set of equations for the electrical circuits generated by ideal junctions and resistors.  The normal form which they use involves a modified pivoting rule which avoids rewriting the resistances to be negative.  The normal form is effectively a special case of the AP-normal form of \cite{poor}, except over positive division semirings, rather than over $\F_p$.  So finding a presentation for affine Lagrangian relations would be very close to adding current and voltage sources to the presentation of \cite{amolak}. However, not every affine Lagrangian relation over $\R(x)$ can be interpreted as an electrical circuit, so one would have to take extra care to answer this question. Perhaps the preceding paper \nocite{kirch}, motivated by connecting the relational semantics of electrical circuits and stabilizer circuits, coud help answer this question. They give a normal form for circuits in $\Lag\Rel_k$, although not an explicit rewriting precudure
 
-This question of a continuous variable ZX-calculus is closely related to the question of finding a graphical calculus for passive linear electrical circuits with current and voltage sources.  In \cite{amolak}, they give a complete set of equations for the electrical circuits generated by ideal junctions and resistors.  The normal form which they use involves a modified pivoting rule which avoids rewriting the resistances to be negative.  Indeed, one can regard the normal form of this paper as a variation of the AP-normal form of \cite{poor}.  So finding a presentation for affine Lagrangian relations would be very close to adding capacitors, inductors and current and voltage sources to the presentation of \cite{amolak}; however, not every affine Lagrangian relation over $\R(x)$ can be interpreted as an electrical circuit, so one would have to take extra care to answer this question.
-
-The connection of the ZX-calculus to electrical circuits is fascinating and poses many questions.  For example, using the technique developed in \cite{control} and applied to electrical circuits \cite{network}, $\Aff\Co\Isot\Rel_{\F_p(s)}$ apparently gives a notion of mixed stabilizer circuits with discrete-time evolution.  What is the physical interpretation of this?
+The connection of the ZX-calculus to electrical circuits is fascinating and leaves many questions open.  For example, using the technique developed in \cite{control} and applied to electrical circuits \cite{network}, $\Aff\Co\Isot\Rel_{\F_p(s)}$ apparently gives a notion of mixed stabilizer circuits with discrete-time evolution.  What is the physical interpretation of this?
 
 %
 %There is also a practical motivation for providing this graphical calculus.  Just as increasing the characteristic of the prime field increases the quopit dimension; if one transitions to working in $\Aff\Co\Isot\Rel_k$ where $k$ has characteristic 0, it appears that this will give a semantics for continous variable quantum mechanics.
