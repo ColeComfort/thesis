@@ -33,34 +33,24 @@ In this subsection we review some aspects of internal category theory so that we
 
 
 One way to combine monoidal theories is via pushout.  We generalize the analagous result of \cite[Proposition 2.51]{ih} to the multicoloured setting:
-
 \begin{lemma}
 Take three (symmetric) monoidal theories
-
 $$T_0=({\sf Ob}_0,\Sigma_0 ,E_0 ), \ T_1=({\sf Ob}_1,\Sigma_1 ,E_1 ), \ T_2=({\sf Ob}_2,\Sigma_2 ,E_2 )$$
-
 such that ${\sf Ob}_0 \subseteq {\sf Ob}_1,{\sf Ob}_2$, $\Sigma_0 \subseteq \Sigma_1,\Sigma_2$ and$E_0 \subseteq E_1,E_2$.
 Then the pushout of the diagram $\bar{T_1} \leftarrow \bar{T_0} \rightarrow \bar{T_2}$  in the category of strict (symmetric) monoidal categories is presented by the (symmetric) monoidal theory:
-
 $$
 ( {\sf Ob}_1 \cup {\sf Ob}_2, \Sigma_1 \cup \Sigma_2, E_1 \cup E_2)
 $$
-
 \end{lemma}
-
 In practice, we usually won't be so explicit about the pushout of (symmetric) monoidal theories.  Rather, we will present a set of generators and multiple equations between different subsets of generators.  Indeed, we have done this many times up to this point when glueing (symmetric) monoidal theories together.  
 
 
 
 However, there is a more refined notion of composition of pro(p)s; to expose which, we first need to review  a considerable amount of internal category theory.
-
-
 \subsubsection{Internal categories and strict factorization systems}
-
 In this section we will make extensive use of bicategories.  Just like monoidal categories, every bicategory is equivalent to a strict 2-category where the unitors and associators are identities.  We have already been working with a strict 2-category throughout this thesis: the 2-category of categories, functors and natural transformations (as well as its various monoidal cousins).   We have also already encountered a (nonstrict) bicategory: namely, the 2-category of spans internal to a category.  
 
 2-categories have a graphical calculus much like strict monoidal categories, except for the fact that now the empty space between wires is now coloured by the 0-cells.  For example a 0-cell is drawn as a surface:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -73,12 +63,9 @@ $$
 	\begin{pgfonlayer}{edgelayer}
 		\fill[style=cellone] (5.center) to (10.center) to (12.center) to (11.center) to cycle;
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
-
 A 1-cell $F:X\to Y$ is drawn as a wire separating two surfaces:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -98,11 +85,9 @@ $$
 		\fill[style=celltwo] (10.center) to (13.center) to (14.center) to (12.center) to cycle;
 		\draw (10.center) to (12.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
 The composition of two $1$-cells $X\xrightarrow{F} Y\xrightarrow{G}Z $ is drawn as follows:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -129,11 +114,9 @@ $$
 		\draw (1.center) to (3.center);
 		\draw (5.center) to (4.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
 And a 2-cell $\phi:F\Rightarrow G$ as a node between wires:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -154,23 +137,15 @@ $$
 		\fill[style=celltwo] (10.center) to (13.center) to (14.center) to (12.center) to cycle;
 		\draw (10.center) to (100.center) to (12.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
-
 I won't go into full detail, but you can imagine how the to compose two cells in both directions as in the monoidal setting; moreover, I will omit the labels when they are clear from context, as I have done for monoidal categories. For the rest of this section I will work exploit the coherence theorem and work in the setting of strict 2-categories.  This notation shows how the following constructions are canonical:
-
-
-
 \begin{definition}[{\cite[\S 1]{monadsi}}]
 \label{def:monad}
 Given a bicategory $\mathcal B$, there is a bicategory of monads in $\mathcal B$, $\Mnd({\mathcal B})$ with:
-
 \begin{description}
 \item[0-cells:]
-
 {\bf Monads} are tuples $(X,T,\mu,\eta)$ in $\mathcal B$.  Where $X$ is a $0$-cell $T:X\to X$ is a $1$-cell and  $\mu:T^2 \to T$ and $\eta:1_X\to T$ are $2$-cells satisfying the associativity and unit laws:
-
 
 \hfil$
 \xymatrix{
@@ -186,8 +161,6 @@ T^2 \ar[r]_{\mu} & T
 $
 
 Graphically if we draw $T$ as $\xcirc$:
-
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -213,7 +186,7 @@ $$
 		\draw [in=90, out=-150] (18) to (20.center);
 		\draw (21.center) to (16.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 =
 \begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -239,7 +212,8 @@ $$
 		\draw [in=90, out=-150] (18) to (20.center);
 		\draw (21.center) to (16.center);
 	\end{pgfonlayer}
-\end{tikzpicture}\ , \hspace*{.2cm}
+\end{tikzpicture}%
+\ , \hspace*{.2cm}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=X] (0) at (8, 2.5) {};
@@ -260,7 +234,7 @@ $$
 		\draw [in=90, out=-150] (0) to (2.center);
 		\draw (1.center) to (4.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -275,7 +249,7 @@ $$
 		\fill [style=cellone] (38.center) to (39.center) to (40.center) to (41.center) to cycle;
 		\draw (6.center) to (7.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 =
 \begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -297,11 +271,8 @@ $$
 		\draw [in=90, out=-150] (0) to (2.center);
 		\draw (1.center) to (4.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
-
-
 \item[1-cells:] {\bf Monad maps}   $(F,\lambda):(X,T,\mu^T, \eta^T)\to (Y,S,\mu^S, \eta^S)$.  Where  $F:X\to Y$ is a $1$-cell and $\lambda:S;F\to F;T$ is a 2-cell preserving the unit and multiplication as follows:
 
 \hfil$
@@ -322,7 +293,6 @@ S;F \ar[rr]_{\lambda}
 $
 
 Graphically if we draw $S$ as $\zcirc$ and $T$ as $\xcirc$ and $\lambda$ as a crossing:
-
 $$
 \begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -347,7 +317,7 @@ $$
 		\draw [in=90, out=-45] (lambda.center) to (F.center);
 		\draw [in=-90, out=135] (lambda.center) to (B.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 =
 \begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -366,7 +336,8 @@ $$
 		\draw (C.center) to (E.center);
 		\draw (B.center) to (F.center);
 	\end{pgfonlayer}
-\end{tikzpicture} \ , \hspace*{.2cm}
+\end{tikzpicture}%
+ \ , \hspace*{.2cm}
 \begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (F) at (14, 0) {};
@@ -394,7 +365,7 @@ $$
 		\draw [in=-150, out=90] (L.center) to (F.center);
 		\draw [in=90, out=-30] (F.center) to (M.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 =
 \begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -421,11 +392,9 @@ $$
 		\draw [in=135, out=-135] (E.center) to (lambda1.center);
 		\draw (E.center) to (B.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
 \item[2-cells:] {\bf Intertwiners} between monad maps $(F,\lambda) \to (G;\chi)$ are 2-cells $\phi: F\to G$ such that:
-
 $$
 \xymatrix{
 S;F \ar[r]^{S;\phi} \ar[d]_{\lambda}
@@ -434,7 +403,6 @@ F;T \ar[r]_{\phi;T}
  & G;T
 }
 $$
-
 Graphically:
 $$
 \begin{tikzpicture}
@@ -461,7 +429,7 @@ $$
 		\draw [in=-90, out=135] (4.center) to (0.center);
 		\draw (6.center) to (3.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -487,27 +455,20 @@ $$
 		\draw [in=90, out=-45] (15.center) to (11.center);
 		\draw (17.center) to (14.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
 \end{description}
 \end{definition}
-
 This allows us to define the following:
-
 \begin{definition}
 \label{def:internalcat}
-
 %Internal category
 Given a category $\mathcal V$ with finite pullbacks $\mathcal V$, a $\mathcal V$-{\bf internal category} is a monad in $\Span(\mathcal V)$.
 \end{definition}
-
-
 \begin{example}
 \label{ex:internalcat}
 Monads internal to $\Span(\Set)$ are in bijection with small categories.
 \end{example}
-
 Let us upack this a bit.  A small category has a {\em set} $\sf Ob$ of objects, and a {\em set} {\sf Ar} of maps.  There is a map ${\sf dom}:{\sf Ar}\to {\sf Ob}$ which picks out the domain of maps and another map  ${\sf codom}:{\sf Ar}\to {\sf Ob}$ picking out the codomain.  That is to say, a span of sets:
 $$
 S=\xymatrix{
@@ -515,7 +476,6 @@ S=\xymatrix{
 {\sf Ob} & & {\sf Ob}
 }
 $$
-
 Composition of maps is a function which takes maps $f:X\to Y$ and $g:Y\to X$ to a new map $(f;g):X\to Y$.   This is asking for a 2-cell $\mu:S^2\to S$ in $\Span(\Set)$; the pullback picks out the composable maps and composes them.  The associativity of composition corresponds to the associativity of $\mu$ as a semigroup.
 On the other hand, the unit of a small category is a function from ${\sf Ob}$ to $S$, picking out for every object $X$, a map $1_X$ with domain and codomain $X$ , that is to say, a 2-cell $\mu:1_{\sf Ob}\to S$.  The unitality of composition is the unitality of the monad.
 
@@ -523,10 +483,8 @@ One should be careful to notice that the $1$-cells in $\Mnd(\Span(\Set))$ do not
 
 
 There is a canonical way to compose monads, and thus small categories:
-
 \begin{definition}
 Given two monads $\mathbb{L}=(X,L,\mu^L, \eta^L)$ and $\mathbb{R}=(X,R,\mu^R, \eta^R)$ in a bicategory $\cal B$, a distributive law of $R$ over $L$ is a 2-cell $\lambda:R;L\to L;R$ in $\mathcal B$ satisfying the following coherence equations:
-
 
 \hfil
 $
@@ -565,7 +523,6 @@ L;R \ar[rr]_{\lambda}
 $
 
 Graphically where we draw $\lambda$ as a crossing, $R$ as $\xcirc$ and $L$ as $\zcirc$:
-
 $$
 \begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -590,7 +547,7 @@ $$
 		\draw [in=90, out=-45] (lambda.center) to (F.center);
 		\draw [in=-90, out=135] (lambda.center) to (B.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 =
 \begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -609,7 +566,8 @@ $$
 		\draw (C.center) to (E.center);
 		\draw (B.center) to (F.center);
 	\end{pgfonlayer}
-\end{tikzpicture}\ , \hspace*{.2cm}
+\end{tikzpicture}%
+\ , \hspace*{.2cm}
 \begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=X] (F) at (14, 0) {};
@@ -637,7 +595,7 @@ $$
 		\draw [in=-150, out=90] (L.center) to (F.center);
 		\draw [in=90, out=-30] (F.center) to (M.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 =
 \begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -664,10 +622,8 @@ $$
 		\draw (E.center) to (B.center);
 		\draw [in=-90, out=90] (H.center) to (C.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -692,7 +648,7 @@ $$
 		\draw [in=90, out=-45] (lambda.center) to (F.center);
 		\draw [in=-90, out=135] (lambda.center) to (B.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -711,7 +667,8 @@ $$
 		\draw (C.center) to (E.center);
 		\draw (B.center) to (F.center);
 	\end{pgfonlayer}
-\end{tikzpicture}\ , \hspace*{.2cm}
+\end{tikzpicture}%
+\ , \hspace*{.2cm}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=X] (F) at (14, 0) {};
@@ -739,7 +696,7 @@ $$
 		\draw [in=-150, out=90] (L.center) to (F.center);
 		\draw [in=90, out=-30] (F.center) to (M.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -766,13 +723,10 @@ $$
 		\draw (E.center) to (B.center);
 		\draw [in=-90, out=90] (H.center) to (C.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
 \end{definition}
-
-
 Distributive laws of monads are compositions in the following sense:
-
 \begin{lemma}
 Given a distributive law of monads $\lambda:R;L\to L;R$, the 1-cell
 $L;R$ has a monad structure with:
@@ -782,10 +736,7 @@ $L;R$ has a monad structure with:
 {\bf multiplication:} & $\mu^{L;R}:=(L;R)^2 \xrightarrow{1_X; \lambda ; 1_X} L;L;R;R \xrightarrow{\mu^L;\mu^R} L;R$
 \end{tabular}
 
-
 Graphically:
-
-
 $$
 \eta^{L;R}
 =
@@ -809,7 +760,8 @@ $$
 		\draw (7.center) to (1);
 		\draw (6.center) to (0);
 	\end{pgfonlayer}
-\end{tikzpicture}\ , \hspace*{.2cm}
+\end{tikzpicture}%
+\ , \hspace*{.2cm}
 \mu^{L;R}=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -835,36 +787,25 @@ $$
 		\draw [in=90, out=-30, looseness=0.75] (0) to (5.center);
 		\draw [in=-30, out=90] (3.center) to (1);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
 \end{lemma}
-
-
 There is a very concise way of viewing distributive laws:
-
 \begin{lemma}[{\cite[\S 6]{street}}]
 Distributive laws of monads in a bicategory $\cal B$ are precisely monads in $\Mnd({\cal B})$.
 \end{lemma}
-
-
 The following notion allows one to factorize the maps in categories:
-
-
 \begin{definition}[{\cite[\S 6.2]{grandis}}]
 A {\bf strict factorization system} on a category $\X$ is a pair of subcategories $(\mathbb{L},\mathbb{R})$ of $\X$ with the same objects as $\X$, such that every map in $\X$ can be uniquely factored into a map in $\mathbb{L}$ followed by a map in  $\mathbb{R}$.
 
 
 That is to say every map $f:X\to Y$ factorizes as follows
-
-
 $$
 \xymatrix{
 X  \ar[rr]^{f} \ar[dr]_{\ell \in {\mathbb L}} &       & Y\\
    & A \ar[ur]_{r \in {\mathbb R}}
 }
 $$
-
 such that given another such factorization
 $$
 \xymatrix{
@@ -872,9 +813,7 @@ X  \ar[rr]^{f} \ar[dr]_{\ell' \in {\mathbb L}} &       & Y\\
    & A' \ar[ur]_{r' \in {\mathbb R}}
 }
 $$
-
 then the following diagram commutes:
-
 $$
 \xymatrixrowsep{10mm}
 \xymatrixcolsep{50mm}
@@ -884,28 +823,22 @@ X   \ar[r]_{\ell'}                & A' \ar[r]_{r'} & Y
 }
 $$
 \end{definition}
-
 \begin{lemma}[{\cite[Theorem 3.8]{rosebrugh}}]
 \label{lemma:rosebrugh}
 Strict factorization systems of small categories $(\mathbb L,\mathbb R)$ are precisely distributive laws of $\mathbb R$ over $\mathbb L$ , viewed as monads in $\Span(\Set)$.
 \end{lemma}
-
 Therefore, a distributive law of small categories can be regarded as a way to uniquely factorize maps into two disjoint subcategories $\mathbb{L};\mathbb{R}$; so that if a composite is out of order, there is a rule $\mathbb{L};\mathbb{R}\to \mathbb{R};\mathbb{L}$ to push them past each other uniquely.
 
 
 By changing $\Set$ to the category of monoids, \cite{lack} observed that one can recover the appropriate notion of a strict factorization system of pros.  First recall the category of monoids: 
-
 \begin{definition}
 \label{def:monoid}
 Let $\Mon$ denote the category with set-monoids as objects and monoid homorphisms as morphisms.  Where recall:
-
 \begin{description}
-\item[A set monoid] is a monoid $(X,m,e)$ in $\Sets$ under the Cartesian product.
-
+\item[A set monoid:] is a monoid $(X,m,e)$ in $\Sets$ under the Cartesian product.
 \item[A monoid homorphism:] $(X,m,e)\to (Y,m',e')$ is a function $f:X\to Y$ such that  $f(m(x,y)) = m'(f(x),f(y))$ and $f(e)=e'$.
 
 Drawing $(X,m,e)$ as $\zcirc$ and  $(Y,m',e')$ as $\xcirc$ that is:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -923,7 +856,7 @@ $$
 		\draw [in=-30, out=90] (2) to (0);
 		\draw (0) to (5.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -939,7 +872,7 @@ $$
 		\draw (6) to (12);
 		\draw (12) to (13.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
  \ , \hspace*{.2cm}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -949,7 +882,7 @@ $$
 	\begin{pgfonlayer}{edgelayer}
 		\draw (0) to (5.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -961,43 +894,28 @@ $$
 		\draw (6) to (9);
 		\draw (9) to (10.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
 \end{description}
-
-
-
 \end{definition}
-
 $\Mon$ has finite pullbacks, so one can define categories within it.  We already have introduced these categories in other terms:
-
-
 \begin{lemma}[{\cite[\S 2.3]{lack}}]
 \label{def:internalmonoidalcat}
-
 Monads in $\Span(\Mon)$ are in bijection with small strict monoidal categories.
 \end{lemma}
-
 %Indeed, in analogy to the case for small catgories, a distributive law $\X;\Y$ of two small strict monoidal categories is precisely a way to combine the two theories, respecting their monoidal structure,  where the maps can be uniquely factored into maps in $\X$ followed by maps in $\Y$.
-
 There is an obvious analogue of strict factorizations for small strict monoidal categories, which I shall call monoidal strict factorization systems.  In this setting $\mathbb L$ and $\mathbb R$ are small strict monoidal subcategories of $\X$
 
 Therefore, reproducing Lemma \ref{lemma:rosebrugh} internal to $\Mon$ we have:
-
 \begin{lemma}[{\cite[Theorem 3.8]{lack}}]
 Monoidal strict factorization systems of small categories $(\mathbb L,\mathbb R)$ are precisely distributive laws of $\mathbb R$ over $\mathbb L$ , viewed as monads in $\Span(\Mon)$.
 \end{lemma}
-
 Distributive laws of monoidal theories yield a monoidal theory for the composite internal monoidal category. The two theories are combined,  plus rules to push the generators past each other.  This follows immediately from the analysis of distributive laws of props of \cite[Theorem 3.8]{lack}, where a prop is a strict monoidal category on the free monoid $\N$.  
-
 \begin{lemma}
 Take two monoidal theories
-
 $$
 R=({\sf Ob},\Sigma_R ,E_R ), \ L=({\sf Ob},\Sigma_L ,E_L )
 $$
-
 With the same objects.  Regard their corresponding pros $\bar{R}$ and $\bar{L}$ as monads in $\Span(\Mon)$ such that there is a distributive $\lambda:\bar{R};\bar{L} \Rightarrow \bar{L};\bar{R}$.  Where $ \bar{L};\bar{R}$ is a strict monoidal category and both $\bar L$ and $\bar R$ are strict monoidal subcategories of   $\bar{L};\bar{R}$
 
 
@@ -1005,17 +923,10 @@ Then the monoidal theory for the composite pro $\bar{L};\bar{R}$ is given by
 $$
 ({\sf Ob}, \Sigma_R\cup \Sigma_L, E_R\cup E_L \cup E_\lambda)
 $$
-
 where $\lambda$ is the set of equations dictating the unique ways in which the generators in $R$ can be pushed past those in $L$.
 \end{lemma}
-
-
-
-
-
 \begin{example}[{\cite[Example 3.13]{lack}}]
 Let ${\sf injmonot}$ be the pro generated by a single generator $0\to 1$ and no equations:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1025,11 +936,9 @@ $$
 	\begin{pgfonlayer}{edgelayer}
 		\draw (57) to (58.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
 And let ${\sf surjmonot}$ denote the pro generated by a semigroup:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1050,7 +959,7 @@ $$
 		\draw [in=90, out=-150] (4) to (6.center);
 		\draw (7.center) to (2.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 \eref{assoc}
 \begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -1071,11 +980,9 @@ $$
 		\draw [in=90, out=-150] (4) to (6.center);
 		\draw (7.center) to (2.center);
 	\end{pgfonlayer}
-\end{tikzpicture}$$
-
-
+\end{tikzpicture}%
+$$
 ${\sf injmonot}$ is a presentation for the monotone injections  and $\sf surjmonot$  the monotone surjections in $\FinOrdMonot$ under the coproduct.  Moreover, distributive law:
-
 $$
 {\sf injmonot}; {\sf surjmonot};\
 \begin{tikzpicture}[xscale=-1,yscale=-1]
@@ -1093,7 +1000,7 @@ $$
 		\draw [in=150, out=-90] (3.center) to (0);
 		\draw [in=270, out=90] (3.center) to (5.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 \eref{unitl}
 \begin{tikzpicture}[yscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -1103,7 +1010,7 @@ $$
 	\begin{pgfonlayer}{edgelayer}
 		\draw (11.center) to (9.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 \eref{unitr}
 \begin{tikzpicture}[yscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -1120,16 +1027,11 @@ $$
 		\draw [in=150, out=-90] (3.center) to (0);
 		\draw [in=270, out=90] (3.center) to (5.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
 In other words, this is the strict factorization system coming from the epi-mono factorization of $\FinOrdMonot\cong \m$.
-
 \end{example}
-
-
 The strict factorization system gives us a unique normal form.  We can therefore draw the unique connected components of the same arity as follows:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1154,7 +1056,7 @@ $$
 		\draw (48.center) to (41);
 		\draw (41) to (51.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 =:
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1172,12 +1074,9 @@ $$
 		\draw [in=-124, out=90] (7.center) to (8);
 		\draw [in=90, out=-56] (8) to (9.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
-
 The prop $\sfa$ also arizes in terms of a distributive law of pros:
-
 \begin{example}
 Consider the distributive law of pros of a comonoid $\zcirc$ over a monoid $\zcirc$:
 \begin{align*}
@@ -1195,7 +1094,7 @@ Consider the distributive law of pros of a comonoid $\zcirc$ over a monoid $\zci
 		\draw [bend right, looseness=1.25] (3) to (0);
 		\draw [bend right, looseness=1.25] (0) to (3);
 	\end{pgfonlayer}
-  \end{tikzpicture}
+  \end{tikzpicture}%
   \eref{special}
   \begin{tikzpicture}[rotate=90]
 	\begin{pgfonlayer}{nodelayer}
@@ -1205,7 +1104,8 @@ Consider the distributive law of pros of a comonoid $\zcirc$ over a monoid $\zci
 	\begin{pgfonlayer}{edgelayer}
 		\draw (1.center) to (0.center);
 	\end{pgfonlayer}
-  \end{tikzpicture},
+  \end{tikzpicture}%
+,
   \hspace*{.5cm}
   \begin{tikzpicture}[rotate=90]
 	\begin{pgfonlayer}{nodelayer}
@@ -1227,7 +1127,7 @@ Consider the distributive law of pros of a comonoid $\zcirc$ over a monoid $\zci
 		\draw (0) to (4.center);
 		\draw (1) to (7.center);
 	\end{pgfonlayer}
-  \end{tikzpicture}
+  \end{tikzpicture}%
   \eref{frobl}
   \begin{tikzpicture}[rotate=90]
 	\begin{pgfonlayer}{nodelayer}
@@ -1245,7 +1145,7 @@ Consider the distributive law of pros of a comonoid $\zcirc$ over a monoid $\zci
 		\draw [in=0, out=-150, looseness=1.25] (3) to (2.center);
 		\draw [in=0, out=150, looseness=1.25] (3) to (5.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 ,\hspace*{.5cm}
   \begin{tikzpicture}[rotate=90,xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -1267,7 +1167,7 @@ Consider the distributive law of pros of a comonoid $\zcirc$ over a monoid $\zci
 		\draw (0) to (4.center);
 		\draw (1) to (7.center);
 	\end{pgfonlayer}
-  \end{tikzpicture}
+  \end{tikzpicture}%
   \eref{frobr}
 \begin{tikzpicture}[rotate=90]
 	\begin{pgfonlayer}{nodelayer}
@@ -1285,16 +1185,10 @@ Consider the distributive law of pros of a comonoid $\zcirc$ over a monoid $\zci
 		\draw [in=0, out=-150, looseness=1.25] (3) to (2.center);
 		\draw [in=0, out=150, looseness=1.25] (3) to (5.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
   \end{align*}
-
 Which we recall is the  pro {\sf sfa} for the free  special  Frobenius algebra.
-
 \end{example}
-
-
-
-
 %
 %
 %
@@ -1305,16 +1199,9 @@ Which we recall is the  pro {\sf sfa} for the free  special  Frobenius algebra.
 %The idea is that a given a two cospans, the pushout of the cospan in the middle induces a mapping taking cospans to spans in $\FinOrdMonot$, but we know that the skeleton of $\FinMonot$ is $\m$.  Therefore, it remains to check all of the critical pairs which occur in $\m^\op;\m$.  The special Frobenius laws are precisely the way to resolve these critical pairs and push the generators in $\m^\op$ past $\m$.
 %\end{proof}
 %
-
-
 The unique normal form induced by this distributive will be widely used throughout this thesis:
-
-
-
 \begin{lemma}[Non-commutative special spider normal form]
 The circuits in $\sf sfa$ generated by the connected components of the Frobenius algebra have a unique normal form. We use the ``spider notation'' on the right to refer to these simply connected components:
-
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1336,7 +1223,7 @@ $$
 		\draw (2.center) to (8);
 		\draw [in=90, out=-30] (8) to (1.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 :=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1376,12 +1263,9 @@ $$
 		\draw (13.center) to (1);
 		\draw (0) to (12.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
 Because the connected circuits are reducible to each other, spiders connected by wires fuse:
-
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1407,7 +1291,7 @@ $$
 		\draw [bend right=45, looseness=1.25] (40) to (36);
 		\draw [bend right=45, looseness=1.25] (36) to (40);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1430,17 +1314,12 @@ $$
 		\draw [in=90, out=-56] (19) to (20.center);
 		\draw [in=-90, out=30] (19) to (16.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
 \end{lemma}
-
 We will also use the following related result:
-
 \begin{lemma}[Non-commutative spider normal form]
-
 In the case of the prop $\sf fa$ when the Frobenius algebra is not special, then the spider theorem only holds for simply connected circuits.  For example, given a Frobenius algebra $\xcirc$:
-
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1464,7 +1343,7 @@ $$
 		\draw [in=-90, out=56] (8) to (5.center);
 		\draw (8) to (4);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1487,31 +1366,19 @@ $$
 		\draw [in=90, out=-56] (19) to (20.center);
 		\draw [in=-90, out=30] (19) to (16.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
 This does not arise from a distributive law of props.  This should arize instead from a distributive law of polycategories, however, we won't go into any more detail here.  We will however discuss polycategories in Chapter \ref{chap:grothendieck} which will make this intuition clearler.
 \end{lemma}
-
-
-
-
 \subsubsection{Internal profunctors and factorization systems over subcategories}
-
 We want to be able to take distributive laws of two categories which both share some structure.  For example, what is the appropriate notion of distributive law of small strict symmetric monoidal categories where the braiding of both categories are identified with each other?  For this, we can regard the structure of a subcategory as an action on the larger category; formally, this is a certain kind of bimodule:
-
-
-
 \begin{definition}
 Given a bicategory $\mathcal B$ with coequalizers,
 the bicategory of bimodules in $\mathcal B$, $\Mod(\mathcal{B})$ has:
-
 \begin{description}
 \item[0-cells:] Monads in $\mathcal B$.
 \item[1-cells:] A $1$-cell between monads $\mathbb{T}=(X,T,\mu^T,\eta^T)\to \mathbb{S}=(Y,S,\mu^S,\eta^S)$ is a $(\mathbb{T},\mathbb{S})$-{\bf bimodule}.  That is a triple $(F,\tau,\rho)$ where  $F:X\to Y$ is a 1-cell in $\mathcal B$ and $\tau:S;F\to F$ and $\rho:F;T\to F$ are  2-cells (the left and right {\bf actions}, respectively) satisfying the following coherence equations: 
-
 \begin{description}
-
 \item[$(F,\tau)$ is a left $\mathbb{S}$-module:]
 $$
 \xymatrix{
@@ -1527,10 +1394,7 @@ $$
   &F
 }
 $$
-
 Graphically:
-
-
 $$
 \begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -1553,7 +1417,7 @@ $$
 		\draw  (lambda.center) to (C.center);
 		\draw [in=90, out=0] (lambda.center) to (F.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 =
 \begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -1569,7 +1433,8 @@ $$
 		\fill [style=celltwo] (C.center) to (D.center) to (H.center) to (E.center) to cycle;
 		\draw (C.center) to (E.center);
 	\end{pgfonlayer}
-\end{tikzpicture}\ , \hspace*{.2cm}
+\end{tikzpicture}%
+\ , \hspace*{.2cm}
 \begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (F) at (14, 0) {};
@@ -1594,7 +1459,7 @@ $$
 		\draw [in=-150, out=90] (L.center) to (F.center);
 		\draw [in=90, out=-30] (F.center) to (M.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 =
 \begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -1618,11 +1483,8 @@ $$
 		\draw (lambda1.center) to (lambda.center);
 		\draw [in=0, out=90] (L.center) to (lambda1.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
-
-
 \item[$(F,\rho)$ is a right $\mathbb{S}$-module:]
 $$
 \xymatrix{
@@ -1639,11 +1501,7 @@ $$
   &F
 }
 $$
-
 Graphically:
-
-
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1666,7 +1524,7 @@ $$
 		\draw  (lambda.center) to (C.center);
 		\draw [in=90, out=0] (lambda.center) to (F.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1682,7 +1540,8 @@ $$
 		\fill [style=cellone] (C.center) to (D.center) to (H.center) to (E.center) to cycle;
 		\draw (C.center) to (E.center);
 	\end{pgfonlayer}
-\end{tikzpicture}\ , \hspace*{.2cm}
+\end{tikzpicture}%
+\ , \hspace*{.2cm}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=X] (F) at (14, 0) {};
@@ -1707,7 +1566,7 @@ $$
 		\draw [in=-150, out=90] (L.center) to (F.center);
 		\draw [in=90, out=-30] (F.center) to (M.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1731,10 +1590,8 @@ $$
 		\draw (lambda1.center) to (lambda.center);
 		\draw [in=0, out=90] (L.center) to (lambda1.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
-
 \item[Module compatibility:]
 $$
 \xymatrix{
@@ -1744,9 +1601,7 @@ F;T \ar[r]_{\rho}
 & F
 }
 $$
-
 Graphically:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1770,7 +1625,7 @@ $$
 		\draw (27.center) to (22.center);
 		\draw [in=0, out=90] (25.center) to (26.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 =
 \begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -1794,14 +1649,10 @@ $$
 		\draw (27.center) to (22.center);
 		\draw [in=0, out=90] (25.center) to (26.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
-
 \end{description}
-
 Given a $(\mathbb{S},\mathbb{T})$-bimodule $(F,\tau,\rho)$ and a  $(\mathbb{T},\mathbb{U})$-bimodule $(G,\tau',\rho')$, the composite has 1-cell given by the coequalizer:
-
 $$
 \xymatrix{
 F;T;G  \ar@<-.5ex>[r]_{F;\rho} \ar@<.5ex>[r]^{\tau';G} & F;G \ar@{->>}[r] &F \otimes_T G 
@@ -1838,16 +1689,13 @@ $$
 %		\draw [in=180, out=90] (29.center) to (30.center);
 %		\draw [in=270, out=-90, looseness=1.25] (25.center) to (29.center);
 %	\end{pgfonlayer}
-%\end{tikzpicture}
+%\end{tikzpicture}%
 %$$
 %
-
 with left and right actions induced by $\tau$ and $\rho'$.
 
 The identity 1-cell on a monad is the monad itself considered as a bimodule over itself.
-
 \item[2-cells:] A 2-cell between $(\mathbb{S},\mathbb{T})$-bimodules $(F,\tau,\rho)\to (G,\tau',\rho')$ is a 2-cell $\phi:F\to G$ in $\mathcal{B}$ satisfying the following coherence conditions:
-
 $$
 \xymatrix{
   S;F \ar[r]^{\tau}  \ar[d]_{S;\phi}
@@ -1863,10 +1711,7 @@ $$
    &G
 }
 $$
-
 Graphically:
-
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1888,7 +1733,7 @@ $$
 		\draw (2.center) to (0.center);
 		\draw [in=90, out=-150] (2.center) to (4.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1910,7 +1755,8 @@ $$
 		\draw (7) to (10);
 		\draw (10) to (5.center);
 	\end{pgfonlayer}
-\end{tikzpicture}\ , \hspace*{.2cm}
+\end{tikzpicture}%
+\ , \hspace*{.2cm}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (-13, -2) {};
@@ -1931,7 +1777,7 @@ $$
 		\draw (2.center) to (0.center);
 		\draw [in=90, out=-30] (2.center) to (4.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1953,44 +1799,34 @@ $$
 		\draw (7) to (10);
 		\draw (10) to (5.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
 Composition and identities are given pointwise in $\mathcal B$.
 \end{description}
 \end{definition}
-
 Now we can look at modules of internal categories:
-
 \begin{definition}
 \label{def:internalprof}
 Given a category $\mathcal V$ with finite pullbacks and coequalizers preserving them, let $\mathcal V$-$\Prof:=\Mod(\Span(\mathcal V))^\op$ denote the bicategory of $\mathcal V$-{\bf internal profunctors}.  
 The 1-cells of $\mathcal V$-$\Prof$ are called (internal) {\bf  profunctors}.
 The tensor product of bimodules of internal categories is the (internal) {\bf coend}.
 \end{definition}
-
-
 We related distributive laws in internal categories to factorization systems.  To do so we introduce the following notation:
-
 \begin{definition}
 Let $\Iso(\X)$ denote the groupoid  of all isomorphisms of $\X$.
 \end{definition}
-
 There is a notion of factorization system where the factorization need only hold up to isomorphism:
 \begin{definition}
 An {\bf orthogonal factorization system} on a category $\X$ is a pair of subcategories $(\mathbb{L},\mathbb{R})$ of $\X$ with the same objects as $\X$, where $\mathbb{L}$ and $\mathbb{R}$ contain all isomorphisms in $\X$, and moreover, where every map in $\X$ factors as a map in  $\mathbb{L}$, followed by one $\mathbb{R}$ up to unique isomorphism.
 
 
 That is to say every map $f:X\to Y$ factorizes as follows
-
-
 $$
 \xymatrix{
 X  \ar[rr]^{f} \ar[dr]_{\ell \in {\mathbb L}} &       & Y\\
    & A \ar[ur]_{r \in {\mathbb R}}
 }
 $$
-
 such that given another such factorization
 $$
 \xymatrix{
@@ -1998,50 +1834,35 @@ X  \ar[rr]^{f} \ar[dr]_{\ell' \in {\mathbb L}} &       & Y\\
    & A' \ar[ur]_{r' \in {\mathbb R}}
 }
 $$
-
 then there is a unique isomorphism $\phi:A\to A'$ such that the following diagram commutes:
-
 $$
-\xymatrixrowsep{10mm}
+\xymatrixrowsep{7mm}
 \xymatrixcolsep{50mm}
 \xymatrix{
 X \ar@{=}[d] \ar[r]^{\ell}   & A  \ar@{-->}[d]^{\phi} \ar[r]^{r} & Y \ar@{=}[d]\\
 X   \ar[r]_{\ell'}                & A' \ar[r]_{r'} & Y
 }
 $$
-
 \end{definition}
-
 This is the same as a distributive law of monads in $\Set$-$\Prof$ over $\Iso(\X)$:
-
 \begin{lemma}[{\cite[Theorem 5.9]{rosebrugh}}]
 An orthogonal factorization system $(\mathbb{L},\mathbb{R})$ on a small category $\X$ is precisely a distributive law of monads between $\mathbb{L}$ and $\mathbb{R}$, regarded as $\Iso(\X)$-bimodules.
 \end{lemma}
-
 We have already discussed two examples of orthogonal factorization systems in order to define categories of internal relations:
-
 \begin{example}
 Given a finitely complete category $\X$, the category $\Span^\sim(\X)$ has an orthogonal factorization system where:
-
 $$\mathbb{L}:=
 \{\xymatrix{Y & X \ar@{=}[r] \ar[l]_{f } & X}    \  | \ \forall f \in \X(X,Y)  \}\ , \hspace*{.2cm}
 \mathbb{R}:=
 \{ \xymatrix{X & X \ar@{=}[l] \ar[r]^{f } & Y}    \  | \ \forall f \in \X(X,Y) \}
 $$
-
 \end{example}
-
-
 \begin{example}
 Regular categories have orthogonal factorization systems given by $\mathbb{L}$ the regular epimorphisms, and $\mathbb R$ the monomorphisms.
 \end{example}
-
-
-
 By asking that $\X$ is a small strict monoidal category and  $\mathbb{L}$ and $\mathbb{R}$ are strict monoidal subcategories of $\X$, the notion of an orthogonal factorization system is adapted immediately to monoidal categories. And there is an alagous correspondence  between $\mathbb{L}$ and $\mathbb{R}$, regarded as $\Iso(\X)$-bimodules in $\Span(\Mon)$.  However, this is not satisfying for our purposes.
 
  In the most basic setting, the shared structure of small strict {\em symmetric} monoidal categories on the same set of objects is the permutations on the objects .  Indeed, this is the basis Lack's work on composing props \cite{lack}. Factorizations up permutations are clearly not strict; and they are only an orthogonal factorization system when all isomorphisms are permutation.  For our purposes, we wil also need to consider cases when $\mathbb J$ is not even a groupoid!  We will recall a considerably more general notion to this end:
-
 \begingroup
 \allowdisplaybreaks
 \begin{definition}[{\cite[Definition 4.10]{lawvere}}]
@@ -2050,23 +1871,19 @@ Let $\X$ be a category equipped with a subcategory $\mathbb J$ with the same obj
 A {\bf factorization system of $\X$ over $\mathbb J$} consists of a pair of subcategories $(\mathbb L,\mathbb R)$ of $\X$ with the same objects as $\X$ such that $\mathbb J$ is a subcategory of both $\mathbb L$ and $\mathbb R$.  And moreover, every map in $\X$ factorizes into maps in $\mathbb L$ followed by maps in $\mathbb R$ uniquely up to zig-zags in $\mathbb J$.
 
 That is to say, given any map $f:X\to Y$ in $\X$, there is a factorization
-
 $$
 \xymatrix{
 X  \ar[rr]^{f} \ar[dr]_{\ell \in {\mathbb L}} &       & Y\\
    & A \ar[ur]_{r \in {\mathbb R}}
 }
 $$
-
 such that given another such factorization
-
 $$
 \xymatrix{
 X  \ar[rr]^{f} \ar[dr]_{\ell' \in {\mathbb L}} &       & Y\\
    & A' \ar[ur]_{r'  \in {\mathbb R}}
 }
 $$
-
 %
 %there exists a smallest natural number $n$, such that  for $j \in [0,n)$, there are $n$ factorizations:
 %
@@ -2078,17 +1895,13 @@ $$
 %}
 %$$
 then there exists factorizations:
-
 $$
 \xymatrix{
 X  \ar[rr]^{f} \ar[dr]_{\ell_j\in {\mathbb L}} &       & Y\\
    & A_j \ar[ur]_{r_j \in {\mathbb R}}
 }
 $$
-
-
 and  maps in $\mathbb J$:
-
 $$
 \xymatrix{
 A \ar[r]^{\phi_0}
@@ -2101,13 +1914,9 @@ A \ar[r]^{\phi_0}
 & A'
 }
 $$
-
-
 uniquely making following diagram commute:
-
-
 $$
-\xymatrixrowsep{10mm}
+\xymatrixrowsep{7mm}
 \xymatrixcolsep{50mm}
 \xymatrix{
 X   \ar[r]^{\ell}\ar@{=}[d]              & A \ar@{-->}[d]^{\phi_0} \ar[r]^{r}                                               & Y \ar@{=}[d]\\
@@ -2120,10 +1929,8 @@ X   \ar[r]^{\ell_{n-1}}\ar@{=}[d]   & A_{n-1}  \ar@{-->}[u]_{\phi_{n-1}} \ar@{--
 X   \ar[r]^{\ell'}                         & A'   \ar[r]^{r'} & Y
 }
 $$
-
 \end{definition}
 \endgroup
-
 This specializes to strict factorization systems when $\mathbb J$ contains exactly the identities on all objects; and to orthogonal factorization systems when it contains all isomorphisms. 
 
 
@@ -2138,18 +1945,13 @@ then notice how $\mathbb J$ acts on $\mathbb L$ and $\mathbb R$ both on the left
 
 
  Indeed, \cite{lawvere} shows that such a notion of factorization system corresponds to distributive laws of monads in $\Set$-$\Prof$.   The result is mentioned specifically for the case of distributive laws of Lawvere theories, but there is a more general fact:
-
-
 \begin{lemma}
 A factorization system $(\mathbb{L},\mathbb{R})$ of a small  category $\X$ over a subcategory  $\mathbb J $ is precisely a distributive law of monads  $\mathbb{R}$ over $\mathbb{L}$, both regarded as $\mathbb{J}$-bimodules in $\Span(\Sets)$.
 \end{lemma}
-
-
 By asking that $\X$ is a small strict monoidal category and  $\mathbb{L}$, $\mathbb{R}$ and $\mathbb{J}$ are strict monoidal subcategories, the notion of a factorization system of $\X$ over $\mathbb J$ is adapted immediately to  monoidal categories. And there is an alagous correspondence  to distributive laws of $\mathbb{R}$ over $\mathbb{L}$, regarded as $\mathbb J$-bimodules in $\Span(\Mon)$.  
 
 
 To do the same for small strict symmetric monoidal categories, one must ask moreover that $\X$ is a small strict symmetric monoidal category, $\mathbb{L}$, $\mathbb{R}$ are strict symmetric monoidal subcategories of $\X$ and $\mathbb J$ is a strict symmetric monoidal subcategory of $\mathbb L$ and $\mathbb R$:
-
 %In order to do to something similar with small strict monoidal categories, consider the following structure:
 %
 %
@@ -2169,38 +1971,28 @@ To do the same for small strict symmetric monoidal categories, one must ask more
 %
 %
 %The following characterization of distributive laws of props in terms of monoidal theories will prove to be useful for us:
-
-
 \begin{lemma}
 Take three symmetric monoidal theories
-
 $$
 R=({\sf Ob},\Sigma_R ,E_R ), \ L=({\sf Ob},\Sigma_L ,E_L ),  \ J=({\sf Ob},\Sigma_J ,E_J )
 $$
-
 with the same objects, where $\bar{J}$ embeds as a strict symmetric monoidal category within both $\bar{L}$ and $\bar{R}$.  Regard both $\bar{L}$ and $\bar{R}$ as  $\bar{J}$-bimodules, where the left and right actions are given by lifting the maps in $\bar{J}$ along this embedding.
 
 Suppose there is a distributive law of monads in the bicategory $\Mon$-$\Prof$:
-
 $$
 \lambda:\bar{R}\otimes_{\bar{J}} \bar{L}\Rightarrow \bar{L}\otimes_{\bar{J}} \bar{R}
 $$
-
 Where $\bar{L}$ and $\bar{R}$ are canonically strict monoidal subcategories of $\bar{L}\otimes_{\bar{J}} \bar{R}$.
 
 Then the induced prop $\bar{L}\otimes_{\bar{J}} \bar{R}$ is presented by a monoidal theory
-
 $$
 ({\sf Ob}, \Sigma_R\cup \Sigma_L, E_R\cup E_L \cup E_\lambda)
 $$
-
 where $E_\lambda$ is the set of equations dictating the unique ways in which the generators of $\Sigma_R$ can be pushed past those of $\Sigma_L$ up to zig-zags in $\bar{J}$.
 \end{lemma}
-
 This seems like a very complicated construction, but let us see some examples to get a feel for what is going on.  As a general rule, because factorization systems are decompositional, we will start first with a symmetric monoidal theory which we already know.
 
 For the most basic examples consider the free strict symmetric monoidal category on a set of objects:
-
 \begin{definition}
 Let $\P^X$ denote the free strict symmetric monoidal category with objects in $X$. Where $\P$ is the free symmetric monoidal category with one object.
 
@@ -2212,8 +2004,6 @@ That is to say $\P^X$ is the category of permutations on $X$ elements regarded a
 %\begin{definition}
 %A {\bf distributive law of (mutlicoloured) props} is a distributive law $\mathbb L \otimes_{\P_{\sf Ob}} \mathbb R$ in $\Mon$-$\Prof$ where $\mathbb L$ and $\mathb R$ are small strict monoidal categories with objects generated by $\sf Ob$.
 %\end{definition}
-
-
 %
 %
 %
@@ -2227,15 +2017,12 @@ That is to say $\P^X$ is the category of permutations on $X$ elements regarded a
 %
 %Note that there is another way to compose multiple props together, which we will not use in this thesis.  In  \cite[Proposition 2.33]{ih} they compose distributive laws of 3 props; where the props interact via distributive law regarded as bimodules over $\P$. This composition is constructed by asking that the distrubutive laws interact to satisfy the Yang-Baxter equation, following  \cite{iterdist}.  Such a composite of distributive laws is a distributive law, and thus a monad in $\Mnd(\Mnd(\Mon$-$\Prof))$. This is to be contrasted with the distributive law of props which we just defined, regarded as monads in $\Mnd(\Mon$-$\Prof)$.
 %Many distributive laws of multicoloured props are over $\P_{\sf Ob}$.
-
 It is easy to see how every multicoloured prop with generating object set $\sf Ob$ is canonically a $\P^{\sf Ob}$-bimodule in $\Span(\Mon)$ picking out the braids.
 
 
 Consider the following distributive law of props, coming from the epi-mono factorization system of finite sets:
 \begin{example}[{\cite[Example 5.1]{lack}}]
 Let $\inj$ be the prop generated by a single generator $0\to 1$ and no equations:
-
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2245,11 +2032,9 @@ $$
 	\begin{pgfonlayer}{edgelayer}
 		\draw (57) to (58.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
 And let $\surj$ denote the prop generated by a commutative semigroup:
-
 $$
 \begin{tikzpicture}[scale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -2267,7 +2052,7 @@ $$
 		\draw [in=270, out=90] (22.center) to (28.center);
 		\draw [in=270, out=90] (24.center) to (29.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 \eref{comm}
 \begin{tikzpicture}[scale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -2285,7 +2070,8 @@ $$
 		\draw [in=270, out=90] (31.center) to (34.center);
 		\draw [in=270, out=90] (33.center) to (35.center);
 	\end{pgfonlayer}
-\end{tikzpicture}\ ,
+\end{tikzpicture}%
+\ ,
 \hspace*{.2cm}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2306,7 +2092,7 @@ $$
 		\draw [in=90, out=-150] (4) to (6.center);
 		\draw (7.center) to (2.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 \eref{assoc}
 \begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -2327,11 +2113,9 @@ $$
 		\draw [in=90, out=-150] (4) to (6.center);
 		\draw (7.center) to (2.center);
 	\end{pgfonlayer}
-\end{tikzpicture}$$
-
-
+\end{tikzpicture}%
+$$
 $\inj$ is a presentation for the injections and $\surj$ the surjections in $\FinOrd\cong \FSets$ under the coproduct.  Moreover, distributive law:
-
 $$
 \cm=\inj\otimes_\P \surj;\
 \begin{tikzpicture}[xscale=-1,yscale=-1]
@@ -2349,7 +2133,7 @@ $$
 		\draw [in=150, out=-90] (3.center) to (0);
 		\draw [in=270, out=90] (3.center) to (5.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 \eref{unitl}
 \begin{tikzpicture}[yscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -2359,7 +2143,7 @@ $$
 	\begin{pgfonlayer}{edgelayer}
 		\draw (11.center) to (9.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 \eref{unitr}
 \begin{tikzpicture}[yscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -2376,7 +2160,7 @@ $$
 		\draw [in=150, out=-90] (3.center) to (0);
 		\draw [in=270, out=90] (3.center) to (5.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
 induces the prop for the commutative comonoid $\cm\cong \FinOrd\cong \FSets$.
 \end{example}
@@ -2384,7 +2168,6 @@ Just as in the case of the strict epi-mono factorization system of $\FinOrdMonot
 
 
 Bicommutative bialgebras also arise in this way:
-
 \begin{example}
 The prop for a bicommutative bimonoid, $\cb$  is a distributive law between a monoid $\xcirc$ and comonoid $\zcirc$:
 $$
@@ -2405,7 +2188,7 @@ $$
 		\draw [in=60, out=-90, looseness=1.00] (5.center) to (3);
 		\draw [in=-90, out=120, looseness=1.00] (3) to (4.center);
 	\end{pgfonlayer}
-  \end{tikzpicture}
+  \end{tikzpicture}%
   \eref{bi.one}
   \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2428,7 +2211,8 @@ $$
 		\draw (3) to (5.center);
 		\draw (4.center) to (1);
 	\end{pgfonlayer}
-\end{tikzpicture},
+\end{tikzpicture}%
+,
 \hspace*{.5cm}
   \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2442,7 +2226,7 @@ $$
 		\draw (1) to (0);
 		\draw [in=90, out=-120, looseness=1.00] (1) to (2.center);
 	\end{pgfonlayer}
-  \end{tikzpicture}
+  \end{tikzpicture}%
    \eref{bi.two}
   \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2455,7 +2239,8 @@ $$
 		\draw (2.center) to (3);
 		\draw (0) to (1.center);
 	\end{pgfonlayer}
-  \end{tikzpicture},
+  \end{tikzpicture}%
+,
   \hspace*{.5cm}
    \begin{tikzpicture}[yscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -2469,7 +2254,7 @@ $$
 		\draw (1) to (0);
 		\draw [in=90, out=-120, looseness=1.00] (1) to (2.center);
 	\end{pgfonlayer}
-  \end{tikzpicture}
+  \end{tikzpicture}%
   \erefop{bi.two}
    \begin{tikzpicture}[yscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -2482,7 +2267,8 @@ $$
 		\draw (2.center) to (3);
 		\draw (0) to (1.center);
 	\end{pgfonlayer}
-  \end{tikzpicture},
+  \end{tikzpicture}%
+,
 \hspace*{.5cm}
   \begin{tikzpicture}[rotate=90]
 	\begin{pgfonlayer}{nodelayer}
@@ -2492,24 +2278,18 @@ $$
 	\begin{pgfonlayer}{edgelayer}
 		\draw (0) to (1);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 \eref{extra}
 \\
 $$
 \end{example}
-
-
 In fact, this is a symmetric monoidal orthogonal factorization system since it arizes from a category of spans: 
 \begin{lemma}[{\cite[Example 5.3]{lack}}]
 {\cb} is a presentation for $(\Span^\sim(\FSets),+)$.
 \end{lemma}
-
-
 Dually:
-
 \begin{example}
 Consider the distributive law between a monoid $\xcirc$ and comonoid $\xcirc$:
-
 $$
  \cm \otimes_\P \cm^\op;
     \begin{tikzpicture}[rotate=90]
@@ -2525,7 +2305,7 @@ $$
 		\draw [bend right, looseness=1.25] (3) to (0);
 		\draw [bend right, looseness=1.25] (0) to (3);
 	\end{pgfonlayer}
-  \end{tikzpicture}
+  \end{tikzpicture}%
   \eref{special}
   \begin{tikzpicture}[rotate=90]
 	\begin{pgfonlayer}{nodelayer}
@@ -2535,7 +2315,8 @@ $$
 	\begin{pgfonlayer}{edgelayer}
 		\draw (1.center) to (0.center);
 	\end{pgfonlayer}
-  \end{tikzpicture},
+  \end{tikzpicture}%
+,
   \hspace*{.5cm}
   \begin{tikzpicture}[rotate=90]
 	\begin{pgfonlayer}{nodelayer}
@@ -2557,8 +2338,26 @@ $$
 		\draw (0) to (4.center);
 		\draw (1) to (7.center);
 	\end{pgfonlayer}
-  \end{tikzpicture}
+  \end{tikzpicture}%
  \eref{frobl}
+  \begin{tikzpicture}[rotate=90]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-4.75, -0.25) {};
+		\node [style=X] (1) at (-5.5, -0) {};
+		\node [style=none] (2) at (-7, -0.25) {};
+		\node [style=X] (3) at (-6.25, 0) {};
+		\node [style=none] (4) at (-4.75, 0.25) {};
+		\node [style=none] (5) at (-7, 0.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-30, out=180, looseness=1.25] (0.center) to (1);
+		\draw (3) to (1);
+		\draw [in=180, out=30, looseness=1.25] (1) to (4.center);
+		\draw [in=0, out=-150, looseness=1.25] (3) to (2.center);
+		\draw [in=0, out=150, looseness=1.25] (3) to (5.center);
+	\end{pgfonlayer}
+\end{tikzpicture}%
+  \eref{frobr}
   \begin{tikzpicture}[rotate=90,xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=X] (0) at (-7, -0) {};
@@ -2579,37 +2378,14 @@ $$
 		\draw (0) to (4.center);
 		\draw (1) to (7.center);
 	\end{pgfonlayer}
-  \end{tikzpicture}
-  \eref{frobr}
-  \begin{tikzpicture}[rotate=90]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (0) at (-4.75, -0.25) {};
-		\node [style=X] (1) at (-5.5, -0) {};
-		\node [style=none] (2) at (-7, -0.25) {};
-		\node [style=X] (3) at (-6.25, 0) {};
-		\node [style=none] (4) at (-4.75, 0.25) {};
-		\node [style=none] (5) at (-7, 0.25) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [in=-30, out=180, looseness=1.25] (0.center) to (1);
-		\draw (3) to (1);
-		\draw [in=180, out=30, looseness=1.25] (1) to (4.center);
-		\draw [in=0, out=-150, looseness=1.25] (3) to (2.center);
-		\draw [in=0, out=150, looseness=1.25] (3) to (5.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
+  \end{tikzpicture}%
 $$
 This is the prop $\scfa$ for the free  special commutative Frobenius algebra, which we discussed earlier.
 \end{example}
-
-
 Where this distributive law also arizes from a category of spans.
 \begin{lemma}[{\cite[Example 5.4]{lack}}]
 {\sfa} is a presentation for $(\Span^\sim(\FSets^\op),+)$.
 \end{lemma}
-
-
-
 \begin{remark}
 The spider normal form also holds for special commutative Frobenius algebras, where now components can be connected together using the braids.
 
@@ -2618,9 +2394,7 @@ In analogy to the noncommutative case, the spider normal form  for non-special c
 
 
 The original spider normal form was first proven for non-special symmetric Frobenius algebras, first published in the PhD thesis of \cite{spider}; wherein it was proved by topological methods rather than using the machinery of distributive laws.
-
 \end{remark}
-
 %
 %
 %All of the examples of distributive laws of props which we have introduced so far also happen to correspond to strict factorization systems of small strict symmetric monoidal categories.  This is only because $\Iso(\FinOrd) = \P$.
@@ -2666,7 +2440,7 @@ Note that all of these examples of distributive laws of props are actually  mono
 %		\draw [in=90, out=-150] (25) to (29.center);
 %		\draw [in=-120, out=90] (32.center) to (25);
 %	\end{pgfonlayer}
-%\end{tikzpicture}
+%\end{tikzpicture}%
 %=
 %\begin{tikzpicture}
 %	\begin{pgfonlayer}{nodelayer}
@@ -2695,7 +2469,7 @@ Note that all of these examples of distributive laws of props are actually  mono
 %		\draw [in=-90, out=135] (70) to (49);
 %		\draw [in=-105, out=45] (70) to (39);
 %	\end{pgfonlayer}
-%\end{tikzpicture}
+%\end{tikzpicture}%
 %\ , \hspace*{.2cm}
 %\begin{tikzpicture}
 %	\begin{pgfonlayer}{nodelayer}
@@ -2712,7 +2486,7 @@ Note that all of these examples of distributive laws of props are actually  mono
 %		\draw [in=90, out=-150] (25) to (29.center);
 %		\draw [in=-120, out=90] (32.center) to (25);
 %	\end{pgfonlayer}
-%\end{tikzpicture}
+%\end{tikzpicture}%
 %=
 %\begin{tikzpicture}
 %	\begin{pgfonlayer}{nodelayer}
@@ -2729,7 +2503,7 @@ Note that all of these examples of distributive laws of props are actually  mono
 %		\draw (84.center) to (81);
 %		\draw (88.center) to (89);
 %	\end{pgfonlayer}
-%\end{tikzpicture}
+%\end{tikzpicture}%
 %$$
 %
 %For all generators $f$ in $\Sigma$ regarded as maps in $S$.
@@ -2741,23 +2515,17 @@ Note that all of these examples of distributive laws of props are actually  mono
 %\end{definition}
           
 Lawvere theories are everywhere in mathematics.  In fact, we have already discussed quite a few already.  For example:
-
 \begin{example}
 $\cm^\op$ is the Lawvere theory with no operations or equations.
 \end{example}
-
 Since Cartesian theories have generators whose coarity is a single object, they can be defined algebraically in a concise manner (as opposed to symmetric monoidal theories):
-
 \begin{example}
 The Lawvere theory of monoids $L_{\sf Mon}$ is generated by a binary operation $(-)\cdot (=):2\to 1$ and a nullary operation $1:0\to 1$ modulo:
-
-
 \begin{description}
 \item[Unit laws:] $x\cdot 1 = x = 1\cdot x$
 \item[Associativity law:] $(x\cdot y)\cdot z= x\cdot (y\cdot z)$
 \end{description}
 \end{example}
-
 The corresponding prop is given by the following equations.  First, the axioms of $\cm^\op$:
 $$
 \begin{tikzpicture}
@@ -2775,7 +2543,7 @@ $$
 		\draw [in=-90, out=150] (10) to (12.center);
 		\draw (11.center) to (14.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 \erefop{unitl}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2785,7 +2553,7 @@ $$
 	\begin{pgfonlayer}{edgelayer}
 		\draw (16.center) to (17.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
  \erefop{unitr}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2802,7 +2570,7 @@ $$
 		\draw [in=-90, out=30] (4) to (6.center);
 		\draw (5.center) to (8.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 \ ,
 \hspace*{.2cm}
 \begin{tikzpicture}[yscale=-1]
@@ -2824,7 +2592,7 @@ $$
 		\draw [in=90, out=-150] (4) to (6.center);
 		\draw (7.center) to (2.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
  \erefop{assoc}
 \begin{tikzpicture}[xscale=-1,yscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -2845,7 +2613,7 @@ $$
 		\draw [in=90, out=-150] (4) to (6.center);
 		\draw (7.center) to (2.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 \ ,
 \hspace*{.2cm}
 \begin{tikzpicture}
@@ -2864,7 +2632,7 @@ $$
 		\draw [in=270, out=90] (19.center) to (22.center);
 		\draw [in=270, out=90] (20.center) to (23.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 \erefop{comm}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2882,12 +2650,9 @@ $$
 		\draw (25.center) to (28.center);
 		\draw (26.center) to (29.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
 associativity and unit laws
-
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2906,7 +2671,7 @@ $$
 		\draw [in=90, out=-150] (0.center) to (3.center);
 		\draw (2.center) to (5.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
  \eqzxa{unitl}
 \begin{tikzpicture}[yscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -2916,7 +2681,7 @@ $$
 	\begin{pgfonlayer}{edgelayer}
 		\draw (16.center) to (17.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
  \eqzxa{unitr}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2935,7 +2700,7 @@ $$
 		\draw [in=90, out=-30] (8.center) to (11.center);
 		\draw (10.center) to (13.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 \ ,
 \hspace*{.2cm}
 \begin{tikzpicture}
@@ -2959,7 +2724,7 @@ $$
 		\draw [in=90, out=-150] (4) to (6.center);
 		\draw (7.center) to (2.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
  \eqzxa{assoc}
 \begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -2982,10 +2747,8 @@ $$
 		\draw [in=90, out=-150] (4) to (6.center);
 		\draw (7.center) to (2.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
-
 In addition to the axioms making the commutative comonoid $\zcirc$ natural:
 $$
   \begin{tikzpicture}
@@ -3005,7 +2768,7 @@ $$
 		\draw [in=60, out=-90, looseness=1.00] (5.center) to (3);
 		\draw [in=-90, out=120, looseness=1.00] (3) to (4.center);
 	\end{pgfonlayer}
-  \end{tikzpicture}
+  \end{tikzpicture}%
   \eref{bi.one}
  \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3030,7 +2793,8 @@ $$
 		\draw (28) to (30.center);
 		\draw (29.center) to (25);
 	\end{pgfonlayer}
-\end{tikzpicture},
+\end{tikzpicture}%
+,
 \hspace*{.5cm}
   \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3045,7 +2809,7 @@ $$
 		\draw (1) to (0);
 		\draw [in=90, out=-120, looseness=1.00] (1) to (2.center);
 	\end{pgfonlayer}
-  \end{tikzpicture}
+  \end{tikzpicture}%
   \eref{bi.two}
   \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3058,7 +2822,8 @@ $$
 		\draw (2.center) to (3);
 		\draw (0) to (1.center);
 	\end{pgfonlayer}
-  \end{tikzpicture},
+  \end{tikzpicture}%
+,
   \hspace*{.5cm}
    \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3073,7 +2838,7 @@ $$
 		\draw (41) to (39.center);
 		\draw [in=-90, out=120] (41) to (42.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
   \erefop{bi.two}
    \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3088,7 +2853,8 @@ $$
 		\draw (36.center) to (37.center);
 		\draw (33.center) to (35.center);
 	\end{pgfonlayer}
-\end{tikzpicture},
+\end{tikzpicture}%
+,
 \hspace*{.5cm}
  \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3099,7 +2865,7 @@ $$
 	\begin{pgfonlayer}{edgelayer}
 		\draw (33) to (34.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
   \erefop{extra}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3111,32 +2877,26 @@ $$
 	\begin{pgfonlayer}{edgelayer}
 		\draw[style=dashed] (3.center) to (0.center) to (1.center) to (2.center) to cycle;
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
-
 Models of the Lawvere theory of monoids in $\Set$ are monoids.
 
 
 Therefore, we see that the symmetric monoidal theory corresponding to a Lawveret theory is given by adding the operations, and cocommutative comonoids as generators and then making these cocommutative comonoids natural.  For another example:
-
 \begin{example}
 The Lawvere theory of commutative monoids is generated by a binary operation $(-)+ (=):2\to 1$ and a nullary operation $0:0\to 1$ modulo:
-
 \begin{description}
 \item[Unit laws:] $x+0 = x = 0+x$
 \item[Associativity law:] $(x+y)+z= x+(y+z)$
 \item[Commutativity:] $x+y = y+x$
 \end{description}
 \end{example}
-
 Models of the Lawvere theory of commutative monoids in $\Set$ are commutative monoids.
 
 
 Notice that $\cb$ is the Lawvere theory of commutative monoids  regarded as a prop.
 
 The most basic way to compose Lawvere theories $\mathbb L$ and $\mathbb R$ generated by the same object set ${\sf Ob}$ by distributive law  is identifying only their Cartesian structure.  Following \cite[Proposition 5.4]{lawvere}, that is to say, via distributive laws $\mathbb{L} \otimes_{\left(\cm^{\sf Ob}\right)^\op} \mathbb{R}$ in $\Mon$-$\Prof$ such that $\left(\cm^{\sf Ob}\right)^\op$ picks out the Cartesian structure of both $\mathbb L$ and $\mathbb R$.  For example:
-
 \begin{example}
 The Lawvere theory of semirings is given by the distributive law
 $$
@@ -3147,7 +2907,6 @@ x\cdot (y+z) = (x\cdot  y)+(x\cdot z) , \
 x \cdot 0 = 0
 $$
 \end{example}
-
 In string diagrams, the rules $E_\lambda$ of the distributive law are given by:
 $$
 \begin{tikzpicture}[xscale=-1]
@@ -3167,7 +2926,7 @@ $$
 		\draw [in=-135, out=90] (6.center) to (5);
 		\draw (9.center) to (10.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 \eqzxa{semiring.mult.l}
 \begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -3196,7 +2955,8 @@ $$
 		\draw [in=-150, out=90] (6.center) to (9);
 		\draw (12.center) to (13);
 	\end{pgfonlayer}
-\end{tikzpicture}\ ,
+\end{tikzpicture}%
+\ ,
 \hspace*{.2cm}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3215,7 +2975,7 @@ $$
 		\draw [in=-135, out=90] (6.center) to (5);
 		\draw (9.center) to (10.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 \eqzxa{semiring.mult.r}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3244,7 +3004,8 @@ $$
 		\draw [in=-150, out=90] (6.center) to (9);
 		\draw (12.center) to (13);
 	\end{pgfonlayer}
-\end{tikzpicture}\ ,
+\end{tikzpicture}%
+\ ,
 \hspace*{.2cm}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3262,7 +3023,7 @@ $$
 		\draw (4.center) to (2.center);
 		\draw [in=-135, out=90] (1.center) to (0.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 \eqzxa{semiring.unit.l}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3275,7 +3036,7 @@ $$
 		\draw (15) to (12.center);
 		\draw (16) to (14.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 \ ,
 \hspace*{.2cm}
 \begin{tikzpicture}[xscale=-1]
@@ -3294,7 +3055,7 @@ $$
 		\draw (4.center) to (2.center);
 		\draw [in=-135, out=90] (1.center) to (0.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 \eqzxa{semiring.unit.r}
 \begin{tikzpicture}[xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -3307,12 +3068,9 @@ $$
 		\draw (15) to (12.center);
 		\draw (16) to (14.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}%
 $$
-
 Unsurprisingly, models of semirings in $\Set$ are semirings.
-
-
 \begin{aside}
 There is another way to decompose props which we have not defined, because we will not make use of it.    Since distributive laws are themselves monads, one can take distributive laws of distributive laws themselves. 
 
@@ -3321,7 +3079,6 @@ In the case of distributive laws of categories, this is precisely a monad in $\M
 
 There is nothing special about strict factorization systems of small categories.  The way to decompose props in this setting would be in terms of monads in $\Mnd(\Mnd(\Mod(\Span(\Mon))))$.  Indeed, this was used in \cite[Proposition 3.3., Example 2.34]{ih}.
 \end{aside}
-
 %
 %\begin{example}
 %The distributive law of matrices over a fixed semiring $S$ is generated by unary operations $a:1\to 1$ for all $a\in S$, as well TODO

@@ -43,6 +43,15 @@
 %\input{styles.tikzdefs}
 %\input{styles.tikzstyles}
 
+%
+%\usepackage{setspace}\onehalfspacing
+%\AtBeginDocument{%
+%  \addtolength\abovedisplayskip{-0.5\baselineskip}%
+%  \addtolength\belowdisplayskip{-0.5\baselineskip}%
+%%  \addtolength\abovedisplayshortskip{-0.5\baselineskip}%
+%%  \addtolength\belowdisplayshortskip{-0.5\baselineskip}%
+%}
+
 
 \begin{document}
 \maketitle
@@ -264,7 +273,7 @@ $$
 
 
 
-%\input{background_chapter_cqm}
+\input{background_chapter_cqm}
 
 
 %\input{symplectic_chapter}
@@ -546,9 +555,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 Moreover because $S$ is nonempty,  $V;V^\dag=1$ so that it is an isometry.  Because all affine Lagrangian subspaces of the same dimension are affine symplectomorphic, then there exists a unitary $U$, row reducing the image of $V$ such that:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -592,9 +599,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 Therefore,
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -908,11 +913,7 @@ $$
 %$$
 %
 %
-
-
 \end{proof}
-
-
 In the bastard spider notation for stabilizer circuits, this means that for every Stabilizer code $H(S)$, there exists a Clifford gate $H(U)$ such that:
 
 $$
@@ -929,11 +930,11 @@ $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=map, thick] (0) at (26, 0) {$H(U)$};
-		\node [style=none] (1) at (25.5, -1) {};
-		\node [style=none] (2) at (26.5, -1) {};
-		\node [style=none] (3) at (26, 1) {};
-		\node [style=Xthick] (4) at (26.5, -1.75) {};
-		\node [style=X] (5) at (25.5, -1.75) {};
+		\node [style=none] (1) at (25.5, -.75) {};
+		\node [style=none] (2) at (26.5, -75) {};
+		\node [style=none] (3) at (26, .75) {};
+		\node [style=Xthick] (4) at (26.5, -1) {};
+		\node [style=X] (5) at (25.5, -1) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [thick] (4) to (2.center) [in=-60, out=90] to (0.center);

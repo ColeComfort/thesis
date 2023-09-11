@@ -9,25 +9,23 @@ A {\bf monoidal category} is a category $\X$ equipped with a functor $\X\times\X
 
 \begin{description}
 \item[Left unitor:]
-$$
+\hfil$
 u_X^L:I\otimes X \to X
-$$
+$
 \item[Right unitor:]
-$$
+\hfil$
 u_X^R: X\otimes I \to X
-$$
+$
 \item[Associator:]
-$$
+\hfil$
 \alpha_{X,Y,Z}:(X\otimes Y)\otimes Z \to X\otimes(Y\otimes Z)
-$$
+$
 \end{description}
 
 Satisfying the following coherence equations:
 
 \begin{description}
 \item[MacLane pentagon:]
-
-
 $$
 \xymatrix{
   ((W\otimes X )\otimes Y)\otimes Z \ar[rr]^{\alpha_{W\otimes X,Y,Z}} \ar[d]_{\alpha_{W,X,Y}\otimes 1_Z}
@@ -40,9 +38,7 @@ $$
     W\otimes ((X\otimes Y)\otimes Z) \ar[ur]_{1_W\otimes \alpha_{X,Y,Z}}
 }
 $$
-
 \item[Unit triangle:]
-
 $$
 \xymatrix{
   (X\otimes I)\otimes Y \ar[rr]^{\alpha_{X,I,Y}} \ar[dr]_{u_X^{R}\otimes 1_Y}
@@ -51,14 +47,9 @@ $$
   & X\otimes Y
 }
 $$
-
 \end{description}
-
-
 We will call a map out of the tensor unit a {\bf state}, a map into the tensor unit an {\bf effect}, and an endomorphism on a the tensor unit a {\bf scalar}.
 \end{definition}
-
-
 \begin{example}
 Both the category $\FSets$ of finite sets and functions and the category $\Sets$ of sets and functions are monoidal categories under both the product and under the coproduct.
 
@@ -66,16 +57,10 @@ Given a field $k$, the category $\Vect_k$ vector spaces over $k$  and the catego
 
 The category $\Hilb$ of Hilbert spaces and the category $\FHilb$ of finite dimensional Hilbert spaces are both monoidal categories with respect to the bilinear tensor product and direct sum.
 \end{example}
-
-
-
 \begin{definition}
 Given two monoidal categories $\X$ and $\Y$ a (strong) {\bf monoidal functor} from $\X$ to $\Y$ is a functor $F:\X\to \Y$ together with an isomorphism $\epsilon:I^\X \to F(I^\X)$ and natural isomorphism with components $\mu_{X,Y}:F(X)\otimes^\Y F(Y) \to F(X \otimes^\X Y)$ such that the following coherence equations hold:
-
 \begin{description}
-
 \item[Interaction with associator:]
-
 $$
 \xymatrix{
  (F(X)\otimes^\Y F(Y))\otimes^\Y F(Z) \ar[rrr]^{\alpha_{F(X),F(Y),F(Z)}^{\Y}} \ar[d]_{\mu_{X,Y}\otimes^\Y F(Z)}
@@ -86,7 +71,6 @@ $$
    &&& F(X\otimes^\X (Y\otimes^\X Z))
 }
 $$
-
 \item[Interaction with unitors:]
 $$
 \xymatrix{
@@ -94,11 +78,7 @@ $$
   &&  F(I^\X) \otimes^\Y F(X) \ar[d]^{\mu_{1^\X,X}}
 \\F(X)
  & & F(I^\X\otimes^\X X) \ar[ll]^{F((u^L)^\X_{X} )}
-}
-$$
-
-
-$$
+} \hspace*{.2cm}
 \xymatrix{
   F(X)  \otimes^\Y I^\Y \ar[rr]^{ F(X)  \otimes^\Y \epsilon} \ar[d]_{(u^R)^\Y_{F(X)}}
   && F(X) \otimes^\Y    F(I^\X)  \ar[d]^{\mu_{X,1^\X}}
@@ -107,17 +87,14 @@ $$
 }
 $$
 \end{description}
-
-
 A {\bf monoidal natural transformation} between parallel monoidal functors $F,G:\X\to \Y$ is a natural transformation $\phi:F\to G$ such that the following coherence equations hold:
-
 $$
 \xymatrix{
   F(X)\otimes^\Y F(Y) \ar[rr]^{\phi_X\otimes^\Y \phi_Y} \ar[d]_{\mu^F_{X,Y}}
    && G(X)\otimes^\Y G(Y) \ar[d]^{\mu^G_{X,Y}}
  \\G(X\otimes^\X Y) \ar[rr]_{\phi_{X\otimes^\X Y}}
    && G(X\otimes^\X Y)
-},
+}
 \hspace*{.5cm}
 \xymatrix{
 I^\Y \ar[dr]^{\eta^G} \ar[d]_{\eta^F}
@@ -125,43 +102,23 @@ I^\Y \ar[dr]^{\eta^G} \ar[d]_{\eta^F}
   &G(I^\X)
 }
 $$
-
 Monoidal categories, monoidal functors and monoidal natural transformations arrange themselves into the bicategory of monoidal categories. 
 \end{definition}
-
-
-%Both the category $\FinMonot$ of finite sets and monotone functions and the category $\Monot$ of sets and monotone functions are monoidal categories under both the product and under the coproduct.
-
-
-
-
-
-
 If all of the components of the natural transformations are equalities, then the monoidal category is {\bf strict}.  Therefore, we can forget the bracketing when we tensor things, and regard the tensor product of multiple objecs as a list.
 A {\bf strict monoidal functor} is a monoidal functor where the natural transformations $\epsilon$ and $\mu$ are the identity.
 Likewise, strict monoidal categories, strict monoidal functors and monoidal natural transformations arrange themselves into the bicategory of strict monoidal categories.
-
-
-
-
 \begin{example}
-
 The category $\FinOrd$ of finite ordinals and functions is the category where:
-
 \begin{description}
 \item[Objects:] The objects are the natural numbers.
-
 \item[Maps:]
 For each natural number $n$, the finite ordinal $[n]$ is a distinguished $n$-element set with a chosen total order.
-
 
 A map from $n\to m$ is a function from $[n]\to [m]$.
 
 The composition and identity is given by the composition and identity of sets and functions.
 \end{description}
-
 This is a strict monoidal category with respect to the disjoint union:
-
 \begin{description}
 \item[Tensor unit:] The tensor unit is the natural number 0.
 \item[Monoidal product:]
@@ -175,23 +132,12 @@ On objects this acts as addition.  On maps, $f:n\to m$ and $g:k\to \ell$, the ma
 %\item[Monoidal product:]
 %On objects this acts as multiplication.  On maps, $f:n\to m$ and $g:k\to \ell$, the map $f\times g$ is corresponds to the chosen product $f\times g:[n\cdot k]\to [k\cdot \ell]$ respecting the chosen order.
 %\end{description}
-
-
 Restricting $\FinOrd$ to functions which preserve the chosen order of the ordinals yields the strict monoidal category $\FinOrdMonot$ of finite ordinals and monotone functions.
 \end{example}
-
 \begin{example}
 Given a commutative semiring $S$, the category $\Mat_S$, of matrices over $S$ is strict monoidal under the bilinear tensor product and the direct sum.
 \end{example}
-
-
-
-
-
-
 Strict monoidal categories are very nice to work with because they have a particularly concise graphical calculus, called {\bf string diagrams}.  A map $f:X_1\otimes \cdots \otimes X_n\to Y_1\otimes \cdots \otimes Y_m$ is drawn as a box with $n$ wires coming out of the bottom and $m$ wires coming out of the top, all being labelled by their respective objects, as follows:
-
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -221,9 +167,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 The identity on an object $X$ is drawn as a line:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -251,16 +195,11 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 We often omit the object labels when it is clear from context.  The tensor product of two maps
-
 $$
 \dfrac{f:W_1\otimes\cdots \otimes W_n\to X_1\otimes \cdots \otimes X_m, \hspace*{.5cm} g:Y_1\otimes\cdots \otimes Y_k\to Z_1\otimes \cdots \otimes Z_\ell}{f\otimes g:W_1\otimes\cdots \otimes W_n\otimes Y_1\otimes\cdots \otimes Y_k\to  X_1\otimes \cdots \otimes X_m\otimes Z_1\otimes \cdots \otimes Z_\ell}
 $$
-
 is drawn by pasting them side-by-side:
-
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -365,17 +304,13 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 And the composite of two  composable maps
-
 $$
 \dfrac{
 f:X_1\otimes \cdots \otimes X_n\to Y_1\otimes \cdots \otimes Y_m,\hspace*{.5cm}g:Y_1\otimes\cdots \otimes Y_m\to Z_1\otimes \cdots \otimes Z_k}
 {f;g:X_1\otimes \cdots \otimes X_n\to Z_1\otimes \cdots \otimes Z_k}
 $$ 
-
 is drawn by connecting each of  the $Z_i$ wires together:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -438,9 +373,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 The axioms of a strict monoidal category are equivalent to planar isotopy of their string diagrams, for example, the functoriality of the tensor product allows one to exchange two disconnected maps:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -476,28 +409,17 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-%FUNCTOR BOX 
-
-
 We can always chose to work with strict monoidal categories if we want to:
-
 \begin{theorem}
 Every monoidal category is monoidally equivalent to a strict monoidal category. 
 \end{theorem}
-
-
 The strictification of a monoidal category has a particularly succinct presentation due to \cite{wilson}, so that we can use string diagrams for strict monoidal categories to reason about nonstrict monoidal categories:
 \begin{definition}
 \label{def:proofnets}
 Given a monoidal category $(\X,\otimes,I,\alpha,u^L,u^R)$, there is a monoidally equivalent strict monoidal category $\bar \X$ with:
-
 \begin{description}
 \item[Objects:] Finite lists of objects in $\X$.
-
 \item[Maps:] The maps are generated by a map $f:[X]\to [Y]$, for every map $f:X\to Y$ in $\X$. As well as the four following generators (referred to as tensor, cotensor, unit introduction and unit removal):
-
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -557,12 +479,8 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-\item[Modulo the equations:] \
-
-
+\item[Modulo the equations:] 
 For all $f:X\to Y$ and $g:Y\to Z$ in $\X$:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -873,11 +791,8 @@ $$
 \item[Composition:] Vertical pasting.
 \item[Tensor product:] Horizontal pasting.
 \item[Tensor unit:] The empty list $[]$.
-
 \end{description}
 \end{definition}
-
-
 Notice that by flipping around the diagrams for the unitors and associators we get their inverses: 
 $$
 \begin{tikzpicture}
@@ -996,18 +911,10 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
-
-
 I will refer to the string diagrams in this category as proof nets for monoidal categories because of their close relation to proof nets for linearly distributive categories.  Even in the case when we are already working in a strict monoidal category, it will still often be useful to use proof nets; for example, we can bundle up wires together so that we can make induction arguments using pictures.  Indeed, proof nets have been rediscovered in the setting of quantum circuits as the scalable ZX-calculus for precisely this reason \cite{szx} (although they have not made use of the units and counits).  We will discuss this further in Section \ref{sec:cqm}.
-
-
 \begin{aside}
 These proof nets are closely related to proof nets for linearly-distributive categories; so much so, that this monoidal counterpart was considered folklore by some.  If one regards monoidal categories as linearly distributive categories, then these two notions are almost the same; the only difference being the combinatorial condition involving units, called thinning links.  Although it was widely believed to be folklore that these thinning links were not needed, I could not find any previous published  work that explicitly proved you don't need them for monoidal categories.  I will discuss the relation to proof nets in linear logic in Chapter \ref{chap:grothendieck}, as well as an attempt to connect them to other categorical constructions.  This proved to be much more difficult than expected.
 \end{aside}
-
-
 Some monoidal categories are monoidally equivalent to {\bf skeletal}, strict monoidal categories, where the adjective skeletal means that every two isomorphic objects are equal.  These are very nice to work with because if we want, we can forgo having to use proof net notation entirely:
 \begin{example}
 $\FinOrd$ is a skeletal and strict monoidal. It is monoidally equivalent to $\FSets$ under the disjoint union.
@@ -1021,16 +928,12 @@ Note that the strictification of a monoidal category need not be skeletal, for e
 
 
 There is a more refined notion of monoidal category where one can pass wires through each other:
-
 \begin{definition}
 A {\bf symmetric monoidal category} is a monoidal category equipped with an extra natural isomorphism called the braid:
-
 $$
 \sigma_{X,Y}:X\otimes Y \to Y\otimes X
 $$
-
 satisfying the following coherence equations:
-
 \begin{description}
 \item[Interaction with unitors:]
 $$
@@ -1039,7 +942,6 @@ I \otimes X \ar[rr]^{\sigma_{I,X}} \ar[rd]_{u^L_X} && X \otimes I \ar[ld]^{u^R_X
 & X &
 }
 $$
-
 \item[Interaction with associator:]
 $$
 \xymatrix{
@@ -1054,7 +956,6 @@ $$
     & Y\otimes (Z\otimes X)
 }
 $$
-
 \item[Braid is self-inverse:]
 $$
 \xymatrix{
@@ -1064,17 +965,12 @@ $$
 }
 $$
 \end{description}
-
 \end{definition}
-
-
 \begin{example}
 $\Sets$, $\FSets$, $\FinOrd$, $\Mat_R$, $\Vect_k$, $\Hilb$, $\FHilb$ are all symmetric monoidal categories with respect to the aforementioned monoidal structures; and the corresponding equivalences between these categories are also symmetric monoidal.
 \end{example}
-
 \begin{definition}
 A (strong) {\bf symmetric monoidal functor} between symmetric monoidal categories $\X$ and $\Y$ is a monoidal functor where the following coherence equation holds:
-
 $$
 \xymatrix{
   F(X)\otimes^\Y F(Y) \ar[rr]^{\sigma_{F(X),F(Y)}^\Y} \ar[d]_{\mu_{X,Y}}
@@ -1083,10 +979,6 @@ $$
  && F(Y \otimes^\X X)
 }
 $$
-
-
-
-
 A {\bf symmetric monoidal natural transformation} is a monoidal natural transformation between symmetric monoidal functors.  
 
 
@@ -1098,11 +990,7 @@ A {\bf strict symmetric monoidal functor} is a symmetric monoidal functor which 
 
 Just as in the monoidal case, there are bicategories of strict monoidal and monoidal categories.
 \end{definition}
-
-
-
 Strict monoidal categories also have a notion of string diagrams, except the braid allows wires to pass over each other:
-
 $$
 \sigma_{X,Y}=
 \begin{tikzpicture}
@@ -1122,9 +1010,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 The naturality means that maps can be pulled through wires:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1172,7 +1058,6 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 The interaction with the unitor and associator becomes completely absorbed into the graphical calculus.
 %The interaction with the associator also becomes trivial:
 %
@@ -1216,7 +1101,6 @@ The interaction with the unitor and associator becomes completely absorbed into 
 %\end{tikzpicture}
 %$$
 The self inverse of the braid means that the wires untangle:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1248,14 +1132,10 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
 \begin{theorem}
 Every symmetric monoidal category is symmetric monoidally equivalent to a strict symmetric monoidal category. 
 \end{theorem}
-
 Non-strict symmetric monoidal categories have essentially the same notion of proof nets as non-strict monoidal categories, except where the braid is internalized to untensoring, braiding and then tensoring:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1300,27 +1180,17 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 This notion of proof nets for symmetric monoidal categories is not contained in \cite{wilson}; however, it is folklore, in analogy to the case for symmetric linearly distributive categories \cite{ldc}.
-
-
 \begin{example}
 The category $\Mat_k$ is strict symmetric monoidal  symmetric monoidally equivalent to $\FVect_k$ under both aforementioned tensor products.  The same with $\FinOrd$ and $\FSets$.
 \end{example}
-
-
 \begin{definition}
 A {\bf compact closed category} is a symmetric monoidal category such that for every object $X$, there is a chosen object $X^*$, called the {\bf dual} of $X$.
 For all objects $X$, there are maps called the {\bf unit} and {\bf counit}:
-
 $$
 \eta_X:I\to X^* \otimes X\hspace*{.5cm}\text{and}\hspace*{.5cm} \epsilon_X:X\otimes X^*\to I 
 $$
-
-
-
 Satisfying the following coherence equations:
-
 \begin{description}
 \item[Zig-zag equations:]
 $$
@@ -1332,9 +1202,7 @@ $$
     &
     & X\otimes I \ar[u]_{1_X\otimes \eta_X}
 }
-$$
-
-$$
+\hspace*{.1cm}
 \xymatrix{
   X^*\otimes ( X\otimes X^*) \ar[rr]^{\alpha_{X^*,X,X^*}}  \ar[d]_{1_{X^*}\otimes \epsilon_X}
     & 
@@ -1344,8 +1212,6 @@ $$
     & I\otimes X^* \ar[u]_{\eta_X\otimes 1_X{X^*}}
 }
 $$
-
-
 \item[Compatibility with the tensor product:]\
 
 \hspace*{-1.15cm}
@@ -1386,28 +1252,17 @@ X^*\otimes( (Y^*\otimes X)\otimes Y) \ar[u]^{1_{X^*}\otimes (\sigma_{Y^*,X}\otim
 X^*\otimes( Y^*\otimes (X\otimes Y))   \ar[ll]^{1_{X^*} \otimes \alpha^{-1}_{Y^*,X,Y}} & (X^*\otimes Y^*)\otimes (X\otimes Y)  \ar[l]^{\ \ \ \ \ \alpha^{-1}_{X^*,Y^*,X\otimes Y}} \ar[llluuuuu]!<0ex,.0ex>_{\epsilon_{X\otimes Y}}
 }
 $}
-
-
-
-
 \end{description}
-
 A strict compact closed category is a compact closed category where the underlying symmetric monoidal category is strict.
 
 A self-dual compact closed category is one where $X^*=X$ for all objects $X$.
 
 Strict symmetric monoidal functors and strong symmetric monoidal functors are the appropriate notion of map between strict/non-strict compact closed categories, as they preserve the duals strictly/strongly.
 \end{definition}
-
-
 The proceeding result follows immediately from the coherence theorem for symmetric monoidal categories because compact closed structure is preserved by symmetric monoidal functors:
-
 \begin{theorem}
 Every compact closed category is  symmetric monoidally equivalent to a strict compact closed category. 
 \end{theorem}
-
-
-
 Compact closed categories axiomatize the kinds of processes where inputs can be turned into outputs, and vice-versa.  In other words, they axiomatize a particular notion of feedback.  This is illuminated by looking at the proof nets.
 %In proof net notation the unit and counit are drawn as follows:
 We will draw the unit and counit for the compact closed structure as follows in the strict case:
@@ -1483,8 +1338,6 @@ We will draw the unit and counit for the compact closed structure as follows in 
 %\end{tikzpicture}
 %$$
 %
-
-
 $$
 \eta_X=
 \begin{tikzpicture}
@@ -1512,11 +1365,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
-
 The zig-zag equations are drawn as follows;
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1570,10 +1419,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
 And the second two equations correspond to the requirement that:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1644,7 +1490,6 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 This fixes the dualizing objects on tensor products $(X\otimes Y)^* = X^* \otimes Y^*$.
 %The graphical calculus for strict compact closed categories extends string diagrams for symmetric monoidal categories, where  the units and counits are drawn without the tensor/untensor and unit removal/introduction.
 
@@ -1711,12 +1556,9 @@ $$
 \end{tikzpicture}
 $$
 \end{definition}
-
 This abstract wire-bending induces a functor:
-
 \begin{definition}
 If $\X$ is a compact closed category, there is a  symmetric monoidal functor, $(-)^*:\X^\op\to\X$, called {\bf the transpose}, which sends:
-
 \begin{description}
 \item[Objects]\hfil $X \mapsto X^*$
 \item[Maps:] \hfil
@@ -1758,15 +1600,11 @@ $
 \end{tikzpicture}
 $
 \end{description}
-
 \end{definition}
-
-
 \begin{example}
 Out of all the examples we have discussed so far, only $\Mat_R$, $\FVect_k$ and $\FHilb$ are compact closed when regarded as symmetric monoidal categories with respect to the bilinear tensor product, but not the direct sum.
 
 For $\FHilb$ and $\FVect_k$, the compact closed structure is the same.  The dual object is given by the internal hom into $\C$/$k$.  Given an orthonormal basis $\{ b_i \}_{i=0,\ldots, n-1}$ of a finite dimensional vector space $X$, with dual basis $\{b_i^* \}_{i=0,\ldots, n-1}$ of $X^*$, the unit and counit are given by the following linear maps:
-
 $$
 \eta_X = 1 \mapsto \sum_{i=0}^{n-1} b_i^* \otimes b_i \hspace*{1cm}\epsilon_X = b_i\otimes b_j^* \mapsto 
 \begin{cases}
@@ -1774,9 +1612,6 @@ $$
 0 & \text {Otherwise}
 \end{cases}
 $$
-
-
-
 The situation for $\Mat_R$ is essentially the same.
 Because $\Mat_R$ is is skeletal, every object is equal to it's dual, so that $n^*=n$.
 The unit and counit are $\epsilon_n=(1,\cdots, 1)$ and  $\eta_n=\epsilon_n^T$.  In this case the transpose functor is exactly the transpose of matrices. 
@@ -1789,37 +1624,26 @@ The unit and counit are $\epsilon_n=(1,\cdots, 1)$ and  $\eta_n=\epsilon_n^T$.  
 
 \subsection{Dagger-monoidal categories}
 In this thesis, we will usually work with monoidal categories with extra structure called the dagger which allows one in some sense to``run maps in reverse.'' See \cite{cpm,abramsky} for further reference.
-
-
 \begin{definition}
 A {\bf \dag-category} ({\em read dagger-category}) is a category $\X$ equipped with a functor ${(-)}^\dag:\X^\op\to\X$ ({\em read the dagger}) that is:
-
 \begin{description}
-\item[\ \ Identity on objects:] so that for all objects $X$ of $\X$, $X^\dag = X$.
-\item[\ \ Involutive:] so that for all maps $f$ of $\X$, $(f^\dag)^\dag = f$.
+\item[Identity on objects:] so that for all objects $X$ of $\X$, $X^\dag = X$.
+\item[Involutive:] so that for all maps $f$ of $\X$, $(f^\dag)^\dag = f$.
 \end{description}
-
 A map $f$ in a dagger category is:
-
 \begin{description}
-\item[\ \ an isometry] when $f^\dag; f = 1$.
-\item[\ \ a coisometry] when $f; f^\dag = 1$.
-\item[\ \ unitary] when $f^\dag = f^{-1}$.
-\item[\ \ self-adjoint] when $f^\dag=f$.
-\item[\ \ a projector] such that $f;f=f$ and $f^\dag=f$ (also known as a $\dag$-idempotent).
+\item[an isometry] when $f^\dag; f = 1$.
+\item[a coisometry] when $f; f^\dag = 1$.
+\item[unitary] when $f^\dag = f^{-1}$.
+\item[self-adjoint] when $f^\dag=f$.
+\item[a projector] such that $f;f=f$ and $f^\dag=f$ (also known as a $\dag$-idempotent).
 \end{description}
-
 \end{definition}
-
 This structure will arise both in our exposition of nondeterministic categorical semantics as well as for quantum computing.
-
-
 \begin{example}
  $\Mat_\C$ is a \dag-category with respect to both the transpose and the complex conjugate transpose.
 \end{example}
-
 \begin{example}
-
 The category $\Hilb$ of complex Hilbert spaces and bounded linear maps is a dagger category with respect to the Hermetian adjoint.  The Hermetian adjoint of a map $A$ is the unique map $A^\dag$ satifying the following equation:
 $$
 \langle x;A|y\rangle = \langle x | A^\dag; y \rangle
@@ -1828,38 +1652,27 @@ $$
 
 Let $\FHilb$ denote the full subcategory of finite dimensional Hilbert spaces of $\Hilb$.  This is also a $\dag$-category.
 \end{example}
-
 \begin{lemma}
 There is an equivalence of categories $\FHilb \cong \Mat_\C$ preserving and reflecting the dagger structure.
 The Hermetian adjoint corresponds to the complex conjugate transpose along the equivalence $\Mat_\C \cong \FHilb$.
 \end{lemma}
-
-
 This example is actually a bit tricky; while the dagger in $\Mat_\C$ is given by the complex conjugate transpose; the complex conjugate transpose in $\FHilb$ is {\em not } the Hermetian adjoint, because $A^*$ is only isomorphic to $A$.
 
 
 
 
 There is a natural way to combined monoidal and dagger structure:
-
 \begin{definition}
 A {\bf  (strict) \dag-(symmetric) monoidal category} is a (strict) (symmetric) monoidal category equipped with a strict (symmetric) \dag-functor with respect to which all the components of the  coherence isomorphisms of the (symmetric) monoidal structure are unitary.
 \end{definition}
-
-
-
 \begin{example}
 The dagger category and symmetric monoidal structures of $\FHilb$, $\Hilb$ and $\Mat_\C$ are all compatible making them \dag-symmetric monoidal categories.
 
 Moreover, $\FHilb$ and $\Mat_\C$  are equivalent as $\dag$-symmetric monoidal categories.
 \end{example}
-
-
 We capture more of monoidal category theory within the framework of dagger categories:
-
 \begin{definition}
 A {(strict) \dag-compact closed category} is a (strict) compact closed category which is (strict) \dag-symmetric monoidal and for all objects $\X$:
-
 $$
 \xymatrix{
 I \ar[r]^{\epsilon_X^\dag} \ar[dr]_{\eta_X}   &  X\otimes X^* \ar[d]^{\sigma_{X,X^*}}\\
@@ -1875,39 +1688,24 @@ X\otimes X^* \ar[dr]_{\eta_X} \ar[r]^{\sigma_{X,X*}}
 }
 $$
 \end{definition}
-
 \begin{example}
 The compact closed and \dag-symmetric monoidal structures of $\Mat_\C$ and $\FHilb$ are both compatible making them \dag-compact closed.
 \end{example}
-
 \subsection{Monoidal presentations}
 In this subsection, we review how monoidal categories can be presented in terms of generators and equations. A more detailed reference can be found in \cite{ih}:
-
-
-
-
-
 \begin{definition}
 \label{def:monoidaltheory}
-
 %A {\bf symmetric monoidal theory} is a triple $T=({\sf Ob},\Sigma ,E \)$. $\sf Ob$ is a set of {\em objects}. $\Sigma\in [{\sf Ob}]\times [{\sf Ob}]^{G}$ is a set of {\bf generators} $g$ with associated arities $(X,Y) \in [{\sf Ob}]\times [{\sf Ob}]$,  denoted $g:X\to Y$, where $[\_]$ is the finite list monad. Let $\Sigma'$ denote the set $\Sigma\sqcup\{\sigma_X: [X,X]\to[X,X] | \forall X \in {\sf Ob} \}$, where the $\sigma_X$ are regarded as the braiding maps.  Moreover, let $\Sigma^*$ denote the 
 %$E \subseteq \{(f:X\to Y,g:X\to Y) \in \Sigma^2\}$
-
 A {\bf monoidal theory} is a triple $T=({\sf Ob},\Sigma ,E )$.   ${\sf Ob}$ is regarded as the set of generating objects. $\Sigma$ a set of generating morphisms whose pair of arity and coarity  in $[{\sf Ob}]\times [{\sf Ob}]$, denoted $f:[X_1,\cdots, X_n]\to [Y_1,\cdots, Y_m]$. $E$  is the set of generating equations between parallel maps generated by $\Sigma$.
 
 Every monoidal theory uniquely defines a strict monoidal category $\bar T$ given by quotienting the strict monoidal category freely generated by the objects in $\sf Ob$ and maps in $\Sigma$ modulo the equations in $E$.  Call such a monoidal category a {\bf multicoloured pro}, or merely a {\bf pro} when $|{\sf Ob}|=1$.  We will say that $T$ is a presentation of a monoidal category $\X$ when $\bar T$ is monoidally equivalent to $\X$.
 \end{definition}
-
-
-
  In practice, we won't explicitly regard a  monoidal theory as a triple; rather, we will present multicoloured pros by drawing a list of generating equations between string diagrams.
 For example, the way in which proof nets were constructed in Definition \ref{def:proofnets} is secretly a monoidal theory.
 For a more elementary example:
-
 \begin{example}
 Consider the monoidal theory for the prop $\m$ generated by a monoid on one object:
-
-
 $$
 \begin{tikzpicture}[yscale=-1]
 	\begin{pgfonlayer}{nodelayer}
@@ -1998,21 +1796,14 @@ $$
 $$
 This is a presentation for the pro $\FinOrdMonot$, of finite ordinals and monotone maps.
 \end{example}
-
-
 \begin{definition}
 A {\bf symmetric monoidal theory} $T$ consists of the same data as a monoidal theory except the equations are now defined by parallel maps generated by $\Sigma\sqcup C$, where  $C=\{\sigma_X:[X,X]\to [X,X]\ |\ \forall X \in {\sf Ob}\}$ is the set of distinguished braiding maps.
 
 
 The corresponding strict symmetric monoidal category $\bar T$ is given by quotienting the symmetric monoidal category freely generated by the objects $\sf Ob$ and maps $\Sigma$ by the equations in $E$.  These symmetric monoidal categories are called {\bf multicoloured props}, or merely {\bf props} when $|{\sf Ob}|=1$.
 \end{definition}
-
-
-
-
-
-
 \begin{example}
+\label{example:monoid}
 Consider the symmetric monoidal theory $\cm$ generated by a monoid $\xcirc$, which is also commutative:
 $$
 \begin{tikzpicture}[yscale=-1]
@@ -2051,18 +1842,13 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 This is a presentation for the prop of finite ordinals and functions $\FinOrd$ under the disjoint union.
 This is a formal way to talk about the graph of a function between finite sets.
-
 \end{example}
-
-
 This elegant presentation of the symmetric monoidal category of finite sets motivates finding presentations for other well-known mathematical structures.  
 
 
 The following result has probably been known for quite some time.  The earliest reference I could find is the case over a field \cite[Figure 26]{lafont}:
-
 \begin{example}
 Take a commutative semiring $S$.
 Consider the prop ${\sf cb}_S$ generated by a commutative monoid $\xcirc$ and comonoid $\zcirc$ interacting to form a {\bf bicommutative bialgebra}:
@@ -2185,7 +1971,6 @@ $$
 \end{tikzpicture}
 $$
 And generators for all elements $a,b \in S$ such that the structure of the commutative semiring $S$ is reflected in the convolution of the bialgebra:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2293,9 +2078,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 Where the commutative monoid and cocommutative comonoid are both natural with respect to the scalars:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2420,11 +2203,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
-
 This monoidal theory is equivalent to the prop of matrices over $S$, $\Mat_S$, under the direct sum.  Recall that the direct sum of matrices $R$ and $S$ is given by the following block diagonal matrix:
-
 $$
 R\oplus S :=
 \begin{bmatrix}
@@ -2432,11 +2211,7 @@ R & 0\\
 0 & S
 \end{bmatrix}
 $$
-
-
-
 The generators of this presentation are interpreted in $\Mat_S$ as follows:
-
 $$
 \left\llbracket\
 \begin{tikzpicture}
@@ -2489,7 +2264,6 @@ $$
 \end{tikzpicture}
 =a
 $$
-
 The unit and counit are interpreted as the unique matrices from $0 \to 1$ and $1\to 0$, respectively. note that because $\N$ is the initial commutative semiring, $\Mat_\N$ can be presented in terms of the prop for the free bicommutative bialgebra, where the generators and equations for scalars are derivable.
 
 
@@ -2563,11 +2337,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
-
 where the antipode of the Hopf algebra is given by the scalar $-1$:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2699,9 +2469,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 \end{example}
-
 Moreover, if we define monoids and comonoids on composite systems using proof net notation:
 $$
 \begin{tikzpicture}
@@ -2836,10 +2604,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 Then arbitrary  matrices $M:n\to m$ are natural with respect to these families of maps:
-
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2964,10 +2729,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
 Therefore, given two parallel matrices  $M$ and $N$, their sum is given by convolution with the bialgebra:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3000,14 +2762,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
-
-
-
-One can performmatrix multiplication by pulling all of the white generators to the bottom and grey generators to the top so that the elements of the commutative semiring live in the middle.  Consider the following example:
-
-
+One can perform matrix multiplication by pulling all of the white generators to the bottom and grey generators to the top so that the elements of the commutative semiring live in the middle.  Consider the following example:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3191,9 +2946,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 This makes it clear how to interpret this as a matrix. Follow the wires from the bottom and chase their paths to the top, copying them when they meet white nodes, adding them when they meet grey ones, and multiplying them when they meet scalars:
-
 $$
 \left\llbracket \
 \begin{tikzpicture}
@@ -3256,10 +3009,7 @@ a & a\\
 a & a+b
 \end{bmatrix}
 $$
-
-
 Where
-
 $$
 \begin{bmatrix}
 a & a\\
@@ -3275,23 +3025,16 @@ x_1 \cdot a+x_2\cdot a\\
 x_1\cdot a+x_2\cdot (a+b)
 \end{bmatrix}
 $$
-
 Matrices can be generalized to have no fixed origin:
-
 \begin{definition}
 Given a commutative semiring $R$, the prop of affine matrices over $R$, $\Aff\Mat_R$ has:
 \begin{description}
 \item[Objects:] Natural numbers.
-
 \item[Maps:] A map $(M,a):n\to m$ is a pair of a matrix $M:n\to m$ and a vector $1\to m$.
-
 \item[Identity:] The identity on an object $n$ is the pair
 $$(I_n,{\bf 0}:1\to n)$$
  where $I_n$ is the identity matrix and $\bf 0$ is the zero vector.
-
-
 \item[Composition]
-
 $$
 \dfrac{
 n \xrightarrow{(M,a)} m\ , \hspace*{.5cm} m \xrightarrow {(N,b)} k
@@ -3299,27 +3042,20 @@ n \xrightarrow{(M,a)} m\ , \hspace*{.5cm} m \xrightarrow {(N,b)} k
 (M,a);(N,b):=(NM, Na+b)
 }
 $$
-
 \item[Monoidal structure:]  The tensor product is given pointwise:
  $$(M,a)\oplus (N,b):=(M\oplus n, a\oplus b)$$ 
 The tensor unit is the identity on $0$.
 \end{description}
 \end{definition}
-
-
 So that in particular  $\Mat_R$ embeds into $\Aff\Mat_R$ via 
 $$
 \left(n \xrightarrow{M} m\right)
 \mapsto 
 \left(n \xrightarrow{(M,{\bf 0})} m\right)
 $$
-
-
 I can not find a reference for the following result, but it is is an immediate consequence of the analysis of affine relations in \cite{affine}:
-
 \begin{example}
 Given a commutative semiring $R$, the prop $\acb_R$ is presented by adding the following generators and relations to $\cb_R$:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3372,16 +3108,9 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
 This is a presentation for the prop of affine matrices over $S$.  This new generator is interpreted as the affine shift.
-
-
 \end{example}
 %The way we have described adding a new generator to $\cb_R$ in terms of the interaction with the monoid $\zcirc$ is secrely a pushout over $\cm^\op$.  We have specified the interaction of the new generator with the commutative monoid structure, embedded it in $\cb_R$ and then taken the free prop given by these generators and equations.
-
-
-
 Given an affine matrix $(M,a)$, we can represent this as the following string diagram:
 $$
 \begin{tikzpicture}
@@ -3402,10 +3131,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
 So that the composite of two affine matrices can be computed diagramatically:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3545,8 +3271,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-And we see that the other axiom is needed for the identity law:
+The other axiom is needed for the identity law:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3577,13 +3302,10 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
-
 The following structure will show up quite a lot throughout this thesis:
 \begin{example}
-Consider the equations between a monoid $\xcirc$ and comonoid $\xcirc$:
-
+\label{ex:frob}
+A {\bf Frobenius} algebra is a monoid $\xcirc$ and comonoid $\xcirc$ interacting to satisy the Frobenius laws:
 $$
   \begin{tikzpicture}[rotate=90]
 	\begin{pgfonlayer}{nodelayer}
@@ -3607,7 +3329,25 @@ $$
 	\end{pgfonlayer}
   \end{tikzpicture}
  \eqzxa{frobl}
-  \begin{tikzpicture}[rotate=90,xscale=-1]
+  \begin{tikzpicture}[rotate=90]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-4.75, -0.25) {};
+		\node [style=X] (1) at (-5.5, -0) {};
+		\node [style=none] (2) at (-7, -0.25) {};
+		\node [style=X] (3) at (-6.25, 0) {};
+		\node [style=none] (4) at (-4.75, 0.25) {};
+		\node [style=none] (5) at (-7, 0.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-30, out=180, looseness=1.25] (0.center) to (1);
+		\draw (3) to (1);
+		\draw [in=180, out=30, looseness=1.25] (1) to (4.center);
+		\draw [in=0, out=-150, looseness=1.25] (3) to (2.center);
+		\draw [in=0, out=150, looseness=1.25] (3) to (5.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+  \eqzxa{frobr}
+ \begin{tikzpicture}[rotate=90,xscale=-1]
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=X] (0) at (-7, -0) {};
 		\node [style=X] (1) at (-6.25, 0.5) {};
@@ -3628,25 +3368,9 @@ $$
 		\draw (1) to (7.center);
 	\end{pgfonlayer}
   \end{tikzpicture}
-  \eqzxa{frobr}
-  \begin{tikzpicture}[rotate=90]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (0) at (-4.75, -0.25) {};
-		\node [style=X] (1) at (-5.5, -0) {};
-		\node [style=none] (2) at (-7, -0.25) {};
-		\node [style=X] (3) at (-6.25, 0) {};
-		\node [style=none] (4) at (-4.75, 0.25) {};
-		\node [style=none] (5) at (-7, 0.25) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [in=-30, out=180, looseness=1.25] (0.center) to (1);
-		\draw (3) to (1);
-		\draw [in=180, out=30, looseness=1.25] (1) to (4.center);
-		\draw [in=0, out=-150, looseness=1.25] (3) to (2.center);
-		\draw [in=0, out=150, looseness=1.25] (3) to (5.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-\ ,\hspace*{.5cm}
+$$
+This is moreover a {\bf special } Frobenius algebra when:
+$$
   \begin{tikzpicture}[rotate=90]
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=X] (0) at (-6.25, 0.25) {};
@@ -3672,19 +3396,12 @@ $$
 	\end{pgfonlayer}
   \end{tikzpicture}
 $$
-
-Call a (commutative) monoid/comonoid pair  satisfying Equations \ref{frobl} and \ref{frobr} a (commutative) {\bf Frobenius algebra}; and  a {\bf special} (commutative) Frobenius algebra, when they additionally satisfy Equation \ref{special}.
+A commutative (special) Frobenius algebra is a (special) Frobenius algebra between a commutative monoid and a cocommutative comonoid.
 
 Denote the pro generated by a Frobenius algebra by $\fa$, and a special Frobenius algebra by $\sfa$.
 Denote the prop generated by a commutative Frobenius algebra by $\cfa$, and a special commutative Frobenius algebra by $\scfa$.
-
-
-A (special) (commutative) \dag-Frobenius algebra in a \dag-(symmetric) monoidal category is a  (special) (commutative) algebra where the monoid and comonoid are daggers of each other.
 \end{example}
-
-
-Notice how Frobenius algebras make objects self dual:
-
+Frobenius algebras make objects self dual:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3707,7 +3424,7 @@ $$
 		\draw (4.center) to (6.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
-=
+\eref{frobl}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=X] (10) at (2.25, 0.5) {};
@@ -3729,7 +3446,7 @@ $$
 		\draw [in=-90, out=150] (16) to (10);
 	\end{pgfonlayer}
 \end{tikzpicture}
-=
+\eq{$\ref{unitl},\ref{unitr}^\op$}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (20) at (5.25, -2) {};
@@ -3739,7 +3456,7 @@ $$
 		\draw (20.center) to (22.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
-=
+\eq{$\ref{unitr},\ref{unitl}^\op$}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=X] (31) at (9.75, 0.5) {};
@@ -3761,7 +3478,7 @@ $$
 		\draw [in=-90, out=30] (37) to (31);
 	\end{pgfonlayer}
 \end{tikzpicture}
-=
+\eref{frobr}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=X] (23) at (7.25, 0) {};
@@ -3784,7 +3501,6 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 So that monoidal categories equipped with a supply of (\dag-)Frobenius alegbras compatible with the monoidal structure is self dual (\dag-)compact closed.
 
 

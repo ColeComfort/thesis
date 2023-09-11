@@ -1,5 +1,3 @@
-
-
 %
 %%
 %%%The Grothendieck construction establishes an equivalence of categories between pseudofunctors from categories $\X$ into $\Cat$ and fibrations over $\X$.  There is a two-sided variation of this construction:
@@ -834,7 +832,6 @@
 %
 %
 %
-
 In this Chapter, we attempt a high-level reconstruction of  proof nets by categorifying Frobenius algebras and appealing to a conjectural categorified spider theorem.  Starting with a monoidal category, we obtain a monoidal category which is not itself the strictification, but which is closely related.
 
 We  hope that the highly conceptual level of the construction opens up avenues for finding string diagrams for more general algebraic structures; our goal being to find canonical ways to glue monoidal categories together and obtain new kinds of string diagrams thereof.  This kind of problem has previously been considered in the setting where one wants to glue together monoidal categories along multiple different monoidal functors \cite{lobski}.  The motivation therein is to give a semantics for ways to explain systems which are stratified into multiple different layers, although they obtain a monoidal bicategory, rather than an ordinary monoidal category where one has to keep track of coherence information.
@@ -843,13 +840,9 @@ We  hope that the highly conceptual level of the construction opens up avenues f
 Indeed, throughout this thesis, we have been drawing string diagrams in monoidal, or symmetric monoidal categories in which our familiar notions of monoids and Frobenius algebras and so on live.  However, if we move to the higher dimensional setting of monoidal bicategories, all of the equalities defining the axioms for these structures become natural transformations subject to  coherence conditions.   
 
 
-For this Chapter, unlike the rest, I will assume that the reader has some familiarity with monoidal bicategories.
-
-
+For this chapter, unlike the rest, I will assume that the reader has some familiarity with monoidal bicategories.
 \section{Pointed categories and multicategories}
-
  First, we categorify a monoid in a monoidal category:
-
 \begin{definition}
 A {\bf pseudomonoid} in a monoidal bicategory is an object $\mathcal C$ equipped with two 1-cells ${C} \otimes \mathcal{C} \to \mathcal{C}$ and $\one \to \mathcal C$ drawn as follows:
 $$
@@ -871,13 +864,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
-
-
-
  as well as three 2-cells, the associator, left and right unitors:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -931,9 +918,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 Satisfying the maclane pentagon coherence equation (where the dashed blue box indicates where the nonidentity natural transformation is being applied):
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1100,10 +1085,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
 As well as the unit coherences:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1179,47 +1161,30 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 A pseudomonoid is {\bf strict} when the associator and unitors are idenities.
-
 \end{definition}
-
 If we take $\Cat$ to be a monoidal bicategory with respect to the Cartesian product, then monoidal categories have a slick definition:
-
 \begin{lemma}
 Monoidal categories are pseudomonoids in $\Cat$ and strict monoidal categories are strict pseudomonoids in $\Cat$.
 \end{lemma}
-
 Contrast this with the view of small {\em strict} monoidal categories as categories internal to monoids between spans of sets; in the non-internal setting, the ability to express the pseudoness of the monoid allows the tensor product to not be strict.
 
 By looking at the points inside of $\Cat$, this way of viewing a monoidal category hints at some connection to proof nets:
-
 \begin{definition}
 The symmetric monoidal bicategory of {\bf pointed categories} is the coslice bicategory $\Cat_*:=\one/\Cat$.  Explicitly, this has:
-
 \begin{description}
 \item[0-cells:] Pointed categories, pairs consisting of a category along with a chosen object of that category: 
-
 $$(\X, X\in\X_0)$$
-
 \item[1-cells:] Pointed functor between pointed categories,   pairs consisting of a functor between the underlying categories and a morphism that preserves the point:
-
 $$(F:\X\to\Y, f\in \Y(F(X),Y) ):(\X, X\in\X_0)\to (\Y, Y\in\Y_0)$$
-
 \item[2-cells:] Given two parallel pointed functors $(F,f),  (G,g):(\X,X)\to (\Y,X)$,
 a pointed natural transformation is natural transformation  $\phi:F\to G$ that preserves the distinguished map, so that $\phi_X:g=f$.
 \end{description}
-
-
 Composition of the 1-cells and 2-cells is given pointwise; and the monoidal structure is given by the Cartesian product.
-
 \end{definition}
-
 There is a graphical calculus for pointed profunctors, which we will first specialize to pointed categories.  To my knowledge the graphical calculus is not fully worked out in the literature.  Initially called ``internal string diagrams''  by \cite{vicary} when applied to  $\Vect$-enriched Profunctors, these have also been called ``open diagrams'' by \cite{mario} for $\Sets$-enriched profunctors. We use the package contained in the paper \cite{vicary} to typeset these diagrams.  We will return to the case of $\Sets$-enriched profunctors shortly.
 
 Given a pointed functor, $(1_\X, f \in \X(1_{\X}(X),Y))$, draw the identity as a cylinder and the map inside the cylinder as follows:
-
-
 $$
 \begin{tikzpicture}[scale=1.5]
     \node[Cyl, bot, top, height scale=1.0] (A) at (0,0) {};
@@ -1234,8 +1199,6 @@ $$
 Think of the maps inside the category as ``living'' within the cylinder; wherein one can apply rewrite rules coming from the equational theory of the category.  
 
 Functors are drawn as membranes between separating the cylinder for the domain and codomain category; functoriality means that things can pass up through the membrane:
-
-
 $$
 \begin{tikzpicture}[scale=1.5]
     \node[Cyl, bot, top,xscale=1.5,yscale=1.1] (A) at (0,0) {};
@@ -1261,9 +1224,7 @@ $$
     \end{scope}
 \end{tikzpicture}
 $$
-
 If $\X$ is a monoidal category, then one can tensor maps within the cobordism using the tensor product of $\X$, so that for $f:W\to X$ and $g:Y\to Z$, we have the the pointed functor  $(1_\X, f\times  \in \X(1_{\X}(W\otimes X),(Y\otimes Z)))$  with the following graphical representation:
-
 $$
 \begin{tikzpicture}[scale=1.5]
     \node[Cyl, bot, top,xscale=1.5,yscale=1.1] (A) at (0,0) {};
@@ -1277,14 +1238,10 @@ $$
     \end{scope}
 \end{tikzpicture}
 $$
-
 Moreover, for every map with a binary tensor factorization of the domain  $f:X\otimes Y\to Z$, we can use the external tensor product of $\Cat$ to obtain a pointed functor:
-
 $$
 (\_\otimes \_ :\X^2\to\X, f\in \Y(X\otimes Y ,Z) ):(\X^2, (X,Y)\in\X^2_0)\to (\X, Z\in\X_0)$$
-
 Drawn as follows:
-
 $$
 \begin{tikzpicture}[scale=1.5]
     \node[Pants, bot, top, height scale=1.0] (A) at (0,0) {};
@@ -1301,17 +1258,9 @@ $$
     \end{scope}
 \end{tikzpicture}
 $$
-
-
 And for every state $f:I\to X$, there is a pointed functor
-
-
 $$(I:\one\to\X, f\in \Y(I,X) ):(1,* \in \one)\to (\X, I\in\X_0)$$
-
-
-
 Drawn as follows:
-
 $$
 \begin{tikzpicture}[scale=1.5]
 \setlength\cupheight{1.5\cupheight}
@@ -1324,11 +1273,7 @@ $$
 \end{scope}
 \end{tikzpicture}
 $$
-
 Consider the action of the associator and unitor on the points:
-
-
-
 $$
 \begin{tikzpicture}[scale=1.5]
     \node[Pants, bot, top] (B) at (0,0) {};
@@ -1451,8 +1396,6 @@ $$
     \end{scope}
 \end{tikzpicture}
 $$
-
-
 One way in which this diverges from proof nets is that these generators form a monoidal bicategory, not a monoidal category; forcing one to keep track of which 2-cells have been applied.  A-priori, in this kind of setting, there is no guarantee that two different ways to get to the same diagram are equal.
 
 
@@ -1461,26 +1404,19 @@ Luckily, for monoidal categories, this issue can be resovled via the multicatego
 
 
 Formally multicategories can be constructed in a very similar way to internal categories (see \cite[Defininition 4.2.2]{leinster} for a more general, thorough treatment):
-
 \begin{definition}
 {\sf MultiSpan} is the bicategory with:
-
 \begin{description}
 \item[0-cells:] Sets
 \item[1-cells:] 
-
 $$
 \dfrac{[X] \xleftarrow{f} A \xrightarrow{g} Y \hspace*{.5cm}\text{in $\Sets$}}
 {X \xrightarrow{(A,f)} Y  \hspace*{.5cm}\text{in {\sf MultiSpan}}}
 $$
-
 The identity on $X$ is given by the span:
 $$ [X] \xleftarrow{\eta_X } X = X$$
-
-
 The composition of multispans
 $$X \xrightarrow{(f,A,g)} Y\xrightarrow{(h,B,k)} Z $$
-
 is given by taking the following pullback
 $$
 \xymatrix{
@@ -1490,24 +1426,17 @@ $$
 [X] &         &      &     &    &    &&Z
 }
 $$
-
 Yielding a 1-cell:
-
 $$
 X\xrightarrow{(\pi_0;[f];\mu_X, [A] {}_{[g]}\times_h B, \pi_1;k)} Z
 $$
 Where, recall that $[-]:\Sets\to\Sets $ is the list monad where the unit $\eta_X(x)\mapsto [x]$ inserts into the singleton list  and the multiplication $\mu$ flattens lists of lists.
-
 \item[2-cells:] The 2-cell structure is the same as for spans and coherence 2-cells are essentially the same as for spans.
-
 \end{description}
 \end{definition}
-
-
 \begin{definition}
 A (small) {\bf multicategory} is a monad is {\sf MultiSpan}.
 \end{definition}
-
 So we have a monad on the 1-cell $[ {\sf Ob}] \xleftarrow{\sf dom} {\sf Ar} \xrightarrow{\sf codom} {\sf Ob}$.  As opposed to the setting for internal categories, the domain is now a list of objects.  The way that the composition and unit are defined plugs the single object in the codomain into the list of objects in the domain.
 
 
@@ -1520,27 +1449,17 @@ An equivalent way to define a pseudomonoid in $\Cat$ would be to ask for a monoi
 
 
 Hermida \cite{hermida}, showed that when one regards an (unbiased) monoidal category as a multifunctor $F:\one\to\Cat$, by computing the following pullback in the bicategory of 2-multicategories, the Grothendieck category $\int F_\X$ is precisely a representable multicategory:
-
 $$
 \xymatrix{
 \int  F \ar[r]^{\pi_1} \ar[d]_{\pi_0} & \Cat_* \ar[d] \\
 \one \ar[r]_F & \Cat
 }
 $$
-
-
-
 And moreover, the projection map $\pi_0:F_\X\to \one$ is a fibration of multicategories.  He shows that there is an equivalence of bicategories between the multifunctor category $[\one,\Cat]$ and the subcategory of the slice category of multifibrations over $\one$.  
 In some sense, this equivalence can be regarded as a different version of the coherence theorem for monoidal categories.
 However, from a string diagrammatic perspective, this is unsatisfying.  Indeed, despite representable multicategories being in bijection with monoidal categories, the way that composition is defined in multicategories biases the inputs over the outputs; moreover, we are only allowed to compose along one object at a time.
-
-
-
 \section{Pointed profunctors and polycategories}
-
 To attempt to rectify this with the 2-sided nature of proof nets, we recall the category of internal profunctors described in Definition \ref{def:internalprof}, which is the 2-sided version of $\Cat$.  In this section it will be easier to work with profunctors {\em enriched} in $\Sets$, as opposed to profunctors internal to $\Sets$.  This is more general as well, because it allows us to work with locally small categories, rather than merely small categories:
-
-
 \begin{definition}
 The category of $\Prof$, of profunctors internal to $\Sets$ has:
 \begin{description}
@@ -1560,53 +1479,31 @@ Where the coend of a functor $F:\X^\op\times\X\to \Sets$ is given by the coequal
 $$
 \coprod_{X_1,X_2 \in \X} {\X}(X_1,X_2) \times F(X_1,X_2) \rightrightarrows \prod_{X \in \X} F(X,X) \to \int^{X \in \X} F(X,X)
 $$
-
-
 The identity profunctor on $\X$ is given by the hom functor
 $$\X(-,=): \X^\op\times\X\to\Sets$$
-
-
 Intutitively, this is a categorification of trace of a matrix where the natural numbers are replaced with categories, and the commutative ring is replaced with $\Sets$.  Thus, the composition of profunctors categorifies matrix multiplication.
-
-
 \item[2-cells:]  2-cells between parallel profunctors $P,Q:\X\proarrow \Y$ are natural transformations between the underlying profunctors $P,Q:\X^\op\times \Y \to \Sets$.
-
 \item[Compact closed structure:] The symmetric monoidal structure of $\Prof$ is given by extending the Cartesian structure in $\Cat$.   The units and counits of the compact closed structure are given by the hom functor.
-
 \end{description}
 \end{definition}
-
-
 A comprehensive review of the basic theory of profunctors and their calculus is contained in \cite{fosco}.
 There are two classes of profunctors which will be of interest to us:
-
 \begin{definition}
-
-
 A profunctor $\X\proarrow \Y$ is {\bf representable} when it is naturally isomorphic to the profunctor $F_*:=\Y(F-,=)$ for a functor $F: \X\to \Y$.
 
 
 Dually, a profunctor $\Y\proarrow \X$ is {\bf corepresentable} when it is naturally isomorphic to the profunctor $F^*:=\Y(-,F=)$ for a functor $F: \X\to \Y$.
-
-
 \end{definition}
-
 There are two embeddings of $\Cat$ into $\Prof$ that preserve the monoidal structure (formally, they are strong monoidal pseudofunctors):
-
 \begin{definition}
 The representable embedding $(-)_*:\Cat^\co \to \Prof$ is the identity on objects,  covariant on 1-cells and contravariant on 2-cells.  It takes functors $F:\X\to \Y$ to profunctors  $F_*:\X\proarrow \Y$.
 
-
 Dually, the corepresentable embedding $(-)^*:\Cat^\op \to \Prof$  is the identity on objects, contravariant on 1-cells and covariant on 2-cells. It takes functors $F:\X\to \Y$ to profunctors  $F^*:\Y\proarrow \X$.
-
 \end{definition}
-
 These two embeddings interact nicely:
-
 \begin{lemma}
 Given any functor $F:\X\to \Y$, there is an adjunction $F_* \dashv F^*$ with unit $\eta^F$ and counit $\epsilon^F$.
 \end{lemma}
-
 For example, if we draw the two embeddings of the pseudomonoid as follows:
 $$
 \begin{tikzpicture}
@@ -1663,10 +1560,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 Then we have the following 2-cells:
-
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1727,9 +1621,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 Indeed for any monoidal category, the counit for the tensor product adjunction induces lax-Frobeniusators:
-
 $$
 \phi^L:=
 \left(
@@ -1826,7 +1718,6 @@ $$
 \end{tikzpicture}
 \right)
 $$
-
 $$
 \phi^R:=
 \left(
@@ -1923,7 +1814,6 @@ $$
 \end{tikzpicture}
 \right)
 $$
-
 These Frobeniusators interact with the (co)associators and (co)unitors of the (co)omonoid and adjoints to to satisfy several coherences forming what Franco et al call ``map monoidal object'' \cite[Remark 6.3]{dualsinvert}. They also remark that when the monoidal category is additionally autonomous, so that it has duals, the Frobeniusators are invertible.  As a technical note,  map monoidal objects in $\Prof$ are not precisely monoidal categories, as this biconditional only holds for Cauchy-complete categories.
 
 
@@ -1932,11 +1822,8 @@ For context, a similar unpublised result Shulman discussed on the n-category caf
 
 
 We can repeatedly apply natural transformations to reduce diagrams composed of the pseudo-Frobenius algbra structure coming from a monoidal category:
-
 \begin{definition}
 Fix a monoidal category $\X$. Say that a connected diagram in $\Prof$ composed of the generators of the corresponding pseudomonoid is in {\bf spider normal form} when it is any of the four following types of diagrams (the last of which we will call a scalar spider):
-
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2033,10 +1920,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
 Say that a not necessarily connected diagram is in {\bf stratified spider normal form} when it can be composed into a strictly progressive sequence of nonscalar spiders followed by a strictly progressive sequence of scalar spiders:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2131,28 +2015,18 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 \end{definition}
-
 \begin{lemma}
 Given a monoidal category $\X$, and a connected diagram in $\Prof$ generated by the $1$-cells of the pseudo-Frobenius structure induced by $\X$ one can always reduce the diagram to spider normal form by repeated application of
-
 $$\phi^L,\phi^R,\eta^\otimes,\alpha_*,\alpha^*,(u^L)_*,(u^L)^*,(u^R)_*,(u^R)^*$$
-
 As well as the symmetric monoidal structure of $\Prof$.  
 
 Furthermore, given any {\em not-necessarily connected} diagram can be reduced to stratified spider normal form using the same collection of $2$-cells, where the order of the scalars spiders with respect to the tensor product is preserved by normalization.
 \end{lemma}
-
-
 This lemma is an obvious corollary  of spider theorem for special Frobenius algebras; however, the following is not  so immediate:
-
-
 \begin{conjecture}
 The stratified spider normal form is strictly confluent so that any parallel $2$-cells witnessing the reduction to the spider normal form are equal.
 \end{conjecture}
-
-
 In some sense, it seems as if this should be seen to follow from the coherence theorem for monoidal categories; however, the author is unable to prove it.
 The rest of this chapter relies on this categorification of the spider theorem being true.  
 
@@ -2162,29 +2036,18 @@ A similar result is proven for diagrams generated by the free pseudo-Frobenius a
 From now on, let us assume that the scalars in our monoidal category are central, so that they commute with all other maps.  Because of the way we moved the scalar spiders out of the way to perform spider fusion unobstructed, we have to make this concession if we want to have any meaningful semantics.
 
 Let us ``look inside'' $\Prof$ just as we did for $\Cat$, to see how normalization acts on points.
-
 \begin{definition}
 The symmetric monoidal bicategory of {\bf pointed profunctors}, $\Prof_*$ has:
-
 \begin{description}
 \item[0-cells:] Pointed categories:
-
 $$(\X, X\in\X_0)$$
-
 \item[1-cells:] A pointed functor  between pointed categories is a pair consisting of a profunctor between the underlying categories and a morphism that preserves the point:
-
 $$(F:\X\proarrow\Y, f\in F(X,Y)):(\X, X\in\X_0)\to (\Y, Y\in\Y_0)$$
-
 \item[2-cells:] Given two parallel pointed functors $(F, f),  (G, g):(\X, X)\to (\Y,Y)$,
 a pointed 2-cell is 2-cell $\phi:F\Rightarrow G$ of profunctors that preserves the distinguished map, so that $\phi_X:g=f$.
 \end{description}
-
 \end{definition}
-
-
 The graphical calculus for pointed profunctors is essentially the same as for pointed categories.  Except now, due to the two different yoneda embeddings, we can factorize the domain and codomain of maps.  For example, consider the action unit and counit for the tensor product:
-
-
 $$
   \begin{tikzpicture}[scale=1.5]
     \node[Pants, top] (pants) {};
@@ -2297,9 +2160,6 @@ $$
     \end{scope}
   \end{tikzpicture}
 $$
-
-
-
 These diagrams are very closed to proof nets.  
 One might na\"ively try to obtain proof nets for monoidal categories in terms of quotienting the subcategory of $\Prof_*$ generated by the the monoidal structure by forcing the unit and counit of the adjunction to be equalities; however, the prospect of obtaining a monoidal category as a quotient of a monoidal bicategory is highly nontrivial.
 
@@ -2310,7 +2170,6 @@ $$
 (\X(-,=), (X\otimes Y)\otimes Z)\proarrow (\X(-,=),X\otimes(Y\otimes Z))
 $$
 By normalizing this diagram:
-
 $$
 \begin{tikzpicture}[scale=1.5]
     \node[Pants, bot, top] (B) at (0,0) {};
@@ -2357,10 +2216,7 @@ $$
     \end{scope}
 \end{tikzpicture}
 $$
-
-
 Similarly, we get the inverse associator by connecting the shapes in the other way:
-
 $$
 \begin{tikzpicture}[scale=1.5]
     \node[Pants, bot, top] (B) at (0,0) {};
@@ -2407,10 +2263,7 @@ $$
     \end{scope}
 \end{tikzpicture}
 $$
-
-
 We can do a similar thing for the left and right unitors:
-
 $$
 \begin{tikzpicture}[scale=1.5]
     \node[Copants, bot] (A) at (0,0) {};
@@ -2453,11 +2306,7 @@ $$
     \end{scope}
 \end{tikzpicture}
 $$
-
 As well as their inverses:
-
-
-
 $$
 \begin{tikzpicture}[scale=1.5]
     \node[Pants, top, bot] (A) at (0,0) {};
@@ -2500,31 +2349,20 @@ $$
     \end{scope}
 \end{tikzpicture}
 $$
-
-
 In the setting of proof nets, the tensor is inverse to the cotensor and the unit introduction is inverse to the unit removal. 
-
-
-
 \section{Monoidal categories as displayed categories}
-
  However, slightly closer than in $\Cat_*$, in $\Prof_*$ these 2-cells are at least adjoint.  We want to turn the adjunctions into equalities somehow.  We attempt this by regarding the normalization of the diagrams in $\Prof_*$ as the maps themselves.  
 We need the following definition to this end:
-
 \begin{definition}
 A {\bf displayed category} is an ordinary category $\D$ equipped with a lax normal functor $F:\D\to \Prof$.
 That is to say, $F$ has the data of:
-
 \begin{itemize}
 \item A function $F:\D_0\to \Prof_0$ taking objects of $\D$ to categories.
 \item For every pair of objects $X,Y \in \D_0$, a function $F_{X,Y}:\D(X,Y)\to \Prof(F(X),F(Y))$  such that $1_{F(X)}=F_{X,X}(1_X)$.
 \item For every triple of objects $X,Y,Z \in \D_0$, a $2$-cell, with components at $(f:X\to Y,g:Y\to Z)$:
 $$F_{X,Y,Z}(f,g):F_{X,Y}(f);F_{Y,Z}(g) \Rightarrow F_{X,Z}(f;g)$$
 \end{itemize}
-
 Such that for any diagram $W\xrightarrow{f} X \xrightarrow{g} Y \xrightarrow{h} Z$ in $\X$ the following diagram commutes in $\Prof$:
-
-
 $$
 \xymatrix{
 (F_{W,X}(f);F_{X,Y}(g));F_{Y,Z} \ar[d]_{F_{W,X,Y}(f;g);1_{F_{Y,Z}(h)}} \ar[rr]^{(\alpha_;)_{F_{W,X}(f),F_{X,Y}(g),F_{Y,Z}(h)}}
@@ -2534,47 +2372,32 @@ F_{W,Y}(f;g);F_{Y,Z}(h) \ar[dr]_{F_{W,Y,Z}(f;g,h) \ \ }
   & F(W,Z)(f;g;h)
 }
 $$
-
 Where $\alpha_;$ is the associator for composition in $\Prof$.
 \end{definition}
-
 We can recast the spider theorem in this light:
-
 \begin{lemma}
 Given any monoidal category $\X$, there is a displayed category
-
 $F_\X:\sfa\to \Prof$ such that:
 \begin{itemize}
 \item $(F_\X)(n) = \X^n$
 \item $(F_\X){n,m}$ takes diagrams in $\sfa$ to (stratified) spiders in $\Prof$.
 \item The natural transformation $(F_\X)_{n,m,k}$ performs (stratified) spider fusion.
 \end{itemize}
-
-
 \end{lemma}
-
 This follows immediately from the  (conjectural) spider theorem.
 The confluence of the spider normalization corresponds to commutation of the pentagon in the definition of a displayed category.
 
 This way of framing the categorified spider theorem lends itself to the following canonical construction, usually attributed to Benabou \cite{benabou}. This is a variation of the eponymous construction of Grothendieck for pseudofunctors from ordinary categories into $\Cat$, which we alluded to early in the multicategorical setting:
-
-
-
 \begin{theorem}[B\'enabou-Grothendieck construction]
-
 Given a displayed category $F:\D\to \Prof$, the B\'enabou-Grothendieck category,  $\Pi F$ is given by the pullback:
-
 $$
 \xymatrix{
 \Pi  F \ar[r]^{\pi_1} \ar[d]_{\pi_0} & \Prof_* \ar[d] \\
 \D \ar[r]_F & \Prof
 }
 $$
-
 Where $\Prof_* \to \Prof$ is the canonical projection.
 Concretely $\Pi F$ has:
-
-
 \begin{description}
 \item[Objects:] Pairs $(X\in \D_0, X^\sharp \in (F(X))_0)$
 \item[Maps:] The maps are  pointed profunctors:
@@ -2586,13 +2409,8 @@ $$(X,X^\sharp)\xrightarrow{(f, f^\sharp)} (Y,Y^\sharp)\xrightarrow{(g, g^\sharp)
 The composite is defined as follows:
 $$(f, f^\sharp);(g, g^\sharp):= (F_{X,Y,Z}(f,g))(f^\sharp, g^\sharp)$$
 \end{description}
-
-
 Moreover, the first projection map $\pi_0:\Pi F\to \D$  is a (strict) functor.
 \end{theorem}
-
-
-
 We can actually go the other direction.  Given some fixed $\D$, this extends to an equivalence of categories between the slice category $\Cat/\D$ and the lax normal functor category $[\D,\Prof]$.  Benabou gives a detailed argument in proving this equivalence in his canonical reference \cite{benaboudist}.  We won't restate this equivalence of categories, as it takes considerable effort to expose.
 
 
@@ -2609,10 +2427,8 @@ Moreover, they identify representable *-polycategories as the  *-polycategories 
 However, we can not directly appeal to this result if we want to recapture proof nets.  This is because the composition in polycategories is defined only with respect to a single object at a time. The counit for the tensor product does not make sense in this setting.  Thus, we are not able to get the associators by untensoring twice and then retensoring in the other direction:  such a map can not even be formed!
 
 The displayed {\em category} $F_\X:\sfa\to \Prof$ which we constructed is in some sense trying to recapture this way of looking at things.  Let us see what happens when we compute the B\'enabou-Grothendieck category of $F_\X$.
-
 \begin{lemma}
 The indexed category $\Pi F_{\X}$ has a concrete presentation:
-
 \begin{description}
 \item[Objects:] Finite lists of objects in $\X$.
 %\item[Maps:] Given two finite lists $X=[X_0,\ldots, X_{n-1}]$ and $Y=[Y_0,\ldots, Y_{m-1}]$ of objects in $\X$, a map from $X\to Y$ is a pair $(f,f^\sharp)$ where $f:n\to m$ is a map in $\sfa$ equipped with an element $f^\sharp \in  (F_{\X})_{n,m}( F_{\X})$.
@@ -2622,13 +2438,10 @@ The indexed category $\Pi F_{\X}$ has a concrete presentation:
 %$$\otimes_{i=0}^{n-1} X_i \to \otimes_{i=0}^{m-1} Y_i$$
 %
 %Moreover, if $f$ is multiple connected components, then $f^\sharp$ is a finite list of maps whose domains and codomains factorized in this way.
-
 \item[Maps:] Given two finite lists $X=[X_0,\ldots, X_{n-1}]$ and $Y=[Y_0,\ldots, Y_{m-1}]$ of objects in $\X$, a map from $X\to Y$ is a pointed profunctor
-
 $$
 (P,f): (\X^n,X) \proarrow (\Y^m,Y)
 $$
-
 Generated by the (co)tensor and (co)unit of the monoidal structure of $\X$.
 
 The equality of these maps is modulo the equivalence relation generated by the congrence
@@ -2636,14 +2449,10 @@ $(P,f)\sim(Q,g)$
  when $Q$ and $P$ are normalized to the same stratified spider $\nu_0:P\Rightarrow S \Leftarrow Q:\nu_1$, and moreover, the normalization agrees on points so that $\nu_0(f)=\nu_1(g)$.
 %
 %\end{itemize}
-
 \item[Identity:]  The identity on $(\X^n,X)$ is the identity in pointed profunctors
-
 $$
 1_{(\X^n,X)} = (\X(-,=)^n,1_X)
 $$
-
-
 %Given a list of objects $X=[X_0,\ldots, X_{n-1}]$  in $\X$, $$1_X:=([1_{X_0},\ldots, 1_{X_{n-1}}], \X(-,=)^n)$$
 %vizualized as $n$ tubes occupied by identities:
 %
@@ -2674,18 +2483,10 @@ $$
 %    \end{scope}
 %\end{tikzpicture}
 %$$
-
-
 \item[Composition:] The composition is the composition of pointed profunctors.
-
 \end{description}
-
 This is moreover a strict monoidal category.  The tensor product is given by the tensor product in $\Prof_*$, so that the projection functor $\pi_0:\Pi F_\X\to \sfa$ is strict monoidal.
-
-
 \end{lemma}
-
-
 In $\Pi F_\X$, the components of the unitors and associators that we drew before as 2-cells are now honest maps which are inverse to each other.% Moreover, the different ways of associating and introducing/removing units are now genuine inverses because their composite reduces to the identity.
  Moreover, $\eta^\otimes$ now induces the equality:
 %$$
@@ -2706,9 +2507,6 @@ In $\Pi F_\X$, the components of the unitors and associators that we drew before
 %    \end{scope}
 %\end{tikzpicture}
 %$$
-
-
-
 $$
   \begin{tikzpicture}[scale=1.5]
     \node[Pants, top] (pants) {};
@@ -2741,10 +2539,7 @@ $$
     \end{scope}
   \end{tikzpicture}
 $$
-
-
 However, this is still not proof nets.  We can only normalize connected components.  For example, the following equation does not hold because the profunctors in which the string diagrams are drawn are not connected:
-
 $$
 \begin{tikzpicture}[scale=1.5]
     \node[Cyl, top] (A) at (0,0) {};
@@ -2766,10 +2561,7 @@ $$
     \end{scope}
 \end{tikzpicture}
 $$
-
 However, if in context $\Gamma$ we knew that the profunctors were connected then we could apply this rewrite rule:
-
-
 $$
 \begin{tikzpicture}[scale=1.5]
     \node[Cyl] (A0) at (0,0) {};
@@ -2831,10 +2623,7 @@ $$
     \node(K) at($(A.belt)+(-1.55,0)$)  {$\Gamma$};
 \end{tikzpicture}
 $$
-
-
 Similarly:
-
 $$
   \begin{tikzpicture}[scale=1.5]
     \node[Cup, top,scale=1.2] (cup) at (0,1.5) {};
@@ -2851,10 +2640,7 @@ $$
     \end{scope}
   \end{tikzpicture}
 $$
-
 However, we know that the profunctors are connected in context $\Gamma$, we have:
-
-
 $$
 \begin{tikzpicture}[scale=1.5]
     \node[Cyl] (A0) at (0,0) {};
@@ -2913,7 +2699,6 @@ $$
     \node(K) at($(A0.center)+(-1.1,-.75)$)  {$\Gamma$};
 \end{tikzpicture}
 $$
-
 To obtain proof nets, we would want all components to be connected.
 
 
@@ -2921,7 +2706,6 @@ In order to attempt this, remark that for any  finite nonempty list of objects $
 
 
 Consider for the sake of illustration:
-
 $$
 e_{[X_0,X_1,X_2]}
 =
@@ -2945,40 +2729,22 @@ e_{[X_0,X_1,X_2]}
     \end{scope}
 \end{tikzpicture}
 $$
-
-
-
 We can regard these idempotents as the {\em property} that the boundary be connected, and obtain a new strict monoidal category by splitting them:
-
-
 \begin{definition}
 Take $N\X:={\sf Split}_{\{e_X\ | \ X \in [\X_0]\}}(\Pi F_{\X})$; that is, the full subcategory of the  the Karoubi envelope of $\Pi F_{\X}$ with objects $(X,e_X)$, for every finite list of objects in $X$. Concretely $N\X$ has:
-
 \begin{description}
 \item[Objects:] Nonempty finite lists of objects in $\X$.
-
 \item[Maps:] 
 The maps $(P,f);X\to Y  \in N\X$ are given by maps  $(P,f):X\to Y  \in \Pi F_\X$ where the top boundaries of $P$ are connected together, as well as the bottom boundaries are connected together.
-
-
 \item[Composition:] Same as in $\Pi F_\X$.
-
 \item[Identity:] Same as in $\Pi F_\X$.
-
 \item[Monoidal structure:] Given two $(P,f);W\to X$ and $(Q,g);Y\to Z$
-
 $$
 (P,f)\otimes(Q,g) := e_{W,Y};(P\times Q, (f,g)); e_{X,Z}
 $$
-
 \end{description}
-
 \end{definition}
-
-
 This monoidal category is very close to the strictification of a monoidal category; however, it is not quite there.  There is no way to eliminate the scalars  in this category.  The following equation does not hold:
-
-
 $$
  \begin{tikzpicture}[scale=1.5]
 	\begin{pgfonlayer}{nodelayer}
@@ -3000,10 +2766,7 @@ $$
     \end{scope}
   \end{tikzpicture}
 $$
-
-
 Moreover, the top and bottom boundaries need not be connected {\em to each other}, so  we still don't recover the following desired equations:
-
 $$
   \begin{tikzpicture}[scale=1.5]
     \node[Cup, top,scale=1.2] (cup) at (0,1.5) {};
@@ -3040,10 +2803,7 @@ $$
     \end{scope}
 \end{tikzpicture}
 $$
-
-
 If we additionally imposed the following equations as a quotient on $N\X$:
-
 $$
  \begin{tikzpicture}[scale=1.5]
 	\begin{pgfonlayer}{nodelayer}
@@ -3079,7 +2839,6 @@ $$
     \begin{scope}[internal string scope]
     \end{scope}
   \end{tikzpicture}$$
-
 Which would yield a monoidal category in which all components are connected.  This appears to recapture proof nets for monoidal categories in the setting where the scalars are central; however, the only reason this works is by direct appeal to the coherence result of \cite{wilson}. This doesn't give any deep insight into why thinning links are not needed for monoidal categories, but are needed for linearly distributive categories.
 
 The problem with units in *-autonomous categories and linearly distributive categories has long been known.  For example, \cite{houston} devotes his entire thesis to developing unitless multiplicative linear logic for this reason.  However, it is disappointing that our na\"ive approach doesn't seem to work in the degenerate case of monoidal categories where there is only one tensor product.

@@ -1,19 +1,13 @@
 
 \subsection{Categories of spans and relations}
-
 Categories are defined in a manner which distinguishes the inputs and outputs of morphisms.  \dag-categories are one approach to moving beyond this bias; however, they are evil in the sense that the \dag-structure is not always preserved/reflected by categorical equivalence: the theory of \dag-categories does not play well with the theory of ordinary categories.  
 
 Spans and relations provide a categorically well-behaved, flexible setting with which to interpret processes without elevating inputs over outputs.
 If functions produce unique outputs from inputs, spans and relations nondeterministicaly associate several inputs with several outputs.  To introduce these mathematical constructions.
 All of the category theory in this subsection which is not explicitly cited is standard and can be found, for example, in most introductions to category theory; for example \cite{maclane}.
 We first need to recall some basic facts about limits.
-
-
-
 \begin{definition}
 The {\bf product} of two objects $X$ and $Y$ (if it exists) in some category, is an object $X\times Y$ equipped with maps $\pi_0:X\times Y\to X $ and $\pi_1:X\times Y \to Y$ called the {\bf projections},  such that for any object $A$ and diagram  $X \xleftarrow{f} A \xrightarrow{g} Y$ there exists a unique map $\langle  f, g \rangle :A \to X\times Y$ called {\bf the pairing map} making the following diagram commute:
-
-
 $$
 \xymatrix{
     &
@@ -27,9 +21,7 @@ $$
     & Y
 }
 $$ 
-
 Given two maps $f:W\to X$ and $G:Y\to Z$, their product is defined to be the universal map $f\times g:W\times Y \to X\times Z$: 
-
 $$
 \xymatrix{
     W \ar[d]_f
@@ -44,8 +36,6 @@ $$
     &Z
 }
 $$
-
-
 A {\bf terminal} object in a category (if it exists) is an object $\one$ equipped with a unique map $!_X:X\to \one$ for every object $X$ called the {\bf discard map}.
 
 
@@ -60,7 +50,6 @@ A category is  {\bf Cartesian} when it has all finite products and a terminal ob
 
 Let us spell out the dual notion in order to establish the dual notations.
 The {\bf coproduct} in $\X$ is the product in $\X^\op$:
-
 $$
 \xymatrix{
     &
@@ -74,7 +63,6 @@ $$
     & Y\ar[ull]_{g}  \ar[ll]^{\iota_1}
 }
 $$ 
-
 Where $ X+  Y $ is the product object.%,  $\iota_0,\iota_1$ are the injections,   $[f,g]$ is the copairing map.
 
 
@@ -82,25 +70,16 @@ A {\bf initial} object in a category (if it exists) is an object $\emptyset$ equ
 
 A category is  {\bf coCartesian} when it has all finite coproducts and an initial object.% In aco Cartesian category, the codiscard maps and {\bf codiagonals} $[ 1, 1 ]$ yield a natural family of cocommutative comonoids.
 \end{definition}
-
-
-
 \begin{example}
 $\Sets$ and  $\FSets$ are Cartesian with respect to the Cartesian product:
 $$X\times Y := \{(x,y) \ | \ \forall x\in X, y \in Y\}$$
 They are cocartesian with respect to the disjoint union
 $$X+Y := \{ (x,1) \ | \ \forall x \in X \} \cup  \{ (y,2) \ | \ \forall y \in Y \}$$
-
-
 Similarly, $\FVect_k$ and $\Mat_S$ are complete and cocomplete both with respect to the direct sum.
 \end{example}
-
 A Cartesian category is precisely a monoidal category which allows one to copy and delete things in a manner which is deterministic and total:
-
 \begin{lemma}
-A category is Cartesian iff it is a symmetric monoidal category equipped with a cocommutative comonoids compatible with the monoidal structure:
-
-
+A category is Cartesian iff it is a symmetric monoidal category equipped with a  cocommutative comonoid $\zcirc$ on every object (see Example \ref{example:monoid})  compatible with the monoidal structure, so that
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -169,130 +148,130 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-$$
-\begin{tikzpicture}[xscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (5.75, -0.75) {};
-		\node [style=none] (1) at (6.25, 0) {};
-		\node [style=none] (2) at (5.75, -1.5) {};
-		\node [style=none] (3) at (5.25, 0) {};
-		\node [style=none] (5) at (5.25, 0.75) {};
-		\node [style=Z] (6) at (6.25, 0) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (2.center) to (0);
-		\draw [in=-90, out=30] (0) to (1.center);
-		\draw [in=150, out=-90] (3.center) to (0);
-		\draw [in=270, out=90] (3.center) to (5.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (9) at (7.25, -1.5) {};
-		\node [style=none] (11) at (7.25, 0.75) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (11.center) to (9.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (5.75, -0.75) {};
-		\node [style=none] (1) at (6.25, 0) {};
-		\node [style=none] (2) at (5.75, -1.5) {};
-		\node [style=none] (3) at (5.25, 0) {};
-		\node [style=none] (5) at (5.25, 0.75) {};
-		\node [style=Z] (6) at (6.25, 0) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (2.center) to (0);
-		\draw [in=-90, out=30] (0) to (1.center);
-		\draw [in=150, out=-90] (3.center) to (0);
-		\draw [in=270, out=90] (3.center) to (5.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-\ ,
-\hspace*{.2cm}
-\begin{tikzpicture}[yscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (12, 2) {};
-		\node [style=none] (1) at (12.5, 1.25) {};
-		\node [style=none] (2) at (11.5, 1.25) {};
-		\node [style=none] (3) at (12, 2.75) {};
-		\node [style=Z] (4) at (12.5, 1.25) {};
-		\node [style=none] (5) at (13, 0.5) {};
-		\node [style=none] (6) at (12, 0.5) {};
-		\node [style=none] (7) at (11.5, 0.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=-30] (0) to (1.center);
-		\draw (3.center) to (0);
-		\draw [in=90, out=-150] (0) to (2.center);
-		\draw [in=90, out=-30] (4) to (5.center);
-		\draw [in=90, out=-150] (4) to (6.center);
-		\draw (7.center) to (2.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}[scale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (12, 2) {};
-		\node [style=none] (1) at (12.5, 1.25) {};
-		\node [style=none] (2) at (11.5, 1.25) {};
-		\node [style=none] (3) at (12, 2.75) {};
-		\node [style=Z] (4) at (12.5, 1.25) {};
-		\node [style=none] (5) at (13, 0.5) {};
-		\node [style=none] (6) at (12, 0.5) {};
-		\node [style=none] (7) at (11.5, 0.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=-30] (0) to (1.center);
-		\draw (3.center) to (0);
-		\draw [in=90, out=-150] (0) to (2.center);
-		\draw [in=90, out=-30] (4) to (5.center);
-		\draw [in=90, out=-150] (4) to (6.center);
-		\draw (7.center) to (2.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-\ ,
-\hspace*{.2cm}
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (21) at (3.75, -0.75) {};
-		\node [style=none] (22) at (4.25, 0) {};
-		\node [style=none] (23) at (3.75, -1.5) {};
-		\node [style=none] (24) at (3.25, 0) {};
-		\node [style=none] (28) at (3.25, 0.75) {};
-		\node [style=none] (29) at (4.25, 0.75) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (23.center) to (21);
-		\draw [in=-90, out=30] (21) to (22.center);
-		\draw [in=150, out=-90] (24.center) to (21);
-		\draw [in=270, out=90] (22.center) to (28.center);
-		\draw [in=270, out=90] (24.center) to (29.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (30) at (5.75, -0.75) {};
-		\node [style=none] (31) at (6.25, 0) {};
-		\node [style=none] (32) at (5.75, -1.5) {};
-		\node [style=none] (33) at (5.25, 0) {};
-		\node [style=none] (34) at (6.25, 0.75) {};
-		\node [style=none] (35) at (5.25, 0.75) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (32.center) to (30);
-		\draw [in=-90, out=30] (30) to (31.center);
-		\draw [in=150, out=-90] (33.center) to (30);
-		\draw [in=270, out=90] (31.center) to (34.center);
-		\draw [in=270, out=90] (33.center) to (35.center);
-	\end{pgfonlayer}
-\end{tikzpicture}$$
+%$$
+%\begin{tikzpicture}[xscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (5.75, -0.75) {};
+%		\node [style=none] (1) at (6.25, 0) {};
+%		\node [style=none] (2) at (5.75, -1.5) {};
+%		\node [style=none] (3) at (5.25, 0) {};
+%		\node [style=none] (5) at (5.25, 0.75) {};
+%		\node [style=Z] (6) at (6.25, 0) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (2.center) to (0);
+%		\draw [in=-90, out=30] (0) to (1.center);
+%		\draw [in=150, out=-90] (3.center) to (0);
+%		\draw [in=270, out=90] (3.center) to (5.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\erefop{unitl}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=none] (9) at (7.25, -1.5) {};
+%		\node [style=none] (11) at (7.25, 0.75) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (11.center) to (9.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\erefop{unitr}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (5.75, -0.75) {};
+%		\node [style=none] (1) at (6.25, 0) {};
+%		\node [style=none] (2) at (5.75, -1.5) {};
+%		\node [style=none] (3) at (5.25, 0) {};
+%		\node [style=none] (5) at (5.25, 0.75) {};
+%		\node [style=Z] (6) at (6.25, 0) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (2.center) to (0);
+%		\draw [in=-90, out=30] (0) to (1.center);
+%		\draw [in=150, out=-90] (3.center) to (0);
+%		\draw [in=270, out=90] (3.center) to (5.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\ ,
+%\hspace*{.2cm}
+%\begin{tikzpicture}[yscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (12, 2) {};
+%		\node [style=none] (1) at (12.5, 1.25) {};
+%		\node [style=none] (2) at (11.5, 1.25) {};
+%		\node [style=none] (3) at (12, 2.75) {};
+%		\node [style=Z] (4) at (12.5, 1.25) {};
+%		\node [style=none] (5) at (13, 0.5) {};
+%		\node [style=none] (6) at (12, 0.5) {};
+%		\node [style=none] (7) at (11.5, 0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [in=90, out=-30] (0) to (1.center);
+%		\draw (3.center) to (0);
+%		\draw [in=90, out=-150] (0) to (2.center);
+%		\draw [in=90, out=-30] (4) to (5.center);
+%		\draw [in=90, out=-150] (4) to (6.center);
+%		\draw (7.center) to (2.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\erefop{assoc}
+%\begin{tikzpicture}[scale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (12, 2) {};
+%		\node [style=none] (1) at (12.5, 1.25) {};
+%		\node [style=none] (2) at (11.5, 1.25) {};
+%		\node [style=none] (3) at (12, 2.75) {};
+%		\node [style=Z] (4) at (12.5, 1.25) {};
+%		\node [style=none] (5) at (13, 0.5) {};
+%		\node [style=none] (6) at (12, 0.5) {};
+%		\node [style=none] (7) at (11.5, 0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [in=90, out=-30] (0) to (1.center);
+%		\draw (3.center) to (0);
+%		\draw [in=90, out=-150] (0) to (2.center);
+%		\draw [in=90, out=-30] (4) to (5.center);
+%		\draw [in=90, out=-150] (4) to (6.center);
+%		\draw (7.center) to (2.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\ ,
+%\hspace*{.2cm}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (21) at (3.75, -0.75) {};
+%		\node [style=none] (22) at (4.25, 0) {};
+%		\node [style=none] (23) at (3.75, -1.5) {};
+%		\node [style=none] (24) at (3.25, 0) {};
+%		\node [style=none] (28) at (3.25, 0.75) {};
+%		\node [style=none] (29) at (4.25, 0.75) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (23.center) to (21);
+%		\draw [in=-90, out=30] (21) to (22.center);
+%		\draw [in=150, out=-90] (24.center) to (21);
+%		\draw [in=270, out=90] (22.center) to (28.center);
+%		\draw [in=270, out=90] (24.center) to (29.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\erefop{comm}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (30) at (5.75, -0.75) {};
+%		\node [style=none] (31) at (6.25, 0) {};
+%		\node [style=none] (32) at (5.75, -1.5) {};
+%		\node [style=none] (33) at (5.25, 0) {};
+%		\node [style=none] (34) at (6.25, 0.75) {};
+%		\node [style=none] (35) at (5.25, 0.75) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (32.center) to (30);
+%		\draw [in=-90, out=30] (30) to (31.center);
+%		\draw [in=150, out=-90] (33.center) to (30);
+%		\draw [in=270, out=90] (31.center) to (34.center);
+%		\draw [in=270, out=90] (33.center) to (35.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}$$
 Where the comultiplication and counit are also natural, so that for any map $f$:
 $$
 \begin{tikzpicture}
@@ -356,17 +335,13 @@ $$
 \end{tikzpicture}
 $$
 \end{lemma}
-
 Therefore, when we gave presentations for $\FinOrd$ and $\Mat_S$; the natural white commutative comonoid is precisely the one coming from the Cartesian structure.  The naturality of the diagonal map corresponds to determinism, and the naturality of the discard corresponds to totality.  We will come back to this shortly.
 
 
 
 As we alluded to in the introduction of this subsection, the Cartesian notion of copying biases inputs over outputs, and the coCartesian notion of comparison biases outputs over inputs.  We are interested in a more permissive (partial and nondeterministic), symmetric notion of copying, which is compatible with \dag-structure. The following construction allows us to develop such a structure; generalizing the product modulo shared structure:
-
-
 \begin{definition}
 The {\bf pullback} of a diagram  $X \xrightarrow{f} A \xleftarrow{g} Y$ (if it exists) is an object $X\ {}_f \times_{g} Y$ called the {\bf apex} and maps $\pi_0:X\ {}_f \times_{g} Y\to X$ and  $\pi_1:X\ {}_f \times_{g} Y\to Y$ called {\bf the  projections}, such that for any diagram $X \xleftarrow{p_0} P \xrightarrow{p_1} Y$ making the the following diagram commute:
-
 $$
 \xymatrix{
     &
@@ -385,9 +360,7 @@ $$
     & 
 }
 $$
-
 There exists a unique map $u: P\to X\ {}_f\times_g Y $ called the making the following diagram commute:
-
 $$
 \xymatrix{
     &
@@ -411,8 +384,6 @@ $$
     & 
 }
 $$
-
-
 Where a chevron is drawn under the apex of the span to denote that the square is a pullback.
 
 A category is {\bf finitely complete} if it has a terminal object and all pullbacks exist. Notice that product $X\times Y$ is the pullback of the diagram $X \rightarrow 1 \leftarrow Y$.
@@ -421,8 +392,6 @@ A category is {\bf finitely complete} if it has a terminal object and all pullba
 The dual notion of a pullback is a {\bf pushout}; the pushout of a diagram $X\xrightarrow{f} A \xleftarrow{g} Y$ is denoted by $X{}_f +_{g} Y$.
 
 We draw a chevron on the apex of the cospan, to denote that a square is a pushout as follows:
-
-
 $$
 \xymatrix{
     &
@@ -447,26 +416,20 @@ $$
 }
 $$
 \end{definition}
-
 \begin{example} 
 In $\Sets$ the pullback of a cospan $X \xrightarrow{f} A \xleftarrow{g} Y$ is (up to unique isomorphism) the set:
 $$\{(x,y) \in X\times Y : f(x) = g(y)\}$$
-
-
 The pushout of a  span $X \xleftarrow{f} A \xrightarrow{g} Y$ is likewise the quotient of the set $X+Y$ by:
 $$f(a)\sim g(a) \text{ \ \ for all } a \in A$$
 
 The concrete pullback/pushout of matrices is essentially the same with the direct sum instead of the Cartesian product/disjoint union.
 \end{example}
-
 Spans form a bicategory under pullback:
 \begin{definition}
 Given a finitely complete category $\X$, the bicategory of spans $\Span(\X)$ has:
-
 \begin{description}
-\item[\ \ 0-cells:] Objects of $\X$.
-\item[\ \ 1-cells:] 1-cells $(A,f,g):X\to Y$ are spans in $\X$ from $A$:
-
+\item[0-cells:] Objects of $\X$.
+\item[1-cells:] 1-cells $(A,f,g):X\to Y$ are spans in $\X$ from $A$:
 $$
 \xymatrix{
     & A \ar[dl]_{f} \ar[dr]^{g}
@@ -476,7 +439,6 @@ $$
     & Y
 }
 $$
-
 Composition is given by the span induced by pullback:
 $$
 \xymatrix{
@@ -511,9 +473,7 @@ $$
     & Z
 }
 $$
-
 The identity on $X$ is given by the span:
-
 $$
 \xymatrix{
     & X \ar@{=}[dl] \ar@{=}[dr] 
@@ -526,9 +486,7 @@ $$
 %ooPoo
 %oAoBo
 %XoYoZ
-
-\item[\ \ 2-cells:] A 2-cell $\phi:(A,f,g)\Rightarrow (B,h,k)$ between parallel spans is a map $f:A\to B$ in $\X$ such that the following diagram commutes:
-
+\item[2-cells:] A 2-cell $\phi:(A,f,g)\Rightarrow (B,h,k)$ between parallel spans is a map $f:A\to B$ in $\X$ such that the following diagram commutes:
 $$
 \xymatrix{
     & A \ar[dl]_{f} \ar[dr]^{g} \ar[dd]^{\phi}
@@ -541,22 +499,18 @@ $$
     &
 }
 $$
-
 The composition and identity of  2-cells is given by the compostition and identity in $\X$.
 \end{description}
-
 Note that composition of 1-cells is not strict, so that the associativity and unitality of composition hold up to coherent isomorphism.  The coherence isomorphisms are the natural 2-cells induced by the universal property of the pullback.
 
 
 The ordinary category of spans of $\X$, $\Span^\sim(\X)$, has maps being equivalence classes of isomorphic spans; so that:
-
 $$
 (X\xleftarrow{f} A \xrightarrow{g} Y)
  \sim
 (X\xleftarrow{h} B \xrightarrow{k} Y)
 $$
 If and only if there exists an isomorphism $A\xrightarrow{\phi} B$ such that the following diagram commutes:
-
 $$
 \xymatrix{
     & A \ar[dl]_{f} \ar[dr]^{g} \ar[dd]^{\phi}_{\cong}
@@ -569,31 +523,21 @@ $$
     &
 }
 $$
-
-
-
 \end{definition}
  Regarded as a monoidal category under the Cartesian product, the (co)diagonal maps and (co)discard maps interact to form \dag-Frobenius algebras, making  $\Span^\sim(\X)$  \dag-compact closed, where the \dag-functor is given by the converse  $(f,A,g)\to (g,A,f)$.
-
-
 
 For the interested reader, the monoidal structures (or lack thereof) of categories of cospans and and spans of sets is elaborated on in great detail in \cite{bruni}.
 
 Categories of spans give mathematical semantics for nondeterminstic processes where inputs are associated to possible outputs with multiplicity. 
 A 2-cell between two processes thus describes a method to transform one process into another in a way that preserves the relationships between inputs and outputs.  For example, consider the following well-known result:
-
-
-
 \begin{example}
 $\Span^\sim(\FSets)$ is symmetric monoidally equivalent to $\Mat_\N$ under both tensor products.
 \end{example}
-
 This example is quite useful for developing ones intuition.  Take a span of finite sets $X\xleftarrow{f} M \xrightarrow{g} Y$, where $X$ and $Y$ have a chosen order. This determines an $|X|\times |Y|$ matrix, where the entry at $(x,y)\in X\times Y$ is given by the cardinality of the preimage $\langle f,g\rangle^{-1}(X\times Y)$.  That is to say, the number of times $x$ and $y$ are related.
 
 
 
 We seek moreover, to quotient by multiplicity, to obtain a semantics for merely nondeterministic processes: where things can be related at most once.  To do so, we need more assumptions about the category with which we seek to work internal to.
-
 \begin{definition}
 A map $f:X\to Y$ is a {\bf monomorphism} (monic) when for all maps $g,h:Z\to X$, $g;f=h;f$ implies $ g=h$.
 
@@ -601,16 +545,11 @@ Dually, a map $f:X\to Y$ is an {\bf epimorphism} (epic) when for all maps $g,h:Y
 
 To add extra information to our commutative diagrams, we denote monomorphisms as arrows with tails $\rightarrowtail$ and epimorphisms as arrows with two heads $\twoheadrightarrow$.  
 \end{definition}
-
 Monomorphisms and epimorphisms are the categorically well-behaved analogues of injections and surjections; where a map is similarly an isomorphism when it is an epimorphism and a monomorphism.  In all of the examples we care about in this thesis, the monomorphisms are exactly the injections and the epimorphisms are exactly the surjections.  However, it is needed for a proper exposition of categories of relations.
 
 There are  special kinds of monomorphisms and epimorphisms which come up:
-
-
-
 \begin{definition}
 The {\bf equalizer}, of two parallel maps $f,g:X\to Y$, if it exists, is an object $E_{f,g}$ equipped with a map $m:E_{f,g}\to X$ such that for all objects $F$ and maps $h:F\to E_{f,g}$, there exists a unique map $u:F\to A$ such that the following diagram commutes:
-
 $$
 \xymatrix{
     F \ar@{-->}[dr]^{u} \ar[d]_h
@@ -619,33 +558,22 @@ $$
     & Y
 }
 $$
-
-
 The maps $e$ arising from equalizers are monomorphisms.  Monomorphisms arising this way are called {\bf regular monomorphisms}.
 
 The dual notion to an equalizer is a {\bf coequalizer}, and the epimorphisms arizing in this way are called {\bf regular epimorphisms}.
 \end{definition}
-
-
 We have already been using coequalizers throughout this thesis whenever we impose equations by taking quotients:
-
-
 \begin{example}
 Sets and matrices both have equalizers and coequalizers:
 
 In sets, the equalizer of two functions $g,f:X\to Y$ is (up to unique isomorphism) the set 
 $$\{x \in X:f(x)=g(x)\} \subseteq X$$
-
 The coequalizer is the quotient $Y/\sim$   of the set $Y$ by the equivalence relation 
 $$f(x)\sim g(y)$$
 
 The situation is essentially the same for matrices.
 \end{example}
-
-
 We  use coequalizers to ask for conditions in which categories have good notions of images and kernels:
-
-
 \begin{definition}
 Take a finitely complete category.  Construct the pullback of a map $f:X\to Y$ along itself:
  $$\xymatrix{X\ {}_f \times_f X  \ar@<-.5ex>[rr]_{\ \ \pi_1;f}  \ar@<.5ex>[rr]^{\ \ \pi_0;f}&& Y}$$
@@ -656,21 +584,14 @@ If the kernel pair at $f$ admits a coequalizer, call this object the {\bf image}
 A {\bf regular category} is a finitely complete category such that:
 \begin{itemize}
 \item Every kernel pair admits a coequalizer.
-
 \item Pullbacks of arbitrary maps along regular epimorphisms are regular epimorphisms.
 \end{itemize}
-
 \end{definition}
-
-
-
 \begin{example}
 $\Sets$, $\FSets$, $\FVect_k$ and  $\Mat_k$ for $k$ a field (or more generally a principal ideal domain) are all regular categories.
 
 In these examples, kernels and images are the usual notions of kernels and images.
 \end{example}
-
-
 \begin{lemma}
 In a regular category, every map $f:X\to Y$ can be factorized into a regular epimorphism $e_f$ followed by a monomorphism $m_f$ up to unique isomorphism:
 $$
@@ -680,16 +601,11 @@ X \ar@{->>}[rr]^{\hspace*{-.7cm}e_f} \ar[drr]_{f} &&{X/\ker{f}=:\co\im(f)} \ar@{
 }
 $$
 \end{lemma}
-
-
 \begin{definition}
 Given a regular category $\X$,  the strict 2-category of {\bf relations} internal to $\X$, $\Rel(\X)$ has:
-
 \begin{description}
 \item[0-cells:] Objects of $\X$.
 \item[1-cells:] 1-cells $(A,f,g):X\to Y$ are jointly monic spans in $\X$ from $A$:
-
-
 $$
 \xymatrix{
     & A \ar[dl]_{f} \ar[dr]^{g}
@@ -720,10 +636,8 @@ $$
     & Z
 }
 $$
-
 Composing with the pairing map we get a map $\langle \pi_0;f,\pi_1;k\rangle :A {}_g\times_k B \to X\times Z$.
 Because $\X$ is a regular category, there is a factorization of $\langle \pi_0;f,\pi_1;k\rangle$ into an regular epimorphism followed by monomorphism:
-
 $$
 \xymatrix{
   A\ {}_g\times_k B \ar[drrr]^{\langle \pi_0;f,\pi_1;k\rangle}  \ar@{->>}[d]_{e:=e_{\langle \pi_0;f,\pi_1;k\rangle} }
@@ -731,9 +645,7 @@ $$
     &&&  X\times Z
 }
 $$
-
 Which induces a jointly monic span, which we take to be the composite:
-
 $$
 \xymatrix{
     & A \ar[dl]_{f} \ar[dr]^{g}
@@ -758,15 +670,10 @@ $$
     & Y
 }
 $$
-
 The identity for composition is the same as for spans.
-
 \item[2-cells:] The 2-cells are the same as for spans.
-
 \end{description}
-
 \end{definition}
-
 Relations have the special property, unlike spans, that they are poset-enriched; that is to say, either there exists a single 2-cell between 1-cells or there doesn't. This makes things much simpler than the spans picture, because one never has to deal with coherence equations.  This also justifies the interpretation of nondeterministic processes in this setting: possibility amounts to the mere existence of a 2-cell.  Any two ways to arrive at the same result must be the same.
 
 
@@ -785,36 +692,24 @@ Note that just as in the case of spans, relations is a \dag-compact closed categ
 Consider the following concrete example:
 \begin{example}
 $\Rel:=\Rel(\Set)$ has:
-
 \begin{description}
 \item[0-cells:] Natural numbers.
-
 \item[1-cells:] A relation from $n\to m$ is a a subset $X \times Y$.
-
 The composition of relations $R \subseteq X \times Y$  and $S \subseteq Y \times Z$ is given by:
 $$
 R;S := \{  (x,z) \in X\times Z: \exists y \in Y, (x,y) \in R \wedge (y,z) \in S \} \subseteq X\times Z
 $$ 
-
 \item[2-cells:] 
 A 2-cell $R\Rightarrow S$ is a subset $R\subseteq S$.
 \end{description}
 \end{example}
-
-
 If we restrict ourselves to finite sets we have the following well known equivalence:
-
-
-
 \begin{lemma}
 $\Rel(\FSets)$ is symmetric monoidally equivalent to $\Mat(\B)$ under both tensor products. 
 \end{lemma}
-
-
 This quotient of multiplicity from spans to relations in the case of finite sets, corresponds to applying the commutative semiring homorphism $\N\to \B$, where $\B$ is the Boolean semiring, making $2=1$.
 
 Therefore the quotient from $\cb_\N\to\cb_\B$ can be stated as the following equation between string diagrams; meaning that we don't care which path we take, merely of the existence of a path:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -830,7 +725,7 @@ $$
 		\draw (136.center) to (138);
 	\end{pgfonlayer}
 \end{tikzpicture}
-=
+\eref{special}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (135) at (40, -0.25) {};
@@ -841,8 +736,6 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
 %Notice how spans of finite sets are matrices over the natural numbers; whereas relations are matrices over the Boolean semiring.  This gives some concrete evidence for how the quotient going from spans to relations forgets about multiplicity.
 %%
 %%
@@ -867,28 +760,19 @@ $$
 %
 %CoRel/Cospan under product is not monoidal.  It is only premonoidal.  Say this is an open problem.  Cite recent papers on premonoidal categories
 %\end{lemma}
-
-
 The following category of relations is very important for this thesis:
-
-
 \begin{definition}
 Given a field $k$, the $\dag$-compact closed prop of {\bf linear relations} over $k$, $\LinRel_{k}$ is defined to be $\Rel(\Mat_k)$ with respect to the direct sum.
 
 Explicitly, $\LinRel_{k}$ has:
-
 \begin{description}
 \item[Objects:] Natural numbers.
-
 \item[Maps:] A linear relation $n\to m$ is a linear subspace of $k^n \oplus k^m$.
-
 \item[Composition:] Relational composition, so that for $R \subseteq k^n \oplus k^m$  and $S \subseteq k^m \oplus k^\ell$:
 $$
 R;S := \{  (x,z) \in k^{n} \oplus k^{\ell} : \exists y \in k^{m}, (x,y) \in R \wedge (y,z) \in S \} \subseteq k^n \oplus k^\ell
 $$ 
-
 \item[Tensor product:] Direct sum, so that for $R \subseteq k^n \oplus k^m$ and $S \subseteq k^\ell \oplus k^q$:
-
 $$R\oplus S : =
 \left\{
 \left(
@@ -903,15 +787,11 @@ b_1\\b_2
 \right)
 \right\} \subseteq k^{n+\ell}\oplus k^{m+q}
 $$
-
 \end{description}
 \end{definition}
-
 This prop has a presentation in terms of interacting Hopf algebras:
-
 \begin{definition}
 Given a field $k$, let $\ih_k$ be the quotient of the props $\cb_k+\cb_k^\op$, modulo the equations, for all $0\neq a \in k$ (where the generators of $\cb_k^\op$ are drawn as the vertically flipped generators of $\cb_k$):
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -930,7 +810,7 @@ $$
 		\draw (8.center) to (0);
 	\end{pgfonlayer}
 \end{tikzpicture}
-=
+\eref{frobl}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (98) at (50.75, 0) {};
@@ -948,7 +828,7 @@ $$
 		\draw (101) to (104);
 	\end{pgfonlayer}
 \end{tikzpicture}
-=
+\eref{frobl}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (17) at (4.5, 0.5) {};
@@ -981,7 +861,7 @@ $$
 		\draw (1) to (2.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
-=
+\eref{special}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (6) at (1, 1.5) {};
@@ -1009,7 +889,7 @@ $$
 		\draw (8.center) to (0);
 	\end{pgfonlayer}
 \end{tikzpicture}
-=
+\eref{frobl}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (98) at (50.75, 0) {};
@@ -1027,7 +907,7 @@ $$
 		\draw (101) to (104);
 	\end{pgfonlayer}
 \end{tikzpicture}
-=
+\eref{frobr}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=X] (17) at (4.5, 0.5) {};
@@ -1060,7 +940,7 @@ $$
 		\draw (1) to (2.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
-=
+\eref{frobl}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (6) at (1, 1.5) {};
@@ -1081,17 +961,7 @@ $$
 		\draw (11) to (12);
 	\end{pgfonlayer}
 \end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=X] (11) at (3.75, -1) {};
-		\node [style=X] (12) at (3.75, -0.25) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (11) to (12);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
+\eqzxa{extra}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (2, 0) {};
@@ -1102,7 +972,18 @@ $$
 	\begin{pgfonlayer}{edgelayer}
 		\draw[style=dashed] (3.center) to (0.center) to (1.center) to (2.center) to cycle;
 	\end{pgfonlayer}
-\end{tikzpicture},
+\end{tikzpicture}
+\eqzxa{extra}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (11) at (3.75, -1) {};
+		\node [style=X] (12) at (3.75, -0.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (11) to (12);
+	\end{pgfonlayer}
+\end{tikzpicture}
+,
 \hspace*{.5cm}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1143,24 +1024,17 @@ $$
 \end{tikzpicture}
 $$
 \end{definition}
-
-
-
 \begin{lemma}[{\cite[\S 3.4]{ih}}]
 $\ih_k$ is a presentation for $\LinRel_{k}$.
 \end{lemma}
-
-
 The colour-swapping involution $(-)^T:\ih_k^\op\to \ih_k$ corresponds to the transpose of matrices; and the colour-preserving involution  $()^*:\ih_k^\op\to \ih_k$ corresponds transpose coming from the compact closed structure of $\ih_k$.  These should not be confused with each other: the latter is the relational converse.  
 
 
 
 Combining these two involutions we have:
-
 \begin{lemma}[{\cite{ortho}}]
 \label{lem:ortho}
 The orthogonal complement corresponds to the colour swapping functor $(-)^\perp:\ih_k\to \ih_k;$
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1261,14 +1135,11 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 \end{lemma}
-
 From this, there is a graphical proof of the rank-nullity theorem:
 \begin{lemma}[{\cite{ortho}}]
 \label{lem:ker}
 Given a matrix $A:n\to m$ in $\cb_k\hookrightarrow \ih_k$, then:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1292,7 +1163,6 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 Therefore
 $$
 \begin{tikzpicture}
@@ -1327,9 +1197,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 \end{lemma}
-
 The previous two results are almost certainly contained in \cite{ih} because of the importance of images and kernels in the proof that $\ih_k\cong \LinRel_k$, but they are hidden within calculations.
 
 Recall the of affine matrices. One might seek to find a similar presentation for relations internal to affine matrices.
@@ -1339,24 +1207,15 @@ The empty set can not be regarded as a vector space because it has no origin; ho
 
 
 By shifting to the category $\Aff\Mat_k+1$ where one freely adds the empty set as the initial object, so that there is a unique map $\emptyset \xrightarrow{?_n} k^n$, for all $n$,  we obtain an algebraic theory, and thus a regular category.  Notice that $\Aff\Mat_k$ is the full subcategory of $\Aff\Mat_k+1$ with nonempty objects.  Therefore, we can take the category of internal relations:
-
-
-
-
-
-
 \begin{definition}
 The prop of {\bf affine relations} over $k$, $\Aff\Rel_{k}$ is the full subcategory of  $\Rel(\Aff\Mat_k+1)$ of nonempty affine subspaces.
 \end{definition}
-
 Concretely, this is constructed in the same way as $\LinRel_k$ except map $n\to m$ are instead (possibly empty) affine subspaces $S \subseteq k^n\oplus k^m$. That is to say, $S$ is a subset of $k^n\oplus k^m$ such that for any $a \in S$, the set $\{v+a\ |\ \forall v \in S\}$ is a linear subspace of  $k^n\oplus k^m$.  Note that the empty set vacuously satisfies this condition.
 
 
 We chose to forget the empty set as an object and retain it merely as a subobject so that we can present it as a (single sorted) prop as follows:
-
 \begin{lemma}[{\cite[\S A]{affine}}]
 $\Aff\Rel_{k}$ is presented by the prop $\aih_k$ given by adding the following generators and equations to the presentation of $\ih_k$:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1436,7 +1295,6 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 \end{lemma}
 The first two equations come from the presentation of affine matrices, and the last equation enforces the initiality of the affine space as a subobject.
 
@@ -1445,11 +1303,8 @@ The original presentation of $\Aff\Rel_k$ was proven to be equivalent to the con
 
 
 The essence of the Cartesian monoidal structure of categories of relations can be generalised to the following algebraic notion due to \cite{carboni}:
-
-
 \begin{definition}
-A {\bf Cartesian bicategory of relations} is a symmetric monoidal category $\X$ enriched in posets,  equipped with a supply of cocommutative comonoids compatible with the monoidal structure:
-
+A {\bf Cartesian bicategory of relations} is a symmetric monoidal category $\X$ enriched in posets,  equipped with a commutative Frobenius algebra $\zcirc$ on every object  (see Example \ref{ex:frob}), compatible with the monoidal structure:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1517,136 +1372,201 @@ $$
 		\draw [style=simple, in=45, out=-90] (5) to (6.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
-$$
-$$
-\begin{tikzpicture}[xscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (5.75, -0.75) {};
-		\node [style=none] (1) at (6.25, 0) {};
-		\node [style=none] (2) at (5.75, -1.5) {};
-		\node [style=none] (3) at (5.25, 0) {};
-		\node [style=none] (5) at (5.25, 0.75) {};
-		\node [style=Z] (6) at (6.25, 0) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (2.center) to (0);
-		\draw [in=-90, out=30] (0) to (1.center);
-		\draw [in=150, out=-90] (3.center) to (0);
-		\draw [in=270, out=90] (3.center) to (5.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (9) at (7.25, -1.5) {};
-		\node [style=none] (11) at (7.25, 0.75) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (11.center) to (9.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (5.75, -0.75) {};
-		\node [style=none] (1) at (6.25, 0) {};
-		\node [style=none] (2) at (5.75, -1.5) {};
-		\node [style=none] (3) at (5.25, 0) {};
-		\node [style=none] (5) at (5.25, 0.75) {};
-		\node [style=Z] (6) at (6.25, 0) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (2.center) to (0);
-		\draw [in=-90, out=30] (0) to (1.center);
-		\draw [in=150, out=-90] (3.center) to (0);
-		\draw [in=270, out=90] (3.center) to (5.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
 \ ,
 \hspace*{.2cm}
-\begin{tikzpicture}
+\begin{tikzpicture}[yscale=-1]
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (21) at (3.75, -0.75) {};
-		\node [style=none] (22) at (4.25, 0) {};
-		\node [style=none] (23) at (3.75, -1.5) {};
-		\node [style=none] (24) at (3.25, 0) {};
-		\node [style=none] (28) at (3.25, 0.75) {};
-		\node [style=none] (29) at (4.25, 0.75) {};
+		\node [style=none] (0) at (0, 2.5) {};
+		\node [style=none] (1) at (1, 2.5) {};
+		\node [style=Z] (2) at (0.5, 1.5) {};
+		\node [style=none] (3) at (0.5, 0.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (23.center) to (21);
-		\draw [in=-90, out=30] (21) to (22.center);
-		\draw [in=150, out=-90] (24.center) to (21);
-		\draw [in=270, out=90] (22.center) to (28.center);
-		\draw [in=270, out=90] (24.center) to (29.center);
+		\draw [style=simple] (3.center) to (2);
+		\draw [style=simple, in=-90, out=117] (2) to (0.center);
+		\draw [style=simple, in=63, out=-90] (1.center) to (2);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
-\begin{tikzpicture}
+\begin{tikzpicture}[yscale=-1]
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (30) at (5.75, -0.75) {};
-		\node [style=none] (31) at (6.25, 0) {};
-		\node [style=none] (32) at (5.75, -1.5) {};
-		\node [style=none] (33) at (5.25, 0) {};
-		\node [style=none] (34) at (6.25, 0.75) {};
-		\node [style=none] (35) at (5.25, 0.75) {};
+		\node [style=Z] (0) at (0, 2.5) {};
+		\node [style=Z] (1) at (1, 2.5) {};
+		\node [style=none] (2) at (0.5, 1.5) {};
+		\node [style=none] (3) at (0.5, 0.5) {};
+		\node [style=none] (4) at (0, 3.5) {};
+		\node [style=none] (5) at (1, 3.5) {};
+		\node [style=none] (6) at (0, 4.5) {};
+		\node [style=none] (7) at (1, 4.5) {};
+		\node [style=otimes] (8) at (0.5, 1.5) {};
+		\node [style=otimes] (9) at (1, 3.5) {};
+		\node [style=otimes] (10) at (0, 3.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (32.center) to (30);
-		\draw [in=-90, out=30] (30) to (31.center);
-		\draw [in=150, out=-90] (33.center) to (30);
-		\draw [in=270, out=90] (31.center) to (34.center);
-		\draw [in=270, out=90] (33.center) to (35.center);
+		\draw [style=simple] (3.center) to (2.center);
+		\draw [style=simple, in=-90, out=135] (2.center) to (0);
+		\draw [style=simple] (0) to (5.center);
+		\draw [style=simple, in=120, out=-120, looseness=1.25] (4.center) to (0);
+		\draw [style=simple, in=-60, out=60, looseness=1.25] (1) to (5.center);
+		\draw [style=simple] (1) to (4.center);
+		\draw [style=simple, in=45, out=-90] (1) to (2.center);
+		\draw [style=simple] (4.center) to (6.center);
+		\draw [style=simple] (5.center) to (7.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 \ ,
 \hspace*{.2cm}
 \begin{tikzpicture}[yscale=-1]
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (12, 2) {};
-		\node [style=none] (1) at (12.5, 1.25) {};
-		\node [style=none] (2) at (11.5, 1.25) {};
-		\node [style=none] (3) at (12, 2.75) {};
-		\node [style=Z] (4) at (12.5, 1.25) {};
-		\node [style=none] (5) at (13, 0.5) {};
-		\node [style=none] (6) at (12, 0.5) {};
-		\node [style=none] (7) at (11.5, 0.5) {};
+		\node [style=Z] (2) at (1, 1.5) {};
+		\node [style=none] (3) at (1, 0.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=-30] (0) to (1.center);
-		\draw (3.center) to (0);
-		\draw [in=90, out=-150] (0) to (2.center);
-		\draw [in=90, out=-30] (4) to (5.center);
-		\draw [in=90, out=-150] (4) to (6.center);
-		\draw (7.center) to (2.center);
+		\draw [style=simple] (3.center) to (2);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
-\begin{tikzpicture}[scale=-1]
+\begin{tikzpicture}[yscale=-1]
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (12, 2) {};
-		\node [style=none] (1) at (12.5, 1.25) {};
-		\node [style=none] (2) at (11.5, 1.25) {};
-		\node [style=none] (3) at (12, 2.75) {};
-		\node [style=Z] (4) at (12.5, 1.25) {};
-		\node [style=none] (5) at (13, 0.5) {};
-		\node [style=none] (6) at (12, 0.5) {};
-		\node [style=none] (7) at (11.5, 0.5) {};
+		\node [style=Z] (4) at (2.5, 2.5) {};
+		\node [style=Z] (5) at (3.5, 2.5) {};
+		\node [style=none] (6) at (3, 1.5) {};
+		\node [style=none] (7) at (3, 0.5) {};
+		\node [style=otimes] (12) at (3, 1.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=-30] (0) to (1.center);
-		\draw (3.center) to (0);
-		\draw [in=90, out=-150] (0) to (2.center);
-		\draw [in=90, out=-30] (4) to (5.center);
-		\draw [in=90, out=-150] (4) to (6.center);
-		\draw (7.center) to (2.center);
+		\draw [style=simple] (7.center) to (6.center);
+		\draw [style=simple, in=-90, out=135] (6.center) to (4);
+		\draw [style=simple, in=45, out=-90] (5) to (6.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
-The comultiplication and  counit are moreover required to be lax-natural so that for any map $f$:
-
+%$$
+%\begin{tikzpicture}[xscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (5.75, -0.75) {};
+%		\node [style=none] (1) at (6.25, 0) {};
+%		\node [style=none] (2) at (5.75, -1.5) {};
+%		\node [style=none] (3) at (5.25, 0) {};
+%		\node [style=none] (5) at (5.25, 0.75) {};
+%		\node [style=Z] (6) at (6.25, 0) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (2.center) to (0);
+%		\draw [in=-90, out=30] (0) to (1.center);
+%		\draw [in=150, out=-90] (3.center) to (0);
+%		\draw [in=270, out=90] (3.center) to (5.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\erefop{unitl}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=none] (9) at (7.25, -1.5) {};
+%		\node [style=none] (11) at (7.25, 0.75) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (11.center) to (9.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\erefop{unitr}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (5.75, -0.75) {};
+%		\node [style=none] (1) at (6.25, 0) {};
+%		\node [style=none] (2) at (5.75, -1.5) {};
+%		\node [style=none] (3) at (5.25, 0) {};
+%		\node [style=none] (5) at (5.25, 0.75) {};
+%		\node [style=Z] (6) at (6.25, 0) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (2.center) to (0);
+%		\draw [in=-90, out=30] (0) to (1.center);
+%		\draw [in=150, out=-90] (3.center) to (0);
+%		\draw [in=270, out=90] (3.center) to (5.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\ ,
+%\hspace*{.2cm}
+%\begin{tikzpicture}[yscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (12, 2) {};
+%		\node [style=none] (1) at (12.5, 1.25) {};
+%		\node [style=none] (2) at (11.5, 1.25) {};
+%		\node [style=none] (3) at (12, 2.75) {};
+%		\node [style=Z] (4) at (12.5, 1.25) {};
+%		\node [style=none] (5) at (13, 0.5) {};
+%		\node [style=none] (6) at (12, 0.5) {};
+%		\node [style=none] (7) at (11.5, 0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [in=90, out=-30] (0) to (1.center);
+%		\draw (3.center) to (0);
+%		\draw [in=90, out=-150] (0) to (2.center);
+%		\draw [in=90, out=-30] (4) to (5.center);
+%		\draw [in=90, out=-150] (4) to (6.center);
+%		\draw (7.center) to (2.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\erefop{assoc}
+%\begin{tikzpicture}[scale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (12, 2) {};
+%		\node [style=none] (1) at (12.5, 1.25) {};
+%		\node [style=none] (2) at (11.5, 1.25) {};
+%		\node [style=none] (3) at (12, 2.75) {};
+%		\node [style=Z] (4) at (12.5, 1.25) {};
+%		\node [style=none] (5) at (13, 0.5) {};
+%		\node [style=none] (6) at (12, 0.5) {};
+%		\node [style=none] (7) at (11.5, 0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [in=90, out=-30] (0) to (1.center);
+%		\draw (3.center) to (0);
+%		\draw [in=90, out=-150] (0) to (2.center);
+%		\draw [in=90, out=-30] (4) to (5.center);
+%		\draw [in=90, out=-150] (4) to (6.center);
+%		\draw (7.center) to (2.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\ ,
+%\hspace*{.2cm}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (21) at (3.75, -0.75) {};
+%		\node [style=none] (22) at (4.25, 0) {};
+%		\node [style=none] (23) at (3.75, -1.5) {};
+%		\node [style=none] (24) at (3.25, 0) {};
+%		\node [style=none] (28) at (3.25, 0.75) {};
+%		\node [style=none] (29) at (4.25, 0.75) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (23.center) to (21);
+%		\draw [in=-90, out=30] (21) to (22.center);
+%		\draw [in=150, out=-90] (24.center) to (21);
+%		\draw [in=270, out=90] (22.center) to (28.center);
+%		\draw [in=270, out=90] (24.center) to (29.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\erefop{comm}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (30) at (5.75, -0.75) {};
+%		\node [style=none] (31) at (6.25, 0) {};
+%		\node [style=none] (32) at (5.75, -1.5) {};
+%		\node [style=none] (33) at (5.25, 0) {};
+%		\node [style=none] (34) at (6.25, 0.75) {};
+%		\node [style=none] (35) at (5.25, 0.75) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (32.center) to (30);
+%		\draw [in=-90, out=30] (30) to (31.center);
+%		\draw [in=150, out=-90] (33.center) to (30);
+%		\draw [in=270, out=90] (31.center) to (34.center);
+%		\draw [in=270, out=90] (33.center) to (35.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%$$
+The (co)multiplications and  (co)units are moreover required to be lax-natural so that for any map $f$:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1707,10 +1627,70 @@ $$
 		\draw (8.center) to (6);
 	\end{pgfonlayer}
 \end{tikzpicture}
+ \ ,
+\hspace*{.2cm}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (0) at (3.75, 0) {};
+		\node [style=none] (1) at (4.25, -0.75) {};
+		\node [style=none] (2) at (3.75, 0.75) {};
+		\node [style=none] (3) at (3.25, -0.75) {};
+		\node [style=map] (4) at (3.25, -0.75) {$f$};
+		\node [style=map] (5) at (4.25, -0.75) {$f$};
+		\node [style=none] (6) at (3.25, -1.5) {};
+		\node [style=none] (7) at (4.25, -1.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (2.center) to (0);
+		\draw [in=90, out=-30] (0) to (1.center);
+		\draw [in=-150, out=90] (3.center) to (0);
+		\draw (6.center) to (4);
+		\draw (7.center) to (5);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\leq
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (8) at (5.75, -0.75) {};
+		\node [style=none] (9) at (6.25, -1.5) {};
+		\node [style=none] (10) at (5.75, 0) {};
+		\node [style=none] (11) at (5.25, -1.5) {};
+		\node [style=map] (12) at (5.75, 0) {$f$};
+		\node [style=none] (13) at (5.75, 0.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (10.center) to (8);
+		\draw [in=90, out=-30] (8) to (9.center);
+		\draw [in=-150, out=90] (11.center) to (8);
+		\draw (13.center) to (10.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+ \ ,
+\hspace*{.2cm}
+\begin{tikzpicture}[yscale=-1]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (6) at (3.75, -0.75) {};
+		\node [style=none] (8) at (3.75, -1.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (8.center) to (6);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\leq
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (9) at (4.75, -1.5) {};
+		\node [style=none] (10) at (4.75, -0.75) {};
+		\node [style=map] (11) at (4.75, -0.75) {$f$};
+		\node [style=none] (12) at (4.75, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (10.center) to (9);
+		\draw (12.center) to (10.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
 $$
-
-Where moreover, the diagonals and counits both have right adjoints:
-
+And the multiplications and units are required to be right adjoint to the comultiplications and counits:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1813,328 +1793,264 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-And the monoids and comonoids are moreover required to form Frobenius algebras:
-
-$$
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (0.75, 0.5) {};
-		\node [style=Z] (1) at (0, 1) {};
-		\node [style=none] (2) at (0, 1.5) {};
-		\node [style=none] (6) at (1, 1.5) {};
-		\node [style=none] (7) at (-0.25, 0) {};
-		\node [style=none] (8) at (0.75, 0) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (1) to (2.center);
-		\draw [in=90, out=-120] (1) to (7.center);
-		\draw (0) to (1);
-		\draw [in=-90, out=60] (0) to (6.center);
-		\draw (8.center) to (0);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (98) at (50.75, 0) {};
-		\node [style=none] (99) at (51.75, 0) {};
-		\node [style=Z] (101) at (51.25, 0.5) {};
-		\node [style=none] (102) at (50.75, 1.5) {};
-		\node [style=none] (103) at (51.75, 1.5) {};
-		\node [style=Z] (104) at (51.25, 1) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=-165, looseness=0.75] (101) to (98.center);
-		\draw [in=-15, out=90, looseness=0.75] (99.center) to (101);
-		\draw [in=-90, out=165, looseness=0.75] (104) to (102.center);
-		\draw [in=15, out=-90, looseness=0.75] (103.center) to (104);
-		\draw (101) to (104);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (17) at (4.5, 0.5) {};
-		\node [style=Z] (18) at (5.25, 1) {};
-		\node [style=none] (19) at (5.25, 1.5) {};
-		\node [style=none] (20) at (4.25, 1.5) {};
-		\node [style=none] (21) at (5.5, 0) {};
-		\node [style=none] (22) at (4.5, 0) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (18) to (19.center);
-		\draw [in=90, out=-60] (18) to (21.center);
-		\draw (17) to (18);
-		\draw [in=-90, out=120] (17) to (20.center);
-		\draw (22.center) to (17);
-	\end{pgfonlayer}
-\end{tikzpicture}
-$$
-
-
-From these other axioms, it follows that:
-
-
-$$
-\begin{tikzpicture}[yscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (0) at (0, 2.5) {};
-		\node [style=none] (1) at (1, 2.5) {};
-		\node [style=Z] (2) at (0.5, 1.5) {};
-		\node [style=none] (3) at (0.5, 0.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [style=simple] (3.center) to (2);
-		\draw [style=simple, in=-90, out=117] (2) to (0.center);
-		\draw [style=simple, in=63, out=-90] (1.center) to (2);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}[yscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (0, 2.5) {};
-		\node [style=Z] (1) at (1, 2.5) {};
-		\node [style=none] (2) at (0.5, 1.5) {};
-		\node [style=none] (3) at (0.5, 0.5) {};
-		\node [style=none] (4) at (0, 3.5) {};
-		\node [style=none] (5) at (1, 3.5) {};
-		\node [style=none] (6) at (0, 4.5) {};
-		\node [style=none] (7) at (1, 4.5) {};
-		\node [style=otimes] (8) at (0.5, 1.5) {};
-		\node [style=otimes] (9) at (1, 3.5) {};
-		\node [style=otimes] (10) at (0, 3.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [style=simple] (3.center) to (2.center);
-		\draw [style=simple, in=-90, out=135] (2.center) to (0);
-		\draw [style=simple] (0) to (5.center);
-		\draw [style=simple, in=120, out=-120, looseness=1.25] (4.center) to (0);
-		\draw [style=simple, in=-60, out=60, looseness=1.25] (1) to (5.center);
-		\draw [style=simple] (1) to (4.center);
-		\draw [style=simple, in=45, out=-90] (1) to (2.center);
-		\draw [style=simple] (4.center) to (6.center);
-		\draw [style=simple] (5.center) to (7.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-\ ,
-\hspace*{.2cm}
-\begin{tikzpicture}[yscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (2) at (1, 1.5) {};
-		\node [style=none] (3) at (1, 0.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [style=simple] (3.center) to (2);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}[yscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (4) at (2.5, 2.5) {};
-		\node [style=Z] (5) at (3.5, 2.5) {};
-		\node [style=none] (6) at (3, 1.5) {};
-		\node [style=none] (7) at (3, 0.5) {};
-		\node [style=otimes] (12) at (3, 1.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [style=simple] (7.center) to (6.center);
-		\draw [style=simple, in=-90, out=135] (6.center) to (4);
-		\draw [style=simple, in=45, out=-90] (5) to (6.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-$$
-$$
-\begin{tikzpicture}[scale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (5.75, -0.75) {};
-		\node [style=none] (1) at (6.25, 0) {};
-		\node [style=none] (2) at (5.75, -1.5) {};
-		\node [style=none] (3) at (5.25, 0) {};
-		\node [style=none] (5) at (5.25, 0.75) {};
-		\node [style=Z] (6) at (6.25, 0) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (2.center) to (0);
-		\draw [in=-90, out=30] (0) to (1.center);
-		\draw [in=150, out=-90] (3.center) to (0);
-		\draw [in=270, out=90] (3.center) to (5.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}[yscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (9) at (7.25, -1.5) {};
-		\node [style=none] (11) at (7.25, 0.75) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (11.center) to (9.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}[yscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (5.75, -0.75) {};
-		\node [style=none] (1) at (6.25, 0) {};
-		\node [style=none] (2) at (5.75, -1.5) {};
-		\node [style=none] (3) at (5.25, 0) {};
-		\node [style=none] (5) at (5.25, 0.75) {};
-		\node [style=Z] (6) at (6.25, 0) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (2.center) to (0);
-		\draw [in=-90, out=30] (0) to (1.center);
-		\draw [in=150, out=-90] (3.center) to (0);
-		\draw [in=270, out=90] (3.center) to (5.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-\ ,
-\hspace*{.2cm}
-\begin{tikzpicture}[yscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (21) at (3.75, -0.75) {};
-		\node [style=none] (22) at (4.25, 0) {};
-		\node [style=none] (23) at (3.75, -1.5) {};
-		\node [style=none] (24) at (3.25, 0) {};
-		\node [style=none] (28) at (3.25, 0.75) {};
-		\node [style=none] (29) at (4.25, 0.75) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (23.center) to (21);
-		\draw [in=-90, out=30] (21) to (22.center);
-		\draw [in=150, out=-90] (24.center) to (21);
-		\draw [in=270, out=90] (22.center) to (28.center);
-		\draw [in=270, out=90] (24.center) to (29.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}[yscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (30) at (5.75, -0.75) {};
-		\node [style=none] (31) at (6.25, 0) {};
-		\node [style=none] (32) at (5.75, -1.5) {};
-		\node [style=none] (33) at (5.25, 0) {};
-		\node [style=none] (34) at (6.25, 0.75) {};
-		\node [style=none] (35) at (5.25, 0.75) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (32.center) to (30);
-		\draw [in=-90, out=30] (30) to (31.center);
-		\draw [in=150, out=-90] (33.center) to (30);
-		\draw [in=270, out=90] (31.center) to (34.center);
-		\draw [in=270, out=90] (33.center) to (35.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-\ ,
-\hspace*{.2cm}
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (12, 2) {};
-		\node [style=none] (1) at (12.5, 1.25) {};
-		\node [style=none] (2) at (11.5, 1.25) {};
-		\node [style=none] (3) at (12, 2.75) {};
-		\node [style=Z] (4) at (12.5, 1.25) {};
-		\node [style=none] (5) at (13, 0.5) {};
-		\node [style=none] (6) at (12, 0.5) {};
-		\node [style=none] (7) at (11.5, 0.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=-30] (0) to (1.center);
-		\draw (3.center) to (0);
-		\draw [in=90, out=-150] (0) to (2.center);
-		\draw [in=90, out=-30] (4) to (5.center);
-		\draw [in=90, out=-150] (4) to (6.center);
-		\draw (7.center) to (2.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}[yscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (12, 2) {};
-		\node [style=none] (1) at (12.5, 1.25) {};
-		\node [style=none] (2) at (11.5, 1.25) {};
-		\node [style=none] (3) at (12, 2.75) {};
-		\node [style=Z] (4) at (12.5, 1.25) {};
-		\node [style=none] (5) at (13, 0.5) {};
-		\node [style=none] (6) at (12, 0.5) {};
-		\node [style=none] (7) at (11.5, 0.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=-30] (0) to (1.center);
-		\draw (3.center) to (0);
-		\draw [in=90, out=-150] (0) to (2.center);
-		\draw [in=90, out=-30] (4) to (5.center);
-		\draw [in=90, out=-150] (4) to (6.center);
-		\draw (7.center) to (2.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-$$
-$$
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (3.75, 0) {};
-		\node [style=none] (1) at (4.25, -0.75) {};
-		\node [style=none] (2) at (3.75, 0.75) {};
-		\node [style=none] (3) at (3.25, -0.75) {};
-		\node [style=map] (4) at (3.25, -0.75) {$f$};
-		\node [style=map] (5) at (4.25, -0.75) {$f$};
-		\node [style=none] (6) at (3.25, -1.5) {};
-		\node [style=none] (7) at (4.25, -1.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (2.center) to (0);
-		\draw [in=90, out=-30] (0) to (1.center);
-		\draw [in=-150, out=90] (3.center) to (0);
-		\draw (6.center) to (4);
-		\draw (7.center) to (5);
-	\end{pgfonlayer}
-\end{tikzpicture}
-\leq
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (8) at (5.75, -0.75) {};
-		\node [style=none] (9) at (6.25, -1.5) {};
-		\node [style=none] (10) at (5.75, 0) {};
-		\node [style=none] (11) at (5.25, -1.5) {};
-		\node [style=map] (12) at (5.75, 0) {$f$};
-		\node [style=none] (13) at (5.75, 0.75) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (10.center) to (8);
-		\draw [in=90, out=-30] (8) to (9.center);
-		\draw [in=-150, out=90] (11.center) to (8);
-		\draw (13.center) to (10.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
- \ ,
-\hspace*{.2cm}
-\begin{tikzpicture}[yscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (6) at (3.75, -0.75) {};
-		\node [style=none] (8) at (3.75, -1.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (8.center) to (6);
-	\end{pgfonlayer}
-\end{tikzpicture}
-\leq
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (9) at (4.75, -1.5) {};
-		\node [style=none] (10) at (4.75, -0.75) {};
-		\node [style=map] (11) at (4.75, -0.75) {$f$};
-		\node [style=none] (12) at (4.75, 0) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (10.center) to (9);
-		\draw (12.center) to (10.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-$$
-
+%
+%And the monoids and comonoids are moreover required to form Frobenius algebras:
+%
+%$$
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (0.75, 0.5) {};
+%		\node [style=Z] (1) at (0, 1) {};
+%		\node [style=none] (2) at (0, 1.5) {};
+%		\node [style=none] (6) at (1, 1.5) {};
+%		\node [style=none] (7) at (-0.25, 0) {};
+%		\node [style=none] (8) at (0.75, 0) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (1) to (2.center);
+%		\draw [in=90, out=-120] (1) to (7.center);
+%		\draw (0) to (1);
+%		\draw [in=-90, out=60] (0) to (6.center);
+%		\draw (8.center) to (0);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\erefop{frobl}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=none] (98) at (50.75, 0) {};
+%		\node [style=none] (99) at (51.75, 0) {};
+%		\node [style=Z] (101) at (51.25, 0.5) {};
+%		\node [style=none] (102) at (50.75, 1.5) {};
+%		\node [style=none] (103) at (51.75, 1.5) {};
+%		\node [style=Z] (104) at (51.25, 1) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [in=90, out=-165, looseness=0.75] (101) to (98.center);
+%		\draw [in=-15, out=90, looseness=0.75] (99.center) to (101);
+%		\draw [in=-90, out=165, looseness=0.75] (104) to (102.center);
+%		\draw [in=15, out=-90, looseness=0.75] (103.center) to (104);
+%		\draw (101) to (104);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\erefop{frobl}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (17) at (4.5, 0.5) {};
+%		\node [style=Z] (18) at (5.25, 1) {};
+%		\node [style=none] (19) at (5.25, 1.5) {};
+%		\node [style=none] (20) at (4.25, 1.5) {};
+%		\node [style=none] (21) at (5.5, 0) {};
+%		\node [style=none] (22) at (4.5, 0) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (18) to (19.center);
+%		\draw [in=90, out=-60] (18) to (21.center);
+%		\draw (17) to (18);
+%		\draw [in=-90, out=120] (17) to (20.center);
+%		\draw (22.center) to (17);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%$$
+%
+%
+%From these other axioms, it follows that:
+%
+%
+%$$
+%\begin{tikzpicture}[yscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=none] (0) at (0, 2.5) {};
+%		\node [style=none] (1) at (1, 2.5) {};
+%		\node [style=Z] (2) at (0.5, 1.5) {};
+%		\node [style=none] (3) at (0.5, 0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [style=simple] (3.center) to (2);
+%		\draw [style=simple, in=-90, out=117] (2) to (0.center);
+%		\draw [style=simple, in=63, out=-90] (1.center) to (2);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%=
+%\begin{tikzpicture}[yscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (0, 2.5) {};
+%		\node [style=Z] (1) at (1, 2.5) {};
+%		\node [style=none] (2) at (0.5, 1.5) {};
+%		\node [style=none] (3) at (0.5, 0.5) {};
+%		\node [style=none] (4) at (0, 3.5) {};
+%		\node [style=none] (5) at (1, 3.5) {};
+%		\node [style=none] (6) at (0, 4.5) {};
+%		\node [style=none] (7) at (1, 4.5) {};
+%		\node [style=otimes] (8) at (0.5, 1.5) {};
+%		\node [style=otimes] (9) at (1, 3.5) {};
+%		\node [style=otimes] (10) at (0, 3.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [style=simple] (3.center) to (2.center);
+%		\draw [style=simple, in=-90, out=135] (2.center) to (0);
+%		\draw [style=simple] (0) to (5.center);
+%		\draw [style=simple, in=120, out=-120, looseness=1.25] (4.center) to (0);
+%		\draw [style=simple, in=-60, out=60, looseness=1.25] (1) to (5.center);
+%		\draw [style=simple] (1) to (4.center);
+%		\draw [style=simple, in=45, out=-90] (1) to (2.center);
+%		\draw [style=simple] (4.center) to (6.center);
+%		\draw [style=simple] (5.center) to (7.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\ ,
+%\hspace*{.2cm}
+%\begin{tikzpicture}[yscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (2) at (1, 1.5) {};
+%		\node [style=none] (3) at (1, 0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [style=simple] (3.center) to (2);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%=
+%\begin{tikzpicture}[yscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (4) at (2.5, 2.5) {};
+%		\node [style=Z] (5) at (3.5, 2.5) {};
+%		\node [style=none] (6) at (3, 1.5) {};
+%		\node [style=none] (7) at (3, 0.5) {};
+%		\node [style=otimes] (12) at (3, 1.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [style=simple] (7.center) to (6.center);
+%		\draw [style=simple, in=-90, out=135] (6.center) to (4);
+%		\draw [style=simple, in=45, out=-90] (5) to (6.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%$$
+%$$
+%\begin{tikzpicture}[scale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (5.75, -0.75) {};
+%		\node [style=none] (1) at (6.25, 0) {};
+%		\node [style=none] (2) at (5.75, -1.5) {};
+%		\node [style=none] (3) at (5.25, 0) {};
+%		\node [style=none] (5) at (5.25, 0.75) {};
+%		\node [style=Z] (6) at (6.25, 0) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (2.center) to (0);
+%		\draw [in=-90, out=30] (0) to (1.center);
+%		\draw [in=150, out=-90] (3.center) to (0);
+%		\draw [in=270, out=90] (3.center) to (5.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\eref{unitl}
+%\begin{tikzpicture}[yscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=none] (9) at (7.25, -1.5) {};
+%		\node [style=none] (11) at (7.25, 0.75) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (11.center) to (9.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\eref{unitr}
+%\begin{tikzpicture}[yscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (5.75, -0.75) {};
+%		\node [style=none] (1) at (6.25, 0) {};
+%		\node [style=none] (2) at (5.75, -1.5) {};
+%		\node [style=none] (3) at (5.25, 0) {};
+%		\node [style=none] (5) at (5.25, 0.75) {};
+%		\node [style=Z] (6) at (6.25, 0) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (2.center) to (0);
+%		\draw [in=-90, out=30] (0) to (1.center);
+%		\draw [in=150, out=-90] (3.center) to (0);
+%		\draw [in=270, out=90] (3.center) to (5.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\ ,
+%\hspace*{.2cm}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (12, 2) {};
+%		\node [style=none] (1) at (12.5, 1.25) {};
+%		\node [style=none] (2) at (11.5, 1.25) {};
+%		\node [style=none] (3) at (12, 2.75) {};
+%		\node [style=Z] (4) at (12.5, 1.25) {};
+%		\node [style=none] (5) at (13, 0.5) {};
+%		\node [style=none] (6) at (12, 0.5) {};
+%		\node [style=none] (7) at (11.5, 0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [in=90, out=-30] (0) to (1.center);
+%		\draw (3.center) to (0);
+%		\draw [in=90, out=-150] (0) to (2.center);
+%		\draw [in=90, out=-30] (4) to (5.center);
+%		\draw [in=90, out=-150] (4) to (6.center);
+%		\draw (7.center) to (2.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\eref{assoc}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (12, 2) {};
+%		\node [style=none] (1) at (12.5, 1.25) {};
+%		\node [style=none] (2) at (11.5, 1.25) {};
+%		\node [style=none] (3) at (12, 2.75) {};
+%		\node [style=Z] (4) at (12.5, 1.25) {};
+%		\node [style=none] (5) at (13, 0.5) {};
+%		\node [style=none] (6) at (12, 0.5) {};
+%		\node [style=none] (7) at (11.5, 0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [in=90, out=-30] (0) to (1.center);
+%		\draw (3.center) to (0);
+%		\draw [in=90, out=-150] (0) to (2.center);
+%		\draw [in=90, out=-30] (4) to (5.center);
+%		\draw [in=90, out=-150] (4) to (6.center);
+%		\draw (7.center) to (2.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\ ,
+%\hspace*{.2cm}
+%\begin{tikzpicture}[yscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (21) at (3.75, -0.75) {};
+%		\node [style=none] (22) at (4.25, 0) {};
+%		\node [style=none] (23) at (3.75, -1.5) {};
+%		\node [style=none] (24) at (3.25, 0) {};
+%		\node [style=none] (28) at (3.25, 0.75) {};
+%		\node [style=none] (29) at (4.25, 0.75) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (23.center) to (21);
+%		\draw [in=-90, out=30] (21) to (22.center);
+%		\draw [in=150, out=-90] (24.center) to (21);
+%		\draw [in=270, out=90] (22.center) to (28.center);
+%		\draw [in=270, out=90] (24.center) to (29.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\eref{comm}
+%\begin{tikzpicture}[yscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (30) at (5.75, -0.75) {};
+%		\node [style=none] (31) at (6.25, 0) {};
+%		\node [style=none] (32) at (5.75, -1.5) {};
+%		\node [style=none] (33) at (5.25, 0) {};
+%		\node [style=none] (34) at (6.25, 0.75) {};
+%		\node [style=none] (35) at (5.25, 0.75) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (32.center) to (30);
+%		\draw [in=-90, out=30] (30) to (31.center);
+%		\draw [in=150, out=-90] (33.center) to (30);
+%		\draw [in=270, out=90] (31.center) to (34.center);
+%		\draw [in=270, out=90] (33.center) to (35.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%$$
 Let $\Map(\X)$ denote the category of comonoid homorphisms in $\X$.
 \end{definition}
-
 Therefore, now we can copy and delete things with the commutative comonoid structure in a partial, deterministic manner; moreover the commutative monoid structure also allows us to  compare and ask for the existence of things in a nondeterministic and partial manner.
 
 
@@ -2147,8 +2063,6 @@ These subsume categories of internal relations:
 \begin{example}
 Given a regular category $\X$, $\Rel(\X)$ is a Cartesian bicategory of relations under the Cartesian product and $\Map(\Rel(\X))=\X$.
 \end{example}
-
-
 We see that either the white and grey Frobenius algebras of our presentations for $\LinRel_k$ can be regarded as the Frobenius algebra structure coming from viewing it as a bicategory of relations.  Similarly, for the white Frobenius algebra of  $\Aff\Rel$, but {\em not} the grey one because addition and copying are no longer dual to each other.
 
 
@@ -2162,11 +2076,8 @@ There are classes of categories in between Cartesian categories and Cartesian bi
 
 
 First, we review the categorical semantics of partiality:
-
 \label{sec:rest}
-
 %Restriction and inverse categories provide a categorical semantics for partial computing and reversible computing, respectively.  We review how weakened products can be constructed in both settings; relating one to the other.
-
 \begin{definition}\cite[\S 2.1.1]{cockett}
 A {\bf restriction category} is a category along with a restriction operator:
 
@@ -2175,7 +2086,6 @@ $
 (A \xrightarrow{f} B )\mapsto (A \xrightarrow{\bar f} A)
 $\\
 such that:
-
 \begin{multicols}{2}
 \begin{enumerate}[label={\bf [R.\arabic*]}, ref={\bf [R.\arabic*]}]
 \item $\bar f ; f  = f$
@@ -2188,7 +2098,6 @@ such that:
 \label{R.4}
 \end{enumerate}
 \end{multicols}
-
 Maps of the form $\bar f$ are called restriction idempotents.
 
 Restriction categories are poset enriched where $f \leq g \iff \bar f ; g = f$.
@@ -2201,23 +2110,17 @@ A map $f$ in a restriction category is {\bf total} if $\bar f =1$.  Denote the s
 
 
 A map $f$ in a restriction category is called a {\bf partial isomorphism}, in case there exists a {\bf parital inverse} $g$ of $f$ so that $f;g=\bar f$ and $g;f = \bar g$. Denote the category of partial isomorphisms of $\X$ by $\Inv(\X)$.
-
-
 \end{definition}
-
 \begin{example}
 The category $\Par$ of sets and partial functions is a restriction category.   Given a partial map $f:X\to Y$, the restriction acts as the identity on the domain of definition:
-
 $$
-\bar f (x)=
+\bar f (x):=
 \begin{cases}
 x & \text{if }f(x)\text{ is defined}\\
 \text{undefined} & \text{otherwise}
 \end{cases}
 $$
-
 \end{example}
-
 %
 %One can augment partiality with copying:
 %
@@ -2253,10 +2156,7 @@ $$
 %\end{tikzpicture}
 %$$
 %\end{example}
-
-
 To augment restriction categories with copying, one must relax the definition of a Cartesian category: 
-
 \begin{definition}[{\cite{restiii}}]
 A restriction category has {\bf binary restriction products}, when for all objects  $X,Y$, there exists an object $X\times Y$ and total maps $X \xleftarrow{\pi_0}  X\times Y \xrightarrow{\pi_1} Y$, so that for all objects $Z$ and all maps $X \xleftarrow{f} Z \xrightarrow{g} Y$, there exists a unique $Z\xrightarrow{\langle f,g \rangle} X\times Y$ making the diagram commute:
 $$
@@ -2268,7 +2168,6 @@ $$
 X &&  X\times Y \ar[rr]_{\pi_1} \ar[ll]^{\pi_0}  && Y
 }
 $$
-
 so that $\bar{\langle f, g\rangle ;\pi_0}; f = \langle f, g\rangle ;\pi_0$ and $\bar{\langle f, g\rangle; \pi_1} ;g = \langle f, g\rangle; \pi_1$;
 where additionally $\bar{\langle f, g\rangle} =  \bar f ; \bar g$.
 
@@ -2288,215 +2187,209 @@ A restriction category with a restriction terminal object and binary restriction
 
 An object $A$ in a restriction category with restriction products is {\bf discrete} when the diagonal map $\Delta_X:=\langle 1_X, 1_X\rangle$ is a partial isomorphism. A restriction category is discrete when all objects are discrete. 
 \end{definition}
-
-
-
 \begin{example}
 $\Par$ is a canonical example of a discrete Cartesian restriction category; the restriction product is given by the Cartesian product on underlying sets and the terminal object is  the singleton set.
 \end{example}
-
-
-
-
 \begin{theorem}[{\cite[Theorem 5.2]{restiii}}]
-Cartesian restriction categories are in bijection with symmetric monoidal categories equipped with a supply of (co)commutative comonoids:
-$$
-\begin{tikzpicture}[xscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (5.75, -0.75) {};
-		\node [style=none] (1) at (6.25, 0) {};
-		\node [style=none] (2) at (5.75, -1.5) {};
-		\node [style=none] (3) at (5.25, 0) {};
-		\node [style=none] (5) at (5.25, 0.75) {};
-		\node [style=Z] (6) at (6.25, 0) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (2.center) to (0);
-		\draw [in=-90, out=30] (0) to (1.center);
-		\draw [in=150, out=-90] (3.center) to (0);
-		\draw [in=270, out=90] (3.center) to (5.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (9) at (7.25, -1.5) {};
-		\node [style=none] (11) at (7.25, 0.75) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (11.center) to (9.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (5.75, -0.75) {};
-		\node [style=none] (1) at (6.25, 0) {};
-		\node [style=none] (2) at (5.75, -1.5) {};
-		\node [style=none] (3) at (5.25, 0) {};
-		\node [style=none] (5) at (5.25, 0.75) {};
-		\node [style=Z] (6) at (6.25, 0) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (2.center) to (0);
-		\draw [in=-90, out=30] (0) to (1.center);
-		\draw [in=150, out=-90] (3.center) to (0);
-		\draw [in=270, out=90] (3.center) to (5.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-\ ,
-\hspace*{.2cm}
-\begin{tikzpicture}[yscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (12, 2) {};
-		\node [style=none] (1) at (12.5, 1.25) {};
-		\node [style=none] (2) at (11.5, 1.25) {};
-		\node [style=none] (3) at (12, 2.75) {};
-		\node [style=Z] (4) at (12.5, 1.25) {};
-		\node [style=none] (5) at (13, 0.5) {};
-		\node [style=none] (6) at (12, 0.5) {};
-		\node [style=none] (7) at (11.5, 0.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=-30] (0) to (1.center);
-		\draw (3.center) to (0);
-		\draw [in=90, out=-150] (0) to (2.center);
-		\draw [in=90, out=-30] (4) to (5.center);
-		\draw [in=90, out=-150] (4) to (6.center);
-		\draw (7.center) to (2.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}[scale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (12, 2) {};
-		\node [style=none] (1) at (12.5, 1.25) {};
-		\node [style=none] (2) at (11.5, 1.25) {};
-		\node [style=none] (3) at (12, 2.75) {};
-		\node [style=Z] (4) at (12.5, 1.25) {};
-		\node [style=none] (5) at (13, 0.5) {};
-		\node [style=none] (6) at (12, 0.5) {};
-		\node [style=none] (7) at (11.5, 0.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=-30] (0) to (1.center);
-		\draw (3.center) to (0);
-		\draw [in=90, out=-150] (0) to (2.center);
-		\draw [in=90, out=-30] (4) to (5.center);
-		\draw [in=90, out=-150] (4) to (6.center);
-		\draw (7.center) to (2.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-\ ,
-\hspace*{.2cm}
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (21) at (3.75, -0.75) {};
-		\node [style=none] (22) at (4.25, 0) {};
-		\node [style=none] (23) at (3.75, -1.5) {};
-		\node [style=none] (24) at (3.25, 0) {};
-		\node [style=none] (28) at (3.25, 0.75) {};
-		\node [style=none] (29) at (4.25, 0.75) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (23.center) to (21);
-		\draw [in=-90, out=30] (21) to (22.center);
-		\draw [in=150, out=-90] (24.center) to (21);
-		\draw [in=270, out=90] (22.center) to (28.center);
-		\draw [in=270, out=90] (24.center) to (29.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (30) at (5.75, -0.75) {};
-		\node [style=none] (31) at (6.25, 0) {};
-		\node [style=none] (32) at (5.75, -1.5) {};
-		\node [style=none] (33) at (5.25, 0) {};
-		\node [style=none] (34) at (6.25, 0.75) {};
-		\node [style=none] (35) at (5.25, 0.75) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (32.center) to (30);
-		\draw [in=-90, out=30] (30) to (31.center);
-		\draw [in=150, out=-90] (33.center) to (30);
-		\draw [in=270, out=90] (31.center) to (34.center);
-		\draw [in=270, out=90] (33.center) to (35.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-$$
-Compatible with the monoidal structure:
-$$
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (0) at (0, 2.5) {};
-		\node [style=none] (1) at (1, 2.5) {};
-		\node [style=Z] (2) at (0.5, 1.5) {};
-		\node [style=none] (3) at (0.5, 0.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [style=simple] (3.center) to (2);
-		\draw [style=simple, in=-90, out=117] (2) to (0.center);
-		\draw [style=simple, in=63, out=-90] (1.center) to (2);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (0, 2.5) {};
-		\node [style=Z] (1) at (1, 2.5) {};
-		\node [style=none] (2) at (0.5, 1.5) {};
-		\node [style=none] (3) at (0.5, 0.5) {};
-		\node [style=none] (4) at (0, 3.5) {};
-		\node [style=none] (5) at (1, 3.5) {};
-		\node [style=none] (6) at (0, 4.5) {};
-		\node [style=none] (7) at (1, 4.5) {};
-		\node [style=otimes] (8) at (0.5, 1.5) {};
-		\node [style=otimes] (9) at (1, 3.5) {};
-		\node [style=otimes] (10) at (0, 3.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [style=simple] (3.center) to (2.center);
-		\draw [style=simple, in=-90, out=135] (2.center) to (0);
-		\draw [style=simple] (0) to (5.center);
-		\draw [style=simple, in=120, out=-120, looseness=1.25] (4.center) to (0);
-		\draw [style=simple, in=-60, out=60, looseness=1.25] (1) to (5.center);
-		\draw [style=simple] (1) to (4.center);
-		\draw [style=simple, in=45, out=-90] (1) to (2.center);
-		\draw [style=simple] (4.center) to (6.center);
-		\draw [style=simple] (5.center) to (7.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-\ ,
-\hspace*{.2cm}
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (2) at (1, 1.5) {};
-		\node [style=none] (3) at (1, 0.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [style=simple] (3.center) to (2);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (4) at (2.5, 2.5) {};
-		\node [style=Z] (5) at (3.5, 2.5) {};
-		\node [style=none] (6) at (3, 1.5) {};
-		\node [style=none] (7) at (3, 0.5) {};
-		\node [style=otimes] (12) at (3, 1.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [style=simple] (7.center) to (6.center);
-		\draw [style=simple, in=-90, out=135] (6.center) to (4);
-		\draw [style=simple, in=45, out=-90] (5) to (6.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-$$
-
-
-Where the comultiplication is moreover required to be natural, so that:
+Cartesian restriction categories are in bijection with symmetric monoidal categories equipped with a supply of cocommutative comonoids $\zcirc$ compatible with the tensor product, so that the multiplication is natural:
+%
+%$$
+%\begin{tikzpicture}[xscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (5.75, -0.75) {};
+%		\node [style=none] (1) at (6.25, 0) {};
+%		\node [style=none] (2) at (5.75, -1.5) {};
+%		\node [style=none] (3) at (5.25, 0) {};
+%		\node [style=none] (5) at (5.25, 0.75) {};
+%		\node [style=Z] (6) at (6.25, 0) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (2.center) to (0);
+%		\draw [in=-90, out=30] (0) to (1.center);
+%		\draw [in=150, out=-90] (3.center) to (0);
+%		\draw [in=270, out=90] (3.center) to (5.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\erefop{unitl}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=none] (9) at (7.25, -1.5) {};
+%		\node [style=none] (11) at (7.25, 0.75) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (11.center) to (9.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\erefop{unitr}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (5.75, -0.75) {};
+%		\node [style=none] (1) at (6.25, 0) {};
+%		\node [style=none] (2) at (5.75, -1.5) {};
+%		\node [style=none] (3) at (5.25, 0) {};
+%		\node [style=none] (5) at (5.25, 0.75) {};
+%		\node [style=Z] (6) at (6.25, 0) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (2.center) to (0);
+%		\draw [in=-90, out=30] (0) to (1.center);
+%		\draw [in=150, out=-90] (3.center) to (0);
+%		\draw [in=270, out=90] (3.center) to (5.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\ ,
+%\hspace*{.2cm}
+%\begin{tikzpicture}[yscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (12, 2) {};
+%		\node [style=none] (1) at (12.5, 1.25) {};
+%		\node [style=none] (2) at (11.5, 1.25) {};
+%		\node [style=none] (3) at (12, 2.75) {};
+%		\node [style=Z] (4) at (12.5, 1.25) {};
+%		\node [style=none] (5) at (13, 0.5) {};
+%		\node [style=none] (6) at (12, 0.5) {};
+%		\node [style=none] (7) at (11.5, 0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [in=90, out=-30] (0) to (1.center);
+%		\draw (3.center) to (0);
+%		\draw [in=90, out=-150] (0) to (2.center);
+%		\draw [in=90, out=-30] (4) to (5.center);
+%		\draw [in=90, out=-150] (4) to (6.center);
+%		\draw (7.center) to (2.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\erefop{assoc}
+%\begin{tikzpicture}[scale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (12, 2) {};
+%		\node [style=none] (1) at (12.5, 1.25) {};
+%		\node [style=none] (2) at (11.5, 1.25) {};
+%		\node [style=none] (3) at (12, 2.75) {};
+%		\node [style=Z] (4) at (12.5, 1.25) {};
+%		\node [style=none] (5) at (13, 0.5) {};
+%		\node [style=none] (6) at (12, 0.5) {};
+%		\node [style=none] (7) at (11.5, 0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [in=90, out=-30] (0) to (1.center);
+%		\draw (3.center) to (0);
+%		\draw [in=90, out=-150] (0) to (2.center);
+%		\draw [in=90, out=-30] (4) to (5.center);
+%		\draw [in=90, out=-150] (4) to (6.center);
+%		\draw (7.center) to (2.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\ ,
+%\hspace*{.2cm}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (21) at (3.75, -0.75) {};
+%		\node [style=none] (22) at (4.25, 0) {};
+%		\node [style=none] (23) at (3.75, -1.5) {};
+%		\node [style=none] (24) at (3.25, 0) {};
+%		\node [style=none] (28) at (3.25, 0.75) {};
+%		\node [style=none] (29) at (4.25, 0.75) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (23.center) to (21);
+%		\draw [in=-90, out=30] (21) to (22.center);
+%		\draw [in=150, out=-90] (24.center) to (21);
+%		\draw [in=270, out=90] (22.center) to (28.center);
+%		\draw [in=270, out=90] (24.center) to (29.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\erefop{comm}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (30) at (5.75, -0.75) {};
+%		\node [style=none] (31) at (6.25, 0) {};
+%		\node [style=none] (32) at (5.75, -1.5) {};
+%		\node [style=none] (33) at (5.25, 0) {};
+%		\node [style=none] (34) at (6.25, 0.75) {};
+%		\node [style=none] (35) at (5.25, 0.75) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (32.center) to (30);
+%		\draw [in=-90, out=30] (30) to (31.center);
+%		\draw [in=150, out=-90] (33.center) to (30);
+%		\draw [in=270, out=90] (31.center) to (34.center);
+%		\draw [in=270, out=90] (33.center) to (35.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%$$
+%Compatible with the monoidal structure:
+%$$
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=none] (0) at (0, 2.5) {};
+%		\node [style=none] (1) at (1, 2.5) {};
+%		\node [style=Z] (2) at (0.5, 1.5) {};
+%		\node [style=none] (3) at (0.5, 0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [style=simple] (3.center) to (2);
+%		\draw [style=simple, in=-90, out=117] (2) to (0.center);
+%		\draw [style=simple, in=63, out=-90] (1.center) to (2);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%=
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (0, 2.5) {};
+%		\node [style=Z] (1) at (1, 2.5) {};
+%		\node [style=none] (2) at (0.5, 1.5) {};
+%		\node [style=none] (3) at (0.5, 0.5) {};
+%		\node [style=none] (4) at (0, 3.5) {};
+%		\node [style=none] (5) at (1, 3.5) {};
+%		\node [style=none] (6) at (0, 4.5) {};
+%		\node [style=none] (7) at (1, 4.5) {};
+%		\node [style=otimes] (8) at (0.5, 1.5) {};
+%		\node [style=otimes] (9) at (1, 3.5) {};
+%		\node [style=otimes] (10) at (0, 3.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [style=simple] (3.center) to (2.center);
+%		\draw [style=simple, in=-90, out=135] (2.center) to (0);
+%		\draw [style=simple] (0) to (5.center);
+%		\draw [style=simple, in=120, out=-120, looseness=1.25] (4.center) to (0);
+%		\draw [style=simple, in=-60, out=60, looseness=1.25] (1) to (5.center);
+%		\draw [style=simple] (1) to (4.center);
+%		\draw [style=simple, in=45, out=-90] (1) to (2.center);
+%		\draw [style=simple] (4.center) to (6.center);
+%		\draw [style=simple] (5.center) to (7.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\ ,
+%\hspace*{.2cm}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (2) at (1, 1.5) {};
+%		\node [style=none] (3) at (1, 0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [style=simple] (3.center) to (2);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%=
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (4) at (2.5, 2.5) {};
+%		\node [style=Z] (5) at (3.5, 2.5) {};
+%		\node [style=none] (6) at (3, 1.5) {};
+%		\node [style=none] (7) at (3, 0.5) {};
+%		\node [style=otimes] (12) at (3, 1.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [style=simple] (7.center) to (6.center);
+%		\draw [style=simple, in=-90, out=135] (6.center) to (4);
+%		\draw [style=simple, in=45, out=-90] (5) to (6.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%$$
+%
+%
+%Where the comultiplication is moreover required to be natural, so that:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2535,10 +2428,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
 The restriction is defined as follows:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2570,51 +2460,8 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-Discrete Cartesian restriction categories therefore have retracts to the diagonal maps, which is are cocommutative due to the commutativity of the diagonal map:
-
+This correspondence restricts to discrete Cartesian restriction categories when the multiplications have retracts $\zcirc$:
 $$
-\begin{tikzpicture}[yscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (0) at (0, 2.5) {};
-		\node [style=none] (1) at (1, 2.5) {};
-		\node [style=Z] (2) at (0.5, 1.5) {};
-		\node [style=none] (3) at (0.5, 0.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [style=simple] (3.center) to (2);
-		\draw [style=simple, in=-90, out=117] (2) to (0.center);
-		\draw [style=simple, in=63, out=-90] (1.center) to (2);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}[yscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (0, 2.5) {};
-		\node [style=Z] (1) at (1, 2.5) {};
-		\node [style=none] (2) at (0.5, 1.5) {};
-		\node [style=none] (3) at (0.5, 0.5) {};
-		\node [style=none] (4) at (0, 3.5) {};
-		\node [style=none] (5) at (1, 3.5) {};
-		\node [style=none] (6) at (0, 4.5) {};
-		\node [style=none] (7) at (1, 4.5) {};
-		\node [style=otimes] (8) at (0.5, 1.5) {};
-		\node [style=otimes] (9) at (1, 3.5) {};
-		\node [style=otimes] (10) at (0, 3.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [style=simple] (3.center) to (2.center);
-		\draw [style=simple, in=-90, out=135] (2.center) to (0);
-		\draw [style=simple] (0) to (5.center);
-		\draw [style=simple, in=120, out=-120, looseness=1.25] (4.center) to (0);
-		\draw [style=simple, in=-60, out=60, looseness=1.25] (1) to (5.center);
-		\draw [style=simple] (1) to (4.center);
-		\draw [style=simple, in=45, out=-90] (1) to (2.center);
-		\draw [style=simple] (4.center) to (6.center);
-		\draw [style=simple] (5.center) to (7.center);
-	\end{pgfonlayer}
-\end{tikzpicture}\ ,
-\hspace{.2cm}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (0) at (0, 0) {};
@@ -2629,7 +2476,7 @@ $$
 		\draw (1) to (2.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
-=
+\eref{special}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (6) at (1, 1.5) {};
@@ -2638,113 +2485,223 @@ $$
 	\begin{pgfonlayer}{edgelayer}
 		\draw (7.center) to (6.center);
 	\end{pgfonlayer}
-\end{tikzpicture}\ ,
-\hspace*{.2cm}
-\begin{tikzpicture}[yscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (21) at (3.75, -0.75) {};
-		\node [style=none] (22) at (4.25, 0) {};
-		\node [style=none] (23) at (3.75, -1.5) {};
-		\node [style=none] (24) at (3.25, 0) {};
-		\node [style=none] (28) at (3.25, 0.75) {};
-		\node [style=none] (29) at (4.25, 0.75) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (23.center) to (21);
-		\draw [in=-90, out=30] (21) to (22.center);
-		\draw [in=150, out=-90] (24.center) to (21);
-		\draw [in=270, out=90] (22.center) to (28.center);
-		\draw [in=270, out=90] (24.center) to (29.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}[yscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (30) at (5.75, -0.75) {};
-		\node [style=none] (31) at (6.25, 0) {};
-		\node [style=none] (32) at (5.75, -1.5) {};
-		\node [style=none] (33) at (5.25, 0) {};
-		\node [style=none] (34) at (6.25, 0.75) {};
-		\node [style=none] (35) at (5.25, 0.75) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (32.center) to (30);
-		\draw [in=-90, out=30] (30) to (31.center);
-		\draw [in=150, out=-90] (33.center) to (30);
-		\draw [in=270, out=90] (31.center) to (34.center);
-		\draw [in=270, out=90] (33.center) to (35.center);
-	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-And is which moreover, interacts to form a semi-Frobenius algebra with the diagonal map due to the naturality of the diagonal map:
-
-$$
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (0.75, 0.5) {};
-		\node [style=Z] (1) at (0, 1) {};
-		\node [style=none] (2) at (0, 1.5) {};
-		\node [style=none] (6) at (1, 1.5) {};
-		\node [style=none] (7) at (-0.25, 0) {};
-		\node [style=none] (8) at (0.75, 0) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (1) to (2.center);
-		\draw [in=90, out=-120] (1) to (7.center);
-		\draw (0) to (1);
-		\draw [in=-90, out=60] (0) to (6.center);
-		\draw (8.center) to (0);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (98) at (50.75, 0) {};
-		\node [style=none] (99) at (51.75, 0) {};
-		\node [style=Z] (101) at (51.25, 0.5) {};
-		\node [style=none] (102) at (50.75, 1.5) {};
-		\node [style=none] (103) at (51.75, 1.5) {};
-		\node [style=Z] (104) at (51.25, 1) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=-165, looseness=0.75] (101) to (98.center);
-		\draw [in=-15, out=90, looseness=0.75] (99.center) to (101);
-		\draw [in=-90, out=165, looseness=0.75] (104) to (102.center);
-		\draw [in=15, out=-90, looseness=0.75] (103.center) to (104);
-		\draw (101) to (104);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (17) at (4.5, 0.5) {};
-		\node [style=Z] (18) at (5.25, 1) {};
-		\node [style=none] (19) at (5.25, 1.5) {};
-		\node [style=none] (20) at (4.25, 1.5) {};
-		\node [style=none] (21) at (5.5, 0) {};
-		\node [style=none] (22) at (4.5, 0) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (18) to (19.center);
-		\draw [in=90, out=-60] (18) to (21.center);
-		\draw (17) to (18);
-		\draw [in=-90, out=120] (17) to (20.center);
-		\draw (22.center) to (17);
-	\end{pgfonlayer}
-\end{tikzpicture}
-$$
-
-
- 
+Which implies that these restracts are commutative  semigroups, interacting with the multiplication to form non-unital Frobenius algebras.
+%
+% have retracts to the diagonal maps, which is are cocommutative due to the commutativity of the diagonal map:
+%
+%$$
+%\begin{tikzpicture}[yscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=none] (0) at (0, 2.5) {};
+%		\node [style=none] (1) at (1, 2.5) {};
+%		\node [style=Z] (2) at (0.5, 1.5) {};
+%		\node [style=none] (3) at (0.5, 0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [style=simple] (3.center) to (2);
+%		\draw [style=simple, in=-90, out=117] (2) to (0.center);
+%		\draw [style=simple, in=63, out=-90] (1.center) to (2);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%=
+%\begin{tikzpicture}[yscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (0, 2.5) {};
+%		\node [style=Z] (1) at (1, 2.5) {};
+%		\node [style=none] (2) at (0.5, 1.5) {};
+%		\node [style=none] (3) at (0.5, 0.5) {};
+%		\node [style=none] (4) at (0, 3.5) {};
+%		\node [style=none] (5) at (1, 3.5) {};
+%		\node [style=none] (6) at (0, 4.5) {};
+%		\node [style=none] (7) at (1, 4.5) {};
+%		\node [style=otimes] (8) at (0.5, 1.5) {};
+%		\node [style=otimes] (9) at (1, 3.5) {};
+%		\node [style=otimes] (10) at (0, 3.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [style=simple] (3.center) to (2.center);
+%		\draw [style=simple, in=-90, out=135] (2.center) to (0);
+%		\draw [style=simple] (0) to (5.center);
+%		\draw [style=simple, in=120, out=-120, looseness=1.25] (4.center) to (0);
+%		\draw [style=simple, in=-60, out=60, looseness=1.25] (1) to (5.center);
+%		\draw [style=simple] (1) to (4.center);
+%		\draw [style=simple, in=45, out=-90] (1) to (2.center);
+%		\draw [style=simple] (4.center) to (6.center);
+%		\draw [style=simple] (5.center) to (7.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}\ ,
+%\hspace{.2cm}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (0, 0) {};
+%		\node [style=Z] (1) at (0, 1) {};
+%		\node [style=none] (2) at (0, 1.5) {};
+%		\node [style=none] (3) at (0, -0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (0) to (3.center);
+%		\draw [bend left=45, looseness=1.25] (0) to (1);
+%		\draw [bend left=45, looseness=1.25] (1) to (0);
+%		\draw (1) to (2.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\eref{special}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=none] (6) at (1, 1.5) {};
+%		\node [style=none] (7) at (1, -0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (7.center) to (6.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\ ,
+%\hspace*{.2cm}
+%\begin{tikzpicture}[yscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (12, 2) {};
+%		\node [style=none] (1) at (12.5, 1.25) {};
+%		\node [style=none] (2) at (11.5, 1.25) {};
+%		\node [style=none] (3) at (12, 2.75) {};
+%		\node [style=Z] (4) at (12.5, 1.25) {};
+%		\node [style=none] (5) at (13, 0.5) {};
+%		\node [style=none] (6) at (12, 0.5) {};
+%		\node [style=none] (7) at (11.5, 0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [in=90, out=-30] (0) to (1.center);
+%		\draw (3.center) to (0);
+%		\draw [in=90, out=-150] (0) to (2.center);
+%		\draw [in=90, out=-30] (4) to (5.center);
+%		\draw [in=90, out=-150] (4) to (6.center);
+%		\draw (7.center) to (2.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\eref{assoc}
+%\begin{tikzpicture}[xscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (12, 2) {};
+%		\node [style=none] (1) at (12.5, 1.25) {};
+%		\node [style=none] (2) at (11.5, 1.25) {};
+%		\node [style=none] (3) at (12, 2.75) {};
+%		\node [style=Z] (4) at (12.5, 1.25) {};
+%		\node [style=none] (5) at (13, 0.5) {};
+%		\node [style=none] (6) at (12, 0.5) {};
+%		\node [style=none] (7) at (11.5, 0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [in=90, out=-30] (0) to (1.center);
+%		\draw (3.center) to (0);
+%		\draw [in=90, out=-150] (0) to (2.center);
+%		\draw [in=90, out=-30] (4) to (5.center);
+%		\draw [in=90, out=-150] (4) to (6.center);
+%		\draw (7.center) to (2.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\ ,
+%\hspace*{.2cm}
+%\begin{tikzpicture}[yscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (21) at (3.75, -0.75) {};
+%		\node [style=none] (22) at (4.25, 0) {};
+%		\node [style=none] (23) at (3.75, -1.5) {};
+%		\node [style=none] (24) at (3.25, 0) {};
+%		\node [style=none] (28) at (3.25, 0.75) {};
+%		\node [style=none] (29) at (4.25, 0.75) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (23.center) to (21);
+%		\draw [in=-90, out=30] (21) to (22.center);
+%		\draw [in=150, out=-90] (24.center) to (21);
+%		\draw [in=270, out=90] (22.center) to (28.center);
+%		\draw [in=270, out=90] (24.center) to (29.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\eref{comm}
+%\begin{tikzpicture}[yscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (30) at (5.75, -0.75) {};
+%		\node [style=none] (31) at (6.25, 0) {};
+%		\node [style=none] (32) at (5.75, -1.5) {};
+%		\node [style=none] (33) at (5.25, 0) {};
+%		\node [style=none] (34) at (6.25, 0.75) {};
+%		\node [style=none] (35) at (5.25, 0.75) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (32.center) to (30);
+%		\draw [in=-90, out=30] (30) to (31.center);
+%		\draw [in=150, out=-90] (33.center) to (30);
+%		\draw [in=270, out=90] (31.center) to (34.center);
+%		\draw [in=270, out=90] (33.center) to (35.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%$$
+%
+%And is which moreover, interacts to form a semi-Frobenius algebra with the diagonal map due to the naturality of the diagonal map:
+%
+%$$
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (0.75, 0.5) {};
+%		\node [style=Z] (1) at (0, 1) {};
+%		\node [style=none] (2) at (0, 1.5) {};
+%		\node [style=none] (6) at (1, 1.5) {};
+%		\node [style=none] (7) at (-0.25, 0) {};
+%		\node [style=none] (8) at (0.75, 0) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (1) to (2.center);
+%		\draw [in=90, out=-120] (1) to (7.center);
+%		\draw (0) to (1);
+%		\draw [in=-90, out=60] (0) to (6.center);
+%		\draw (8.center) to (0);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\eref{frobl}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=none] (98) at (50.75, 0) {};
+%		\node [style=none] (99) at (51.75, 0) {};
+%		\node [style=Z] (101) at (51.25, 0.5) {};
+%		\node [style=none] (102) at (50.75, 1.5) {};
+%		\node [style=none] (103) at (51.75, 1.5) {};
+%		\node [style=Z] (104) at (51.25, 1) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [in=90, out=-165, looseness=0.75] (101) to (98.center);
+%		\draw [in=-15, out=90, looseness=0.75] (99.center) to (101);
+%		\draw [in=-90, out=165, looseness=0.75] (104) to (102.center);
+%		\draw [in=15, out=-90, looseness=0.75] (103.center) to (104);
+%		\draw (101) to (104);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\eref{frobr}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (17) at (4.5, 0.5) {};
+%		\node [style=Z] (18) at (5.25, 1) {};
+%		\node [style=none] (19) at (5.25, 1.5) {};
+%		\node [style=none] (20) at (4.25, 1.5) {};
+%		\node [style=none] (21) at (5.5, 0) {};
+%		\node [style=none] (22) at (4.5, 0) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (18) to (19.center);
+%		\draw [in=90, out=-60] (18) to (21.center);
+%		\draw (17) to (18);
+%		\draw [in=-90, out=120] (17) to (20.center);
+%		\draw (22.center) to (17);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%$$
+%
 \end{theorem}
-
-
 We recall the following definition of \cite[\S 3]{cockett}, which was originally stated in the more general setting of categories with stable systems of monics, rather than finitely complete categories:
 \begin{definition}
-Given a finitely complete category $\X$, then there discrete Cartesian restriction category $\Par(\X)$ of spans $(m,A,f)$, for $m$ a monic and $f$ and aribtrary map, ie spans of the form:
-
-$$
+Given a finitely complete category $\X$, then there discrete Cartesian restriction category $\Par(\X)$ of spans $(m,A,f)$, for $m$ a monic and $f$ and aribtrary map, ie spans of the form
+$
 \xymatrix{
 X 
 &
@@ -2752,11 +2709,10 @@ X
 &
 Y
 }
-$$
+$.
 
- $\Par(\X)$ is a discrete Cartesian restriction category where the natural monoid structure is given by spans of the form, 
-
-$$
+ $\Par(\X)$ is a discrete Cartesian restriction category where the natural monoid structure is given by spans of the form 
+$
 \xymatrix{
 X 
 &
@@ -2764,12 +2720,11 @@ X \ \ar@{=}[l] \ar@{>->}[r]^{\Delta_X \ \ \ }
 &
 X\times X
 }
-$$
+$.
 
 
-It's partial inverse is given by the span:
-
-$$
+It's partial inverse is given by the span  
+$
 \xymatrix{
 X \times X
 &
@@ -2777,11 +2732,10 @@ X \ \ar@{=}[r] \ar@{>->}[l]_{\ \ \ \Delta_X}
 &
 X
 }
-$$
+$.
 
-And the counit is given by
-
-$$
+And the counit is given by 
+$
 \xymatrix{
 X 
 &
@@ -2789,12 +2743,10 @@ X \ar@{=}[l] \ar@{->>}[r]^{!_X}
 &
 \one
 }
-$$
+$.
 \end{definition}
-
-Unrolling the definition, we see that a map 
-
-$$
+Unrolling the definition, we see that a map
+$
 \xymatrix{
 X 
 &
@@ -2802,11 +2754,9 @@ X
 &
 Y
 }
-$$
-
+$ 
 has a partial inverse precisely when $f$ is a monomorphism; moreover, the restriction idempotents are spans where both legs are the same monomorphism:
-
-$$
+$
 \xymatrix{
 X 
 &
@@ -2814,17 +2764,12 @@ X
 &
 Y
 }
-$$
-
+$.
 The basic idea is that the left leg picks out the domain of definition.  This agrees with our running example of a a restriction category:
-
 \begin{example}
 $\Par\cong\Par(\Set)$
 \end{example}
-
-
 Cartesian restriction categories are the partial version of Cartesian categories:
-
 \begin{lemma} 
 \label{prop:cartesian}
 If $\X$ is a  Cartesian restriction category, the  $\Total(\X)$ is Cartesian.
@@ -2878,29 +2823,20 @@ By definition, the total maps in a Cartesian restriction category are those whic
 %\end{example}
 %
 %
-
-
 Similarly, discrete Cartesian restriction categories are a deterministic, yet partial version of relations:
-
 \begin{lemma}
 The category of comultiplication homorphisms of a Cartesian bicategory of relations is a discrete Cartesian restriction category.
 \end{lemma}
-
 Let us refine the notion of a restriction category:
-
 \begin{definition}[{\cite[\S 2.3.2]{cockett}}]
 An {\bf inverse category} is a restriction category in which all maps are partial isomorphisms.
 \end{definition}
-
 \begin{example}
 $\Inv(\Par)\cong\Pinj$
 \end{example}
-
 Inverse categories are particular kinds of \dag-categories:
-
 \begin{theorem}[{\cite[Theorem 2.20]{cockett}}]
 A restriction category $\X$ is an inverse category if and only if there is a dagger functor $(-)^\circ:\X^\op\to\X$ such that for all $X\xleftarrow{f} Z \xrightarrow{g} Y$:
-
 \begin{multicols}{2}
 \begin{enumerate}[label={\bf [INV.\arabic*]}, ref={\bf [INV.\arabic*]}]
 \item $f; f^\circ ; f = f$
@@ -2909,42 +2845,30 @@ A restriction category $\X$ is an inverse category if and only if there is a dag
 \label{INV.2}
 \end{enumerate}
 \end{multicols}
-
 \end{theorem}
-
 The dagger functor takes maps to their partial inverse.
 The unitary maps in an inverse category are the total maps.
 
 
 Sets and partial injections are intimately related to Hilbert spaces.  The following functor was first discovered by \cite{barr}; later studied in much more detail in \cite{elltwo}:
-
 \begin{definition}
 \label{def:elltwo}
 There is a \dag-symmetric monoidal embedding $\ell^2:\Pinj\to\Hilb$ taking:
-
 \begin{description}
 \item[Objects:] Sets $X$ are taken to the Hilbert space of square-summable functions on $X$:
-
 $$
 \ell^2(X):=\left\{\phi:X\to \C  \ \bigl\vert \sum_{x\in X} \ \left|\phi(x)\right|^2 < \infty \right\}
 $$
-
-
-
-\item[Maps:] Given a partial injection $f=X \xleftarrowtail{f_0} \ A \  \xrightarrowtail{f_1} Z$ and some $\phi:X\to \C$ in $\ell^2(X)$
-
+\item[Maps:] Given a partial injection $f=X \xleftarrowtail{f_0} \ A \  \xrightarrowtail{f_1} Z$ and some $\phi:X\to \C$ in $\ell^2(X)$:
 $$
 (\ell^2(f)(\phi))(y) = \sum_{x\in f_1^{-1}(y)} \phi(f_0(x))
 $$ 
-
 \end{description}
-
 The partial inverse is mapped to the Hermetian adjoint.
 
 In particular, $\ell^2(X)$ has a distinguished orthonormal basis given by 
 $$\{\delta_{x}:X\to \C\ | \ \forall x \in X \}$$
 where $\delta_x$ is the Dirac delta at $X$:
-
 $$
 \delta_x(y) \mapsto
 \begin{cases}
@@ -2953,261 +2877,257 @@ $$
 \end{cases}
 $$
 \end{definition}
-
-
 The category of partial injections is unusual in the sense that there is an embeds into $\Hilb$. This does not generalize to sets and functions, for example: the maps are no longer send to bounded linear maps.
 
 However, if the domain is changed to the category of spans of {\em finite} sets this induces an embedding into $\FHilb$.  This is actually the version we will use throughout this thesis, but we give the general definition to highlight the importance of inverse categories in the categorical semantics of quantum mechanics.
 
 
 We also have a deterministic partially invertible notion of copying:
-
 \begin{definition}[{\cite[Definition 4.3.1]{giles}}]
 A symmetric monoidal inverse category $\X$ is a {\bf discrete inverse category} when it is a dagger symmetric monoidal  category, 
-equipped commutative semigroup and cocommutative cosemigroup on every object which are daggers of each other:
-$$
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (21) at (3.75, -0.75) {};
-		\node [style=none] (22) at (4.25, 0) {};
-		\node [style=none] (23) at (3.75, -1.5) {};
-		\node [style=none] (24) at (3.25, 0) {};
-		\node [style=none] (28) at (3.25, 0.75) {};
-		\node [style=none] (29) at (4.25, 0.75) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (23.center) to (21);
-		\draw [in=-90, out=30] (21) to (22.center);
-		\draw [in=150, out=-90] (24.center) to (21);
-		\draw [in=270, out=90] (22.center) to (28.center);
-		\draw [in=270, out=90] (24.center) to (29.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (30) at (5.75, -0.75) {};
-		\node [style=none] (31) at (6.25, 0) {};
-		\node [style=none] (32) at (5.75, -1.5) {};
-		\node [style=none] (33) at (5.25, 0) {};
-		\node [style=none] (34) at (6.25, 0.75) {};
-		\node [style=none] (35) at (5.25, 0.75) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (32.center) to (30);
-		\draw [in=-90, out=30] (30) to (31.center);
-		\draw [in=150, out=-90] (33.center) to (30);
-		\draw [in=270, out=90] (31.center) to (34.center);
-		\draw [in=270, out=90] (33.center) to (35.center);
-	\end{pgfonlayer}
-\end{tikzpicture}\ ,
-\hspace*{.2cm}
-\begin{tikzpicture}[yscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (12, 2) {};
-		\node [style=none] (1) at (12.5, 1.25) {};
-		\node [style=none] (2) at (11.5, 1.25) {};
-		\node [style=none] (3) at (12, 2.75) {};
-		\node [style=Z] (4) at (12.5, 1.25) {};
-		\node [style=none] (5) at (13, 0.5) {};
-		\node [style=none] (6) at (12, 0.5) {};
-		\node [style=none] (7) at (11.5, 0.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=-30] (0) to (1.center);
-		\draw (3.center) to (0);
-		\draw [in=90, out=-150] (0) to (2.center);
-		\draw [in=90, out=-30] (4) to (5.center);
-		\draw [in=90, out=-150] (4) to (6.center);
-		\draw (7.center) to (2.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}[scale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (12, 2) {};
-		\node [style=none] (1) at (12.5, 1.25) {};
-		\node [style=none] (2) at (11.5, 1.25) {};
-		\node [style=none] (3) at (12, 2.75) {};
-		\node [style=Z] (4) at (12.5, 1.25) {};
-		\node [style=none] (5) at (13, 0.5) {};
-		\node [style=none] (6) at (12, 0.5) {};
-		\node [style=none] (7) at (11.5, 0.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=-30] (0) to (1.center);
-		\draw (3.center) to (0);
-		\draw [in=90, out=-150] (0) to (2.center);
-		\draw [in=90, out=-30] (4) to (5.center);
-		\draw [in=90, out=-150] (4) to (6.center);
-		\draw (7.center) to (2.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-\ ,
-\hspace*{.2cm}
-\begin{tikzpicture}[yscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (21) at (3.75, -0.75) {};
-		\node [style=none] (22) at (4.25, 0) {};
-		\node [style=none] (23) at (3.75, -1.5) {};
-		\node [style=none] (24) at (3.25, 0) {};
-		\node [style=none] (28) at (3.25, 0.75) {};
-		\node [style=none] (29) at (4.25, 0.75) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (23.center) to (21);
-		\draw [in=-90, out=30] (21) to (22.center);
-		\draw [in=150, out=-90] (24.center) to (21);
-		\draw [in=270, out=90] (22.center) to (28.center);
-		\draw [in=270, out=90] (24.center) to (29.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}[yscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (30) at (5.75, -0.75) {};
-		\node [style=none] (31) at (6.25, 0) {};
-		\node [style=none] (32) at (5.75, -1.5) {};
-		\node [style=none] (33) at (5.25, 0) {};
-		\node [style=none] (34) at (6.25, 0.75) {};
-		\node [style=none] (35) at (5.25, 0.75) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (32.center) to (30);
-		\draw [in=-90, out=30] (30) to (31.center);
-		\draw [in=150, out=-90] (33.center) to (30);
-		\draw [in=270, out=90] (31.center) to (34.center);
-		\draw [in=270, out=90] (33.center) to (35.center);
-	\end{pgfonlayer}
-\end{tikzpicture}\ ,
-\hspace*{.2cm}
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (12, 2) {};
-		\node [style=none] (1) at (12.5, 1.25) {};
-		\node [style=none] (2) at (11.5, 1.25) {};
-		\node [style=none] (3) at (12, 2.75) {};
-		\node [style=Z] (4) at (12.5, 1.25) {};
-		\node [style=none] (5) at (13, 0.5) {};
-		\node [style=none] (6) at (12, 0.5) {};
-		\node [style=none] (7) at (11.5, 0.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=-30] (0) to (1.center);
-		\draw (3.center) to (0);
-		\draw [in=90, out=-150] (0) to (2.center);
-		\draw [in=90, out=-30] (4) to (5.center);
-		\draw [in=90, out=-150] (4) to (6.center);
-		\draw (7.center) to (2.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}[xscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (12, 2) {};
-		\node [style=none] (1) at (12.5, 1.25) {};
-		\node [style=none] (2) at (11.5, 1.25) {};
-		\node [style=none] (3) at (12, 2.75) {};
-		\node [style=Z] (4) at (12.5, 1.25) {};
-		\node [style=none] (5) at (13, 0.5) {};
-		\node [style=none] (6) at (12, 0.5) {};
-		\node [style=none] (7) at (11.5, 0.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=-30] (0) to (1.center);
-		\draw (3.center) to (0);
-		\draw [in=90, out=-150] (0) to (2.center);
-		\draw [in=90, out=-30] (4) to (5.center);
-		\draw [in=90, out=-150] (4) to (6.center);
-		\draw (7.center) to (2.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-$$
-Compatible with the monoidal structure:
-$$
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (0) at (0, 2.5) {};
-		\node [style=none] (1) at (1, 2.5) {};
-		\node [style=Z] (2) at (0.5, 1.5) {};
-		\node [style=none] (3) at (0.5, 0.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [style=simple] (3.center) to (2);
-		\draw [style=simple, in=-90, out=117] (2) to (0.center);
-		\draw [style=simple, in=63, out=-90] (1.center) to (2);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (0, 2.5) {};
-		\node [style=Z] (1) at (1, 2.5) {};
-		\node [style=none] (2) at (0.5, 1.5) {};
-		\node [style=none] (3) at (0.5, 0.5) {};
-		\node [style=none] (4) at (0, 3.5) {};
-		\node [style=none] (5) at (1, 3.5) {};
-		\node [style=none] (6) at (0, 4.5) {};
-		\node [style=none] (7) at (1, 4.5) {};
-		\node [style=otimes] (8) at (0.5, 1.5) {};
-		\node [style=otimes] (9) at (1, 3.5) {};
-		\node [style=otimes] (10) at (0, 3.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [style=simple] (3.center) to (2.center);
-		\draw [style=simple, in=-90, out=135] (2.center) to (0);
-		\draw [style=simple] (0) to (5.center);
-		\draw [style=simple, in=120, out=-120, looseness=1.25] (4.center) to (0);
-		\draw [style=simple, in=-60, out=60, looseness=1.25] (1) to (5.center);
-		\draw [style=simple] (1) to (4.center);
-		\draw [style=simple, in=45, out=-90] (1) to (2.center);
-		\draw [style=simple] (4.center) to (6.center);
-		\draw [style=simple] (5.center) to (7.center);
-	\end{pgfonlayer}
-\end{tikzpicture}\ ,
-\hspace*{.2cm}
-\begin{tikzpicture}[yscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (0) at (0, 2.5) {};
-		\node [style=none] (1) at (1, 2.5) {};
-		\node [style=Z] (2) at (0.5, 1.5) {};
-		\node [style=none] (3) at (0.5, 0.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [style=simple] (3.center) to (2);
-		\draw [style=simple, in=-90, out=117] (2) to (0.center);
-		\draw [style=simple, in=63, out=-90] (1.center) to (2);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}[yscale=-1]
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (0, 2.5) {};
-		\node [style=Z] (1) at (1, 2.5) {};
-		\node [style=none] (2) at (0.5, 1.5) {};
-		\node [style=none] (3) at (0.5, 0.5) {};
-		\node [style=none] (4) at (0, 3.5) {};
-		\node [style=none] (5) at (1, 3.5) {};
-		\node [style=none] (6) at (0, 4.5) {};
-		\node [style=none] (7) at (1, 4.5) {};
-		\node [style=otimes] (8) at (0.5, 1.5) {};
-		\node [style=otimes] (9) at (1, 3.5) {};
-		\node [style=otimes] (10) at (0, 3.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [style=simple] (3.center) to (2.center);
-		\draw [style=simple, in=-90, out=135] (2.center) to (0);
-		\draw [style=simple] (0) to (5.center);
-		\draw [style=simple, in=120, out=-120, looseness=1.25] (4.center) to (0);
-		\draw [style=simple, in=-60, out=60, looseness=1.25] (1) to (5.center);
-		\draw [style=simple] (1) to (4.center);
-		\draw [style=simple, in=45, out=-90] (1) to (2.center);
-		\draw [style=simple] (4.center) to (6.center);
-		\draw [style=simple] (5.center) to (7.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-$$
-Where the comonoid and monoid are natural so that 
+%equipped commutative semigroup and cocommutative cosemigroup on every object which are daggers of each other, interacting to form special commutative Frobenius algebras; which are moreover natural
+%$$
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (12, 2) {};
+%		\node [style=none] (1) at (12.5, 1.25) {};
+%		\node [style=none] (2) at (11.5, 1.25) {};
+%		\node [style=none] (3) at (12, 2.75) {};
+%		\node [style=Z] (4) at (12.5, 1.25) {};
+%		\node [style=none] (5) at (13, 0.5) {};
+%		\node [style=none] (6) at (12, 0.5) {};
+%		\node [style=none] (7) at (11.5, 0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [in=90, out=-30] (0) to (1.center);
+%		\draw (3.center) to (0);
+%		\draw [in=90, out=-150] (0) to (2.center);
+%		\draw [in=90, out=-30] (4) to (5.center);
+%		\draw [in=90, out=-150] (4) to (6.center);
+%		\draw (7.center) to (2.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\eref{assoc}
+%\begin{tikzpicture}[xscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (12, 2) {};
+%		\node [style=none] (1) at (12.5, 1.25) {};
+%		\node [style=none] (2) at (11.5, 1.25) {};
+%		\node [style=none] (3) at (12, 2.75) {};
+%		\node [style=Z] (4) at (12.5, 1.25) {};
+%		\node [style=none] (5) at (13, 0.5) {};
+%		\node [style=none] (6) at (12, 0.5) {};
+%		\node [style=none] (7) at (11.5, 0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [in=90, out=-30] (0) to (1.center);
+%		\draw (3.center) to (0);
+%		\draw [in=90, out=-150] (0) to (2.center);
+%		\draw [in=90, out=-30] (4) to (5.center);
+%		\draw [in=90, out=-150] (4) to (6.center);
+%		\draw (7.center) to (2.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\ ,
+%\hspace*{.2cm}
+%\begin{tikzpicture}[yscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (21) at (3.75, -0.75) {};
+%		\node [style=none] (22) at (4.25, 0) {};
+%		\node [style=none] (23) at (3.75, -1.5) {};
+%		\node [style=none] (24) at (3.25, 0) {};
+%		\node [style=none] (28) at (3.25, 0.75) {};
+%		\node [style=none] (29) at (4.25, 0.75) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (23.center) to (21);
+%		\draw [in=-90, out=30] (21) to (22.center);
+%		\draw [in=150, out=-90] (24.center) to (21);
+%		\draw [in=270, out=90] (22.center) to (28.center);
+%		\draw [in=270, out=90] (24.center) to (29.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\eref{comm}
+%\begin{tikzpicture}[yscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (30) at (5.75, -0.75) {};
+%		\node [style=none] (31) at (6.25, 0) {};
+%		\node [style=none] (32) at (5.75, -1.5) {};
+%		\node [style=none] (33) at (5.25, 0) {};
+%		\node [style=none] (34) at (6.25, 0.75) {};
+%		\node [style=none] (35) at (5.25, 0.75) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (32.center) to (30);
+%		\draw [in=-90, out=30] (30) to (31.center);
+%		\draw [in=150, out=-90] (33.center) to (30);
+%		\draw [in=270, out=90] (31.center) to (34.center);
+%		\draw [in=270, out=90] (33.center) to (35.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}\ ,
+%\hspace*{.2cm}
+%\begin{tikzpicture}[yscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (12, 2) {};
+%		\node [style=none] (1) at (12.5, 1.25) {};
+%		\node [style=none] (2) at (11.5, 1.25) {};
+%		\node [style=none] (3) at (12, 2.75) {};
+%		\node [style=Z] (4) at (12.5, 1.25) {};
+%		\node [style=none] (5) at (13, 0.5) {};
+%		\node [style=none] (6) at (12, 0.5) {};
+%		\node [style=none] (7) at (11.5, 0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [in=90, out=-30] (0) to (1.center);
+%		\draw (3.center) to (0);
+%		\draw [in=90, out=-150] (0) to (2.center);
+%		\draw [in=90, out=-30] (4) to (5.center);
+%		\draw [in=90, out=-150] (4) to (6.center);
+%		\draw (7.center) to (2.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\erefop{assoc}
+%\begin{tikzpicture}[scale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (12, 2) {};
+%		\node [style=none] (1) at (12.5, 1.25) {};
+%		\node [style=none] (2) at (11.5, 1.25) {};
+%		\node [style=none] (3) at (12, 2.75) {};
+%		\node [style=Z] (4) at (12.5, 1.25) {};
+%		\node [style=none] (5) at (13, 0.5) {};
+%		\node [style=none] (6) at (12, 0.5) {};
+%		\node [style=none] (7) at (11.5, 0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [in=90, out=-30] (0) to (1.center);
+%		\draw (3.center) to (0);
+%		\draw [in=90, out=-150] (0) to (2.center);
+%		\draw [in=90, out=-30] (4) to (5.center);
+%		\draw [in=90, out=-150] (4) to (6.center);
+%		\draw (7.center) to (2.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture} , \hspace*{.2cm}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (21) at (3.75, -0.75) {};
+%		\node [style=none] (22) at (4.25, 0) {};
+%		\node [style=none] (23) at (3.75, -1.5) {};
+%		\node [style=none] (24) at (3.25, 0) {};
+%		\node [style=none] (28) at (3.25, 0.75) {};
+%		\node [style=none] (29) at (4.25, 0.75) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (23.center) to (21);
+%		\draw [in=-90, out=30] (21) to (22.center);
+%		\draw [in=150, out=-90] (24.center) to (21);
+%		\draw [in=270, out=90] (22.center) to (28.center);
+%		\draw [in=270, out=90] (24.center) to (29.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\erefop{comm}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (30) at (5.75, -0.75) {};
+%		\node [style=none] (31) at (6.25, 0) {};
+%		\node [style=none] (32) at (5.75, -1.5) {};
+%		\node [style=none] (33) at (5.25, 0) {};
+%		\node [style=none] (34) at (6.25, 0.75) {};
+%		\node [style=none] (35) at (5.25, 0.75) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (32.center) to (30);
+%		\draw [in=-90, out=30] (30) to (31.center);
+%		\draw [in=150, out=-90] (33.center) to (30);
+%		\draw [in=270, out=90] (31.center) to (34.center);
+%		\draw [in=270, out=90] (33.center) to (35.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%$$
+%Compatible with the monoidal structure:
+%$$
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=none] (0) at (0, 2.5) {};
+%		\node [style=none] (1) at (1, 2.5) {};
+%		\node [style=Z] (2) at (0.5, 1.5) {};
+%		\node [style=none] (3) at (0.5, 0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [style=simple] (3.center) to (2);
+%		\draw [style=simple, in=-90, out=117] (2) to (0.center);
+%		\draw [style=simple, in=63, out=-90] (1.center) to (2);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%=
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (0, 2.5) {};
+%		\node [style=Z] (1) at (1, 2.5) {};
+%		\node [style=none] (2) at (0.5, 1.5) {};
+%		\node [style=none] (3) at (0.5, 0.5) {};
+%		\node [style=none] (4) at (0, 3.5) {};
+%		\node [style=none] (5) at (1, 3.5) {};
+%		\node [style=none] (6) at (0, 4.5) {};
+%		\node [style=none] (7) at (1, 4.5) {};
+%		\node [style=otimes] (8) at (0.5, 1.5) {};
+%		\node [style=otimes] (9) at (1, 3.5) {};
+%		\node [style=otimes] (10) at (0, 3.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [style=simple] (3.center) to (2.center);
+%		\draw [style=simple, in=-90, out=135] (2.center) to (0);
+%		\draw [style=simple] (0) to (5.center);
+%		\draw [style=simple, in=120, out=-120, looseness=1.25] (4.center) to (0);
+%		\draw [style=simple, in=-60, out=60, looseness=1.25] (1) to (5.center);
+%		\draw [style=simple] (1) to (4.center);
+%		\draw [style=simple, in=45, out=-90] (1) to (2.center);
+%		\draw [style=simple] (4.center) to (6.center);
+%		\draw [style=simple] (5.center) to (7.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}\ ,
+%\hspace*{.2cm}
+%\begin{tikzpicture}[yscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=none] (0) at (0, 2.5) {};
+%		\node [style=none] (1) at (1, 2.5) {};
+%		\node [style=Z] (2) at (0.5, 1.5) {};
+%		\node [style=none] (3) at (0.5, 0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [style=simple] (3.center) to (2);
+%		\draw [style=simple, in=-90, out=117] (2) to (0.center);
+%		\draw [style=simple, in=63, out=-90] (1.center) to (2);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%=
+%\begin{tikzpicture}[yscale=-1]
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (0, 2.5) {};
+%		\node [style=Z] (1) at (1, 2.5) {};
+%		\node [style=none] (2) at (0.5, 1.5) {};
+%		\node [style=none] (3) at (0.5, 0.5) {};
+%		\node [style=none] (4) at (0, 3.5) {};
+%		\node [style=none] (5) at (1, 3.5) {};
+%		\node [style=none] (6) at (0, 4.5) {};
+%		\node [style=none] (7) at (1, 4.5) {};
+%		\node [style=otimes] (8) at (0.5, 1.5) {};
+%		\node [style=otimes] (9) at (1, 3.5) {};
+%		\node [style=otimes] (10) at (0, 3.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [style=simple] (3.center) to (2.center);
+%		\draw [style=simple, in=-90, out=135] (2.center) to (0);
+%		\draw [style=simple] (0) to (5.center);
+%		\draw [style=simple, in=120, out=-120, looseness=1.25] (4.center) to (0);
+%		\draw [style=simple, in=-60, out=60, looseness=1.25] (1) to (5.center);
+%		\draw [style=simple] (1) to (4.center);
+%		\draw [style=simple, in=45, out=-90] (1) to (2.center);
+%		\draw [style=simple] (4.center) to (6.center);
+%		\draw [style=simple] (5.center) to (7.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%$$
+%Where the comonoid and monoid are natural so that 
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3284,114 +3204,96 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-Where the commutative semigroup and cocommutative cosemigroup  interact to form a $\dag$-semi-Frobenius algebra:
-$$
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (0.75, 0.5) {};
-		\node [style=Z] (1) at (0, 1) {};
-		\node [style=none] (2) at (0, 1.5) {};
-		\node [style=none] (6) at (1, 1.5) {};
-		\node [style=none] (7) at (-0.25, 0) {};
-		\node [style=none] (8) at (0.75, 0) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (1) to (2.center);
-		\draw [in=90, out=-120] (1) to (7.center);
-		\draw (0) to (1);
-		\draw [in=-90, out=60] (0) to (6.center);
-		\draw (8.center) to (0);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (98) at (50.75, 0) {};
-		\node [style=none] (99) at (51.75, 0) {};
-		\node [style=Z] (101) at (51.25, 0.5) {};
-		\node [style=none] (102) at (50.75, 1.5) {};
-		\node [style=none] (103) at (51.75, 1.5) {};
-		\node [style=Z] (104) at (51.25, 1) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=-165, looseness=0.75] (101) to (98.center);
-		\draw [in=-15, out=90, looseness=0.75] (99.center) to (101);
-		\draw [in=-90, out=165, looseness=0.75] (104) to (102.center);
-		\draw [in=15, out=-90, looseness=0.75] (103.center) to (104);
-		\draw (101) to (104);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (17) at (4.5, 0.5) {};
-		\node [style=Z] (18) at (5.25, 1) {};
-		\node [style=none] (19) at (5.25, 1.5) {};
-		\node [style=none] (20) at (4.25, 1.5) {};
-		\node [style=none] (21) at (5.5, 0) {};
-		\node [style=none] (22) at (4.5, 0) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (18) to (19.center);
-		\draw [in=90, out=-60] (18) to (21.center);
-		\draw (17) to (18);
-		\draw [in=-90, out=120] (17) to (20.center);
-		\draw (22.center) to (17);
-	\end{pgfonlayer}
-\end{tikzpicture}
-$$
-
-Which is also special:
-
-$$
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (0, 0) {};
-		\node [style=Z] (1) at (0, 1) {};
-		\node [style=none] (2) at (0, 1.5) {};
-		\node [style=none] (3) at (0, -0.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (0) to (3.center);
-		\draw [bend left=45, looseness=1.25] (0) to (1);
-		\draw [bend left=45, looseness=1.25] (1) to (0);
-		\draw (1) to (2.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (6) at (1, 1.5) {};
-		\node [style=none] (7) at (1, -0.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (7.center) to (6.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-$$
-
+%
+%Where the commutative semigroup and cocommutative cosemigroup  interact to form a $\dag$-semi-Frobenius algebra:
+%$$
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (0.75, 0.5) {};
+%		\node [style=Z] (1) at (0, 1) {};
+%		\node [style=none] (2) at (0, 1.5) {};
+%		\node [style=none] (6) at (1, 1.5) {};
+%		\node [style=none] (7) at (-0.25, 0) {};
+%		\node [style=none] (8) at (0.75, 0) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (1) to (2.center);
+%		\draw [in=90, out=-120] (1) to (7.center);
+%		\draw (0) to (1);
+%		\draw [in=-90, out=60] (0) to (6.center);
+%		\draw (8.center) to (0);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\eref{frobl}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=none] (98) at (50.75, 0) {};
+%		\node [style=none] (99) at (51.75, 0) {};
+%		\node [style=Z] (101) at (51.25, 0.5) {};
+%		\node [style=none] (102) at (50.75, 1.5) {};
+%		\node [style=none] (103) at (51.75, 1.5) {};
+%		\node [style=Z] (104) at (51.25, 1) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw [in=90, out=-165, looseness=0.75] (101) to (98.center);
+%		\draw [in=-15, out=90, looseness=0.75] (99.center) to (101);
+%		\draw [in=-90, out=165, looseness=0.75] (104) to (102.center);
+%		\draw [in=15, out=-90, looseness=0.75] (103.center) to (104);
+%		\draw (101) to (104);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\eref{frobr}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (17) at (4.5, 0.5) {};
+%		\node [style=Z] (18) at (5.25, 1) {};
+%		\node [style=none] (19) at (5.25, 1.5) {};
+%		\node [style=none] (20) at (4.25, 1.5) {};
+%		\node [style=none] (21) at (5.5, 0) {};
+%		\node [style=none] (22) at (4.5, 0) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (18) to (19.center);
+%		\draw [in=90, out=-60] (18) to (21.center);
+%		\draw (17) to (18);
+%		\draw [in=-90, out=120] (17) to (20.center);
+%		\draw (22.center) to (17);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%$$
+%
+%Which is also special:
+%
+%$$
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=Z] (0) at (0, 0) {};
+%		\node [style=Z] (1) at (0, 1) {};
+%		\node [style=none] (2) at (0, 1.5) {};
+%		\node [style=none] (3) at (0, -0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (0) to (3.center);
+%		\draw [bend left=45, looseness=1.25] (0) to (1);
+%		\draw [bend left=45, looseness=1.25] (1) to (0);
+%		\draw (1) to (2.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%\eref{special}
+%\begin{tikzpicture}
+%	\begin{pgfonlayer}{nodelayer}
+%		\node [style=none] (6) at (1, 1.5) {};
+%		\node [style=none] (7) at (1, -0.5) {};
+%	\end{pgfonlayer}
+%	\begin{pgfonlayer}{edgelayer}
+%		\draw (7.center) to (6.center);
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%$$
 \end{definition}
-
 \begin{lemma}[{\cite[Lemma 4.3.5]{giles}}]
 In a discrete inverse category, restriction idempotents are strengths for the multiplication and comultiplication so that:
 $$
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (3, 1.75) {};
-		\node [style=map] (1) at (3, 1) {$\bar f$};
-		\node [style=none] (2) at (3, 0.5) {};
-		\node [style=none] (3) at (2.5, 2.5) {};
-		\node [style=none] (4) at (3.5, 2.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [style=simple, in=63, out=-90] (4.center) to (0);
-		\draw [style=simple, in=-90, out=117] (0) to (3.center);
-		\draw [style=simple] (1) to (0);
-		\draw [style=simple] (1) to (2.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (0) at (3, 2) {};
@@ -3410,7 +3312,23 @@ $$
 		\draw [style=simple] (0) to (1.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
-=
+\eqzxa{phasel}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (0) at (3, 1.75) {};
+		\node [style=map] (1) at (3, 1) {$\bar f$};
+		\node [style=none] (2) at (3, 0.5) {};
+		\node [style=none] (3) at (2.5, 2.5) {};
+		\node [style=none] (4) at (3.5, 2.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=simple, in=63, out=-90] (4.center) to (0);
+		\draw [style=simple, in=-90, out=117] (0) to (3.center);
+		\draw [style=simple] (1) to (0);
+		\draw [style=simple] (1) to (2.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\eqzxa{phaser}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (0) at (3, 2) {};
@@ -3434,25 +3352,6 @@ $$
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (0) at (3, 3) {};
 		\node [style=none] (1) at (3, 3.5) {};
-		\node [style=none] (2) at (3.5, 2) {};
-		\node [style=none] (3) at (2.5, 2) {};
-		\node [style=map] (4) at (3.5, 2) {$\bar f$};
-		\node [style=none] (5) at (2.5, 1.5) {};
-		\node [style=none] (6) at (3.5, 1.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [style=simple, in=-117, out=90] (3.center) to (0);
-		\draw [style=simple, in=90, out=-63] (0) to (2.center);
-		\draw [style=simple] (6.center) to (2.center);
-		\draw [style=simple] (5.center) to (3.center);
-		\draw [style=simple] (0) to (1.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (3, 3) {};
-		\node [style=none] (1) at (3, 3.5) {};
 		\node [style=none] (2) at (2.5, 2) {};
 		\node [style=none] (3) at (3.5, 2) {};
 		\node [style=map] (4) at (2.5, 2) {$\bar f$};
@@ -3467,7 +3366,7 @@ $$
 		\draw [style=simple] (0) to (1.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
-=
+\erefop{phasel}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (0) at (3, 1.25) {};
@@ -3483,40 +3382,44 @@ $$
 		\draw [style=simple] (1) to (2.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
+\erefop{phaser}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (0) at (3, 3) {};
+		\node [style=none] (1) at (3, 3.5) {};
+		\node [style=none] (2) at (3.5, 2) {};
+		\node [style=none] (3) at (2.5, 2) {};
+		\node [style=map] (4) at (3.5, 2) {$\bar f$};
+		\node [style=none] (5) at (2.5, 1.5) {};
+		\node [style=none] (6) at (3.5, 1.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=simple, in=-117, out=90] (3.center) to (0);
+		\draw [style=simple, in=90, out=-63] (0) to (2.center);
+		\draw [style=simple] (6.center) to (2.center);
+		\draw [style=simple] (5.center) to (3.center);
+		\draw [style=simple] (0) to (1.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
 $$
 \end{lemma}
-
-
-
 \begin{lemma}
 Given a finitely complete category $\X$, the category  $\ParIso(\X):=\Inv(\Par(\X))$ of spans of monomorphisms in $\X$ is a discrete inverse category.
 \end{lemma}
-
 These weaken the notion of copying even further:
-
 \begin{lemma}[{\cite[Proposition 4.3.7]{giles}}]
 Given a discrete Cartesian restriction category $\X$, $\Inv(\X)$ is a discrete inverse category.
 \end{lemma}
-
-
-
-
-
 At least as far as the literature is concerned, the canonical way to obtain a discrete Cartesian restriction category from a discrete category is tricker.  We will first introduce the more CoPara construction, which freely adds an effect to every object in a way that is compatible with the tensor product:
-
-
 \begin{definition}
 Given a symmetric monoidal category $\X$, the copara construction, $\CoPara(\X)$ is the symmetric monoidal category obtained by freely adding maps $X\to I$ for every object $X$, compatible with the tensor unit:
-
 \begin{description}
 \item[Objects:] Same as in $\X$.
-
 \item[Maps:]  
 \hfil $
 \dfrac{ X\xrightarrow{f}  S\otimes Y \in \X           }
          { X\xrightarrow{(f,S)} Y \in  \CoPara(\X) }
 $
-
 \item[Composition:]
 \hfil $
 \dfrac{
@@ -3524,7 +3427,6 @@ $
          {X\xrightarrow{
 		(f,S);(g;T) := (f;(1_S \otimes g);\alpha^{-1}_{S,T,Z} ,S\otimes T)}Z} 
 $
-
 
 
 \hfil Or in proof net notation:
@@ -3582,9 +3484,7 @@ $
 	\end{pgfonlayer}
 \end{tikzpicture}
 $
-
 \item[Identity:]
-
 $$
 \dfrac{ 1_X \in  \CoPara(\X)}{(u^L_X)^{-1} \in \X}
 $$
@@ -3607,9 +3507,7 @@ $
 	\end{pgfonlayer}
 \end{tikzpicture}
 $
-
 \item[Tensor product:]
-
 $$
 \dfrac{
 	X\xrightarrow{(f,S)} Y\ , \hspace*{1cm} Z\xrightarrow{(g,T)} W }
@@ -3626,10 +3524,6 @@ $$
 	Y\otimes W
 } 
 $$
-
-
-
-
 \hfil Or in proof net notation:
 \hspace*{.5cm}
 $
@@ -3686,14 +3580,10 @@ $
 	\end{pgfonlayer}
 \end{tikzpicture}
 $
-
-
 \item[Tensor unit:]\
-
 $$
 \dfrac{ I \in  \CoPara(\X)}{ 1_{I\otimes I}\in \X}
 $$
-
 \hfil Or in proof net notation:
 \hspace*{.5cm}
 $
@@ -3715,13 +3605,9 @@ $
 	\end{pgfonlayer}
 \end{tikzpicture}
 $
-
 \end{description}
 \end{definition}
-
 The coherence data for the monoidal structure is inherited in a straightforward way from $\X$. Moreover, if $\X$ is symmetric monoidal, then it is easy to see how ${\CoPara}(\X)$ is as well.  Indeed ${\CoPara}(\X)$ is merely freely adding generators $d_X:X\to I$ to the monoidal theory of  the strictification of $\X$, for every object in $\X$.  In ${\CoPara}(\X)$, that the map $(u_X^L)^{-1}$:
-
-
 $$
 d_X=
 \begin{tikzpicture}
@@ -3740,7 +3626,6 @@ d_X=
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 However, variations on this theme will occur throughout this thesis, so we have promoted it to its own construction.  The CoPara construction is dual to the Para construction which is interpreted as freely adding parameters to  a monoidal category (see \cite{Fong2019backprop}).
 
 
@@ -3827,10 +3712,8 @@ or
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 $\tilde \X$ has the structure of a discrete Cartesian restriction category with:
 \begin{description}
-
 \item[Restriction product:]
 \hfil
 $
@@ -3863,7 +3746,6 @@ $
 	\end{pgfonlayer}
 \end{tikzpicture}
 $
-
 \item[Restriction terminal map:]
 \hfil
 $
@@ -3885,38 +3767,27 @@ $
 \end{tikzpicture}
 $
 \end{description}
-
 \end{definition}
-
 We give a simpler characterization of this construction terms of adding counits to the inverse products in Proposition \ref{cor:copy}.
-
-
 \begin{theorem}[{\cite[Theorem 5.2.6]{giles}}]
 There is an equivalence of categories between the category of discrete inverse categories and the category of discrete Cartesian categories.
 %Therefore, given a discrete inverse category $\X$
 %$\Inv(\tilde \X)\cong \X$.
 \end{theorem}
-
  This equivalence is witnessed on the one hand by the Cartesian completion and on the other by taking the wide subcategory of partial isomorphisms.  As a corollary, we see that 
-
 \begin{example}[{\cite[Example 5.3.3]{giles}}]
 $\tilde \Pinj$ is $\Par$.
 \end{example}
 \begin{proof}
 For a partial function $f:X\to Y$, $\{(x,(x,y)) | (x,y) \in f \}/\sim$ is a partial isomorphism.
 \end{proof}
-
 The Cartesian completion is itself an embedding:
-
 \begin{lemma}
 \label{lemma:xtildefaithful}
 The canonical functor $\iota:\X\to \tilde \X$ is faithful.
 \end{lemma}
-
 \begin{proof}
 Suppose that $\iota(f)\sim\iota(g)$, Then:
-
-
 \begin{align*}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -4141,11 +4012,7 @@ Suppose that $\iota(f)\sim\iota(g)$, Then:
 	\end{pgfonlayer}
 \end{tikzpicture}
 \end{align*}
-
-
-
 \end{proof}
-
 Obtaining Cartesian bicategories of relations from discrete inverse categories is more difficult.  We will discuss this later in the thesis.
 
 

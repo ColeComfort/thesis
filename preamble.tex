@@ -119,13 +119,45 @@
 
 
 
-%\theoremstyle{theorem} 
-  \newtheorem{theorem}{Theorem}[section]
+
+\makeatletter
+\g@addto@macro\normalsize{%
+  \setlength\abovedisplayskip{1pt}
+  \setlength\belowdisplayskip{1pt}
+  \setlength\abovedisplayshortskip{1pt}
+  \setlength\belowdisplayshortskip{1pt}
+}
+\makeatother
+
+
+
+\newtheoremstyle{theoremnew}
+  {2.2spt} % Space above
+  {1.2pt} % Space below
+  {\it} % Body font
+  {} % Indent amount
+  {\bfseries} % Theorem head font
+  {.} % Punctuation after theorem head
+  {.5em} % Space after theorem head
+  {} % Theorem head spec (can be left empty, meaning `normal')
+
+  \newtheorem{theorem}{Theorem}[subsection]
   \newtheorem{corollary}[theorem]{Corollary}
   \newtheorem{lemma}[theorem]{Lemma}
   \newtheorem{proposition}[theorem]{Proposition}
   
-%\theoremstyle{definition}    conjecture
+
+\newtheoremstyle{definitionnew}
+  {2.2pt} % Space above
+  {1.2pt} % Space below
+  {} % Body font
+  {} % Indent amount
+  {\bfseries} % Theorem head font
+  {.} % Punctuation after theorem head
+  {.5em} % Space after theorem head
+  {} % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{definitionnew}   
   \newtheorem{definition}[theorem]{Definition}
   \newtheorem{example}[theorem]{Example}
   \newtheorem{conjecture}[theorem]{Conjecture}
@@ -268,6 +300,7 @@
 \ltxlabel{#1}%
 \eqstack{#1}%
 }
+
 
 
 
@@ -538,3 +571,24 @@
 
 
 \setenumerate{align=left}
+\setitemize{align=left}
+\setdescription{align=left}
+\setenumerate{itemsep=1pt,topsep=1.5pt}
+\setitemize{itemsep=1pt,topsep=1.5pt}
+\setdescription{itemsep=1pt,topsep=1.5pt}
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \vspace{-\topsep}% remove the space after the theorem
+  \pushQED{\qed}%
+  \normalfont
+  \topsep0pt \partopsep0pt % no space before
+  \trivlist
+  \item[\hskip\labelsep
+        \itshape
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+  \addvspace{6pt plus 6pt} % some space after
+}
+\makeatother

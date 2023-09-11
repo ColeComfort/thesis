@@ -1,6 +1,3 @@
-
-
-
 \section{Categorical quantum mechanics}
 \label{sec:cqm}
 %
@@ -22,13 +19,10 @@
 %
 %
 %In more in depth mathematical introduction to the subject of categorical quantum mechanics can be found in \cite{heunen}, with a more broadly accessible introduction being found in \cite{pqp}.
-
 %The first step in introducing this formalism, is a graphical counterpart of the notion of an orthonormal basis:
-
-
 String diagrams have been used in quantum theory for quite some time.  For example, as early as the work of Penrose \cite{penrosei}.  In such settings, string diagrams have been used as (often heuristic) tools for calculation. The more recent programme of ``categorical quantum mechanics,'' following the seminal paper of Abramsky and Coecke \cite{abramsky} has endeavoured to reformulate finite dimensional quantum mechanics using category theory.  In this setting,  string diagrams are formal mathematical objects: allowing certain essential features to be abstracted away from the usual setting of finite dimensional Hilbert spaces.
 
-In this section, we shall briefly review this formalism as well as recent developments which are relevant to this thesis.  A more in depth mathematical introduction can be found in \cite{heunen}, with a more broadly accessible and applied introduction being found in \cite{pqp}.
+In this section, we shall briefly review this formalism as well as recent developments which are relevant to this thesis.  A more in depth mathematical introduction can be found in \cite{heunen}, with a more broadly accessible and applied introduction being found in \cite{pqp}.  For a more traditional approach to quantum computing see \cite{nielsen}.
 
 
 To motivate this graphical treatment of finite dimensional quantum theory, we first establish some basic algebraic notations.
@@ -41,8 +35,6 @@ The tensor product of these vectors is denoted by concatenation, so that for exa
 $$
 | b_x \rangle \otimes | b_y\rangle =: |b_x,b_y \rangle  
 $$
-
-
 Most of the time,  we will not chose an aribitrary $d$-dimensional Hilbert space for the local state-space.  Instead, we will work in the Hilbert space of square summable functions on $\Z/d\Z$, $\ell^2(\Z/d\Z)$ (see Definition \ref{def:elltwo}).  Here, the elements of $\Z/d\Z$ induce a basis for  $\ell^2(\Z/d\Z)$ called the {\bf standard basis} or $Z$-basis.  We will denote the elements of the basis  as  $\{| 0\rangle , \ldots, |d-1\rangle \}$.  The structure of a ring is therefore transported onto the standard basis elements (or a field when $d$ is prime).  These are regarded as the $d$-level quantum analogue of classical dits.    Similarly, the $n$-qudit state space is regarded as the Hilbert space $\ell^2((\Z/d\Z)^n)$, so that the $n$-standard basis elements have the structure of an $n$-dimensional $\Z/d\Z$-bimodule (or vector space, when $d$ is prime).
 
 Denote arbitrary vectors $\phi$ in $\mathcal H$ using this ket notation by $|\phi \rangle$; where the adjoint of $|\phi \rangle$ is denoted as a ``bra''  by $|\phi \rangle^\dag =: \langle \phi |$. 
@@ -51,33 +43,24 @@ Given two vectors $|\phi \rangle$ and $| \psi \rangle$ on the same space, the in
 
 
 This notation allows allows us to represent matrices in terms of sums.  For example, a complex matrix from $d^n$ to $d^m$ regarded as an operator $A:\ell^2((\Z/d\Z)^n)\to \ell^2((\Z/d\Z)^m)$ with entries $a_{j,k}$ is denoted as follows:
-
 $$
 A  = \sum_{k=0}^{n-1} \sum_{j=0}^{m-1} a_{j,k}| j \rangle \langle k |
 $$
-
 Given another matrix $B:\ell^2((\Z/d\Z)^m)\to \ell^2((\Z/d\Z)^\ell)$ with entries $b_{k',j'}$:
-
 $$
 B  = \sum_{j'=0}^{m-1}\sum_{k'=0}^{\ell-1}  b_{k',j'}| k' \rangle \langle j' |
 $$
-
 Their composite is computed by matrix multiplication:
-
 \begin{align*}
 BA
-  &=  \sum_{j'=0}^{m-1}\sum_{k'=0}^{\ell-1}  b_{k',j'}| k' \rangle \langle j' | \sum_{k=0}^{n-1} \sum_{j=0}^{m-1} a_{j,k}| j \rangle \langle k |\\
-&= \sum_{k=0}^{n-1} \sum_{j,j'=0}^{m-1}\sum_{k'=0}^{\ell-1}  b_{k',j'}a_{j,k}| k' \rangle \langle j' | j \rangle \langle k |\\
+  &=  \sum_{j'=0}^{m-1}\sum_{k'=0}^{\ell-1}  b_{k',j'}| k' \rangle \langle j' | \sum_{k=0}^{n-1} \sum_{j=0}^{m-1} a_{j,k}| j \rangle \langle k |
+= \sum_{k=0}^{n-1} \sum_{j,j'=0}^{m-1}\sum_{k'=0}^{\ell-1}  b_{k',j'}a_{j,k}| k' \rangle \langle j' | j \rangle \langle k |\\
 &= \sum_{k=0}^{n-1} \sum_{k'=0}^{\ell-1} \left(\sum_{j=0}^{m-1} b_{k',j}a_{j,k}\right)| k' \rangle \langle k |\\
 \end{align*}
-
-
 There is a graphical way to represent orthonormal bases:
-
 \begin{lemma}[{\cite{coecke2013new}}]
 \label{lem:specialdagfa}
 Orthgonal bases $\{ |b_j\rangle \}_{j\in \mathcal J}$ in $\FHilb$ are in bijection with commutative \dag-Frobenius algebras.  The $\dag$-Frobenius algebras $\xcirc$ are of the form:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -192,11 +175,9 @@ $$
 \end{tikzpicture}
 \right)
 $$
-
 It is easy to see how the laws of a commutative \dag-Frobenius algebra hold; however, the proof of the converse direction is quite a bit trickier.  These are precisely the Frobenius algebras that (co)copy the basis elements.
 
 Moreover, {\em special} commutative \dag-Frobenius algebras $\zcirc$ are in bijection with orthonormal bases as:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -253,9 +234,7 @@ $$
 \end{tikzpicture}
 \right)
 $$
-
 is equal to the the identity if and only if the basis is orthonormal:
-
 $$
 \sum_{j\in \mathcal J}
 \begin{tikzpicture}
@@ -282,9 +261,7 @@ $$
 \end{tikzpicture}
 $$
 \end{lemma}
-
 We will colour special commutative \dag-Frobenius algebras $\zcirc$ and commutative \dag-Frobenius algebra for other, orthogonal bases $\xcirc$.  Recall the two variations of the normal form for special and non-special commutative \dag-Frobenius algebras:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -382,10 +359,6 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
-
-
 A {\bf pure quantum state} is a vector $|\phi \rangle$ with norm 1, so that $\langle \phi | \phi \rangle =1$. Quantum states are interpreted as the possible physical states of a quantum system which has been unexposed to the classical world.  The quantum evolution of pure quantum states is modeled by their postcomposition with unitary maps.  Unitary maps are precisely the linear automorphisms which preserve the norm, and thus, pure quantum states.
 
 
@@ -397,9 +370,7 @@ In \cite{cpm}, Selinger gives a construction to produce categories of quantum ch
 We present this construction in terms of a quotient of the $\CoPara$ construction for the sake of uniformity of this thesis:
 \begin{definition}
 \label{def:cpm}
-
 %Dagger category... equivalent to ioo compact closed conjugation 
-
 Given a compact closed $\dag$-symmetric monoidal category $\X$, then  $\CPM(\X)$ is the quotient of ${\CoPara}(\X)$ by the congruence relation:
 $$
 \left(X\xrightarrow{(f,S)} Y\right) \sim \left(X\xrightarrow{(g,T)} Y\right)  \iff
@@ -443,9 +414,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 Draw elements of this equivalence class using the following notation:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -481,9 +450,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 The dagger is defined as follows:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -549,21 +516,20 @@ $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (5) at (54.55, -0.5) {};
-		\node [style=ground, scale=-1] (6) at (54.55, 0.5) {};
+		\node [style=ground, scale=-1] (6) at (54.55, 0) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw (5.center) to (6);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 The canonical functor $\X\to \CoPara(\X)\to\CPM(\X,\dag)$ taking $f \mapsto (f,I)$ is called {\bf doubling}. The maps in the image of this functor are {\bf pure}, and those which aren't are {\bf mixed}.
 A map $f:X\to Y$ in $\CPM(\X)$ is called {\bf trace-preserving} when $f;d_Y = d_X$:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (53.55, -0.5) {};
-		\node [style=ground, scale=-1] (1) at (53.55, 0.5) {};
+		\node [style=ground, scale=-1] (1) at (53.55, 0) {};
 		\node [style=map] (3) at (53.55, -0.5) {$f$};
 		\node [style=none] (4) at (53.55, -1.25) {};
 	\end{pgfonlayer}
@@ -583,10 +549,8 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 All maps can be obtained by composing pure maps with discard maps.  Given a mixed map $f$ in $\CPM(\X)$ such a factorization into a pure map followed by a discard map is a {\bf purification} of $f$.
 \end{definition}
-
 The compact closed structure of $\CPM(\X)$ is inhereted from the doubling of the compact closed structure of $\X$.  If the \dag-symmetric monoidal structure of $\X$ is compatible with its compact closed structure, so that $\X$ is \dag-compact closed, then $\CPM(\X)$ is \dag-compact closed as well.
 
 Oftentimes, we will bend the ``doubled picture" so that the inputs are on the bottom and the outputs are on the top:
@@ -635,7 +599,6 @@ $$
 We could have chosen a different, equivalent congruence relation to quotient by to avoid the braid on the cap, but this would be incompatible with notation for stabilizer tableaux which we use much later in this thesis.
 
 In the doubled picture, the composition of equivalence classes is  in $\CPM(\X)$ is composition in $\X$:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -747,11 +710,8 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 This different perspective will prove useful for the purposes of calculation.  
 Notice how we could have instead defined a $\dag$-monoidal structure in terms of the conjugation functor $\bar{(-)}:=((-)^*)^\dag$, so that the equivalence classes look like:
-
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -777,12 +737,10 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 Therefore, we shall invoke the $\CPM$ construction for both dagger structures and conjugation functors depending on which setting is most natural.
 
 
 As mentioned before, the following example motivated this categorical construction:
-
 \begin{example}
 $\CPM(\FHilb, \dag)$ is the dagger compact closed category of density matrices between finite dimensional Hilbert spaces.
 
@@ -791,8 +749,6 @@ Or equivalently, preserving the  \dag-compact closed structure,
 $\CPM(\Mat_\C, \bar{(-)})$
 is the strict monoidal skeleton of density matrices.
 \end{example}
-
-
 Density matrices model mixed quantum circuits. The discarding map is interpreted as exposing the quantum system to the classical world. 
 
 
@@ -813,8 +769,6 @@ This gives a probability distribution over $\mathcal J$.  The scalar  $0\leq |\l
 This basis dependent, probabilistic interpretation of quantum measurement is called the {\bf Born rule}, although it is usually stated slightly differently.
 
 The $\CPM$ construction and special commutative $\dag$-Frobenius algebras allow us to perform quantum measurement using only string diagrams.  Some mathematical machinery is needed first:
-
-
 \begin{definition}
 Given a special \dag-commutative Frobenius algebra $B$ on a \dag-compact closed category $\X$, define the projector onto the $B$ basis to be the following map in $ \CPM(\X,\dag)$:
 $$
@@ -835,11 +789,8 @@ p_B:=
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 \end{definition}
-
 In the doubled picture, we untangle the quantum spaghetti:
-
 $$
 \left\llbracket
 \begin{tikzpicture}[scale=-1]
@@ -861,93 +812,90 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (14) at (58, -0.05) {};
-		\node [style=Z] (15) at (58, -0.55) {};
-		\node [style=none] (16) at (57.5, -1.45) {};
-		\node [style=none] (17) at (58.425, -1.45) {};
-		\node [style=none] (18) at (57, -0.05) {};
-		\node [style=none] (20) at (60, -1.4) {};
-		\node [style=none] (23) at (57, -3.05) {};
-		\node [style=none] (24) at (58, 0.7) {};
-		\node [style=none] (25) at (57, 0.7) {};
-		\node [style=none] (26) at (58.75, -1.45) {};
-		\node [style=none] (27) at (57.5, -2.2) {};
-		\node [style=none] (28) at (58.5, -2.2) {};
-		\node [style=none] (29) at (60, -2.15) {};
-		\node [style=none] (30) at (59.25, -2.2) {};
-		\node [style=none] (31) at (60, 1.75) {};
-		\node [style=none] (32) at (58.75, -0.2) {};
-		\node [style=none] (33) at (60.5, -2.9) {};
-		\node [style=Z] (34) at (60.5, -0.9) {};
-		\node [style=none] (35) at (59.75, 0) {};
-		\node [style=none] (36) at (61, 0) {};
-		\node [style=none] (37) at (61, 1.75) {};
-		\node [style=none] (38) at (58.75, 0.8) {};
-		\node [style=none] (39) at (59.75, 0.75) {};
+		\node [style=none] (75) at (92.75, -0.55) {};
+		\node [style=Z] (76) at (92.75, -0.55) {};
+		\node [style=none] (77) at (92.45, -1.2) {};
+		\node [style=none] (78) at (93.125, -1.2) {};
+		\node [style=none] (79) at (92, -0.55) {};
+		\node [style=none] (80) at (94.425, -1.15) {};
+		\node [style=none] (81) at (92, -2.55) {};
+		\node [style=none] (82) at (92.75, 0.2) {};
+		\node [style=none] (83) at (92, 0.2) {};
+		\node [style=none] (84) at (93.45, -1.2) {};
+		\node [style=none] (85) at (92.7, -1.95) {};
+		\node [style=none] (86) at (93.2, -1.95) {};
+		\node [style=none] (87) at (94.2, -1.9) {};
+		\node [style=none] (88) at (93.7, -1.95) {};
+		\node [style=none] (89) at (94.425, 0.75) {};
+		\node [style=none] (90) at (93.45, -0.7) {};
+		\node [style=none] (91) at (94.925, -2.4) {};
+		\node [style=Z] (92) at (94.925, -0.9) {};
+		\node [style=none] (93) at (94.925, -0.925) {};
+		\node [style=none] (94) at (95.325, -0.5) {};
+		\node [style=none] (95) at (95.325, 0.75) {};
+		\node [style=none] (96) at (93.45, 0.3) {};
+		\node [style=none] (97) at (94.1, 0.25) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (15) to (14.center);
-		\draw [in=90, out=-45] (15) to (17.center);
-		\draw [in=90, out=-135] (15) to (16.center);
-		\draw (18.center) to (23.center);
-		\draw [in=90, out=-90, looseness=0.75] (24.center) to (18.center);
-		\draw [in=90, out=-90, looseness=0.75] (25.center) to (14.center);
-		\draw [bend left=270, looseness=1.25] (24.center) to (25.center);
-		\draw [in=90, out=-90, looseness=0.50] (16.center) to (30.center);
-		\draw [in=90, out=-90, looseness=0.50] (26.center) to (27.center);
-		\draw [in=-90, out=-90] (27.center) to (30.center);
-		\draw [in=-90, out=90, looseness=0.50] (29.center) to (17.center);
-		\draw [in=90, out=-90, looseness=0.50] (20.center) to (28.center);
-		\draw [bend right=90] (28.center) to (29.center);
-		\draw [in=90, out=-90] (32.center) to (26.center);
-		\draw (31.center) to (20.center);
-		\draw (34) to (33.center);
-		\draw [in=-90, out=30] (34) to (36.center);
-		\draw [in=-90, out=135, looseness=0.75] (34) to (35.center);
-		\draw [in=-90, out=90, looseness=0.75] (35.center) to (38.center);
-		\draw [in=-90, out=90, looseness=0.75] (32.center) to (39.center);
-		\draw [in=90, out=90] (39.center) to (38.center);
-		\draw (37.center) to (36.center);
+		\draw [in=90, out=-45] (76) to (78.center);
+		\draw [in=90, out=-135] (76) to (77.center);
+		\draw (79.center) to (81.center);
+		\draw [in=90, out=-90, looseness=0.75] (82.center) to (79.center);
+		\draw [in=90, out=-90, looseness=0.75] (83.center) to (75.center);
+		\draw [bend left=270, looseness=1.25] (82.center) to (83.center);
+		\draw [in=90, out=-90, looseness=0.50] (77.center) to (88.center);
+		\draw [in=90, out=-90, looseness=0.50] (84.center) to (85.center);
+		\draw [in=-90, out=-90] (85.center) to (88.center);
+		\draw [in=-90, out=90, looseness=0.50] (87.center) to (78.center);
+		\draw [in=90, out=-90, looseness=0.50] (80.center) to (86.center);
+		\draw [bend right=90] (86.center) to (87.center);
+		\draw [in=90, out=-90] (90.center) to (84.center);
+		\draw (89.center) to (80.center);
+		\draw (92) to (91.center);
+		\draw [in=-90, out=30] (92) to (94.center);
+		\draw [in=-90, out=135, looseness=0.50] (93.center) to (96.center);
+		\draw [in=-90, out=90, looseness=0.75] (90.center) to (97.center);
+		\draw [in=90, out=90] (97.center) to (96.center);
+		\draw (95.center) to (94.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (14) at (58, -0.05) {};
-		\node [style=Z] (15) at (58, -0.55) {};
-		\node [style=none] (16) at (57.5, -1.45) {};
-		\node [style=none] (17) at (59.175, -1.45) {};
-		\node [style=none] (18) at (57, -0.05) {};
-		\node [style=none] (23) at (57, -4.15) {};
-		\node [style=none] (24) at (58, 0.7) {};
-		\node [style=none] (25) at (57, 0.7) {};
-		\node [style=none] (28) at (58.5, -1.45) {};
-		\node [style=none] (30) at (58.75, -2.275) {};
-		\node [style=none] (31) at (58.5, 1.5) {};
-		\node [style=none] (33) at (58, -4.15) {};
-		\node [style=Z] (34) at (58, -3.4) {};
-		\node [style=none] (36) at (59.5, -2) {};
-		\node [style=none] (37) at (59.5, 1.5) {};
-		\node [style=none] (38) at (57.3, -2.3) {};
-		\node [style=none] (39) at (58, -2.25) {};
+		\node [style=none] (98) at (97.325, -0.525) {};
+		\node [style=Z] (99) at (97.325, -0.55) {};
+		\node [style=none] (100) at (97.075, -0.95) {};
+		\node [style=none] (101) at (98.75, -1.525) {};
+		\node [style=none] (102) at (96.325, -0.525) {};
+		\node [style=none] (103) at (96.325, -3.4) {};
+		\node [style=none] (104) at (97.325, 0.225) {};
+		\node [style=none] (105) at (96.325, 0.225) {};
+		\node [style=none] (106) at (98.075, -1.525) {};
+		\node [style=none] (107) at (97.575, -1.525) {};
+		\node [style=none] (108) at (98.075, 0.75) {};
+		\node [style=none] (109) at (97.825, -3.4) {};
+		\node [style=Z] (110) at (97.825, -2.65) {};
+		\node [style=none] (111) at (99.075, -1.5) {};
+		\node [style=none] (112) at (99.075, 0.75) {};
+		\node [style=none] (113) at (96.625, -1.55) {};
+		\node [style=none] (114) at (97.075, -1.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (15) to (14.center);
-		\draw [in=90, out=-45] (15) to (17.center);
-		\draw [in=90, out=-135] (15) to (16.center);
-		\draw (18.center) to (23.center);
-		\draw [in=90, out=-90, looseness=0.75] (24.center) to (18.center);
-		\draw [in=90, out=-90, looseness=0.75] (25.center) to (14.center);
-		\draw [bend left=270, looseness=1.25] (24.center) to (25.center);
-		\draw [in=90, out=-90, looseness=0.75] (16.center) to (30.center);
-		\draw (34) to (33.center);
-		\draw [in=-90, out=30] (34) to (36.center);
-		\draw [in=90, out=90] (39.center) to (38.center);
-		\draw (37.center) to (36.center);
-		\draw [in=-90, out=-90, looseness=1.25] (39.center) to (30.center);
-		\draw (28.center) to (31.center);
-		\draw [in=-90, out=-90, looseness=0.75] (28.center) to (17.center);
-		\draw [in=-90, out=120] (34) to (38.center);
+		\draw [in=90, out=-15, looseness=0.75] (99) to (101.center);
+		\draw [in=90, out=-135] (99) to (100.center);
+		\draw (102.center) to (103.center);
+		\draw [in=90, out=-90, looseness=0.75] (104.center) to (102.center);
+		\draw [in=90, out=-90, looseness=0.75] (105.center) to (98.center);
+		\draw [bend left=270, looseness=1.25] (104.center) to (105.center);
+		\draw [in=90, out=-90, looseness=0.75] (100.center) to (107.center);
+		\draw (110) to (109.center);
+		\draw [in=-90, out=15] (110) to (111.center);
+		\draw [in=90, out=90] (114.center) to (113.center);
+		\draw (112.center) to (111.center);
+		\draw [in=-90, out=-90, looseness=1.25] (114.center) to (107.center);
+		\draw (106.center) to (108.center);
+		\draw [in=-90, out=-90, looseness=0.75] (106.center) to (101.center);
+		\draw [in=-90, out=150] (110) to (113.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
@@ -1049,47 +997,40 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
 Recall that a map $e$ is a projector when it is idempotent (so that $e^2=e$) and self-adjoint (so that $e^\dag=e$).
 $p_B$ is idempotent because:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (80) at (65.775, 0.5) {};
-		\node [style=Z] (82) at (64.875, 1.25) {};
-		\node [style=none] (84) at (64.875, 0.75) {};
-		\node [style=none] (85) at (65.8, 1.25) {};
-		\node [style=none] (86) at (64.1, 0.75) {};
-		\node [style=none] (87) at (65.125, 0.5) {};
-		\node [style=none] (89) at (65.125, 0) {};
-		\node [style=none] (90) at (65.775, 0) {};
-		\node [style=none] (91) at (64.875, 2) {};
-		\node [style=none] (92) at (63.75, 3.975) {};
-		\node [style=Z] (93) at (63.95, 2.75) {};
-		\node [style=none] (94) at (63.95, 2.25) {};
-		\node [style=none] (95) at (64.875, 2.75) {};
-		\node [style=none] (96) at (63.375, 2.25) {};
-		\node [style=none] (97) at (64.125, 2) {};
-		\node [style=none] (98) at (63.375, 4) {};
+		\node [style=none] (115) at (102.475, 1) {};
+		\node [style=Z] (116) at (101.575, 2) {};
+		\node [style=none] (117) at (101.575, 1.5) {};
+		\node [style=none] (118) at (102.5, 2) {};
+		\node [style=none] (119) at (100.8, 1.5) {};
+		\node [style=none] (120) at (101.825, 1) {};
+		\node [style=none] (123) at (101.575, 2) {};
+		\node [style=none] (124) at (100.45, 3.475) {};
+		\node [style=Z] (125) at (100.65, 2.75) {};
+		\node [style=none] (126) at (100.65, 2.25) {};
+		\node [style=none] (127) at (101.575, 2.75) {};
+		\node [style=none] (128) at (100.075, 2.25) {};
+		\node [style=none] (129) at (100.825, 2) {};
+		\node [style=none] (130) at (100.075, 3.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (82) to (84.center);
-		\draw [bend left=90, looseness=1.25] (84.center) to (86.center);
-		\draw [in=90, out=-90] (85.center) to (87.center);
-		\draw (89.center) to (87.center);
-		\draw (80.center) to (90.center);
-		\draw [in=-45, out=90] (80.center) to (82);
-		\draw [in=90, out=60, looseness=1.50] (82) to (85.center);
-		\draw (93) to (94.center);
-		\draw [bend left=90, looseness=1.25] (94.center) to (96.center);
-		\draw [in=90, out=-90] (95.center) to (97.center);
-		\draw (96.center) to (98.center);
-		\draw [in=-45, out=90] (91.center) to (93);
-		\draw [in=-90, out=120] (93) to (92.center);
-		\draw [in=90, out=60, looseness=1.50] (93) to (95.center);
-		\draw (82) to (91.center);
-		\draw (86.center) to (97.center);
+		\draw (116) to (117.center);
+		\draw [bend left=90, looseness=1.25] (117.center) to (119.center);
+		\draw [in=90, out=-90] (118.center) to (120.center);
+		\draw [in=-45, out=90] (115.center) to (116);
+		\draw [in=90, out=60, looseness=1.50] (116) to (118.center);
+		\draw (125) to (126.center);
+		\draw [bend left=90, looseness=1.25] (126.center) to (128.center);
+		\draw [in=90, out=-90] (127.center) to (129.center);
+		\draw (128.center) to (130.center);
+		\draw [in=-45, out=90] (123.center) to (125);
+		\draw [in=-90, out=120] (125) to (124.center);
+		\draw [in=90, out=60, looseness=1.50] (125) to (127.center);
+		\draw (119.center) to (129.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
@@ -1247,9 +1188,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 And self-adjoint because:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1349,9 +1288,6 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
-
 Therefore it is actually a projector.
 
 
@@ -1360,17 +1296,14 @@ Given a quantum state $| \psi \rangle$ and an orthonormal basis  $B$, a  {\bf de
 
 
 To promote these classical stochastic mixtures to their own systems, we need a way to turn subobjects into objects:
-
 \begin{definition}
 Given a category $\X$ and a class of idempotents $\mathcal I$, the {\bf Karoubi envelope of $\X$ at $\mathcal{I}$}, ${\sf Split}_{\mathcal I}(\X)$ is the category with:
 \begin{description}
-\item[\ \ Objects:] Pairs $(X,e)$ where $X$ is an object of $\X$ and $e:X\to X$ is in $\mathcal I$.
-\item[\ \ Maps:] A map $(e,f,m):(X,e)\to (Y,m)$ is a map $f:X\to Y$ in $\X$ such that $e;f;m=f$.
-\item[\ \ Composition:] $(e,f,m);(m,g,\ell) = (e,f;g,\ell)$.
-\item[\ \ Identities:] $1_{(X,e)}=(1_X,e,1_X)$.
+\item[Objects:] Pairs $(X,e)$ where $X$ is an object of $\X$ and $e:X\to X$ is in $\mathcal I$.
+\item[Maps:] A map $(e,f,m):(X,e)\to (Y,m)$ is a map $f:X\to Y$ in $\X$ such that $e;f;m=f$.
+\item[Composition:] $(e,f,m);(m,g,\ell) = (e,f;g,\ell)$.
+\item[Identities:] $1_{(X,e)}=(1_X,e,1_X)$.
 \end{description}
-
-
 In particular, when $\mathcal{I}$ contains all idempotents in $\X$, call  ${\sf Split}(\X):={\sf Split}_{\mathcal I}(\X)$ {\bf the Karoubi envelope of $\X$}.
 $\X$ fully and faithfully embeds into its Karoubi envelope via the functor:
 $$
@@ -1384,7 +1317,6 @@ Moreover, when $\X$ is monoidal, symmetric monoidal or compact closed, so is ${\
 
 ${\sf Split}_{{\mathcal I }\cup \{ 1_X | X \in \X\}}(\X)$ is said to be the category obtained by {\bf splitting the idempotents in $\mathcal I$}.
 When one splits an idempotent $e:X\to X$, then $(X,e)$ is the retract of $(X, 1_X)$:
-
 $$
 \xymatrix{
 (X,e) \ar@{>->}[r]^{(e,e,1_X)} \ar@{=}[dr]_{(1_X,e,1_X)} & (X,1_X)  \ar@{->>}[d]^{(1_X,e,e)}\\
@@ -1396,9 +1328,7 @@ $$
 }
 $$
 \end{definition}
-
 This specializes to $\dag$-compact closed categories, so that projectors get promoted to objects:
-
 \begin{definition}[{\cite{idempotent}}]
 Given a $\dag$-category $\X$ and class of projectors $\mathcal I$ in $\X$, then  ${\sf Split}_{\mathcal I}(\X)$ is a $\dag$ category.
 
@@ -1406,21 +1336,17 @@ The map $(e,1_X, 1_X) :(X,e)\to (X,1_X)$ is an isometry with adjoint $(1_X,1_X, 
 
 In particular, when $\X$ is $\dag$-compact closed then so is ${\sf Split}^\dag(\X)$, with the embedding preserving this structure.
 \end{definition}
-
 In \cite{idempotent}, they show that splitting projectors in $\CPM(\FHilb)$ yields a category where the the split projectors can be interpreted as classical types:
-
 \begin{remark}
 \label{rem:stoch}
 Given a basis $B = \{|b_j\rangle \}_{j \in {\mathcal J}}$ for $\mathcal{H}$, the isometry  $(p_B,1_\mathcal{H}, 1_\mathcal{H}) :(\mathcal{H},p_B)\to (\mathcal{H},1_\mathcal{H})$ is regarded as the {\bf state preparation map} and its adjoint $(1_\mathcal{H},1_\mathcal{H}, p_B) :(\mathcal{H},1_\mathcal{H})\to (\mathcal{H},p_B)$  a {\bf nondestructive measurement}, with respect to the basis $B$.  The maps between these idempotents are (un-normalized) stochastic processes.
 \end{remark}
-
 Let us unpack this a bit. 
 %Suppose we have the classical state $|b_j\rangle$.  This corresponds to the state $(1_I,|b_j\rangle, p_B):(I,1_I)\to (\mathcal{H},p_b)$.  Now postcomposing this with the state preparation map $(p_B,p_B,1_\mathcal{H}) :(\mathcal{H},p_B)\to (\mathcal{H},1_\mathcal{H})$ regards $|b_j \rangle$ as a pure quantum state.  
 %
 %Going in the opposite direction, suppose we want to find the probability of measuring the state $|b_j\rangle$.  By precomposing the map $(p_B, \langle b_j|, 1_I):(\mathcal H, p_B)\to (I,1_I)$ with the measurement map $(1_\mathcal{H},1_\mathcal{H}, p_B) :(\mathcal{H},1_\mathcal{H})\to (\mathcal{H},p_B)$ we regard $\langle b_j|$ as a pure quantum effect.
 %Therefore, if we were to precompose this composite with a quantum state $|\psi\rangle$, we would obtain the probability $|\langle \psi| b_j\rangle|^2$.
 Take an orthonormal basis $B$ for $\mathcal H$ and $B'$ for $\mathcal{H}'$ corresponding to a special commutative \dag-Frobenius algebras $\zcirc$ and $\xcirc$, respectively.  Then maps $(\mathcal{H},p_B)\to (\mathcal{H}',p_{B'})$ corresponds to maps $p_B;f;p_{B'}$ for some $f:\mathcal{H}\to \mathcal{H}'$  in $\CPM(\FHilb)$:
-
 \begin{equation}
 \label{eq:proj}
 \begin{tikzpicture}
@@ -1471,158 +1397,141 @@ Take an orthonormal basis $B$ for $\mathcal H$ and $B'$ for $\mathcal{H}'$ corre
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (53) at (40.975, -0.65) {};
-		\node [style=none] (54) at (40.45, -1.425) {};
-		\node [style=none] (55) at (40.775, -2.075) {};
-		\node [style=none] (56) at (40.75, 1.4) {};
-		\node [style=X] (57) at (40.75, 0.675) {};
-		\node [style=none] (58) at (40.5, 0.425) {};
-		\node [style=none] (59) at (40.025, 0.425) {};
-		\node [style=none] (60) at (40.025, 1.425) {};
-		\node [style=X] (61) at (40.45, -0.675) {};
-		\node [style=none] (62) at (40.45, -0.675) {};
-		\node [style=none] (63) at (40.975, -1.4) {};
-		\node [style=none] (64) at (40.775, -2.075) {};
-		\node [style=map] (65) at (40.75, -2.05) {$f$};
-		\node [style=none] (66) at (41.525, -4) {};
-		\node [style=none] (67) at (40.775, -4.75) {};
-		\node [style=none] (68) at (40.775, -5.25) {};
-		\node [style=none] (69) at (40.775, -2.075) {};
-		\node [style=Z] (70) at (41, -2.75) {};
-		\node [style=none] (71) at (40.75, -3) {};
-		\node [style=none] (72) at (40.35, -2.975) {};
-		\node [style=none] (73) at (40.775, -2.075) {};
-		\node [style=Z] (74) at (40.775, -4) {};
-		\node [style=none] (75) at (40.775, -4) {};
-		\node [style=none] (76) at (41.525, -4.75) {};
-		\node [style=none] (77) at (41.525, -5.25) {};
+		\node [style=none] (51) at (89.65, 0.175) {};
+		\node [style=none] (52) at (89.125, -0.6) {};
+		\node [style=none] (53) at (89.45, -1.1) {};
+		\node [style=none] (54) at (88.775, 1.4) {};
+		\node [style=X] (55) at (88.775, 0.675) {};
+		\node [style=none] (56) at (88.525, 0.425) {};
+		\node [style=none] (57) at (88.05, 0.425) {};
+		\node [style=none] (58) at (88.05, 1.425) {};
+		\node [style=X] (59) at (89.125, 0.15) {};
+		\node [style=none] (60) at (89.125, 0.15) {};
+		\node [style=none] (61) at (89.65, -0.575) {};
+		\node [style=none] (62) at (89.45, -1.1) {};
+		\node [style=map] (63) at (89.425, -1.075) {$f$};
+		\node [style=none] (64) at (90.7, -2.275) {};
+		\node [style=none] (65) at (89.95, -3.025) {};
+		\node [style=none] (67) at (89.45, -1.1) {};
+		\node [style=Z] (68) at (89.675, -1.775) {};
+		\node [style=none] (69) at (89.425, -2.025) {};
+		\node [style=none] (70) at (89.025, -2) {};
+		\node [style=none] (71) at (89.45, -1.1) {};
+		\node [style=Z] (72) at (89.95, -2.275) {};
+		\node [style=none] (73) at (89.95, -2.275) {};
+		\node [style=none] (74) at (90.7, -3.025) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=-90, out=150, looseness=0.75] (55.center) to (54.center);
-		\draw [in=90, out=-90, looseness=0.75] (53.center) to (54.center);
-		\draw [in=75, out=-135] (57) to (58.center);
-		\draw [bend left=90, looseness=1.25] (58.center) to (59.center);
-		\draw (59.center) to (60.center);
-		\draw (57) to (56.center);
-		\draw [in=-90, out=45, looseness=0.75] (64.center) to (63.center);
-		\draw [in=90, out=-90, looseness=0.75] (62.center) to (63.center);
-		\draw [in=-270, out=90, looseness=1.25] (62.center) to (53.center);
-		\draw [in=-60, out=120] (62.center) to (57);
-		\draw (68.center) to (67.center);
-		\draw [in=90, out=-90, looseness=0.75] (66.center) to (67.center);
-		\draw [in=75, out=-135] (70) to (71.center);
-		\draw [bend left=90, looseness=1.25] (71.center) to (72.center);
-		\draw [in=-135, out=90, looseness=0.75] (72.center) to (73.center);
-		\draw [in=-60, out=90] (70) to (69.center);
-		\draw (77.center) to (76.center);
-		\draw [in=90, out=-90, looseness=0.75] (75.center) to (76.center);
-		\draw [in=-270, out=90, looseness=1.25] (75.center) to (66.center);
-		\draw [in=-60, out=120] (75.center) to (70);
+		\draw [in=-90, out=150, looseness=0.75] (53.center) to (52.center);
+		\draw [in=90, out=-90, looseness=0.75] (51.center) to (52.center);
+		\draw [in=75, out=-135] (55) to (56.center);
+		\draw [bend left=90, looseness=1.25] (56.center) to (57.center);
+		\draw (57.center) to (58.center);
+		\draw (55) to (54.center);
+		\draw [in=-90, out=45, looseness=0.75] (62.center) to (61.center);
+		\draw [in=90, out=-90, looseness=0.75] (60.center) to (61.center);
+		\draw [in=-270, out=90, looseness=1.25] (60.center) to (51.center);
+		\draw [in=-60, out=120] (60.center) to (55);
+		\draw [in=90, out=-90, looseness=0.75] (64.center) to (65.center);
+		\draw [in=75, out=-135] (68) to (69.center);
+		\draw [bend left=90, looseness=1.25] (69.center) to (70.center);
+		\draw [in=-135, out=90, looseness=0.75] (70.center) to (71.center);
+		\draw [in=-60, out=90] (68) to (67.center);
+		\draw [in=90, out=-90, looseness=0.75] (73.center) to (74.center);
+		\draw [in=-270, out=90, looseness=1.25] (73.center) to (64.center);
+		\draw [in=-60, out=120] (73.center) to (68);
 	\end{pgfonlayer}
 \end{tikzpicture}
 \end{equation}
-
 Therefore by inspecting the dimensions, every map $(\mathcal{H},p_B)\to (\mathcal{H}',p_{B'})$ is of the following form, for some  $g:\mathcal H\to \mathcal{H}'$ in $\FHilb$:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (171) at (81.725, 0.4) {};
-		\node [style=X] (172) at (81.725, -0.325) {};
-		\node [style=none] (173) at (81.475, -0.575) {};
-		\node [style=none] (174) at (81, -0.575) {};
-		\node [style=none] (175) at (81, 0.425) {};
-		\node [style=map] (176) at (81.725, -1.125) {$g$};
-		\node [style=none] (177) at (82.15, -2.075) {};
-		\node [style=none] (178) at (81.4, -2.825) {};
-		\node [style=none] (179) at (81.4, -3.325) {};
-		\node [style=Z] (180) at (81.4, -2.075) {};
-		\node [style=none] (181) at (81.4, -2.075) {};
-		\node [style=none] (182) at (82.15, -2.825) {};
-		\node [style=none] (183) at (82.15, -3.325) {};
+		\node [style=none] (131) at (104.225, 0.4) {};
+		\node [style=X] (132) at (104.225, -0.325) {};
+		\node [style=none] (133) at (103.975, -0.575) {};
+		\node [style=none] (134) at (103.5, -0.575) {};
+		\node [style=none] (135) at (103.5, 0.425) {};
+		\node [style=map] (136) at (104.225, -1.125) {$g$};
+		\node [style=none] (137) at (104.975, -1.825) {};
+		\node [style=none] (138) at (104.225, -2.575) {};
+		\node [style=Z] (140) at (104.225, -1.825) {};
+		\node [style=none] (141) at (104.225, -1.825) {};
+		\node [style=none] (142) at (104.975, -2.575) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=75, out=-135] (172) to (173.center);
-		\draw [bend left=90, looseness=1.25] (173.center) to (174.center);
-		\draw (174.center) to (175.center);
-		\draw (172) to (171.center);
-		\draw (179.center) to (178.center);
-		\draw [in=90, out=-90, looseness=0.75] (177.center) to (178.center);
-		\draw (183.center) to (182.center);
-		\draw [in=90, out=-90, looseness=0.75] (181.center) to (182.center);
-		\draw [in=-270, out=45, looseness=1.25] (181.center) to (177.center);
-		\draw [in=-90, out=90, looseness=1.25] (181.center) to (176);
-		\draw (172) to (176);
+		\draw [in=75, out=-135] (132) to (133.center);
+		\draw [bend left=90, looseness=1.25] (133.center) to (134.center);
+		\draw (134.center) to (135.center);
+		\draw (132) to (131.center);
+		\draw [in=90, out=-90, looseness=0.75] (137.center) to (138.center);
+		\draw [in=90, out=-90, looseness=0.75] (141.center) to (142.center);
+		\draw [in=-270, out=45, looseness=1.25] (141.center) to (137.center);
+		\draw (141.center) to (136);
+		\draw (132) to (136);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 Because the equivalence classes of $\CPM(\FHilb)$ are defined in terms of the complex conjugation of maps in $\FHilb$;  $g$ unique up to a scalar factor $e^{2\pi\cdot i\cdot \theta}$ for some $\theta \in [0,1)$.  That is to say, these maps are unique {\bf up to global phase}.
 
 
 
 Therefore, up to global phase $(\mathcal{H},e_B)$ can be identified with the the Hilbert space $\mathcal{H}$; where state preparation  $(p_B, 1_{\mathcal H},1_{\mathcal H})$  and nondestructive measurement $(1_{\mathcal H},1_{\mathcal H}, p_B)$ correspond to the following maps:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (164) at (79.7, 1.775) {};
-		\node [style=none] (165) at (80, -0.725) {};
-		\node [style=Z] (166) at (79.7, 1.025) {};
-		\node [style=none] (167) at (79.45, 0.525) {};
-		\node [style=none] (168) at (78.75, 0.525) {};
-		\node [style=none] (169) at (78.75, 1.775) {};
+		\node [style=none] (143) at (106.925, 1.65) {};
+		\node [style=none] (144) at (107.475, -0.225) {};
+		\node [style=Z] (145) at (106.925, 1.025) {};
+		\node [style=none] (146) at (106.675, 0.525) {};
+		\node [style=none] (147) at (105.975, 0.525) {};
+		\node [style=none] (148) at (105.975, 1.65) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=-135, out=90] (167.center) to (166);
-		\draw [in=-90, out=90] (168.center) to (169.center);
-		\draw (164.center) to (166);
-		\draw [in=90, out=-45] (166) to (165.center);
-		\draw [in=-90, out=-450, looseness=1.75] (167.center) to (168.center);
+		\draw [in=-135, out=90] (146.center) to (145);
+		\draw [in=-90, out=90] (147.center) to (148.center);
+		\draw (143.center) to (145);
+		\draw [in=90, out=-45] (145) to (144.center);
+		\draw [in=-90, out=-450, looseness=1.75] (146.center) to (147.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 \ ,\hspace*{1cm} 
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (137) at (72.775, -0.725) {};
-		\node [style=none] (138) at (71.75, 1.25) {};
-		\node [style=Z] (139) at (72.125, 0.025) {};
-		\node [style=none] (140) at (72.475, 0.55) {};
-		\node [style=none] (141) at (72.875, 0.275) {};
-		\node [style=none] (142) at (72.375, -0.725) {};
-		\node [style=none] (143) at (72.375, -1.225) {};
-		\node [style=none] (144) at (72.775, -1.225) {};
+		\node [style=none] (149) at (109.5, -0.725) {};
+		\node [style=none] (150) at (108.475, 1) {};
+		\node [style=Z] (151) at (108.85, 0.025) {};
+		\node [style=none] (152) at (109.2, 0.55) {};
+		\node [style=none] (153) at (109.6, 0.275) {};
+		\node [style=none] (154) at (109.1, -0.725) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=180] (140.center) to (139);
-		\draw [in=0, out=90] (141.center) to (140.center);
-		\draw [in=90, out=-90] (141.center) to (142.center);
-		\draw (143.center) to (142.center);
-		\draw (137.center) to (144.center);
-		\draw [in=-45, out=90] (137.center) to (139);
-		\draw [in=-90, out=150, looseness=0.75] (139) to (138.center);
+		\draw [in=90, out=180] (152.center) to (151);
+		\draw [in=0, out=90] (153.center) to (152.center);
+		\draw [in=90, out=-90] (153.center) to (154.center);
+		\draw [in=-45, out=90] (149.center) to (151);
+		\draw [in=-90, out=150, looseness=0.75] (151) to (150.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 We can see how the state preparation map and measurement maps for $\zcirc$ double the basis elements $|b_j\rangle$ and $\langle b_j|$ of $B$ and $B^*$:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (164) at (79.7, 1.775) {};
-		\node [style=none] (165) at (80, -0.725) {};
-		\node [style=Z] (166) at (79.7, 1.025) {};
-		\node [style=none] (167) at (79.45, 0.525) {};
-		\node [style=none] (168) at (78.75, 0.525) {};
-		\node [style=none] (169) at (78.75, 1.775) {};
-		\node [style=map] (170) at (80, -0.75) {$|b_j\rangle$};
+		\node [style=none] (155) at (111.55, 1.775) {};
+		\node [style=none] (156) at (112.1, -0.225) {};
+		\node [style=Z] (157) at (111.55, 1.025) {};
+		\node [style=none] (158) at (111.3, 0.525) {};
+		\node [style=none] (159) at (110.6, 0.525) {};
+		\node [style=none] (160) at (110.6, 1.775) {};
+		\node [style=map] (161) at (112.1, -0.25) {$|b_j\rangle$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=-135, out=90] (167.center) to (166);
-		\draw [in=-90, out=90] (168.center) to (169.center);
-		\draw (164.center) to (166);
-		\draw [in=90, out=-45] (166) to (165.center);
-		\draw [in=-90, out=-450, looseness=1.75] (167.center) to (168.center);
+		\draw [in=-135, out=90] (158.center) to (157);
+		\draw [in=-90, out=90] (159.center) to (160.center);
+		\draw (155.center) to (157);
+		\draw [in=90, out=-45] (157) to (156.center);
+		\draw [in=-90, out=-450, looseness=1.75] (158.center) to (159.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
@@ -1645,24 +1554,24 @@ $$
 ,\hspace*{1cm}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (137) at (72.775, -0.725) {};
-		\node [style=none] (138) at (71.75, 1.25) {};
-		\node [style=Z] (139) at (72.125, 0.025) {};
-		\node [style=none] (140) at (72.475, 0.55) {};
-		\node [style=none] (141) at (72.875, 0.275) {};
-		\node [style=none] (142) at (72.375, -0.725) {};
-		\node [style=none] (143) at (72.375, -1.225) {};
-		\node [style=none] (144) at (72.775, -1.225) {};
-		\node [style=map] (145) at (71.75, 1.25) {$\langle b_j|$};
+		\node [style=none] (162) at (115.375, -0.725) {};
+		\node [style=none] (163) at (114.1, 1) {};
+		\node [style=Z] (164) at (114.725, 0.025) {};
+		\node [style=none] (165) at (115.075, 0.55) {};
+		\node [style=none] (166) at (115.475, 0.275) {};
+		\node [style=none] (167) at (114.975, -0.725) {};
+		\node [style=none] (168) at (114.975, -1.225) {};
+		\node [style=none] (169) at (115.375, -1.225) {};
+		\node [style=map] (170) at (114.1, 1) {$\langle b_j|$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=180] (140.center) to (139);
-		\draw [in=0, out=90] (141.center) to (140.center);
-		\draw [in=90, out=-90] (141.center) to (142.center);
-		\draw (143.center) to (142.center);
-		\draw (137.center) to (144.center);
-		\draw [in=-45, out=90] (137.center) to (139);
-		\draw [in=-90, out=150, looseness=0.75] (139) to (138.center);
+		\draw [in=90, out=180] (165.center) to (164);
+		\draw [in=0, out=90] (166.center) to (165.center);
+		\draw [in=90, out=-90] (166.center) to (167.center);
+		\draw (168.center) to (167.center);
+		\draw (162.center) to (169.center);
+		\draw [in=-45, out=90] (162.center) to (164);
+		\draw [in=-90, out=150, looseness=0.75] (164) to (163.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
@@ -1686,55 +1595,49 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
-
 Given a quantum state  $|\phi\rangle$ on $\mathcal H$ with an elelement $\psi$ in its equivalence class, measuring in the $B$-basis has the following effect:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (0) at (72.775, -0.725) {};
-		\node [style=none] (1) at (71.75, 1.25) {};
-		\node [style=Z] (2) at (72.125, 0.025) {};
-		\node [style=none] (3) at (72.475, 0.55) {};
-		\node [style=none] (4) at (72.875, 0.275) {};
-		\node [style=none] (5) at (72.375, -0.725) {};
-		\node [style=none] (6) at (72.375, -1.225) {};
-		\node [style=none] (7) at (72.775, -1.225) {};
-		\node [style=map] (8) at (72.6, -1.25) {$\psi$};
+		\node [style=none] (179) at (124.75, -0.475) {};
+		\node [style=none] (180) at (123.725, 1.25) {};
+		\node [style=Z] (181) at (124.1, 0.275) {};
+		\node [style=none] (182) at (124.45, 0.8) {};
+		\node [style=none] (183) at (124.85, 0.525) {};
+		\node [style=none] (184) at (124.35, -0.475) {};
+		\node [style=none] (185) at (124.35, -0.975) {};
+		\node [style=none] (186) at (124.75, -0.975) {};
+		\node [style=map] (187) at (124.575, -1) {$\psi$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=180] (3.center) to (2);
-		\draw [in=0, out=90] (4.center) to (3.center);
-		\draw [in=90, out=-90] (4.center) to (5.center);
-		\draw (6.center) to (5.center);
-		\draw (0.center) to (7.center);
-		\draw [in=-45, out=90] (0.center) to (2);
-		\draw [in=-90, out=150, looseness=0.75] (2) to (1.center);
+		\draw [in=90, out=180] (182.center) to (181);
+		\draw [in=0, out=90] (183.center) to (182.center);
+		\draw [in=90, out=-90] (183.center) to (184.center);
+		\draw (185.center) to (184.center);
+		\draw (179.center) to (186.center);
+		\draw [in=-45, out=90] (179.center) to (181);
+		\draw [in=-90, out=150, looseness=0.75] (181) to (180.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
-\sum_{j \in \mathcal{J}}\left(
+\sum_{j \in \mathcal{J}}\left(\
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (43) at (90.2, 1) {};
-		\node [style=map] (44) at (89.725, -2) {$\psi$};
-		\node [style=map] (45) at (90.2, 0.25) {$|b_j\rangle$};
-		\node [style=none] (46) at (89.225, -1.25) {};
-		\node [style=map] (47) at (90.2, -0.75) {$\langle b_j|$};
-		\node [style=none] (48) at (90.2, -1.25) {};
-		\node [style=map] (49) at (88.2, -1.25) {$|b_j\rangle$};
-		\node [style=none] (50) at (88.25, -1.25) {};
+		\node [style=none] (0) at (120.975, 1.25) {};
+		\node [style=map] (1) at (120.25, -1.25) {$\psi$};
+		\node [style=map] (2) at (120.975, 0.5) {$|b_j\rangle$};
+		\node [style=none] (3) at (120.25, -1.25) {};
+		\node [style=map] (4) at (120.975, -0.5) {$\langle b_j|$};
+		\node [style=none] (5) at (120.975, -0.5) {};
+		\node [style=map] (6) at (118.975, -1.25) {$|b_j\rangle$};
+		\node [style=none] (7) at (119.025, -1.25) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [in=-90, out=150] (44) to (46.center);
-		\draw (45) to (43.center);
-		\draw [in=-90, out=30] (44) to (48.center);
-		\draw (48.center) to (47);
-		\draw [in=90, out=90, looseness=2.00] (46.center) to (50.center);
+		\draw (2) to (0.center);
+		\draw [in=-90, out=30] (1) to (5.center);
+		\draw [in=450, out=90, looseness=1.75] (3.center) to (7.center);
 	\end{pgfonlayer}
-\end{tikzpicture}
+\end{tikzpicture}\
 \right)
 =
 \sum_{j \in \mathcal{J}}
@@ -1754,13 +1657,11 @@ $$
 \sum_{j \in \mathcal{J}}
 |\langle b_j|\phi\rangle|^2 |b_j\rangle
 $$
-
 Therefore, measuring $|b_j\rangle $ yields the scalar $|\langle b_j|\phi\rangle|^2$, which is the correct probability via the Born rule.
 
 There is a graphical calculus for this two-sorted prop of classical and quantum types.  
 The classical wires are drawn thin and the quantum wires are drawn thick.
 The pure spider we have have been working with so far is drawn with a thick border:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1785,11 +1686,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
 The state preparation and measurement are drawn as thin spiders interfacing between thick and thin wires:
-
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1816,10 +1713,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
 The conjugation of pure spiders by state preparation and measurement maps creates {\bf bastard spiders} following \cite{pqp}.  Bastard spiders are drawn with a thin border.  For example:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1871,6 +1765,7 @@ $$
 		\draw [thick,in=-150, out=90] (3.center) to (4.center);
 		\draw [thick,in=-90, out=56] (4.center) to (0.center);
 		\draw [thick,in=150, out=-90] (1.center) to (4.center);
+		\draw [thick] (17.center) to (7.center);
 		\draw [thick,in=-124, out=90] (7.center) to (8);
 		\draw [thick,in=90, out=-30] (8) to (9.center);
 		\draw [thick,in=-90, out=30] (8) to (5.center);
@@ -1878,7 +1773,6 @@ $$
 		\draw [thick] (0.center) to (14.center);
 		\draw [thick] [in=120, out=-90] (11) to (8);
 		\draw [thick] [in=300, out=90] (10) to (8);
-		\draw [thick] (17.center) to (7.center);
 		\draw [thick] (16.center) to (3.center);
 		\draw [thick] (19.center) to (9.center);
 		\draw [thick] (5.center) to (15.center);
@@ -1887,10 +1781,8 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 The thin border on $\zcirc$ indicates that the state has been measured in the basis $\zcirc$, and is no longer pure and is a stochastic mixture of the basis element of $B$.
 When a pure spider is connected to a bastard spider they both fuse into a bastard spider:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1938,10 +1830,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
 The discard map is classical spider with one thick wire:
-
 $$
 \left\llbracket\ 
 \begin{tikzpicture}[yscale=-1]
@@ -1957,143 +1846,130 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (137) at (71.775, -1.25) {};
-		\node [style=Z] (139) at (70.875, -0.5) {};
-		\node [style=none] (140) at (70.875, -1) {};
-		\node [style=none] (141) at (71.8, -0.5) {};
-		\node [style=none] (142) at (70.125, -1) {};
-		\node [style=none] (143) at (71.125, -1.25) {};
-		\node [style=none] (145) at (71.125, -1.75) {};
-		\node [style=none] (146) at (71.775, -1.75) {};
-		\node [style=none] (147) at (70.875, 0.75) {};
-		\node [style=none] (148) at (70.125, 0.75) {};
-		\node [style=none] (149) at (70.125, 1.5) {};
-		\node [style=none] (150) at (70.875, 1.5) {};
+		\node [style=none] (0) at (71.775, -1.25) {};
+		\node [style=Z] (1) at (70.875, -0.5) {};
+		\node [style=none] (2) at (70.875, -1) {};
+		\node [style=none] (3) at (71.8, -0.5) {};
+		\node [style=none] (4) at (70.125, -1) {};
+		\node [style=none] (5) at (71.125, -1.25) {};
+		\node [style=none] (6) at (71.125, -1.75) {};
+		\node [style=none] (7) at (71.775, -1.75) {};
+		\node [style=none] (8) at (70.875, -0.5) {};
+		\node [style=none] (9) at (70.125, -0.5) {};
+		\node [style=none] (10) at (70.125, 0.25) {};
+		\node [style=none] (11) at (70.875, 0.25) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (139) to (140.center);
-		\draw [bend left=90, looseness=1.25] (140.center) to (142.center);
-		\draw [in=90, out=-90] (141.center) to (143.center);
-		\draw (145.center) to (143.center);
-		\draw (137.center) to (146.center);
-		\draw [in=-45, out=90] (137.center) to (139);
-		\draw [in=90, out=60, looseness=1.50] (139) to (141.center);
-		\draw [in=-90, out=90] (147.center) to (149.center);
-		\draw [in=90, out=90, looseness=1.75] (149.center) to (150.center);
-		\draw [in=90, out=-90] (150.center) to (148.center);
-		\draw (139) to (147.center);
-		\draw (142.center) to (148.center);
+		\draw (1) to (2.center);
+		\draw [bend left=90, looseness=1.25] (2.center) to (4.center);
+		\draw [in=90, out=-90] (3.center) to (5.center);
+		\draw (6.center) to (5.center);
+		\draw (0.center) to (7.center);
+		\draw [in=-45, out=90] (0.center) to (1);
+		\draw [in=90, out=60, looseness=1.50] (1) to (3.center);
+		\draw [in=-90, out=90] (8.center) to (10.center);
+		\draw [in=90, out=90, looseness=1.75] (10.center) to (11.center);
+		\draw [in=90, out=-90] (11.center) to (9.center);
+		\draw (4.center) to (9.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (193) at (75.425, -0.5) {};
-		\node [style=none] (194) at (74.25, -1.25) {};
-		\node [style=none] (195) at (74.95, -2) {};
-		\node [style=none] (196) at (72.775, -1.25) {};
-		\node [style=none] (197) at (75.425, -2) {};
-		\node [style=none] (198) at (72.775, -0.25) {};
-		\node [style=none] (199) at (73.025, 1) {};
-		\node [style=none] (200) at (73.775, 1) {};
-		\node [style=Z] (201) at (74.25, 0.5) {};
-		\node [style=none] (203) at (74.95, 0.5) {};
-		\node [style=Z] (204) at (73.65, -0.75) {};
+		\node [style=none] (12) at (75.45, -0.5) {};
+		\node [style=none] (13) at (74.275, -0.25) {};
+		\node [style=none] (14) at (74.975, -0.5) {};
+		\node [style=none] (15) at (72.8, -0.25) {};
+		\node [style=none] (17) at (72.8, -0.25) {};
+		\node [style=none] (18) at (73.05, 0.5) {};
+		\node [style=none] (19) at (73.8, 0.5) {};
+		\node [style=Z] (20) at (74.275, 0.5) {};
+		\node [style=none] (21) at (74.975, 0.5) {};
+		\node [style=Z] (22) at (73.675, -0.25) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [bend left=90, looseness=1.25] (194.center) to (196.center);
-		\draw (193.center) to (197.center);
-		\draw [in=90, out=90, looseness=1.75] (199.center) to (200.center);
-		\draw [in=90, out=-90] (200.center) to (198.center);
-		\draw (196.center) to (198.center);
-		\draw (195.center) to (203.center);
-		\draw [in=90, out=90, looseness=2.50] (203.center) to (201);
-		\draw (194.center) to (201);
-		\draw [in=-90, out=105] (204) to (199.center);
-		\draw [in=315, out=90] (193.center) to (201);
-		\draw (201) to (204);
+		\draw [bend left=90, looseness=1.25] (13.center) to (15.center);
+		\draw [in=90, out=90, looseness=1.75] (18.center) to (19.center);
+		\draw [in=90, out=-90] (19.center) to (17.center);
+		\draw (15.center) to (17.center);
+		\draw (14.center) to (21.center);
+		\draw [in=90, out=90, looseness=2.50] (21.center) to (20);
+		\draw (13.center) to (20);
+		\draw [in=-90, out=105] (22) to (18.center);
+		\draw [in=315, out=90] (12.center) to (20);
+		\draw (20) to (22);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (205) at (79.075, -0.5) {};
-		\node [style=none] (206) at (77.65, -0.25) {};
-		\node [style=none] (207) at (78.6, -2) {};
-		\node [style=none] (209) at (79.075, -2) {};
-		\node [style=none] (210) at (77.175, -0.25) {};
-		\node [style=none] (211) at (76.675, 0.5) {};
-		\node [style=none] (212) at (77.175, 0.5) {};
-		\node [style=Z] (213) at (77.9, 0.5) {};
-		\node [style=none] (214) at (78.6, 0.5) {};
-		\node [style=Z] (215) at (77.45, -1) {};
+		\node [style=none] (23) at (79.075, -0.5) {};
+		\node [style=none] (24) at (77.65, 0) {};
+		\node [style=none] (25) at (78.6, -0.5) {};
+		\node [style=none] (27) at (77.175, 0) {};
+		\node [style=none] (28) at (76.675, 0.5) {};
+		\node [style=none] (29) at (77.175, 0.5) {};
+		\node [style=Z] (30) at (77.9, 0.5) {};
+		\node [style=none] (31) at (78.6, 0.5) {};
+		\node [style=Z] (32) at (77.45, -0.75) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (205.center) to (209.center);
-		\draw [in=90, out=90, looseness=1.75] (211.center) to (212.center);
-		\draw [in=90, out=-90] (212.center) to (210.center);
-		\draw (207.center) to (214.center);
-		\draw [in=90, out=90, looseness=2.50] (214.center) to (213);
-		\draw [in=-135, out=90] (206.center) to (213);
-		\draw [in=-90, out=150] (215) to (211.center);
-		\draw [in=315, out=90] (205.center) to (213);
-		\draw [in=30, out=-75] (213) to (215);
-		\draw [in=270, out=270, looseness=1.25] (206.center) to (210.center);
+		\draw [in=90, out=90, looseness=1.75] (28.center) to (29.center);
+		\draw [in=90, out=-90] (29.center) to (27.center);
+		\draw (25.center) to (31.center);
+		\draw [in=90, out=90, looseness=2.50] (31.center) to (30);
+		\draw [in=-135, out=90] (24.center) to (30);
+		\draw [in=-90, out=150] (32) to (28.center);
+		\draw [in=315, out=90] (23.center) to (30);
+		\draw [in=30, out=-75] (30) to (32);
+		\draw [in=270, out=270, looseness=1.25] (24.center) to (27.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (216) at (82.475, -0.5) {};
-		\node [style=none] (218) at (82, -2) {};
-		\node [style=none] (219) at (82.475, -2) {};
-		\node [style=none] (221) at (81.325, 0.5) {};
-		\node [style=Z] (223) at (81.3, 0.5) {};
-		\node [style=none] (224) at (82, 0.5) {};
-		\node [style=Z] (225) at (81.1, -0.5) {};
+		\node [style=none] (33) at (82.475, -0.75) {};
+		\node [style=none] (34) at (82, -0.75) {};
+		\node [style=none] (36) at (81.325, 0.5) {};
+		\node [style=Z] (37) at (81.3, 0.5) {};
+		\node [style=none] (38) at (82, 0.5) {};
+		\node [style=Z] (39) at (81.1, -0.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (216.center) to (219.center);
-		\draw (218.center) to (224.center);
-		\draw [in=90, out=90, looseness=2.50] (224.center) to (223);
-		\draw [in=-165, out=150] (225) to (221.center);
-		\draw [in=315, out=90] (216.center) to (223);
-		\draw [in=30, out=-75] (223) to (225);
+		\draw (34.center) to (38.center);
+		\draw [in=90, out=90, looseness=2.50] (38.center) to (37);
+		\draw [in=-165, out=150] (39) to (36.center);
+		\draw [in=315, out=90] (33.center) to (37);
+		\draw [in=30, out=-75] (37) to (39);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (226) at (84.85, -0.5) {};
-		\node [style=none] (227) at (84.375, -2) {};
-		\node [style=none] (228) at (84.85, -2) {};
-		\node [style=none] (229) at (83.7, 0.5) {};
-		\node [style=Z] (230) at (83.675, 0.5) {};
-		\node [style=none] (231) at (84.375, 0.5) {};
+		\node [style=none] (40) at (84.85, -0.5) {};
+		\node [style=none] (41) at (84.375, -0.5) {};
+		\node [style=none] (43) at (83.7, 0.5) {};
+		\node [style=Z] (44) at (83.675, 0.5) {};
+		\node [style=none] (45) at (84.375, 0.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (226.center) to (228.center);
-		\draw (227.center) to (231.center);
-		\draw [in=90, out=90, looseness=2.50] (231.center) to (230);
-		\draw [in=315, out=90] (226.center) to (230);
+		\draw (41.center) to (45.center);
+		\draw [in=90, out=90, looseness=2.50] (45.center) to (44);
+		\draw [in=315, out=90] (40.center) to (44);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (52) at (87.025, -0.5) {};
-		\node [style=none] (53) at (86.5, -0.5) {};
-		\node [style=none] (54) at (87.025, -2) {};
-		\node [style=none] (55) at (86.375, 0.5) {};
-		\node [style=none] (56) at (87.05, 0.5) {};
-		\node [style=none] (57) at (86.5, -2) {};
+		\node [style=none] (46) at (87.025, -0.5) {};
+		\node [style=none] (47) at (86.5, -0.5) {};
+		\node [style=none] (49) at (86.375, 0.5) {};
+		\node [style=none] (50) at (87.05, 0.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (52.center) to (54.center);
-		\draw [in=-90, out=90, looseness=1.25] (53.center) to (56.center);
-		\draw [in=-90, out=90, looseness=1.25] (52.center) to (55.center);
-		\draw [in=90, out=90, looseness=1.25] (55.center) to (56.center);
-		\draw (57.center) to (53.center);
+		\draw [in=-90, out=90, looseness=1.25] (47.center) to (50.center);
+		\draw [in=-90, out=90, looseness=1.25] (46.center) to (49.center);
+		\draw [in=90, out=90, looseness=1.25] (49.center) to (50.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
@@ -2111,14 +1987,13 @@ $$
 $$
 Notice that this way of describing the discard map is independent of the choice of orthonormal basis.
 
-In general, we will draw thick borders on arbitrary pure maps $U$; and thick borders on mixed maps $V$ as follows:
-
+In general, we will draw thick borders around arbitrary pure maps $U$ between quantum systems; and thin borders around mixed maps $V$ between quantum systems as follows:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=map, thick] (3) at (0, -0.5) {$U$};
-		\node [style=none] (5) at (0, 1.25) {};
-		\node [style=none] (7) at (0, -2.25) {};
+		\node [style=map, thick] (3) at (0, 0) {$U$};
+		\node [style=none] (5) at (0, .75) {};
+		\node [style=none] (7) at (0, -.75) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [thick] (5.center) to (3.center) to (7.center);
@@ -2127,27 +2002,25 @@ $$
 \ , \hspace*{.5cm}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=map] (3) at (0, -0.5) {$V$};
-		\node [style=none] (5) at (0, 1.25) {};
-		\node [style=none] (7) at (0, -2.25) {};
+		\node [style=map] (3) at (0, 0) {$V$};
+		\node [style=none] (5) at (0, .75) {};
+		\node [style=none] (7) at (0, -.75) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [thick] (5.center) to (3.center) to (7.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 Note that all isometries and unitaries in $\CPM(\FHilb)$ are pure; so we always drawn them with a thick border.
 This notation allows us to state define a very special notion of purification in $\CPM(\FHilb)$:
 \begin{proposition}[Stinespring dilation]
 Given a trace preserving  map  $V$ in $\CPM(\FHilb)$, there exists a unitary $U$ such that:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=map] (3) at (0, -0.5) {$V$};
-		\node [style=none] (5) at (0, 1.25) {};
-		\node [style=none] (7) at (0, -2.25) {};
+		\node [style=map] (3) at (0, 0) {$V$};
+		\node [style=none] (5) at (0, 1) {};
+		\node [style=none] (7) at (0, -1) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [thick] (5.center) to (3.center) to (7.center);
@@ -2156,13 +2029,13 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (1) at (53.55, 0.5) {};
-		\node [style=none] (2) at (54.55, 0.5) {};
-		\node [style=map, thick] (3) at (54.05, -0.5) {$U$};
-		\node [style=none] (4) at (54.55, -1.5) {};
-		\node [style=none] (5) at (54.55, 1.25) {};
-		\node [style=Zthick] (6) at (53.55, -1.5) {};
-		\node [style=none] (7) at (54.55, -2.25) {};
+		\node [style=Z] (1) at (53.55, 0.75) {};
+		\node [style=none] (2) at (54.55, 0.75) {};
+		\node [style=map, thick] (3) at (54.05,0) {$U$};
+		\node [style=none] (4) at (54.55, -.75) {};
+		\node [style=none] (5) at (54.55, 1) {};
+		\node [style=Zthick] (6) at (53.55, -.75) {};
+		\node [style=none] (7) at (54.55, -1) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [thick, in=-90, out=150] (3.center) to (1.center);
@@ -2172,7 +2045,6 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 For all special commutative  \dag-Frobenius algebras $\zcirc$.
 \end{proposition}
 The proof is relatively involved so I will omit it.  See \cite{Stinespring1955} for the original statement, and \cite[Corollary 6.63]{pqp} for the graphical version which we use.  Essentially, this significance  of this result is that quantum processes can always be produced by first preparing a state, then applying quantum evolution and then discarding part of the state.
@@ -2180,14 +2052,12 @@ The proof is relatively involved so I will omit it.  See \cite{Stinespring1955} 
 There is another closely related result which we will make use of:
 \begin{proposition}[Essential uniqueness of purification]
 Given two purifications $V:\mathcal{H}_1\otimes \mathcal{H}_0$ and $V':\mathcal{H}_1\otimes \mathcal{H}_0$ of a mixed state $W:\mathcal{H}_0$ in $\CPM(\FHilb)$:
-
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=map, thick] (0) at (0, 0) {$V$};
 		\node [style=none] (1) at (0.5, 1) {};
-		\node [style=none] (3) at (0.5, 2) {};
+		\node [style=none] (3) at (0.5, 1.25) {};
 		\node [style=Z] (5) at (-0.5, 1) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
@@ -2210,7 +2080,7 @@ $$
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=map, thick] (0) at (0, 0) {$V'$};
 		\node [style=none] (1) at (0.5, 1) {};
-		\node [style=none] (3) at (0.5, 2) {};
+		\node [style=none] (3) at (0.5, 1.25) {};
 		\node [style=Z] (5) at (-0.5, 1) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
@@ -2219,10 +2089,8 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 So that without loss generality $\dim \mathcal{H}_1\leq \dim \mathcal{H}_2$, then there exists an isometry
 $U:\mathcal{H}_1 \to \mathcal{H}_2$ such that:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2256,16 +2124,9 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 Moreover, $U$ is unique up to a unique unitary.
 \end{proposition}
-
-
-
-
 There is a very important relationship which bases can have to each other:
-
-
 \begin{definition}
 \label{def:complementary}
 %Interacting Hopf-Frobenius algebras/ strongly complementary observables
@@ -2324,16 +2185,11 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 \end{definition}
-
 Strongly complementary bases have important information-theoretical properties:
-
 \begin{lemma}
 \label{lem:strongcomp}
-
 Given two strongly complementary bases given by special commutative \dag-Frobenius alegbras $\zcirc$ and $\xcirc$ preparing a state with respect to basis $\zcirc$ and measuring with respect to $\xcirc$ preserves no infomation, as:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2357,28 +2213,22 @@ $$
 =
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (154) at (77.2, -2.225) {};
-		\node [style=Z] (155) at (77.2, -1.475) {};
-		\node [style=none] (156) at (76.975, -0.35) {};
-		\node [style=none] (157) at (76.75, 1.525) {};
-		\node [style=X] (158) at (76.75, 0.8) {};
-		\node [style=none] (159) at (77.525, 0.8) {};
-		\node [style=none] (160) at (77.75, 0.3) {};
-		\node [style=Z] (161) at (77.725, -0.275) {};
-		\node [style=X] (162) at (77.175, 0.275) {};
-		\node [style=none] (163) at (77.25, -0.825) {};
+		\node [style=none] (30) at (385.2, -1.9) {};
+		\node [style=Z] (31) at (385.2, -1.4) {};
+		\node [style=none] (32) at (385.35, -0.35) {};
+		\node [style=none] (33) at (384.425, 0.675) {};
+		\node [style=X] (34) at (384.425, 0.2) {};
+		\node [style=Z] (37) at (385.9, -0.35) {};
+		\node [style=X] (38) at (384.85, -0.325) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (155) to (154.center);
-		\draw [in=0, out=90] (160.center) to (159.center);
-		\draw (158) to (157.center);
-		\draw [in=90, out=-90] (160.center) to (156.center);
-		\draw [in=-45, out=15] (155) to (161);
-		\draw [in=150, out=-120, looseness=0.75] (158) to (155);
-		\draw (158) to (162);
-		\draw [in=180, out=60, looseness=1.25] (162) to (159.center);
-		\draw [in=0, out=-105, looseness=1.25] (161) to (163.center);
-		\draw [in=-90, out=-180, looseness=1.25] (163.center) to (156.center);
+		\draw (31) to (30.center);
+		\draw (34) to (33.center);
+		\draw [in=-45, out=15, looseness=1.25] (31) to (37);
+		\draw [in=165, out=-120] (34) to (31);
+		\draw (34) to (38);
+		\draw [in=90, out=60, looseness=1.75] (38) to (32.center);
+		\draw [in=-120, out=-90, looseness=1.50] (32.center) to (37);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
@@ -2414,9 +2264,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 Or in the bastard spider notation:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2446,10 +2294,7 @@ $$
 \end{tikzpicture}
 $$
 \end{lemma}
-
-
 Actually, we only needed the Hopf algebra part of the bialgebra for these two bases to have this property.  However, the bialgebra structure is indespensible for other reasons.
-
 %
 %Given two strongly complementary bases, we can augment the Stinespring dilation with state preparation and measurement:
 %
@@ -2482,78 +2327,67 @@ Actually, we only needed the Hopf algebra part of the bialgebra for these two ba
 
 Given two strongly complementary observables, we can construct the quantum teleportation protocol  (originally discovered for qubits by \cite{teleportation}).
 The abstract description in terms of quantum teleportation in terms \dag-compact closed categories was first introduced in \cite{abramsky}; however, we present a qudit generalization of the one found in \cite[Page 706]{pqp}:
-
+\begingroup\allowdisplaybreaks
 \begin{protocol} \
 \label{proto:tele}
-\allowdisplaybreaks
 \begin{itemize}
-
 \item
 Alice and Bob first prepare a qudit Bell state together and establish a classical channel with which Alice is able to send two dits to Bob.
-
 \item
 They are separated in space. 
-
 \item
 Alice has a qudit channel she wants to send to Bob, but she only can communicate 2 classical dits to Bob. 
-
 \item
 Alice first applies a unitary operation in between her two qudits. 
-
-
 \item
 Alice  measures both of the qudits in the complementary bases and then sends two classical dits to Bob. 
-
 \item
  Bob uses the two classical dits to perform phase-correction to his half of the Bell state in the complementary bases.
-
 \end{itemize}
-
 Graphically:
-
 \begin{align*}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (20) at (380.75, 9.5) {};
-		\node [style=none] (21) at (382.25, 3.5) {};
-		\node [style=none] (22) at (380, 9.5) {Alice};
-		\node [style=none] (23) at (381.75, 9.5) {Bob};
-		\node [style=none] (24) at (379.5, 5.75) {};
-		\node [style=none] (25) at (383.75, 5.75) {};
-		\node [style=none] (26) at (379.5, 7.5) {};
-		\node [style=none] (27) at (383.75, 7.5) {};
-		\node [style=none] (28) at (378.25, 7.5) {Phase correction};
-		\node [style=none] (29) at (378.25, 5.75) {Measurement};
-		\node [style=Xthick] (30) at (380.5, 4.5) {};
-		\node [style=Zthick] (31) at (381.25, 5) {};
-		\node [style=X] (32) at (381.25, 5.75) {};
-		\node [style=Z] (33) at (380.5, 5.75) {};
-		\node [style=none] (34) at (380.5, 3.5) {};
-		\node [style=Zthick] (35) at (382.25, 4.25) {};
-		\node [style=none] (36) at (383, 5) {};
-		\node [style=none] (37) at (383, 9.5) {};
-		\node [style=Zthick] (38) at (383, 8.25) {};
-		\node [style=Xthick] (39) at (383, 9) {};
-		\node [style=X] (40) at (382.25, 7.5) {};
-		\node [style=Z] (41) at (381.5, 7.5) {};
+		\node [style=none] (8) at (380.25, 8.75) {};
+		\node [style=none] (9) at (382.25, 3.8) {};
+		\node [style=none] (10) at (379, 8.5) {Alice};
+		\node [style=none] (11) at (381.5, 8.5) {Bob};
+		\node [style=none] (12) at (379.5, 5.75) {};
+		\node [style=none] (13) at (383.75, 5.75) {};
+		\node [style=none] (14) at (379.5, 6.75) {};
+		\node [style=none] (15) at (383.75, 6.75) {};
+		\node [style=none] (16) at (378, 6.75) {Phase correction};
+		\node [style=none] (17) at (378.25, 5.75) {Measurement};
+		\node [style=Xthick] (18) at (380.5, 4.65) {};
+		\node [style=Zthick] (19) at (381.25, 5.15) {};
+		\node [style=X] (20) at (381.25, 5.75) {};
+		\node [style=Z] (21) at (380.5, 5.75) {};
+		\node [style=none] (22) at (380.5, 3.8) {};
+		\node [style=Zthick] (23) at (382.25, 4.55) {};
+		\node [style=none] (24) at (383, 5.15) {};
+		\node [style=none] (25) at (383, 8.75) {};
+		\node [style=Zthick] (26) at (383, 7.5) {};
+		\node [style=Xthick] (27) at (383, 8.25) {};
+		\node [style=X] (28) at (382.25, 6.75) {};
+		\node [style=Z] (29) at (381.5, 6.75) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [style=dotted, in=-90, out=90, looseness=1.25] (21.center) to (20.center);
-		\draw [style=dotted] (25.center) to (24.center);
-		\draw [style=dotted] (27.center) to (26.center);
-		\draw [style=thick] (34.center) to (30);
-		\draw [style=thick] (30) to (31);
-		\draw [style=thick] (30) to (33);
-		\draw [style=thick] (31) to (32);
-		\draw [style=thick, in=-45, out=165] (35) to (31);
-		\draw [style=thick] (37.center) to (39);
-		\draw [style=thick] (39) to (38);
-		\draw [style=thick] (38) to (36.center);
-		\draw [style=thick, in=15, out=-90, looseness=0.75] (36.center) to (35);
-		\draw [style=thick, in=-165, out=90, looseness=0.75] (40) to (38);
-		\draw [style=thick, in=90, out=-165, looseness=0.75] (39) to (41);
-		\draw [in=-105, out=90] (32) to (40);
-		\draw [in=90, out=-105] (41) to (33);
+		\draw [style=dotted, in=-90, out=90, looseness=1.25] (9.center) to (8.center);
+		\draw [style=dotted] (13.center) to (12.center);
+		\draw [style=dotted] (15.center) to (14.center);
+		\draw [style=thick] (22.center) to (18);
+		\draw [style=thick] (18) to (19);
+		\draw [style=thick] (18) to (21);
+		\draw [style=thick] (19) to (20);
+		\draw [style=thick, in=-45, out=165] (23) to (19);
+		\draw [style=thick] (25.center) to (27);
+		\draw [style=thick] (27) to (26);
+		\draw [style=thick] (26) to (24.center);
+		\draw [style=thick, in=15, out=-90, looseness=0.75] (24.center) to (23);
+		\draw [style=thick, in=-165, out=90, looseness=0.75] (28) to (26);
+		\draw [style=thick, in=90, out=-165, looseness=0.75] (27) to (29);
+		\draw [in=-105, out=90] (20) to (28);
+		\draw [in=90, out=-105] (29) to (21);
 	\end{pgfonlayer}
 \end{tikzpicture}
 &=
@@ -2735,83 +2569,81 @@ So that if if Alice prepares a quantum state $|\phi\rangle$, then Bob receives i
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (0) at (380.75, 9.5) {};
-		\node [style=none] (1) at (382.25, 3.5) {};
-		\node [style=none] (2) at (380, 9.5) {Alice};
-		\node [style=none] (3) at (381.75, 9.5) {Bob};
-		\node [style=none] (4) at (379.5, 5.75) {};
-		\node [style=none] (5) at (383.75, 5.75) {};
-		\node [style=none] (6) at (379.5, 7.5) {};
-		\node [style=none] (7) at (383.75, 7.5) {};
-		\node [style=none] (8) at (378.25, 7.5) {Phase correction};
-		\node [style=none] (9) at (378.25, 5.75) {Measurement};
-		\node [style=Xthick] (10) at (380.5, 4.5) {};
-		\node [style=Zthick] (11) at (381.25, 5) {};
-		\node [style=X] (12) at (381.25, 5.75) {};
-		\node [style=Z] (13) at (380.5, 5.75) {};
-		\node [style=none] (14) at (380.5, 3.5) {};
-		\node [style=Zthick] (15) at (382.25, 4.25) {};
-		\node [style=none] (16) at (383, 5) {};
-		\node [style=none] (17) at (383, 9.5) {};
-		\node [style=Zthick] (18) at (383, 8.25) {};
-		\node [style=Xthick] (19) at (383, 9) {};
-		\node [style=X] (20) at (382.25, 7.5) {};
-		\node [style=Z] (21) at (381.5, 7.5) {};
-		\node [style=map] (22) at (380.5, 3.5) {$|\phi\rangle$};
+		\node [style=none] (39) at (389, 8.7) {};
+		\node [style=none] (40) at (391, 3.75) {};
+		\node [style=none] (41) at (387.75, 8.45) {Alice};
+		\node [style=none] (42) at (390.25, 8.45) {Bob};
+		\node [style=none] (43) at (388.25, 5.7) {};
+		\node [style=none] (44) at (392.5, 5.7) {};
+		\node [style=none] (45) at (388.25, 6.7) {};
+		\node [style=none] (46) at (392.5, 6.7) {};
+		\node [style=none] (47) at (387, 6.55) {Phase correction};
+		\node [style=none] (48) at (387, 5.7) {Measurement};
+		\node [style=Xthick] (49) at (389.25, 4.6) {};
+		\node [style=Zthick] (50) at (390, 5.1) {};
+		\node [style=X] (51) at (390, 5.7) {};
+		\node [style=Z] (52) at (389.25, 5.7) {};
+		\node [style=none] (53) at (389.25, 3.75) {};
+		\node [style=Zthick] (54) at (391, 4.5) {};
+		\node [style=none] (55) at (391.75, 5.1) {};
+		\node [style=none] (56) at (391.75, 8.7) {};
+		\node [style=Zthick] (57) at (391.75, 7.45) {};
+		\node [style=Xthick] (58) at (391.75, 8.2) {};
+		\node [style=X] (59) at (391, 6.7) {};
+		\node [style=Z] (60) at (390.25, 6.7) {};
+		\node [style=map] (61) at (389.25, 3.75) {$|\phi\rangle$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [style=dotted, in=-90, out=90, looseness=1.25] (1.center) to (0.center);
-		\draw [style=dotted] (5.center) to (4.center);
-		\draw [style=dotted] (7.center) to (6.center);
-		\draw [style=thick] (14.center) to (10);
-		\draw [style=thick] (10) to (11);
-		\draw [style=thick] (10) to (13);
-		\draw [style=thick] (11) to (12);
-		\draw [style=thick, in=-45, out=165] (15) to (11);
-		\draw [style=thick] (17.center) to (19);
-		\draw [style=thick] (19) to (18);
-		\draw [style=thick] (18) to (16.center);
-		\draw [style=thick, in=15, out=-90, looseness=0.75] (16.center) to (15);
-		\draw [style=thick, in=-165, out=90, looseness=0.75] (20) to (18);
-		\draw [style=thick, in=90, out=-165, looseness=0.75] (19) to (21);
-		\draw [in=-105, out=90] (12) to (20);
-		\draw [in=90, out=-105] (21) to (13);
+		\draw [style=dotted, in=-90, out=90, looseness=1.25] (40.center) to (39.center);
+		\draw [style=dotted] (44.center) to (43.center);
+		\draw [style=dotted] (46.center) to (45.center);
+		\draw [style=thick] (53.center) to (49);
+		\draw [style=thick] (49) to (50);
+		\draw [style=thick] (49) to (52);
+		\draw [style=thick] (50) to (51);
+		\draw [style=thick, in=-45, out=165] (54) to (50);
+		\draw [style=thick] (56.center) to (58);
+		\draw [style=thick] (58) to (57);
+		\draw [style=thick] (57) to (55.center);
+		\draw [style=thick, in=15, out=-90, looseness=0.75] (55.center) to (54);
+		\draw [style=thick, in=-165, out=90, looseness=0.75] (59) to (57);
+		\draw [style=thick, in=90, out=-165, looseness=0.75] (58) to (60);
+		\draw [in=-105, out=90] (51) to (59);
+		\draw [in=90, out=-105] (60) to (52);
 	\end{pgfonlayer}
 \end{tikzpicture}
 \approx
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (37) at (392.25, 9) {};
-		\node [style=map] (45) at (392.25, 7.5) {$|\phi\rangle$};
-		\node [style=none] (46) at (391.25, 9.5) {};
-		\node [style=none] (47) at (391.25, 3.5) {};
-		\node [style=none] (48) at (390.5, 9.5) {Alice};
-		\node [style=none] (49) at (392.25, 9.5) {Bob};
+		\node [style=none] (62) at (394.25, 8.675) {};
+		\node [style=map] (63) at (394.25, 7.75) {$|\phi\rangle$};
+		\node [style=none] (64) at (393.25, 8.675) {};
+		\node [style=none] (65) at (393.25, 3.75) {};
+		\node [style=none] (66) at (392.5, 8.675) {Alice};
+		\node [style=none] (67) at (395.5, 8.675) {Bob};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [style=dotted, in=-90, out=90, looseness=1.25] (47.center) to (46.center);
-		\draw [thick] (45) to (37.center);
+		\draw [style=dotted, in=-90, out=90, looseness=1.25] (65.center) to (64.center);
+		\draw [thick] (63) to (62.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-\end{protocol}
-
+\end{protocol}\endgroup
 Notice how all parts of this protocol are physically realizable operations.  The Bell-state is a quantum state and unitary operations are quantum operations.  As we discussed, measurement is realizable, and produces a classical outcome according to a probability distribution via the Born rule (in fact, in this case each outcome is equally likely).  Finally, for Bob's phase correction operation, he receives the two measurement outcomes of Alice, and conditioned on these outcomes he applies quantum operations to the quantum channel.  
 
 
 This is in contrast to the naive way in which one might hope to teleport a qudit from Alice to Bob using the compact closed structure induced by $\zcirc$:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (0) at (381.25, 7) {};
+		\node [style=none] (0) at (381.25, 5.5) {};
 		\node [style=none] (1) at (382.25, 3.5) {};
-		\node [style=none] (2) at (380.5, 7) {Alice};
-		\node [style=none] (3) at (382, 7) {Bob};
+		\node [style=none] (2) at (380.5, 5.5) {Alice};
+		\node [style=none] (3) at (382, 5.5) {Bob};
 		\node [style=none] (14) at (380.5, 3.75) {};
 		\node [style=Zthick] (15) at (382.25, 4.25) {};
 		\node [style=none] (16) at (383, 5.5) {};
-		\node [style=none] (17) at (383, 7) {};
+		\node [style=none] (17) at (383, 5.5) {};
 		\node [style=map] (22) at (380.5, 3.75) {$|\phi\rangle$};
 		\node [style=Zthick] (25) at (381, 5) {};
 	\end{pgfonlayer}
@@ -2824,7 +2656,7 @@ $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (26) at (384.75, 7) {};
-		\node [style=none] (27) at (384.75, 3.5) {};
+		\node [style=none] (27) at (384.75, 4.5) {};
 		\node [style=none] (28) at (384, 7) {Alice};
 		\node [style=none] (29) at (385.5, 7) {Bob};
 		\node [style=none] (32) at (386.5, 5.5) {};
@@ -2840,7 +2672,6 @@ $$
 The cap not a quantum operation, nor is it a measurement, or a classical operation,  therefore it does not specify a physically realizable quantum protocol.
 
 The reason we ask not only for the Hopf law but also for the bialgebra law is  because the following two very important bases have this property:
-
 \begin{example}
 Given fixed dimension $d$, recall that the standard basis, or $Z$-basis,  is denoted as follows:
 $$\{ |0\rangle, \ldots, |d-1\rangle \}$$
@@ -2848,18 +2679,14 @@ The Fourier basis, or $X$-basis, is denoted as follows:
 $$\{\sqrt{d} \mathcal{F}|0\rangle, \ldots, \sqrt{d}\mathcal{F}|d-1\rangle \}$$
 
 Where the qudit quantum Fourier transform is the unitary map:
-
 $$\mathcal{F} := \dfrac{1}{\sqrt{d}} \sum_{j,k=0}^{d-1} e^{2\pi\cdot i \cdot j \cdot k/d} | k\rangle \langle j | $$
-
 The $Z$ and $X$ bases are strongly complementary.
 \end{example}
-
 For qubits, the  state $|+\rangle:=\mathcal{F}|0\rangle$ is called the {\bf plus state}; and  $|-\rangle:=\mathcal{F}|1\rangle$ is called the {\bf minus state}.
 Notice how we multiply the $X$-basis elements by a factor of $\sqrt d$ so that these two Frobenius algebras interact to form a Hopf algebra on the nose (as upposed to up to scaling factors).  This means that the Fourier basis we have chosen is only orthogonal, and thus the corresponding Frobenius algebra is not special.  However, this isn't a problem, because it is special up to the invertible  scalar $1/\sqrt{d}$.
 
 This pair of complementary bases will occur throughout this thesis.  As a matter of notation, as mentioned earlier we draw the ``$Z$-spiders'' for the standard basis in white,
 and ``$X$-spiders'' for the Fourier basis in  grey as follows:
-
 \begin{align*}
 \left\llbracket\ 
 \begin{tikzpicture}
@@ -2910,17 +2737,13 @@ and ``$X$-spiders'' for the Fourier basis in  grey as follows:
 &=
 \sqrt{d}\sum_{j=0}^{d-1}  \mathcal{F} | j, \ldots, j\rangle \langle j,\ldots, j| \mathcal{F}^\dag
 \end{align*}
-
 The $Z$-spiders compare standard basis elements and the $X$-spiders compare their sums (which is why we ask for the Bialgebra law on top of the Hopf law):
-
 $$
 \sqrt{d}\sum_{j=0}^{d-1}  \mathcal{F} | j, \ldots, j\rangle \langle j,\ldots, j| \mathcal{F}^\dag\\
 =
 \sum_{\forall x \in (\Z/d\Z)^n,  y  \in (\Z/d\Z)^m: \sum  x_j= \sum y _k} | y_1 ,\ldots, y_n \rangle \langle  x_1,\ldots, x_n|
 $$
-
 When $d=2$, the antipode is the identity, so that it doesn't matter if the wires are inputs or outputs of spiders .  For example, we can draw the {\bf controlled-not gate} by connecting together $Z$ and $X$ spiders, only having to worry about the connectivity:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2976,7 +2799,6 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 In orther terms, the $Z$ and $X$-spiders are {\bf flexsymmetric}   \cite[\S 5]{flexsymmetric}.
 
 %The following pair of strongly complementary observables will come up often throughout this thesis:
@@ -2988,46 +2810,10 @@ In orther terms, the $Z$ and $X$-spiders are {\bf flexsymmetric}   \cite[\S 5]{f
 %\end{example}
 
 We almost have all of the essential ingredients of categorical quantum mechanics.  Bastard spiders alone are not very expressive.  The following bridges this gap:
-
 \begin{definition}
 \label{def:phases}
 Given a $\dag$-Frobenius algebra $\xcirc$ on an object $X$, a {\bf phase} for the Frobenius algebra is a unitary endomorphism $\theta:X\to X$ which commutes with the multiplication and comultiplication, so that:
 $$
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=X] (14) at (-1.75, 12) {};
-		\node [style=none] (15) at (-1.25, 11.25) {};
-		\node [style=none] (16) at (-2.25, 11.25) {};
-		\node [style=none] (17) at (-1.75, 12.75) {};
-		\node [style=map] (18) at (-1.25, 11.25) {$\theta$};
-		\node [style=none] (19) at (-1.25, 10.5) {};
-		\node [style=none] (20) at (-2.25, 10.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [in=90, out=-30] (14) to (15.center);
-		\draw [in=90, out=-150] (14) to (16.center);
-		\draw (17.center) to (14);
-		\draw (18) to (19.center);
-		\draw (20.center) to (16.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=X] (0) at (0, 11.25) {};
-		\node [style=map] (1) at (0, 12) {$\theta$};
-		\node [style=none] (2) at (-0.5, 10.5) {};
-		\node [style=none] (3) at (0.5, 10.5) {};
-		\node [style=none] (4) at (0, 12.75) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (4.center) to (1);
-		\draw (1) to (0);
-		\draw [in=90, out=-150] (0) to (2.center);
-		\draw [in=90, out=-30] (0) to (3.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=X] (5) at (2, 12) {};
@@ -3046,42 +2832,42 @@ $$
 		\draw (13.center) to (8.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
+\eref{phasel}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (0) at (0, 11.25) {};
+		\node [style=map] (1) at (0, 12) {$\theta$};
+		\node [style=none] (2) at (-0.5, 10.5) {};
+		\node [style=none] (3) at (0.5, 10.5) {};
+		\node [style=none] (4) at (0, 12.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (4.center) to (1);
+		\draw (1) to (0);
+		\draw [in=90, out=-150] (0) to (2.center);
+		\draw [in=90, out=-30] (0) to (3.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\eref{phaser}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (14) at (-1.75, 12) {};
+		\node [style=none] (15) at (-1.25, 11.25) {};
+		\node [style=none] (16) at (-2.25, 11.25) {};
+		\node [style=none] (17) at (-1.75, 12.75) {};
+		\node [style=map] (18) at (-1.25, 11.25) {$\theta$};
+		\node [style=none] (19) at (-1.25, 10.5) {};
+		\node [style=none] (20) at (-2.25, 10.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=90, out=-30] (14) to (15.center);
+		\draw [in=90, out=-150] (14) to (16.center);
+		\draw (17.center) to (14);
+		\draw (18) to (19.center);
+		\draw (20.center) to (16.center);
+	\end{pgfonlayer}
+\end{tikzpicture}\ , 
 \hspace*{1cm}
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=X] (33) at (4, 11.25) {};
-		\node [style=none] (34) at (4.5, 12) {};
-		\node [style=none] (35) at (3.5, 12) {};
-		\node [style=none] (36) at (4, 10.5) {};
-		\node [style=map] (37) at (4.5, 12) {$\theta$};
-		\node [style=none] (38) at (4.5, 12.75) {};
-		\node [style=none] (39) at (3.5, 12.75) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [in=-90, out=30] (33) to (34.center);
-		\draw [in=-90, out=150] (33) to (35.center);
-		\draw (36.center) to (33);
-		\draw (37) to (38.center);
-		\draw (39.center) to (35.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=X] (21) at (5.75, 12) {};
-		\node [style=map] (22) at (5.75, 11.25) {$\theta$};
-		\node [style=none] (23) at (5.25, 12.75) {};
-		\node [style=none] (24) at (6.25, 12.75) {};
-		\node [style=none] (25) at (5.75, 10.5) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (25.center) to (22);
-		\draw (22) to (21);
-		\draw [in=-90, out=150] (21) to (23.center);
-		\draw [in=-90, out=30] (21) to (24.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=X] (26) at (7.75, 11.25) {};
@@ -3100,30 +2886,57 @@ $$
 		\draw (32.center) to (28.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
+\erefop{phasel}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (21) at (5.75, 12) {};
+		\node [style=map] (22) at (5.75, 11.25) {$\theta$};
+		\node [style=none] (23) at (5.25, 12.75) {};
+		\node [style=none] (24) at (6.25, 12.75) {};
+		\node [style=none] (25) at (5.75, 10.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (25.center) to (22);
+		\draw (22) to (21);
+		\draw [in=-90, out=150] (21) to (23.center);
+		\draw [in=-90, out=30] (21) to (24.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\erefop{phaser}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (33) at (4, 11.25) {};
+		\node [style=none] (34) at (4.5, 12) {};
+		\node [style=none] (35) at (3.5, 12) {};
+		\node [style=none] (36) at (4, 10.5) {};
+		\node [style=map] (37) at (4.5, 12) {$\theta$};
+		\node [style=none] (38) at (4.5, 12.75) {};
+		\node [style=none] (39) at (3.5, 12.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=30] (33) to (34.center);
+		\draw [in=-90, out=150] (33) to (35.center);
+		\draw (36.center) to (33);
+		\draw (37) to (38.center);
+		\draw (39.center) to (35.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
 $$
-
 Phases for Frobenius algebras are closed under composition; and they form a group called the {\bf phase group} for the Frobenius algebra.  The phase group associated with a commutative Frobenius algebra is therefore Abelian.
 \end{definition}
-
 The motivating example is again  $\FHilb$, which makes sense of the name:
 \begin{example}
 Given an orthonormal basis $\{| b_j \rangle \}_{j \in \mathcal J}$ of $\mathcal H$ , the phases are generated by the following unitaries, for all $\{\theta_j \} \in [0, 1)^{\mathcal J}$:
-
 $$\sum_{j \in \mathcal J} e^{  2\pi \cdot i \cdot b_j \cdot \theta_j/d }|  b_j \rangle\langle b_j|$$
-
-
 \end{example}
-
 Recall that maps in $\CPM(\FHilb)$ are unique up to global phase, therefore when the basis has a chosen order $\{ |b_0\rangle,\cdots, |b_{d-1}\rangle \}$, as a matter of convention,  we fix $\theta_0=0$.  This means that the phases of that basis in $\CPM(\FHilb)$ are uniquely parametrized by the group $[0, 1)^{d-1}$. In the literature it is commonplace to index the phases over $[0,2\pi)^{d-1}$ rather than over $[0,1)^{d-1}$.  We chose the latter  because it is much more amenable to generalization away from quantum mechanics. 
 
 %The curve  $\{e^{2 \pi \cdot i \cdot \theta}\ | \ \theta \in [0, 1)\}$ carves out the unit circle in the complex plane so the phase group is isomorphic to the circle (hence the name).
 
 
 The normal form for spiders extends to spiders with phases:
-
 \begin{lemma}[Phased spider normal form]
 The connected components of a commutative \dag-Frobenius algebra $\xcirc$ and its phase group can be factorized into the following form; which we will call a phased-spider:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3188,9 +3001,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-The normal form induces a phased spider fusion rule:
-
+The normal form induces phased spiders $\xcirc$, and phased special spiders $\zcirc$:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3238,11 +3049,7 @@ $$
 		\draw [in=-90, out=30] (19) to (16.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
-$$
-
-Or in the case of a special Frobenius algebra $\zcirc$:
-
-$$
+\ , \hspace*{.5cm}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (32) at (20.25, -0.5) {};
@@ -3292,9 +3099,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 This notation is compatible with the non-phased spider notation, where a spider drawn with no phase corresponds to a phased spider whose phase is the identity:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3335,10 +3140,6 @@ $$
 \end{tikzpicture}
 $$
 \end{lemma}
-
-
-
-
 \begin{definition}
 \label{def:zx}
 Given some fixed dimension $d$, a fragment of the qudit {\bf ZX-calculus} is a prop generated by two strongly complementary spiders, each of which is parameterized by phase groups. 
@@ -3346,7 +3147,6 @@ Given some fixed dimension $d$, a fragment of the qudit {\bf ZX-calculus} is a p
 We also require that this comes equipped with a faithful $\dag$-symmetric monoidal functor into $\FHilb$, sending the objects $n\mapsto \ell^2((\Z/d\Z)^n)$ and sending the two phased spiders to the $Z$ and $X$-phased spiders in a way that preserves the phase-group structure.
 
 That is to say, we have spiders decorated by phase groups $G$ and $H$ and group homomorphisms $g:G\to [0,1)^d$ and $h:H\to [0,1)^d$, respectively such that:
-
 $$
 \left\llbracket\ 
 \begin{tikzpicture}
@@ -3400,16 +3200,10 @@ $$
 \sqrt{d}
 \sum_{j=0}^{d-1} e^{2\cdot \pi \cdot i \cdot j\cdot h_j(\psi)/d} \mathcal{F} | j, \ldots, j\rangle \langle j,\ldots, j| \mathcal{F}^\dag
 $$
-
-
-
 Take a fragment $\llbracket-\rrbracket:{\sf ZX}\to \Hilb$ of the ZX-calculus and a \dag-compact closed subcategory of $\X\hookrightarrow\FHilb$, such that this interpretation essentially-surjectively factoring through $\X$ (so that $\X$ contains all the objects of $\llbracket{\sf ZX}\rrbracket$ up to isomorphism).
 The fragment is {\bf universal} for $\X$ when the map ${\sf ZX}\to \X$ is full and {\bf complete} when it is faithful.
-
 \end{definition}
-
 The {\bf scalable ZX-calculus} \cite{szx} refers to the proof nets for fragments of the ZX-calculus Frobenius algebras on wires of composite dimension are denoted as follows:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3529,7 +3323,6 @@ As we use proof nets for monoidal categories extensively throughout this thesis,
 
 
 Consider the simplest fragment of the ZX-calculus:
-
 \begin{definition}
 The {\bf phase-free} qudit ZX-calculus
 is the fragment of the ZX-calculus generated by the $Z$ and $X$ spiders with no phases.
@@ -3588,38 +3381,26 @@ is the fragment of the ZX-calculus generated by the $Z$ and $X$ spiders with no 
 %\sum_{\forall (x_j) \in \F_p^n,  (y_k) \in \F_p^m: \sum  x_j= \sum y _k \mod p} | y_1 ,\ldots, y_n \rangle \langle  x_1,\ldots, x_n|
 %\end{align*}
 \end{definition}
-
-
 This has a relational semantics; to expose which we need the following definition:
-
-
 \begin{definition}
 A unitary map $f:\mathcal{H}\to \mathcal{H}$ is a {\bf stabilizer} of a state $|\phi\rangle$ on $\mathcal H$ in case $\phi$ is a +1-eigenvector of $g$ so that $g| \phi\rangle = |\phi \rangle$.
 
 
-The qudit ${\cal X}$-gate (qubit $\not$-gate)  shifts the computational basis vectors by $a$ modulo $d$:
-
+The qudit ${\cal X}$-gate (qubit $\Not$-gate)  shifts the computational basis vectors by $a$ modulo $d$:
 $$
 {\cal X} := \sum_{b=0}^{d-1} | b+1\rangle \langle b|
 \ , \hspace*{.2cm} \text{where \ \ }
 {\cal X}^a = \sum_{b=0}^{d-1} | b+a\rangle \langle b|
 $$
-
 An $X$-stabilizer of an $n$-qudit state $\phi$ is a stabilizer of the form:
-
 $$
 {\cal X}^{a_0}\otimes  {\cal X}^{a_1} \otimes \cdots \otimes {\cal X}^{a_{n-1}}
 $$
-
-
 \end{definition}
-
 The $X$ stabilizers characterize the phase-free ZX-calculus (this has been known for quite some time to both the categorical concurrency and quantum communities in the qubit case, see for example \cite[Page 8]{ih}):
-
 \begin{lemma}
 Given an odd prime $p$, $\LinRel_{\F_p}$ is isomorphic to the qupit phase-free ZX-calculus modulo invertible scalars.
 \end{lemma}
-
 \begin{proof}
 Given a phase-free ZX-diagram it is easy to see how the $X$-stabilizers form a linear subspace over $\F_p$ as follows:
 $$
@@ -3687,10 +3468,8 @@ D
 \end{tikzpicture}
  \right\}
 $$
-
 Conversely, given an $\F_p$-linear subspace, take the projector onto the  joint $+1$-eigenspace spanned by the corresponding $X$-stabilizers.  If we partition the codomain of the state into an input and output, bending the input wires down with the white spider yields an inverse to the previous mapping.
 \end{proof}
-
 \begin{example}
 Consider the following phase-free ZX-diagram: 
 $$
@@ -3716,7 +3495,6 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 Its $X$-stabilizers are parameterized by all the  $a_1,a_2,a_3,b_1,b_2,b_3 \in \F_p$ such that:
 $$
 \begin{tikzpicture}
@@ -3884,27 +3662,19 @@ a_1+a_3 = b_2+b_3
 \right\}
 $}
 \end{example}
-
-
-
 We can go add some phases to get a bit more expressiveness:
 \begin{definition}
 The $\cal X$-gate fragment of the ZX-calculus is given by adjoining the $\cal X$-gate as a generator to the phase free ZX-calculus.
 \end{definition}
-
-
 The qudit $\cal X$-gate is a phase for the 
 $X$-spider as:
-
 $$
 {\cal X} =
  \sum_{b=0}^{d-1} | b+1\rangle \langle b|
 =
  \sum_{j=0}^{d-1} e^{2 \pi\cdot i\cdot j/d} {\mathcal F} | j \rangle \langle j|  {\mathcal F}^\dag
 $$
-
 Therefore, natural number powers of the ${\cal X}$-gate are also phases for the $X$-spider as:
-
 $$
 {\cal X}^n
 = 
@@ -3912,9 +3682,7 @@ $$
 =
 \sum_{j=0}^{d-1} e^{2 \pi\cdot i\cdot n\cdot j/d} {\mathcal F}| j \rangle \langle j|  {\mathcal F}^\dag
 $$
-
 So one can ask if the the fragment of the odd prime qudit ZX-calculus with these $\cal X$-gate phases has a similar relational semantics to the phase-free ZX-calculus.  The answer is yes, and this result is not contained in the literature to my knowledge:
-
 \begin{lemma}
 $\Aff\Rel_{\F_p}$ is isomorphic to the qupit fragment of the ZX-calculus with $\cal X$-gates as phases modulo invertible scalars.
 \end{lemma}
@@ -3971,15 +3739,9 @@ $$
 =
 \sum_{\sum  x_i = \sum y _j +a \mod p} | y_1 ,\ldots, y_n \rangle \langle  x_1,\ldots, x_n|
 $$
-
 The proof is almost identical to that for linear relations and phase-free ZX-diagrams.
-
-
-
 \begin{example}
 Consider the following phase-free+$\cal X$-gate ZX-diagram:
-
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -4005,9 +3767,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 To compute the $X$ stabilizers is to find the $a_1,a_2,a_3,b_1,b_2,b_3 \in \F_p$ such that
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -4086,9 +3846,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 In $\Aff\Rel_{\F_p}$, this equation looks like:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -4164,10 +3922,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
 These $a_1,a_2,a_3,b_1,b_2,b_3$ are parameterized by the elements of the affine subspace:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -4211,10 +3966,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
 So that:
-
 $$
 \left\llbracket
 \begin{tikzpicture}
@@ -4259,13 +4011,8 @@ a_1=a_2=a_3\wedge
 a_1+a_3+c = b_2+b_3
 \right\}
 $$
-
 \end{example}
-
-
 Consider the $\mathcal Z$-gate:
-
-
 $$
 {\cal Z}
 :=
@@ -4285,13 +4032,10 @@ e^{2\cdot\pi \cdot b/d} | b\rangle \langle b|
 \sum_{b=0}^{d-1}
 e^{2\cdot\pi \cdot z\cdot b/d} | b\rangle \langle b|
 $$
-
-
 By regarding circuits in the phase-free+$Z$ gate fragment of the ZX-calculus modulo scalars in terms of their $Z$-stabilizers,  we would have similarly recovered the category of affine relations over $\F_p$.
 
 
 The $\mathcal Z$ and $\mathcal X$ operators are very important in quantum computing:
-
 \begin{definition}
 \label{definition:begin}
 Fix some local dimension $d$.
@@ -4300,34 +4044,25 @@ A single qudit {\bf Weyl operator} is an $d$-dimensional unitary of the form, $\
 An $n$-qudit Weyl operator is the $n$-fold tensor product of single qudit Weyl operators.
 
 The $n$-qudit Weyl operators form the {\bf Heisenberg-Weyl group} $\mathcal{P}_d^n$ with respect to compostion.\end{definition}
-
 Weyl operators have the following property:
-
 \begin{lemma}
 \label{lem:ueb}
 $n$-qudit Weyl operators are an orthonormal basis for the the operators
-
 $$
 \FHilb(\ell^2((\Z/d\Z)^n), \ell^2((\Z/d\Z)^n))
 \cong \ell^2((\Z/d\Z)^n)^*\otimes \ell^2((\Z/d\Z)^n)
 $$
-
 with respect to the scaled trace inner product:
-
 $$
 \langle  -,= \rangle
 :=
 \dfrac{1}{d^n}\tr((-)^\dag,=)
 $$
 \end{lemma}
-
-
 The obvious choice of operator basis would have been:
-
 $$
 \{ |a_0, \cdots, a_{n-1} \rangle \langle  b_0,\cdots, b_{n-1} | \ | \ a_0,\cdots, a_{n-1},b_0,\cdots, b_{n-1} \in \Z/d\Z \}
 $$
-
 However, these basis elements are not unitary, and therefore can not be used to correct for errors.
 On the other hand if at some point a known unitary error occurs on,  because Weyl operators form a unitary basis, the error can be undone by applying controlled Weyl operators.
 
@@ -4337,10 +4072,7 @@ Let us reexamine the phase-correction step in this protocol in more detail.
 Notice how the $Z$-and $X$-bases are respectively: 
 $$\{ \mathcal{X}^n|0\rangle \}_{n\in \Z/d\Z}
 \ , \hspace{,5cm} \{\mathcal{F}|n\rangle=\mathcal{F} \mathcal{X}^n |0\rangle =\mathcal{Z}^n \mathcal{F} |0\rangle\}_{n\in \Z/d\Z}$$
-
-
 Therefore to correct for the error $\mathcal{Z}^{-z}\mathcal{X}^{-x}$ which was communicated to him by Alice in terms as the pair of classical dits $(x,z)$,  Bob applies the following classically controlled operation:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -4428,16 +4160,14 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 Where the second last equation follows from the fact that $\mathcal{X}^x$ is a phase for the grey spider and $\mathcal{Z}^z$ is a phase for the white spider.
 
 
 
 The stabilizer formalism is a tractable tool used for correcting Pauli errors. Indeed, everything we have discussed so far, including quantum telportation is encompassed by this formalism.
 It was first introduced in  \cite{gottesman} and later generalized to qudits in various ways.  We follow the qudit generalization provided in \cite{gota}:
-
 \begin{definition}
-An $n$-qudit {\bf Clifford operator} $U$ is an $d^n$-dimensional unitary that preserves the Heisenberg-Weyl group, so that $U {\cal P}_d^{ n} U^\dag = {\cal P}_d^{ n}$.  The $n$-qudit Clifford operators form the $n$-qudit {\bf Clifford group } under matrix multiplication.  The qudit Clifford Groupoid (or full Clifford group) is the prop where the maps $n\to n$ are Clifford operators.
+An $n$-qudit {\bf Clifford operator} $U$ is an $d^n$-dimensional unitary that preserves the Heisenberg-Weyl group, so that $U {\cal P}_d^{ n} U^\dag = {\cal P}_d^{ n}$.  The $n$-qudit Clifford operators form the $n$-qudit {\bf Clifford group } under matrix multiplication.  The qudit Clifford Groupoid (or full Clifford group) is the prop where the maps $n\to n$ are qudit Clifford operators.
 
 
 An $n$-qudit (pure) {\bf stabilizer state} is a state $ U |0\rangle^{\otimes n}$ for an $n$-qudit Clifford $U$.
@@ -4445,90 +4175,62 @@ An $n$-qudit (pure) {\bf stabilizer state} is a state $ U |0\rangle^{\otimes n}$
 
 Given any $n$-qudit pure stabilizer state $|\psi \rangle$,  the {\bf stabilizer group} of $|\psi \rangle$   is the subgroup of ${\cal S}_{|\psi\rangle} \subset {\cal P}_d^{ n}$  whose elements  stabilize $|\psi\rangle$.
 \end{definition}
-
 The reason why stabilizer states are so nice is because we can chose to work with their very well-behaved stabilizer groups:
-
-
 \begin{lemma}
 Stabilizer states are determined, up to global phase, by their stabilizer groups, and stabilizer groups are in bijection with maximal abelian subgroups of $ {\cal P}_d^{ n}$.
 \end{lemma}
-
-
-
 \begin{definition}
 The prop of qudit {\bf stabilizer circuits}, generated by qudit Clifford operators as well as the state $|0\rangle$ and effect $\langle 0|$.
 \end{definition}
-
-
-
 There is a crucial difference between the  qubit and quopit Heinsenberg-Weyl group:
-
 \begin{lemma}
-Single quopit Weyl operators all can be factored into the following form for $a,z,x \in \F_p$:
-
-$$
+All single quopit Weyl operators all can be factored into
+$
 e^{2\pi \cdot i\cdot a /p} {\cal Z}^z{\cal X}^x
-$$
-
-Whereas single qubit Weyl operators can be factored into the following form for $z,x \in \F_2$ and $a \in \Z/4\Z$:
-
-$$
+$ 
+for $a,z,x \in \F_p$.
+Whereas all single qubit Weyl operators can be factored into 
+$
  i^a {\cal Z}^z{\cal X}^x
-$$
-
+$
+for $z,x \in \F_2$ and $a \in \Z/4\Z$.
 \end{lemma}
-
 This difference between qubits and quopits  is also reflected in the structure of the Clifford groupoid:
-
 \begin{lemma}[{\cite[Page 5]{gota}}]
 Up to nonzero scalars, the qupit Clifford groupoid is generated by the Fourier transform $\mathcal F$, the  phase-shift gate $\mathcal S$, controlled-$\mathcal X$ gate $\mathcal{C}_{\mathcal X}$, and scaling gates $\mathcal{M}_a$ for every $a \in \F_p^*$ where:
-
-
 $$
 \mathcal{C}_{\mathcal X}:= \sum_{j,k=0}^{p-1} |j,j+k \rangle \langle j,k |\, \hspace*{.5cm}
 \mathcal{M}_a := \sum_{j=0}^{p-1} |j\cdot a \rangle\langle j |
 $$ 
-
-Such that for qubits:
 $$
+\text{Such that for qubits, }
 \mathcal{S}:= \sum_{j=0}^{1} i^j |j\rangle\langle j |
-$$
-
-
-And for quopits
-
-$$
+\text{, and for quopits, }
 \mathcal{S}:= \sum_{j=0}^{p-1} e^{\pi\cdot i \cdot j(j-1)/(2p)} |j\rangle\langle j |
 $$
 \end{lemma}
-
-
 As we will discuss in much further detail in Chapter \ref{chap:stab}, the ZX-calculus is naturally suited for stabilizer circuits:
-
 \begin{definition}
 The {\bf qubit stabilizer fragment of the ZX-calculus} is generated by two spiders with phases in the group $\Z/4\Z$ where:
 $$
 \Z/4\Z \to [0,1)^2;\ n \mapsto (0,n/4)
 $$
-
 The generators of qubit stabilizer circuits are interpreted as follows:
-
-
 $$
 \llbracket {\mathcal F}\rrbracket=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (31) at (14.5, -0.25) {};
-		\node [style=none] (32) at (14.5, -2.75) {};
-		\node [style=Z] (33) at (14.5, -2.25) {$\hspace*{.05cm}1\hspace*{.05cm}$};
-		\node [style=Z] (34) at (14.5, -0.75) {$\hspace*{.05cm}1\hspace*{.05cm}$};
-		\node [style=X] (35) at (14.5, -1.5) {$\hspace*{.05cm}1\hspace*{.05cm}$};
+		\node [style=none] (68) at (396.5, -0.45) {};
+		\node [style=none] (69) at (396.5, -2.55) {};
+		\node [style=Z] (70) at (396.5, -2.1) {$1$};
+		\node [style=Z] (71) at (396.5, -0.9) {$1$};
+		\node [style=X] (72) at (396.5, -1.5) {$1$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (32.center) to (33);
-		\draw (33) to (35);
-		\draw (35) to (34);
-		\draw (34) to (31.center);
+		\draw (69.center) to (70);
+		\draw (70) to (72);
+		\draw (72) to (71);
+		\draw (71) to (68.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 \ ,\hspace*{.2cm}
@@ -4537,7 +4239,7 @@ $$
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (1.25, -1) {};
 		\node [style=none] (1) at (1.25, -2.5) {};
-		\node [style=X] (4) at (1.25, -1.75) {$\hspace*{.05cm}1\hspace*{.05cm}$};
+		\node [style=X] (4) at (1.25, -1.75) {$1$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw (1.center) to (4);
@@ -4550,7 +4252,7 @@ $$
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (1.25, -1) {};
 		\node [style=none] (1) at (1.25, -2.5) {};
-		\node [style=X] (4) at (1.25, -1.75) {$\hspace*{.05cm}2\hspace*{.05cm}$};
+		\node [style=X] (4) at (1.25, -1.75) {$2$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw (1.center) to (4);
@@ -4599,30 +4301,26 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 The {\bf quopit stabilizer fragment of the ZX-calculus} is generated by two spiders with phases in the group $(\Z/p\Z)^2$ where:
-
 $$
 (\Z/p\Z)^2 \to [0,1)^p; \ (n,m)\mapsto  \prod_{j=0}^{p-1} (n j +m j^2)/(2p) \mod 1
 $$
-
 The generators of quopit stabilizer circuits are interpreted as follows:
-
 $$
 \llbracket {\mathcal F}\rrbracket=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (0) at (1.25, 0) {};
-		\node [style=none] (1) at (1.25, -3.5) {};
-		\node [style=Z] (2) at (1.25, -2.75) {$\hspace*{.05cm}0,1\hspace*{.05cm}$};
-		\node [style=Z] (3) at (1.25, -0.75) {$\hspace*{.05cm}0,1\hspace*{.05cm}$};
-		\node [style=X] (4) at (1.25, -1.75) {$\hspace*{.05cm}0,-1\hspace*{.05cm}$};
+		\node [style=none] (73) at (397.5, -0.575) {};
+		\node [style=none] (74) at (397.5, -2.9) {};
+		\node [style=Z] (75) at (397.5, -2.375) {$0,1$};
+		\node [style=Z] (76) at (397.5, -1.1) {$0,1$};
+		\node [style=X] (77) at (397.5, -1.75) {$0,-1$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (1.center) to (2);
-		\draw (2) to (4);
-		\draw (4) to (3);
-		\draw (3) to (0.center);
+		\draw (74.center) to (75);
+		\draw (75) to (77);
+		\draw (77) to (76);
+		\draw (76) to (73.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 \ ,\hspace*{.2cm}
@@ -4631,7 +4329,7 @@ $$
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (1.25, -1) {};
 		\node [style=none] (1) at (1.25, -2.5) {};
-		\node [style=X] (4) at (1.25, -1.75) {$\hspace*{.05cm}0,1\hspace*{.05cm}$};
+		\node [style=X] (4) at (1.25, -1.75) {$0,1$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw (1.center) to (4);
@@ -4644,7 +4342,7 @@ $$
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (1.25, -1) {};
 		\node [style=none] (1) at (1.25, -2.5) {};
-		\node [style=X] (4) at (1.25, -1.75) {$\hspace*{.05cm}1,0\hspace*{.05cm}$};
+		\node [style=X] (4) at (1.25, -1.75) {$1,0$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw (1.center) to (4);
@@ -4695,44 +4393,30 @@ $$
 $$
 \end{definition}
 The scaling gate is derived in stabilizer circuits, so it need not be stated. However it it corresponds to the multiplication of a scalar under the embdedding:
-
 $$
 (\Mat_{\F_p},+) \to (\LinRel_{\F_p},+) \to (\FHilb/\sim,\otimes)
 $$
-
-
 Even though the quopit and qubit stabilizer fragments of the ZX-calculus diverge, they coincide when the phases are restricted, as we have seen during our analysis of the phase free and phase free+X/Z gates fragments of the ZX-calculus.
-
 \begin{definition}
 \label{def:biaffine}
 Given any prime $p$, the {\bf biaffine} fragment of the stabilizer ZX-calculus is generated by $Z$ and $X$ spiders with phases in $\Z/p\Z$ where:
-
 $$
 \Z/p\Z \to [0,1)^p; \ n \mapsto  \prod_{j=0}^{p-1} (n j)/(2p)
 $$
-
-
 \end{definition}
-
-
-
 The qubit \cite{backensstab,backens2015} and qutrit \cite{qutrit} stabilizer ZX-calculi both have complete presentations.  However, during the process of writing this thesis, an axiomatization was provided for the quopit stabilizer ZX-calculus \cite{booth}, followed shortly by an even simpler presentation \cite{poor}.  It is worth noting that the scaling in the interpretations of the generators in \cite{poor,booth} differ slightly for techinical reasons (specifically they designed their presentations to be flexsymmetric following \cite[\S 5]{flexsymmetric}).
 
 We will return to the quopit stabilizer fragment of the ZX-calculus as well as the qupit biaffine stabilizer fragment of the ZX-calculus later on in Chapter \ref{chap:stab}.  We will give a relational semantics for both the pure and mixed settings.
 
 Despite being used being used extensively for error correction, unlike general quantum circuits, stabilizer circuits are not any more powerful than classical probabilistic computing \ref{chap:stab}:
-
 \begin{theorem}[Gottesman-Knill]
 Stabilizer circuits can be classically probabilistically  simulated in polynomial time.
 \end{theorem}
-
 The original proof for qudits is found in  \cite{gottesmanknill}; however, it follows immediately for qudits.  Later on, we will effectively reprove the quopit Gottesman-Knill theorem when we give a relational characterization of quopit stabilizer circuits.  In fact stabilizer circuits are the largest classically simulatable fragment containing the Clifford group:
-
 \begin{proposition}[{\cite[Appendix D]{campbell}}]
 \label{prop:campbell}
 Adding any non-Clifford unitary to stabilizer circuits is an approximately universal set of generators for qupit  circuits.
 \end{proposition}
-
 By approximately universal, this means that such a set of generators is dense in the appropriate sense.
 The qubit case seems to be folklore; the reference I provided was for qupits.  Surely this also holds for all dimensions, but the group theory becomes harder.  It is dense in an efficient way, by the Solvay -Kiataev theorem, proved initially for qubits  \cite{Kitaev1997}, and later for qudits \cite[\S 5]{Dawson2006}.
 
@@ -4744,10 +4428,8 @@ Later complete presentations for the full qubit ZX-calculus followed,  where all
 Up until this point, we have discussed quantum circuits as being generated by spiders. Although spiders are good for copying and adding standard basis elements; it is hard to construct nonlinear behaviour using these generators.
 
 To accommodate for this, {\bf $H$-boxes} were devised in the qubit case by \cite{zh}:
-
 \begin{definition}
 Given any $c\in \C$, the $c$-labelled qubit $H$-box with $n$ inputs and $m$ outputs is the operator $\ell^2(\F_2^n)\to \ell^2(\F_2^m)$:
-
 $$
 \left\llbracket
 \begin{tikzpicture}
@@ -4772,14 +4454,11 @@ $$
 \sum_{a_0,\ldots, a_{n-1},b_0,\ldots, b_{m-1} =0}^1
 c^{a_0\cdot\ldots\cdot a_{n-1}\cdot b_0\cdot\ldots\cdot b_{m-1}} | b_0,\ldots, b_{m-1}\rangle \langle a_0,\ldots, a_{n-1} |
 $$
-
-
 Ie, the matrix where all entries are $1$, except for the bottom-right entry which is $c$.
 
 
 The $H$-box with label $-1$ and one input and one out is equal to $\sqrt{2}\mathcal{F}$.
 Because of this relationship with the Fourier transform, a ``phase-free'' $H$-box with no label, corresponds to one with label -1:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -4818,14 +4497,12 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 This is the reason for the name ``$H$-box'' as the qubit Fourier transform is often called the ``Hadamard gate.''
 
 One should not confuse an $H$-box with one input and one output (drawn in grey) with the antipode for the Hopf algebra (drawn in black) for the $Z$ and $X$-spiders.
 
 
 Although $H$-boxes do not correspond to Frobenius algebras, they do satisfy a sort of fusion rule:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -4869,11 +4546,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
-
-
 The following diagram multiplies standard basis elements:
-
 \begin{align*}
 \left\llbracket\
 \begin{tikzpicture}
@@ -4898,9 +4571,7 @@ The following diagram multiplies standard basis elements:
 \sum_{a_0,\ldots, a_{n-1}=0}^1
 |a_0\cdot\ldots\cdot a_{n-1}\rangle\langle a_0,\cdots, a_{n-1}|
 \end{align*}
-
 That is to say, $H$-boxes, allow us to construct and-gates, which we denote as follows:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -4936,9 +4607,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-
 \end{definition}
-
 In analogy to the ZX-calculus, the {\bf ZH-calculus} is presented by unphased $Z$ and $X$-spiders, the $\cal X$-gate and phased $H$-boxes.
 
 
