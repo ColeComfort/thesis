@@ -371,7 +371,7 @@ We present this construction in terms of a quotient of the $\CoPara$ constructio
 \begin{definition}
 \label{def:cpm}
 %Dagger category... equivalent to ioo compact closed conjugation 
-Given a compact closed $\dag$-symmetric monoidal category $\X$, then  $\CPM(\X)$ is the quotient of ${\CoPara}(\X)$ by the congruence relation:
+Given a compact closed $\dag$-symmetric monoidal category $\X$, then  $\CPM(\X,(-)^\dag)$  (which we will denote by  $\CPM(\X)$ when the dagger is clear from the context) is the quotient of ${\CoPara}(\X)$ by the congruence relation:
 $$
 \left(X\xrightarrow{(f,S)} Y\right) \sim \left(X\xrightarrow{(g,T)} Y\right)  \iff
 \begin{tikzpicture}
@@ -523,7 +523,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-The canonical functor $\X\to \CoPara(\X)\to\CPM(\X,\dag)$ taking $f \mapsto (f,I)$ is called {\bf doubling}. The maps in the image of this functor are {\bf pure}, and those which aren't are {\bf mixed}.
+The canonical functor $\X\to \CoPara(\X)\to\CPM(\X)$ taking $f \mapsto (f,I)$ is called {\bf doubling}. The maps in the image of this functor are {\bf pure}, and those which aren't are {\bf mixed}.
 A map $f:X\to Y$ in $\CPM(\X)$ is called {\bf trace-preserving} when $f;d_Y = d_X$:
 $$
 \begin{tikzpicture}
@@ -742,7 +742,7 @@ Therefore, we shall invoke the $\CPM$ construction for both dagger structures an
 
 As mentioned before, the following example motivated this categorical construction:
 \begin{example}
-$\CPM(\FHilb, \dag)$ is the dagger compact closed category of density matrices between finite dimensional Hilbert spaces.
+$\CPM(\FHilb, (-)^\dag)$ is the dagger compact closed category of density matrices between finite dimensional Hilbert spaces.
 
 
 Or equivalently, preserving the  \dag-compact closed structure, 
@@ -770,7 +770,7 @@ This basis dependent, probabilistic interpretation of quantum measurement is cal
 
 The $\CPM$ construction and special commutative $\dag$-Frobenius algebras allow us to perform quantum measurement using only string diagrams.  Some mathematical machinery is needed first:
 \begin{definition}
-Given a special \dag-commutative Frobenius algebra $B$ on a \dag-compact closed category $\X$, define the projector onto the $B$ basis to be the following map in $ \CPM(\X,\dag)$:
+Given a special \dag-commutative Frobenius algebra $B$ on a \dag-compact closed category $\X$, define the projector onto the $B$ basis to be the following map in $ \CPM(\X)$:
 $$
 p_B:=
 \begin{tikzpicture}[scale=-1]
@@ -1291,7 +1291,7 @@ $$
 Therefore it is actually a projector.
 
 
-Given a quantum state $| \psi \rangle$ and an orthonormal basis  $B$, a  {\bf destructive measurement} on $|\psi\rangle$ with respect to $B$ is performed by projecting $|\psi\rangle$ onto $B$ as $p_B|\psi\rangle$.  A destructive measurement with respect to $B$ transforms a quantum state into a stochastic mixture of all of the basis elements of $B$ while discarding the measurement outcome.
+Given a quantum state $| \psi \rangle$ and an orthonormal basis  $B$; $|\psi\rangle$ is said to {\bf collapse} onto the basis  $B$  when it is postcompsed with $p_B$ as follows $p_B|\psi\rangle$.  This  transforms a quantum state into a stochastic mixture of all of the basis elements of $B$.
 
 
 
@@ -1339,7 +1339,7 @@ In particular, when $\X$ is $\dag$-compact closed then so is ${\sf Split}^\dag(\
 In \cite{idempotent}, they show that splitting projectors in $\CPM(\FHilb)$ yields a category where the the split projectors can be interpreted as classical types:
 \begin{remark}
 \label{rem:stoch}
-Given a basis $B = \{|b_j\rangle \}_{j \in {\mathcal J}}$ for $\mathcal{H}$, the isometry  $(p_B,1_\mathcal{H}, 1_\mathcal{H}) :(\mathcal{H},p_B)\to (\mathcal{H},1_\mathcal{H})$ is regarded as the {\bf state preparation map} and its adjoint $(1_\mathcal{H},1_\mathcal{H}, p_B) :(\mathcal{H},1_\mathcal{H})\to (\mathcal{H},p_B)$  a {\bf nondestructive measurement}, with respect to the basis $B$.  The maps between these idempotents are (un-normalized) stochastic processes.
+Given a basis $B = \{|b_j\rangle \}_{j \in {\mathcal J}}$ for $\mathcal{H}$, the isometry  $(p_B,1_\mathcal{H}, 1_\mathcal{H}) :(\mathcal{H},p_B)\to (\mathcal{H},1_\mathcal{H})$ is regarded as the {\bf state preparation map} and its adjoint $(1_\mathcal{H},1_\mathcal{H}, p_B) :(\mathcal{H},1_\mathcal{H})\to (\mathcal{H},p_B)$  a {\bf destructive measurement}, with respect to the basis $B$.  The maps between these idempotents are (un-normalized) stochastic processes.
 \end{remark}
 Let us unpack this a bit. 
 %Suppose we have the classical state $|b_j\rangle$.  This corresponds to the state $(1_I,|b_j\rangle, p_B):(I,1_I)\to (\mathcal{H},p_b)$.  Now postcomposing this with the state preparation map $(p_B,p_B,1_\mathcal{H}) :(\mathcal{H},p_B)\to (\mathcal{H},1_\mathcal{H})$ regards $|b_j \rangle$ as a pure quantum state.  
@@ -1472,17 +1472,18 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-Because the equivalence classes of $\CPM(\FHilb)$ are defined in terms of the complex conjugation of maps in $\FHilb$;  $g$ unique up to a scalar factor $e^{2\pi\cdot i\cdot \theta}$ for some $\theta \in [0,1)$.  That is to say, these maps are unique {\bf up to global phase}.
+Because the equivalence classes of $\CPM(\FHilb)$ are defined in terms of the complex conjugation of maps in $\FHilb$;  the representative $g$ in $\FHilb$ is unique up to a scalar factor $e^{2\pi\cdot i\cdot \theta}$ for some $\theta \in [0,1)$.  That is to say, these maps are unique {\bf up to global phase}.
 
 
 
-Therefore, up to global phase $(\mathcal{H},e_B)$ can be identified with the the Hilbert space $\mathcal{H}$; where state preparation  $(p_B, 1_{\mathcal H},1_{\mathcal H})$  and nondestructive measurement $(1_{\mathcal H},1_{\mathcal H}, p_B)$ correspond to the following maps:
-$$
+Take $\mathcal{H}=\mathcal{H}'$.  Up to global phase, the subobject $(\mathcal{H},e_B)$ can be identified with the the Hilbert space $\mathcal{H}$; where state preparation with respect to to $\xcirc$ and nondestructive measurement with repsect to $\zcirc$ correspond to the following maps:
+$$ 
+\left\llbracket(1_{\mathcal H},1_{\mathcal H}, p_{B'})\right\rrbracket=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (143) at (106.925, 1.65) {};
 		\node [style=none] (144) at (107.475, -0.225) {};
-		\node [style=Z] (145) at (106.925, 1.025) {};
+		\node [style=X] (145) at (106.925, 1.025) {};
 		\node [style=none] (146) at (106.675, 0.525) {};
 		\node [style=none] (147) at (105.975, 0.525) {};
 		\node [style=none] (148) at (105.975, 1.65) {};
@@ -1496,6 +1497,10 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 \ ,\hspace*{1cm} 
+\left\llbracket
+(p_B, 1_{\mathcal H},1_{\mathcal H})
+\right\rrbracket
+=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (149) at (109.5, -0.725) {};
@@ -1514,7 +1519,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-We can see how the state preparation map and measurement maps for $\zcirc$ double the basis elements $|b_j\rangle$ and $\langle b_j|$ of $B$ and $B^*$:
+The state preparation map and measurement maps for $\zcirc$ double the basis elements $|b_j\rangle$ and $\langle b_j|$ of $B$ and $B^*$:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1595,7 +1600,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-Given a quantum state  $|\phi\rangle$ on $\mathcal H$ with an elelement $\psi$ in its equivalence class, measuring in the $B$-basis has the following effect:
+Given a quantum state  $|\phi\rangle$ on $\mathcal H$,  measuring in the $B$-basis has the following effect:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1607,7 +1612,7 @@ $$
 		\node [style=none] (184) at (124.35, -0.475) {};
 		\node [style=none] (185) at (124.35, -0.975) {};
 		\node [style=none] (186) at (124.75, -0.975) {};
-		\node [style=map] (187) at (124.575, -1) {$\psi$};
+		\node [style=map] (187) at (124.575, -1) {$\phi\rangle$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [in=90, out=180] (182.center) to (181);
@@ -1686,7 +1691,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-The state preparation and measurement are drawn as thin spiders interfacing between thick and thin wires:
+The state preparation and measurement are drawn as thin spiders interfacing between the quantum and classical systems:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1781,7 +1786,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-The thin border on $\zcirc$ indicates that the state has been measured in the basis $\zcirc$, and is no longer pure and is a stochastic mixture of the basis element of $B$.
+The thin border on $\zcirc$ indicates that the state has been measured in the basis $\zcirc$ and is a stochastic mixture of the basis element of $B$.
 When a pure spider is connected to a bastard spider they both fuse into a bastard spider:
 $$
 \begin{tikzpicture}
@@ -2011,7 +2016,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-Note that all isometries and unitaries in $\CPM(\FHilb)$ are pure; so we always drawn them with a thick border.
+Note that all isometries and unitaries in $\CPM(\FHilb)$ are pure so we always drawn them with a thick border.
 This notation allows us to state define a very special notion of purification in $\CPM(\FHilb)$:
 \begin{proposition}[Stinespring dilation]
 Given a trace preserving  map  $V$ in $\CPM(\FHilb)$, there exists a unitary $U$ such that:
@@ -2047,7 +2052,7 @@ $$
 $$
 For all special commutative  \dag-Frobenius algebras $\zcirc$.
 \end{proposition}
-The proof is relatively involved so I will omit it.  See \cite{Stinespring1955} for the original statement, and \cite[Corollary 6.63]{pqp} for the graphical version which we use.  Essentially, this significance  of this result is that quantum processes can always be produced by first preparing a state, then applying quantum evolution and then discarding part of the state.
+The proof is relatively involved so I will omit it.  See \cite{Stinespring1955} for the original statement, and \cite[Corollary 6.63]{pqp} for the graphical version which we use.  Essentially, the significance  of this result is that quantum processes can always be produced by first preparing a state, then applying quantum evolution and then discarding part of the state.
 
 There is another closely related result which we will make use of:
 \begin{proposition}[Essential uniqueness of purification]
@@ -2191,6 +2196,22 @@ Strongly complementary bases have important information-theoretical properties:
 \label{lem:strongcomp}
 Given two strongly complementary bases given by special commutative \dag-Frobenius alegbras $\zcirc$ and $\xcirc$ preparing a state with respect to basis $\zcirc$ and measuring with respect to $\xcirc$ preserves no infomation, as:
 $$
+\left\llbracket\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (0) at (20, -1) {};
+		\node [style=X] (1) at (20, 0) {};
+		\node [style=none] (2) at (20, 1) {};
+		\node [style=none] (3) at (20, -2) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (3.center) to (0);
+		\draw (1) to (2.center);
+		\draw[thick] (0) to (1);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\ \right\rrbracket
+=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (146) at (75.175, -1.275) {};
@@ -2261,35 +2282,6 @@ $$
 	\begin{pgfonlayer}{edgelayer}
 		\draw (85) to (84.center);
 		\draw (87) to (86.center);
-	\end{pgfonlayer}
-\end{tikzpicture}
-$$
-Or in the bastard spider notation:
-$$
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (20, -1) {};
-		\node [style=X] (1) at (20, 0) {};
-		\node [style=none] (2) at (20, 1) {};
-		\node [style=none] (3) at (20, -2) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (3.center) to (0);
-		\draw (1) to (2.center);
-		\draw[thick] (0) to (1);
-	\end{pgfonlayer}
-\end{tikzpicture}
-=
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (20, -1) {};
-		\node [style=X] (1) at (20, 0) {};
-		\node [style=none] (2) at (20, 1) {};
-		\node [style=none] (3) at (20, -2) {};
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw (3.center) to (0);
-		\draw (1) to (2.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
@@ -2577,7 +2569,7 @@ $$
 		\node [style=none] (44) at (392.5, 5.7) {};
 		\node [style=none] (45) at (388.25, 6.7) {};
 		\node [style=none] (46) at (392.5, 6.7) {};
-		\node [style=none] (47) at (387, 6.55) {Phase correction};
+		\node [style=none] (16) at (386.5, 6.75) {Phase correction};
 		\node [style=none] (48) at (387, 5.7) {Measurement};
 		\node [style=Xthick] (49) at (389.25, 4.6) {};
 		\node [style=Zthick] (50) at (390, 5.1) {};
@@ -3200,7 +3192,7 @@ $$
 \sqrt{d}
 \sum_{j=0}^{d-1} e^{2\cdot \pi \cdot i \cdot j\cdot h_j(\psi)/d} \mathcal{F} | j, \ldots, j\rangle \langle j,\ldots, j| \mathcal{F}^\dag
 $$
-Take a fragment $\llbracket-\rrbracket:{\sf ZX}\to \Hilb$ of the ZX-calculus and a \dag-compact closed subcategory of $\X\hookrightarrow\FHilb$, such that this interpretation essentially-surjectively factoring through $\X$ (so that $\X$ contains all the objects of $\llbracket{\sf ZX}\rrbracket$ up to isomorphism).
+Take a fragment $\llbracket-\rrbracket:{\sf ZX}\to \Hilb$ of the ZX-calculus and a \dag-compact closed subcategory of $\X\hookrightarrow\FHilb$, such that this interpretation essentially-surjectively factors through $\X$ (so that $\X$ contains all the objects of $\llbracket{\sf ZX}\rrbracket$ up to isomorphism).
 The fragment is {\bf universal} for $\X$ when the map ${\sf ZX}\to \X$ is full and {\bf complete} when it is faithful.
 \end{definition}
 The {\bf scalable ZX-calculus} \cite{szx} refers to the proof nets for fragments of the ZX-calculus Frobenius algebras on wires of composite dimension are denoted as follows:
@@ -3386,15 +3378,52 @@ This has a relational semantics; to expose which we need the following definitio
 A unitary map $f:\mathcal{H}\to \mathcal{H}$ is a {\bf stabilizer} of a state $|\phi\rangle$ on $\mathcal H$ in case $\phi$ is a +1-eigenvector of $g$ so that $g| \phi\rangle = |\phi \rangle$.
 
 
-The qudit ${\cal X}$-gate (qubit $\Not$-gate)  shifts the computational basis vectors by $a$ modulo $d$:
+The qudit ${\cal X}$-gate (qubit $\Not$-gate)  shifts the X-basis vectors by $a$ mod $d$:
 $$
 {\cal X} := \sum_{b=0}^{d-1} | b+1\rangle \langle b|
 \ , \hspace*{.2cm} \text{where \ \ }
 {\cal X}^a = \sum_{b=0}^{d-1} | b+a\rangle \langle b|
 $$
+
+Similarly, the  qudit ${\cal Z}$-gate  shifts the Z-basis vectors by $a$ mod $d$:
+$$
+{\cal Z}
+:=
+{\cal F}
+{\cal X}
+{\cal F}^\dag
+=
+\sum_{b=0}^{d-1}
+e^{2\cdot\pi \cdot b/d} | b\rangle \langle b|
+\ , \hspace*{.2cm} \text{where \ \ }
+{\cal Z}^z
+=
+{\cal F}
+{\cal X}^z
+{\cal F}^\dag
+=
+\sum_{b=0}^{d-1}
+e^{2\cdot\pi \cdot z\cdot b/d} | b\rangle \langle b|
+$$
+
+
 An $X$-stabilizer of an $n$-qudit state $\phi$ is a stabilizer of the form:
 $$
-{\cal X}^{a_0}\otimes  {\cal X}^{a_1} \otimes \cdots \otimes {\cal X}^{a_{n-1}}
+{\cal X}^{a_0}
+\otimes  {\cal X}^{a_1}
+\otimes 
+\cdots 
+\otimes {\cal X}^{a_{n-2}}
+\otimes {\cal X}^{a_{n-1}}
+$$
+Similarly, a $Z$-stabilizer of an $n$-qudit state $\phi$ is a stabilizer of the form:
+$$
+{\cal Z}^{a_0}
+\otimes  {\cal Z}^{a_1} 
+\otimes 
+\cdots
+\otimes {\cal Z}^{a_{n-2}}
+\otimes {\cal Z}^{a_{n-1}}
 $$
 \end{definition}
 The $X$ stabilizers characterize the phase-free ZX-calculus (this has been known for quite some time to both the categorical concurrency and quantum communities in the qubit case, see for example \cite[Page 8]{ih}):
@@ -3468,7 +3497,15 @@ D
 \end{tikzpicture}
  \right\}
 $$
-Conversely, given an $\F_p$-linear subspace, take the projector onto the  joint $+1$-eigenspace spanned by the corresponding $X$-stabilizers.  If we partition the codomain of the state into an input and output, bending the input wires down with the white spider yields an inverse to the previous mapping.
+Conversely, given an $\F_p$-linear subspace, take the projector onto the  joint $+1$-eigenspace spanned by the corresponding $X$-stabilizers:
+$$
+S\mapsto \sum_{(x_1,\cdots, x_n) \in S} \dfrac{1}{|S|} | x_1, \cdots x_n \rangle\langle x_1, \cdots, x_n  |
+$$
+%Given a basis $\{e_1,\cdots, e_\ell\}$ for $S$, this projector can be written even more succinctly:
+%$$
+%\prod_{j=1}^\ell \dfrac{I+{\mathcal Z}^{e_j}}{2}
+%$$
+Regarding this as a state on $\ell^{2}(\F_p^n)$ in $\CPM(\FHilb)$, partition the codomain of the state into an input and output.  Bending the input wires down with the white spider yields an inverse to the previous mapping.
 \end{proof}
 \begin{example}
 Consider the following phase-free ZX-diagram: 
@@ -3670,7 +3707,7 @@ The qudit $\cal X$-gate is a phase for the
 $X$-spider as:
 $$
 {\cal X} =
- \sum_{b=0}^{d-1} | b+1\rangle \langle b|
+ \sum_{j=0}^{j-1} | j+1\rangle \langle j|
 =
  \sum_{j=0}^{d-1} e^{2 \pi\cdot i\cdot j/d} {\mathcal F} | j \rangle \langle j|  {\mathcal F}^\dag
 $$
@@ -3678,7 +3715,7 @@ Therefore, natural number powers of the ${\cal X}$-gate are also phases for the 
 $$
 {\cal X}^n
 = 
- \sum_{bj=0}^{d-1} | j+n\rangle \langle j|
+ \sum_{j=0}^{d-1} | j+n\rangle \langle j|
 =
 \sum_{j=0}^{d-1} e^{2 \pi\cdot i\cdot n\cdot j/d} {\mathcal F}| j \rangle \langle j|  {\mathcal F}^\dag
 $$
@@ -4012,27 +4049,7 @@ a_1+a_3+c = b_2+b_3
 \right\}
 $$
 \end{example}
-Consider the $\mathcal Z$-gate:
-$$
-{\cal Z}
-:=
-{\cal F}
-{\cal X}
-{\cal F}^\dag
-=
-\sum_{b=0}^{d-1}
-e^{2\cdot\pi \cdot b/d} | b\rangle \langle b|
-\ , \hspace*{.2cm} \text{where \ \ }
-{\cal Z}^z
-=
-{\cal F}
-{\cal X}^z
-{\cal F}^\dag
-=
-\sum_{b=0}^{d-1}
-e^{2\cdot\pi \cdot z\cdot b/d} | b\rangle \langle b|
-$$
-By regarding circuits in the phase-free+$Z$ gate fragment of the ZX-calculus modulo scalars in terms of their $Z$-stabilizers,  we would have similarly recovered the category of affine relations over $\F_p$.
+Notice that there is nothing particularly special about the $\mathcal X$-gate.  By interpreting circuits in the phase-free/phase-free+$\mathcal Z$ gate fragment of the ZX-calculus modulo scalars in terms of their $Z$-stabilizers,  we would have similarly recovered the categories of linear/affine relations over $\F_p$. 
 
 
 The $\mathcal Z$ and $\mathcal X$ operators are very important in quantum computing:
@@ -4043,8 +4060,9 @@ A single qudit {\bf Weyl operator} is an $d$-dimensional unitary of the form, $\
 
 An $n$-qudit Weyl operator is the $n$-fold tensor product of single qudit Weyl operators.
 
-The $n$-qudit Weyl operators form the {\bf Heisenberg-Weyl group} $\mathcal{P}_d^n$ with respect to compostion.\end{definition}
-Weyl operators have the following property:
+The $n$-qudit Weyl operators form the {\bf Heisenberg-Weyl group} (or the qubit Pauli group) $\mathcal{P}_d^n$ with respect to compostion.
+\end{definition}
+Weyl operators have the following property (see \cite[\S 10.3.1]{nielsen}):
 \begin{lemma}
 \label{lem:ueb}
 $n$-qudit Weyl operators are an orthonormal basis for the the operators
@@ -4161,13 +4179,16 @@ $$
 \end{tikzpicture}
 $$
 Where the second last equation follows from the fact that $\mathcal{X}^x$ is a phase for the grey spider and $\mathcal{Z}^z$ is a phase for the white spider.
+%
+%Recall the Stinespring dialtion of a trace preserving map in $\CPM(\FHilb)$.  Using what we know about phase correction and measurement using the $Z$ and $X$ bases, turning the state on the bottom left into a state preparation map in in the $Z$ basis and the discard into a measurement in the $Z$ basis.  This describes the evolution of a quantum state with classical inputs and outputs:
+%
+% we get a model of the quantum evolution of a state 
 
 
-
-The stabilizer formalism is a tractable tool used for correcting Pauli errors. Indeed, everything we have discussed so far, including quantum telportation is encompassed by this formalism.
+The stabilizer formalism is a tractable tool used for correcting errors. Indeed, everything we have discussed so far, including quantum telportation is encompassed by this formalism.
 It was first introduced in  \cite{gottesman} and later generalized to qudits in various ways.  We follow the qudit generalization provided in \cite{gota}:
 \begin{definition}
-An $n$-qudit {\bf Clifford operator} $U$ is an $d^n$-dimensional unitary that preserves the Heisenberg-Weyl group, so that $U {\cal P}_d^{ n} U^\dag = {\cal P}_d^{ n}$.  The $n$-qudit Clifford operators form the $n$-qudit {\bf Clifford group } under matrix multiplication.  The qudit Clifford Groupoid (or full Clifford group) is the prop where the maps $n\to n$ are qudit Clifford operators.
+An $n$-qudit {\bf Clifford operator} $U$ is an $d^n$-dimensional unitary that preserves the Heisenberg-Weyl group, so that $U {\cal P}_d^{ n} U^\dag = {\cal P}_d^{ n}$.  The $n$-qudit Clifford operators form the $n$-qudit {\bf Clifford group } under matrix multiplication.  The qudit Clifford groupoid (or full Clifford group) is the prop where the maps $n\to n$ are qudit Clifford operators.
 
 
 An $n$-qudit (pure) {\bf stabilizer state} is a state $ U |0\rangle^{\otimes n}$ for an $n$-qudit Clifford $U$.
@@ -4408,7 +4429,7 @@ The qubit \cite{backensstab,backens2015} and qutrit \cite{qutrit} stabilizer ZX-
 
 We will return to the quopit stabilizer fragment of the ZX-calculus as well as the qupit biaffine stabilizer fragment of the ZX-calculus later on in Chapter \ref{chap:stab}.  We will give a relational semantics for both the pure and mixed settings.
 
-Despite being used being used extensively for error correction, unlike general quantum circuits, stabilizer circuits are not any more powerful than classical probabilistic computing \ref{chap:stab}:
+Despite being used being used extensively for error correction, as we will discuss in Section \ref{sec:qec}, unlike general quantum circuits, stabilizer circuits are not any more powerful than classical probabilistic computing:
 \begin{theorem}[Gottesman-Knill]
 Stabilizer circuits can be classically probabilistically  simulated in polynomial time.
 \end{theorem}

@@ -1670,7 +1670,7 @@ $$
 %We have already shown that there is a doubling functor $\LinRel_k\to\Lag\Rel_k$, with respect to the orthogonal complement.  To get the $\CPM$ construction one has to add the "discard map" coming from the distinguished closed structure of $\LinRel_k$.  In the case when $k=\F_p$ or $k=\mathbb Q$, this produces  $\Lag\Rel_k$:
 Recall that given a compact closed prop with an identity on objects monoidal conjugation functor, we can apply the CPM construction to obtain a compact closed prop (note that here we are asking for a compact closed \dag-category structure rather than a \dag-compact closed structure).
 
-The phase-purification is so-called because of the similarity to the purification of maps in the CPM-construction.  Indeed one might hope that $\Lag\Rel_k$ is isomorphic to $\CPM(\LinRel_k,\perp)$, however, in the example of phase-purification, we are tracing out both sides with respect to multiple compact closed structures:  one for each $a_j \in k$.  Prime fields are special:
+The phase-purification is so-called because of the similarity to the purification of maps in the CPM-construction.  Indeed one might hope that $\Lag\Rel_k$ is isomorphic to $\CPM(\LinRel_k,(-)^\perp)$, however, in the example of phase-purification, we are tracing out both sides with respect to multiple compact closed structures:  one for each $a_j \in k$.  Prime fields are special:
 \begin{corollary}
 \label{cor}
 Given $k=\F_p$ for $p$ prime or $k=\mathbb{Q}$:
@@ -2292,7 +2292,7 @@ $$
 \end{definition}
 This makes the following easier to prove:
 \begingroup\allowdisplaybreaks
-\begin{lemma}[{\cite[Theorem 3]{gross}}]
+\begin{lemma}[Weil representation {\cite[Theorem 3]{gross}}]
 For every odd prime $p$ the prop  of affine symplectomorphisms over  $\F_p$ is isomorphic to the quopit Clifford groupoid modulo scalars.
 \end{lemma}
 \begin{proof}
@@ -2536,7 +2536,7 @@ Moreover, every stabilizer state is of this form.  Recall that stabilizer groups
 If two stabilizers $\chi(a){\cal W}(u)$ and $\chi(b){\cal W}(v)$ stabilize the same state, they must commute so that $\omega(u,v)=0$.
 A stabilizer state is stabilized by exactly $p^n$ stabilizers,  making the space of stabilizers into an affine Lagrangian subspace of $\F_p$. 
 \end{proof}\begingroup
-In other words, a symplectic basis for the affine Lagrangian subspace over $\F_p$ corresponds to the {\bf stabilizer tableau} for a pure quopit stabilizer state (ie a stabilizer tableau on $n$ quopits with dimension $n$).
+In other words, an augmented symplectic basis for the affine Lagrangian subspace over $\F_p$ corresponds to the {\bf stabilizer tableau} for a pure quopit stabilizer state (ie a stabilizer tableau on $n$ quopits with dimension $n$).
 
 Explicitly, the state $|0\rangle$ is identified with the following Afffine Lagrangian subspace:
 $$
@@ -2566,26 +2566,28 @@ $$
 W(\vec a, \vec b):=
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=X] (0) at (0, 1) {$\vec a$};
-		\node [style=none] (1) at (0, 2) {};
-		\node [style=none] (2) at (0, 0) {};
-		\node [style=none] (3) at (1, 2) {};
-		\node [style=none] (4) at (1, 0) {};
-		\node [style=X] (5) at (1, 1) {$\vec b$};
+		\node [style=X] (108) at (407, 1) {$\vec a$};
+		\node [style=none] (109) at (407, 1.55) {};
+		\node [style=none] (110) at (407, 0.45) {};
+		\node [style=none] (111) at (408, 1.55) {};
+		\node [style=none] (112) at (408, 0.45) {};
+		\node [style=X] (113) at (408, 1) {$\vec b$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (4.center) to (5.center);
-		\draw (5.center) to (3.center);
-		\draw (1.center) to (0.center);
-		\draw (0.center) to (2.center);
+		\draw (112.center) to (113);
+		\draw (113) to (111.center);
+		\draw (109.center) to (108);
+		\draw (108) to (110.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
 The $n$-fold symplectic Weyl operators form the $n$-fold {\bf symplectic Heisenberg-Weyl group}, $P_k^n$ under composition.  And altogether, they form a prop under tensor product and composition. 
 
+Notice that unlike the qudit Heisenberg-Weyl group, there is no phase-factor; as affine Lagragain relations only have scalars 0 and 1.  Therefore the symplectic Heisenberg-Weyl group is merely a representation of the group additive group $k^{2n}\rightarrowtail\Aff\Lag\Rel_k$.
+
 Given some affine Lagrangian subspace $f$ of $\F_k^{2n}$, the {\bf symplectic stabilizer group} of $f$ is the subgroup  $S\subseteq P_k^n$ so that for all $a\in S$, $f; a =f$.
 \end{definition}
-Notice that unlike the qudit Heisenberg-Weyl group, there is no phase-factor; as affine Lagragain relations only have scalars 0 and 1.
+
 \begin{lemma}
 Two states in $\Aff\Lag\Rel_k$ are equal if and only if they have the same symplectic stabilizer group.
 \end{lemma}
@@ -2598,7 +2600,7 @@ When $p$ is an odd prime, there is a symmetric monoidal equivalence $H:\Lag\Rel_
 $$
 n\mapsto \ell^2(\F_p^n)
 $$
-And on maps:
+And on maps by:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3242,7 +3244,12 @@ Later, this was formalized in terms of symplectic geometry, where he showed that
 \begin{corollary}
 $\Aff\Lag\Rel_{\F_2}$ is a presentation for the pure circuits in Spekkens' qubit toy model.
 \end{corollary}
-In fact, this prop  already has a complete axiomatization in the literature in terms of ``the ZX-calculus'' for Spekkens' toy model \cite{backensspek}.  In fact, Spekkens' toy model has been worked out in all dimensions, thus subsuming the work of Gross for finite fields \cite{catani}. However, affine relations are only defined on fields (or at least principal ideal domains) not for example the rings $\Z/d\Z$ for $d$ not a prime.  Therefore, we can not give a relational account for nonprime dimensional stabilizer circuits/Spekkens' toy model.  We will return to the case of measurement in the next section.
+In fact, this prop  already has a complete axiomatization in the literature in terms of ``the ZX-calculus'' for Spekkens' toy model \cite{backensspek}. % In fact, Spekkens' toy model has been worked out in all dimensions, in the more traditional rigid framework state-preparation, unitary evolution, measurement; thus subsuming the work of Gross for finite fields \cite{catani}. 
+
+We would have liked to use some modified form of the Weil representation for qubits as in \cite[\S 3.3]{heinrich2021stabiliser} or \cite{niel}; however, this would seemingly require some analogue of linear relations over the ring $\Z/4\Z$.   Our relational semantics falls short to functional approach, because this is not a principal ideal domain; and thus $\Mat_{\Z/4\Z}$ is not a regular category.  Some other technique is needed to this end.
+
+%However, affine relations are only defined on fields (or at least principal ideal domains) not for example the rings $\Z/d\Z$ for $d$ not a prime.  Therefore, we can not give a relational account for nonprime dimensional stabilizer circuits/Spekkens' toy model.  We will return to the case of measurement in the next section.
+
 
 There is another way to present $\Aff\Lag\Rel_{k}$ which makes it clear that $\Aff\Lag\Rel_{\F_p}$ can be regarded as a fragment of the ZX-calculus:
 \begin{theorem}
@@ -3865,10 +3872,8 @@ $\begin{tikzpicture}
 	\end{pgfonlayer}
 \end{tikzpicture}$ is an isometry with respect to $(-)^\dag:=(\bar{(-)})^*$.
 \end{proof}
-This spider notation gives a slick description for electrical circuits:
-\begin{remark}
+This spider notation gives a slick description for electrical circuits:\begin{remark}
  In \cite{network}, the relational semantics of electrical circuits is broadened even further to capture current and voltage sources as affine Lagrangian relations over $\R(s)$.  We can restate the interpretation of passive electrical circuits in our string diagrams. An idealized junction, a resistor with resistance $r$, a capacitor with capacitance $c$ and an inductor with inductance $\ell$ are interpreted as follows:
-
 $$
 \left\llbracket\ 
 \begin{tikzpicture}
@@ -4046,8 +4051,6 @@ $$
 \end{tikzpicture}
 $$
 \end{remark}
-
-
 %
 %
 %Affine Lagrangian relations have been used as a semantics for certain classes of electrical circuits:
@@ -4379,10 +4382,6 @@ $$
 %$$
 %\end{example}
 %Note that these generators do not generate the whole category of Lagrangian relations; for instance, the coefficients are required to be non-negative.
-
-
-
-
 \section{Affine coisotropic relations and stabilizer codes}
 \label{sec:coisotrel}
 \label{sec:coisot}
@@ -5202,6 +5201,9 @@ z\\x
 \ \right\rrbracket
 $$
 \end{corollary}
+By mixed stabilizer circuits; we mean stabilizer circuits which can be obtained by discarding part of a pure stabilizer circuit, not an arbitrary convex combination of stabilizer circuits.  I point this out only because  terms stabilizer mixed state and mixed stabilizer state can interchangeably refer to either notion
+
+
 This is conceptually very close to the result of \cite{huot} where they show that the affine completion of isometries between finite dimensional Hilbert spaces, which freely adds a discard map, yields completely positive trace-preserving maps.  And even more similar, to the more refined result of   \cite{disc}, where they show that various fragments of the ZX-calculus can be augmented with quantum discarding by freely adding discarding. 
 
 Although in our case the quantum discarding is interpreted as the literal {\em discard relation} of the corresponding stabilizers, therefore our semantics still lives within affine relations.
@@ -5218,7 +5220,7 @@ It was already known that stabilizer codes are in bijection with  affine isotrop
 
 This formalizes the relationship between mixed stabilizer circuits and stabilizer tableaux with not-necessarily-full rank in  a compositional way.  It is standard, and indeed very useful to regard the augmented symplectic basis $L+a$ of an affine isotropic subspace as the stabilizer tableau.  In order to compose these tableaux, one must take the symplectic complement of both spaces, and then compute  their relational composition.  Then the stabilizer tableau for this composite is obtained by taking the symplectic complement once again.
 
-There is a symplectic analaogue to Stinespring dilation, which we will use in the next subsection on stabilizer codes:
+There is a symplectic analogue to Stinespring dilation, which we will use in Section \ref{sec:qec} in our discussion of error correction:
 \begin{proposition}[{Symplectic Stinespring dilation}]
 \label{prop:sympstine}
 Given an affine coisotropic subspace $S \subseteq k^{2n}$ of dimension $m+n$, there exists an affine symplectomorphism $U:n\to n$ such that:
@@ -5342,7 +5344,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-Therefore,
+Therefore:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -5832,7 +5834,30 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-Returning to Spekkens' toy model, when the observer measures in the $Z$ or $X$ basis, he gains one bit of information, but injects one bit of uncertainty back into the state via the discard map.
+
+
+\begin{remark}
+Compare this relational semantics of measurement to the discrete Wigner function of Gross \cite{gross}.  He constructs a discrete version of the Wigner's quasi-probabilty distribution \cite{Wigner1932}.  In particular, he shows that on quopit stabilizer states, this is a probability distribution given by the indicator function of an affine Lagrangian subspace  \cite[Lemma 9]{gross} (actually it works just as well for stabilizer codes/affine coistropic subspaces):
+$$
+P_{G(L+a)}:\F_p^{2n}\to [0,1);\ (z,x)\mapsto
+1/|L| \cdot \delta_{L+a}(z,x)
+=
+\begin{cases}
+1/|L| & \text{ if } (z,x) \in L+a\\
+0 & \text{ otherwise}
+\end{cases}
+$$
+This probability distribution is uniform so that every outcome is equally likely.  For example, the measurement of a stabilizer state $G(L+a)$ in the $Z$ basis produces outcome $|x\rangle$ with probability:
+$$
+\sum_{z\in \F_p} P_{G(L+a)}(z,x)
+$$
+Moreover, this marginalization over $z$ acts backwards on the state; so that in accordance with Spekkens toy model, the observer gains one pit of information by sampling $x$, but injects one pit of uncertainty back into the ontic state.
+
+
+In the conventional, functional approaches to measurement of stabilizer states/states in Spekkens' toy model, for example \cite{catani}, they construct ``measurement update rules'' to compute this back action on the state.  This is essentially the same kind of procedure performed to compute the effect of  measuring a qubit stabilizer states \cite{aaronson}.  However, in the relational paradigm the measurement outcome, the measurement update, the state preparation and the unitary evolution of the quantum state are all computed in the same way: by taking the relational composition.
+\end{remark}
+
+
 \begin{remark}
 Recall that in Lemma \ref{lem:strongcomp}, we used the Hopf rule to show that preparing $Z$-basis and then measuring in the $X$-basis preserves no information.  In the symplectic picture, this result becomes purely topological:
 $$
@@ -6097,7 +6122,9 @@ Because $\Aff\Co\Isot\Rel_{\F_p}^M$ is a subcategory of relations, composable ma
 
 
 
-TODO TALK ABOUT WIGNER FUNCTION
+
+
+
 
 
 \begin{remark}
@@ -6666,7 +6693,7 @@ The controlled voltage source is the electrical circuit analogue of a $X$-phase 
 Just as Spekkens' toy model can be interpreted as an epistemically restricted toy theory of quantum circuits; by dualizing things, we could also ask what properties of quantum mechanics hold in $\Aff\Isot\Rel_{\F_p}^M$.  This  is an ``ontologically restricted'' toy theory of quantum mechanics; or equivalently an epistemically ``co-restricted'' toy theory. In other words, where there is a {\em minimum} amount of knowledge the observer has about the ontic state so that discarding a state imposes extra equations.
 
 
- However, this shouldn't be too surprising. If we added the quantum analogue of  ammeters to our relational semantics of pure stabilizer circuits, we could compose the ammeter with with another ammeter conjugated by the symplectic Fourier transform as follows:
+ However, this shouldn't be too surprising. If we added the quantum analogue of  ammeters to our relational semantics of pure stabilizer circuits, we could compose the ammeter  with another ammeter conjugated by the symplectic Fourier transform as follows:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -7958,7 +7985,7 @@ $$
 \end{tikzpicture}
 $$
 %Because the encoder is an affine symplectomorphism,  it an affine transformation ${\sf enc}: \F_p^{2k}\to \F_p^{2n}$.  Given a logical Weyl operator $W(z,x)$ on $k$ qudits the corresponding physical operator is $W({\sf enc}(z,x))$ on $n$ qudits.  One may wish to apply logical operations to the physically encoded state before the decoding proceedure.
-All of the things we have discussed in the section also works for qubits when the stabilizer code has trivial linear phases: ie, it is a CSS code, possibly with Weyl operators.  Indeed qubit CSS codes are very common in the literature.  We use the threefold qubit repetition code (see \cite[\S 10.1.1]{nielsen}) as an example:
+We use the threefold qubit repetition code (see \cite[\S 10.1.1]{nielsen}) as an example (which is permissible within our calculus because it isa CSS code/it has trivial linear phase):
 \begin{example}
 \label{ex:rep}
 Consider the Linear subspace:
@@ -8356,7 +8383,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-Also, we will chose to measure in the $Z$-basis:
+Also, we will chose to measure in the $Z$-basis, so we split the projector:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -8655,7 +8682,7 @@ Suppose we want to correct for single  $X$ errors, then we find that:
 \item An $X$ error$(d,e,f) = (0,0,1)$ yields syndrome $(e+d,f+d) = (0,1)$
 \item An $X$ error $(d,e,f) = (0,0,0)$ yields syndrome $(e+d,f+d) = (0,0)$
 \end{itemize}
-Therefore, we want to apply the correction $(s,t) \mapsto (s t, s (t+1),(s+1) t)$. Notice how this is a nonlinear, function, so we have to leave category $\Aff\Co\Isot\Rel_{\F_p}^M$.  The error correction protocol then has the following form:
+Therefore, we want to apply the correction $(s,t) \mapsto (s t, s (t+1),(s+1) t)$. This is a nonlinear function, so we have to leave category $\Aff\Co\Isot\Rel_{\F_p}^M$.  The error correction protocol then has the following form:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -9178,18 +9205,18 @@ Therefore this error correction protocol corrects for at most one $X$-error.
 \end{example}
 \section{Discussion}
 \label{sec:conclagrel}
-It is important to note that the controlled operation we applied for the error correction step requires nonlinear classical processing power, and therefore the diagram we drew doesn't ``live'' within the calculus we have constructed throughout this paper. 
+It is important to note that the controlled operation we applied for the error correction step in the previous section requires nonlinear classical processing power, and therefore the diagram we drew doesn't ``live'' within the calculus we have constructed in this chapter.
 
 Indeed, in this example, we have secretly been working in the pushout of the diagram of mutlicoloured props:
 $$\ZXA/\sim \leftarrow \Aff\Rel_{\F_2} \rightarrow \Aff\Co\Isot\Rel_{\F_2}^M$$
 Where $\ZXA/\sim$ is the prop of Boolean {\em relations} which we presented by taking a quotient of the prop $\ZXA$.
-Where moreover  $\Aff\Rel_{\F_2}\to \ZXA/\sim$ sends linear subspaces to subsets; and  $\Aff\Rel_{\F_2} \to \Aff\Co\Isot\Rel_{\F_2}^M$  sends 
+Where moreover  $\Aff\Rel_{\F_2}\to \ZXA/\sim$ sends linear subspaces to subsets; and  sends 
 $$(n\xrightarrow{f} m) \mapsto (C^{\otimes n}\xrightarrow{(p_Z^{\otimes n}, f, p_Z^{\otimes m})} C^{\otimes n})$$
 So that we can regard the classical wires as being arbitrary subsets rather than affine subspaces.
 We can afford to do this because of the presentation of $\ZXA/\sim$ in the previous chapter. However, this is not very satisfying.  We only have a presentation for qubit nonlinear post-processing.   This gives more motivation to actually work out a presentation for the quopit version of $\ZXA/\sim$ .
 
 
-This also begs the following question.  We know that quopit stabilizer circuits correspond to affine coisotropic subspaces of symplectic vector spaces.  However is there a succinct characterization of the structure of the subsets of  $\F_p^{2n}$ obtained by applying nonlinear classical processing to stabilizer states?  For example consider the following state:
+This also begs the following question.  We know that quopit stabilizer codes correspond to affine coisotropic subspaces of symplectic vector spaces.  Is there a succinct characterization of the structure of the subsets of  $\F_p^{2n}$ obtained by applying nonlinear classical processing to stabilizer states?  For example consider the following state:
 $$
 \left\llbracket\
 \begin{tikzpicture}
@@ -9346,35 +9373,38 @@ $$
 $$
 However, the stabilizers do {\em not} correspond to an affine subspace of $\F_p^2$ because $(z'-z)(a+x)+a=x'$ is not reducible to an affine equation.
 
-
-
-%On the other hand, we can't construct circuits stabilized by Weyl operators corresponding to arbitrary subsets of $\F_p^{2n}$; for example, we can't copy the $Z$ and $X$ variables, because they can not be simultaneously measured.
-
-
-%Similarly, we can't produce the qudit generalization of the gate which multiplies standard basis elements in $\FHilb$, as we did with the $\AND$ gate in $\ZXA$.  This is because we can only multiply the outcomes of measurements.
-
-
-What is the structure of this intermediate notion of subspace?
- To the knowledge of the author, this question has not yet been addressed, presumably, because classical processing and stabilizer codes are usually presented on different footings, as opposed to both being regarded themeselves as subspaces.
+What is the structure of this intermediate notion of subspace?  I suspect that these are precisely convex combinations of stabilizer states, but to my knowledge this question has not been asked in these terms.
+% To the knowledge of the author, this question has not yet been addressed, presumably, because classical processing and stabilizer codes are usually presented on different footings, as opposed to both being regarded themeselves as subspaces.  Does this correspond to  arbitrary convex combinations of qupit stabilizer states?
 
  
 
 We have not given a proper ``undoubled''  presentation of $\Aff\Co\Isot\Rel_k$.  The recent completeness of the quopit stabilizer ZX-calculus \cite{booth} gives a completeness result for $\Aff\Co\Isot\Rel_{\F_p}$. The subsequent paper of \cite{poor} which establishes a unique ``AP-normal form'' for quopit circuits greatly simplifies this presentation.  A completness result for arbitrary fields would closely follow their techniques.
 
 Even though completeness for the quopit stabilizer fragment of the ZX-calculus is known, there is motivation for generalizing their result.
-Because everything we have developed in this chapter works for all fields, rather than just odd prime fields; this begs the question if this semantics could be used for continuous variable quantum mechanics by working over fields with characteristic.  A presentation of $\Aff\Lag\Rel_k$ would yield continous variable analogues of the ZX-calculus.
+Because everything we have developed in this chapter works for all fields, rather than just odd prime fields; this begs the question if this semantics could be used for continuous variable quantum mechanics by working over fields with characteristic 0.  If this were true,then a presentation of $\Aff\Lag\Rel_k$ would yield continous variable analogues of the ZX-calculus.
 
  For example, in \cite[Theorem 2]{gross} Gross proves how  Gaussian states on the Hilbert space of square {\em integrable} functions $L^2(\R^n)$ are in bijection with a subset of the  affine Lagrangian subspaces of the symplectic vector space $\C^{2n}$.  More specifically, the  complex valued graph states, acted on by real valued Weyl operators. 
-Gaussian states are the analogue of stabilizer states for continuous variables; where they correspond to volume-preserving Gaussian probability distributions in the phase space $\R^{2n}$.
+Gaussian states are analagous to stabilizer states for continuous variables; where they correspond to volume-preserving Gaussian probability distributions in the phase space $\R^{2n}$.
 However,  $\Aff\Lag\Rel_{\C}$ contains not only these Gaussian states, but also the dirac deltas for the position and momentum observable, regarded as elements of the function space  $L^2(\C^n)$.
 
-As opposed to in the finite dimensional setting of stabilizer states,   these   dirac deltas are ``nonphysical'' in the sense that they can not be interpreted as states in $\Hilb$.  However, they are often used  to perform calculation, as they capture the behaviour of Gaussian quantum mechanics in the ``infinitely squeezed limit''.  For example, infinitely squeezed states are used for continuous variable quantum teleportation \cite{Milburn1999}. Therefore, giving a proper completeness proof for $\Aff\Lag\Rel_{\C}$ would give a continous variable analogue of the ZX-calculus with infinitely squeezed states.
+As opposed to in the finite dimensional setting of stabilizer states,   these   dirac deltas are ``nonphysical'' in the sense that they can not be interpreted as states in $\Hilb$, and are therefore not quantum states.  However, they are often used  to perform calculation, as they capture the behaviour of Gaussian quantum mechanics in the ``infinitely squeezed limit''.  For example, infinitely squeezed states are used for continuous variable quantum teleportation \cite{Milburn1999}. Therefore, giving a proper completeness proof for $\Aff\Lag\Rel_{\C}$ would give a continous variable analogue of the ZX-calculus with infinitely squeezed states.
 
 Nonstandard analysis has been used to try to solve the problem of dirac deltas not being states in $\Hilb$  \cite{Gogioso2017}; however, this approach is considerably more powerful, as well as complicated.  The symplectic approach could potentially provide a simpler path towards expanding categorical quantum mechanics towards continous variables.
 
-Finding a presentation this fragment of the  continuous variable ZX-calculus is closely related to the question of finding a graphical calculus for passive linear electrical circuits with current and voltage sources.  In \cite{amolak}, they give a complete set of equations for the electrical circuits generated by ideal junctions and resistors.  The normal form which they use involves a modified pivoting rule which avoids rewriting the resistances to be negative.  The normal form is effectively a special case of the AP-normal form of \cite{poor}, except over positive division semirings, rather than over $\F_p$.  So finding a presentation for affine Lagrangian relations would be very close to adding current and voltage sources to the presentation of \cite{amolak}. However, not every affine Lagrangian relation over $\R(x)$ can be interpreted as an electrical circuit, so one would have to take extra care to answer this question. Perhaps the preceding paper \nocite{kirch}, motivated by connecting the relational semantics of electrical circuits and stabilizer circuits, coud help answer this question. They give a normal form for circuits in $\Lag\Rel_k$, although not an explicit rewriting precudure
+Finding a presentation this fragment of the  continuous variable ZX-calculus is closely related to the question of finding a graphical calculus for passive linear electrical circuits with current and voltage sources.  In \cite{amolak}, they give a complete set of equations for the electrical circuits generated by ideal junctions and resistors.  The normal form which they use involves a modified pivoting rule which avoids rewriting the resistances to be negative.  
+%The normal form is effectively a special case of the AP-normal form of \cite{poor}, except over positive division semirings, rather than over $\F_p$.
+  So finding a presentation for affine Lagrangian relations would be very close to adding current and voltage sources to the presentation of \cite{amolak}. However, not every affine Lagrangian relation over $\R(x)$ can be interpreted as an electrical circuit, so one would have to take extra care to answer this question. Perhaps the preceding paper \nocite{kirch}, motivated by connecting the relational semantics of electrical circuits and stabilizer circuits, coud help answer this question. They give a normal form for circuits in $\Lag\Rel_k$, although not an explicit rewriting procedure.
 
 The connection of the ZX-calculus to electrical circuits is fascinating and leaves many questions open.  For example, using the technique developed in \cite{control} and applied to electrical circuits \cite{network}, $\Aff\Co\Isot\Rel_{\F_p(s)}$ apparently gives a notion of mixed stabilizer circuits with discrete-time evolution.  What is the physical interpretation of this?
+
+
+
+
+Finally, in our analysis of stabilizer codes and error correction, we have neglected to describe the effect interpreting a stabilizer code as a ``doubled'' biaffine ZX-diagram on code distance.  This is because code-distance is highly basis dependent, and it not particularly well-suited to this formalism.  However, in the literature, there is a similar doubling which preserves code distance.  This  interprets stabilizer codes as doubled majorana modes \cite{majorcodes}.  This appears to be closely related to the approach we have taken here.  Majorana fermions  
+
+
+ Except, instead of states being coisotropic subspaces
+
 
 %
 %There is also a practical motivation for providing this graphical calculus.  Just as increasing the characteristic of the prime field increases the quopit dimension; if one transitions to working in $\Aff\Co\Isot\Rel_k$ where $k$ has characteristic 0, it appears that this will give a semantics for continous variable quantum mechanics.

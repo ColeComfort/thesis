@@ -3047,11 +3047,26 @@ $$
 The tensor unit is the identity on $0$.
 \end{description}
 \end{definition}
-So that in particular  $\Mat_R$ embeds into $\Aff\Mat_R$ via 
+Note that  $\Mat_R$ faithfully embeds into $\Aff\Mat_R$:
 $$
 \left(n \xrightarrow{M} m\right)
 \mapsto 
 \left(n \xrightarrow{(M,{\bf 0})} m\right)
+$$
+In the other direction, there is also a fathful embedding $\Aff\Mat_R\to \Mat_R$ taking an affine matrix to its {\bf augmented matrix}:
+$$
+\left(n\xrightarrow{(M,a)} m\right)
+\mapsto
+\left(
+\vcenter{\hbox{$\displaystyle{
+n+1
+\xrightarrow[ . ]{
+\begin{bmatrix}
+M & a\\
+\mathbf{0} & 1
+\end{bmatrix}}
+m+1}$}}
+\right)
 $$
 I can not find a reference for the following result, but it is is an immediate consequence of the analysis of affine relations in \cite{affine}:
 \begin{example}
