@@ -19,7 +19,7 @@
 
 
  \usepackage{bm}
-
+t
 
 \usetikzlibrary{patterns}
 
@@ -58,7 +58,20 @@
 
 \begin{document}
 \maketitle
-\input{background_chapter_cqm}
+%\input{background_chapter_cqm}
+
+
+$$
+\xymatrixrowsep{10mm}\xymatrixcolsep{10mm}
+\xymatrix{
+                                       & {(\FPinj_2,\times)} \ar[dl] \ar@/^.5pc/[rr] \ar@{=}[d]  &                                                  & (\FPar_2,\times) \ar[d]^{\cong} \ar[dl] \\
+ (\FPar_2,\times)^\op \ar@/_1pc/[rr]  \ar[d]_{\cong}           &                   {(\FPinj_2,\times)}\ar[dl] \ar@/^.5pc/[rr]    \ar[d]^\cong                                                                       & (\FSpan_2,\times)   \skewpullbackcorner[ul]    \ar@{-->}[d]    & \tilde{(\FPinj_2,\times)} \ar[dl]       \ar[d]^\cong       \\
+\tilde{(\FPinj_2,\times)}^\op \ar@/_1pc/[rr]            \ar[d]_{\cong}                               &      \TOF \ar[dl] \ar@/^.5pc/[rr]  \ar@{=}[d]       &            \skewpullbackcorner[ul]                         \ar@{-->}[d]             & \tilde \TOF  \ar[d]_{\cong} \ar[dl]\\
+\tilde{\TOF}^\op \ar@/_1pc/[rr]   \ar[d]_{\cong}   &                  \TOF \ar[dl] \ar@/^.5pc/[rr]                                                                      &  \skewpullbackcorner[ul]    \ar@{-->}[d]   & c(\TOF)  \ar[dl]\\
+c(\TOF)^\op        \ar@/_1pc/[rr]                          &                                                                                             &          \hat\TOF  \skewpullbackcorner[ul]    &                        &            \\
+}
+$$
+
 
 $$
 \begin{tikzpicture}
