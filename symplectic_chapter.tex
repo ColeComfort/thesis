@@ -2556,7 +2556,7 @@ $$
 $$
 We seek to recast these results in a more compositional light; to prove that for odd prime $p$, $\Aff\Lag\Rel_{\F_p}$ is isomorphic to quopit stabilizer circuits, modulo scalars.  Let us give the latter category a name:
 \begin{definition}
-Let $\Stab_p$ denote the prop of quopit stabilizer circuits modulo nonzero scalars, regarded as a \dag-compact closed category with respect to the Hermetian adjoint and standard basis.
+Let $\Stab_p$ denote the prop of quopit stabilizer circuits modulo nonzero scalars, regarded as a \dag-compact closed category with respect to the Hermitian adjoint and standard basis.
 \end{definition}
 %The following isomorphism is described in \cite{gross}, when restricted to the nonempty case.  This comes from the projective representation of the quopit Clifford group in terms of the affine symplectomorphisms over $\F_p^n$.  However, since there is only one empty relation and one zero matrix of every type, we get the following result immediately:
 We extend this isomorphism of states to an isomorphism of props using a symplectic notion of Heisenberg-Weyl groups and stabilizers:
@@ -3502,9 +3502,9 @@ $$
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (1.25, 0) {};
 		\node [style=none] (1) at (1.25, -3.5) {};
-		\node [style=Z] (2) at (1.25, -2.75) {$\hspace*{.05cm}0,1\hspace*{.05cm}$};
-		\node [style=Z] (3) at (1.25, -0.75) {$\hspace*{.05cm}0,1\hspace*{.05cm}$};
-		\node [style=X] (4) at (1.25, -1.75) {$\hspace*{.05cm}0,-1\hspace*{.05cm}$};
+		\node [style=Z] (2) at (1.25, -2.75) {0,1};
+		\node [style=Z] (3) at (1.25, -0.75) {0,1};
+		\node [style=X] (4) at (1.25, -1.75) {0,1};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw (1.center) to (2);
@@ -3856,9 +3856,9 @@ In the case of $k=\F_p$ for $p$ an odd prime, this is transported to the complex
 For odd prime $p$, $\Aff\Lag\Rel_{\F_p}$ and  $\Stab_p$ are isomorphic as \dag-compact closed categories.
 \end{lemma}
 \begin{proof}
-We know that all stabilizer states are of the form $C|0\rangle^{\otimes n}$ for $C$ clifford operator.  We already gave the generators for the qupit Clifford group and know that they are unitaries with respect to the Hermetian adjoint.
+We know that all stabilizer states are of the form $C|0\rangle^{\otimes n}$ for $C$ clifford operator.  We already gave the generators for the qupit Clifford group and know that they are unitaries with respect to the Hermitian adjoint.
 
-The affine symplectomorphisms corresponding to the generators of the Clifford group can be easily verified to be unitaries with respect to the dagger $(-)^\dag:=(\bar{(-)})^*$.  Moreover, $|0\rangle$ is an isometry in $\Stab_p$ with the Hermetian adjoint just as 
+The affine symplectomorphisms corresponding to the generators of the Clifford group can be easily verified to be unitaries with respect to the dagger $(-)^\dag:=(\bar{(-)})^*$.  Moreover, $|0\rangle$ is an isometry in $\Stab_p$ with the Hermitian adjoint just as 
 $\begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=X] (389) at (205, -2) {};

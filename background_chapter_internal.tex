@@ -32,11 +32,11 @@ In this subsection we review some aspects of internal category theory so that we
 
 
 
-One way to combine monoidal theories is via pushout.  We generalize the analagous result of \cite[Proposition 2.51]{ih} to the multicoloured setting:
+One way to combine monoidal theories is via pushout.  We generalize the analogous result of \cite[Proposition 2.51]{ih} to the multicoloured setting:
 \begin{lemma}
 Take three (symmetric) monoidal theories
 $$T_0=({\sf Ob}_0,\Sigma_0 ,E_0 ), \ T_1=({\sf Ob}_1,\Sigma_1 ,E_1 ), \ T_2=({\sf Ob}_2,\Sigma_2 ,E_2 )$$
-such that ${\sf Ob}_0 \subseteq {\sf Ob}_1,{\sf Ob}_2$, $\Sigma_0 \subseteq \Sigma_1,\Sigma_2$ and$E_0 \subseteq E_1,E_2$.
+such that ${\sf Ob}_0 \subseteq {\sf Ob}_1,{\sf Ob}_2$, $\Sigma_0 \subseteq \Sigma_1,\Sigma_2$ and $E_0 \subseteq E_1,E_2$.
 Then the pushout of the diagram $\bar{T_1} \leftarrow \bar{T_0} \rightarrow \bar{T_2}$  in the category of strict (symmetric) monoidal categories is presented by the (symmetric) monoidal theory:
 $$
 ( {\sf Ob}_1 \cup {\sf Ob}_2, \Sigma_1 \cup \Sigma_2, E_1 \cup E_2)
@@ -48,9 +48,9 @@ In practice, we usually won't be so explicit about the pushout of (symmetric) mo
 
 However, there is a more refined notion of composition of pro(p)s; to expose which, we first need to review  a considerable amount of internal category theory.
 \subsubsection{Internal categories and strict factorization systems}
-In this section we will make extensive use of bicategories.  Just like monoidal categories, every bicategory is equivalent to a strict 2-category where the unitors and associators are identities.  We have already been working with a strict 2-category throughout this thesis: the 2-category of categories, functors and natural transformations (as well as its various monoidal cousins).   We have also already encountered a (nonstrict) bicategory: namely, the 2-category of spans internal to a category.  
+In this section we will make extensive use of bicategories.  Just like monoidal categories, every bicategory is equivalent to a strict 2-category where the unitors and associators are identities.  We have already been working with a strict 2-category throughout this thesis: the 2-category of categories, functors and natural transformations (as well as its various monoidal cousins).   We have also already encountered a (nonstrict) bicategory, that of spans internal to a category.  
 
-2-categories have a graphical calculus much like strict monoidal categories, except for the fact that now the empty space between wires is now coloured by the 0-cells.  For example a 0-cell is drawn as a surface:
+Strict 2-categories have a graphical calculus much like strict monoidal categories, except for the fact that now the empty space between wires is now coloured by the 0-cells.  For example a 0-cell is drawn as a surface:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -139,7 +139,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}%
 $$
-I won't go into full detail, but you can imagine how the to compose two cells in both directions as in the monoidal setting; moreover, I will omit the labels when they are clear from context, as I have done for monoidal categories. For the rest of this section I will work exploit the coherence theorem and work in the setting of strict 2-categories.  This notation shows how the following constructions are canonical:
+I won't go into full detail, but you can imagine how the to compose things in both directions as in the monoidal setting. I will omit the labels when they are clear from context, as I have done for monoidal categories. For the rest of this section I will work exploit the coherence theorem and work in the setting of strict 2-categories.  This notation shows how the following constructions are canonical:
 \begin{definition}[{\cite[\S 1]{monadsi}}]
 \label{def:monad}
 Given a bicategory $\mathcal B$, there is a bicategory of monads in $\mathcal B$, $\Mnd({\mathcal B})$ with:
@@ -459,7 +459,6 @@ $$
 $$
 \end{description}
 \end{definition}
-This allows us to define the following:
 \begin{definition}
 \label{def:internalcat}
 %Internal category
@@ -479,7 +478,7 @@ $$
 Composition of maps is a function which takes maps $f:X\to Y$ and $g:Y\to X$ to a new map $(f;g):X\to Y$.   This is asking for a 2-cell $\mu:S^2\to S$ in $\Span(\Set)$; the pullback picks out the composable maps and composes them.  The associativity of composition corresponds to the associativity of $\mu$ as a semigroup.
 On the other hand, the unit of a small category is a function from ${\sf Ob}$ to $S$, picking out for every object $X$, a map $1_X$ with domain and codomain $X$ , that is to say, a 2-cell $\mu:1_{\sf Ob}\to S$.  The unitality of composition is the unitality of the monad.
 
-One should be careful to notice that the $1$-cells in $\Mnd(\Span(\Set))$ do not correspond to functors between small categories.  This structure naturally arizes by considering the analagous {\em double category} (although, this is out of scope for this thesis).
+One should be careful to notice that the $1$-cells in $\Mnd(\Span(\Set))$ do not correspond to functors between small categories.  This structure naturally arizes by considering the analogous {\em double category} (although, this is out of scope for this thesis).
 
 
 There is a canonical way to compose monads, and thus small categories:
@@ -726,7 +725,7 @@ $$
 \end{tikzpicture}%
 $$
 \end{definition}
-Distributive laws of monads are compositions in the following sense:
+Distributive laws of monads induce composite monads:
 \begin{lemma}
 Given a distributive law of monads $\lambda:R;L\to L;R$, the 1-cell
 $L;R$ has a monad structure with:
@@ -790,7 +789,7 @@ $$
 \end{tikzpicture}%
 $$
 \end{lemma}
-There is a very concise way of viewing distributive laws:
+There is a concise way of viewing distributive laws:
 \begin{lemma}[{\cite[\S 6]{street}}]
 Distributive laws of monads in a bicategory $\cal B$ are precisely monads in $\Mnd({\cal B})$.
 \end{lemma}
@@ -825,7 +824,7 @@ $$
 \end{definition}
 \begin{lemma}[{\cite[Theorem 3.8]{rosebrugh}}]
 \label{lemma:rosebrugh}
-Strict factorization systems of small categories $(\mathbb L,\mathbb R)$ are precisely distributive laws of $\mathbb R$ over $\mathbb L$ , viewed as monads in $\Span(\Set)$.
+Strict factorization systems of small categories $(\mathbb L,\mathbb R)$ are precisely distributive laws of $\mathbb R$ over $\mathbb L$ regarded as monads in $\Span(\Set)$.
 \end{lemma}
 Therefore, a distributive law of small categories can be regarded as a way to uniquely factorize maps into two disjoint subcategories $\mathbb{L};\mathbb{R}$; so that if a composite is out of order, there is a rule $\mathbb{L};\mathbb{R}\to \mathbb{R};\mathbb{L}$ to push them past each other uniquely.
 
@@ -905,12 +904,11 @@ Monads in $\Span(\Mon)$ are in bijection with small strict monoidal categories.
 \end{lemma}
 %Indeed, in analogy to the case for small catgories, a distributive law $\X;\Y$ of two small strict monoidal categories is precisely a way to combine the two theories, respecting their monoidal structure,  where the maps can be uniquely factored into maps in $\X$ followed by maps in $\Y$.
 There is an obvious analogue of strict factorizations for small strict monoidal categories, which I shall call monoidal strict factorization systems.  In this setting $\mathbb L$ and $\mathbb R$ are small strict monoidal subcategories of $\X$
-
 Therefore, reproducing Lemma \ref{lemma:rosebrugh} internal to $\Mon$ we have:
 \begin{lemma}[{\cite[Theorem 3.8]{lack}}]
 Monoidal strict factorization systems of small categories $(\mathbb L,\mathbb R)$ are precisely distributive laws of $\mathbb R$ over $\mathbb L$ , viewed as monads in $\Span(\Mon)$.
 \end{lemma}
-Distributive laws of monoidal theories yield a monoidal theory for the composite internal monoidal category. The two theories are combined,  plus rules to push the generators past each other.  This follows immediately from the analysis of distributive laws of props of \cite[Theorem 3.8]{lack}, where a prop is a strict monoidal category on the free monoid $\N$.  
+Distributive laws of monoidal theories yield a monoidal theory for the composite internal monoidal category. The two theories are combined,  plus rules to push the generators past each other.  This follows immediately from the analysis of distributive laws of props of \cite[Theorem 3.8]{lack}, where a prop is a strict monoidal category regarded as a monad on $\N$ in $\Span(\Mon)$.  
 \begin{lemma}
 Take two monoidal theories
 $$
@@ -982,7 +980,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}%
 $$
-${\sf injmonot}$ is a presentation for the monotone injections  and $\sf surjmonot$  the monotone surjections in $\FinOrdMonot$ under the coproduct.  Moreover, distributive law:
+${\sf injmonot}$ is a presentation for the monotone injections  and $\sf surjmonot$  the monotone surjections in $\FinOrdMonot$.  The distributive law
 $$
 {\sf injmonot}; {\sf surjmonot};\
 \begin{tikzpicture}[xscale=-1,yscale=-1]
@@ -1029,7 +1027,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}%
 $$
-In other words, this is the strict factorization system coming from the epi-mono factorization of $\FinOrdMonot\cong \m$.
+is a presentation for $\FinOrdMonot$.  This corresponds to the strict factorization system coming from the epi-mono factorization of $\FinOrdMonot\cong \m$.
 \end{example}
 The strict factorization system gives us a unique normal form.  We can therefore draw the unique connected components of the same arity as follows:
 $$
@@ -1368,10 +1366,10 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}%
 $$
-This does not arise from a distributive law of props.  This should arize instead from a distributive law of polycategories, however, we won't go into any more detail here.  We will however discuss polycategories in Chapter \ref{chap:grothendieck} which will make this intuition clearler.
+This does not arise from a distributive law of pros, but it holds nevertheless. And we make use of it.  %This should arize instead from a distributive law of polycategories, however, we won't go into any more detail here.  We will however discuss polycategories in Chapter \ref{chap:grothendieck} which will make this intuition clearler.
 \end{lemma}
 \subsubsection{Internal profunctors and factorization systems over subcategories}
-We want to be able to take distributive laws of two categories which both share some structure.  For example, what is the appropriate notion of distributive law of small strict symmetric monoidal categories where the braiding of both categories are identified with each other?  For this, we can regard the structure of a subcategory as an action on the larger category; formally, this is a certain kind of bimodule:
+We want to be able to take distributive laws of two categories which both share some structure.  For example, what is the appropriate notion of distributive law of small strict symmetric monoidal categories where the braiding of both categories are identified with each other?  For this, we can regard the shared structure in the  subcategory as actions on the larger categories; formally, this is a certain kind of bimodule:
 \begin{definition}
 Given a bicategory $\mathcal B$ with coequalizers,
 the bicategory of bimodules in $\mathcal B$, $\Mod(\mathcal{B})$ has:
@@ -1694,7 +1692,7 @@ $$
 %
 with left and right actions induced by $\tau$ and $\rho'$.
 
-The identity 1-cell on a monad is the monad itself considered as a bimodule over itself.
+The identity 1-cell on a monad is the monad regarded as a bimodule over itself.
 \item[2-cells:] A 2-cell between $(\mathbb{S},\mathbb{T})$-bimodules $(F,\tau,\rho)\to (G,\tau',\rho')$ is a 2-cell $\phi:F\to G$ in $\mathcal{B}$ satisfying the following coherence conditions:
 $$
 \xymatrix{
@@ -1815,7 +1813,7 @@ We related distributive laws in internal categories to factorization systems.  T
 \begin{definition}
 Let $\Iso(\X)$ denote the groupoid  of all isomorphisms of $\X$.
 \end{definition}
-There is a notion of factorization system where the factorization need only hold up to isomorphism:
+There is a notion of factorization system where the factorization need only hold up to unique isomorphism:
 \begin{definition}
 An {\bf orthogonal factorization system} on a category $\X$ is a pair of subcategories $(\mathbb{L},\mathbb{R})$ of $\X$ with the same objects as $\X$, where $\mathbb{L}$ and $\mathbb{R}$ contain all isomorphisms in $\X$, and moreover, where every map in $\X$ factors as a map in  $\mathbb{L}$, followed by one $\mathbb{R}$ up to unique isomorphism.
 
@@ -1834,7 +1832,7 @@ X  \ar[rr]^{f} \ar[dr]_{\ell' \in {\mathbb L}} &       & Y\\
    & A' \ar[ur]_{r' \in {\mathbb R}}
 }
 $$
-then there is a unique isomorphism $\phi:A\to A'$ such that the following diagram commutes:
+then there is a unique isomorphism $\phi:A\to A'$ making the following diagram commutes:
 $$
 \xymatrixrowsep{7mm}
 \xymatrixcolsep{50mm}
@@ -1860,9 +1858,9 @@ $$
 \begin{example}
 Regular categories have orthogonal factorization systems given by $\mathbb{L}$ the regular epimorphisms, and $\mathbb R$ the monomorphisms.
 \end{example}
-By asking that $\X$ is a small strict monoidal category and  $\mathbb{L}$ and $\mathbb{R}$ are strict monoidal subcategories of $\X$, the notion of an orthogonal factorization system is adapted immediately to monoidal categories. And there is an alagous correspondence  between $\mathbb{L}$ and $\mathbb{R}$, regarded as $\Iso(\X)$-bimodules in $\Span(\Mon)$.  However, this is not satisfying for our purposes.
+By asking that $\X$ is a small strict monoidal category and  $\mathbb{L}$ and $\mathbb{R}$ are strict monoidal subcategories of $\X$, the notion of an orthogonal factorization system is adapted immediately to monoidal categories. And there is an analogous correspondence  between $\mathbb{L}$ and $\mathbb{R}$, regarded as $\Iso(\X)$-bimodules in $\Span(\Mon)$.  However, this is not satisfying for our purposes.
 
- In the most basic setting, the shared structure of small strict {\em symmetric} monoidal categories on the same set of objects is the permutations on the objects .  Indeed, this is the basis Lack's work on composing props \cite{lack}. Factorizations up permutations are clearly not strict; and they are only an orthogonal factorization system when all isomorphisms are permutation.  For our purposes, we wil also need to consider cases when $\mathbb J$ is not even a groupoid!  We will recall a considerably more general notion to this end:
+ In the most basic setting, the shared structure of small strict {\em symmetric} monoidal categories on the same set of objects is the permutations on the objects .  Indeed, this is the basis Lack's work on composing props \cite{lack}. Factorizations up permutations are clearly not strict; and they are only an orthogonal factorization system when all isomorphisms are permutations.  For our purposes, we will also need to consider cases when $\mathbb J$ is not even a groupoid!  We will recall a considerably more general notion to this end:
 \begingroup
 \allowdisplaybreaks
 \begin{definition}[{\cite[Definition 4.10]{lawvere}}]
@@ -1934,24 +1932,24 @@ $$
 This specializes to strict factorization systems when $\mathbb J$ contains exactly the identities on all objects; and to orthogonal factorization systems when it contains all isomorphisms. 
 
 
-Suppose that  $\mathbb J $ is not a groupoid and we tried to replace the definition of an orthogonal factorization system $(\mathbb L, \mathbb R)$ with one where the unique mediating map is merely in $\mathbb J$.
+Suppose that  $\mathbb J $ is not a groupoid and we tried to replace the definition of an orthogonal factorization system $(\mathbb L, \mathbb R)$ with one where the unique mediating map is merely a single map in $\mathbb J$.
 
 
 Then if want to reduce a map in the composite
 $$\mathbb{L} \otimes_{\mathbb J} \otimes \mathbb{R} \otimes_{\mathbb J}  \cdots \otimes_{\mathbb J} \mathbb{L} \otimes_{\mathbb J} \mathbb R  $$
  to one in 
 $$\mathbb{L} \otimes_{\mathbb J} \mathbb{R}$$
-then notice how $\mathbb J$ acts on $\mathbb L$ and $\mathbb R$ both on the left and and on the right.  The one action is covariant and the other is contravariant.  So there is a priori no unique way to slide all the maps in the various copies of $\mathbb J$ around and group them all together.  This unique-zig-zag condition is asking precisely for such a thing.  This is to be contrasted with the case when $\mathbb J$ is a groupoid, a map $\phi:X\to Y$ in $\mathbb J$ induces another map $\phi^{-1}:Y\to X$; where the notion of an orthogonal factorization system need only be slightly tweaked.
+Notice how $\mathbb J$ acts on $\mathbb L$ and $\mathbb R$ both on the left and and on the right.  The one action is covariant and the other is contravariant.  So there is a priori no unique way to slide all the maps in the various copies of $\mathbb J$ around and group them all together.  This unique-zig-zag condition is asking precisely for this condition to hold.  This is to be contrasted with the case when $\mathbb J$ is a all isomorphisms; because a map $\phi:X\to Y$ in $\mathbb J$ induces another map $\phi^{-1}:Y\to X$ this zig-zag condition reduces to the unique factorization up to isomorphism of  orthogonal factorization system.  Indeed, when $\mathbb J$ only contains isomorphisms, this zig-zag condition reduces to a slight modification of the notion of an orthogonal factorization system.
 
 
- Indeed, \cite{lawvere} shows that such a notion of factorization system corresponds to distributive laws of monads in $\Set$-$\Prof^\op$.   The result is mentioned specifically for the case of distributive laws of Lawvere theories, but there is a more general fact:
+Where this notion of factorization system over a subcategory is introduced in \cite{lawvere}; they establish a correspondence between these factorization systems and  distributive laws of monads in $\Set$-$\Prof^\op$.   The result is mentioned with distributive laws of Lawvere theories in mind, but it is a general fact:
 \begin{lemma}
 A factorization system $(\mathbb{L},\mathbb{R})$ of a small  category $\X$ over a subcategory  $\mathbb J $ is precisely a distributive law of monads  $\mathbb{R}$ over $\mathbb{L}$, both regarded as $\mathbb{J}$-bimodules in $\Span(\Sets)$.
 \end{lemma}
-By asking that $\X$ is a small strict monoidal category and  $\mathbb{L}$, $\mathbb{R}$ and $\mathbb{J}$ are strict monoidal subcategories, the notion of a factorization system of $\X$ over $\mathbb J$ is adapted immediately to  monoidal categories. And there is an alagous correspondence  to distributive laws of $\mathbb{R}$ over $\mathbb{L}$, regarded as $\mathbb J$-bimodules in $\Span(\Mon)$.  
+By asking that $\X$ is a small strict monoidal category and  $\mathbb{L}$, $\mathbb{R}$ and $\mathbb{J}$ are appropriately strict monoidal subcategories, the notion of a factorization system of $\X$ over $\mathbb J$ is adapted immediately to  monoidal categories. And there is an alagous correspondence  to distributive laws of $\mathbb{R}$ over $\mathbb{L}$, regarded as $\mathbb J$-bimodules in $\Span(\Mon)$.  
 
 
-To do the same for small strict symmetric monoidal categories, one must ask moreover that $\X$ is a small strict symmetric monoidal category, $\mathbb{L}$, $\mathbb{R}$ are strict symmetric monoidal subcategories of $\X$ and $\mathbb J$ is a strict symmetric monoidal subcategory of $\mathbb L$ and $\mathbb R$:
+
 %In order to do to something similar with small strict monoidal categories, consider the following structure:
 %
 %
@@ -1990,7 +1988,7 @@ $$
 $$
 where $E_\lambda$ is the set of equations dictating the unique ways in which the generators of $\Sigma_R$ can be pushed past those of $\Sigma_L$ up to zig-zags in $\bar{J}$.
 \end{lemma}
-This seems like a very complicated construction, but let us see some examples to get a feel for what is going on.  As a general rule, because factorization systems are decompositional, we will start first with a symmetric monoidal theory which we already know.
+This seems like a very complicated construction, but let us see some examples to understand the utility.  As a general rule, because factorization systems are decompositional, we will start first with a symmetric monoidal theory which we already know.
 
 For the most basic examples consider the free strict symmetric monoidal category on a set of objects:
 \begin{definition}
@@ -2164,10 +2162,12 @@ $$
 $$
 induces the prop for the commutative comonoid $\cm\cong \FinOrd\cong \FSets$.
 \end{example}
-Just as in the case of the strict epi-mono factorization system of $\FinOrdMonot$; this orthogonal factorization system means that the connected components of a commutative monoid are equal.  We will use the same notation as for $\FinOrdMonot$ to denote connected components of commutative monoids.
+This distributive law corresponds to the epi-mono orthogonal factorization system of $\FinOrd$.  However, as opposed to the analagous story for $\FinOrdMonot$, because the permutations are nontrivial isomorphisms, we had to take a distributive law of monads of bimodules over the permutations.
+
+%Just as in the case of the strict epi-mono factorization system of $\FinOrdMonot$; this orthogonal factorization system means that the connected components of a commutative monoid are equal.  We will use the same notation as for $\FinOrdMonot$ to denote connected components of commutative monoids.
 
 
-Bicommutative bialgebras also arise in this way:
+Bicommutative bialgebras also arise similarly:
 \begin{example}
 The prop for a bicommutative bimonoid, $\cb$  is a distributive law between a monoid $\xcirc$ and comonoid $\zcirc$:
 $$
@@ -2280,10 +2280,20 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}%
 \eref{extra}
-\\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (2, 0) {};
+		\node [style=none] (1) at (2, -1) {};
+		\node [style=none] (2) at (3, -1) {};
+		\node [style=none] (3) at (3, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw[style=dashed] (3.center) to (0.center) to (1.center) to (2.center) to cycle;
+	\end{pgfonlayer}
+\end{tikzpicture}%
 $$
 \end{example}
-In fact, this is a symmetric monoidal orthogonal factorization system since it arizes from a category of spans: 
+This is also  is a symmetric monoidal orthogonal factorization system since it arizes from a category of spans: 
 \begin{lemma}[{\cite[Example 5.3]{lack}}]
 {\cb} is a presentation for $(\Span^\sim(\FSets),+)$.
 \end{lemma}
@@ -2390,18 +2400,17 @@ Where this distributive law also arizes from a category of spans.
 The spider normal form also holds for special commutative Frobenius algebras, where now components can be connected together using the braids.
 
 
-In analogy to the noncommutative case, the spider normal form  for non-special commutative Frobenius algebras also holds, although this should come from a distributive law of {\em symmetric} polycategories, rather than of monoidal categories.  Again, we shall not discuss the details further.
-
-
+In analogy to the noncommutative case, the spider normal form  for non-special commutative Frobenius algebras also holds; although it does not arize from a distributive law of props.
 The original spider normal form was first proven for non-special symmetric Frobenius algebras, first published in the PhD thesis of \cite{spider}; wherein it was proved by topological methods rather than using the machinery of distributive laws.
 \end{remark}
 %
 %
 %All of the examples of distributive laws of props which we have introduced so far also happen to correspond to strict factorization systems of small strict symmetric monoidal categories.  This is only because $\Iso(\FinOrd) = \P$.
 
-Note that all of these examples of distributive laws of props are actually  monoidal orthogonal factorization systems.  Indeed, they are both special cases of the two examples of orthogonal factorization systems which we provided earlier.   However, not all distributive laws of props arize in this manner. The notion of factorization systems over subcategories was inially introduced in order to define distributive laws of Lawvere theories, ie Cartesian monoidal props \cite{lawvere}.
+Note that all of these examples of distributive laws of props are actually  monoidal orthogonal factorization systems.  Indeed, they are both special cases of the two examples of orthogonal factorization systems which we provided earlier: orthogonal factorization systems arizing from spans, and orthogonal factorization systems arizing from epi-mono factorization.   However, not all distributive laws of props arize in this manner.
 
 
+ As we alluded to earlier,  the notion of factorization systems over subcategories was initially introduced in order to define distributive laws of Lawvere theories, ie Cartesian monoidal props \cite{lawvere}. We proceed to give some examples to this end.
 %
 %We define a variation of a symmetric monoidal theory which generates strict Cartesian monoidal categories.  We express this is the manner of \cite{????}:
 %
@@ -2513,7 +2522,6 @@ Note that all of these examples of distributive laws of props are actually  mono
 %
 %A {\bf model} of a (multisorted) Lawevere theory in a category $\X$ with finite products, is a product preserving functor $\bar{T}\to \X$.
 %\end{definition}
-          
 Lawvere theories are everywhere in mathematics.  In fact, we have already discussed quite a few already.  For example:
 \begin{example}
 $\cm^\op$ is the Lawvere theory with no operations or equations.
@@ -2652,7 +2660,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}%
 $$
-associativity and unit laws
+Plus the associativity and unit laws which we imposed:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2882,7 +2890,7 @@ $$
 Models of the Lawvere theory of monoids in $\Set$ are monoids.
 
 
-Therefore, we see that the symmetric monoidal theory corresponding to a Lawveret theory is given by adding the operations, and cocommutative comonoids as generators and then making these cocommutative comonoids natural.  For another example:
+Therefore, we see that the symmetric monoidal theory corresponding to a Lawvere theory is given by adding both the operations and cocommutative comonoids as generators and then making these cocommutative comonoids natural and imposing equations. For another example:
 \begin{example}
 The Lawvere theory of commutative monoids is generated by a binary operation $(-)+ (=):2\to 1$ and a nullary operation $0:0\to 1$ modulo:
 \begin{description}
