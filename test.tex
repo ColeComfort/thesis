@@ -19,7 +19,7 @@
 
 
  \usepackage{bm}
-t
+
 
 \usetikzlibrary{patterns}
 
@@ -60,17 +60,218 @@ t
 \maketitle
 %\input{background_chapter_cqm}
 
-
 $$
-\xymatrixrowsep{10mm}\xymatrixcolsep{10mm}
+\llparenthesis\rrparenthesis
+$$
+
+{\xymatrixcolsep{.2cm}\xymatrixrowsep{2mm}
+\begin{align*}
+F&\left(
 \xymatrix{
-                                       & {(\FPinj_2,\times)} \ar[dl] \ar@/^.5pc/[rr] \ar@{=}[d]  &                                                  & (\FPar_2,\times) \ar[d]^{\cong} \ar[dl] \\
- (\FPar_2,\times)^\op \ar@/_1pc/[rr]  \ar[d]_{\cong}           &                   {(\FPinj_2,\times)}\ar[dl] \ar@/^.5pc/[rr]    \ar[d]^\cong                                                                       & (\FSpan_2,\times)   \skewpullbackcorner[ul]    \ar@{-->}[d]    & \tilde{(\FPinj_2,\times)} \ar[dl]       \ar[d]^\cong       \\
-\tilde{(\FPinj_2,\times)}^\op \ar@/_1pc/[rr]            \ar[d]_{\cong}                               &      \TOF \ar[dl] \ar@/^.5pc/[rr]  \ar@{=}[d]       &            \skewpullbackcorner[ul]                         \ar@{-->}[d]             & \tilde \TOF  \ar[d]_{\cong} \ar[dl]\\
-\tilde{\TOF}^\op \ar@/_1pc/[rr]   \ar[d]_{\cong}   &                  \TOF \ar[dl] \ar@/^.5pc/[rr]                                                                      &  \skewpullbackcorner[ul]    \ar@{-->}[d]   & c(\TOF)  \ar[dl]\\
-c(\TOF)^\op        \ar@/_1pc/[rr]                          &                                                                                             &          \hat\TOF  \skewpullbackcorner[ul]    &                        &            \\
+         & 2^{\lceil \log_2 k \rceil} \ar[dl]_{f'} \ar@{=}[dr]\\
+2^n &                                                                                 &2^{\lceil \log_2 k \rceil}
+};
+\xymatrix{
+         & k \ar@{>->}[dl]_{e_f} \ar@{>->}[dr]^{e_m}\\
+2^{\lceil \log_2 k \rceil} &                                                                                 & 2^{\lceil \log_2 k \rceil}
+};
+\xymatrix{
+                                       & 2^{\lceil \log_2 k \rceil} \ar[dr]^{g'} \ar@{=}[dl]\\
+2^{\lceil \log_2 k \rceil} &                                                                                 & 2^m
+}
+\right)\\
+&=
+\xymatrix{
+         &                                                                               &                                             &  k \ar@{=}[dl] \ar@{=}[dr] \ar@/_2.0pc/[dddlll]_{f} \ar@/^2.0pc/[dddrrr]^{g} \pullbackcorner[d] \\
+         &                                                                               &k \ar@{=}[dr] \ar@{>->}[dl]_{e_f} \pullbackcorner[d]&                                                & k \ar@{=}[dl] \ar@{>->}[dr]^{e_g}\pullbackcorner[d]\\
+         & 2^{\lceil \log_2 k \rceil}\ar[dl]^{f'}\ar@{=}[dr]   &                                             & k \ar@{>->}[dl]_{e_f} \ar@{>->}[dr]^{e_g} &                                       & 2^{\lceil \log_2 k \rceil}\ar[dr]_{g'}\ar@{=}[dl] \\
+2^n  &                                                                                & 2^{\lceil \log_2 k \rceil}     &                                                & 2^{\lceil \log_2 k \rceil} &                   & 2^m
+}
+\end{align*}}
+
+
+
+In $\X$, we have:
+{\xymatrixrowsep{0mm}\xymatrixcolsep{4mm}
+\begin{align*}
+\xymatrix{
+                & 2^{n_2} \ar[dl]_{f_1} \ar@{=}[dr] \\
+2^{n_1} &                                                             & 2^{n_2}
+};&
+\xymatrix{
+               & k \ar@{>->}[dl]_{e_1} \ar@{>->}[dr]^{e_2}\\
+2^{n_2} &                                               & 2^{n_3}
+};
+\xymatrix{
+                & 2^{n_3} \ar@{=}[dl] \ar[dr]^{f_2} \\
+2^{n_3} &                                                             & 2^{n_4}
+}\\
+&=
+\xymatrix{
+                 &                                                           & k \ar@{>->}[dl]_{e_1} \ar@{=}[dr]  \ar@/_2.0pc/[ddll]_{\alpha e_1' f_1'} \pullbackcornermini[d] \\
+                & 2^{n_2} \ar[dl]_{f_1} \ar@{=}[dr]   &                         & k \ar@{>->}[dl]_{e_1 } \ar@{>->}[dr]^{e_2}  \\
+2^{n_1} &                                                             & 2^{n_2}          &                                                 & 2^{n_3}
+};
+\xymatrix{
+                & 2^{n_3} \ar@{=}[dl] \ar[dr]^{f_2} \\
+2^{n_3} &                                                             & 2^{n_4}
+}\\
+&=
+\xymatrix{
+                 &                                                           & k \ar@{>->}[dl]_{\alpha e_1'} \ar@{>->}[ddrr]^{e_2} \\
+                & 2^{n_2'} \ar[dl]_{f_1'}                        &                         &  \\
+2^{n_1} &                                                             &           &                                                 & 2^{n_3}
+};
+\xymatrix{
+                & 2^{n_3} \ar@{=}[dl] \ar[dr]^{f_2} \\
+2^{n_3} &                                                             & 2^{n_4}
+}\\
+&=
+\xymatrix{
+                & 2^{n_2'} \ar[dl]_{f_1'} \ar@{=}[dr] \\
+2^{n_1} &                                                             & 2^{n_2'}
+};
+\xymatrix{
+               & k \ar@{>->}[dl]_{\alpha e_1'} \ar@{>->}[dr]^{e_2}\\
+2^{n_2'} &                                               & 2^{n_3}
+};
+\xymatrix{
+                & 2^{n_3} \ar@{=}[dl] \ar[dr]^{f_2} \\
+2^{n_3} &                                                             & 2^{n_4}
+}\\
+&=
+\xymatrix{
+                & 2^{n_2'} \ar[dl]_{f_1'} \ar@{=}[dr] \\
+2^{n_1} &                                                             & 2^{n_2'}
+};
+\xymatrix{
+                                       & k \ar@{>->}[dl]_{\alpha e_1'} \ar@{>->}[dr]^{\alpha e_2'} \ar[dd]_\cong^\alpha\\
+2^{n_2'} &                                                                         & 2^{n_3'} \\
+                                       & k  \ar@{>->}[ul]^{e_1'} \ar@{>->}[ur]_{e_2'}
+};
+\xymatrix{
+                & 2^{n_3'} \ar@{=}[dl] \ar[dr]^{f_2} \\
+2^{n_3'} &                                                             & 2^{n_4}
+}\\
+&=
+\xymatrix{
+                & 2^{n_2'} \ar[dl]_{f_1'} \ar@{=}[dr] \\
+2^{n_1} &                                                             & 2^{n_2'}
+};
+\xymatrix{
+               & k \ar@{>->}[dl]_{ e_1'} \ar@{>->}[dr]^{ e_2'}\\
+2^{n_2'} &                                               & 2^{n_3'}
+};
+\xymatrix{
+                & 2^{n_3'} \ar@{=}[dl] \ar[dr]^{f_2} \\
+2^{n_3'} &                                                             & 2^{n_4}
+}
+\end{align*}
+}
+
+%\input{zxa_chapter}
+
+{\xymatrixrowsep{0mm}
+$$
+\xymatrix{
+    & A \ar[dl]_{f} \ar[dr]^{g}
+    &
+  \\X 
+    &
+    & Y
+}
+$$}
+Composition is induced by pullback:
+
+{
+\xymatrixrowsep{2mm}
+$$
+\xymatrix{
+    & A\ar[dl]_{f} \ar[dr]^{g}
+    &
+  \\X 
+    &
+    & Y
+}\ ;\
+\xymatrix{
+    & B\ar[dl]_{h} \ar[dr]^{k}
+    &
+  \\Y 
+    &
+    & Z
+}
+:=
+\xymatrix{
+    &
+    & A {}_g\times_k B \ar[dl]_{\pi_0} \ar[dr]^{\pi_1} \pullbackcorner[d]
+    &
+    &
+  \\
+    & A \ar[dl]_{f} \ar[dr]^{g}
+    &
+    & B \ar[dl]_{h} \ar[dr]^{k}
+    &
+  \\X
+    &
+    & Y
+    &
+    & Z
 }
 $$
+The identity on $X$ is given by the span:
+$$
+\xymatrix{
+    & X \ar@{=}[dl] \ar@{=}[dr] 
+    &
+  \\X 
+    &
+    & X
+}
+$$}
+
+\hfil
+\begin{minipage}{12cm}
+\begin{multicols}{2}
+\begin{enumerate}[label={\bf [INV.\arabic*]}, ref={\bf [INV.\arabic*]}]
+\item $f; f^\circ ; f = f$
+\label{INV.1}
+\item $f ; f ^\circ ;g; g^\circ = g;g^\circ ; f; f ^\circ $
+\label{INV.2}
+\end{enumerate}
+\end{multicols}
+\end{minipage}
+
+fds fdsjlk
+fds fdsjlk
+fds fdsjlk
+fds fdsjlk
+fds fdsjlk
+fds fdsjlk
+fds fdsjlk
+fds fdsjlk
+fds fdsjlk
+fds fdsjlk
+fds fdsjlk
+fds fdsjlk
+fds fdsjlk
+fds fdsjlk
+fds fdsjlk
+fds fdsjlk
+fds fdsjlk
+fds fdsjlk
+
+
+
+%$$
+%\xymatrixrowsep{10mm}\xymatrixcolsep{10mm}
+%\xymatrix{
+%                                       & {(\FPinj_2,\times)} \ar[dl] \ar@/^.5pc/[rr] \ar@{=}[d]  &                                                  & (\FPar_2,\times) \ar[d]^{\cong} \ar[dl] \\
+% (\FPar_2,\times)^\op \ar@/_1pc/[rr]  \ar[d]_{\cong}           &                   {(\FPinj_2,\times)}\ar[dl] \ar@/^.5pc/[rr]    \ar[d]^\cong                                                                       & (\FSpan_2,\times)   \skewpullbackcornernudged[ul]    \ar@{-->}[d]    & \tilde{(\FPinj_2,\times)} \ar[dl]       \ar[d]^\cong       \\
+%\tilde{(\FPinj_2,\times)}^\op \ar@/_1pc/[rr]            \ar[d]_{\cong}                               &      \TOF \ar[dl] \ar@/^.5pc/[rr]  \ar@{=}[d]       &            \skewpullbackcornernudged[ul]                         \ar@{-->}[d]             & \tilde \TOF  \ar[d]_{\cong} \ar[dl]\\
+%\tilde{\TOF}^\op \ar@/_1pc/[rr]   \ar[d]_{\cong}   &                  \TOF \ar[dl] \ar@/^.5pc/[rr]                                                                      &  \skewpullbackcornernudged[ul]    \ar@{-->}[d]   & c(\TOF)  \ar[dl]\\
+%c(\TOF)^\op        \ar@/_1pc/[rr]                          &                                                                                             &          \hat\TOF  \skewpullbackcornernudged[ul]    &                        &            \\
+%}
+%$$
 
 
 $$

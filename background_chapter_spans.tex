@@ -343,10 +343,11 @@ Therefore, when we gave presentations for $\FinOrd$ and $\Mat_S$; the natural wh
 As we alluded to in the introduction of this subsection, the Cartesian notion of copying biases inputs over outputs, and the coCartesian notion of comparison biases outputs over inputs.  We are interested in a more permissive (partial and nondeterministic), symmetric notion of copying, which is compatible with \dag-structure. The following construction allows us to develop such a structure; generalizing the product modulo shared structure:
 \begin{definition}
 The {\bf pullback} of a diagram  $X \xrightarrow{f} A \xleftarrow{g} Y$ (if it exists) is an object $X\ {}_f \times_{g} Y$ called the {\bf apex} and maps $\pi_0:X\ {}_f \times_{g} Y\to X$ and  $\pi_1:X\ {}_f \times_{g} Y\to Y$ called {\bf the  projections}, such that for any diagram $X \xleftarrow{p_0} P \xrightarrow{p_1} Y$ making the the following diagram commute:
+{\xymatrixrowsep{0mm}
 $$
 \xymatrix{
     &
-    & B   \ar[dll]_{p_0} \ar[drr]^{p^1}
+    & B   \ar[dll]_{p_0} \ar[drr]^{p_1}
     &
     &
   \\X \ar[drr]_f 
@@ -360,7 +361,7 @@ $$
     &
     & 
 }
-$$
+$$}
 There exists a unique map $u: P\to X\ {}_f\times_g Y $ making the following diagram commute:
 $$
 \xymatrix{
@@ -411,7 +412,7 @@ $$
     & Y \ar[ull]_{\iota_1} \ar@/_/[uull]_{i_1}
   \\
     &
-    & A \ar[urr]_{g} \ar[ull]_{f}
+    & A \ar[urr]_{g} \ar[ull]^{f}
     &
     & 
 }
@@ -431,6 +432,7 @@ Given a finitely complete category $\X$, the bicategory of spans $\Span(\X)$ has
 \begin{description}
 \item[0-cells:] Objects of $\X$.
 \item[1-cells:] 1-cells $(A,f,g):X\to Y$ are spans in $\X$ from $A$:
+{\xymatrixrowsep{0mm}
 $$
 \xymatrix{
     & A \ar[dl]_{f} \ar[dr]^{g}
@@ -439,8 +441,11 @@ $$
     &
     & Y
 }
-$$
+$$}
 Composition is induced by pullback:
+
+{
+\xymatrixrowsep{2mm}
 $$
 \xymatrix{
     & A\ar[dl]_{f} \ar[dr]^{g}
@@ -473,8 +478,9 @@ $$
     &
     & Z
 }
-$$
+$$}
 The identity on $X$ is given by the span:
+{\xymatrixrowsep{0mm}
 $$
 \xymatrix{
     & X \ar@{=}[dl] \ar@{=}[dr] 
@@ -483,11 +489,13 @@ $$
     &
     & X
 }
-$$
+$$}
 %ooPoo
 %oAoBo
 %XoYoZ
 \item[2-cells:] A 2-cell $\phi:(A,f,g)\Rightarrow (B,h,k)$ between parallel spans is a map $f:A\to B$ in $\X$ such that the following diagram commutes:
+{
+\xymatrixrowsep{2mm}
 $$
 \xymatrix{
     & A \ar[dl]_{f} \ar[dr]^{g} \ar[dd]^{\phi}
@@ -499,7 +507,7 @@ $$
     & B \ar[ul]^{h} \ar[ur]_{k}
     &
 }
-$$
+$$}
 The composition and identity of  2-cells is given by the composition and identity in $\X$.
 \end{description}
 Note that composition of 1-cells is not strict, so that the associativity and unitality of composition hold up to coherent isomorphism.  The coherence isomorphisms are the natural 2-cells induced by the universal property of the pullback.
@@ -625,6 +633,9 @@ Given a regular category $\X$,  the strict 2-category of {\bf relations} interna
 \begin{description}
 \item[0-cells:] Objects of $\X$.
 \item[1-cells:] 1-cells $(A,f,g):X\to Y$ are jointly monic spans in $\X$ from $A$:
+
+{
+\xymatrixrowsep{0mm}
 $$
 \xymatrix{
     & A \ar[dl]_{f} \ar[dr]^{g}
@@ -634,6 +645,7 @@ $$
     & Y
 }
 $$
+}
 This span being {\bf jointly monic} means that for any object $B$ and map $h,k:B\to A$ if $h;f=k;f$ and $h;g=k;g$, then $h=k$.
 
 To compose jointly monic spans $(A,f,g):X\to Y$ and $(B,h,k):Y\to Z$,  first compute the pullback:
@@ -665,6 +677,8 @@ $$
 }
 $$
 Which induces a jointly monic span, which we take to be the composite:
+
+{\xymatrixrowsep{0mm}
 $$
 \xymatrix{
     & A \ar[dl]_{f} \ar[dr]^{g}
@@ -689,6 +703,7 @@ $$
     & Y
 }
 $$
+}
 The identity for composition is the same as for spans.
 \item[2-cells:] The 2-cells are the same as for spans.
 \end{description}
@@ -2097,14 +2112,17 @@ First, we review the categorical semantics of partiality:
 \label{sec:rest}
 %Restriction and inverse categories provide a categorical semantics for partial computing and reversible computing, respectively.  We review how weakened products can be constructed in both settings; relating one to the other.
 \begin{definition}\cite[\S 2.1.1]{cockett}
-A {\bf restriction category} is a category along with a restriction operator:
-
-\hfil
+A {\bf restriction category} is a category along with a restriction operator 
 $
 (A \xrightarrow{f} B )\mapsto (A \xrightarrow{\bar f} A)
-$\\
+$
 such that:
-\begin{multicols}{2}
+
+
+
+\hfil
+\begin{minipage}{15cm}
+\begin{multicols}{4}
 \begin{enumerate}[label={\bf [R.\arabic*]}, ref={\bf [R.\arabic*]}]
 \item $\bar f ; f  = f$
 \label{R.1}
@@ -2116,6 +2134,9 @@ such that:
 \label{R.4}
 \end{enumerate}
 \end{multicols}
+\end{minipage}
+
+
 Maps of the form $\bar f$ are called restriction idempotents.
 
 Restriction categories are poset enriched where $f \leq g \iff \bar f ; g = f$.
@@ -2127,7 +2148,7 @@ A map $f$ in a restriction category is {\bf total} if $\bar f =1$.  Denote the s
 
 
 
-A map $f$ in a restriction category is called a {\bf partial isomorphism}, in case there exists a {\bf parital inverse} $g$ of $f$ so that $f;g=\bar f$ and $g;f = \bar g$. Denote the category of partial isomorphisms of $\X$ by $\Inv(\X)$.
+A map $f$ in a restriction category is called a {\bf partial isomorphism}, in case there exists a {\bf partial inverse} $g$ of $f$ so that $f;g=\bar f$ and $g;f = \bar g$. Denote the category of partial isomorphisms of $\X$ by $\Inv(\X)$.
 \end{definition}
 \begin{example}
 The category $\Par$ of sets and partial functions is a restriction category.   Given a partial map $f:X\to Y$, the restriction acts as the identity on the domain of definition:
@@ -2763,6 +2784,7 @@ X \ar@{=}[l] \ar@{->>}[r]^{!_X}
 }
 $.
 \end{definition}
+The basic idea is that the left leg picks out the domain of definition.  
 Unrolling the definition, we see that a map
 $
 \xymatrix{
@@ -2783,10 +2805,13 @@ X
 Y
 }
 $.
-The basic idea is that the left leg picks out the domain of definition.  This agrees with our running example of a a restriction category:
+This agrees with our running example of a a restriction category:
 \begin{example}
 $\Par\cong\Par(\Set)$
 \end{example}
+Full subcategories of $\Par$ are also restriction categories.  Therefore, in such a setting the domain of definition need not be an actual object in the category of partial maps.  In such a case the restriction idempotent $X\xrightarrow{e}X$ is regarded as a {\bf subobject} of $X$.  Despite not properly being an object it it is morally one.  We discuss how subobjects can be promoted to objects in Definition \ref{def:idem}.
+
+
 Cartesian restriction categories are the partial version of Cartesian categories:
 \begin{lemma} 
 \label{prop:cartesian}
@@ -2855,6 +2880,10 @@ $\Inv(\Par)\cong\Pinj$
 Inverse categories are particular kinds of \dag-categories:
 \begin{theorem}[{\cite[Theorem 2.20]{cockett}}]
 A restriction category $\X$ is an inverse category if and only if there is a dagger functor $(-)^\circ:\X^\op\to\X$ such that for all $X\xleftarrow{f} Z \xrightarrow{g} Y$:
+
+
+\hfil
+\begin{minipage}{12cm}
 \begin{multicols}{2}
 \begin{enumerate}[label={\bf [INV.\arabic*]}, ref={\bf [INV.\arabic*]}]
 \item $f; f^\circ ; f = f$
@@ -2863,6 +2892,8 @@ A restriction category $\X$ is an inverse category if and only if there is a dag
 \label{INV.2}
 \end{enumerate}
 \end{multicols}
+\end{minipage}
+
 \end{theorem}
 The dagger functor takes maps to their partial inverse.
 In particular, the unitary maps in an inverse category are the total maps.
@@ -2895,7 +2926,7 @@ $$
 \end{cases}
 $$
 \end{definition}
-The category of partial injections is unusual in the sense that there is an embeds into $\Hilb$. This does not generalize to sets and functions, for example: the maps are no longer sent to bounded linear maps.
+The category of partial injections is unusual in the sense that it embeds into $\Hilb$. This does not generalize to spans between sets, for example: the maps are no longer sent to bounded linear maps.
 
 However, if the domain is changed to the category of spans of {\em finite} sets this induces an embedding into $\FHilb$.  This is actually the version we will use throughout this thesis, but we give the general definition to highlight the importance of inverse categories in the categorical semantics of quantum mechanics.
 
@@ -3309,10 +3340,10 @@ $$
 %\end{tikzpicture}
 %$$
 \end{definition}
-\begin{lemma}[{\cite[Lemma 4.3.5, ??????]{giles}}]
-Discrete inverse categories are inverse categories with respect to the dagger.
 
+Discrete inverse categories are inverse categories with respect to the dagger. 
 
+\begin{lemma}[{\cite[Lemma 4.3.5]{giles}}]
 The restriction idempotents are strengths for the multiplication and comultiplication so that:
 $$
 \begin{tikzpicture}

@@ -1,8 +1,11 @@
 In this section, we modularly build up to the prop $\ZXA$ by taking distributive laws and pushouts of smaller symmetric monoidal theories.  Along the way, we obtain various fragments of quantum circuits with partial, reversible and partially reversible semantics.
 
-We hope that the techniques used in this section can lead to presentations of other full subcategories of $\Mat_\N$ and $\Mat_\B$.  We hope that this is the first step towards proving the completeness of qudit fragments of the ZH-calculus.
 
-First, remark that that the counital completion of a discrete inverse prop $\X$ is the following pushout of props:
+We use the machinery of distributive laws of monads in $\Prof(\Mon)^\op$ discussed in Subsection \ref{subsec:internal}.  In the literature, props are usually decomposed according to orthogonal factorization systems, or more generally factorization systems over subgroupoids.  However, we have to work in the more general setting of a factorization system over subcategories of subobjects.  As discussed in Definition \ref{def:zigza} and Lemma \ref{def:zigza}; the mathematical machinery already exists to do this.  However, the original motivation was to capture distributive law of Lawveret theories and had nothing to do with subobjects \cite{lawvere}.
+
+We hope that the techniques used in this section can lead to presentations of other full subcategories of $\Mat_\N$ and $\Mat_\B$.  We hope that this can help eventually prove the completeness of qudit fragments of the ZH-calculus.
+
+Because we want to compose everything using distributive laws and pushouts, note that the counital completion of a discrete inverse prop $\X$ is the following pushout of props:
 $$
 \X \leftarrow  \surj^\op \rightarrow \cm^\op
 $$
@@ -696,7 +699,8 @@ We show that the following diagram commutes and that the vertical maps are isomo
 \renewcommand{\cubebotbr}{$(\Par(\Mat_{\F_2}),\oplus)$ }
 \renewcommand{\cubebotfl}{$(\Par(\Mat_{\F_2}),\oplus)^\op$ }
 \renewcommand{\cubebotfr}{}
-\scalebox{.9}{$
+
+$$
 \xymatrixrowsep{2mm}\xymatrixcolsep{1mm}
 \xymatrix{
                                        & \mbox{\cubetopbl} \ar[rr] \ar[dl] \ar[dd]^(.7){\cong}      &                                                  & \mbox{\cubetopbr}  \ar[dd]^{\cong} \ar[dl] \\
@@ -705,7 +709,7 @@ We show that the following diagram commutes and that the vertical maps are isomo
 \mbox{\cubebotfl} \ar@/_1pc/[drr] \ar[rr]  &                                                                                             & \mbox{\cubebotfr} \skewpullbackcorner[ul]    \ar@{-->}[d]_F \\
                                                    &                                                                                             & (\Span^\sim(\Mat_{\F_2}),\oplus)
 }
-$}
+$$
 
 The cube easily commutes.  What remains to be shown is that the universal map $F$ is an isomorphism of props.  It is clearly the identity on objects, so we just need to show it is full and faithful.
 
@@ -722,7 +726,8 @@ n  &                                                                            
          & k \ar[ul]^{f} \ar[ur]_{g}\\
 }
 $$
-Then in the domain of $F$, we have:
+Then in the domain of $F$:
+
 {
 \xymatrixrowsep{0mm}\xymatrixcolsep{1.7mm}
 \begin{align*}
@@ -1517,15 +1522,15 @@ $$
 \eqzxa{zero.six}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=X] (0) at (0, 5) {$1$};
-		\node [style=none] (1) at (0.5, 5.75) {};
-		\node [style=none] (2) at (0.5, 4.25) {};
-		\node [style=X] (3) at (0.5, 5.25) {$1$};
-		\node [style=X] (4) at (0.5, 4.75) {$1$};
+		\node [style=X] (53) at (46, 5) {$1$};
+		\node [style=none] (54) at (46.625, 5.825) {};
+		\node [style=none] (55) at (46.625, 4.175) {};
+		\node [style=X] (56) at (46.625, 5.325) {$1$};
+		\node [style=X] (57) at (46.625, 4.675) {$1$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (3) to (1.center);
-		\draw (4) to (2.center);
+		\draw (56) to (54.center);
+		\draw (57) to (55.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
@@ -1610,7 +1615,7 @@ We show that the following diagram commutes and that the vertical maps are isomo
 \renewcommand{\cubebotfr}{}
 
 \scalebox{.8}{$
-\xymatrixrowsep{2mm}\xymatrixcolsep{.5mm}
+\xymatrixrowsep{1.7mm}\xymatrixcolsep{.5mm}
 \xymatrix{
                                        & \mbox{\cubetopbl} \ar[rr] \ar[dl] \ar[dd]^(.7){\cong}      &                                                  & \mbox{\cubetopbr}  \ar[dd]^{\cong} \ar[dl] \\
 \mbox{\cubetopfl} \ar[rr]  \ar[dd]_{\cong}           &                                                                                              &\mbox{\cubetopfr} \ar@{-->}[dd]    \skewpullbackcorner[ul]              \\
@@ -2054,7 +2059,7 @@ The oracles in $\f_2$ in addition to permutations generate all of $\Iso(\f_2)$.
 %	\end{pgfonlayer}
 %\end{tikzpicture}
 %$$
-Recall the notation of a generalized controlled not gate controlled by wires indexed by $X$, operating on $x\notin X$ by $\lbparen X,x\rbparen$.
+Recall the notation of a generalized controlled not gate controlled by wires indexed by $X$, operating on $x\notin X$ by $\llparenthesis X,x\rrparenthesis$.
 
 
 %
@@ -2078,26 +2083,26 @@ Iwama et al \cite{iwama} originally gave a complete set of identities for circui
 %Denote a generalized controlled-not gate controlled from wires indexed by $X$ and operating on the wire $x$ by $\lbparen X,x \rbparen$.
 We conjecture that $(\Iso(\FinOrd_2),\times)$ is presented by the prop generated by all generalized controlled-not gates modulo the following identities:
 \begin{itemize}
-\item $\lbparen X,x\rbparen ; \lbparen X,x \rbparen= 1$.
-%So the first identity is that  in this case $\lbparen X,x\rbparen\lbparen Y,y\rbparen=\lbparen Y,y\rbparen\lbparen X,x\rbparen$
+\item $\llparenthesis X,x\rrparenthesis ; \llparenthesis X,x \rrparenthesis= 1$.
+%So the first identity is that  in this case $\llparenthesis X,x\rrparenthesis\llparenthesis Y,y\rrparenthesis=\llparenthesis Y,y\rrparenthesis\llparenthesis X,x\rrparenthesis$
 \item
-If  $x \notin Y $ and $ y \notin X$ then $\lbparen X,x\rbparen ;\lbparen Y,y\rbparen =\lbparen Y,y\rbparen; \lbparen X,x\rbparen $.
+If  $x \notin Y $ and $ y \notin X$ then $\llparenthesis X,x\rrparenthesis ;\llparenthesis Y,y\rrparenthesis =\llparenthesis Y,y\rrparenthesis; \llparenthesis X,x\rrparenthesis $.
 %
 %So the second identity is that in this case:
 %$$
-%\lbparen  X,x\rbparen  \lbparen  Y ,y\rbparen = \lbparen \lbparen  X \cup Y -y,x\rbparen \rbparen  \lbparen  Y ,y\rbparen  \lbparen  X,x\rbparen  
+%\llparenthesis  X,x\rrparenthesis  \llparenthesis  Y ,y\rrparenthesis = \llparenthesis \llparenthesis  X \cup Y -y,x\rrparenthesis \rrparenthesis  \llparenthesis  Y ,y\rrparenthesis  \llparenthesis  X,x\rrparenthesis  
 %$$
 \item
-If $x \notin Y$, then $\lbparen X,x\rbparen; \lbparen \{x\} \sqcup Y, y\rbparen = \lbparen X\cup Y,y\rbparen ; \lbparen \{x\} \sqcup Y, y\rbparen;  \lbparen X,x\rbparen $.
+If $x \notin Y$, then $\llparenthesis X,x\rrparenthesis; \llparenthesis \{x\} \sqcup Y, y\rrparenthesis = \llparenthesis X\cup Y,y\rrparenthesis ; \llparenthesis \{x\} \sqcup Y, y\rrparenthesis;  \llparenthesis X,x\rrparenthesis $.
 \item
-If $x \notin Y$, then $ \lbparen \{x\} \sqcup Y, y\rbparen ; \lbparen X,x\rbparen = \lbparen X,x\rbparen;   \lbparen \{x\} \sqcup Y, y\rbparen ; \lbparen X\cup Y,y\rbparen $.
-%So the third identity is that $\lbparen  X,x\rbparen ^2= 1 $.
+If $x \notin Y$, then $ \llparenthesis \{x\} \sqcup Y, y\rrparenthesis ; \llparenthesis X,x\rrparenthesis = \llparenthesis X,x\rrparenthesis;   \llparenthesis \{x\} \sqcup Y, y\rrparenthesis ; \llparenthesis X\cup Y,y\rrparenthesis $.
+%So the third identity is that $\llparenthesis  X,x\rrparenthesis ^2= 1 $.
 \item
 If $x \in Y$ and $y \in X$, then
 $
-\lbparen  X,x \rbparen ; \lbparen  Y,y \rbparen ;  \lbparen  X,x \rbparen 
+\llparenthesis  X,x \rrparenthesis ; \llparenthesis  Y,y \rrparenthesis ;  \llparenthesis  X,x \rrparenthesis 
 =
-\lbparen  Y,y \rbparen ;  \lbparen  X,x \rbparen ;  \lbparen  Y,y \rbparen 
+\llparenthesis  Y,y \rrparenthesis ;  \llparenthesis  X,x \rrparenthesis ;  \llparenthesis  Y,y \rrparenthesis 
 $.
 \end{itemize}
 \end{conjecture}

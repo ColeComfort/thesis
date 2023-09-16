@@ -469,12 +469,16 @@ Given a category $\mathcal V$ with finite pullbacks $\mathcal V$, a $\mathcal V$
 Monads internal to $\Span(\Set)$ are in bijection with small categories.
 \end{example}
 Let us upack this a bit.  A small category has a {\em set} $\sf Ob$ of objects, and a {\em set} {\sf Ar} of maps.  There is a map ${\sf dom}:{\sf Ar}\to {\sf Ob}$ which picks out the domain of maps and another map  ${\sf codom}:{\sf Ar}\to {\sf Ob}$ picking out the codomain.  That is to say, a span of sets:
+
+{\xymatrixrowsep{0mm}
 $$
 S=\xymatrix{
 & {\sf Ar} \ar[dl]_{{\sf dom}} \ar[dr]^{\sf codom}\\
 {\sf Ob} & & {\sf Ob}
 }
 $$
+}
+
 Composition of maps is a function which takes maps $f:X\to Y$ and $g:Y\to X$ to a new map $(f;g):X\to Y$.   This is asking for a 2-cell $\mu:S^2\to S$ in $\Span(\Set)$; the pullback picks out the composable maps and composes them.  The associativity of composition corresponds to the associativity of $\mu$ as a semigroup.
 On the other hand, the unit of a small category is a function from ${\sf Ob}$ to $S$, picking out for every object $X$, a map $1_X$ with domain and codomain $X$ , that is to say, a 2-cell $\mu:1_{\sf Ob}\to S$.  The unitality of composition is the unitality of the monad.
 
@@ -799,14 +803,14 @@ A {\bf strict factorization system} on a category $\X$ is a pair of subcategorie
 
 
 That is to say every map $f:X\to Y$ factorizes as follows
-$$
+$$\xymatrixrowsep{0mm}
 \xymatrix{
 X  \ar[rr]^{f} \ar[dr]_{\ell \in {\mathbb L}} &       & Y\\
    & A \ar[ur]_{r \in {\mathbb R}}
 }
 $$
 such that given another such factorization
-$$
+$$\xymatrixrowsep{0mm}
 \xymatrix{
 X  \ar[rr]^{f} \ar[dr]_{\ell' \in {\mathbb L}} &       & Y\\
    & A' \ar[ur]_{r' \in {\mathbb R}}
@@ -814,7 +818,7 @@ X  \ar[rr]^{f} \ar[dr]_{\ell' \in {\mathbb L}} &       & Y\\
 $$
 then the following diagram commutes:
 $$
-\xymatrixrowsep{10mm}
+\xymatrixrowsep{4mm}
 \xymatrixcolsep{50mm}
 \xymatrix{
 X \ar@{=}[d] \ar[r]^{\ell}   & A  \ar@{=}[d] \ar[r]^{r} & Y \ar@{=}[d]\\
@@ -1819,14 +1823,14 @@ An {\bf orthogonal factorization system} on a category $\X$ is a pair of subcate
 
 
 That is to say every map $f:X\to Y$ factorizes as follows
-$$
+$$\xymatrixrowsep{0mm}
 \xymatrix{
 X  \ar[rr]^{f} \ar[dr]_{\ell \in {\mathbb L}} &       & Y\\
    & A \ar[ur]_{r \in {\mathbb R}}
 }
 $$
 such that given another such factorization
-$$
+$$\xymatrixrowsep{0mm}
 \xymatrix{
 X  \ar[rr]^{f} \ar[dr]_{\ell' \in {\mathbb L}} &       & Y\\
    & A' \ar[ur]_{r' \in {\mathbb R}}
@@ -1864,19 +1868,20 @@ By asking that $\X$ is a small strict monoidal category and  $\mathbb{L}$ and $\
 \begingroup
 \allowdisplaybreaks
 \begin{definition}[{\cite[Definition 4.10]{lawvere}}]
+\label{def:zigza}
 Let $\X$ be a category equipped with a subcategory $\mathbb J$ with the same objects.
 
 A {\bf factorization system of $\X$ over $\mathbb J$} consists of a pair of subcategories $(\mathbb L,\mathbb R)$ of $\X$ with the same objects as $\X$ such that $\mathbb J$ is a subcategory of both $\mathbb L$ and $\mathbb R$.  And moreover, every map in $\X$ factorizes into maps in $\mathbb L$ followed by maps in $\mathbb R$ uniquely up to zig-zags in $\mathbb J$.
 
 That is to say, given any map $f:X\to Y$ in $\X$, there is a factorization
-$$
+$$\xymatrixrowsep{0mm}
 \xymatrix{
 X  \ar[rr]^{f} \ar[dr]_{\ell \in {\mathbb L}} &       & Y\\
    & A \ar[ur]_{r \in {\mathbb R}}
 }
-$$
+$$\xymatrixrowsep{0mm}
 such that given another such factorization
-$$
+$$\xymatrixrowsep{0mm}
 \xymatrix{
 X  \ar[rr]^{f} \ar[dr]_{\ell' \in {\mathbb L}} &       & Y\\
    & A' \ar[ur]_{r'  \in {\mathbb R}}
@@ -1944,6 +1949,7 @@ Notice how $\mathbb J$ acts on $\mathbb L$ and $\mathbb R$ both on the left and 
 
 Where this notion of factorization system over a subcategory is introduced in \cite{lawvere}; they establish a correspondence between these factorization systems and  distributive laws of monads in $\Set$-$\Prof^\op$.   The result is mentioned with distributive laws of Lawvere theories in mind, but it is a general fact:
 \begin{lemma}
+\label{lem:zigzag}
 A factorization system $(\mathbb{L},\mathbb{R})$ of a small  category $\X$ over a subcategory  $\mathbb J $ is precisely a distributive law of monads  $\mathbb{R}$ over $\mathbb{L}$, both regarded as $\mathbb{J}$-bimodules in $\Span(\Sets)$.
 \end{lemma}
 By asking that $\X$ is a small strict monoidal category and  $\mathbb{L}$, $\mathbb{R}$ and $\mathbb{J}$ are appropriately strict monoidal subcategories, the notion of a factorization system of $\X$ over $\mathbb J$ is adapted immediately to  monoidal categories. And there is an alagous correspondence  to distributive laws of $\mathbb{R}$ over $\mathbb{L}$, regarded as $\mathbb J$-bimodules in $\Span(\Mon)$.  
@@ -2299,7 +2305,7 @@ This is also  is a symmetric monoidal orthogonal factorization system since it a
 \end{lemma}
 Dually:
 \begin{example}
-Consider the distributive law between a monoid $\xcirc$ and comonoid $\xcirc$:
+The distributive law between a monoid $\xcirc$ and comonoid $\xcirc$:
 $$
  \cm \otimes_\P \cm^\op;
     \begin{tikzpicture}[rotate=90]
@@ -3083,7 +3089,7 @@ Unsurprisingly, models of semirings in $\Set$ are semirings.
 There is another way to decompose props which we have not defined, because we will not make use of it.    Since distributive laws are themselves monads, one can take distributive laws of distributive laws themselves. 
 
 
-In the case of distributive laws of categories, this is precisely a monad in\\ $\Mnd(\Mnd(\Span(\Set)))$ \cite{iterdist}.  This corresponds to a ``ternary strict factorization system'' and can be iterated finitely many times. The coherence conditions can be boiled down into asking that the appropriate distributive laws must interact to satisfy the Yang-Baxter equations.
+In the case of distributive laws of categories, this is precisely a monad in\\ $\Mnd(\Mnd(\Span(\Set)))$ \cite{iterdist}.  This corresponds to a ``ternary strict factorization system'' and can be iterated finitely many times to obtain $n$-ary strict factorization systems. The coherence conditions can be boiled down into asking that the appropriate distributive laws must interact to satisfy the Yang-Baxter equations.
 
 There is nothing special about strict factorization systems of small categories.  The way to decompose props in this setting would be in terms of monads in\\ $\Mnd(\Mnd(\Mod(\Span(\Mon))))$.  Indeed, this was used in \cite[Proposition 3.3., Example 2.34]{ih}.
 \end{aside}

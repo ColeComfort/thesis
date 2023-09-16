@@ -10,17 +10,28 @@
 \tikzstyle{tri}=[draw,shape border rotate=-30,regular polygon,regular polygon sides=3,fill={rgb:black,1;white,3},inner sep = .1cm]
 \tikzstyle{triflip}=[draw,shape border rotate=0,regular polygon,regular polygon sides=3,fill={rgb:black,1;white,3},inner sep = .1cm]
 \tikzstyle{H}=[draw, color=black, fill={rgb:black,1;white,3}, shape=rectangle, tikzit fill=yellow]
-\tikzstyle{thick}=[draw, line width=0.5mm]
+\tikzstyle{thick}=[draw, line width=0.75mm,color={rgb:black,3;white,1},fill=white, text=black]
 
 
 %\tikzstyle{Z}=[draw, fill=white, circle, scale=1, inner sep=0pt, minimum size=10pt]
 %\tikzstyle{X}=[draw, fill={rgb:black,1;white,3}, text=black, circle, scale=1, inner sep=0pt, minimum size=10pt, tikzit fill={rgb,255: red,191; green,191; blue,191}]
 
-\tikzstyle{Z}=[rounded rectangle, minimum height=11pt, font={\large}, inner sep=1mm, outer sep=-1.8mm, scale=.8, draw=black, fill=white, tikzit draw=black, tikzit fill=whites]
-\tikzstyle{X}=[rounded rectangle, minimum height=11pt, font={\large}, inner sep=1mm, outer sep=-1.8mm, scale=.8, draw=black, fill={rgb,255: red,191; green,191; blue,191}, tikzit draw=black, tikzit fill={rgb,255: red,191; green,191; blue,191}]
 
-\tikzstyle{Xthick}=[draw, fill=white, circle, scale=1, inner sep=0pt, minimum size=15pt, line width=0.5mm, tikzit fill={rgb,255: red,191; green,191; blue,191}]
-\tikzstyle{Zthick}=[draw, fill={rgb:black,1;white,3}, text=black, circle, scale=1, inner sep=0pt, minimum size=15pt, line width=0.5mm]
+
+
+
+\tikzstyle{Z}=[rounded rectangle, minimum height=12pt, font={\boldmath}, text centered,inner sep=1.5mm, outer sep=-2mm, scale=.8, draw=black, fill=white, tikzit draw=black, tikzit fill=whites]
+%\tikzstyle{X}=[rounded rectangle, minimum height=11pt, font={\bfseries},text=white, inner sep=1mm, outer sep=-1.8mm, scale=.8, draw=black, fill=black!55, tikzit draw=black, tikzit fill={rgb,255: red,191; green,191; blue,191}]
+
+\tikzstyle{X}=[rounded rectangle, minimum height=12pt, font={\large\boldmath},text=white,text centered, inner sep=1.5mm, outer sep=-2mm, scale=.8, draw=black, fill=black!55, tikzit draw=black, tikzit fill={rgb,255: red,191; green,191; blue,191}]
+
+
+
+\tikzstyle{Zthick}=[rounded rectangle, minimum height=12pt, font={\large},text centered, inner sep=1.5mm, outer sep=-2mm, scale=.8, draw={rgb:black,3;white,1}, fill=white,line width=0.75mm, tikzit draw=black, tikzit fill=whites]
+\tikzstyle{Xthick}=[rounded rectangle, minimum height=12pt, font={\large\boldmath}, text centered, text=white, inner sep=1.5mm, outer sep=-2mm, scale=.8, draw={rgb:black,3;white,1},fill=black!55,line width=0.75mm, tikzit draw=black, tikzit fill={rgb,255: red,191; green,191; blue,191}]
+
+%\tikzstyle{Xthick}=[draw, fill={rgb,255: red,191; green,191; blue,191}, circle, scale=1, inner sep=0pt, minimum size=15pt, line width=0.5mm, tikzit fill={rgb,255: red,191; green,191; blue,191}]
+%\tikzstyle{Zthick}=[draw, fill={white}, text=black, circle, scale=1, inner sep=0pt, minimum size=15pt, line width=0.5mm]
 \tikzstyle{phase}=[draw, fill=white, diamond, scale=1, inner sep=0pt, minimum size=10pt]
 \tikzstyle{discard}=[draw, xscale=2.2, ground, rotate=90]
 \tikzstyle{mmixed}=[draw, quantum, yscale=-2.2, ground, rotate=180]
@@ -29,10 +40,7 @@
 \tikzstyle{mapperp}=[draw, color=white, fill=black, text=white, rectangle]
 \tikzstyle{s}=[draw, color=black, fill=black, rectangle]
 \tikzstyle{mapthick}=[draw, color=black, fill=white, rectangle, inner sep=0pt, minimum size=15pt, line width=0.5mm]
-\tikzstyle{otimes}=[draw, fill=white, rotate=45, scale=0.9, minimum height=.1cm, circle, append after command={[shorten >=\pgflinewidth, shorten <=\pgflinewidth]
-(\tikzlastnode.north) edge (\tikzlastnode.south)
-(\tikzlastnode.east) edge (\tikzlastnode.west)}]
-\tikzstyle{dot}=[thick, fill=black, circle, scale=1, inner sep=.05cm]
+
 \tikzstyle{oplus}=[draw, scale=0.9, minimum height=.1cm, circle, append after command={[shorten >=\pgflinewidth, shorten <=\pgflinewidth]
 (\tikzlastnode.north) edge (\tikzlastnode.south)
 (\tikzlastnode.east) edge (\tikzlastnode.west)
@@ -70,8 +78,8 @@ label={center:{\it \&}},
 }}
 
 \tikzstyle{mulin}=[draw, and gate US, rotate=90, scale=1, fill=white, label={center:{}}]
-\tikzstyle{scalar}=[draw, rounded corners=1ex,scale=.8,font={\large}, rectangle round south west=false, rectangle round south east=false, tikzit fill={rgb,255: red,129; green,253; blue,255}, tikzit shape=rectangle]
-\tikzstyle{scalarop}=[draw, rounded corners=1ex,scale=.8,font={\large}, rectangle round north west=false, rectangle round north east=false, tikzit fill={rgb,255: red,116; green,172; blue,255}, tikzit shape=rectangle]
+\tikzstyle{scalar}=[draw, rounded corners=1ex,scale=1,font={\large}, rectangle round south west=false, rectangle round south east=false, tikzit fill={rgb,255: red,129; green,253; blue,255}, tikzit shape=rectangle]
+\tikzstyle{scalarop}=[draw, rounded corners=1ex,scale=1,font={\large}, rectangle round north west=false, rectangle round north east=false, tikzit fill={rgb,255: red,116; green,172; blue,255}, tikzit shape=rectangle]
 \tikzstyle{fanin}=[draw, shape border rotate=0, regular polygon, regular polygon sides=3,fill=white,inner sep = .1cm]
 \tikzstyle{fanout}=[draw, shape border rotate=180, regular polygon, regular polygon sides=3, fill=white, inner sep = .1cm]
 %\tikzstyle{fanin}=[draw, shape border rotate=30, regular polygon, regular polygon sides=3,fill=white,inner sep = .1cm]
@@ -90,11 +98,27 @@ label={center:{\it \&}},
 \tikzset{meter/.append style={draw, inner sep=10, rectangle, font=\vphantom{A}, minimum width=30, line width=.8,
  path picture={\draw[black] ([shift={(.1,.3)}]path picture bounding box.south west) to[bend left=50] ([shift={(-.1,.3)}]path picture bounding box.south east);\draw[black,-latex] ([shift={(0,.1)}]path picture bounding box.south) -- ([shift={(.3,-.1)}]path picture bounding box.north);}}}
 
+\definecolor{unitcolora}{RGB}{245,245,245}
+\definecolor{unitcolorb}{RGB}{50,50,50}
 
 
-\tikzset{
-  unit/.style={shape=rectangle, rounded corners,inner sep=0.3em,draw=gray,fill=white, font={$I$}}
-}
+\tikzstyle{unit}=[rounded rectangle, minimum height=11pt, font={$I$}, inner sep=1mm, outer sep=-1.8mm, scale=.8, draw=black, fill=unitcolora, tikzit draw=unitcolorb, tikzit fill=white]
+
+\tikzstyle{otimes}=[draw, fill=unitcolora, tikzit draw=unitcolorb, rotate=45, scale=0.9, minimum height=.1cm, circle, append after command={[shorten >=\pgflinewidth, shorten <=\pgflinewidth]
+(\tikzlastnode.north) edge (\tikzlastnode.south)
+(\tikzlastnode.east) edge (\tikzlastnode.west)}]
+
+\tikzstyle{thicc}=[draw, line width=0.5mm,color=black,fill=white, text=black]
 
 
+\tikzstyle{dot}=[thicc, fill=black, circle, scale=1, inner sep=.05cm]
 % Edge styles
+
+
+
+\tikzstyle{classicalwire}=[color=black,decorate,decoration={coil,segment length=3pt,aspect=1,amplitude=.8pt}]
+
+
+
+
+\tikzstyle{electricalcontrol}=[color=blue!20!black!80, dash pattern=on 3pt off 2pt]

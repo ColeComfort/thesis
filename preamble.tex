@@ -333,10 +333,12 @@
 \DeclareMathSymbol{\bot}{\mathord}{symbols}{"3F}
 
 
+
 \newcommand{\pullbackcorner}[1][dl]{\save*!/#1-1.5pc/#1:(-1,1)@^{pb}\restore}
 
 \newcommand{\pushoutcorner}[1][dl]{\save*!/#1-1.5pc/#1:(-1,1)@^{po}\restore}
 
+\newcommand{\pullbackcornermini}[1][dl]{\save*!/#1-1pc/#1:(-1,1)@^{pb}\restore}
 
 %\newcommand{\skewpullbackcorner}[1][dl]{\save*!/#1-1.1pc/#1:(-.5,1)@^{|>}\restore}
 
@@ -457,20 +459,24 @@
 
 \newcommand{\zcirc}{\begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=Z] (0) at (0, 0) {};
+		\node [style=Z] (8) at (23, 0) {};
+		\node [style=none] (9) at (23, -0.14) {};
 	\end{pgfonlayer}
 \end{tikzpicture}}
 
 \newcommand{\xcirc}{\begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=X] (0) at (0, 0) {};
+		\node [style=X] (8) at (23, 0) {};
+		\node [style=none] (9) at (23, -0.14) {};
 	\end{pgfonlayer}
 \end{tikzpicture}}
 
-
+\newcommand{\skewpullbackcornernudged}[1][dl]{\save*!/#1-2pc/#1:(-.5,1)@^{|>}\restore}
 
 \newcommand{\skewpullbackcorner}[1][dl]{\save*!/#1-1.1pc/#1:(-.5,1)@^{|>}\restore}
 \newcommand{\skewpushoutcorner}[1][dl]{\save*!/#1-1pc/#1:(-1,1)@^{|<}\restore}
+
+
 
 
 \DeclareFontFamily{U}{mathx}{\hyphenchar\font45}

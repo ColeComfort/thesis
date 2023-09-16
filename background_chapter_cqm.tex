@@ -1300,6 +1300,7 @@ Given a quantum state $| \psi \rangle$ and an orthonormal basis  $B$; $|\psi\ran
 
 To promote these classical stochastic mixtures to their own systems, we need a way to turn subobjects into objects:
 \begin{definition}
+\label{def:idem}
 Given a category $\X$ and a class of idempotents $\mathcal I$, the {\bf Karoubi envelope of $\X$ at $\mathcal{I}$}, ${\sf Split}_{\mathcal I}(\X)$ is the category with:
 \begin{description}
 \item[Objects:] Pairs $(X,e)$ where $X$ is an object of $\X$ and $e:X\to X$ is in $\mathcal I$.
@@ -1333,10 +1334,9 @@ $$
 \end{definition}
 This specializes to $\dag$-compact closed categories, so that projectors get promoted to objects:
 \begin{definition}[{\cite{idempotent}}]
+\label{def:dagidem}
 Given a $\dag$-category $\X$ and class of projectors $\mathcal I$ in $\X$, then  ${\sf Split}_{\mathcal I}(\X)$ is a $\dag$ category.
-
 The map $(e,1_X, 1_X) :(X,e)\to (X,1_X)$ is an isometry with adjoint $(1_X,1_X, e) :(X,1_X)\to (X,e)$ .
-
 In particular, when $\X$ is $\dag$-compact closed then so is ${\sf Split}^\dag(\X)$, with the embedding preserving this structure.
 \end{definition}
 In \cite{idempotent}, they show that splitting projectors in $\CPM(\FHilb)$ yields a category where the the split projectors can be interpreted as classical types:
@@ -3252,7 +3252,7 @@ $$
 		\node [style=none] (0) at (4, -0.5) {};
 		\node [style=none] (1) at (3, -0.5) {};
 		\node [style=none] (2) at (3.5, -0.75) {$\cdots$};
-		\node [style=X] (4) at (3.5, -1.25) {$\psi$};
+		\node [style=X] (4) at (3.5, -1.25) {$\theta$};
 		\node [style=none] (6) at (3.5, -1.75) {$\cdots$};
 		\node [style=none] (7) at (3, -2) {};
 		\node [style=none] (8) at (3.5, -1.25) {};
@@ -3270,7 +3270,7 @@ $$
 \ \right\rrbracket
 =
 \sqrt{d}
-\sum_{j=0}^{d-1} e^{2\cdot \pi \cdot i \cdot j\cdot h_j(\psi)/d} \mathcal{F} | j, \ldots, j\rangle \langle j,\ldots, j| \mathcal{F}^\dag
+\sum_{j=0}^{d-1} e^{2\cdot \pi \cdot i \cdot j\cdot h_j(\theta)/d} \mathcal{F} | j, \ldots, j\rangle \langle j,\ldots, j| \mathcal{F}^\dag
 $$
 
 Take a fragment $\llbracket-\rrbracket:{\sf ZX}\to \Hilb$ of the ZX-calculus and a \dag-compact closed subcategory of $\X\hookrightarrow\FHilb$, such that this interpretation essentially-surjectively factors through $\X$ (so that $\X$ contains all the objects of $\llbracket{\sf ZX}\rrbracket$ up to isomorphism).
@@ -3589,7 +3589,6 @@ $$
 Regarding this as a state on $\ell^{2}(\F_p^n)$ in $\CPM(\FHilb)$, partition the codomain of the state into an input and output.  Bending the input wires down  yields an inverse to the previous mapping.
 \end{proof}
 
-This representation of linear subspaces, and consequently, matrices within the ZX-calculus has recently been exploited using proof net notation: ie the scalable ZX-calculus \cite{szxi,szxii}.
 
 
 \begin{example}
@@ -4138,6 +4137,13 @@ a_1+a_3+c = b_2+b_3
 $$
 \end{example}
 
+
+Because we can represent affine subspaces over $\F_p$ in the qupit ZX-calculus we can use the string diagrammatic notation for graphical linear and graphical affine algebra within the qupit ZX-calculus.
+In the literature, this representation of matrices over $\F_2$ has already been exploited \cite{szxi,szxii}.
+
+
+
+
 There is nothing particularly special about the $\mathcal X$-gate.  By interpreting circuits in the $\mathcal Z$-gate fragment of the qupit ZX-calculus modulo scalars in terms of their $Z$-stabilizers,  we would have similarly recovered the categories of linear/affine relations over $\F_p$. 
 
 
@@ -4154,12 +4160,15 @@ The $n$-qudit Weyl operators form the {\bf Heisenberg-Weyl group} (or the qubit 
 Weyl operators have the following property (see \cite[\S 10.3.1]{nielsen}):
 \begin{lemma}
 \label{lem:ueb}
-$n$-qudit Weyl operators are an orthonormal basis for the the operators
+$n$-qudit Weyl operators are an orthonormal basis for the finite dimensional  Hilbert space of operators
+
 $$
 \FHilb(\ell^2((\Z/d\Z)^n), \ell^2((\Z/d\Z)^n))
 \cong \ell^2((\Z/d\Z)^n)^*\otimes \ell^2((\Z/d\Z)^n)
 $$
+
 with respect to the scaled trace inner product:
+
 $$
 \langle  -,= \rangle
 :=
@@ -4170,15 +4179,18 @@ The obvious choice of operator basis would have been:
 $$
 \{ |a_0, \cdots, a_{n-1} \rangle \langle  b_0,\cdots, b_{n-1} | \ | \ a_0,\cdots, a_{n-1},b_0,\cdots, b_{n-1} \in \Z/d\Z \}
 $$
+
 However, these basis elements are not unitary, and therefore can not be used to correct for errors.
-On the other hand if at some point a known unitary error occurs on,  because Weyl operators form a unitary basis, the error can be undone by applying controlled Weyl operators.
+On the other hand if at some point a known unitary error occurs,  because Weyl operators form a unitary basis, the error can be undone by applying controlled Weyl operators.
 
 In fact, the quantum teleportation protocol relies on this fact.
 Let us reexamine the phase-correction step in this protocol in more detail.
 
 Notice how the $Z$-and $X$-bases are respectively: 
+
 $$\{ \mathcal{X}^n|0\rangle \}_{n\in \Z/d\Z}
 \ , \hspace{,5cm} \{\mathcal{F}|n\rangle=\mathcal{F} \mathcal{X}^n |0\rangle =\mathcal{Z}^n \mathcal{F} |0\rangle\}_{n\in \Z/d\Z}$$
+
 Therefore to correct for the error $\mathcal{Z}^{-z}\mathcal{X}^{-x}$ which was communicated to him by Alice in terms as the pair of classical dits $(x,z)$,  Bob applies the following classically controlled operation:
 $$
 \begin{tikzpicture}
@@ -4506,23 +4518,18 @@ The scaling gate is derived in stabilizer circuits, so it need not be stated. Ho
 $$
 (\Mat_{\F_p},+) \to (\LinRel_{\F_p},+) \to (\FHilb/\sim,\otimes)
 $$
-That is, graphically:
+That is using the notation for graphical linear/affine algebra within the qupit ZX-calculus:
 $$
 \llbracket {\mathcal M}_a \rrbracket = 
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=none] (0) at (3, -2) {};
-		\node [style=none] (1) at (3, -3) {};
-		\node [style=none] (2) at (4, -2) {};
-		\node [style=none] (3) at (4, -3) {};
-		\node [style=scalarop] (4) at (3, -2.5) {$a$};
-		\node [style=scalar] (5) at (4, -2.5) {$a$};
+		\node [style=none] (47) at (44, -2) {};
+		\node [style=none] (48) at (44, -3) {};
+		\node [style=scalar] (50) at (44, -2.5) {$a$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw (0.center) to (4);
-		\draw (4) to (1.center);
-		\draw (3.center) to (5);
-		\draw (5) to (2.center);
+		\draw (48.center) to (50);
+		\draw (50) to (47.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
@@ -4773,7 +4780,7 @@ The full qubit ZH-calculus was proved to be complete and universal for all qubit
 
 Recall that an H-box with no label is the same as an H-box which is labelled by $-1$.  Therefore an axiomatization for the phase-free ZH-calculus must be compatible with the semiring homorphism $\Z\to\C$.
 Completeness for the phase-free ZH-calculus up to a scalar factor followed shortly after full completeness \cite{zhpi}; giving a presentation for qubit matrices over $\Z[1/\sqrt{2}]$.
-Tehy also showed that the  phase-free ZH-calculus is approximately universal for quantum circuits.
+They also showed that the  phase-free ZH-calculus is approximately universal for quantum circuits.
 %TODO GIVE GENERATORS AND EQUATIONS
 
 In the following chapter we prove completeness for the circuits generated by unphased $Z$ and $X$-spiders as well as $\AND$ gates and $\Not$-gates.  We prove that this is essentially the natural-number labelled H-box fragment of the ZH-calculus. the only difference being that we carefully avoid having matrices with entries which are not natural numbers.
