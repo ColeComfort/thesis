@@ -531,6 +531,7 @@
 
 \newcommand{\fa}{{\sf fa}}
 \newcommand{\sfa}{{\sf sfa}}
+\newcommand{\csfa}{{\sf csfa}}
 \newcommand{\scfa}{{\sf scfa}}
 \newcommand{\cfa}{{\sf cfa}}
 
@@ -583,18 +584,18 @@
 \setitemize{itemsep=1pt,topsep=1.5pt}
 \setdescription{itemsep=1pt,topsep=1.5pt}
 
-\makeatletter
-\renewenvironment{proof}[1][\proofname]{\par
-  \vspace{-\topsep}% remove the space after the theorem
-  \pushQED{\qed}%
-  \normalfont
-  \topsep0pt \partopsep0pt % no space before
-  \trivlist
-  \item[\hskip\labelsep
-        \itshape
-    #1\@addpunct{.}]\ignorespaces
-}{%
-  \popQED\endtrivlist\@endpefalse
-  \addvspace{6pt plus 6pt} % some space after
-}
-\makeatother
+%\makeatletter
+%\renewenvironment{proof}[1][\proofname]{\par
+%  \vspace{-\topsep}% remove the space after the theorem
+%  \pushQED{\qed}%
+%  \normalfont
+%  \topsep2pt \partopsep2pt % no space before
+%  \trivlist
+%  \item[\hskip\labelsep
+%        \itshape
+%    #1\@addpunct{.}]\ignorespaces
+%}{%
+%  \popQED\endtrivlist\@endpefalse
+%  \addvspace{6pt plus 6pt} % some space after
+%}
+%\makeatother

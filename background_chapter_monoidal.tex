@@ -2,7 +2,7 @@
 \subsection{Monoidal categories and string diagrams}
 \label{subsec:moncat}
 
-In this subsection we review the theory of monoidal categories as well as their string diagrams.   The material for which a reference is not provided can be found in an introductory reference to category theory (eg MacLane \cite{maclane}).  The reader uninterested in technical details is invited to skip the commutative diagrams and go straight to the pictures.
+In this subsection we review the theory of monoidal categories as well as their string diagrams.   The material for which a reference is not provided can be found in an introductory reference to category theory (eg  \cite{maclane}).  The reader uninterested in technical details is invited to skip the commutative diagrams and go straight to the pictures.
 
 \begin{definition}
 A {\bf monoidal category} is a category $\X$ equipped with a functor $\X\times\X\to \X$ called the {\bf tensor product}, equipped with a distinguished object $I$ of $\X$ called the {\bf tensor unit}; along with the following natural isomorphisms (given by components):
@@ -25,7 +25,7 @@ $
 Satisfying the following coherence equations:
 
 \begin{description}
-\item[MacLane pentagon:]
+\item[Mac Lane pentagon:]
 $$
 \xymatrix{
   ((W\otimes X )\otimes Y)\otimes Z \ar[rr]^{\alpha_{W\otimes X,Y,Z}} \ar[d]_{\alpha_{W,X,Y}\otimes 1_Z}
@@ -924,7 +924,7 @@ $$
 $$
 I will refer to the string diagrams in this category as proof nets for monoidal categories because of their close relation to proof nets for linearly distributive categories.  Even in the case when we are already working in a strict monoidal category, it will still often be useful to use proof nets; for example, we can bundle up wires together so that we can make inductive arguments using pictures.  Indeed, proof nets have been rediscovered in the setting of quantum circuits as the scalable ZX-calculus for precisely this reason \cite{szx}.  They have not made use of the units and counits in this setting; nevertheless it has found rich applications \cite{szxi,szxii}.  We will discuss this further in Section \ref{sec:cqm}.
 \begin{aside}
-These proof nets are closely related to proof nets for linearly-distributive categories; so much so, that this monoidal counterpart was considered folklore by some.  If one regards monoidal categories as linearly distributive categories, then these two notions are almost the same; the only difference being the combinatorial condition involving units, called thinning links.  Although it was believed by some to be folklore that these thinning links were not needed, I could not find any previous published  work that explicitly proved you don't need them for monoidal categories.  I will discuss the relation to proof nets in linear logic in Chapter \ref{chap:grothendieck}, as well as an attempt to present them as a universal construction.  This proved to be much more difficult than expected.
+These proof nets are closely related to proof nets for linearly-distributive categories; so much so, that this monoidal counterpart was considered folklore by some.   I will discuss the relation to proof nets in linear logic in Chapter \ref{chap:grothendieck}, as well as an attempt to present them as a universal construction.  This proved to be much more difficult than expected.
 \end{aside}
 Some monoidal categories are monoidally equivalent to {\bf skeletal}, strict monoidal categories, where the adjective skeletal means that every two isomorphic objects are equal.  These are very nice to work with because if we want, we can forgo having to use proof net notation entirely:
 \begin{example}

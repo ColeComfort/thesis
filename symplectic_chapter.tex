@@ -133,11 +133,13 @@ Due to the above lemma, we will regard $\Lag\Rel_k$, $\Isot\Rel_k$, $\Co\Isot\Re
 As such, we can ask what the generators of $\Lag\Rel_k$, $\Isot\Rel_k$ and $\Co\Isot\Rel_k$ look like in terms of string diagrams of linear relations. We first describe what it means to be a Lagrangian relation in pictures.  In Section \ref{sec:coisot}, we will return to the question of (co)isotropic relations.
 
 Concretely, the symplectic complement of a linear subspace $W \subseteq V$ is:
+
 \begin{align*}
 W^\omega :&= \{(v_1,v_2) \in V : \forall (w_1,w_2) \in W, \omega((v_1,v_2),(w_1,w_2))=0 \}\\
                     &= \{(v_1,v_2) \in V : \forall (w_1,w_2) \in W,  \langle (v_2,-v_1) ,(w_1,w_2)\rangle =0 \}\\
                     &= \{(v_2,-v_1) \in V : \forall (w_1,w_2) \in W,  \langle (v_1,v_2) ,(w_1,w_2)\rangle =0 \}
 \end{align*}
+
 Therefore, the condition asking that $W=W^\omega$ is graphically:
 \begin{equation}
 \label{eq:lag}
@@ -9491,11 +9493,16 @@ The connection of the ZX-calculus to electrical circuits is fascinating and leav
 
 
 
-
-Finally, in our analysis of stabilizer codes and error correction, we have neglected to describe the effect interpreting a stabilizer code as a ``doubled'' biaffine ZX-diagram on code distance.  This is because code-distance is highly basis dependent, and it not particularly well-suited to this formalism.  However, in the literature, there is a similar doubling which preserves code distance.  This  interprets stabilizer codes as doubled majorana modes \cite{majorcodes}.  This appears to be closely related to the approach we have taken here.  Majorana fermions  
-
-
- Except, instead of states being coisotropic subspaces
+%
+%Finally, in our analysis of stabilizer codes and error correction, we have neglected to describe the effect interpreting a stabilizer code as a doubled biaffine ZX-diagram on code distance. In the literature, there is a similar doubling which preserves code distance involving Majorana operators.  In \cite{majorcodes} they describe a procedure which takes ``Majorana fermion codes'' on $2n$-physical Majorana modes encoding $m$-logical qubits with code distance $d$ to a $[2n,2k,d]$ qubit CSS-code.
+%I can not say for certain, because of the language barrier between mathematics and physics, but it appears that Majorana fermion codes correspond to isotropic subspaces with respect to the {\em hyperbolic} quadratic form  on $\R^{2n}$:
+%$$
+%\begin{bmatrix}
+%0 & I\\
+%I & 0
+%\end{bmatrix}
+%$$
+%It would be interesting to investigate if there is a connection between these two notions of isotropic subspaces.
 
 
 %
