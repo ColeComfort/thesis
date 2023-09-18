@@ -51,7 +51,7 @@ $$
 We will call a map out of the tensor unit a {\bf state}, a map into the tensor unit an {\bf effect}, and an endomorphism on a the tensor unit a {\bf scalar}.
 \end{definition}
 \begin{example}
-Both the category $\FSets$ of finite sets and functions and the category $\Sets$ of sets and functions are monoidal categories under both the product and under the coproduct.
+Both the category $\FSets$ of finite sets and functions and the category $\Sets$ of sets and functions are monoidal categories under the product and coproduct.
 
 Given a field $k$, the category $\Vect_k$ vector spaces over $k$  and the category $\FVect_k$ of finite-dimensional vector spaces over $k$ are monoidal with respect to the bilinear tensor product and the direct sum.
 
@@ -804,7 +804,8 @@ $$
 \item[Tensor unit:] The empty list $[]$.
 \end{description}
 \end{definition}
-Notice that by flipping around the diagrams for the unitors and associators we get their inverses: 
+By flipping around the diagrams for the unitors and associators we get their inverses: 
+
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -922,6 +923,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
+
 I will refer to the string diagrams in this category as proof nets for monoidal categories because of their close relation to proof nets for linearly distributive categories.  Even in the case when we are already working in a strict monoidal category, it will still often be useful to use proof nets; for example, we can bundle up wires together so that we can make inductive arguments using pictures.  Indeed, proof nets have been rediscovered in the setting of quantum circuits as the scalable ZX-calculus for precisely this reason \cite{szx}.  They have not made use of the units and counits in this setting; nevertheless it has found rich applications \cite{szxi,szxii}.  We will discuss this further in Section \ref{sec:cqm}.
 \begin{aside}
 These proof nets are closely related to proof nets for linearly-distributive categories; so much so, that this monoidal counterpart was considered folklore by some.   I will discuss the relation to proof nets in linear logic in Chapter \ref{chap:grothendieck}, as well as an attempt to present them as a universal construction.  This proved to be much more difficult than expected.
@@ -933,7 +935,7 @@ $\FinOrd$ is a skeletal and strict monoidal. It is monoidally equivalent to $\FS
 
 Given a commutative semiring $R$, $\Mat_R$ is a skeletal category and is strict monoidal. Moreover for a field $k$, $\Mat_k$ is monoidally equivalent to $\FVect_k$ under the bilinear tensor product and the direct sum.
 
-In particular, because $\FVect_\C$ and $\FHilb$ are monoidally equivalent under both the bilinear tensor product and the direct sum, then $\FHilb$ is monoidally equivalent to the skeletal strict monoidal category $\Mat_\C$ under both tensor products.
+In particular, because $\FVect_\C$ and $\FHilb$ are monoidally equivalent under both the bilinear tensor product and the direct sum then $\FHilb$ is monoidally equivalent to the skeletal strict monoidal category $\Mat_\C$ under both tensor products.
 \end{example}
 Note that the strictification of a monoidal category need not be skeletal, for example there is no skeletal strict monoidal  category for which $\Set$ is monoidally equivalent to.  Indeed, the strictification which we described when applied to $\FSets$ is not skeletal and thus not $\FinOrd$ on the nose.
 
@@ -991,14 +993,8 @@ $$
 }
 $$
 A {\bf symmetric monoidal natural transformation} is a monoidal natural transformation between symmetric monoidal functors.  
-
-
-
-
-A {\bf strict symmetric monoidal category} is a symmetric monoidal category, whose underlying monoidal category is strict. That is to say, all the coherence isomorphisms, except for the braid are identities.
+A {\bf strict symmetric monoidal category} is a symmetric monoidal category, whose underlying monoidal category is strict. That is to say, all the coherence isomorphisms except for the braid are identities.
 A {\bf strict symmetric monoidal functor} is a symmetric monoidal functor which is simultaneously a strict monoidal functor.
-
-
 Just as in the monoidal case, there are strict 2-categories of strict symmetric monoidal and symmetric monoidal categories.
 \end{definition}
 Strict monoidal categories also have a notion of string diagrams, except the braid allows wires to pass over each other:
@@ -1265,9 +1261,7 @@ X^*\otimes( Y^*\otimes (X\otimes Y))   \ar[ll]^{1_{X^*} \otimes \alpha^{-1}_{Y^*
 $}
 \end{description}
 A strict compact closed category is a compact closed category where the underlying symmetric monoidal category is strict.
-
 A self-dual compact closed category is one where $X^*=X$ for all objects $X$.
-
 Strict symmetric monoidal functors and strong symmetric monoidal functors are the appropriate notion of map between strict/non-strict compact closed categories, as they preserve the duals strictly/strongly.
 \end{definition}
 The proceeding result follows immediately from the coherence theorem for symmetric monoidal categories because compact closed structure is preserved by symmetric monoidal functors:
@@ -1676,7 +1670,7 @@ There is a natural way to combined monoidal and dagger structure:
 A {\bf  (strict) \dag-(symmetric) monoidal category} is a (strict) (symmetric) monoidal category equipped with a strict (symmetric) monoidal \dag-functor with respect to which all the components of the  coherence isomorphisms of the (symmetric) monoidal category are unitary.
 \end{definition}
 \begin{example}
-The dagger category and symmetric monoidal structures of $\FHilb$, $\Hilb$ and $\Mat_\C$ are all compatible making them \dag-symmetric monoidal categories.
+The \dag-category and symmetric monoidal structures of $\FHilb$, $\Hilb$ and $\Mat_\C$ are all compatible making them \dag-symmetric monoidal categories.
 
 Moreover, $\FHilb$ and $\Mat_\C$  are equivalent as $\dag$-symmetric monoidal categories.
 \end{example}
@@ -1805,7 +1799,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-This is a presentation for the pro $\FinOrdMonot$, of finite ordinals and monotone maps.
+This is a presentation for the pro $\FinOrdMonot$, of finite ordinals and monotone maps \cite[\S 3.1]{Lafont1995}.
 \end{example}
 \begin{definition}
 A {\bf symmetric monoidal theory} $T$ consists of the same data as a monoidal theory except the equations are now defined by parallel maps generated by $\Sigma\sqcup C$, where  $C=\{\sigma_X:[X,X]\to [X,X]\ |\ \forall X \in {\sf Ob}\}$ is the set of distinguished braiding maps.
@@ -1853,13 +1847,13 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-This is a presentation for the prop of finite ordinals and functions $\FinOrd$ under the disjoint union.
+This is a presentation for the prop of finite ordinals and functions $\FinOrd$ under the disjoint union \cite[\S 3.3]{Lafont1995}.
 This is a formal way to talk about the graph of a function between finite sets.
 \end{example}
 This elegant presentation of the symmetric monoidal category of finite sets motivates finding presentations for other well-known mathematical structures.  
 
 
-The following result has probably been known for quite some time.  The earliest reference I could find is the case over a field \cite[Figure 26]{lafont}:
+The following result has probably been known for quite some time.  The earliest reference I could find considers only the Boolean semiring \cite[Figure 3]{Lafont1995}; and later, by the same author he proves the analogous result for arbitrary fields \cite[Figure 26]{lafont}:
 \begin{example}
 Take a commutative semiring $S$.
 Consider the prop ${\sf cb}_S$ generated by a commutative monoid $\xcirc$ and comonoid $\zcirc$ interacting to form a {\bf bicommutative bialgebra}:
@@ -2222,7 +2216,10 @@ R & 0\\
 0 & S
 \end{bmatrix}
 $$
-The generators of this presentation are interpreted in $\Mat_S$ as follows:
+
+The generators of this presentation are interpreted in $\Mat_S$ as 
+follows:
+
 $$
 \left\llbracket\
 \begin{tikzpicture}
@@ -2275,6 +2272,7 @@ $$
 \end{tikzpicture}
 =a
 $$
+
 The unit and counit are interpreted as the unique matrices from $0 \to 1$ and $1\to 0$, respectively. Bcause $\N$ is the initial commutative semiring, $\Mat_\N$ can be presented in terms of the prop for the free bicommutative bialgebra, where the generators and equations for scalars are derivable.
 
 
@@ -2958,6 +2956,8 @@ $$
 \end{tikzpicture}
 $$
 This makes it clear how to interpret this as a matrix. Follow the wires from the bottom and chase their paths to the top, copying them when they meet white nodes, adding them when they meet grey ones, and multiplying them when they meet scalars:
+
+\begin{example}
 $$
 \left\llbracket \
 \begin{tikzpicture}
@@ -3036,6 +3036,8 @@ x_1 \cdot a+x_2\cdot a\\
 x_1\cdot a+x_2\cdot (a+b)
 \end{bmatrix}
 $$
+\end{example}
+
 Matrices can be generalized to have no fixed origin:
 \begin{definition}
 Given a commutative semiring $R$, the prop of affine matrices over $R$, $\Aff\Mat_R$ has:
@@ -3050,7 +3052,7 @@ $$
 \dfrac{
 n \xrightarrow{(M,a)} m\ , \hspace*{.5cm} m \xrightarrow {(N,b)} k
 }{
-(M,a);(N,b):=(NM, Na+b)
+n \xrightarrow{(M,a);(N,b):=(NM, Na+b)} k
 }
 $$
 \item[Monoidal structure:]  The tensor product is given pointwise:
@@ -3137,7 +3139,7 @@ $$
 This is a presentation for the prop of affine matrices over $S$.  This new generator is interpreted as the affine shift.
 \end{example}
 %The way we have described adding a new generator to $\cb_R$ in terms of the interaction with the monoid $\zcirc$ is secrely a pushout over $\cm^\op$.  We have specified the interaction of the new generator with the commutative monoid structure, embedded it in $\cb_R$ and then taken the free prop given by these generators and equations.
-Given an affine matrix $(M,a)$, we can represent this as the following string diagram:
+Given an affine matrix $(M,a)$, it is represented by  the following string diagram:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3527,6 +3529,6 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-So that monoidal categories equipped with a supply of (\dag-)Frobenius alegbras compatible with the monoidal structure is self dual (\dag-)compact closed.
+So that symmetric monoidal categories equipped with a supply of (\dag-)Frobenius alegbras compatible with the monoidal structure is self dual (\dag-)compact closed.
 
 

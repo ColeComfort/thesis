@@ -3,7 +3,7 @@ In this chapter we  give a relational account of mixed stabilizer circuits using
 Unlike the previous chapter where we took the state space approach such that  that the objects were finite sets; here we take the phase space approach where the the objects are symplectic vector spaces.  Symplectic vector spaces capture the possible configurations of position and momentum.  They are moreover equipped with a symplectic form which captures the commutation of points in the symplectic vector space. The morphisms of study  are categories of (affine) (co)isotropic relations: capturing the nondeterministic evolution of the mechanical system in a way that preserves the commutation between position and momentum.
 
 In Section \ref{sec:sym}, we give an overview of linear symplectic geometry and  linear Lagrangian relations using the language of graphical linear algebra. In Section \ref{sec:univ}, we give generators for Lagrangian relations; showing that for prime fields, Lagrangian relations can be presented as a CPM construction over linear relations with respect to the orthogonal complement.
-In Section \ref{sec:aff} we show that only one more generator is needed to obtain affine Lagrangian relations.  In the case of odd prime fields, we show in Theorem \ref{theorem:spekkens} that affine Lagrangian relations are quopit stabilizer circuits, modulo invertible scalars.  This gives  a graphical calculus which extends the previous work on Spekkens'  qubit toy model \cite{backensspek}, and the qutrit stabilizer ZX-calculus \cite{qutrit}.  In some sense, this is the first completeness result for qupit stabilizer circuits, although we defer to the completeness of graphical linear algebra; therefore, it is in some sense only a ``doubled completeness theorem''. We also discuss the relation to electrical circuits.
+In Section \ref{sec:aff} we show that only one more generator is needed to obtain affine Lagrangian relations.  In the case of odd prime fields, we show in Theorem \ref{theorem:spekkens} that affine Lagrangian relations are quopit stabilizer circuits, modulo invertible scalars.  This gives  a graphical calculus which extends the previous work on Spekkens'  qubit toy model \cite{backensspek}, and the qutrit stabilizer ZX-calculus \cite{qutrit}.  In some sense, this is the first completeness result for qupit stabilizer circuits, although we defer to the completeness of graphical linear algebra; therefore, it is in some sense only a ``doubled completeness theorem.'' We also discuss the relation to electrical circuits.
 In Section \ref{sec:coisot} we add discarding to (affine) Lagrangian relations.  We show that this gives a semantics for quopit stabilizer codes; and qubit biaffine circuits.  By splitting decoherence maps for the Z/X bases, we get another subcategory of affine/linear relations.  We show that this gives semantics for state preparation and measurement of stabilizer codes. We relate this to the affine relational semantics of electrical circuits with controlled voltage and current sources; and dually, ammeters and voltmeters.  In Section \ref{sec:qec}, we discuss the connection to error correction.
 \section{Linear symplectic geometry}
 \label{sec:sym}
@@ -28,8 +28,7 @@ $$
 -I_n & 0_n
 \end{bmatrix}
 $$
-so that $\omega(v,w) := v \omega w^T$.
-
+so that $\omega(v,w) := v^T \omega w$.
 Moreover, every finite dimensional symplectic vector space over $k$ is symplectomorphic to one of the form $k^{2n}$ with such a symplectic form.
 \end{lemma}
 
@@ -38,12 +37,14 @@ In linear mechanical systems, symplectic vector spaces are interpreted as  the p
 \begin{definition}
 Let $W \subseteq V$ be a linear subspace of a symplectic space $V$.
 The {\bf symplectic complement} of the subspace $W$ is the subspace of $V$ on which the symplectic form vanishes on $W$:
-$
+
+$$
 W^\omega:= \{v \in V : \forall w \in W, \omega(v,w)=0 \}
-$.
+$$
+
 A linear subspace  $W$ of a symplectic vector space $V$ is {\bf isotropic} when $W^\omega \supseteq W$, {\bf coisotropic} when $W^\omega \subseteq W$ and {\bf Lagrangian} when $W^\omega=W$.
 \end{definition}
-Notice that the symplectic complement reverses the order of inclusion, so that coisotropic subspaces are turned into isotropic subspaces and vice versa.  In particular, we can see how this acts on the dimension of these subspaces:
+Notice that the symplectic complement reverses the order of inclusion, so that coisotropic subspaces are turned into isotropic subspaces and vice versa.  In particular, we can see how this acts on the dimension of these subspaces, so that Lagrangian subspaces of $k^{2n}$ have dimension $n$.
 %\begin{lemma}
 %Given a symplectic vector space $k^{2n}$, an isotropic vector space has dimension less than or equal to $n$; and a coisotropic subspace has dimension greater or equal to $n$.  Therefore, a Lagrangian subspace has dimension $n$
 %\end{lemma}
@@ -58,13 +59,13 @@ Take an isotropic subspace $W \subseteq k^{2n}$ of dimension $n-m$ with a chosen
 
 All of these subspaces generalize the notion of symplectomorphism:
 \begin{lemma}
-Given a symplectomorphism $f:V\to V$ its graph  $\Gamma_f:=\{ (fv, v) | v \in V \}$ is a Lagrangian subspace.
+Given a symplectomorphism $f:V\to V$ its graph  $\Gamma_f:=\{ (v, fv) | v \in V \}$ is a Lagrangian subspace.
 \end{lemma}
 
 
 The following  categories of linear isotropic/coisotropic/Lagrangian relations generalizes symplectomorphisms in a way that allows nondeterministic evolution:
 \begin{definition}
-Given a field $k$, the prop of (linear) {\bf Lagrangian relations},  $\Lag\Rel_k$ has morphisms $n\to m$ being Lagrangian subspaces of the symplectic vector space $k^{n+m} \oplus k^{n+m}$ with respect to the symplectic form given by the Darboux theorem.  Composition is given by relational composition. The tensor product is given by the direct sum, where the $Z$ and $X$ gradients are grouped together as follows:
+Given a field $k$, the prop of (linear) {\bf Lagrangian relations},  $\Lag\Rel_k$ has morphisms $n\to m$ being Lagrangian subspaces of the symplectic vector space $k^{n+m} \oplus k^{n+m}$ with respect to the symplectic form given by  Darboux's theorem.  Composition is given by relational composition. The tensor product is given by the direct sum, where the $Z$ and $X$ gradients are grouped together as follows:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -117,7 +118,7 @@ $$
 $$
 The props of (linear) {\bf isotropic/coisotropic relations}, $\Isot\Rel_{k}$ and $\Co\Isot\Rel_{k}$ are defined in the obvious analogous ways.
 \end{definition}
-The more general notion of Lagrangian submanifolds between symplectic manifolds originally appeared in \cite{Guillemin}. This construction is  originally attributed to the, at that time, unpublished work of Weinstein.  They are known also as canonical relations, or the symplectic ``category'' \cite{weinsteinsymplectic}.  The word category is in quotes because in this more general setting composition is not always defined.
+The more  notion of Lagrangian submanifolds between symplectic manifolds originally appeared in the literature in \cite{Guillemin}, although it is attributed to  Weinstein (which had not published it at that time).  They are known also as canonical relations, or the symplectic ``category'' \cite{weinsteinsymplectic}.  The word category is in quotes because in this more general setting composition is not always defined.
 
 
 %For the purposes of this paper, because it is so much easier to work in a prop, we will draw string diagram in the skeleton of $\Lag\Rel_k$ whose objects are all of the form $k^{2n}$ equipped with the symplectic form of Lemma \ref{lemma:sform}.
@@ -129,7 +130,7 @@ There is an embedding of (co)istropic and Lagrangian relations into $\LinRel_k$:
 \label{lemma:strong}
 The forgetful functors fom Lagrangian/isotropic/cosisotropic relations to linear relations  are faithful, strong symmetric monoidal.
 \end{lemma}
-Due to the above lemma, we will regard $\Lag\Rel_k$, $\Isot\Rel_k$, $\Co\Isot\Rel_k$ as symmetric monoidal subcategories of $\LinRel_k$.
+Due to the above lemma, we will regard $\Lag\Rel_k$, $\Isot\Rel_k$, $\Co\Isot\Rel_k$ as (strong) symmetric monoidal subcategories of $\LinRel_k$.
 As such, we can ask what the generators of $\Lag\Rel_k$, $\Isot\Rel_k$ and $\Co\Isot\Rel_k$ look like in terms of string diagrams of linear relations. We first describe what it means to be a Lagrangian relation in pictures.  In Section \ref{sec:coisot}, we will return to the question of (co)isotropic relations.
 
 Concretely, the symplectic complement of a linear subspace $W \subseteq V$ is:
@@ -171,7 +172,103 @@ Therefore, the condition asking that $W=W^\omega$ is graphically:
 		\draw [in=-270, out=-90] (3.center) to (1.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
+=
+\left(\
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (0) at (0.75, -1) {$W$};
+		\node [style=none] (1) at (0.5, 0) {};
+		\node [style=none] (2) at (1, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=120, out=-90] (1.center) to (0);
+		\draw [in=-90, out=60] (0) to (2.center);
+	\end{pgfonlayer}
+\end{tikzpicture}\
+\right)^\omega
 \end{equation}
+
+Where recall that the antipode is given by:
+$$
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (60) at (47.625, 1) {};
+		\node [style=none] (61) at (47.625, -0.5) {};
+		\node [style=s] (62) at (47.625, 0.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (61.center) to (62.center);
+		\draw (62.center) to (60.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (60) at (47.625, 1) {};
+		\node [style=none] (61) at (47.625, -0.5) {};
+		\node [style=scalar, fill=white] (62) at (47.625, 0.25) {$-1$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (61.center) to (62.center);
+		\draw (62.center) to (60.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (0) at (0.5, 0) {};
+		\node [style=X] (1) at (1, 0.5) {};
+		\node [style=none] (2) at (0, 1) {};
+		\node [style=none] (3) at (1.5, -0.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=135] (0) to (2.center);
+		\draw (0) to (1);
+		\draw [in=90, out=-45] (1) to (3.center);
+	\end{pgfonlayer}
+\end{tikzpicture}=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (0) at (0.5, 0) {};
+		\node [style=Z] (1) at (1, 0.5) {};
+		\node [style=none] (2) at (0, 1) {};
+		\node [style=none] (3) at (1.5, -0.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=135] (0) to (2.center);
+		\draw (0) to (1);
+		\draw [in=90, out=-45] (1) to (3.center);
+	\end{pgfonlayer}
+\end{tikzpicture}=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (0) at (1, 0) {};
+		\node [style=X] (1) at (0.5, 0.5) {};
+		\node [style=none] (2) at (1.5, 1) {};
+		\node [style=none] (3) at (0, -0.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=45] (0) to (2.center);
+		\draw (0) to (1);
+		\draw [in=90, out=-135] (1) to (3.center);
+	\end{pgfonlayer}
+\end{tikzpicture}=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (0) at (1, 0) {};
+		\node [style=Z] (1) at (0.5, 0.5) {};
+		\node [style=none] (2) at (1.5, 1) {};
+		\node [style=none] (3) at (0, -0.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-90, out=45] (0) to (2.center);
+		\draw (0) to (1);
+		\draw [in=90, out=-135] (1) to (3.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+$$
+
+
 The category of Lagrangian relations is compact closed.  Given a relation $V$ between symplectic vector spaces, we can curry it into a state $\lfloor V \rfloor$; and similarily, we can uncurry a states back into processes:
 $$
 \begin{tikzpicture}
@@ -313,7 +410,35 @@ $$
 		\draw [in=270, out=90] (50.center) to (52.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\iff
+=
+\left(
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=map] (0) at (0.75, -1.75) {$V$};
+		\node [style=none] (1) at (0, -0.75) {};
+		\node [style=none] (2) at (1.25, -0.75) {};
+		\node [style=none] (4) at (1.25, -2.5) {};
+		\node [style=X] (5) at (0, -3) {};
+		\node [style=Z] (6) at (0.75, -3) {};
+		\node [style=none] (7) at (0.75, -0.75) {};
+		\node [style=none] (8) at (-0.5, -0.75) {};
+		\node [style=none] (9) at (0, -2) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=120, out=-90] (1.center) to (0);
+		\draw [in=-90, out=60] (0) to (2.center);
+		\draw [in=-45, out=90] (4.center) to (0);
+		\draw [in=-90, out=135, looseness=0.75] (5) to (8.center);
+		\draw [in=30, out=-90] (4.center) to (6);
+		\draw [in=90, out=-90] (7.center) to (9.center);
+		\draw [in=150, out=-90] (9.center) to (6);
+		\draw [in=45, out=-135] (0) to (5);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\right)^\omega
+$$
+which holds if and only if
+$$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=map] (0) at (2, -2) {$V$};
@@ -456,8 +581,6 @@ $$
 \end{tikzpicture}
 $$
 For this reason, we depict Lagrangian relations as processes where the input wires are on the bottom and output wires on on the top.
-
-
 There is a functor in the other direction, where recall  from Lemma \ref{lem:ortho} that the orthogonal complement swaps colours and inverts scalars:
 \begin{lemma}
 There is a faithful, strong symmetric monoidal functor $L:\LinRel_k\to\Lag\Rel_k$, given by doubling with respect to the orthogonal complement:
@@ -592,8 +715,7 @@ $$
 \end{lemma}
 To check this is a functor, all we have to show is that it produces Lagrangian relations. This follows immediately from the naturality of the scalar $-1$.
 Indeed, because Lagrangian subspaces are isotropic and coisotropic, this extends to functors $\LinRel_k\to\Isot\Rel_k$ and $\LinRel_k\to\Co\Isot\Rel_k$.
-
-This functor is symmetric monoidal and faithful but not full, as for example, the following Lagrangian relation is not in the image of $L$:
+This functor is a (strong) symmetric monoidal and faithful but not full, as for example, the following Lagrangian relation is not in the image of $L$:
 $$
 \left(
 \begin{tikzpicture}
@@ -687,6 +809,32 @@ $$
 		\draw (156) to (165.center);
 		\draw (156) to (166);
 		\draw (166) to (157);
+	\end{pgfonlayer}
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=X] (63) at (77, -0.25) {};
+		\node [style=Z] (64) at (78, 0.25) {};
+		\node [style=none] (65) at (78, -1) {};
+		\node [style=none] (66) at (78, 0.75) {};
+		\node [style=none] (67) at (78, 1.75) {};
+		\node [style=none] (68) at (77, 1.75) {};
+		\node [style=none] (69) at (78, -1.5) {};
+		\node [style=none] (70) at (77, -1.5) {};
+		\node [style=s] (71) at (77.5, 0) {};
+		\node [style=s] (72) at (77, 0.5) {};
+		\node [style=s] (73) at (77, 1.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (66.center) to (64);
+		\draw (64) to (65.center);
+		\draw [in=270, out=90] (66.center) to (67.center);
+		\draw [in=90, out=-90] (65.center) to (69.center);
+		\draw (68.center) to (63);
+		\draw (63) to (70.center);
+		\draw (63) to (71);
+		\draw (71) to (64);
 	\end{pgfonlayer}
 \end{tikzpicture}
 =
@@ -924,6 +1072,31 @@ $$
 $$
 $$
 \left\llbracket\
+L\left( 
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=Z] (0) at (219.75, 0) {};
+		\node [style=X] (1) at (220.75, 1.5) {};
+		\node [style=none] (2) at (219.75, 0) {};
+		\node [style=none] (3) at (221.25, -0.75) {};
+		\node [style=none] (4) at (219.25, 2.25) {};
+		\node [style=none] (5) at (220.75, 2.25) {};
+		\node [style=scalar] (6) at (220.25, 0.75) {$a$};
+		\node [style=none] (14) at (219.75, -0.75) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=-105, out=30] (0) to (6);
+		\draw [in=-150, out=90] (6) to (1);
+		\draw [in=90, out=-60] (1) to (3.center);
+		\draw (1) to (5.center);
+		\draw [in=135, out=-90, looseness=0.75] (4.center) to (0);
+		\draw [in=270, out=90] (14.center) to (2.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\right)
+\ \right\rrbracket
+=
+\left\llbracket\
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (430) at (219.75, 0) {};
@@ -1038,7 +1211,7 @@ For any field $k$ the maps in $L(\LinRel_k)$ as well as $F$ and $S_a$ for all $a
 \end{theorem}
 \begin{proof}
 The following proof is very similar to that of  \cite[Lemma 6]{aaronson}.
-Consider the matrix $[Z|X]$ of an arbitrary Lagrangian relation over field $k$ regarded as a state.
+Consider a basis $[Z|X]$ of an arbitrary Lagrangian subspace over the field $k$.
 %
 %$$
 %[X | Z]
@@ -1368,7 +1541,7 @@ $$
 
 
 
-We  obtain $F$ as $S_1 \circ V_1 \circ S_1$, which can be proven as a variation of the familiar ``3 $\cnot$'' rule for quantum circuits (see e.g.~\cite[\S 3.2.1]{coecke2008interacting}):
+We  obtain $F$ as $S_1  V_1  S_1$, which can be proven as a variation of the familiar ``3 $\cnot$'' rule for quantum circuits (see e.g.~\cite[\S 3.2.1]{coecke2008interacting}):
 \begin{align*}
 S_1  V_1  S_1
 &=
@@ -1676,16 +1849,16 @@ $$
 %Recall that given a compact closed prop with an identity on objects conjugation functor, applying the CPM construction produces a compact closed prop.
 %
 %We have already shown that there is a doubling functor $\LinRel_k\to\Lag\Rel_k$, with respect to the orthogonal complement.  To get the $\CPM$ construction one has to add the "discard map" coming from the distinguished closed structure of $\LinRel_k$.  In the case when $k=\F_p$ or $k=\mathbb Q$, this produces  $\Lag\Rel_k$:
-Recall that given a compact closed prop with an identity on objects monoidal conjugation functor, we can apply the CPM construction to obtain a compact closed prop (note that here w have a compact closed \dag-category rather than a \dag-compact closed category).
+Recall that given a compact closed prop with an identity on objects monoidal conjugation functor, we can apply the CPM construction to obtain a compact closed prop (here we have a compact closed \dag-category rather than a \dag-compact closed category).
 
 The phase-purification is so-called because of the similarity to the purification of maps in the CPM-construction.  Indeed one might hope that $\Lag\Rel_k$ is isomorphic to $\CPM(\LinRel_k,(-)^\perp)$, however, in the example of phase-purification, we are tracing out both sides with respect to multiple compact closed structures:  one for each $a_j \in k$.  Prime fields are special:
 \begin{corollary}
 \label{cor}
+\label{cor:cpm}
 Given $k=\F_p$ for $p$ prime or $k=\mathbb{Q}$:
 $$\CPM(\LinRel_{k}, (-)^\perp) \cong \Lag\Rel_k$$
 \end{corollary}
 \begin{proof}
-Remark that:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1772,12 +1945,12 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-Therefore, every map in $\Lag\Rel_{\F_p}$ can be produced by tracing out a map in $L(\LinRel_{\F_p})$.  For the rationals, observe that for every $n \in \N$:
+Therefore, every map in $\Lag\Rel_{\F_p}$ can be produced by tracing out a map in $L(\LinRel_{\F_p})$.  For the rationals, observe that for every $m\in \N$:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=Z] (95) at (27.35, 2) {};
-		\node [style=scalarop] (96) at (27.85, 1.5) {$n$};
+		\node [style=scalarop] (96) at (27.85, 1.5) {$m$};
 		\node [style=none] (97) at (26.85, 1.5) {};
 		\node [style=none] (98) at (26.85, 1) {};
 		\node [style=none] (99) at (27.85, 1) {};
@@ -1797,7 +1970,7 @@ $$
 		\node [style=none] (102) at (28.85, 0) {};
 		\node [style=none] (103) at (30.85, 0) {};
 		\node [style=none] (104) at (30.35, 1.25) {$\iddots$};
-		\node [style=none] (105) at (30.5, 1) {$n$};
+		\node [style=none] (105) at (30.5, 1) {$m$};
 		\node [style=Z] (106) at (29.35, 2.25) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
@@ -1816,7 +1989,7 @@ $$
 		\node [style=Z] (127) at (33.75, 1.75) {};
 		\node [style=Z] (130) at (33.75, 3) {};
 		\node [style=none] (131) at (33.75, 2.34) {$\vdots$};
-		\node [style=none] (132) at (34, 2.25) {$n$};
+		\node [style=none] (132) at (34, 2.25) {$m$};
 		\node [style=none] (133) at (33, 0.25) {};
 		\node [style=none] (134) at (34.5, 0.25) {};
 	\end{pgfonlayer}
@@ -1843,7 +2016,7 @@ $$
 		\node [style=X] (79) at (26.75, 2.25) {};
 		\node [style=Z] (80) at (25.5, 2.25) {};
 		\node [style=none] (81) at (26, 1.515) {$\vdots$};
-		\node [style=none] (82) at (26.25, 1.425) {$n$};
+		\node [style=none] (82) at (26.25, 1.425) {$m$};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [in=-30, out=135] (71) to (73);
@@ -1959,7 +2132,7 @@ $$
 $$
 Thus, by applying the previous equation $m$ times, this can be rewritten into an circuit in the image of $L(\LinRel_{\mathbb Q})$ followed by $n\times m$ traces.
 \end{proof}
-Note that $\Lag\Rel_k$ is not $\dag$-compact closed with respect to $(-)^\dag:=((-)^\perp)^*$.  However, section, we will construct another \dag-functor with respect to which it is.
+Note that $\Lag\Rel_k$ is not $\dag$-compact closed with respect to $(-)^\dag:=((-)^\perp)^*$.  However, in  Definition \ref{def:conj} we  construct another \dag-functor with respect to which it is.
 \subsection{Passive linear electrical circuits as Lagrangian relations}
 Symplectic geometry was motivated by the goal to formalize Hamiltonian mechanics in a synthetic setting.  
 Therefore, it is not a coincidence that in \cite{passive} they use linear Lagrangian relations to give a semantics for ``passive linear circuits''.  These are an idealized class of electrical circuits with linear behaviour.
@@ -1974,7 +2147,7 @@ They proceed to recall the following physical laws due to Ohm \cite{ohm} followe
 \item[Kirchhoff's current law:] The sum of currents flowing into a node is equal to the sum of currents flowing out of the node.
 \end{description}
 %Kirchhoffs voltage law: The sum of currents flowing into a circuit is equal to the sum of currents flowing out of the circuit.
-This allows us to capture an (ideal) junction with no resistance with $n$ incoming wires and $m$ outgoing wires as a Lagrangian relation.  By Kirchhoff's current law, the sum of the $n$ incoming wires is equal to the sum of the $m$ outgoing wires.  Moreover, by Ohm's law, because resistance is zero, the $n$ incoming and $m$ outgoing potentials are all made to be equal.  That is to say that the junction is interpreted as the following Lagrangian relation:
+This allows us to capture an (ideal) junction with no resistance with $n$ incoming wires and $m$ outgoing wires as a Lagrangian relation.  By Kirchhoff's current law, the sum of the currents of the $n$ incoming wires is equal to the sum of the currents of the $m$ outgoing wires.  Moreover, by Ohm's law, because resistance is zero, the $n$ incoming and $m$ outgoing potentials are all made to be equal.  That is to say that the junction is interpreted as the following Lagrangian relation:
 $$
 \left\llbracket\
 \begin{tikzpicture}
@@ -2126,13 +2299,12 @@ $$
 Recently, the fragment of electrical circuits generated by these idealized junctions and resistors has been given a complete equational theory \cite{amolak}.  A presentation of a more general class of circuits remains open, as we will discuss at the end of this chapter.
 \section{Affine Lagrangian relations}
 \label{sec:aff}
-Affine Lagrangian relations are perhaps of more practical interest than linear Lagrangian relations.  As we will discuss in this section, these give a semantics for qupoit stabilizer circuits as well as well as passive electrical circuits plus current and voltage sources.
+Affine Lagrangian relations are perhaps of more practical interest than linear Lagrangian relations.  As we will discuss in this section, these give a semantics for quopit stabilizer circuits as well as well as passive electrical circuits plus current and voltage sources.
 \begin{definition}
 An {\bf affine Lagrangian subspace} of a symplectic vector space $k^{2n}$ is an affine subspace of a symplectic vector space $L+a \subseteq k^{2n}$ such that  $L$ is a Lagrangian subspace.
-
 Let $\Aff\Lag\Rel_k$ denote the prop  whose maps $n\to m$ are affine Lagrangian subspaces of $k^{2(n+m)}$ or the empty affine space.  The monoidal structure and composition is the same as for linear Lagrangian relations.
 \end{definition}
-Because the tensor product is defined in the same way as in $\Lag\Rel_k$, as in Lemma \ref{lemma:strong}, the forgetful functor  $\Aff\Lag\Rel_k\to \Aff\Rel_k$ is faithful, strong monoidal.
+Because the tensor product is defined in the same way as in $\Lag\Rel_k$, as in Lemma \ref{lemma:strong}, the forgetful functor  $\Aff\Lag\Rel_k\to \Aff\Rel_k$ is faithful and strong monoidal.
 \begin{definition}
 Let $\alr_k$ denote the monoidal subcategory of $\aih_k$ with objects $2n$, generated by the morphisms in the image of $\Lag\Rel_k\rightarrowtail \LinRel_k \cong \ih_k \to \aih_k$ as well as the following generator:
 $$
@@ -2280,7 +2452,7 @@ $$
 \hspace*{.1cm}\in\alr_k
 $$
 \end{proof}
-Therefore, we are justified in using string diagrams for affine relations to reason about affine Lagrangian relations.
+%Therefore, we are justified in using string diagrams for affine relations to reason about affine Lagrangian relations.
 %We will restate the interpretations given in \cite{affine} of some components for electrical circuits in terms  affine relations  in terms of the generators for graphical calculus for Lagrangian relations.  This interpretation is also explored in \cite{passive,network}; albeit, not enjoying the graphical calculus for affine relations.
 \subsection{Stabilizer circuits and Spekkens' toy model}
 The connection between the stabilizer formalism and symplectic geometry has been known for quite a while, at least as early as the papers of Calderbank, Rains, Shor and Sloane
@@ -2290,7 +2462,7 @@ This was further developed in great detail in the quopit case by Gross \cite{gro
 In this subsection, we with build on the work of Gross and show that, when $p$ is an odd prime, the prop of affine Lagrangian relations over $\F_p$  is isomorphic to quopit stabilizer circuits modulo invertible scalars.
 
 
-To show this, we  first recall some results of Gross, relating the stabilizer formalism to symplectic geometry.  First we need the following convention to represent elements of the Heinsenberg-Weyl group:
+To show this, we  first recall some results of Gross, relating the stabilizer formalism to symplectic geometry.  We reproduce their proofs here because of their importance.  First we need the following convention to represent elements of the Heinsenberg-Weyl group:
 \begin{definition}
 Given $a \in \F_p$ and $(z,x )\in \F_p^{2n}$, define the following operators:
 $$
@@ -2300,7 +2472,7 @@ $$
 This makes the following easier to prove:
 \begingroup\allowdisplaybreaks
 \begin{lemma}[Weil representation {\cite[Theorem 3]{gross}}]
-For every odd prime $p$ the prop  of affine symplectomorphisms over  $\F_p$ is isomorphic to the quopit Clifford groupoid modulo scalars.
+For odd prime $p$, the group of affine symplectomorphisms over  $\F_p^{2n}$ is isomorphic to the $n$ quopit Clifford group modulo scalars.
 \end{lemma}
 \begin{proof}
 We know that the Clifford group is defined as the normalizer of the Heinsenberg-Weyl group so that a Clifford operator is defined by its action on Weyl operators. Given an $n$ quopit Clifford operator $C$  and $(z,x)\in \F_p^{2n}$, there exists  an isomorphism $C_L:\F_p^{2n}\to \F_p^{2n}$ and a vector  $C_a\in \F_p^{2n}$ such that:
@@ -2368,7 +2540,7 @@ The reason this fails for qubits is because one can not represent all elements o
 $
 \chi(C_a(z,x)){\mathcal W}(z,x)
 $
- For example, the qubit phase shift gate $\mathcal{X}\mathcal{Z} = i \mathcal{Z}\mathcal{X}$; however $i=e^{2\pi \cdot i/4}$, so there is no value of $a\in \F_2$ for which $\chi(a)=e^{2\pi\cdot i\cdot a/2} =e^{\pi\cdot i a} = i$.
+ For example, $\mathcal{X}\mathcal{Z} = i \mathcal{Z}\mathcal{X}$; however $i=e^{2\pi \cdot i/4}$, so there is no value of $a\in \F_2$ for which $\chi(a)=e^{2\pi\cdot i\cdot a/2} =e^{\pi\cdot i a} = i$.
 
 %
 %\begin{proof}
@@ -2576,7 +2748,7 @@ $$
  \leftrightarrow |0\rangle
 $$
 
-We seek to recast these results in a more compositional light.  This is because we will prove that for odd prime $p$, $\Aff\Lag\Rel_{\F_p}$ is isomorphic to quopit stabilizer circuits, modulo scalars.  Let us give the latter category a name:
+%We seek to recast these results in a more compositional light.  This is because we will prove that for odd prime $p$, $\Aff\Lag\Rel_{\F_p}$ is isomorphic to quopit stabilizer circuits, modulo scalars.  Let us give the latter category a name:
 \begin{definition}
 Let $\Stab_p$ denote the prop of quopit stabilizer circuits modulo nonzero scalars, regarded as a \dag-compact closed category.
 \end{definition}
@@ -2604,7 +2776,6 @@ W(\vec a, \vec b):=
 \end{tikzpicture}
 $$
 The $n$-fold symplectic Weyl operators form the $n$-fold {\bf symplectic Heisenberg-Weyl group}, $P_k^n$ under composition.  And altogether, they form a prop under tensor product and composition. 
-
 Unlike the qudit Heisenberg-Weyl group, there is no phase-factor; as affine Lagragain relations only have scalars 0 and 1.  Therefore the symplectic Heisenberg-Weyl group is merely a representation of the group additive group $k^{2n}\rightarrowtail\Aff\Lag\Rel_k$.
 
 Given some affine Lagrangian subspace $f$ of $\F_k^{2n}$, the {\bf symplectic stabilizer group} of $f$ is the subgroup  $S\subseteq P_k^n$ so that for all $a\in S$, $f; a =f$.
@@ -3253,15 +3424,14 @@ $$
 $$
 \end{proof}
 The novelty in interpreting stabilizer states in this categorical framework is that it reveals that the {\em relational composition} of tableaux is the composition of stabilizer circuits.
-
-
 If we drop the affine shifts, we get a smaller fragment of stabilizer circuits:
 \begin{corollary}
+\label{cor:wfree}
 For odd prime $p$, $\Lag\Rel_{\F_p}$ is a presentation for Weyl-free quopit stabilizer circuits.
 \end{corollary}
  $\Aff\Lag\Rel_{\F_2}$ has already been studied in other terms. Spekkens first introduced his toy model as a noncontextual, nonphysical hidden variable analogue to qubit stabilizer quantum mechanics, satisfying the so-called ``knowledge-balance principle'' \cite{spekkens}.  An epistemic and an ontic state are associated to every state in the the toy model.  The epistemic state is interpreted as the knowledge which the observer has about the state, and the ontic state is interpreted as the physical/real properties of the state.  When the observer gains knowledge about the state of the system, then the physical state looses degrees of freedom.
 
-Later, this was formalized in terms of symplectic geometry \cite{spekkens2016quasi}.%, %where pure states in the toy model are regarded as affine Lagrangian subspaces over $\F_2$ and the reversible evolution is given by affine symplectomorphisms \cite{spekkens2016quasi}.% The knowledge balance principle corresponding to the preservation of the symplectic form . 
+Later, this was formalized in terms of symplectic geometry \cite{spekkens2016quasi}. %, %where pure states in the toy model are regarded as affine Lagrangian subspaces over $\F_2$ and the reversible evolution is given by affine symplectomorphisms \cite{spekkens2016quasi}.% The knowledge balance principle corresponding to the preservation of the symplectic form . 
  The general idea is that the one interprets the Lagrangian subspace as the epistemic state of the position and momentum variables (ie, what the observer knows about the state); moreover, the symplectic complement of the Lagrangian subspace is interpreted as the ontic state (the physical or real, properties of the state).  The Galois connection induced by the symplectic complement is interpreted as the knowledge balance principle.  If the observer never measures anything so that the ontic state is equal to the epistemic state then:
 \begin{corollary}
 $\Aff\Lag\Rel_{\F_2}$ is a presentation for the pure circuits in Spekkens' qubit toy model.
@@ -3417,7 +3587,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-Where we recall that Fourier transform derived from the decomposition we discussed in the previous section:
+Recall that from Corollary \ref{theorem:unbiased} that the Fourier transform derived from the decomposition we discussed in the previous section:
 $$
 \left\llbracket\
 \begin{tikzpicture}
@@ -3677,9 +3847,6 @@ $$
 \end{tikzpicture}
 $$
 Call the first component of the phase group the {\bf affine phase} and the second component the {\bf linear phase}.  The white spider corresponds to the $Z$-basis and the grey spider corresponds to the $X$-basis.
-
-
-
 In Hilbert spaces, the spiders $\ell \to k$ are interpreted as follows:
 \begin{align*}
 \left\llbracket\
@@ -3755,6 +3922,7 @@ As discussed earlier, these pick out the qupit biaffine fragment of the  ZX-calc
 
 Up until now, we have also neglected to relate the symplectic picture to the \dag-structure of $\FHilb$:
 \begin{definition}
+\label{def:conj}
 There is a monoidal conjugation functor $\bar{(-)}:\Aff\Lag\Rel_k\to \Aff\Lag\Rel_k$ given by:
 $$
 \begin{tikzpicture}
@@ -4490,7 +4658,6 @@ $$
 \end{tikzpicture}
 $$
 Suppose that we have an isotropic subspace $V$ of $(k^{2n},\omega)$ with dimension $n-1$. 
-
 Applying Fourier transforms, we obtain a symplectomorphic subspace generated by a matrix whose pivots are all in the $Z$ block.  Therefore, we can row reduce this matrix to obtain one of the following form:
 $$
 \left[\begin{array}{cc|cc}
@@ -4575,7 +4742,7 @@ $$
 This follows because composing $W$ with the cozero maps on the last wire of the $X$ and $Z$ blocks picks out the rows where the last entries of the  $Z$ and $X$ blocks are both required to be $0$; that is, those of the generator matrix of $V'$. By applying the inverse controlled-$\mathcal X$ gate and inverse Fourier transform to $V'$ we get back $V$ again. 
 
 
-Suppose that we have an isotropic subspace $V$ of $(k^{2n},\omega)$ with dimension $n-m$; by induction, $V$ can be purified to a  Lagrangian subspace of $k^{2(n+m}$.
+Suppose that we have an isotropic subspace $V$ of $(k^{2n},\omega)$ with dimension $n-m$; by induction, $V$ can be purified to a  Lagrangian subspace of $k^{2(n+m)}$.
 \end{proof}
 Since the symplectic complement reverses the order of inclusion, it extends to an isomorphism $\Co\Isot\Rel_k\cong \Isot\Rel_k$ so that we get a dual purification result:
 \begin{corollary}
@@ -5177,6 +5344,7 @@ So that, as before, they are both purifications of $\hat f = \hat g$.
 \begin{corollary}
 \label{cor:stabcode}
 For odd prime $p$, $\Aff\Co\Isot\Rel_{\F_p}\cong \CPM(\Aff\Lag\Rel_{\F_p})\cong \CPM(\Stab_p)$.  That is, adding the discard relation to $\Aff\Lag\Rel_{\F_p}$ gives a semantics for {\bf mixed stabilizer circuits}, graphically:
+
 $$
 \left\llbracket \
 \begin{tikzpicture}[yscale=-1]
@@ -5227,6 +5395,7 @@ z\\x
 \end{tikzpicture}
 \ \right\rrbracket
 $$
+
 \end{corollary}
 By mixed stabilizer circuits; we mean stabilizer circuits which can be obtained by discarding part of a pure stabilizer circuit, not an arbitrary convex combination of stabilizer circuits.  I point this out only because the  terms ``stabilizer mixed state/circuit'' and ``mixed stabilizer state/circuit'' can interchangeably refer to either notion
 
@@ -5235,7 +5404,7 @@ We can add mixed states to Spekkens' toy model in the same way as for stabilizer
 \begin{corollary}
 $\Aff\Co\Isot\Rel_{\F_2}\cong \CPM(\Aff\Lag\Rel_{\F_2})$ is Spekkens' toy model with mixed states.
 \end{corollary}
-The maps are affine coisotropic subspaces, interpreted as the epistemic states and their symplectic complements as the ontic states. When part of the epistemic state is discarded, then then the dimension can increase; meaning that the dimension of the ontic state decreases. This will make more sense when we talk about measurement.
+The maps are interpreted as the epistemic states and their symplectic complements as the ontic states. When part of the epistemic state is discarded, then then the dimension can increase; meaning that the dimension of the ontic state decreases. This will make more sense when we talk about measurement in Remark \ref{rem:wig}.
 
 
 This is conceptually very close to the result of \cite{huot} where they show that the affine completion of isometries between finite dimensional Hilbert spaces, which freely adds a discard map, yields completely positive trace-preserving maps.  And even more similar, to the more refined result of   \cite{disc}, where they show that various fragments of the ZX-calculus can be augmented with quantum discarding by freely adding a generator which discards isometries. 
@@ -5498,7 +5667,7 @@ $$\Isot\Rel_{k}\cong\Co\Isot\Rel_{k}\cong \CPM(\CPM(\LinRel_{k},(-)^\perp),\bar{
 \end{corollary}
 The astounding symmetry involved here begs the question if iterating the $\CPM$ construction more times yields anything physically interesting. Perhaps the work of \cite{CPMho} can shed some light on this question. 
 
-In order to add measurement and state preparation in the symplectic setting, we split the projectors for the $Z$ and $X$-bases:
+In order to add measurement and state preparation in the symplectic setting we inspect the structure of the $Z$ and $X$ projectors in the symplectic setting:
 \begin{definition}
 The $Z$ and $X$ projectors are defined as follows in $\Aff\Co\Isot\Rel_{k}$:
 $$
@@ -5658,7 +5827,7 @@ $$
 
 
 
-Recallling Definition \ref{def:dagidem} split one of these projectors:
+Recallling Definition \ref{def:dagidem} we split one of these projectors:
 \begin{definition}
 Denote the two-coloured prop generated by splitting $p_Z$ in $\Aff\Co\Isot\Rel_k$ by
 $$\Aff\Co\Isot\Rel_k^M :={\sf Split}_{\{p_Z^{\otimes n}, 1_n | n \in \N \}}(\Aff\Co\Isot\Rel_k)$$
@@ -5674,6 +5843,7 @@ It is important to remark that the choice of projectors which are split effects 
 
 This category has a succinct presentation;  adding the affine relations to  $\Aff\Co\Isot\Rel_k$ obtained by cutting/splitting the $Z$ projector in two:
 \begin{theorem}
+\label{thm:twocoloured}
 The full subcategory of $\Aff\Co\Isot\Rel_k^M$ generated by tensor powers of $C$ is isomorphic to $\Aff\Rel_k$.
 Therefore $\Aff\Co\Isot\Rel_k^M$ is isomorphic to adding the following linear relations to the image of $\Aff\Co\Isot\Rel_k^M\to \Aff\Co\Isot\Rel_k$ in the way which makes this into a two-coloured prop:
 
@@ -5710,8 +5880,7 @@ $$
 $$
 \end{theorem}
 We draw the wire associated to $C$ as a coil to indicate the type (although this is just syntactic sugar).
-
- In the quantum setting, the classical state ``lives'' on a single wire and the stabilizer state ``lives'' on the doubled wires.
+In the quantum setting, the classical state ``lives'' on a single wire and the stabilizer state ``lives'' on the doubled wires.
 Because of this, the  aforementioned circuits are interpreted in terms of state preparation and measurement in the $Z$-basis:
 
 $$
@@ -5953,7 +6122,7 @@ $$
 Moreover, this marginalization over $z$ acts backwards on the state; so that in accordance with Spekkens toy model, the observer gains one pit of information by sampling $x$, but injects one pit of uncertainty back into the ontic state.
 
 
-In the conventional, functional approaches to measurement of stabilizer states/states in Spekkens' toy model, for example \cite{catani}, they construct ``measurement update rules'' to compute this back action on the state.  This is essentially the same kind of procedure performed to compute the effect of  measuring a qubit stabilizer states \cite{aaronson}.  However, in the relational paradigm the measurement outcome, the measurement update, the state preparation and the unitary evolution of the quantum state are all computed in the same way: by taking the relational composition.
+In the conventional, functional approaches to measurement of stabilizer states/states in Spekkens' toy model, for example \cite{catani}, they construct ``measurement update rules'' to compute this back action on the state.  This is essentially the same kind of procedure performed to compute the effect of  measuring a qubit stabilizer states \cite{aaronson}.  However, in the relational paradigm, the measurement outcome, the measurement update, the state preparation and the unitary evolution of the quantum state are all computed in the same way: by taking the relational composition.
 \end{remark}
 
 
@@ -6024,7 +6193,7 @@ $$
 \right\rrbracket
 $$
 \end{remark}
-For this reason, we can prove the correctness of the quantum teleportation algorithm discussed previously in Protocol \ref{proto:tele} using only spider fusion:
+For this reason, we can prove the correctness of the qupit quantum teleportation algorithm discussed previously in Protocol \ref{proto:tele} using only spider fusion:
 \begin{example}
 \label{ex:teleportation}
 Given any prime $p$, the following equations of string diagrams in $\Aff\Co\Isot\Rel_{\F_p}^M$ proves the correctness of the quantum teleportation protocol where Alice on the left teleports a quopit to Bob, on the right. They share a Bell state  (on the bottom of the diagram)  and two classical dits (drawn as coiled wires).  
@@ -6303,7 +6472,8 @@ $$
 \
 \right\rrbracket
 $$
-This is because, given any input state, the circuit on the right hand side can produce any output state; however, the identity circuit forces the inputs to be the same as the outputs.
+This follows from unit of the adjunction for the counit in the Cartesian bicategory of relations $\Aff\Rel_{\F_p}$ (see Definition \ref{def:cartbicat}).
+Conceptually, this is because, given any input state, the circuit on the right hand side can produce any output state; however, the identity circuit forces the inputs to be the same as the outputs.  
 \end{example}
 \begin{example}
 Similarly,  the decoherence map is a coarse-graining of  the identity on a quantum wire :
@@ -6378,7 +6548,6 @@ $$
 
 \subsection{Electrical circuits with control and measurement}
 This multicoloured view of things recaptures the  semantics for controlled voltage and current sources as well as ammeters and voltmenters given in \cite{impedence}; however the situation is more nuanced than for quantum circuits.
-
 \label{rem:electrical}
 $\Aff\Co\Isot\Rel_{\R(x)}^M$ gives a semantics for all of the electrical circuit components we have discussed so far in addition to the controlled voltage and current sources:
 $$
@@ -6790,7 +6959,7 @@ The controlled voltage source is the electrical circuit analogue of a $X$-phase 
 
 
 Just as Spekkens' toy model can be interpreted as an epistemically restricted toy theory of quantum circuits; by dualizing things, we could also ask what properties of quantum mechanics hold in $\Aff\Isot\Rel_{\F_p}^M$.  This  is an ``ontologically restricted'' toy theory of quantum mechanics; or equivalently an epistemically ``co-restricted'' toy theory. In other words, where there is a {\em minimum} amount of knowledge the observer has about the ontic state so that discarding a state imposes extra equations on the epistemic state.
-We have showed how affine isotropic relations are not compatible with discarding; however this view of measurement is not compatible with quantum theory for the following reason. If we added the quantum analogue of  ammeters to our relational semantics of pure stabilizer circuits, we could compose the ammeter  with another ammeter conjugated by the symplectic Fourier transform as follows:
+We  showed how affine isotropic relations are not compatible with discarding; however this view of measurement is not compatible with quantum theory for the following reason. If we added the quantum analogue of  ammeters to our relational semantics of pure stabilizer circuits, we could compose the ammeter  with another ammeter conjugated by the symplectic Fourier transform as follows:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -6989,7 +7158,7 @@ $$
 Suppose that Alice encodes a state on $k$ logical qupits into  $n$ physical qupits  using this isometry and then sends it to Bob on a noisy quantum channel.
 Recall from Lemma \ref{lem:ueb} that Weyl operators form a unitary operator basis.  So that given any error on a quantum channel we can decompose it as a linear combination of Weyl operators  ${\mathcal W}(e)$.
 
-To detect the error, Bob apply the non-destructive measurement with respect to our chosen basis on the last $n-k$ qupits in the $Z$-basis conjugated by $U$.  Because stabilizers preserve Weyl-operators under conjugation, in the symplectic picture, we have $W((a,b),(c,d)) = U;W(e);U^\dag$.  Therefore:
+To detect the error, Bob applies the non-destructive measurement with respect to our chosen basis on the last $n-k$ qupits in the $Z$-basis conjugated by $U$.  Because stabilizers preserve Weyl-operators under conjugation, in the symplectic picture, we have $W((a,b),(c,d)) = U;W(e);U^\dag$.  Therefore:
 \begin{align*}
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -7431,9 +7600,7 @@ The tuple $d \in \F_p^{n-k}$ is called the {\bf syndrome}. The syndrome measures
 An error $W(e)$ is {\bf undetectable} if and only if the syndrome is the zero vector; this is because $e$ commutes with everything in $L+a$ meaning that $e \in L^\omega+a$.  In particular, the trivial error is undetectable; so undetectable errors are indistinguishable from having no errors at all.
 
 To correct for errors,  Bob applies classically controlled Weyl-operators using the information which was measured in the syndrome.
-Given any syndrome measurement $d\in \F_p^{n-k}$, he picks an error $W(e)$ which he wishes to correct, where additionally, he chooses to corrects nothing when he  measures the trivial syndrome.  This choice of errors which Bob chooses to correct for determines a function $f:\F_p^{n-k}\to\F_p^{2n}$ sending $d\mapsto e$.
-
-
+Given any syndrome measurement $d\in \F_p^{n-k}$, he picks an error $W(e)$ which he wishes to correct, where additionally, he chooses to correct nothing when he  measures the trivial syndrome.  This choice of errors which Bob chooses to correct for determines a function $f:\F_p^{n-k}\to\F_p^{2n}$ sending $d\mapsto e$.
 If $f$ is an affine transformation, then we can construct the classically controlled error correction operation $c_f$ so that given a syndrome $d$, it applies the operation $W(-f(d))$ to $n$ quopits.  This restriction requiring the function to affine comes from the fact that within the model we have constructed, only affine classical processing is allowed. Finally, we perform $U^\dag$ and then discard the ancillary quopits. The final error correction protocol is as follows:
 $$
 \begin{tikzpicture}
@@ -9299,11 +9466,11 @@ Therefore this error correction protocol corrects for at most one $X$-error.
 \end{example}
 \section{Discussion}
 \label{sec:conclagrel}
-It is important to note that the controlled operation we applied for the error correction step in the previous section requires nonlinear classical processing power, and therefore the diagram we drew doesn't ``live'' within the calculus we have constructed in this chapter.
+It is important to note that the controlled operation we applied for the error correction step in the previous section requires nonlinear classical processing power, and therefore the diagram we drew doesn't ``live'' within the calculus $\Aff\Co\Isot\Rel_{\F_p}^M$ we have constructed in this chapter.
 
 Indeed, in this example, we have secretly been working in the pushout of the diagram of mutlicoloured props:
 $$\ZXA/\sim \leftarrow \Aff\Rel_{\F_2} \rightarrow \Aff\Co\Isot\Rel_{\F_2}^M$$
-Where $\ZXA/\sim$ is the prop of Boolean {\em relations} which we presented by taking a quotient of the prop $\ZXA$.
+Where $\ZXA/\sim$ is the prop of qubit {\em relations} which we presented by taking a quotient of the prop $\ZXA$.
 Where moreover  $\Aff\Rel_{\F_2}\to \ZXA/\sim$ sends linear subspaces to subsets; and $\Aff\Rel_{\F_2}\to \Aff\Co\Isot\Rel_{\F_2}^M$ sends 
 $$(n\xrightarrow{f} m) \mapsto (C^{\otimes n}\xrightarrow{(p_Z^{\otimes n}, f, p_Z^{\otimes m})} C^{\otimes n})$$
 So that we can regard the classical wires as being arbitrary subsets rather than affine subspaces.
@@ -9475,13 +9642,13 @@ What is the structure of this intermediate notion of subspace?  I suspect that t
 We have not given a proper ``undoubled''  presentation of $\Aff\Co\Isot\Rel_k$.  However, our work combined with the recent completeness of the quopit stabilizer ZX-calculus \cite{booth} yields a complete presentation for $\Aff\Co\Isot\Rel_{\F_p}$. The subsequent paper of \cite{poor} which establishes a unique ``AP-normal form'' for quopit circuits greatly simplifies this presentation.  A completness result for arbitrary fields would closely follow their techniques.
 
 Even though completeness for the quopit stabilizer fragment of the ZX-calculus is known, there is motivation for generalizing their result.
-Because everything we have developed in this chapter works for all fields, rather than just odd prime fields; this begs the question if this semantics could be used for continuous variable quantum mechanics by working over fields with characteristic 0.  If this were true,then a presentation of $\Aff\Lag\Rel_k$ would yield continous variable analogues of the ZX-calculus.
+Because everything we have developed in this chapter works for all fields, rather than just odd prime fields; this begs the question if this semantics could be used for continuous variable quantum mechanics by working over fields with characteristic 0.  If this were true, then a presentation of $\Aff\Lag\Rel_k$ would yield continous variable analogues of the ZX-calculus.
 
  For example, in \cite{gross} they mention how  Gaussian states on the Hilbert space of square {\em integrable} functions $L^2(\R^n)$ can be regarded as certain  affine Lagrangian subspaces of the symplectic vector space $\C^{2n}$.  More specifically, the  complex valued graph states, acted on by real valued Weyl operators. 
 Gaussian states are analogous to stabilizer states for continuous variables; where they correspond to volume-preserving Gaussian probability distributions in the phase space $\R^{2n}$.
 However,  $\Aff\Lag\Rel_{\C}$ contains not only these Gaussian states, but also the Dirac deltas for the position and momentum observable, regarded as elements of the function space  $L^2(\C^n)$.
 
-As opposed to in the finite dimensional setting of stabilizer states,   these   dirac deltas are ``nonphysical'' in the sense that they can not be interpreted as states in $\Hilb$, and are therefore not quantum states.  However, they are often used  to perform calculation, as they capture the behaviour of Gaussian quantum mechanics in the ``infinitely squeezed limit''.  For example, infinitely squeezed states are used for continuous variable quantum teleportation \cite{Milburn1999}. Therefore, giving a proper completeness proof for $\Aff\Lag\Rel_{\C}$ would give a continuous variable analogue of the ZX-calculus with infinitely squeezed states.
+As opposed to in the finite dimensional setting of stabilizer states,   these   dirac deltas are ``nonphysical'' in the sense that they can not be interpreted as states in $\Hilb$, and are therefore not quantum states.  However, they are often used  to perform calculation, as they capture the behaviour of Gaussian quantum mechanics in the ``infinitely squeezed limit''.  For example, infinitely squeezed states are used for continuous variable quantum teleportation \cite{Milburn1999}. Therefore, giving a proper completeness proof for $\Aff\Lag\Rel_{\C}$ would yield a continuous variable analogue of the ZX-calculus with infinitely squeezed states.
 
 Nonstandard analysis has been used to try to solve the problem of dirac deltas not being states in $\Hilb$  \cite{Gogioso2017}; however, this approach is considerably more powerful, as well as more complicated.  The symplectic approach could potentially provide a simpler path towards expanding categorical quantum mechanics towards continuous variables.
 

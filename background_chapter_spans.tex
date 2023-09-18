@@ -37,11 +37,11 @@ $$
     &Z
 }
 $$
-The {\bf diagonal map} at $X$ is the pairing map on the identity $\Delta_X:=\langle X,X\rangle$.  A {\bf terminal} object in a category (if it exists) is an object $\one$ equipped with a unique map $!_X:X\to \one$ for every object $X$ called the {\bf discard map}.
+The {\bf diagonal map} at $X$ is the pairing map on the identity $\Delta_X:=\langle X,X\rangle$.  A {\bf terminal object} in a category (if it exists) is an object $\one$ equipped with a unique map $!_X:X\to \one$ for every object $X$ called the {\bf discard map} or the {\bf terminal map}.
 
 
 
-A category is  {\bf Cartesian} when it has all finite products and a terminal object. In a Cartesian category, the discard maps and {\bf diagonals} $\Delta:=\langle 1, 1 \rangle$ yield a natural family of commutative monoids.
+A category is  {\bf Cartesian} when it has all finite products and a terminal object. %In a Cartesian category, the discard maps and {\bf diagonals} $\Delta:=\langle 1, 1 \rangle$ yield a natural family of commutative monoids.
 
 
 %A category $\X$ is {\bf coCartesian} when $\X^\op$ is Cartesian.
@@ -65,13 +65,13 @@ $$
 }
 $$ 
 Where $ X+  Y $ is the product object.%,  $\iota_0,\iota_1$ are the injections,   $[f,g]$ is the copairing map.
-A {\bf initial} object in a category (if it exists) is an object $\emptyset$ equipped with a unique map $?_X: \emptyset\to  X$. %for every object $X$ called the {\bf codiscard map}.
+An {\bf initial object} in a category (if it exists) is an object $\emptyset$ equipped with a unique map $?_X: \emptyset\to  X$. %for every object $X$ called the {\bf codiscard map}.
 A category is  {\bf coCartesian} when it has all finite coproducts and an initial object.% In aco Cartesian category, the codiscard maps and {\bf codiagonals} $[ 1, 1 ]$ yield a natural family of cocommutative comonoids.
 \end{definition}
 \begin{example}
 $\Sets$ and  $\FSets$ are Cartesian with respect to the Cartesian product:
 $$X\times Y := \{(x,y) \ | \ \forall x\in X, y \in Y\}$$
-They are cocartesian with respect to the disjoint union
+They are coCartesian with respect to the disjoint union
 $$X+Y := \{ (x,1) \ | \ \forall x \in X \} \cup  \{ (y,2) \ | \ \forall y \in Y \}$$
 Similarly, $\FVect_k$ and $\Mat_S$ are Cartesian and coCartesian both with respect to the direct sum.
 \end{example}
@@ -333,7 +333,7 @@ $$
 \end{tikzpicture}
 $$
 
-The comonoid corresponds to the pairing map and the counit corresponds to the discard map.
+The comonoid corresponds to the diagonal map and the counit corresponds to the discard map.
 \end{lemma}
 
 Therefore, when we gave presentations for $\FinOrd$ and $\Mat_S$; the natural white commutative comonoid is precisely the one coming from the Cartesian structure.  The naturality of the diagonal map corresponds to determinism, and the naturality of the discard corresponds to totality.  We will come back to this shortly.
@@ -342,7 +342,7 @@ Therefore, when we gave presentations for $\FinOrd$ and $\Mat_S$; the natural wh
 
 As we alluded to in the introduction of this subsection, the Cartesian notion of copying biases inputs over outputs, and the coCartesian notion of comparison biases outputs over inputs.  We are interested in a more permissive (partial and nondeterministic), symmetric notion of copying, which is compatible with \dag-structure. The following construction allows us to develop such a structure; generalizing the product modulo shared structure:
 \begin{definition}
-The {\bf pullback} of a diagram  $X \xrightarrow{f} A \xleftarrow{g} Y$ (if it exists) is an object $X\ {}_f \times_{g} Y$ called the {\bf apex} and maps $\pi_0:X\ {}_f \times_{g} Y\to X$ and  $\pi_1:X\ {}_f \times_{g} Y\to Y$ called {\bf the  projections}, such that for any diagram $X \xleftarrow{p_0} P \xrightarrow{p_1} Y$ making the the following diagram commute:
+The {\bf pullback} of a diagram  $X \xrightarrow{f} A \xleftarrow{g} Y$ (if it exists) is an object $X\ {}_f \times_{g} Y$ called the {\bf apex} and maps $\pi_0:X\ {}_f \times_{g} Y\to X$ and  $\pi_1:X\ {}_f \times_{g} Y\to Y$ called {\bf the  projections}, such that for any diagram $X \xleftarrow{p_0} P \xrightarrow{p_1} Y$ making the the following diagram commute,
 {\xymatrixrowsep{0mm}
 $$
 \xymatrix{
@@ -362,7 +362,7 @@ $$
     & 
 }
 $$}
-There exists a unique map $u: P\to X\ {}_f\times_g Y $ making the following diagram commute:
+there exists a unique map $u: P\to X\ {}_f\times_g Y $ making the following diagram commute:
 $$
 \xymatrix{
     &
@@ -387,12 +387,8 @@ $$
 }
 $$
 Where a chevron is drawn under the apex of the span to denote that the square is a pullback.
-
 A category is {\bf finitely complete} if it has a terminal object and all pullbacks exist. Notice that product $X\times Y$ is the pullback of the diagram $X \rightarrow 1 \leftarrow Y$.
-
-
 The dual notion of a pullback is a {\bf pushout}; the pushout of a diagram $X\xrightarrow{f} A \xleftarrow{g} Y$ is denoted by $X{}_f +_{g} Y$.
-
 We draw a chevron on the apex of the cospan, to denote that a square is a pushout as follows:
 $$
 \xymatrix{
@@ -510,16 +506,16 @@ $$
 $$}
 The composition and identity of  2-cells is given by the composition and identity in $\X$.
 \end{description}
-Note that composition of 1-cells is not strict, so that the associativity and unitality of composition hold up to coherent isomorphism.  The coherence isomorphisms are the natural 2-cells induced by the universal property of the pullback.
+The composition of 1-cells is not strict, so that the associativity and unitality of composition hold up to coherent isomorphism.  The coherence isomorphisms are the canonical 2-cells induced by the universal property of the pullback.
 
 
-The ordinary category of spans of $\X$, $\Span^\sim(\X)$, has maps being equivalence classes of isomorphic spans; so that:
+The ordinary category of spans of $\X$, $\Span^\sim(\X)$, has maps being equivalence classes of isomorphic spans; so that,
 $$
 (X\xleftarrow{f} A \xrightarrow{g} Y)
  \sim
 (X\xleftarrow{h} B \xrightarrow{k} Y)
 $$
-If and only if there exists an isomorphism $A\xrightarrow{\phi} B$ such that the following diagram commutes:
+if and only if there exists an isomorphism $A\xrightarrow{\phi} B$ such that the following diagram commutes:
 $$
 \xymatrix{
     & A \ar[dl]_{f} \ar[dr]^{g} \ar[dd]^{\phi}_{\cong}
@@ -533,7 +529,7 @@ $$
 }
 $$
 \end{definition}
-$\X$ embeds in $\Span^\sim(\X)$ in two different ways.  Covariantly as the graph and contravariantly as the cograph:
+$\X$ embeds in $\Span^\sim(\X)$ in two different ways.  Covariantly as the {\bf graph} and contravariantly as the {\bf cograph}:
 $$
 \left(X\xrightarrow{f} Y \right) 
 \mapsto
@@ -551,7 +547,7 @@ Y & X \ar@{=}[r] \ar[l]_f & X
 }
 \right)
 $$
- Regarded as a monoidal category under the Cartesian product, the two embeddings turn the diagonal maps and discard maps into dag-Frobenius algebras, making  $\Span^\sim(\X)$ a self-dual \dag-compact closed, where the \dag-functor is given by the converse  $(f,A,g)\mapsto (g,A,f)$.
+ Regarded as a monoidal category under the Cartesian product, the two embeddings turn the diagonal maps and discard maps into dag-Frobenius algebras, making  $\Span^\sim(\X)$  self-dual \dag-compact closed, where the \dag-functor is given by the converse  $(f,A,g)\mapsto (g,A,f)$.
 
 For the interested reader, the monoidal structures (or lack thereof) of categories of cospans and and spans of sets is elaborated on in great detail in \cite{bruni}.
 
@@ -570,7 +566,7 @@ A map $f:X\to Y$ is a {\bf monomorphism} (monic) when for all maps $g,h:Z\to X$,
 
 Dually, a map $f:X\to Y$ is an {\bf epimorphism} (epic) when for all maps $g,h:Y\to Z$, $f;g=f;h$ implies $ g=h$.
 
-To add extra information to our commutative diagrams, we denote monomorphisms as arrows with tails $\rightarrowtail$ and epimorphisms as arrows with two heads $\twoheadrightarrow$.  
+To add extra information to diagrams, we denote monomorphisms as arrows with tails $\rightarrowtail$ and epimorphisms as arrows with two heads $\twoheadrightarrow$.  
 \end{definition}
 Monomorphisms and epimorphisms are the categorically well-behaved analogues of injections and surjections; where a map is similarly an isomorphism when it is an epimorphism and a monomorphism.  In all of the examples we care about in this thesis, the monomorphisms are exactly the injections and the epimorphisms are exactly the surjections.  However, it is needed for a proper exposition of categories of relations.
 
@@ -585,14 +581,12 @@ $$
     & Y
 }
 $$
-The maps $e$ arising from equalizers are monomorphisms.  Monomorphisms arising this way are called {\bf regular monomorphisms}.
-
+The maps $m$ arising from equalizers are monomorphisms.  Monomorphisms arising this way are called {\bf regular monomorphisms}.
 The dual notion to an equalizer is a {\bf coequalizer}, and the epimorphisms arizing in this way are called {\bf regular epimorphisms}.
 \end{definition}
 We have already been using coequalizers throughout this thesis whenever we impose equations by taking quotients.  Indeed:
 \begin{example}
-Sets and matrices both have equalizers and coequalizers:
-
+Sets and matrices both have equalizers and coequalizers.
 In sets, the equalizer of two functions $g,f:X\to Y$ is (up to unique isomorphism) the set 
 $$\{x \in X:f(x)=g(x)\} \subseteq X$$
 The coequalizer is the quotient $Y/\sim$   of the set $Y$ by the equivalence relation 
@@ -605,7 +599,6 @@ We  use coequalizers to ask for conditions in which categories have good notions
 Take a finitely complete category.  Construct the pullback of a map $f:X\to Y$ along itself:
  $$\xymatrix{X\ {}_f \times_f X  \ar@<-.5ex>[rr]_{\ \ \pi_1;f}  \ar@<.5ex>[rr]^{\ \ \pi_0;f}&& Y}$$
 Call this diagram a {\bf kernel pair} at $f$, and call the object  the {\bf kernel} of $f$, denoted by $\ker(f):=X\ {}_f \times_f X$.
-
 If the kernel pair at $f$ admits a coequalizer, call this object the {\bf image} of $f$, denoted by $\im(f)$.
 
 A {\bf regular category} is a finitely complete category such that:
@@ -633,7 +626,6 @@ Given a regular category $\X$,  the strict 2-category of {\bf relations} interna
 \begin{description}
 \item[0-cells:] Objects of $\X$.
 \item[1-cells:] 1-cells $(A,f,g):X\to Y$ are jointly monic spans in $\X$ from $A$:
-
 {
 \xymatrixrowsep{0mm}
 $$
@@ -714,15 +706,6 @@ Relations have the special property, unlike spans, that they are poset-enriched;
 The is why, unlike for spans,  we don't have to quotient to obtain an ordinary category of relations we just need to forget about the 2-cells.
 
 Note that just as in the case of spans, relations is a \dag-compact closed category with respect to the Cartesian product where the \dag-functor is given by the converse.
-
-
-
-
-
-
-
-
-
 Consider the following concrete example:
 \begin{example}
 $\Rel:=\Rel(\Set)$ has:
@@ -1061,10 +1044,7 @@ $$
 \begin{lemma}[{\cite[\S 3.4]{ih}}]
 $\ih_k$ is a presentation for $\LinRel_{k}$.
 \end{lemma}
-The colour-swapping dagger functor $(-)^T:\ih_k^\op\to \ih_k$ corresponds to the transpose of matrices; and the colour-preserving dagger functor  $()^*:\ih_k^\op\to \ih_k$ corresponds transpose coming from the compact closed structure of $\ih_k$.  These should not be confused with each other: the latter is the relational converse.  
-
-
-
+The colour-swapping dagger functor $(-)^T:\ih_k^\op\to \ih_k$ corresponds to the transpose of matrices; and the colour-preserving dagger functor  $(-)^*:\ih_k^\op\to \ih_k$ corresponds transpose coming from the compact closed structure of $\ih_k$.  These should not be confused with each other: the latter is the relational converse.  
 Combining these two daggers we have:
 \begin{lemma}[{\cite{ortho}}]
 \label{lem:ortho}
@@ -1239,11 +1219,11 @@ However, the category $\Aff\Mat_k$ is not a regular category, it doesn't even ha
 The empty set can not be regarded as a vector space because it has no origin; however, because affine transformations are not required to preserve the origin, it is perfectly fine to ask for an affine transformation from an empty space.
 
 
-By shifting to the category $\Aff\Mat_k+1$ where one freely adds the empty set as the initial object, so that there is a unique map $\emptyset \xrightarrow{?_n} k^n$, for all $n$,  we obtain an algebraic theory, and thus a regular category.  Notice that $\Aff\Mat_k$ is the full subcategory of $\Aff\Mat_k+1$ with nonempty objects.  Therefore, we can take the category of internal relations:
+By shifting to the category $\Aff\Mat_k+1$ where one freely adds the empty set as the initial object, so that there is a unique map $\emptyset \xrightarrow{?_n} k^n$ for all $n$,  we obtain an algebraic theory, and thus a regular category.  Notice that $\Aff\Mat_k$ is the full subcategory of $\Aff\Mat_k+1$ with nonempty objects.  Therefore, we can take the category of internal relations:
 \begin{definition}
 The prop of {\bf affine relations} over $k$, $\Aff\Rel_{k}$ is the full subcategory of  $\Rel(\Aff\Mat_k+1)$ of nonempty affine subspaces.
 \end{definition}
-Concretely, this is constructed in the same way as $\LinRel_k$, but maps $n\to m$ are now (possibly empty) affine subspaces $S \subseteq k^n\oplus k^m$. That is to say, $S$ is a subset of $k^n\oplus k^m$ such that for any $a \in S$, the set $\{v+a\ |\ \forall v \in S\}$ is a linear subspace of  $k^n\oplus k^m$.  Note that the empty set vacuously satisfies this condition.
+Concretely, this is constructed in the same way as $\LinRel_k$, but maps $n\to m$ are now (possibly empty) affine subspaces $S \subseteq k^n\oplus k^m$. That is to say, $S$ is a subset of $k^n\oplus k^m$ such that for any $a \in S$, the set $\{v+a\ |\ \forall v \in S\}$ is a linear subspace of  $k^n\oplus k^m$.  The empty set vacuously satisfies this condition.
 
 
 We chose to forget the empty set as an object and retain it merely as a subobject so that we can present it as a (single sorted) prop as follows:
@@ -1337,6 +1317,7 @@ The original presentation of $\Aff\Rel_k$ was proven to be equivalent to the con
 
 The essence of the Cartesian monoidal structure of categories of relations can be generalised to the following algebraic notion due to \cite{carboni}:
 \begin{definition}
+\label{def:cartbicat}
 A {\bf Cartesian bicategory of relations} is a symmetric monoidal category $\X$ enriched in posets,  equipped with a commutative Frobenius algebra $\zcirc$ on every object  (see Example \ref{ex:frob}), compatible with the monoidal structure:
 $$
 \begin{tikzpicture}
@@ -2087,7 +2068,7 @@ Let $\Map(\X)$ denote the category of comonoid homorphisms in $\X$.
 Therefore, now we can copy and delete things with the commutative comonoid structure in a partial, deterministic manner. Moreover the commutative monoid structure also allows us to  compare and ask for the existence of things in a nondeterministic and partial manner.
 
 
-Moreover, because Cartesian bicategories of relations are equipped with a chosen compatible family of Frobenius algebras, they are self-dual \dag-compact closed. For categories of internal relations, the \dag-structure is given by the transpose/relational converse.
+%Moreover, because Cartesian bicategories of relations are equipped with a chosen compatible family of Frobenius algebras, they are self-dual \dag-compact closed. For categories of internal relations, the \dag-structure is given by the transpose/relational converse.
 
 Given a finitely complete category $\X$, $\Span(\X)$ is not a Cartesian bicategory of relations because it is not poset enriched (there can be more than one 2-cell between 1-cells); however it is a {\em Cartesian bicategory} (see \cite{carbonia}).  All of the equations now only hold up to coherent isomorphism, however the story is essentially the same. This is much more difficult to work with because this notion requires coherence conditions so we will omit this more general definition for the sake of brevity. 
 
@@ -2136,18 +2117,9 @@ such that:
 \end{multicols}
 \end{minipage}
 
-
 Maps of the form $\bar f$ are called restriction idempotents.
-
 Restriction categories are poset enriched where $f \leq g \iff \bar f ; g = f$.
-
-
-
-
 A map $f$ in a restriction category is {\bf total} if $\bar f =1$.  Denote the subcategory of total maps of $\X$ by $\Total(\X)$.
-
-
-
 A map $f$ in a restriction category is called a {\bf partial isomorphism}, in case there exists a {\bf partial inverse} $g$ of $f$ so that $f;g=\bar f$ and $g;f = \bar g$. Denote the category of partial isomorphisms of $\X$ by $\Inv(\X)$.
 \end{definition}
 \begin{example}
@@ -2197,7 +2169,7 @@ $$
 %\end{example}
 To augment restriction categories with copying, one must relax the definition of a Cartesian category: 
 \begin{definition}[{\cite{restiii}}]
-A restriction category has {\bf binary restriction products}, when for all objects  $X,Y$, there exists an object $X\times Y$ and total maps $X \xleftarrow{\pi_0}  X\times Y \xrightarrow{\pi_1} Y$, so that for all objects $Z$ and all maps $X \xleftarrow{f} Z \xrightarrow{g} Y$, there exists a unique $Z\xrightarrow{\langle f,g \rangle} X\times Y$ making the diagram commute:
+A restriction category has {\bf binary restriction products}, when for all objects  $X$ and $Y$, there exists an object $X\times Y$ and total maps $X \xleftarrow{\pi_0}  X\times Y \xrightarrow{\pi_1} Y$, so that for all objects $Z$ and all maps $X \xleftarrow{f} Z \xrightarrow{g} Y$, there exists a unique $Z\xrightarrow{\langle f,g \rangle} X\times Y$ making the diagram commute:
 $$
 \xymatrixrowsep{0.2cm}
 \xymatrixcolsep{0.4cm}
@@ -2220,10 +2192,7 @@ where additionally $\bar{\langle f, g\rangle} =  \bar f ; \bar g$.
 %\end{center}
 
 A restriction category has a {\bf restriction terminal object} $\one$ when for all objects $X$, there exists a unique total map $!_X:X\to\one$ such that $f ; !_Y = \bar  f; !_X$.
-
 A restriction category with a restriction terminal object and binary restriction products is a {\bf Cartesian restriction category}.
-
-
 An object $X$ in a restriction category with restriction products is {\bf discrete} when the diagonal map $\Delta_X:=\langle 1_X, 1_X\rangle$ is a partial isomorphism. A restriction category is discrete when all objects are discrete. 
 \end{definition}
 \begin{example}
@@ -2927,7 +2896,6 @@ $$
 $$
 \end{definition}
 The category of partial injections is unusual in the sense that it embeds into $\Hilb$. This does not generalize to spans between sets, for example: the maps are no longer sent to bounded linear maps.
-
 However, if the domain is changed to the category of spans of {\em finite} sets this induces an embedding into $\FHilb$.  This is actually the version we will use throughout this thesis, but we give the general definition to highlight the importance of inverse categories in the categorical semantics of quantum mechanics.
 
 
@@ -3679,8 +3647,6 @@ d_X:=
 \end{tikzpicture}
 $$
 Variations on this theme will occur throughout this thesis, so we have promoted it to its own construction.  For reference, the CoPara construction is dual to the Para construction which is interpreted as freely adding parameters to  a monoidal category (see \cite{Fong2019backprop}).
-
-
 This allows us to define the following:
 \begin{definition}\cite[Definition 5.1.1]{giles}
 Given a discrete inverse category $\X$,  its {\bf Cartesian completion} $\tilde \X$ is the quotient of ${\CoPara}(\X)$ by either of the following equivalent symmetric monoidal congruence relations:
