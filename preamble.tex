@@ -119,45 +119,46 @@
 
 
 
+%
+%\makeatletter
+%\g@addto@macro\normalsize{%
+%  \setlength\abovedisplayskip{1pt}
+%  \setlength\belowdisplayskip{1pt}
+%  \setlength\abovedisplayshortskip{1pt}
+%  \setlength\belowdisplayshortskip{1pt}
+%}
+%\makeatother
 
-\makeatletter
-\g@addto@macro\normalsize{%
-  \setlength\abovedisplayskip{1pt}
-  \setlength\belowdisplayskip{1pt}
-  \setlength\abovedisplayshortskip{1pt}
-  \setlength\belowdisplayshortskip{1pt}
-}
-\makeatother
 
-
-
-\newtheoremstyle{theoremnew}
-  {2.2spt} % Space above
-  {1.2pt} % Space below
-  {\it} % Body font
-  {} % Indent amount
-  {\bfseries} % Theorem head font
-  {.} % Punctuation after theorem head
-  {.5em} % Space after theorem head
-  {} % Theorem head spec (can be left empty, meaning `normal')
+\theoremstyle{theorem}
+%
+%\newtheoremstyle{theoremnew}
+%  {2.2spt} % Space above
+%  {1.2pt} % Space below
+%  {\it} % Body font
+%  {} % Indent amount
+%  {\bfseries} % Theorem head font
+%  {.} % Punctuation after theorem head
+%  {.5em} % Space after theorem head
+%  {} % Theorem head spec (can be left empty, meaning `normal')
 
   \newtheorem{theorem}{Theorem}[subsection]
   \newtheorem{corollary}[theorem]{Corollary}
   \newtheorem{lemma}[theorem]{Lemma}
   \newtheorem{proposition}[theorem]{Proposition}
   
+\theoremstyle{definition}
+%\newtheoremstyle{definitionnew}
+%  {2.2pt} % Space above
+%  {1.2pt} % Space below
+%  {} % Body font
+%  {} % Indent amount
+%  {\bfseries} % Theorem head font
+%  {.} % Punctuation after theorem head
+%  {.5em} % Space after theorem head
+%  {} % Theorem head spec (can be left empty, meaning `normal')
 
-\newtheoremstyle{definitionnew}
-  {2.2pt} % Space above
-  {1.2pt} % Space below
-  {} % Body font
-  {} % Indent amount
-  {\bfseries} % Theorem head font
-  {.} % Punctuation after theorem head
-  {.5em} % Space after theorem head
-  {} % Theorem head spec (can be left empty, meaning `normal')
-
-\theoremstyle{definitionnew}   
+%\theoremstyle{definitionnew}   
   \newtheorem{definition}[theorem]{Definition}
   \newtheorem{example}[theorem]{Example}
   \newtheorem{conjecture}[theorem]{Conjecture}
@@ -286,27 +287,53 @@
 
 
 
-
-
+\makeatletter
+\newcommand{\labeltext}[3][]{%
+    \@bsphack%
+    \csname phantomsection\endcsname% in case hyperref is used
+    \def\tst{#1}%
+    \def\labelmarkup{\emph}% How to markup the label itself
+    %\def\refmarkup{\labelmarkup}% How to markup the reference
+    \def\refmarkup{}%
+ %   \ifx\tst\empty\def\@currentlabel{\refmarkup{#2}}{\label{#3}}%
+    \def\@currentlabel{\refmarkup{#1}}{\label{#3}}%\fi%
+    \@esphack%
+\stackrel{\scalebox{.6}{(#2)}}{=}
+}% visible printed text.
+\makeatother
 
 \newcounter{eq}
 
 \makeatletter
 \newcommand{\ltxlabel}{\ltx@label}
 \makeatother
+%
+%\newcommand{\eqzxa}[1]{%
+%\refstepcounter{eq}%
+%\ltxlabel{#1}%
+%\eqstack{#1}%
+%}
 
-\newcommand{\eqzxa}[1]{%
-\refstepcounter{eq}%
-\ltxlabel{#1}%
-\eqstack{#1}%
+
+
+
+\newcommand{\eqzxa}[1]{
+\labeltext[(\arabic{equation})]{\arabic{equation}}{#1}
+\stepcounter{equation}
 }
 
 
 
 
 
+
+
+
+
+
+
 \newcommand{\eqstack}[1]{%
-\stackrel{\scalebox{.6}{(\ref{#1})}}{=}%
+\stackrel{\scalebox{.6}{\ref{#1}}}{=}%
 }
 
 \newcommand{\eq}[1]{\stackrel{\scalebox{.6}{#1}}{=}}
@@ -317,7 +344,7 @@
 \newcommand{\eref}{\eqstack}
 
 \newcommand{\erefop}[1]{%
-\stackrel{\scalebox{.6}{(\ref{#1})${}^\op$}}{=}%
+\stackrel{\scalebox{.6}{\ \ \ref{#1}${}^\op$}}{=}%
 }
 
 \newcommand{\ZXA}{\mathsf{ZX}\textit{\&}}
