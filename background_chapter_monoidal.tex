@@ -138,7 +138,6 @@ Restricting $\FinOrd$ to functions which preserve the chosen order of the ordina
 Given a commutative semiring $S$, the category $\Mat_S$, of matrices over $S$ is strict monoidal under the bilinear tensor product and the direct sum.
 \end{example}
 Strict monoidal categories are very nice to work with because they have a particularly concise graphical calculus, called {\bf string diagrams}.  A map $f:X_1\otimes \cdots \otimes X_n\to Y_1\otimes \cdots \otimes Y_m$ is drawn as a box with $n$ wires coming out of the bottom and $m$ wires coming out of the top, all being labeled by their respective objects, as follows:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -199,11 +198,9 @@ $$
 $$
 
 We often omit the object labels when it is clear from context.  The tensor product of two maps
-
 $$
 \dfrac{f:W_1\otimes\cdots \otimes W_n\to X_1\otimes \cdots \otimes X_m, \hspace*{.5cm} g:Y_1\otimes\cdots \otimes Y_k\to Z_1\otimes \cdots \otimes Z_\ell}{f\otimes g:W_1\otimes\cdots \otimes W_n\otimes Y_1\otimes\cdots \otimes Y_k\to  X_1\otimes \cdots \otimes X_m\otimes Z_1\otimes \cdots \otimes Z_\ell}
 $$
-
 is drawn by pasting them side-by-side:
 
 $$
@@ -312,13 +309,11 @@ $$
 $$
 
 And the composite of two  composable maps
-
 $$
 \dfrac{
 f:X_1\otimes \cdots \otimes X_n\to Y_1\otimes \cdots \otimes Y_m,\hspace*{.5cm}g:Y_1\otimes\cdots \otimes Y_m\to Z_1\otimes \cdots \otimes Z_k}
 {f;g:X_1\otimes \cdots \otimes X_n\to Z_1\otimes \cdots \otimes Z_k}
 $$ 
-
 is drawn by connecting each of  the $Z_i$ wires together:
 $$
 \begin{tikzpicture}
@@ -382,6 +377,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
+
 The axioms of a strict monoidal category are equivalent to planar isotopy of their string diagrams. For example, the functoriality of the tensor product allows one to exchange two disconnected maps:
 $$
 \begin{tikzpicture}
@@ -418,6 +414,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
+
 We can always chose to work with strict monoidal categories if we want to:
 \begin{theorem}
 Every monoidal category is monoidally equivalent to a strict monoidal category. 
@@ -934,15 +931,14 @@ $\FinOrd$ is a skeletal and strict monoidal. It is monoidally equivalent to $\FS
 
 
 Given a commutative semiring $R$, $\Mat_R$ is a skeletal category and is strict monoidal. Moreover for a field $k$, $\Mat_k$ is monoidally equivalent to $\FVect_k$ under the bilinear tensor product and the direct sum.
-
 In particular, because $\FVect_\C$ and $\FHilb$ are monoidally equivalent under both the bilinear tensor product and the direct sum then $\FHilb$ is monoidally equivalent to the skeletal strict monoidal category $\Mat_\C$ under both tensor products.
 \end{example}
-Note that the strictification of a monoidal category need not be skeletal, for example there is no skeletal strict monoidal  category for which $\Set$ is monoidally equivalent to.  Indeed, the strictification which we described when applied to $\FSets$ is not skeletal and thus not $\FinOrd$ on the nose.
+The strictification of a monoidal category need not be skeletal, for example there is no skeletal strict monoidal  category for which $\Set$ is monoidally equivalent to.  Indeed, the strictification which we described when applied to $\FSets$ is not skeletal and thus not $\FinOrd$ on the nose.
 
 
 There is a more refined notion of monoidal category where one can pass wires through each other:
 \begin{definition}
-A {\bf symmetric monoidal category} is a monoidal category equipped with an extra natural isomorphism called the braid:
+A {\bf symmetric monoidal category} is a monoidal category equipped with an extra natural isomorphism called the braid
 $$
 \sigma_{X,Y}:X\otimes Y \to Y\otimes X
 $$
@@ -1017,6 +1013,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
+
 The naturality means that maps can be pulled through the braid:
 $$
 \begin{tikzpicture}
@@ -1065,6 +1062,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
+
 The interaction with the unitor and associator becomes completely absorbed into the graphical calculus.
 %The interaction with the associator also becomes trivial:
 %
@@ -1187,6 +1185,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
+
 This notion of proof nets for symmetric monoidal categories is not contained in \cite{wilson}; however, it is folklore, in analogy to the case for symmetric linearly distributive categories \cite{ldc}.
 \begin{example}
 The category $\Mat_k$ is strict symmetric monoidal  and symmetric monoidally equivalent to $\FVect_k$ under both aforementioned tensor products.  The same with $\FinOrd$ and $\FSets$.
@@ -1260,6 +1259,7 @@ X^*\otimes( Y^*\otimes (X\otimes Y))   \ar[ll]^{1_{X^*} \otimes \alpha^{-1}_{Y^*
 }
 $}
 \end{description}
+
 A strict compact closed category is a compact closed category where the underlying symmetric monoidal category is strict.
 A self-dual compact closed category is one where $X^*=X$ for all objects $X$.
 Strict symmetric monoidal functors and strong symmetric monoidal functors are the appropriate notion of map between strict/non-strict compact closed categories, as they preserve the duals strictly/strongly.
@@ -1617,6 +1617,7 @@ $$
 0 & \text {Otherwise}
 \end{cases}
 $$
+
 The situation for $\Mat_R$ is essentially the same.
 Because $\Mat_R$ is is skeletal, every object is equal to it's dual, so that $n^*=n$.
 The unit and counit are $\epsilon_n=(1,\cdots, 1)$ and  $\eta_n=\epsilon_n^T$.  In this case the transpose functor is exactly the transpose of matrices. 
@@ -1629,6 +1630,7 @@ The unit and counit are $\epsilon_n=(1,\cdots, 1)$ and  $\eta_n=\epsilon_n^T$.  
 
 \subsection{Dagger-monoidal categories}
 \label{subsec:dag}
+
 In this thesis, we will usually work with monoidal categories with extra structure called the dagger which allows one in some sense to``run maps in reverse.'' See \cite{cpm,abramsky} for further reference.
 \begin{definition}
 A {\bf \dag-category} ({\em read dagger-category}) is a category $\X$ equipped with a functor ${(-)}^\dag:\X^\op\to\X$ ({\em read the dagger}) that is:
@@ -1645,7 +1647,6 @@ A map $f$ in a dagger category is:
 \item[a projector]  when $f;f=f$ and $f^\dag=f$ (also known as a $\dag$-idempotent).
 \end{description}
 \end{definition}
-This structure will arise both in our exposition of nondeterministic categorical semantics as well as for quantum computing.
 \begin{example}
  $\Mat_\C$ is a \dag-category with respect to both the transpose and the complex conjugate transpose.
 \end{example}
@@ -1654,7 +1655,7 @@ The category $\Hilb$ of complex Hilbert spaces and bounded linear maps is a dagg
 $$
 \langle x;A|y\rangle = \langle x | A^\dag; y \rangle
 $$
-$\FHilb$  s also a $\dag$-category with respect to the Hermitian adjoint.
+$\FHilb$  is also a $\dag$-category with respect to the Hermitian adjoint.
 \end{example}
 \begin{lemma}
 There is an equivalence of categories $\FHilb \cong \Mat_\C$ preserving and reflecting the dagger structure.
@@ -1979,7 +1980,8 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-And generators for all elements $a,b \in S$ such that the structure of the commutative semiring $S$ is reflected in the convolution of the bialgebra:
+
+And generators for all elements $a,b \in S$ such that the structure of the commutative semiring $S$ is reflected in the convolution of the bialgebra
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2087,7 +2089,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-Where the commutative monoid and cocommutative comonoid are both natural with respect to the scalars:
+where the commutative monoid and cocommutative comonoid are both natural with respect to the scalars:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2212,6 +2214,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
+
 This monoidal theory is equivalent to the prop of matrices over $S$, $\Mat_S$, under the direct sum.  Recall that the direct sum of matrices $R$ and $S$ is given by the following block diagonal matrix:
 $$
 R\oplus S :=
@@ -2276,7 +2279,6 @@ $$
 \end{tikzpicture}
 =a
 $$
-
 The unit and counit are interpreted as the unique matrices from $0 \to 1$ and $1\to 0$, respectively. Because $\N$ is the initial commutative semiring, $\Mat_\N$ can be presented in terms of the prop for the free bicommutative bialgebra, where the generators and equations for scalars are derivable.
 
 
@@ -2295,7 +2297,6 @@ $\begin{tikzpicture}
 \end{tikzpicture}
 $
 such that:
-
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2483,7 +2484,7 @@ $$
 \end{tikzpicture}
 $$
 \end{example}
-Moreover, if we define monoids and comonoids on composite systems using proof net notation:
+If we define monoids and comonoids on composite systems using proof net notation:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2775,6 +2776,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
+
 One can perform matrix multiplication by pulling all of the white generators to the bottom and grey generators to the top so that the elements of the commutative semiring live in the middle.  Consider the following example:
 $$
 \begin{tikzpicture}
@@ -3334,6 +3336,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
+
 The following structure will show up quite a lot throughout this thesis:
 \begin{example}
 \label{ex:frob}
@@ -3533,6 +3536,6 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-So that symmetric monoidal categories equipped with a supply of (\dag-)Frobenius alegbras compatible with the monoidal structure is self dual (\dag-)compact closed.
+So that symmetric monoidal categories equipped with a supply of commutative (\dag-)Frobenius alegbras compatible with the monoidal structure is self dual (\dag-)compact closed.
 
 

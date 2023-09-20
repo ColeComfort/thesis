@@ -360,6 +360,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
+
 A {\bf pure quantum state} is a vector $|\phi \rangle$ with norm 1, so that $|\langle\phi |\phi \rangle|^2=\langle \phi | \phi \rangle =1$. Pure quantum states are interpreted as the possible physical states of a quantum system which has been unexposed to the classical world.  The quantum evolution of pure quantum states is modeled by their postcomposition with unitary maps.  Unitary maps are precisely the linear automorphisms which preserve the norm, and thus, preserve pure quantum states.
 
 
@@ -524,6 +525,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
+
 The canonical functor $\X\to \CoPara(\X)\to\CPM(\X)$ taking $f \mapsto (f,I)$ is called {\bf doubling}. The maps in the image of this functor are {\bf pure}, and those which aren't are {\bf mixed}.
 A map $f:X\to Y$ in $\CPM(\X)$ is called {\bf trace-preserving} when $f;d_Y = d_X$:
 $$
@@ -550,6 +552,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
+
 All maps can be obtained by composing pure maps with discard maps.  Given a mixed map $f$ in $\CPM(\X)$ such a factorization into a pure map followed by a discard map is a {\bf purification} of $f$.
 \end{definition}
 The compact closed structure of $\CPM(\X)$ is inherited from the doubling of the compact closed structure of $\X$.  If the \dag-symmetric monoidal structure of $\X$ is compatible with its compact closed structure, so that $\X$ is \dag-compact closed, then $\CPM(\X)$ is \dag-compact closed as well.
@@ -1295,9 +1298,6 @@ Therefore it is actually a projector.
 
 
 Given a quantum state $| \psi \rangle$ and an orthonormal basis  $B$; $|\psi\rangle$ is said to {\bf collapse} onto the basis  $B$  when it is postcomposed with $p_B$ as follows $p_B|\psi\rangle$.  This  transforms a quantum state into a stochastic mixture of all of the basis elements of $B$.
-
-
-
 To promote these classical stochastic mixtures to their own systems, we need a way to turn subobjects into objects:
 \begin{definition}
 \label{def:idem}
@@ -4169,14 +4169,11 @@ Weyl operators have the following property (see \cite[\S 10.3.1]{nielsen}):
 \begin{lemma}
 \label{lem:ueb}
 $n$-qudit Weyl operators are an orthonormal basis for the finite dimensional  Hilbert space of operators
-
 $$
 \FHilb(\ell^2((\Z/d\Z)^n), \ell^2((\Z/d\Z)^n))
 \cong \ell^2((\Z/d\Z)^n)^*\otimes \ell^2((\Z/d\Z)^n)
 $$
-
 with respect to the scaled trace inner product:
-
 $$
 \langle  -,= \rangle
 :=
@@ -4187,7 +4184,6 @@ The obvious choice of operator basis would have been:
 $$
 \{ |a_0, \cdots, a_{n-1} \rangle \langle  b_0,\cdots, b_{n-1} | \ | \ a_0,\cdots, a_{n-1},b_0,\cdots, b_{n-1} \in \Z/d\Z \}
 $$
-
 However, these basis elements are not unitary, and therefore can not be used to correct for errors.
 On the other hand if at some point a known unitary error occurs,  because Weyl operators form a unitary basis, the error can be undone by applying controlled Weyl operators.
 In fact, the quantum teleportation protocol relies on this fact.
@@ -4645,10 +4641,7 @@ $$
 \end{tikzpicture}
 $$
 This is the reason for the name ``$H$-box'' as the qubit Fourier transform is often called the ``Hadamard gate.''
-
 One should not confuse an $H$-box with one input and one output (drawn in grey) with the antipode for the Hopf algebra (drawn in black) for the $Z$ and $X$-spiders.
-
-
 Although $H$-boxes do not correspond to Frobenius algebras, they do satisfy a sort of fusion rule:
 $$
 \begin{tikzpicture}
@@ -4719,7 +4712,6 @@ The following diagram multiplies standard basis elements:
 \sum_{a_0,\ldots, a_{n-1}=0}^1
 |a_0\cdot\ldots\cdot a_{n-1}\rangle\langle a_0,\cdots, a_{n-1}|
 \end{align*}
-
 That is to say, $H$-boxes, allow us to construct $\sf and$-gates, which we denote as follows:
 $$
 \begin{tikzpicture}
@@ -4784,7 +4776,6 @@ $$
 $$
 
 The notions of completeness and universality are essentially the same as for the ZX-calculus. 
-
 The full qubit ZH-calculus was proved to be complete and universal for all qubit complex matrices in the original paper \cite{zh}.  
 
 Recall that an H-box with no label is the same as an H-box which is labelled by $-1$.  Therefore an axiomatization for the phase-free ZH-calculus must be compatible with the semiring homorphism $\Z\to\C$.

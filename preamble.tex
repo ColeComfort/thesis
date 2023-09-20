@@ -54,7 +54,7 @@
     \quad\@itemlabel\hspace{\labelsep}%
 \fi}
 \makeatother
-\parindent=0pt
+%\parindent=0pt
  
 
 %\usepackage{extpfeil}
@@ -318,8 +318,8 @@
 
 
 \newcommand{\eqzxa}[1]{
-\labeltext[(\arabic{equation})]{\arabic{equation}}{#1}
-\stepcounter{equation}
+\labeltext[(\arabic{eq})]{\arabic{eq}}{#1}
+\stepcounter{eq}
 }
 
 
@@ -604,12 +604,9 @@
 %\input{styles.tikzstyles}
 
 
-\setenumerate{align=left}
-\setitemize{align=left}
-\setdescription{align=left}
-\setenumerate{itemsep=1pt,topsep=1.5pt}
-\setitemize{itemsep=1pt,topsep=1.5pt}
-\setdescription{itemsep=1pt,topsep=1.5pt}
+\setenumerate{align=left,itemsep=1pt,topsep=1.5pt}
+\setitemize{align=left,itemsep=1pt,topsep=1.5pt}
+\setdescription{align=left, itemsep=1pt,topsep=1.5pt,labelindent=\parindent}
 
 %\makeatletter
 %\renewenvironment{proof}[1][\proofname]{\par
