@@ -2494,9 +2494,9 @@ The proof is completely analogous to that of Lemma \ref{lem:subiso}.
 
 Any $n$ variable polynomial function $p$ can be interpreted as a span of monics via the oracle $\mathcal{O}_p$, where the the target wire is restricted to have the value $0$.  Each such polynomial function corresponds to a subobject, which complicates the matter further than in the affine case.  Now we combine the subobjects with the isomorphisms:
 \begin{definition}
-There is a  distributive law of props:
+There is a  distributive law of props given by the following family of equations:
 $$
-\sfpariso\f_2:=\subinj\f_2^\op \otimes_{\subiso\f_2} \subinj\f_2;\ 
+\sfpariso\f_2:=\subinj\f_2^\op \otimes_{\subiso\f_2} \subinj\f_2;\ \ \ \ 
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=map] (0) at (0, 0) {$\mathcal{O}_p$};
@@ -2533,6 +2533,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
+Note that this is actually a distributive law because the case where the target wire of an oracle is sandwiched between a grey unit and counit is the only critical pair needed to push $\subinj\f_2^\op$ past $\subinj\f_2$ up to $\subiso\f_2$.
 \end{definition}
 %This is actually a distributive law, because it need only be witnessed by pushing $\eta_X$ past $\eta_X^\op$.  The only time this can't be done is when there is the target  of a generalized controlled-not not gate--or those of several generalized controlled-not gates is in between both of these generators.  In which case, the obstructing generalized controlled-not gates form an oracle for which we can apply this equation.  This is computing the apex of the span when performing a pullback.
 %Note that $\pr\iso\f_2$ is not actually partial isomorphisms over $\f_2$, per se, but rather a full subcategory of partial isomorphisms of sets and functions, which is not iself a prop with respect to the Cartesian product.  It is because of such a complication that the aforementioned distributive law isn't quite a pullback.
@@ -2544,7 +2545,7 @@ $\sfpar\iso \f_2$ is a presentation for the full subcategory $(\FPinj_2,\times)$
 We have shown how to push all of the generators of $ \subinj\f_2$  past those of $\subinj\f_2^\op$ up to ${\subiso\f_2}$.
 
 The uniqueness up to zig-zags becomes  trivial in this case. 
-The invertible maps in $\subinj\f_2^\op$ act the same both on the left and on the right in analogy to the orthogonal factorization systems. Similarly, the non-invertible subobjects  corresponding to spans $2^n \xleftarrowtail{e} k\ \xrightarrowtail{e} 2^n $ act the same both on the left and the right.
+The invertible maps in $\subinj\f_2^\op$ act the same both on the left and on the right in analogy to the orthogonal factorization systems. Similarly, the non-invertible subobjects  corresponding to spans $2^n \xleftarrowtail{e}\ k\ \xrightarrowtail{e} 2^n $ act the same both on the left and the right.
 \end{proof}
 This is equivalent to the prop $\TOF$ of \cite{tof} whose identities we have included in Figure \ref{fig:TOF}.
 By adding the effect $\sqrt{2}\langle +|$ we get partial functions:
@@ -4866,7 +4867,12 @@ Since we know that $\sfpariso_2\cong \TOF$, adding a unit and counit to $\TOF$ y
 %	\label{fig:CNOT}
 %\end{figure}
 
+Let us summarize all of the fragments which we built up in the following table:
+
+\cole{TODO}
+
 \section{Discussion}
+
 A natural next question would be to prove completeness for the natural number fragments of the qudit ZH-calculus/full subcategories $d^n$ of $\Mat_\N$.  There is a universal presentation of the qudit ZH-calculus \cite{roy}; however, completeness has not been proven.  Perhaps this would be a first step towards proving completeness of the qudit ZH-calculus.  The difficulty with generalizing our work in that finding normal forms for systems of Boolean equations is particularly easy.  For example, the rule \ref{ZXA.13} allows us to make the following deduction about Boolean formulae:
 $$
 \dfrac{P(X)\cdot P(Y)=1}{P(x)=1,\hspace*{1cm}Q(y)=1}

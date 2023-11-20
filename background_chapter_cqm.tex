@@ -369,13 +369,16 @@ To actually do computations with quantum states, one has to measure things using
 In \cite{cpm}, Selinger gives a construction to produce categories of quantum channels from general \dag-compact closed categories. When applied to $\FHilb$, this construction adds discarding behavior to quantum systems.  This will provide the necessary machinery to model measurement. 
 
 
-We present this construction in terms of a quotient of the $\CoPara$ construction for the sake of uniformity of this thesis:
-\begin{definition}
+We present this construction in terms of a quotient of the $\CoPara$ construction for the sake of uniformity of this thesis. This construction is {\em extremely important} for this thesis, so it is essential to understand.
+\begin{definition}[CPM construction]
 \label{def:cpm}
 %Dagger category... equivalent to ioo compact closed conjugation 
-Given a compact closed $\dag$-symmetric monoidal category $\X$, then  $\CPM(\X,(-)^\dag)$  (which we will denote by  $\CPM(\X)$ when the dagger is clear from the context) is the quotient of ${\CoPara}(\X)$ by the congruence relation:
+Given a compact closed $\dag$-symmetric monoidal category $\X$, then  $\CPM(\X,(-)^\dag)$  (which we will denote by  $\CPM(\X)$ when the dagger is clear from the context) is the quotient of ${\CoPara}(\X)$ by the symmetric monoidal congruence relation, so that
+$
+\left(X\xrightarrow{(f,S)} Y\right) \sim \left(X\xrightarrow{(g,T)} Y\right) 
+$
+if and only if
 $$
-\left(X\xrightarrow{(f,S)} Y\right) \sim \left(X\xrightarrow{(g,T)} Y\right)  \iff
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=none] (0) at (0.5, 11.75) {};
@@ -600,7 +603,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-We could have chosen a different, equivalent congruence relation to quotient by to avoid the braid on the cap, but this would be incompatible with notation for stabilizer tableaux which we use much later in this thesis.
+We could have chosen a different, equivalent congruence relation to quotient by to avoid the symmetry map on the cap, but this would be incompatible with notation for stabilizer tableaux which we use much later in this thesis.
 
 In the doubled picture, the composition of equivalence classes is  in $\CPM(\X)$ is composition in $\X$:
 $$
@@ -746,12 +749,7 @@ Therefore, we shall invoke the $\CPM$ construction for both dagger structures an
 
 As mentioned before, the following example motivated this categorical construction:
 \begin{example}
-$\CPM(\FHilb, (-)^\dag)$ is the dagger compact closed category of density matrices between finite dimensional Hilbert spaces.
-
-
-Or equivalently, preserving the  \dag-compact closed structure, 
-$\CPM(\Mat_\C, \bar{(-)})$
-is the strict symmetric monoidal skeleton of density matrices.
+$\CPM(\FHilb, (-)^\dag)$ is the dagger compact closed category of density matrices between finite dimensional Hilbert spaces. This is dagger compact closed equivalent to the strict symmetric monoidal skeleton of density matrices $\CPM(\Mat_\C, \bar{(-)})$.  In the nonstrict setting it is more convenient to work with the dagger, the Hermetian adjoint; however, in the skeletal case, we will use the complex conjugation functor.
 \end{example}
 Density matrices model mixed quantum circuits. The discarding map is interpreted as quantum discarding which exposes the quantum system to the classical world. The adjoint of the discard map is interpreted as the maximally-mixed state which injects classical noise into a system.
 
@@ -1758,7 +1756,7 @@ $$
 \end{tikzpicture}
 \ \right\rrbracket
 $$
-The conjugation of pure spiders by state preparation and measurement maps creates {\bf bastard spiders} following \cite{pqp}.  Bastard spiders are drawn with a thin border.  For example:
+The conjugation of pure spiders by state preparation and measurement maps creates {\bf thick-thin spiders} following \cite{pqp} (which they call bastard spiders).  Thick-thin spiders are drawn with a thin border to distinguish them from pure spiders, however, their legs can be either thick or thin.  For example:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -1827,7 +1825,7 @@ $$
 \end{tikzpicture}
 $$
 The thin border on $\zcirc$ indicates that the state has been measured in the basis $\zcirc$ and is a stochastic mixture of the basis element of $B$.
-When a pure spider is connected to a bastard spider they both fuse into a bastard spider:
+When a pure spider is connected to a thick-thin spider they both fuse into a thick-thin spider:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2369,7 +2367,7 @@ Even though we only used the Hopf law here, the bialgebra structure is indispens
 %We feed in the input on the bottom left wire and read out a measurement on the top left wire.
 
 Given two strongly complementary observables, we can construct the quantum teleportation protocol  (originally discovered for qubits by \cite{teleportation}).
-The abstract description of quantum teleportation in terms \dag-compact closed categories was first introduced in \cite{abramsky}; however, we present a qudit generalization of the one using bastard spiders found in \cite[Page 706]{pqp}:
+The abstract description of quantum teleportation in terms \dag-compact closed categories was first introduced in \cite{abramsky}; however, we present a qudit generalization of the one using thick-thin spiders found in \cite[Page 706]{pqp}:
 \begingroup\allowdisplaybreaks
 \begin{protocol} \
 \label{proto:tele}
@@ -2850,7 +2848,7 @@ In other terms, the $Z$ and $X$-spiders are {\bf flexsymmetric}   \cite[\S 5]{fl
 %tODO
 %\end{example}
 
-We almost have all of the essential ingredients of categorical quantum mechanics; however, bastard spiders alone are not very expressive.  The following bridges this gap:
+We almost have all of the essential ingredients of categorical quantum mechanics; however, thick-thin spiders alone are not very expressive.  The following bridges this gap:
 \begin{definition}
 \label{def:phases}
 Given a $\dag$-Frobenius algebra $\xcirc$ on an object $X$, a {\bf phase} for the Frobenius algebra is a unitary endomorphism $\theta:X\to X$ which commutes with the multiplication and comultiplication, so that:
@@ -2968,7 +2966,7 @@ Phases for Frobenius algebras are closed under composition; and they form a grou
 The motivating example is again  $\FHilb$, which makes sense of the name:
 \begin{example}
 Given an orthonormal basis $\{| b_j \rangle \}_{j \in \mathcal J}$ of $\mathcal H$ , the phases are generated by the following unitaries, for all $\{\theta_j \} \in [0, 1)^{\mathcal J}$:
-$$\sum_{j \in \mathcal J} e^{  2\pi \cdot i \cdot b_j \cdot \theta_j/d }|  b_j \rangle\langle b_j|$$
+$$\sum_{j \in \mathcal J} e^{  2\pi \cdot i \cdot \theta_j/d }|  b_j \rangle\langle b_j|$$
 \end{example}
 Recall that maps in $\CPM(\FHilb)$ are unique up to global phase, therefore when the basis has a chosen order $\{ |b_0\rangle,\cdots, |b_{d-1}\rangle \}$, as a matter of convention fix $\theta_0=0$.  This means that the phases of that basis in $\CPM(\FHilb)$ are uniquely parameterized by the group $[0, 1)^{d-1}$. In the literature it is commonplace to index the phases over $[0,2\pi)^{d-1}$ rather than over $[0,1)^{d-1}$.  We chose the latter  because it is much more amenable to generalization away from quantum mechanics. 
 
@@ -3251,7 +3249,7 @@ $$
 \end{tikzpicture}
 \ \right\rrbracket
 =
-\sum_{j=0}^{d-1} e^{2\cdot \pi \cdot i \cdot j\cdot g_j(\phi)/d} | j, \ldots, j\rangle \langle j,\ldots, j|
+\sum_{j=0}^{d-1} e^{2\cdot \pi \cdot i \cdot g_j(\phi)/d} | j, \ldots, j\rangle \langle j,\ldots, j|
 $$
 $$
 \left\llbracket\ 
@@ -3278,13 +3276,13 @@ $$
 \ \right\rrbracket
 =
 \sqrt{d}
-\sum_{j=0}^{d-1} e^{2\cdot \pi \cdot i \cdot j\cdot h_j(\theta)/d} \mathcal{F} | j, \ldots, j\rangle \langle j,\ldots, j| \mathcal{F}^\dag
+\sum_{j=0}^{d-1} e^{2\cdot \pi \cdot i \cdot h_j(\theta)/d} \mathcal{F} | j, \ldots, j\rangle \langle j,\ldots, j| \mathcal{F}^\dag
 $$
 
 Take a fragment $\llbracket-\rrbracket:{\sf ZX}\to \Hilb$ of the ZX-calculus and a \dag-compact closed subcategory of $\X\hookrightarrow\FHilb$, such that this interpretation essentially-surjectively factors through $\X$ (so that $\X$ contains all the objects of $\llbracket{\sf ZX}\rrbracket$ up to isomorphism).
 The fragment is {\bf universal} for $\X$ when the map ${\sf ZX}\to \X$ is full and {\bf complete} when it is faithful.
 \end{definition}
-The {\bf scalable ZX-calculus} \cite{szx} refers to the proof nets for fragments of the ZX-calculus Frobenius algebras on wires of composite dimension are denoted as follows:
+The {\bf scalable ZX-calculus} \cite{szx} refers to string diagrams for the strictification of the ZX-calculus (ie, proof nets for the ZX-calculus). Frobenius algebras on wires of composite dimension are denoted as follows:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3400,7 +3398,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-As we use proof nets for monoidal categories extensively throughout this thesis, we won't declare when we are using scalable ZX-notation; it will just be the default setting which we work in.
+As we use string diagrams for nonstrict monoidal categories extensively throughout this thesis, we won't declare when we are using scalable ZX-notation; it will just be the default setting which we work in.
 
 
 Consider the simplest fragment of the ZX-calculus:

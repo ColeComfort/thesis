@@ -32,17 +32,41 @@ In this subsection we review some aspects of internal category theory so that we
 
 
 
-One way to combine monoidal theories is via pushout.  We generalize the analogous result of \cite[Proposition 2.51]{ih} to the multicoloured setting:
+One way to combine monoidal theories is via pushout.  We generalize the analogous result of \cite[Proposition 2.51]{ih} to the coloured setting:
 \begin{lemma}
 Take three (symmetric) monoidal theories
 $$T_0=({\sf Ob}_0,\Sigma_0 ,E_0 ), \ T_1=({\sf Ob}_1,\Sigma_1 ,E_1 ), \ T_2=({\sf Ob}_2,\Sigma_2 ,E_2 )$$
 such that ${\sf Ob}_0 \subseteq {\sf Ob}_1,{\sf Ob}_2$, $\Sigma_0 \subseteq \Sigma_1,\Sigma_2$ and $E_0 \subseteq E_1,E_2$.
 Then the pushout of the diagram $\bar{T_1} \leftarrow \bar{T_0} \rightarrow \bar{T_2}$  in the category of strict (symmetric) monoidal categories is presented by the (symmetric) monoidal theory:
 $$
-( {\sf Ob}_1 \cup {\sf Ob}_2, \Sigma_1 \cup \Sigma_2, E_1 \cup E_2)
+( {\sf Ob}_1 +_{\Ob_0} {\sf Ob}_2, \Sigma_1 +_{\Sigma_0} \Sigma_2, E_1 +_{E_0} E_2)
 $$
 \end{lemma}
 In practice, we usually won't be so explicit about the pushout of (symmetric) monoidal theories.  Rather, we will present a set of generators and multiple equations between different subsets of generators.  Indeed, we have done this many times up to this point when glueing (symmetric) monoidal theories together.  
+
+In the case when we want to identify the pushout of props with the pushout of their semantics we must be more careful.
+Take three coloured pro(p)s $\bar{T_0},\bar{T_1}$ and $\bar{T_2}$ as above which are respectively presentations for (symmetric) monoidal categories $\X_0, \Y_1$ and $\X_2$.  In order for the pushout of the diagram of pro(p)s $\bar{T_1} +_ {\bar{T_0}}  \bar{T_2}$  as described above to be a presentation for the pushout of (symmetric) monoidal categories $\X_1 +_{\X_0} \X_2$, we must show that the universal map $u$ induced by the pushout of the diagram $\X_1 \leftarrow \X_0 \rightarrow \X_2$ is inverse to the universal map $v$ induced by the pushout of the diagram $\bar{T_1} +_ {\bar{T_0}}  \bar{T_2}$.  That is to say, we ask for the following diagram of (symmetric) monoidal categories to commute:
+
+\renewcommand{\cubetopbl}{$\bar{T_0}$}
+\renewcommand{\cubetopbr}{$\bar{T_1}$}
+\renewcommand{\cubetopfl}{$\bar{T_2}$}
+\renewcommand{\cubetopfr}{$\bar{T_1} +_ {\bar{T_0}}  \bar{T_2}$}
+\renewcommand{\cubebotbl}{$\X_0$ }
+\renewcommand{\cubebotbr}{$\X_1$ }
+\renewcommand{\cubebotfl}{$\X_2$ }
+\renewcommand{\cubebotfr}{$\X_1 +_{\X_0} \X_2$}
+$$
+\xymatrixrowsep{1.5mm}\xymatrixcolsep{10mm}
+\xymatrix{
+                                                                                         & \mbox{\cubetopbl} \ar[rr] \ar[dl] \ar@/^1pc/[dd]                   &                                                  & \mbox{\cubetopbr} \ar@/^1pc/[dd] \ar[dl] \\
+\mbox{\cubetopfl} \ar[rr]  \ar@/^1pc/[dd]                      &                                                                                              &\mbox{\cubetopfr} \ar@{-->}@/^1pc/[dd]^(.6){u}    \skewpullbackcorner[ul]              \\
+                                                                                        &  \mbox{\cubebotbl} \ar[dl] \ar[rr]                                        \ar@/^1pc/[uu]   &                                                  & \mbox{\cubebotbr} \ar[dl] \ar@/^1pc/[uu]  \\
+\mbox{\cubebotfl} \ar[rr] \ar@/^1pc/[uu]                        &                                                                                             & \mbox{\cubebotfr} \skewpullbackcorner[ul]  \ar@{-->}@/^1pc/[uu]^(.6){v} \\
+}
+$$
+
+
+This method of pushout cubes is used extensively in \cite{ih}; and we will make heavy use of it in Section \ref{sec:dist}.
 
 
 
@@ -1373,7 +1397,7 @@ $$
 This does not arise from a distributive law of pros, but it holds nevertheless.  %This should arize instead from a distributive law of polycategories, however, we won't go into any more detail here.  We will however discuss polycategories in Chapter \ref{chap:grothendieck} which will make this intuition clearler.
 \end{lemma}
 \subsubsection{Internal profunctors and factorization systems over subcategories}
-We want to be able to take distributive laws of two categories which both share some structure.  For example, what is the appropriate notion of distributive law of small strict symmetric monoidal categories where the braiding of both categories are identified with each other?  For this, we can regard the shared structure in the  subcategory as actions on the larger categories; formally, this is a certain kind of bimodule:
+We want to be able to take distributive laws of two categories which both share some structure.  For example, what is the appropriate notion of distributive law of small strict symmetric monoidal categories where the symmetry maps of both categories are identified with each other?  For this, we can regard the shared structure in the  subcategory as actions on the larger categories; formally, this is a certain kind of bimodule:
 \begin{definition}
 Given a bicategory $\mathcal B$ with coequalizers,
 the bicategory of bimodules in $\mathcal B$, $\Mod(\mathcal{B})$ has:
@@ -1989,7 +2013,7 @@ $$
 $$
 where $E_\lambda$ is the set of equations dictating the unique ways in which the generators of $\Sigma_R$ can be pushed past those of $\Sigma_L$ up to zig-zags in $\bar{J}$.
 \end{lemma}
-This seems like a very complicated construction, but let us see some examples to understand the utility.  As a general rule, because factorization systems are decompositional, we will start first with a symmetric monoidal theory which we already know.
+This seems like a very complicated construction, but let us see some examples to understand the utility.  As a general rule, because factorization systems are decompositional (so that we start with a category and decompose it into smaller parts), we will start first with a symmetric monoidal theory which we already know, and then decompose it into smaller constituent symmetric monoidal theories.
 For the most basic examples consider the free strict symmetric monoidal category on a set of objects:
 \begin{definition}
 Let $\P^X$ denote the free strict symmetric monoidal category with objects in $X$. Where $\P$ is the free symmetric monoidal category with one object.
@@ -2015,7 +2039,7 @@ That is to say $\P^X$ is the category of permutations on $X$ elements regarded a
 %
 %Note that there is another way to compose multiple props together, which we will not use in this thesis.  In  \cite[Proposition 2.33]{ih} they compose distributive laws of 3 props; where the props interact via distributive law regarded as bimodules over $\P$. This composition is constructed by asking that the distrubutive laws interact to satisfy the Yang-Baxter equation, following  \cite{iterdist}.  Such a composite of distributive laws is a distributive law, and thus a monad in $\Mnd(\Mnd(\Mon$-$\Prof))$. This is to be contrasted with the distributive law of props which we just defined, regarded as monads in $\Mnd(\Mon$-$\Prof)$.
 %Many distributive laws of multicoloured props are over $\P_{\sf Ob}$.
-It is easy to see how every multicoloured prop with generating object set $\sf Ob$ is canonically a $\P^{\sf Ob}$-bimodule in $\Span(\Mon)$ picking out the braids.
+It is easy to see how every coloured prop with generating object set $\sf Ob$ is canonically a $\P^{\sf Ob}$-bimodule in $\Span(\Mon)$ picking out the symmetry maps.
 
 
 Consider the following distributive law of props, coming from the epi-mono factorization system of finite sets:
@@ -2398,7 +2422,7 @@ Where this distributive law also arizes from a category of spans.
 {\sfa} is a presentation for $(\Span^\sim(\FSets^\op),+)$.
 \end{lemma}
 \begin{remark}
-The spider normal form also holds for special commutative Frobenius algebras, where now components can be connected together using the braids.
+The spider normal form also holds for special commutative Frobenius algebras, where now components can be connected together using the symmetry maps.
 
 
 In analogy to the noncommutative case, the spider normal form  for non-special commutative Frobenius algebras also holds; although it does not arize from a distributive law of props.
@@ -2410,6 +2434,9 @@ The original spider normal form was first proven for non-special symmetric Frobe
 
 Note that all of these examples of distributive laws of props are actually  monoidal orthogonal factorization systems.  Indeed, they are both special cases of the two examples of orthogonal factorization systems which we provided earlier: orthogonal factorization systems arizing from spans, and orthogonal factorization systems arizing from epi-mono factorization.   However, not all distributive laws of props arize in this manner.
 
+
+
+\cole{COME BACK TO THIS }
 
  As we alluded to earlier,  the notion of factorization systems over subcategories was initially introduced in order to define distributive laws of Lawvere theories, i.e. Cartesian monoidal props \cite{lawvere}. We proceed to give some examples to this end.
 %

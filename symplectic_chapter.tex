@@ -1,6 +1,6 @@
 
-In this chapter we  give a relational account of mixed stabilizer circuits using linear and affine symplectic geometry.
-Unlike the previous chapter where we took the state space approach such that  that the objects were finite sets; here we take the phase space approach where the the objects are symplectic vector spaces.  Symplectic vector spaces capture the possible configurations of position and momentum.  They are moreover equipped with a symplectic form which captures the commutation of points in the symplectic vector space. The morphisms of study  are categories of (affine) (co)isotropic relations: capturing the nondeterministic evolution of the mechanical system in a way that preserves the commutation between position and momentum.
+In this chapter we  give a relational account of mixed stabilizer circuits using linear and affine symplectic geometry. As opposed to the previous chapter where we extended affine relations with the nonlinear $\sf and$ gate, in this chapter we add the linear phase shift gates instead.
+More conceptually unlike the previous chapter where we took the nonlinear state space approach such that  that the objects were finite sets; here we take the linear/affine phase space approach where the the objects are symplectic vector spaces.  Symplectic vector spaces capture the possible configurations of position and momentum: ie the phase space.  Symplectic vector spaces carry a symplectic form which measures the degree of commutation of points in the phase space. The morphisms between symplectic vector spaces which we study in this chapter are  (affine) (co)isotropic relations: capturing the nondeterministic evolution of the mechanical system in a way that preserves the commutation between position and momentum.
 
 In Section \ref{sec:sym}, we give an overview of linear symplectic geometry and  linear Lagrangian relations using the language of graphical linear algebra. In Section \ref{sec:univ}, we give generators for Lagrangian relations; showing that for prime fields, Lagrangian relations can be presented as a CPM construction over linear relations with respect to the orthogonal complement.
 In Section \ref{sec:aff} we show that only one more generator is needed to obtain affine Lagrangian relations.  In the case of odd prime fields, we show in Theorem \ref{theorem:spekkens} that affine Lagrangian relations are quopit stabilizer circuits, modulo invertible scalars.  This gives  a graphical calculus which extends the previous work on Spekkens'  qubit toy model \cite{backensspek}, and the qutrit stabilizer ZX-calculus \cite{qutrit}.  In some sense, this is the first completeness result for qupit stabilizer circuits, although we defer to the completeness of graphical linear algebra; therefore, it is in some sense only a ``doubled completeness theorem.'' We also discuss the relation to electrical circuits.
@@ -6129,7 +6129,7 @@ $$
 $$
 
 
-Therefore the following biconditional:
+Therefore the following logical equivalence:
 
 
 $$
@@ -6235,7 +6235,7 @@ $$
 \end{tikzpicture}
 $$
 
-is equivalent to the following biconditional:
+is equivalent to the following logical equivalence:
 
 $$
 \begin{tikzpicture}
@@ -6339,7 +6339,7 @@ $$
 \end{tikzpicture}
 $$
 
-We prove the latter biconditional. If $g$ is the identity, then for  all $(z,x)\in k^{2n}$:
+We prove the latter logical equivalence. If $g$ is the identity, then for  all $(z,x)\in k^{2n}$:
 
 $$
 \begin{tikzpicture}
@@ -6936,7 +6936,7 @@ Let $Q=(1_1,1_1)$ denote the original object and $C=(1_1,p_Z)$ the object obtain
 
 \end{definition}
 
-We could have instead split $p_X$, or split both $p_X$ and $p_Z$; however, all three of these multicoloured props are equivalent.  This equivalence is witnessed via the Fourier transform. Indeed this suffices to split all nonzero projectors up to isomorphism because all projectors of the same dimension are affine symplectomorphic. 
+We could have instead split $p_X$, or split both $p_X$ and $p_Z$; however, all three of these coloured props are equivalent.  This equivalence is witnessed via the Fourier transform. Indeed this suffices to split all nonzero projectors up to isomorphism because all projectors of the same dimension are affine symplectomorphic. 
 It is important to remark that the choice of projectors which are split effects the code-distance, because code-distance is basis dependent, and not invariant under equivalence.
 
 This category has a succinct presentation;  adding the affine relations to  $\Aff\Co\Isot\Rel_k$ obtained by cutting/splitting the $Z$ projector in two:
@@ -7654,7 +7654,7 @@ $$
 
 
 \subsection{Electrical circuits with control and measurement}
-This multicoloured view of things recaptures the  semantics for controlled voltage and current sources as well as ammeters and voltmenters given in \cite{impedence}; however the situation is more nuanced than for quantum circuits.
+This coloured view of things recaptures the  semantics for controlled voltage and current sources as well as ammeters and voltmenters given in \cite{impedence}; however the situation is more nuanced than for quantum circuits.
 \label{rem:electrical}
 $\Aff\Co\Isot\Rel_{\R(x)}^M$ gives a semantics for all of the electrical circuit components we have discussed so far in addition to the controlled voltage and current sources:
 $$
@@ -7787,7 +7787,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-Or in bastard spider notation, the controlled voltage and current sources have the following form:
+Or in thick-thin spider notation, the controlled voltage and current sources have the following form:
 $$
 \left\llbracket\
 \begin{tikzpicture}
@@ -7858,7 +7858,7 @@ $$
 \end{tikzpicture}
 \ \right\rrbracket
 $$
-On the other hand the dual multicoloured prop $\Aff\Isot\Rel_{\R(x)}^M$ gives a semantics for all of the uncontrolled components we have discussed so far as well as voltmeters and ammeters:
+On the other hand the dual coloured prop $\Aff\Isot\Rel_{\R(x)}^M$ gives a semantics for all of the uncontrolled components we have discussed so far as well as voltmeters and ammeters:
 $$
 \left\llbracket\
 \begin{tikzpicture}
@@ -7990,7 +7990,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-These are the orthogonal complement of the interpretation of stabilizer bastard spiders in terms of linear relations:
+These are the orthogonal complement of the interpretation of stabilizer thick-thin spiders in terms of linear relations:
 $$
 \left\llbracket\
 \begin{tikzpicture}
@@ -8100,7 +8100,7 @@ The graphical algebra approach to error correction which we employ in this secti
 
 Fix an odd prime local dimension  $p$.
 Consider an affine coisotropic subspace $S=L+a \subseteq \F_p^{2n}$ where $L$ has dimension $n+k$ (or for qubits take an affine coisotropic subspace $S=L+a \subseteq \F_p^{2n}$ without linear phase).  Then the associated projector on $n$-quopits is called a $[n,k]$-stabilizer code, as it encodes $k$ logical quopits into $n$ physical quopits. 
-The relationship between logical and physical quopits can be understood in terms of pictures.  We will draw the doubled string diagrams for calculation; accompanied by the quopit stabilizer bastard spider diagrams to give a less cluttered presentation.
+The relationship between logical and physical quopits can be understood in terms of pictures.  We will draw the doubled string diagrams for calculation; accompanied by the quopit stabilizer thick-thin spider diagrams to give a less cluttered presentation.
 
 Recalling Corollary \ref{cor:affsymstine}, fix a unitary dilation $U$ of $S$:
 $$
@@ -8324,7 +8324,7 @@ $$
 		\draw [in=90, out=-60] (173) to (181.center);
 	\end{pgfonlayer}
 \end{tikzpicture}
-\text{\ \ \ or in the bastard spider picture: }
+\text{\ \ \ or in the thick-thin spider picture: }
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=map,thick] (1) at (1, 2) {$H(U)^\dag$};
@@ -8732,7 +8732,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 \end{align*}
-In the bastard spider picture, that is:
+In the thick-thin spider picture, that is:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -9035,7 +9035,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-Or in the bastard spider picture:
+Or in the thick-thin spider picture:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -9322,7 +9322,7 @@ So that if $e=f(d)$ then this reduces to the identity channel:
 	\end{pgfonlayer}
 \end{tikzpicture}
 \end{align*}
-Or in the bastard spider picture:
+Or in the thick-thin spider picture:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
