@@ -8,6 +8,7 @@ Whereas functions produce unique outputs from inputs, spans and relations nondet
 All of the category theory in this subsection which is not explicitly cited is standard and can be found, for example, in most introductions to category theory; for example \cite{maclane}.
 We first need to recall some basic facts about limits.
 \begin{definition}
+\label{def:cart}
 The {\bf product} of two objects $X$ and $Y$ (if it exists) in some category, is an object $X\times Y$ equipped with maps $\pi_0:X\times Y\to X $ and $\pi_1:X\times Y \to Y$ called the {\bf projections},  such that for any object $A$ and diagram  $X \xleftarrow{f} A \xrightarrow{g} Y$ there exists a unique map $\langle  f, g \rangle :A \to X\times Y$ called {\bf the pairing map} making the following diagram commute:
 $$
 \xymatrix{
@@ -421,6 +422,7 @@ The concrete pullback/pushout of matrices is essentially the same with the direc
 \end{example}
 Spans form a bicategory under pullback:
 \begin{definition}
+\label{def:span}
 Given a finitely complete category $\X$, the bicategory of spans $\Span(\X)$ has:
 \begin{description}
 \item[0-cells:] Objects of $\X$.
@@ -559,6 +561,7 @@ This example is quite useful for developing intuition.  Take a span of finite se
 
 We seek moreover, to quotient by multiplicity, to obtain a semantics for honest nondeterministic processes: where things can be related at most once.  To do so, we need more assumptions about the category with which we seek to work internal to.
 \begin{definition}
+\label{def:mono}
 A map $f:X\to Y$ is a {\bf monomorphism} (monic) when for all maps $g,h:Z\to X$, $g;f=h;f$ implies $ g=h$.
 
 Dually, a map $f:X\to Y$ is an {\bf epimorphism} (epic) when for all maps $g,h:Y\to Z$, $f;g=f;h$ implies $ g=h$.
@@ -619,6 +622,7 @@ X \ar@{->>}[rr]^{\hspace*{-.7cm}e_f} \ar[drr]_{f} &&{X/\ker{f}=:\co\im(f)} \ar@{
 $$
 \end{lemma}
 \begin{definition}
+\label{def:rel}
 Given a regular category $\X$,  the strict 2-category of {\bf relations} internal to $\X$, $\Rel(\X)$ has:
 \begin{description}
 \item[0-cells:] Objects of $\X$.
@@ -805,6 +809,7 @@ $$
 \end{definition}
 This prop has a presentation in terms of interacting Hopf algebras:
 \begin{definition}
+\label{def:ih}
 Given a field $k$, let $\ih_k$ be the quotient of the props $\cb_k+\cb_k^\op$, modulo the equations, for all $a \in k^*$ (where the generators of $\cb_k^\op$ are drawn as the vertically flipped generators of $\cb_k$):
 $$
 \begin{tikzpicture}
@@ -1039,6 +1044,7 @@ $$
 $$
 \end{definition}
 \begin{lemma}[{\cite[\S 3.4]{ih}}]
+\label{lem:ih}
 $\ih_k$ is a presentation for $\LinRel_{k}$.
 \end{lemma}
 The colour-swapping dagger functor $(-)^T:\ih_k^\op\to \ih_k$ corresponds to the transpose of matrices; and the colour-preserving dagger functor  $(-)^*:\ih_k^\op\to \ih_k$ corresponds transpose coming from the compact closed structure of $\ih_k$.  These should not be confused with each other: the latter is the relational converse.  
@@ -1218,6 +1224,7 @@ The empty set can not be regarded as a vector space because it has no origin; ho
 
 By shifting to the category $\Aff\Mat_k+1$ where one freely adds the empty set as the initial object, so that there is a unique map $\emptyset \xrightarrow{?_n} k^n$ for all $n$,  we obtain an algebraic theory, and thus a regular category.  Notice that $\Aff\Mat_k$ is the full subcategory of $\Aff\Mat_k+1$ with nonempty objects.  Therefore, we can take the category of internal relations:
 \begin{definition}
+\label{def:affrel}
 The prop of {\bf affine relations} over $k$, $\Aff\Rel_{k}$ is the full subcategory of  $\Rel(\Aff\Mat_k+1)$ of nonempty affine subspaces.
 \end{definition}
 Concretely, this is constructed in the same way as $\LinRel_k$, but maps $n\to m$ are now (possibly empty) affine subspaces $S \subseteq k^n\oplus k^m$. That is to say, $S$ is a subset of $k^n\oplus k^m$ such that for any $a \in S$, the set $\{v+a\ |\ \forall v \in S\}$ is a linear subspace of  $k^n\oplus k^m$.  The empty set vacuously satisfies this condition.
@@ -1225,6 +1232,7 @@ Concretely, this is constructed in the same way as $\LinRel_k$, but maps $n\to m
 
 We chose to forget the empty set as an object and retain it merely as a subobject so that we can present it as a (single sorted) prop as follows:
 \begin{lemma}[{\cite[\S A]{affine}}]
+\label{lem:affrel}
 $\Aff\Rel_{k}$ is presented by the prop $\aih_k$ given by adding the following generators and equations to the presentation of $\ih_k$:
 $$
 \begin{tikzpicture}
@@ -2707,6 +2715,7 @@ Which implies that these retracts are commutative  semigroups, interacting with 
 \end{theorem}
 We recall the following definition of \cite[\S 3]{cockett}, which was originally stated in the more general setting of categories with stable systems of monics, rather than finitely complete categories:
 \begin{definition}
+\label{def:par}
 Given a finitely complete category $\X$,  there is a discrete Cartesian restriction category, the {\bf category of partial maps}, $\Par(\X)$ is generated by spans $(m,A,f)$, for $m$ a monic and $f$ and arbitrary map, i.e. spans of the form
 $
 \xymatrix{
@@ -3423,6 +3432,7 @@ $$
 $$
 \end{lemma}
 \begin{lemma}
+\label{def:pariso}
 Given a finitely complete category $\X$, the category  $\ParIso(\X):=\Inv(\Par(\X))$ of spans of monomorphisms in $\X$ is a discrete inverse category.
 \end{lemma}
 These weaken the notion of copying even further:

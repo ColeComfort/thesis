@@ -56,27 +56,143 @@
 %}
 
 
+
+
+
+
+\usepackage{array}
+\usepackage{booktabs}
+
 \begin{document}
 \maketitle
 %\input{background_chapter_cqm}
+%
+%\label{def:sfiso}
+%\label{lem:sfiso}
+%
+%
+%
+%\begin{landscape}
+%\begin{figure}
+%\centering
+%\begin{tabular}{||l|ll:ll:ll|}
+%\hline
+%Type of space:          	& \multicolumn{2}{c}{Linear}					                             										& \multicolumn{2}{c}{Affine}																			&\multicolumn{2}{c}{Multiplicative}		\\
+%				& Syntax 									& Semantics			    								& Syntax									& Semantics												& Syntax						 			& Semantics\\
+%\hline
+%Isos.				& \hyperref[def:sfiso]{$\sfiso\cb_{\F_2}$}			& \hyperref[lem:sfiso]{$(\Iso(\Mat_{\F_2}),\oplus)$}				& \hyperref[def:isoacb]{$\sfiso\acb_{\F_2}$}		& \hyperref[lem:isoacb]{$(\Iso(\Aff\Mat_{\F_2}),\oplus)$}				& \hyperref[lem:isof]{oracles in $f_2$} 			& \hyperref[conj:isofinord]{$(\Iso(\FinOrd_2),\times)$}\\
+%Monics			& \hyperref[def:injcb]{$\sfinj\cb_{\F_2}$}			& \hyperref[lem:injcb]{$(\sfmono(\Mat_{\F_2}),\oplus)$}			& \hyperref[def:injacb]{$\sfinj\acb_{\F_2}$}		& \hyperref[lem:injaffcb]{$(\sfmono(\Aff\Mat_{\F_2}),\oplus)$}			& \hyperref[def:injf]{$\sfinj\f_2$}				& \hyperref[lem:injand]{$(\sfmono(\FinOrd_2),\times)$}\\
+%Partial isos		& \hyperref[def:pariso:cb]{$\sfpariso\cb_{\F_2}$}	& \hyperref[lem:parisocb]{$\sfpariso\cb_{\F_2}$}				& \hyperref[def:parisoaffcb]{$\sfpariso\acb_{\F_2}$}	& \hyperref[lem:parisoaffcb]{$(\Par\Iso(\Aff\Mat_{\F_2}+1)^*, \oplus)$}	& \hyperref[def:parisof]{$\sfpariso$}				& \hyperref[lem:parisof]{$(\FPinj_2,\times)$}\\ 
+%Partial maps      	& \hyperref[def:par:cb]{$\sfpar\cb_{\F_2}$}		& \hyperref[lem:parcb]{$(\Par(\Mat_{\F_2}),\oplus)$}			& \hyperref[def:paracb]{$\sfpar\acb_{\F_2}$}		& \hyperref[lem:paraffcb]{$(\Par(\Aff\Mat_{\F_2}+1)^*,\oplus)$}		& \hyperref[def:parf]{$\sfpariso\f_2$}			&  \hyperref[lem:parf]{$\sfpar\f_2$} \\
+%Spans                 	& \hyperref[def:spancb]{$\sfspan\cb_{\F_2}$}		& \hyperref[lem:spancb]{$(\Span^\sim(\Mat_{\F_2}), \oplus)$}		& \hyperref[def:spanacb]{$\sfspan\acb_{\F_2}$}	& \hyperref[lem:spanaffcb]{$(\Span^\sim(\Aff\Mat_{\F_2}+1)^*,\oplus)$}	& \hyperref[def:spanf2]{$\ZXA\cong \sfspan\f_2$}	&   \hyperref[lem:spanand]{$(\FSpan_2,\times)$} \\
+%Relations             	& \hyperref[def:ih]{$\ih_{\F_2}$}				& \hyperref[lem:ih]{$\LinRel_{\F_2}\cong(\Rel(\Mat(\F_2)),\oplus)$}	&										&														&  \hyperref[cor:bool]{$\ZXA/\sim$}				&  \hyperref[cor:bool]{$(\FRel_2,\times)$} \\
+%\hline
+%\end{tabular}
+%
+%
+%
+%
+%\begin{landscape}
+%\begin{figure}
+%\centering
+%\begin{tabular}{lllllll}
+%                         		& Linear									&                               										& Affine									&																& Multiplicative&		\\
+%				& Syntax 									& Semantics			    								& Syntax									& Semantics														& Syntax						 			& Semantics\\
+%isomorphisms		& \hyperref[def:sfiso]{$\sfiso\cb_{\F_2}$}			& \hyperref[lem:sfiso]{$(\Iso(\Mat_{\F_2}),\oplus)$}				& \hyperref[def:isoacb]{$\sfiso\acb_{\F_2}$}		& \hyperref[lem:isoacb]{$(\Iso(\Aff\Mat_{\F_2}),\oplus)$}						& \hyperref[lem:isof]{oracles in $f_2$} 			& \hyperref[conj:isofinord]{$(\Iso(\FinOrd_2),\times)$}\\
+%injections	     		& \hyperref[def:injcb]{$\sfinj\cb_{\F_2}$}			& \hyperref[lem:injcb]{$(\sfmono(\Mat_{\F_2}),\oplus)$}			& \hyperref[def:injacb]{$\sfinj\acb_{\F_2}$}		& \hyperref[lem:injaffcb]{$(\sfmono(\Aff\Mat_{\F_2}),\oplus)$}					& \hyperref[def:injf]{$\sfinj\f_2$}				& \hyperref[lem:injand]{$(\sfmono(\FinOrd_2),\times)$}\\
+%partial injections	& \hyperref[def:pariso:cb]{$\sfpariso\cb_{\F_2}$}	& \hyperref[lem:parisocb]{$(\Par\Iso(\Mat_{\F_2}),\oplus)$}		& \hyperref[def:parisoaffcb]{$\sfpariso\acb_{\F_2}$}	& \hyperref[lem:parisoaffcb]{$(\Par\Iso(\Aff\Mat_{\F_2}+1)^*, \oplus)$}			& \hyperref[def:parisof]{$\sfpariso$}				& \hyperref[lem:parisof]{$(\FPinj_2,\times)$}\\ 
+%partial maps      	& \hyperref[def:par:cb]{$\sfpar\cb_{\F_2}$}		& \hyperref[lem:parcb]{$(\Par(\Mat_{\F_2}),\oplus)$}			& \hyperref[def:paracb]{$\sfpar\acb_{\F_2}$}		& \hyperref[lem:paraffcb]{$(\Par(\Aff\Mat_{\F_2}+1)^*,\oplus)$}				& \hyperref[def:parf]{$\sfpariso\f_2$}			&  \hyperref[lem:parf]{$(\FPar_2,\times)$} \\
+%spans                 	& \hyperref[def:spancb]{$\sfspan\cb_{\F_2}$}		& \hyperref[lem:spancb]{$(\Span^\sim(\Mat_{\F_2}), \oplus)$}		& \hyperref[def:spanacb]{$\sfspan\acb_{\F_2}$}	& \hyperref[lem:spanaffcb]{$(\Span^\sim(\Aff\Mat_{\F_2}+1)^*,\oplus)$}			& \hyperref[def:spanf2]{$\ZXA\cong \sfspan\f_2$}	&   \hyperref[lem:spanand]{$(\FSpan_2,\times)$} \\
+%relations             	& \hyperref[def:ih]{$\ih_{\F_2}$}				& \hyperref[lem:ih]{$\LinRel_{\F_2}\cong(\Rel(\Mat(\F_2)),\oplus)$}	&										&																&  \hyperref[cor:bool]{$\ZXA/\sim$}				&  \hyperref[cor:bool]{$(\FRel_2,\times)$} \\
+%\end{tabular}
+%
+%\caption{Periodic table of Boolean circuits}
+%\label{fig:bigtable}
+%\end{figure}
+%\end{landscape}
+%
+%
+%
+%\caption{Important fragments of $\ZXA$ and their semantics.}
+%\caption{fig:bigtable}
+%\end{figure}
+%\end{landscape}
 
-\renewcommand{\cubetopbl}{$\bar{T_0}$}
-\renewcommand{\cubetopbr}{$\bar{T_1}$}
-\renewcommand{\cubetopfl}{$\bar{T_2}$}
-\renewcommand{\cubetopfr}{$\bar{T_1} +_ {\bar{T_0}}  \bar{T_2}$}
-\renewcommand{\cubebotbl}{$\X_0$ }
-\renewcommand{\cubebotbr}{$\X_1$ }
-\renewcommand{\cubebotfl}{$\X_2$ }
-\renewcommand{\cubebotfr}{$\X_1 +_{\X_0} \X_2$}
-$$
-\xymatrixrowsep{1.5mm}\xymatrixcolsep{10mm}
-\xymatrix{
-                                                                                         & \mbox{\cubetopbl} \ar[rr] \ar[dl] \ar@/^1pc/[dd]                   &                                                  & \mbox{\cubetopbr} \ar@/^1pc/[dd] \ar[dl] \\
-\mbox{\cubetopfl} \ar[rr]  \ar@/^1pc/[dd]                      &                                                                                              &\mbox{\cubetopfr} \ar@{-->}@/^1pc/[dd]^(.6){u}    \skewpullbackcorner[ul]              \\
-                                                                                        &  \mbox{\cubebotbl} \ar[dl] \ar[rr]                                        \ar@/^1pc/[uu]   &                                                  & \mbox{\cubebotbr} \ar[dl] \ar@/^1pc/[uu]  \\
-\mbox{\cubebotfl} \ar[rr] \ar@/^1pc/[uu]                        &                                                                                             & \mbox{\cubebotfr} \skewpullbackcorner[ul]  \ar@{-->}@/^1pc/[uu]^(.6){v} \\
-}
-$$
+
+\begin{landscape}
+\begin{figure}
+\centering
+\begin{tabular}{lllllll}
+				& Syntax 									& Semantics			    								& Syntax									& Semantics																										& Syntax						 			& Semantics\\
+Cartesian category	& \hyperref[]{$\cb_{\F_2}$}					& \hyperref[]{$(\Mat_{\F_2},\oplus)$}						& \hyperref[]{$\acb_{\F_2}$}					& \hyperref[]{$(\Aff\Mat_{\F_2},\oplus)								\hookrightarrow		(\Aff\Mat_{\F_2}+1,\oplus)$}				& \hyperref[lem:isof]{oracles in $f_2$} 			& \hyperref[conj:isofinord]{$(\FinOrd_2),\times)				\hookrightarrow (\FinOrd,\times)$}\\
+isomorphisms		& \hyperref[def:sfiso]{$\sfiso\cb_{\F_2}$}			& \hyperref[lem:sfiso]{$(\Iso(\Mat_{\F_2}),\oplus)$}				& \hyperref[def:isoacb]{$\sfiso\acb_{\F_2}$}		& \hyperref[lem:isoacb]{$(\Iso(\Aff\Mat_{\F_2}),\oplus)					\hookrightarrow		(\Iso(\Aff\Mat_{\F_2}+1),\oplus)$}			& \hyperref[lem:isof]{oracles in $f_2$} 			& \hyperref[conj:isofinord]{$(\Iso(\FinOrd_2),\times)			\hookrightarrow (\Iso(\FinOrd),\times)$}\\
+injections	     		& \hyperref[def:injcb]{$\sfinj\cb_{\F_2}$}			& \hyperref[lem:injcb]{$(\sfmono(\Mat_{\F_2}),\oplus)$}			& \hyperref[def:injacb]{$\sfinj\acb_{\F_2}$}		& \hyperref[lem:injaffcb]{$(\sfmono(\Aff\Mat_{\F_2}),\oplus)				\hookrightarrow		(\sfmono(\Aff\Mat_{\F_2}+1),\oplus)$}		& \hyperref[def:injf]{$\sfinj\f_2$}				& \hyperref[lem:injand]{$(\sfmono(\FinOrd_2),\times)		\hookrightarrow (\sfmono(\FinOrd),\times)$}\\
+partial injections	& \hyperref[def:pariso:cb]{$\sfpariso\cb_{\F_2}$}	& \hyperref[lem:parisocb]{$(\Par\Iso(\Mat_{\F_2}),\oplus)$}		& \hyperref[def:parisoaffcb]{$\sfpariso\acb_{\F_2}$}	& \hyperref[lem:parisoaffcb]{$(\Par\Iso(\Aff\Mat_{\F_2}+1)^*, \oplus)		\hookrightarrow		(\Par\Iso(\Aff\Mat_{\F_2}+1),\oplus)$}		& \hyperref[def:parisof]{$\sfpariso$}				& \hyperref[lem:parisof]{$(\FPinj_2,\times)				\hookrightarrow (\Par\Iso(\FinOrd),\times)$}\\ 
+partial maps      	& \hyperref[def:par:cb]{$\sfpar\cb_{\F_2}$}		& \hyperref[lem:parcb]{$(\Par(\Mat_{\F_2}),\oplus)$}			& \hyperref[def:paracb]{$\sfpar\acb_{\F_2}$}		& \hyperref[lem:paraffcb]{$(\Par(\Aff\Mat_{\F_2}+1)^*,\oplus)				\hookrightarrow		(\Par(\Aff\Mat_{\F_2}+1),\oplus)$}			& \hyperref[def:parf]{$\sfpariso\f_2$}			&  \hyperref[lem:parf]{$(\FPar_2,\times)					\hookrightarrow (\Par(\FinOrd),\times)$} \\
+spans                 	& \hyperref[def:spancb]{$\sfspan\cb_{\F_2}$}		& \hyperref[lem:spancb]{$(\Span^\sim(\Mat_{\F_2}), \oplus)$}		& \hyperref[def:spanacb]{$\sfspan\acb_{\F_2}$}	& \hyperref[lem:spanaffcb]{$(\Span^\sim(\Aff\Mat_{\F_2}+1)^*,\oplus)		\hookrightarrow		(\Span^\sim(\Aff\Mat_{\F_2}+1),\oplus)$}		& \hyperref[def:spanf2]{$\ZXA\cong \sfspan\f_2$}	&   \hyperref[lem:spanand]{$(\FSpan_2,\times)				\hookrightarrow (\Span^\sim(\FinOrd),\times)$} \\
+relations             	& \hyperref[def:ih]{$\ih_{\F_2}$}				& \hyperref[lem:ih]{$\LinRel_{\F_2}\cong(\Rel(\Mat(\F_2)),\oplus)$}	& \hyperref[lem:affrel]{$\aih_{\F_2}$}			& \hyperref[def:affrel]{$\Aff\Rel_{k}\cong(\Rel(\Aff\Mat_{\F_2}+1)^*,\oplus)	\hookrightarrow		(\Rel(\Aff\Mat_{\F_2}+1),\oplus)$}			&  \hyperref[cor:bool]{$\ZXA/\sim$}				&  \hyperref[cor:bool]{$(\FRel_2,\times)					\hookrightarrow (\Rel\FinOrd),\times)$} \\
+\end{tabular}
+
+\caption{Periodic table of Boolean circuits}
+\label{fig:bigtable}
+\end{figure}
+\end{landscape}
+
+
+
+
+\begin{landscape}
+\begin{figure}
+\centering
+\begin{tabular}{c}
+\begin{tabular}{|lll|}
+\hline\hline
+				& Syntax 									& Semantics\\
+\hline
+Cartesian category	& \hyperref[ex:bialg]{$\cb_{\F_2}$}				& \hyperref[def:mat]{$(\Mat_{\F_2},\oplus)$}\\
+isomorphisms		& \hyperref[def:sfiso]{$\sfiso\cb_{\F_2}$}			& \hyperref[lem:sfiso]{$(\Iso(\Mat_{\F_2}),\oplus)$}\\		
+injections	     		& \hyperref[def:injcb]{$\sfinj\cb_{\F_2}$}			& \hyperref[lem:injcb]{$(\sfmono(\Mat_{\F_2}),\oplus)$}\\
+partial injections	& \hyperref[def:pariso:cb]{$\sfpariso\cb_{\F_2}$}	& \hyperref[lem:parisocb]{$(\Par\Iso(\Mat_{\F_2}),\oplus)$}\\
+partial maps      	& \hyperref[def:par:cb]{$\sfpar\cb_{\F_2}$}		& \hyperref[lem:parcb]{$(\Par(\Mat_{\F_2}),\oplus)$}\\
+spans                 	& \hyperref[def:spancb]{$\sfspan\cb_{\F_2}$}		& \hyperref[lem:spancb]{$(\Span^\sim(\Mat_{\F_2}), \oplus)$}	\\
+relations             	& \hyperref[def:ih]{$\ih_{\F_2}$}				& \hyperref[lem:ih]{$\LinRel_{\F_2}\cong(\Rel(\Mat(\F_2)),\oplus)$}\\
+\hline\hline
+\end{tabular}\\
+\rotatebox[origin=c]{-90}{$\hookrightarrow$}\\
+\begin{tabular}{|llll|}
+\hline\hline
+				& Syntax 									& Semantics													& Full subcategory of\\
+\hline
+Cartesian category	& \hyperref[ex:affmat]{$\acb_{\F_2}$}			& \hyperref[def:affmat]{$(\Aff\Mat_{\F_2},\oplus)$}						&		$(\Aff\Mat_{\F_2}+1,\oplus)$\\
+Isomorphisms		& \hyperref[def:isoacb]{$\sfiso\acb_{\F_2}$}		& \hyperref[lem:isoacb]{$(\Iso(\Aff\Mat_{\F_2}),\oplus)$}					&		$(\Iso(\Aff\Mat_{\F_2}+1),\oplus)$\\
+Injections	     		& \hyperref[def:injacb]{$\sfinj\acb_{\F_2}$}		& \hyperref[lem:injaffcb]{$(\sfmono(\Aff\Mat_{\F_2}),\oplus)$}				&		$(\sfmono(\Aff\Mat_{\F_2}+1),\oplus)$\\
+Partial injections	& \hyperref[def:parisoaffcb]{$\sfpariso\acb_{\F_2}$}	& \hyperref[lem:parisoaffcb]{$(\Par\Iso(\Aff\Mat_{\F_2}+1)^*, \oplus)$}		&		$(\Par\Iso(\Aff\Mat_{\F_2}+1),\oplus)$\\
+Partial maps      	& \hyperref[def:paracb]{$\sfpar\acb_{\F_2}$}		& \hyperref[lem:paraffcb]{$(\Par(\Aff\Mat_{\F_2}+1)^*,\oplus)$}			&		$(\Par(\Aff\Mat_{\F_2}+1),\oplus)$\\
+Spans                 	& \hyperref[def:spanacb]{$\sfspan\acb_{\F_2}$}	& \hyperref[lem:spanaffcb]{$(\Span^\sim(\Aff\Mat_{\F_2}+1)^*,\oplus)$}		&		$(\Span^\sim(\Aff\Mat_{\F_2}+1),\oplus)$\\
+Relations             	& \hyperref[lem:affrel]{$\aih_{\F_2}$}			& \hyperref[def:affrel]{$\Aff\Rel_{k}\cong(\Rel(\Aff\Mat_{\F_2}+1)^*,\oplus)$}	&		$(\Rel(\Aff\Mat_{\F_2}+1),\oplus)$\\
+\hline\hline
+\end{tabular}\\
+\rotatebox[origin=c]{-90}{$\hookrightarrow$}\\
+\begin{tabular}{|llll|}
+\hline\hline
+				&	Syntax									& Semantics										& Full subcategory of\\
+\hline
+Cartesian category	&	\hyperref[???]{$f_2$} 						& \hyperref[???]{$(\FinOrd_2,\times)$}					& \hyperref[???]{$(\FinOrd,\times)\cong (\FSets,\times)$}\\
+Isomorphisms		&	\hyperref[lem:isof]{oracles in $f_2$} 			& \hyperref[conj:isofinord]{$(\Iso(\FinOrd_2),\times)$}		& $(\Iso(\FinOrd),\times)\cong (\Iso(\FSets),\times)$\\
+Injections			&	\hyperref[def:injf]{$\sfinj\f_2$}					& \hyperref[lem:injand]{$(\sfmono(\FinOrd_2),\times)$}		& $(\sfmono(\FinOrd),\times)\cong (\sfmono(\FSets),\times)$\\
+Partial injections	&	\hyperref[def:parisof]{$\sfpariso$}				& \hyperref[lem:parisof]{$(\FPinj_2,\times)$}				& $(\Par\Iso(\FinOrd),\times) \cong (\FSets,\times)$\\ 
+Partial maps 		&	\hyperref[def:parf]{$\sfpariso\f_2$}				& \hyperref[lem:parf]{$(\FPar_2,\times)$}					& $(\Par(\FinOrd),\times)\cong (\Par(\FSets,\times)$ \\
+Spans 			&	\hyperref[def:spanf2]{$\ZXA\cong \sfspan\f_2$}	& \hyperref[lem:spanand]{$(\FSpan_2,\times)$}			& $(\Span^\sim(\FinOrd),\times) \cong (\Span^\sim(\FSets),\times)$ \\
+Relations 			& 	\hyperref[cor:bool]{$\ZXA/\sim$}				& \hyperref[cor:bool]{$(\FRel_2,\times)$}					& $(\Rel(\FinOrd),\times)\cong (\Rel(\FSets),\times)$\\
+\hline\hline
+\end{tabular}
+\end{tabular}
+
+\caption{Periodic table of Boolean circuits. Within each subtable, every row after ``Cartesian category''  embeds into the one beneath it. Each subtable embeds into the one beneath it.}
+\label{fig:bigtable}
+\end{figure}
+\end{landscape}
+
 
 
 \bibliography{bibliography} 
