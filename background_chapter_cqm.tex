@@ -1,4 +1,3 @@
-\section{Categorical quantum mechanics}
 \label{sec:cqm}
 %
 %I will first sketch the algebraic paradigm used by quantum computer scientists to do calculations.  Then I will give a categorical, graphical reformulation.
@@ -20,9 +19,9 @@
 %
 %In more in depth mathematical introduction to the subject of categorical quantum mechanics can be found in \cite{heunen}, with a more broadly accessible introduction being found in \cite{pqp}.
 %The first step in introducing this formalism, is a graphical counterpart of the notion of an orthonormal basis:
-String diagrams have been used in quantum theory for quite some time.  For example, as early as the work of Penrose \cite{penrosei}.  In such settings, string diagrams have been used as (often heuristic) tools for calculation. The more recent programme of ``categorical quantum mechanics,'' following the seminal paper of Abramsky and Coecke \cite{abramsky} has endeavoured to reformulate finite dimensional quantum mechanics using category theory.  In this setting,  string diagrams are formal mathematical objects: allowing certain essential features to be abstracted away from the usual setting of finite dimensional Hilbert spaces.
+String diagrams have been used in quantum theory for quite some time; in particular, as early as the work of Penrose \cite{penrosei}.  In such settings, string diagrams have been used as (often heuristic) tools for calculation. The more recent programme of ``categorical quantum mechanics,'' following the seminal paper of Abramsky and Coecke \cite{abramsky} has endeavoured to reformulate finite dimensional quantum mechanics using category theory.  In this setting,  string diagrams are formal mathematical objects: allowing certain essential features to be abstracted away from the usual setting of finite dimensional Hilbert spaces.
 
-In this section, we  review this formalism as well as recent developments which are relevant to this thesis.  A more in depth mathematical introduction can be found in \cite{heunen}, with a more broadly accessible and applied introduction being found in \cite{pqp}.  For a more traditional approach to quantum computing see \cite{nielsen}.
+In this section, we  review this formalism as well as recent developments which are relevant to this thesis.  A more in depth mathematical introduction can be found in the book of Heunen and Vicary \cite{heunen}, with a more broadly accessible and applied introduction being found in the book of Coecke and Kissinger \cite{pqp}.  For a more traditional approach to quantum computing see the book of Nielsen and Chuang \cite{nielsen}.
 
 
 To motivate this graphical treatment of finite dimensional quantum theory, we first establish some basic algebraic notations.
@@ -30,17 +29,17 @@ To motivate this graphical treatment of finite dimensional quantum theory, we fi
 
 Fix a finite dimensional Hilbert space $\mathcal H$ with dimension $d\geq 2$, which we will regard as our local state-space. An element of  $\mathcal H$ is called a {\bf qubit} when $d=2$, a {\bf qutrit} when $d=3$, a {\bf qupit} when $d$ is  prime, a {\bf quopit} when $d$ an odd prime and  a {\bf qudit} when there is no restriction on $d$.
 
-The elements of an orthonormal basis of $\mathcal H$ indexed by a set $\mathcal J$ are drawn in ``ket notation'' by $\{|b_{j}\rangle \}_{j \in \mathcal J}$.
+The elements of an orthonormal basis of $\mathcal H$ indexed by a set $\mathcal J$ are drawn in ``ket notation'' by $|b_{j}\rangle$, for all $j \in \mathcal J$.
 The tensor product of these vectors is denoted as a list delimited by commas so that for example:
 $$
 | b_x \rangle \otimes | b_y\rangle =: |b_x,b_y \rangle  
 $$
-Most of the time,  we will not chose an arbitrary $d$-dimensional Hilbert space for the local state-space.  Instead, we will work in the Hilbert space of square summable functions on $\Z/d\Z$, $\ell^2(\Z/d\Z)$ (see Definition \ref{def:elltwo}).  Here, the elements of $\Z/d\Z$ induce a basis for  $\ell^2(\Z/d\Z)$ called the {\bf standard basis} or $Z$-basis.  We will denote the elements of the basis  as  $\{| 0\rangle , \ldots, |d-1\rangle \}$.  The structure of a ring is therefore transported onto the standard basis elements (or a field when $d$ is prime).  These are regarded as the $d$-level quantum analogue of classical dits.    Similarly, the $n$-qudit state space is regarded as the Hilbert space $\ell^2((\Z/d\Z)^n)$, so that the $n$-standard basis elements have the structure of an $n$-dimensional $\Z/d\Z$-bimodule (or vector space, when $d$ is prime).
+Most of the time,  we will not choose an arbitrary $d$-dimensional Hilbert space for the local state-space.  Instead, we will work in the Hilbert space of square summable functions on $\Z/d\Z$, $\ell^2(\Z/d\Z)$ (see Definition \ref{def:elltwo}).  Here, the elements of $\Z/d\Z$ induce a basis for  $\ell^2(\Z/d\Z)$ called the {\bf standard basis} or $Z$-basis.  We will denote the elements of the basis  as  $\{| 0\rangle , \ldots, |d-1\rangle \}$.  The structure of a ring is therefore transported onto the standard basis elements (or a field when $d$ is prime).  These are regarded as the $d$-level quantum analogue of classical dits.    Similarly, the $n$-qudit state space is regarded as the Hilbert space $\ell^2((\Z/d\Z)^n)$, so that the $n$-standard basis elements have the structure of an $n$-dimensional $\Z/d\Z$-bimodule (or vector space, when $d$ is prime).
 
 Denote arbitrary vectors $\phi$ in $\mathcal H$ using this ket notation by $|\phi \rangle$; where the adjoint of $|\phi \rangle$ is denoted as a ``bra''  by $|\phi \rangle^\dag =: \langle \phi |$. 
 
 Given two vectors $|\phi \rangle$ and $| \psi \rangle$ on the same space, the inner product ``bra-ket'' is denoted by $\langle \phi | \psi \rangle$ and the outer product by $|\phi \rangle\langle \psi|$. 
-This notation allows allows us to succinctly represent matrices.  For example, a complex matrix from $d^n$ to $d^m$ regarded as an operator $A:\ell^2((\Z/d\Z)^n)\to \ell^2((\Z/d\Z)^m)$ with entries $a_{j,k}$ is denoted as follows:
+This notation allows us to succinctly represent matrices.  For example, a complex matrix from $d^n$ to $d^m$ regarded as an operator $A:\ell^2((\Z/d\Z)^n)\to \ell^2((\Z/d\Z)^m)$ with entries $a_{j,k}$ is denoted as follows:
 $$
 A  = \sum_{k=0}^{n-1} \sum_{j=0}^{m-1} a_{j,k}| j \rangle \langle k |
 $$
@@ -176,7 +175,7 @@ $$
 These are precisely the Frobenius algebras that (co)copy the basis elements.
 It is easy to see how the laws of a commutative \dag-Frobenius algebra hold; however, the proof of the converse direction is quite a bit trickier.
 
-Notice how {\em special} commutative \dag-Frobenius algebras $\zcirc$ are in bijection with orthonormal bases as:
+Notice how {\em special} commutative \dag-Frobenius algebras $\zcirc$ are in bijection with orthonormal bases, as:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -233,7 +232,7 @@ $$
 \end{tikzpicture}
 \right)
 $$
-is equal to the the identity if and only if the basis is orthonormal:
+is equal to the identity if and only if the basis is orthonormal:
 $$
 \sum_{j\in \mathcal J}
 \left(\
@@ -366,7 +365,7 @@ A {\bf pure quantum state} is a vector $|\phi \rangle$ with norm 1, so that $|\l
 
 
 To actually do computations with quantum states, one has to measure things using a classical interface. 
-In \cite{cpm}, Selinger gives a construction to produce categories of quantum channels from general \dag-compact closed categories. When applied to $\FHilb$, this construction adds discarding behavior to quantum systems.  This will provide the necessary machinery to model measurement. 
+Selinger gives a construction to produce categories of quantum channels from general \dag-compact closed categories \cite{cpm}. When applied to $\FHilb$, this construction adds discarding behavior to quantum systems.  This will provide the necessary machinery to model measurement. 
 
 
 We present this construction in terms of a quotient of the $\CoPara$ construction for the sake of uniformity of this thesis. This construction is {\em extremely important} for this thesis, so it is essential to understand.
@@ -749,12 +748,12 @@ Therefore, we shall invoke the $\CPM$ construction for both dagger structures an
 
 As mentioned before, the following example motivated this categorical construction:
 \begin{example}
-$\CPM(\FHilb, (-)^\dag)$ is the dagger compact closed category of density matrices between finite dimensional Hilbert spaces. This is dagger compact closed equivalent to the strict symmetric monoidal skeleton of density matrices $\CPM(\Mat_\C, \bar{(-)})$.  In the nonstrict setting it is more convenient to work with the dagger, the Hermetian adjoint; however, in the skeletal case, we will use the complex conjugation functor.
+$\CPM(\FHilb, (-)^\dag)$ is the dagger compact closed category of density matrices between finite dimensional Hilbert spaces.  Density matrices are also called, ``completely positive maps,'' hence the name $\CPM$. This is dagger compact closed equivalent to the strict symmetric monoidal skeleton of density matrices $\CPM(\Mat_\C, \bar{(-)})$.  In the nonstrict setting it is more convenient to work with the dagger, the Hermetian adjoint; however, in the skeletal case, we will use the complex conjugation functor.
 \end{example}
 Density matrices model mixed quantum circuits. The discarding map is interpreted as quantum discarding which exposes the quantum system to the classical world. The adjoint of the discard map is interpreted as the maximally-mixed state which injects classical noise into a system.
 
 
-A (mixed) {\bf quantum state}, is a trace-preserving state in $\CPM(\FHilb)$.  
+A (mixed) {\bf quantum state} is a trace-preserving state in $\CPM(\FHilb)$.  
 Given a pure quantum state in $\FHilb$, its doubled version is a quantum state in $\CPM(\FHilb)$.
 Mixed quantum states are the states which can be obtained by discarding parts of pure quantum states, so that they can be regarded as the physical states of a quantum/classical system.
 
@@ -1299,14 +1298,14 @@ Given a quantum state $| \psi \rangle$ and an orthonormal basis  $B$; $|\psi\ran
 To promote these classical stochastic mixtures to their own systems, we need a way to turn subobjects into objects:
 \begin{definition}
 \label{def:idem}
-Given a category $\X$ and a class of idempotents $\mathcal I$, the {\bf Karoubi envelope of $\X$ at $\mathcal{I}$}, ${\sf Split}_{\mathcal I}(\X)$ is the category with:
+Given a category $\X$ and a class of idempotents $\mathcal I$, the {\bf Karoubi envelope} ${\sf Split}_{\mathcal I}(\X)$ of $\X$ at $\mathcal{I}$,  is the category with:
 \begin{description}
 \item[Objects:] Pairs $(X,e)$ where $X$ is an object of $\X$ and $e:X\to X$ is in $\mathcal I$.
 \item[Maps:] A map $(e,f,m):(X,e)\to (Y,m)$ is a map $f:X\to Y$ in $\X$ such that $e;f;m=f$.
 \item[Composition:] $(e,f,m);(m,g,\ell) = (e,f;g,\ell)$.
 \item[Identities:] $1_{(X,e)}=(1_X,e,1_X)$.
 \end{description}
-In particular, when $\mathcal{I}$ contains all idempotents in $\X$, call  ${\sf Split}(\X):={\sf Split}_{\mathcal I}(\X)$ {\bf the Karoubi envelope of $\X$}.
+In particular, when $\mathcal{I}$ contains all idempotents in $\X$, call  ${\sf Split}(\X):={\sf Split}_{\mathcal I}(\X)$  the Karoubi envelope of $\X$.
 $\X$ fully and faithfully embeds into its Karoubi envelope via the functor:
 $$
 \left(X\xrightarrow{f}Y\right)
@@ -1337,7 +1336,7 @@ Given a $\dag$-category $\X$ and class of projectors $\mathcal I$ in $\X$, then 
 The map $(e,1_X, 1_X) :(X,e)\to (X,1_X)$ is an isometry with adjoint $(1_X,1_X, e) :(X,1_X)\to (X,e)$ .
 In particular, when $\X$ is $\dag$-compact closed then so is ${\sf Split}^\dag(\X)$, with the embedding preserving this structure.
 \end{definition}
-In \cite{idempotent}, they show that splitting projectors in $\CPM(\FHilb)$ yields a category where the the split projectors can be interpreted as classical types:
+Selinger shows that splitting projectors in $\CPM(\FHilb)$ yields a category where the the split projectors can be interpreted as classical types  \cite{idempotent}:
 \begin{remark}
 \label{rem:stoch}
 Given a basis $B = \{|b_j\rangle \}_{j \in {\mathcal J}}$ for $\mathcal{H}$, the isometry  $(p_B,1_\mathcal{H}, 1_\mathcal{H}) :(\mathcal{H},p_B)\to (\mathcal{H},1_\mathcal{H})$ is regarded as the {\bf state preparation map} and its adjoint $(1_\mathcal{H},1_\mathcal{H}, p_B) :(\mathcal{H},1_\mathcal{H})\to (\mathcal{H},p_B)$  a {\bf destructive measurement} with respect to the basis $B$.  %The maps between these idempotents are (unnormalized) stochastic processes.
@@ -1474,7 +1473,7 @@ $$
 \end{tikzpicture}
 $$
 Because the equivalence classes of maps in $\CPM(\FHilb)$ are defined in terms of the complex conjugation of maps in $\FHilb$;  the representative $g$ in $\FHilb$ is unique up to a scalar factor $e^{2\pi\cdot i\cdot \theta}$ for some $\theta \in [0,1)$.  That is to say, these maps are unique {\bf up to global phase}.
-Take $\mathcal{H}=\mathcal{H}'$.  Up to global phase, the subobject $(\mathcal{H},e_B)$ can be identified with the the Hilbert space $\mathcal{H}$; where state preparation with respect to to $\xcirc$ and nondestructive measurement with respect to $\zcirc$ correspond to the following maps:
+Take $\mathcal{H}=\mathcal{H}'$.  Up to global phase, the subobject $(\mathcal{H},e_B)$ can be identified with the the Hilbert space $\mathcal{H}$; where state preparation with respect to $\xcirc$ and nondestructive measurement with respect to $\zcirc$ correspond to the following maps:
 $$ 
 \left\llbracket(1_{\mathcal H},1_{\mathcal H}, p_{B'})\right\rrbracket=
 \begin{tikzpicture}
@@ -1756,7 +1755,7 @@ $$
 \end{tikzpicture}
 \ \right\rrbracket
 $$
-The conjugation of pure spiders by state preparation and measurement maps creates {\bf thick-thin spiders} following \cite{pqp} (which they call bastard spiders).  Thick-thin spiders are drawn with a thin border to distinguish them from pure spiders, however, their legs can be either thick or thin.  For example:
+The conjugation of pure spiders by state preparation and measurement maps creates {\bf thick-thin spiders} following Coecke and Kissinger \cite{pqp} (which they call bastard spiders).  Thick-thin spiders are drawn with a thin border to distinguish them from pure spiders, however, their legs can be either thick or thin.  For example:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -2055,7 +2054,7 @@ $$
 \end{tikzpicture}
 $$
 All isometries and unitaries in $\CPM(\FHilb)$ are pure so we always drawn them with a thick border.
-This notation allows us to succinctly state define a very special notion of purification in $\CPM(\FHilb)$:
+This notation allows us to succinctly state a special notion of purification in $\CPM(\FHilb)$:
 \begin{proposition}[Stinespring dilation]
 Given a trace preserving  map  $V$ in $\CPM(\FHilb)$, there exists a unitary $U$ such that:
 $$
@@ -2088,9 +2087,9 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-For all special commutative  \dag-Frobenius algebras $\zcirc$.
+for all special commutative  \dag-Frobenius algebras $\zcirc$.
 \end{proposition}
-The proof is relatively involved so I will omit it.  See \cite{Stinespring1955} for the original statement, and \cite[Corollary 6.63]{pqp} for the graphical version which we use.  Essentially, the significance  of this result is that quantum processes can always be produced by first preparing a state, then applying quantum evolution and then discarding part of the state.
+The proof is relatively involved so we will omit it.  See Stinesprings paper  for the original statement\cite{Stinespring1955}, and  Coecke and Kissinger's book for the graphical version which we use \cite[Corollary 6.63]{pqp}.  Essentially, the significance  of this result is that quantum processes can always be produced by first preparing a state, then applying quantum evolution and then discarding part of the state.
 There is another closely related result which we will make use of:
 \begin{proposition}[Essential uniqueness of purification]
 Given two purifications $V:\mathcal{H}_1\otimes \mathcal{H}_0$ and $V':\mathcal{H}_1\otimes \mathcal{H}_0$ of a mixed state $W:\mathcal{H}_0$ in $\CPM(\FHilb)$:
@@ -2131,7 +2130,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-So that without loss generality $\dim \mathcal{H}_1\leq \dim \mathcal{H}_2$, then there exists an isometry
+so that without loss generality $\dim \mathcal{H}_1\leq \dim \mathcal{H}_2$, then there exists an isometry
 $U:\mathcal{H}_1 \to \mathcal{H}_2$ such that:
 $$
 \begin{tikzpicture}
@@ -2366,8 +2365,8 @@ Even though we only used the Hopf law here, the bialgebra structure is indispens
 %
 %We feed in the input on the bottom left wire and read out a measurement on the top left wire.
 
-Given two strongly complementary observables, we can construct the quantum teleportation protocol  (originally discovered for qubits by \cite{teleportation}).
-The abstract description of quantum teleportation in terms \dag-compact closed categories was first introduced in \cite{abramsky}; however, we present a qudit generalization of the one using thick-thin spiders found in \cite[Page 706]{pqp}:
+Given two strongly complementary observables, we can construct the quantum teleportation protocol  (originally discovered for qubits by Bennett et al. \cite{teleportation}).
+The abstract description of quantum teleportation in terms \dag-compact closed categories was first introduced by Abramsky and Coecke \cite{abramsky}; however, we present a qudit generalization of the one using thick-thin spiders found in Coecke and Kissinger's book \cite[Page 706]{pqp}:
 \begingroup\allowdisplaybreaks
 \begin{protocol} \
 \label{proto:tele}
@@ -2603,7 +2602,7 @@ Graphically:
 \end{tikzpicture}
 \end{align*}
 
-So that if if Alice prepares a quantum state $|\phi\rangle$, then Bob receives it:
+So that if Alice prepares a quantum state $|\phi\rangle$, then Bob receives it:
 
 $$
 \begin{tikzpicture}
@@ -2716,8 +2715,7 @@ Given fixed dimension $d$, recall that the standard basis, or $Z$-basis,  is den
 $$\{ |0\rangle, \ldots, |d-1\rangle \}$$
 The Fourier basis, or $X$-basis, is denoted as follows:
 $$\{\sqrt{d} \mathcal{F}|0\rangle, \ldots, \sqrt{d}\mathcal{F}|d-1\rangle \}$$
-
-Where the qudit quantum Fourier transform is the unitary map:
+where the qudit quantum Fourier transform is the unitary map:
 $$\mathcal{F} := \dfrac{1}{\sqrt{d}} \sum_{j,k=0}^{d-1} e^{2\pi\cdot i \cdot j \cdot k/d} | k\rangle \langle j | $$
 The $Z$ and $X$ bases are strongly complementary.
 \end{example}
@@ -2838,7 +2836,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-In other terms, the $Z$ and $X$-spiders are {\bf flexsymmetric}   \cite[\S 5]{flexsymmetric}.
+In other terms, following Carette, the $Z$ and $X$-spiders are {\bf flexsymmetric}   \cite[\S 5]{flexsymmetric}.
 
 %The following pair of strongly complementary observables will come up often throughout this thesis:
 %
@@ -3282,7 +3280,7 @@ $$
 Take a fragment $\llbracket-\rrbracket:{\sf ZX}\to \Hilb$ of the ZX-calculus and a \dag-compact closed subcategory of $\X\hookrightarrow\FHilb$, such that this interpretation essentially-surjectively factors through $\X$ (so that $\X$ contains all the objects of $\llbracket{\sf ZX}\rrbracket$ up to isomorphism).
 The fragment is {\bf universal} for $\X$ when the map ${\sf ZX}\to \X$ is full and {\bf complete} when it is faithful.
 \end{definition}
-The {\bf scalable ZX-calculus} \cite{szx} refers to string diagrams for the strictification of the ZX-calculus (ie, proof nets for the ZX-calculus). Frobenius algebras on wires of composite dimension are denoted as follows:
+The {\bf scalable ZX-calculus} (coined by Carette et al. \cite{szx}) refers to string diagrams for the strictification of the ZX-calculus (ie, proof nets for the ZX-calculus). Frobenius algebras on wires of composite dimension are denoted as follows:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -3398,7 +3396,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-As we use string diagrams for nonstrict monoidal categories extensively throughout this thesis, we won't declare when we are using scalable ZX-notation; it will just be the default setting which we work in.
+As we use string diagrams for nonstrict monoidal categories extensively throughout this thesis, we won't declare when we are using scalable ZX-notation; it will just be the default setting in which we work.
 
 
 Consider the simplest fragment of the ZX-calculus:
@@ -3513,7 +3511,7 @@ $$
 \otimes {\cal Z}^{a_{n-1}}
 $$
 \end{definition}
-The $X$ stabilizers characterize the phase-free ZX-calculus (this has been known for quite some time to both the categorical concurrency and quantum communities in the qubit case, see for example \cite[Page 8]{ih}):
+The $X$ stabilizers characterize the phase-free ZX-calculus: \footnote{This has been known for quite some time to both the categorical concurrency and quantum communities in the qubit case, see for example in the thesis of Zanasi \cite[Page 8]{ih}}
 \begin{lemma}
 Given an odd prime $p$, $\LinRel_{\F_p}$ is isomorphic to the qupit phase-free ZX-calculus modulo invertible scalars.
 \end{lemma}
@@ -3810,7 +3808,7 @@ $$
 =
 \sum_{j=0}^{d-1} e^{2 \pi\cdot i\cdot n\cdot j/d} {\mathcal F}| j \rangle \langle j|  {\mathcal F}^\dag
 $$
-So one can ask if the the fragment of the odd prime qudit ZX-calculus with these $\cal X$-gate phases has a similar relational semantics to the phase-free ZX-calculus.  The answer is yes, and this result is not contained in the literature to my knowledge:
+So one can ask if the fragment of the odd prime qudit ZX-calculus with these $\cal X$-gate phases has a similar relational semantics to the phase-free ZX-calculus.  The answer is yes, and this result is not contained in the literature to the knowledge of the author:
 \begin{lemma}
 $\Aff\Rel_{\F_p}$ is isomorphic to the qupit fragment of the ZX-calculus with $\cal X$-gates as phases modulo invertible scalars.
 \end{lemma}
@@ -4279,7 +4277,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-Where the second last equation follows from the fact that $\mathcal{X}^x$ is a phase for $\xcirc$  and $\mathcal{Z}^z$ is a phase for $\zcirc$.
+where the second last equation follows from the fact that $\mathcal{X}^x$ is a phase for $\xcirc$  and $\mathcal{Z}^z$ is a phase for $\zcirc$.
 %
 %Recall the Stinespring dialtion of a trace preserving map in $\CPM(\FHilb)$.  Using what we know about phase correction and measurement using the $Z$ and $X$ bases, turning the state on the bottom left into a state preparation map in in the $Z$ basis and the discard into a measurement in the $Z$ basis.  This describes the evolution of a quantum state with classical inputs and outputs:
 %
@@ -4287,7 +4285,7 @@ Where the second last equation follows from the fact that $\mathcal{X}^x$ is a p
 
 
 The stabilizer formalism is a tractable tool used for correcting errors. Indeed, everything we have discussed so far, including quantum telportation is encompassed by this formalism.
-It was first introduced in  \cite{gottesman} and later generalized to qudits in various ways.  We follow the qudit generalization provided in \cite{gota}:
+It was first introduced by Gottesman   \cite{gottesman} and later generalized to qudits in various ways.  We follow the qudit generalization of Gottesman \cite{gota}:
 \begin{definition}
 An $n$-qudit {\bf Clifford operator} $U$ is a unitary on $\ell^2((\Z/d\Z)^n)$ that preserves the Heisenberg-Weyl group, so that $U {\cal P}_d^{ n} U^\dag = {\cal P}_d^{ n}$.  The $n$-qudit Clifford operators form the $n$-qudit {\bf Clifford group } under matrix multiplication and the Hermitian adjoint.  The qudit Clifford groupoid (or full qudit Clifford group) is the prop where the maps $n\to n$ are qudit Clifford operators.
 
@@ -4297,7 +4295,7 @@ An $n$-qudit (pure) {\bf stabilizer state} is a state $ U |0\rangle^{\otimes n}$
 
 Given any $n$-qudit pure stabilizer state $|\psi \rangle$,  the {\bf stabilizer group} of $|\psi \rangle$   is the subgroup of ${\cal S}_{|\psi\rangle} \subset {\cal P}_d^{ n}$  whose elements  stabilize $|\psi\rangle$.
 \end{definition}
-The reason why stabilizer states are so nice is because we can chose to work with their very well-behaved stabilizer groups:
+The reason why stabilizer states are so nice is because we can choose to work with their very well-behaved stabilizer groups:
 \begin{lemma}
 Up to global phase, stabilizer states are in bijective correspondence their stabilizer groups, and stabilizer groups are in bijection with maximal Abelian subgroups of $ {\cal P}_d^{ n}$.
 \end{lemma}
@@ -4545,7 +4543,7 @@ $$
 Therefore, anytime I make a statement about quopit stabilizer circuits that doesn't refer to the Fourier transform or phase-shift gates, it also applies to biaffine qupit stabilizer circuits.
 
 
-The qubit \cite{backensstab,backens2015} and qutrit \cite{qutrit} stabilizer ZX-calculi both have complete presentations.  However, during the process of writing this thesis, an axiomatization was provided for the quopit stabilizer ZX-calculus \cite{booth}, followed shortly by an even simpler presentation \cite{poor}.  Note that the interpretations of the generators in \cite{poor,booth} differ slightly for technical reasons (specifically they designed their presentations to be flexsymmetric following \cite[\S 5]{flexsymmetric}).
+The qubit  and qutrit  stabilizer ZX-calculi both have complete presentations \cite{backensstab,backens2015} and \cite{qutrit}.  However, during the process of writing this thesis, Booth and Carette gave a complete  axiomatization for the quopit stabilizer ZX-calculus \cite{booth}, followed shortly by an even simpler presentation by Po\'{o}r et al. \cite{poor}.  Note that the interpretations of the generators in these papers differ from ours slightly for technical reasons:  they designed their presentations to be flexsymmetric.
 
 
 Despite being used being used extensively for error correction, as we will discuss in Section \ref{sec:qec}, unlike general quantum circuits, stabilizer circuits are not any more powerful than classical probabilistic computing:
@@ -4553,22 +4551,22 @@ Despite being used being used extensively for error correction, as we will discu
 \label{thm:gotteknill}
 Stabilizer circuits can be classically probabilistically  simulated in polynomial time.
 \end{theorem}
-The original proof for qudits is found in  \cite{gottesmanknill}; however, it follows immediately for qudits.  Later on, we will effectively reprove the quopit Gottesman-Knill theorem when we give a relational characterization of quopit stabilizer circuits.  In fact stabilizer circuits are the largest classically simulatable fragment containing the Clifford group:
+The original proof for qudits is given by Gottesman, where he partially attributes it to Knill \cite{gottesmanknill}; however, it follows immediately for qudits.  Later on, we will effectively reprove the quopit Gottesman-Knill theorem when we give a relational characterization of quopit stabilizer circuits.  In fact stabilizer circuits are the largest classically simulatable fragment containing the Clifford group:
 \begin{proposition}[{\cite[Appendix D]{campbell}}]
 \label{prop:campbell}
 Adding any non-Clifford unitary to stabilizer circuits is an approximately universal set of generators for qupit  circuits.
 \end{proposition}
 By approximately universal, this means that such a set of generators is dense in the appropriate sense.
-The qubit case seems to be folklore; the reference I provided was for qupits.  Surely this also holds for all dimensions, but the group theory becomes harder.  It is dense in an efficient way, by the Solvay-Kiataev theorem, proved initially for qubits  \cite{Kitaev1997}, and later for all qudits \cite[\S 5]{Dawson2006}.
+The qubit case seems to be folklore; Campbell et al.'s reference which we have cited only proves it for quopits.  Surely this also holds for all dimensions, but the group theory becomes harder.  It is dense in an efficient way, by the Solvay-Kiataev theorem.  This is a technical result, first proved initially for qubits; the history again is kind of nuanced, it was first unofficially announced by Solvay, and published by Kitaev \cite{Kitaev1997}.  This result was  later generalized to all qudits by Dawson et Nielsen \cite[\S 5]{Dawson2006}.
 
-Therefore, by adding any other phases to qupit stabilizer circuits is maximally expressive.  The first approximately universal axiomatization of the qudit ZX-calculus, was obtained by adding the $1/8$ phase: yielding a complete axiomatization for the qubit  Clifford+T quantum circuits \cite{Jeandel}.
+Therefore, by adding any other phases to qupit stabilizer circuits is maximally expressive.  Jeandel et al. constructed the first approximately universal axiomatization of the qubit ZX-calculus in this way \cite{Jeandel}.
 
-Later, two complete presentations for the full qubit ZX-calculus followed,  where all phases are allowed  \cite{zxcompleteb,zxcompletea}. These presentations of the qubit ZX-calculus are universal on the nose, so that they both are presentations for the full subcategory of $\Mat_\C$ whose objects are powers of $2$.
+Later, two complete axiomatizations for the qubit ZX-calculus followed, where all phases are included.  This was done independently by Ng and Wang as well as Jeandel et al.  \cite{zxcompleteb,zxcompletea}. These presentations of the qubit ZX-calculus are universal on the nose, so that they both are presentations for the full subcategory of $\Mat_\C$ whose objects are powers of $2$.
 
 
 Up until this point, we have discussed quantum circuits as being generated by spiders. Although spiders are good for copying and adding standard basis elements; it is hard to construct nonlinear behaviour using these generators.
 
-To accommodate for this, {\bf $H$-boxes} were devised in the qubit case by \cite{zh}:
+To accommodate for this, {\bf $H$-boxes} were devised in the qubit case by Backens and Kissinger \cite{zh}:
 \begin{definition}
 \label{def:zh}
 Given any $c\in \C$, the $c$-labelled qubit $H$-box with $n$ inputs and $m$ outputs is the operator $\ell^2(\F_2^n)\to \ell^2(\F_2^m)$:
@@ -4599,8 +4597,8 @@ $$
 Ie, the matrix where all entries are $1$, except for the bottom-right entry which is $c$.
 
 
-The $H$-box with label $-1$ and one input and one out is equal to $\sqrt{2}\mathcal{F}$.
-Because of this relationship with the Fourier transform, a ``phase-free'' $H$-box with no label, corresponds to one with label -1:
+The $H$-box with label $-1$ and one input and one output is equal to $\sqrt{2}\mathcal{F}$.
+Because of this relationship with the Fourier transform, a ``phase-free'' $H$-box with no label corresponds to one with label -1:
 $$
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
@@ -4639,7 +4637,7 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-This is the reason for the name ``$H$-box'' as the qubit Fourier transform is often called the ``Hadamard gate.''
+This is the reason for the name ``$H$-box,'' as the qubit Fourier transform is often called the ``Hadamard gate.''
 One should not confuse an $H$-box with one input and one output (drawn in grey) with the antipode for the Hopf algebra (drawn in black) for the $Z$ and $X$-spiders.
 Although $H$-boxes do not correspond to Frobenius algebras, they do satisfy a sort of fusion rule:
 $$
@@ -4748,7 +4746,7 @@ $$
 \end{tikzpicture}
 $$
 \end{definition}
-In analogy to the ZX-calculus, a {\bf fragment of the ZH-calculus} is presented by unphased $Z$ and $X$ spiders, in addition to  $H$-boxes labelled by a semiring $S$ and an interpretation into $\FHilb$. The interpretation must send the $Z$ and $X$ spiders to to the $Z$ and $X$ spiders in $\Hilb$ in the same way as for the phase-free ZX-calculus. We also ask that there is a semiring homorphism $f:S\to \C$ such that 
+In analogy to the ZX-calculus, a {\bf fragment of the ZH-calculus} is presented by unphased $Z$ and $X$ spiders, in addition to  $H$-boxes labelled by a semiring $S$ and an interpretation into $\FHilb$. The interpretation must send the $Z$ and $X$ spiders to the $Z$ and $X$ spiders in $\Hilb$ in the same way as for the phase-free ZX-calculus. We also ask that there is a semiring homomorphism $f:S\to \C$ such that 
 $$
 \left\llbracket
 \begin{tikzpicture}
@@ -4775,16 +4773,16 @@ $$
 $$
 
 The notions of completeness and universality are essentially the same as for the ZX-calculus. 
-The full qubit ZH-calculus was proved to be complete and universal for all qubit complex matrices in the original paper \cite{zh}.  
+The full qubit ZH-calculus was proved to be complete and universal for all qubit complex matrices in the original paper of Backens and Kissinger \cite{zh}.  
 
-Recall that an H-box with no label is the same as an H-box which is labelled by $-1$.  Therefore an axiomatization for the phase-free ZH-calculus must be compatible with the semiring homorphism $\Z\to\C$.
-Completeness for the phase-free ZH-calculus up to a scalar factor followed shortly after full completeness \cite{zhpi}; giving a presentation for qubit matrices over $\Z[1/\sqrt{2}]$.
-They also showed that the  phase-free ZH-calculus is approximately universal for quantum circuits.
+Recall that an H-box with no label is the same as an H-box which is labelled by $-1$.  Therefore an axiomatization for the phase-free ZH-calculus must be compatible with the semiring homomorphism $\Z\to\C$.
+Completeness for the phase-free ZH-calculus up to a scalar factor was proven by van de Wetering and Wolffs; giving a presentation for qubit matrices over $\Z[1/\sqrt{2}]$ \cite{zhpi}.
+In their paper, they also prove that the  phase-free ZH-calculus is approximately universal for quantum circuits.
 %TODO GIVE GENERATORS AND EQUATIONS
 
-In the following chapter we prove completeness for the circuits generated by unphased $Z$ and $X$-spiders as well as $\AND$ gates and $\Not$-gates.  We prove that this is essentially the natural-number labelled H-box fragment of the ZH-calculus. the only difference being that we carefully avoid having matrices with entries which are not natural numbers.
+In the following chapter we prove completeness for the circuits generated by unphased $Z$ and $X$-spiders as well as $\AND$ gates and $\Not$-gates.  We prove that this is essentially the natural-number labelled H-box fragment of the ZH-calculus, the only difference being that we carefully avoid having matrices with entries which are not natural numbers.
 
-Recently, a universal set of generators has been proposed for the qudit ZH-calculus, but no completeness theorem exists so far \cite{roy}.
+Recently, in a universal set of generators has been proposed for the qudit ZH-calculus in the Masters thesis of Roy \cite{roy}, but no completeness theorem exists so far.
 
 
 
