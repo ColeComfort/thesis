@@ -1230,7 +1230,7 @@ The prop of {\bf affine relations} over $k$, $\Aff\Rel_{k}$ is the full subcateg
 Concretely, this is constructed in the same way as $\LinRel_k$, but maps $n\to m$ are now (possibly empty) affine subspaces $S \subseteq k^n\oplus k^m$. That is to say, $S$ is a subset of $k^n\oplus k^m$ such that for any $a \in S$, the set $\{v+a\ |\ \forall v \in S\}$ is a linear subspace of  $k^n\oplus k^m$.  The empty set vacuously satisfies this condition.
 
 
-We forget the empty set as an object and retain it merely as a subobject so that we can present it as a (single sorted) prop as follows:
+We forget the empty set as an object and retain it merely as a subobject so that we can present it as a (single coloured) prop as follows:
 \begin{lemma}[{\cite[\S A]{affine}}]
 \label{lem:affrel}
 $\Aff\Rel_{k}$ is presented by the prop $\aih_k$ given by adding the following generators and equations to the presentation of $\ih_k$:
@@ -1314,7 +1314,7 @@ $$
 \end{tikzpicture}
 $$
 \end{lemma}
-The first two equations come from the presentation of affine matrices, and the last equation enforces the initiality of the affine space as a subobject.
+The first two equations come from the presentation of affine matrices, and the last equation enforces the initiality of the empty affine space as a subobject.
 
 
 The original presentation of $\Aff\Rel_k$ given by Bonci et al.  was proven to be equivalent to the concrete category of affine relations \cite[\S A]{affine}; rather than the nonempty full subcategory of internal relations of possibly empty, finite dimensional  affine spaces.  However, as we have discussed, both perspectives are equivalent.
@@ -2074,7 +2074,7 @@ Therefore, now we can copy and delete things with the commutative comonoid struc
 
 %Moreover, because Cartesian bicategories of relations are equipped with a chosen compatible family of Frobenius algebras, they are self-dual \dag-compact closed. For categories of internal relations, the \dag-structure is given by the transpose/relational converse.
 
-Given a finitely complete category $\X$, $\Span(\X)$ is not a Cartesian bicategory of relations because it is not poset enriched (there can be more than one 2-cell between 1-cells); however it is a {\em Cartesian bicategory} (see \cite{carbonia}).  All of the equations now only hold up to coherent isomorphism, however the story is essentially the same. This is much more difficult to work with because this notion requires coherence conditions so we will omit this more general definition for the sake of brevity. 
+Given a finitely complete category $\X$, $\Span(\X)$ is not a Cartesian bicategory of relations because it is not poset enriched (there can be more than one 2-cell between 1-cells); however it is a {\em Cartesian bicategory} (see Carboni et al. \cite{carbonia}).  All of the equations now only hold up to coherent isomorphism, however the story is essentially the same. This is much more difficult to work with because this notion requires coherence conditions so we will omit this more general definition for the sake of brevity. 
 
 
 Cartesian bicategories of relations subsume categories of internal relations:
@@ -2845,7 +2845,7 @@ By definition, the total maps in a Cartesian restriction category are those whic
 %
 Similarly, discrete Cartesian restriction categories are a deterministic, yet partial version of relations:
 \begin{lemma}
-The category of comultiplication homorphisms of a Cartesian bicategory of relations is a discrete Cartesian restriction category.
+The category of comultiplication homorphisms of a Cartesian bicategory of relations forms a discrete Cartesian restriction category.
 \end{lemma}
 Let us refine the notion of a restriction category:
 \begin{definition}[{\cite[\S 2.3.2]{cockett}}]

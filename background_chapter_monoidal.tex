@@ -31,7 +31,7 @@ $$
   ((W\otimes X )\otimes Y)\otimes Z \ar[rr]^{\alpha_{W\otimes X,Y,Z}} \ar[d]_{\alpha_{W,X,Y}\otimes 1_Z}
     &
     & (W\otimes X )\otimes (Y\otimes Z) \ar[d]^{\alpha_{W, X,Y\otimes Z}}
-  \\  (W\otimes(X\otimes Y))\otimes Z \ar[dr]_{\alpha_{W,\otimes Y,Z}}
+  \\  (W\otimes(X\otimes Y))\otimes Z \ar[dr]_{\alpha_{W,X\otimes Y,Z}}
     & 
     & W\otimes (X\otimes(Y\otimes Z)) 
   \\&
@@ -51,7 +51,7 @@ $$
 We will call a map out of the tensor unit a {\bf state}, a map into the tensor unit an {\bf effect}, and an endomorphism on the tensor unit a {\bf scalar}.
 \end{definition}
 \begin{example}
-Both the category $\FSets$ of finite sets and functions and the category $\Sets$ of sets and functions are monoidal categories: both under the product and coproduct.
+Both the category $\FSets$ of finite sets and functions and the category $\Sets$ of sets and functions are monoidal categories: both under the product (also called the Cartesian product) and coproduct (also called the disjoint union).
 
 Given a field $k$, the category $\Vect_k$ of vector spaces over $k$  and the category $\FVect_k$ of finite-dimensional vector spaces over $k$ are monoidal categories:  both under the bilinear tensor product and the direct sum.
 
@@ -92,7 +92,7 @@ $$
 \xymatrix{
   F(X)\otimes^\Y F(Y) \ar[rr]^{\phi_X\otimes^\Y \phi_Y} \ar[d]_{\mu^F_{X,Y}}
    && G(X)\otimes^\Y G(Y) \ar[d]^{\mu^G_{X,Y}}
- \\G(X\otimes^\X Y) \ar[rr]_{\phi_{X\otimes^\X Y}}
+ \\F(X\otimes^\X Y) \ar[rr]_{\phi_{X\otimes^\X Y}}
    && G(X\otimes^\X Y)
 }
 \hspace*{.5cm}
@@ -182,7 +182,7 @@ $$
 
 
 
-The first one is given by:
+The second one is given by:
 
 \begin{description}
 \item[Monoidal product:] Given by the Kronecker product so that given any two matrices  $A,B$:
@@ -1082,14 +1082,14 @@ $$
 	\end{pgfonlayer}
 \end{tikzpicture}
 $$
-Even in the case when we are already working in a strict monoidal category, it will still often be useful to use string diagrams for its strictification; for example, we can bundle up wires together so that we can make inductive arguments using pictures.  Indeed, these string diagrams have been rediscovered by Carette et al. in the setting of quantum circuits as the scalable ZX-calculus for precisely this reason \cite{szx}.  They have not made use of the units and counits in this setting; nevertheless it has found rich applications \cite{szxi,szxii}.  We will discuss this further in Chapter \ref{sec:cqm}.
+Even in the case when we are already working in a strict monoidal category, it will still often be useful to use string diagrams for its strictification; for example, we can bundle up wires together so that we can make inductive arguments using pictures.  Indeed, these string diagrams have been rediscovered by Carette et al. in the setting of quantum circuits, dubbed ``the scalable ZX-calculus'' for precisely this reason \cite{szx}.  They have not made use of the units and counits in this setting; nevertheless it has found rich applications \cite{szxi,szxii}.  We will discuss this further in Chapter \ref{sec:cqm}.
 \begin{aside}
 These string diagrams are closely related to proof nets for linearly-distributive categories; so much so, that this monoidal counterpart was considered folklore by some.  % I will discuss the relation to proof nets in linear logic in Chapter \ref{chap:grothendieck}, as well as an attempt to present them as a universal construction.  This proved to be much more difficult than expected.
 \end{aside}
 Some monoidal categories are monoidally equivalent to {\bf skeletal}, strict monoidal categories, where the adjective skeletal means that every two isomorphic objects are equal.  These are very nice to work with because if we want, we can forgo having to use the tensoring/untensoring and unit introduction and removal:
 \begin{example}
 \label{ex:skeleton}
-$\FinOrd$ is a skeletal and strict monoidal under both tensor prodcuts. It is monoidally equivalent to $\FSets$ under both thensor products.
+$\FinOrd$ is a skeletal and strict monoidal under both tensor products. It is monoidally equivalent to $\FSets$ under both thensor products.
 
 
 Given a commutative semiring $R$, $\Mat_R$ is a skeletal category and is strict monoidal. Moreover for a field $k$, by chosing a basis for each dimension,  $\FVect_k$   is monoidally equivalent to $\Mat_k$ under the bilinear tensor product and the direct sum.
@@ -1383,44 +1383,47 @@ $$
 $$
 \item[Compatibility with the tensor product:]\
 
-\hspace*{-1.15cm}
-\scalebox{1}{$
-\xymatrix{
-I  \ar[rr]^{(u_I^L)^{-1}} \ar[rrrddddd]!<-.5ex,-.5ex>_{\eta_{X\otimes Y}}
- &
- & I\otimes I \ar[r]^{\hspace*{-1.3cm}\eta_X\otimes \eta_Y}
- & (X\otimes X^*)\otimes(Y\otimes Y^*)  \ar[d]^{\alpha_{X,X^*,Y\otimes Y^*}} 
-\\
- &
- &
- &  X\otimes (X^*\otimes(Y\otimes Y^*)) \ar[d]^{X\otimes \alpha_{X^*,Y,Y^*}^{-1}}
-\\
-I&
-&
-& X\otimes ((X^*\otimes Y)\otimes Y^*) \ar[d]^{1_X\otimes (\sigma_{X^*,Y}\otimes 1_Y^*)}
-\\
- I\otimes I \ar[u]^{u^R_I}&
-&
-& X\otimes ((Y\otimes X^*)\otimes Y^*) \ar[d]^{1_X\otimes \alpha_{Y,X^*,Y^*}} 
-& 
-\\
-(X^*\otimes X) \otimes (Y^*\otimes Y)  \ar[u]^{\epsilon_X\otimes \epsilon_Y} &
-&
-&X\otimes (Y\otimes (X^*\otimes Y^*)) \ar[d]^{\alpha_{X,Y,X^*\otimes Y^*}^{-1}}
-\\
-X^*\otimes( X\otimes (Y^*\otimes Y))  \ar[u]^{\alpha_{X^*,X,X^*\otimes 1_Y}^{-1}} &
-&
-& (X\otimes Y)\otimes (X^*\otimes Y^*)
-\\
-X^*\otimes( (X\otimes Y^*)\otimes Y)   \ar[u]^{1_{X^*}\otimes \alpha_{X,Y^*,Y}} &
-&
-& 
-\\
-X^*\otimes( (Y^*\otimes X)\otimes Y) \ar[u]^{1_{X^*}\otimes (\sigma_{Y^*,X}\otimes 1_Y)} &
-&
-X^*\otimes( Y^*\otimes (X\otimes Y))   \ar[ll]^{1_{X^*} \otimes \alpha^{-1}_{Y^*,X,Y}} & (X^*\otimes Y^*)\otimes (X\otimes Y)  \ar[l]^{\ \ \ \ \ \alpha^{-1}_{X^*,Y^*,X\otimes Y}} \ar[llluuuuu]!<0ex,.0ex>_{\epsilon_{X\otimes Y}}
-}
-$}
+$$(X\otimes Y)^* = X^* \otimes Y^*$$
+
+%
+%\hspace*{-1.15cm}
+%\scalebox{1}{$
+%\xymatrix{
+%I  \ar[rr]^{(u_I^L)^{-1}} \ar[rrrddddd]!<-.5ex,-.5ex>_{\eta_{X\otimes Y}}
+% &
+% & I\otimes I \ar[r]^{\hspace*{-1.3cm}\eta_X\otimes \eta_Y}
+% & (X\otimes X^*)\otimes(Y\otimes Y^*)  \ar[d]^{\alpha_{X,X^*,Y\otimes Y^*}} 
+%\\
+% &
+% &
+% &  X\otimes (X^*\otimes(Y\otimes Y^*)) \ar[d]^{X\otimes \alpha_{X^*,Y,Y^*}^{-1}}
+%\\
+%I&
+%&
+%& X\otimes ((X^*\otimes Y)\otimes Y^*) \ar[d]^{1_X\otimes (\sigma_{X^*,Y}\otimes 1_Y^*)}
+%\\
+% I\otimes I \ar[u]^{u^R_I}&
+%&
+%& X\otimes ((Y\otimes X^*)\otimes Y^*) \ar[d]^{1_X\otimes \alpha_{Y,X^*,Y^*}} 
+%& 
+%\\
+%(X^*\otimes X) \otimes (Y^*\otimes Y)  \ar[u]^{\epsilon_X\otimes \epsilon_Y} &
+%&
+%&X\otimes (Y\otimes (X^*\otimes Y^*)) \ar[d]^{\alpha_{X,Y,X^*\otimes Y^*}^{-1}}
+%\\
+%X^*\otimes( X\otimes (Y^*\otimes Y))  \ar[u]^{\alpha_{X^*,X,X^*\otimes 1_Y}^{-1}} &
+%&
+%& (X\otimes Y)\otimes (X^*\otimes Y^*)
+%\\
+%X^*\otimes( (X\otimes Y^*)\otimes Y)   \ar[u]^{1_{X^*}\otimes \alpha_{X,Y^*,Y}} &
+%&
+%& 
+%\\
+%X^*\otimes( (Y^*\otimes X)\otimes Y) \ar[u]^{1_{X^*}\otimes (\sigma_{Y^*,X}\otimes 1_Y)} &
+%&
+%X^*\otimes( Y^*\otimes (X\otimes Y))   \ar[ll]^{1_{X^*} \otimes \alpha^{-1}_{Y^*,X,Y}} & (X^*\otimes Y^*)\otimes (X\otimes Y)  \ar[l]^{\ \ \ \ \ \alpha^{-1}_{X^*,Y^*,X\otimes Y}} \ar[llluuuuu]!<0ex,.0ex>_{\epsilon_{X\otimes Y}}
+%}
+%$}
 \end{description}
 
 A strict compact closed category is a compact closed category where the underlying symmetric monoidal category is strict.
@@ -1861,7 +1864,7 @@ The compact closed and \dag-symmetric monoidal structures of $\Mat_\C$ and $\FHi
 \end{example}
 \subsection{Monoidal presentations}
 \label{subsec:monpres}
-In this subsection, we review how monoidal categories can be presented in terms of generators and equations. A more detailed reference can be found in the PhD thesis of Zanasi \cite{ih}.
+In this subsection, we review how monoidal categories can be presented in terms of generators and equations. A more detailed reference can be found in the Ph.D. thesis of Zanasi \cite{ih}.
 \begin{definition}
 \label{def:monoidaltheory}
 %A {\bf symmetric monoidal theory} is a triple $T=({\sf Ob},\Sigma ,E \)$. $\sf Ob$ is a set of {\em objects}. $\Sigma\in [{\sf Ob}]\times [{\sf Ob}]^{G}$ is a set of {\bf generators} $g$ with associated arities $(X,Y) \in [{\sf Ob}]\times [{\sf Ob}]$,  denoted $g:X\to Y$, where $[\_]$ is the finite list monad. Let $\Sigma'$ denote the set $\Sigma\sqcup\{\sigma_X: [X,X]\to[X,X] | \forall X \in {\sf Ob} \}$, where the $\sigma_X$ are regarded as the braiding maps.  Moreover, let $\Sigma^*$ denote the 
@@ -1870,9 +1873,9 @@ A {\bf monoidal theory} is a triple $T=({\sf Ob},\Sigma ,E )$. $\Ob$  is the set
 
 The set of ${\bf equations}$ $E$ consists of pairs of parallel formal terms $f:X\to Y$ and $g:X\to Y$.
 
-Every monoidal theory defines a strict monoidal category $\bar T$. This is the free strict monoidal category with objects in  $\List(\Ob)$ and maps formal composites of $(\Ob,\Sigma)$-terms modulo the equations in $E$.  $\bar T$ has the structure of a category as the identity on an object $[X_1,\cdot, X_n]$ is given by the formal composite ${\sf id}_{X_1}\otimes \cdots {\sf id}_{X_n}$ and the composition is given by formal composition.  For the strict monoidal structure,  the tensor unit is given by the empty list and the tensor product is given by the formal tensor product.  Call such a monoidal category a {\bf coloured pro}, or merely a {\bf pro} when $|{\sf Ob}|=1$.  We will say that $T$ is a {\bf presentation} of a monoidal category $\X$ when $\bar T$ is monoidally equivalent to $\X$.  
+Every monoidal theory defines a strict monoidal category $\bar T$. This is the free strict monoidal category with objects in  $\List(\Ob)$ and maps formal composites of $(\Ob,\Sigma)$-terms modulo the equations in $E$.  $\bar T$ has the structure of a category as the identity on an object $[X_1,\cdots, X_n]$ is given by the formal composite ${\sf id}_{X_1}\otimes \cdots\otimes {\sf id}_{X_n}$ and the composition is given by formal composition.  For the strict monoidal structure,  the tensor unit is given by the empty list and the tensor product is given by the formal tensor product.  Call such a monoidal category a {\bf coloured pro}, or merely a {\bf pro} when $|{\sf Ob}|=1$.  We will say that $T$ is a {\bf presentation} of a monoidal category $\X$ when $\bar T$ is monoidally equivalent to $\X$.  
 
-The coloured pro in a presentation is regarded as the {\em syntax}, and the monoidal category which it is equivalent to is regarded as the {\bf semantics}.  Throughout this thesis, the semantics will usually be concrete mathematical objects which are easy to define; whereas, finding the appropriate equations is substantially harder.  Therefore, even if both monoidal categories are equivalent, they feel much different.
+The coloured pro in a presentation is regarded as the {\em syntax}, and the monoidal category which it is equivalent to is regarded as the {\bf semantics}.  Throughout this thesis, the semantics will usually be concrete mathematical objects which are easy to define; whereas, finding the defining set of equations for the syntax is substantially harder.  Therefore, even if both monoidal categories are equivalent, they feel much different.
 \end{definition}
 
 

@@ -1,0 +1,77 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+\errorcontextlines=500
+
+\documentclass[12pt]{article}  % default square logo 
+
+%\usepackage{geometry}
+
+%\documentclass[a4paper,11pt,oneside]{bo222ok}
+%\usepackage[DIV=14,BCOR=2mm,headinclude=true,footinclude=false]{typearea}
+
+\input{preamble}
+
+
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+%
+
+
+\title{Notes on profunctors and compact multiplicative linear logic}
+\author{Cole Comfort}
+
+
+%September $\text{20}^{\text{th}}$, 2023}    
+
+%\renewcommand{\submittedtext}{change the default text here if needed}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+\renewcommand{\S}{Section }
+
+
+%\newcommand{\cole}[1]{\textcolor{red}{#1}}
+
+
+
+
+%TODO
+%Give examples of error correcting codes and protocols with affine and non-affine classical processing
+%Talk about ZX& calculus as being stabilized by nonlinear set of X operators.
+%Change words white and grey to inline tikz circles
+%Give interpretation of impedence calculus.  Talk about apparent relation to CP* construction.  Talk about how the ground is not the quantum discard!
+
+
+%Talk about why distributive laws over partial isomorphisms dont really need to be up to zig zags
+%Talk about a more general construction
+
+%cite carboni and walters paper on laxity and adjointness
+%check that interpretation of phase shift gate is compatible with the symplectic one
+%check interpretations of electrical circuits in ZX notation
+%flip the definition of copara around so that the parameter is on the left.
+
+%give a nontechnical overview at the beginning of each section (for example, string diagrams from a graphical perspective) Put these resumes in special boxes
+%Also put axioms in special boxes
+
+
+
+\renewcommand\bibname{Bibliography\\
+ \textnormal{\small  I have included URLs to publicly accessible versions of all cited works wherever possible.}\\
+ \vspace*{-.5cm}\textnormal{\small Therefore, as opposed to the DOIs, the URLs may not be the exact versions cited.}}
+
+
+
+
+\begin{document}
+\maketitle
+
+%\chapter{Proof nets and categorified Frobenius algebras}
+%\label{chap:grothendieck}
+\input{grothendieck_chapter}
+
+\bibliography{bibliography}
+%\bibliographystyle{eptcs}
+\bibliographystyle{eptcsalpha}
+\end{document}

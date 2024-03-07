@@ -19,18 +19,22 @@
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
 
 
-\title{Relational Semantics \\{ \it \Large for}\\ Quantum Protocols}
+\title{A Diagrammatic Approach to Networks of Spans and Relations}
+
+
 \author{Cole Comfort}
 \college{New College}  %your college
 \degree{Doctor of Philosophy in Computer Science} 
-\degreedate{September $\text{20}^{\text{th}}$, 2023}    
+\degreedate{Michaelmas 2023}
+%September $\text{20}^{\text{th}}$, 2023}    
 
 %\renewcommand{\submittedtext}{change the default text here if needed}
 %\date{} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed 
+\renewcommand{\S}{Section }
 
 
-\newcommand{\cole}[1]{\textcolor{red}{#1}}
+%\newcommand{\cole}[1]{\textcolor{red}{#1}}
 
 
 
@@ -55,11 +59,10 @@
 
 
 
-
-
 \renewcommand\bibname{Bibliography\\
  \textnormal{\small  I have included URLs to publicly accessible versions of all cited works wherever possible.}\\
  \vspace*{-.5cm}\textnormal{\small Therefore, as opposed to the DOIs, the URLs may not be the exact versions cited.}}
+
 
 
 
@@ -76,10 +79,10 @@ I would have not been able to write this thesis without the help and support of 
 
 First, I thank my fellow students and postdocs in the quantum group at  Oxford for their good company and research discussions: especially Alex,  Amin, Antonin, James, John, Lia, Lukas, Matt, all three Nicks, Nihil, Sivert, Razin, Tein and Will.  Also I can't forget Sander, who was a postdoc the year before when I visited during my masters degree.
 I am also thankful to Aleks for his advice and help in writing our paper as well as Bob for getting me funding and all the  food and drink.
-I also am thankful to Pawe\l{} and the TallCat group in Estonia for welcoming me as a guest when I was at that time unwelcome in my own department.  I also would like to thank the Programming Principles, Logic and Verification Group at UCL for allowing me to visit; especially Leo and Robin for fruitful discussions and Wojtek for his very welcoming company, and Martti for letting me sleep on his couch. I would also like to thank the group at Pisa for letting me visit; especially Alessandro and Filippo for discussions about research and Fabio for the good food and wine. I would also like to thank everyone at the Mathematically Structured Programming group in Glasgow.  Also I am grateful to both Roberts in Edinburgh, especially to Robert Booth for letting me sleep on his floor for a week.
-I am also grateful to the Canadian category theory community, especially Amolak, Ben, Jon, Jeff and Robin.  I am especially grateful to JS for his sage advice, encouragement and kindness; without which, I probably would have never done a PhD.  Also thanks to all of my friends who regularly attend ACT and QPL, and the other category theorists who I bump into ever so often.  I am also thankful for the helpful feedback on this thesis given to me by my assessors.
+I also am thankful to Pawe\l{} and the TallCat group in Estonia for welcoming me as a guest when I was at that time unwelcome in my own department.  I also would like to thank the Programming Principles, Logic and Verification Group at UCL for allowing me to visit; especially Leo and Robin for fruitful discussions and Wojtek for his very welcoming company, and Martti for letting me sleep on his couch. I would also like to thank the group at Pisa for letting me visit; especially Alessandro and Filippo for discussions about research and Fabio for the good food and wine, and a second thanks to Alessandro for letting me sleep on his couch. I would also like to thank everyone at the Mathematically Structured Programming group in Glasgow.  Also I am grateful to both Roberts in Edinburgh, especially to Robert Booth for letting me sleep on his floor for a week. Also thanks for the pints, Ross.
+I am also grateful to the Canadian category theory community, especially Amolak, Ben, Jon, Jeff and Robin.  I am especially grateful to JS for his sage advice, encouragement and kindness; without which, I probably would have never done a Ph.D.  Also thanks to all of my friends who regularly attend ACT and QPL, and the other category theorists who I bump into ever so often.  I am also thankful for the helpful feedback on this thesis given to me by my assessors.
 
-Finally, I am also grateful to my family and all my friends in Canada, Tallinn and Oxford who have not influenced my research but have made doing a PhD more tolerable.
+Finally, I am also grateful to my family and all my friends in Canada, Tallinn and Oxford who have not influenced my research but have made doing a Ph.D. more tolerable.
 \end{acknowledgements}
 
 
@@ -91,7 +94,7 @@ Chapters \ref{chap:cat} and \ref{sec:cqm} are  literature reviews.  Chapter \ref
 
 
 \begin{abstract}
-In this thesis we exhibit nondeterministic semantics for various classes of circuits.  Motivated initially by quantum circuits, we also give semantics for circuits for classical mechanical systems and Boolean algebra.  We interpret circuits in terms of categories of spans or relations: in less categorical terms these are equivalent to matrices over the natural numbers or the Boolean semiring. In the relational picture, we characterize circuits in terms of which inputs and outputs are jointly possible; and in the spans picture, how often inputs and outputs are jointly possible.  Specifically,  we show that the class of circuits generated by the  Toffoli gate as well the states $|0\rangle$, $|1\rangle$, $\sqrt{2}|+\rangle$ and their adjoints is characterized in terms of spans of finite sets.  We also give a complete axiomatization for these circuits.  With this semantics in mind, we discuss the connection to partial and reversible computation.  Shifting to the phase-space picture we also characterize circuits in terms of how they relate abstract positions and momenta. We show how this gives a unifying relational semantics for certain classes circuits for classical mechanical systems, as well as for quantum circuits.
+In this thesis we exhibit nondeterministic semantics for various classes of circuits.  Motivated initially by quantum circuits, we also give nondeterministic semantics for circuits for classical mechanical systems and Boolean algebra.  More formally, we interpret these classes of circuits in terms of categories of spans or relations: in less categorical terms these are equivalent to matrices over the natural numbers or the Boolean semiring. In the relational picture, we characterize circuits in terms of which inputs and outputs are jointly possible; and in the spans picture, how often inputs and outputs are jointly possible.  Specifically,  we first show that the class of circuits generated by the  Toffoli gate as well the states $|0\rangle$, $|1\rangle$, $\sqrt{2}|+\rangle$ and their adjoints is characterized in terms of spans of finite sets.  We also give a complete axiomatization for these circuits.  With this semantics in mind, we discuss the connection to partial and reversible computation.  Shifting to the phase-space picture we also characterize circuits in terms of how they relate abstract positions and momenta. We show how this gives a unifying relational semantics for certain classes circuits for classical mechanical systems, as well as for stabilizer quantum circuits.
 %. We also exhibit an isomorphism between the prop of affine coisotropic relations over odd prime fields and odd-prime-dimensional mixed stabilizer circuits.  We show how this can be constructed by doubling the phase-free ZX-calculus twice, iterating the CPM construction.  We discuss the relation of this semantics for stabilizer circuits to  previously known semantics for idealized classes of electrical circuits.     
 %Finally, we attempt to give a categorical semantics for proof nets for monoidal categories/the scalable ZX-calculus using profunctors which are a categorification of relations.
 \end{abstract}
